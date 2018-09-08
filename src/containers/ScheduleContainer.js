@@ -18,24 +18,34 @@ class ScheduleContainer extends Component {
     })
     let newArray = _.chunk(showScheduleArray, 2)
     // console.log(showScheduleArray);
-    console.log(newArray);
+    // console.log(newArray);
 
     let arrayLength = newArray.length;
     let positionToRemove = arrayLength - 1;
+
+    // remove the unnecessary API version
     newArray.splice(positionToRemove, 1)
-    // console.log("after splice: " + newArray);
+
+    return newArray;
   }
 
   populateSchedule(){
-    this.convertShowScheduleToArray();
+    let showArray = this.convertShowScheduleToArray();
+    console.log(showArray);
+
+    const allShowDays = showArray.map((show, index) => {
+      return <th>{show[0]}</th>
+    })
+
+    return allShowDays;
   }
 
   render(){
     return(
       <React.Fragment>
-        <ul>
+        <table>
           {this.populateSchedule()}
-        </ul>
+        </table>
       </React.Fragment>
     )
   }
