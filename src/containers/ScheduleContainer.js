@@ -6,6 +6,22 @@ class ScheduleContainer extends Component {
     super(props);
     this.populateSchedule = this.populateSchedule.bind(this);
     this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
+    this.deleteDaysInPast = this.deleteDaysInPast.bind(this);
+    this.displaySchedule = this.displaySchedule.bind(this);
+  }
+
+  populateSchedule(){
+
+    if(this.props.showSchedule.length !== 0){
+      // console.log("Something here: " + this.props.showSchedule);
+      let showArray = this.convertShowScheduleToArray();
+      console.log(showArray);
+      this.deleteDaysInPast(showArray);
+
+    } else {
+      // console.log("Nothing here:" + this.props.showSchedule);
+    }
+
   }
 
   convertShowScheduleToArray(){
@@ -29,14 +45,24 @@ class ScheduleContainer extends Component {
     return newArray;
   }
 
-  populateSchedule(){
-    let showArray = this.convertShowScheduleToArray();
-    console.log(showArray);
+  deleteDaysInPast(scheduleData){
+    let currentDate = this.props.currentDate;
+    for (let day of scheduleData){
+      if (day[1].length !== 0){
+        debugger;
+        // if (day[1][1].start_timestamp.includes("cheese")){
+        console.log(day[1][0].start_timestamp);
+      }
+    }
 
+
+  }
+  // }
+
+  displaySchedule(showArray){
     const allShowDays = showArray.map((show, index) => {
-      return <th>{show[0]}</th>
+      return <th key={index}>{show[0]}</th>
     })
-
     return allShowDays;
   }
 
@@ -44,7 +70,11 @@ class ScheduleContainer extends Component {
     return(
       <React.Fragment>
         <table>
-          {this.populateSchedule()}
+          <tbody>
+            <tr>
+              {this.populateSchedule()}
+            </tr>
+          </tbody>
         </table>
       </React.Fragment>
     )

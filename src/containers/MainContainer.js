@@ -20,7 +20,8 @@ class Main extends Component {
   apiCall(){
     fetch('https://ehfm.airtime.pro/api/week-info')
     .then(response => response.json())
-    .then(data => this.setState({ showSchedule: data }));
+    .then(data => this.setState({ showSchedule: data }))
+    .then(this.apiDataLoaded());
   }
 
   fetchDate(){
@@ -40,12 +41,17 @@ class Main extends Component {
     this.setState({currentDate: today})
   }
 
+  apiDataLoaded(){
+    console.log("loaded");
+  }
+
   render(){
     return(
       <React.Fragment>
         <p>Main</p>
         <ScheduleContainer
           showSchedule={this.state.showSchedule}
+          currentDate={this.state.currentDate}
         />
       </React.Fragment>
     )
