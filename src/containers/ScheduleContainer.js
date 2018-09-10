@@ -11,7 +11,7 @@ class ScheduleContainer extends Component {
       console.log(selectedDay);
       // debugger;
       let showsForThatDay = selectedDay.map((show, index) => {
-        return <p>{show.name}</p>
+        return <p key={index}>{show.name}</p>
       })
       return showsForThatDay;
     }

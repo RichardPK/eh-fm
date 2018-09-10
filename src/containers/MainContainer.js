@@ -60,7 +60,7 @@ class Main extends Component {
 
     const allShowDays = nextSevenDaysSchedule.map((day, index) => {
       return <div className="scheduleDayHeaderItem"
-        onClick={(clickedObj) => this.handleScheduleDayClick(clickedObj)}
+        onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
         key={index}>
         {day[0]}
       </div>
@@ -73,9 +73,13 @@ class Main extends Component {
       this.setState({selectedDay: selectedDay})
     }
 
-    handleScheduleDayClick(clickedObj){
+    handleScheduleDayClick(clickedObj, schedule){
+      console.log(schedule);
       let dayClickedName = clickedObj.target.innerText;
-      
+      _.forEach(schedule, function(day){
+        if(day[0] === dayClickedName)
+        this.handleSelectedDay(day)
+      }.bind(this));
     }
 
     convertShowScheduleToArray(){
