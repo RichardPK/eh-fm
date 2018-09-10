@@ -26,10 +26,10 @@ class Main extends Component {
   apiCall(){
     fetch('https://ehfm.airtime.pro/api/week-info')
     .then(response => response.json())
+    .then(this.fetchDate())
     .then(data => this.setState({ showSchedule: data }, function(){
       this.populateSchedule()
     }))
-    .then(this.fetchDate())
     // .then(this.populateSchedule())
     .then(this.apiDataLoaded())
   }
@@ -56,12 +56,17 @@ class Main extends Component {
   populateSchedule(){
     let showArray = this.convertShowScheduleToArray();
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
-    this.setState({selectedDay: nextSevenDaysSchedule[0]})
+
 
     const allShowDays = nextSevenDaysSchedule.map((day, index) => {
       return <th key={index}>{day[0]}</th>
     })
-    this.setState({displayedDays: allShowDays});
+    this.setState({displayedDays: allShowDays},
+      this.handleSelectedDay(nextSevenDaysSchedule[0]));
+  }
+
+  handleSelectedDay(selectedDay){
+    this.setState({selectedDay: selectedDay})
   }
 
   convertShowScheduleToArray(){
