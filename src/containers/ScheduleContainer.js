@@ -21,14 +21,8 @@ class ScheduleContainer extends Component {
   render(){
     return(
       <React.Fragment>
-        <table>
-          <tbody>
-            <tr>
-              {this.props.daysToDisplay}
-            </tr>
-            {this.renderSelectedDay()}
-          </tbody>
-        </table>
+        {this.props.daysToDisplay}
+        {this.renderSelectedDay()}
       </React.Fragment>
     )
   }

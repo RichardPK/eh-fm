@@ -16,6 +16,7 @@ class Main extends Component {
     this.populateSchedule = this.populateSchedule.bind(this);
     this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
     this.deleteDaysInPast = this.deleteDaysInPast.bind(this);
+    this.handleScheduleDayClick = this.handleScheduleDayClick.bind(this);
   }
 
   componentDidMount(){
@@ -57,61 +58,69 @@ class Main extends Component {
     let showArray = this.convertShowScheduleToArray();
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
 
-
     const allShowDays = nextSevenDaysSchedule.map((day, index) => {
-      return <th key={index}>{day[0]}</th>
+      return <div className="scheduleDayHeaderItem"
+        onClick={(clickedObj) => this.handleScheduleDayClick(clickedObj)}
+        key={index}>
+        {day[0]}
+      </div>
     })
     this.setState({displayedDays: allShowDays},
       this.handleSelectedDay(nextSevenDaysSchedule[0]));
-  }
+    }
 
-  handleSelectedDay(selectedDay){
-    this.setState({selectedDay: selectedDay})
-  }
+    handleSelectedDay(selectedDay){
+      this.setState({selectedDay: selectedDay})
+    }
 
-  convertShowScheduleToArray(){
-    let showSchedule = this.state.showSchedule;
-    let showScheduleArray = [];
+    handleScheduleDayClick(clickedObj){
+      let dayClickedName = clickedObj.target.innerText;
+      
+    }
 
-    Object.keys(showSchedule).forEach(function(key){
-      showScheduleArray.push(key, showSchedule[key]);
-      // console.log(key, showSchedule[key]);
-    })
-    let newArray = _.chunk(showScheduleArray, 2)
-    let arrayLength = newArray.length;
-    let positionToRemove = arrayLength - 1;
+    convertShowScheduleToArray(){
+      let showSchedule = this.state.showSchedule;
+      let showScheduleArray = [];
 
-    newArray.splice(positionToRemove, 1)
-    return newArray;
-  }
+      Object.keys(showSchedule).forEach(function(key){
+        showScheduleArray.push(key, showSchedule[key]);
+        // console.log(key, showSchedule[key]);
+      })
+      let newArray = _.chunk(showScheduleArray, 2)
+      let arrayLength = newArray.length;
+      let positionToRemove = arrayLength - 1;
 
-  deleteDaysInPast(scheduleData){
-    let currentDate = this.state.currentDate;
+      newArray.splice(positionToRemove, 1)
+      return newArray;
+    }
 
-    for (let day of scheduleData){
-      if (day[1].length !== 0){
+    deleteDaysInPast(scheduleData){
+      let currentDate = this.state.currentDate;
 
-        if(day[1][0].start_timestamp.includes(currentDate)){
-          let currentDayInScheduleIndex = scheduleData.indexOf(day);
-          let finalDayInScheduleToDisplay = currentDayInScheduleIndex + 7;
-          let nextSevenDaysSchedule = scheduleData.splice(currentDayInScheduleIndex, finalDayInScheduleToDisplay);
-          return nextSevenDaysSchedule;
+      for (let day of scheduleData){
+        if (day[1].length !== 0){
+
+          if(day[1][0].start_timestamp.includes(currentDate)){
+            let currentDayInScheduleIndex = scheduleData.indexOf(day);
+            let finalDayInScheduleToDisplay = currentDayInScheduleIndex + 7;
+            let nextSevenDaysSchedule = scheduleData.splice(currentDayInScheduleIndex, finalDayInScheduleToDisplay);
+            return nextSevenDaysSchedule;
+          }
         }
       }
     }
+
+    render(){
+      return(
+        <React.Fragment>
+          <ScheduleContainer
+            daysToDisplay={this.state.displayedDays}
+            selectedDay={this.state.selectedDay}
+          />
+        </React.Fragment>
+      )
+    }
+
   }
 
-  render(){
-    return(
-      <React.Fragment>
-        <ScheduleContainer
-          daysToDisplay={this.state.displayedDays}
-          selectedDay={this.state.selectedDay}
-        />
-      </React.Fragment>
-    )
-  }
-
-}
-
-export default Main;
+  export default Main;
