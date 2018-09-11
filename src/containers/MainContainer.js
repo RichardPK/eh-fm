@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import ScheduleContainer from './ScheduleContainer'
+import ScheduleContainer from './ScheduleContainer';
+import Player from '../components/Player';
+import './MainContainer.css'
 import _ from 'lodash';
 
 class Main extends Component {
@@ -11,7 +13,8 @@ class Main extends Component {
       selectedDay: null,
       displayedDays: []
     }
-    this.apiCall = this.apiCall.bind(this);
+    this.playerApiCall = this.playerApiCall.bind(this);
+    this.scheduleApiCall = this.scheduleApiCall.bind(this);
     this.fetchDate = this.fetchDate.bind(this);
     this.populateSchedule = this.populateSchedule.bind(this);
     this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
@@ -20,11 +23,16 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    this.apiCall();
+    this.scheduleApiCall();
+    this.playerApiCall();
 
   }
 
-  apiCall(){
+  playerApiCall(){
+    console.log("Player API call running!");
+  }
+
+  scheduleApiCall(){
     fetch('https://ehfm.airtime.pro/api/week-info')
     .then(response => response.json())
     .then(this.fetchDate())
@@ -106,7 +114,7 @@ class Main extends Component {
 
           if(day[1][0].start_timestamp.includes(currentDate)){
             let currentDayInScheduleIndex = scheduleData.indexOf(day);
-            let finalDayInScheduleToDisplay = currentDayInScheduleIndex + 7;
+            let finalDayInScheduleToDisplay = currentDayInScheduleIndex + 6;
             let nextSevenDaysSchedule = scheduleData.splice(currentDayInScheduleIndex, finalDayInScheduleToDisplay);
             return nextSevenDaysSchedule;
           }
@@ -117,10 +125,13 @@ class Main extends Component {
     render(){
       return(
         <React.Fragment>
+          <Player/>
+          <div className="schedule-container">
           <ScheduleContainer
             daysToDisplay={this.state.displayedDays}
             selectedDay={this.state.selectedDay}
           />
+          </div>
         </React.Fragment>
       )
     }
