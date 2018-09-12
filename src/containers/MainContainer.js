@@ -10,11 +10,14 @@ class Main extends Component {
     this.state = {
       showSchedule: [],
       currentDate: null,
+      currentShow: null,
       selectedDay: null,
       displayedDays: []
     }
-    this.playerApiCall = this.playerApiCall.bind(this);
+    this.currentShowApiCall = this.currentShowApiCall.bind(this);
     this.scheduleApiCall = this.scheduleApiCall.bind(this);
+    this.showApiDataLoaded = this.showApiDataLoaded.bind(this);
+    this.scheduleApiDataLoaded = this.scheduleApiDataLoaded.bind(this);
     this.fetchDate = this.fetchDate.bind(this);
     this.populateSchedule = this.populateSchedule.bind(this);
     this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
@@ -23,13 +26,17 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    this.scheduleApiCall();
-    this.playerApiCall();
-
+    this.currentShowApiCall();
   }
 
-  playerApiCall(){
-    console.log("Player API call running!");
+  currentShowApiCall(){
+    fetch('https://ehfm.airtime.pro/api/live-info')
+    .then(response => response.json())
+    .then(data => this.setState({ currentShow: data }, function(){
+      this.scheduleApiCall()
+    }))
+    .then(this.showApiDataLoaded())
+
   }
 
   scheduleApiCall(){
@@ -40,7 +47,15 @@ class Main extends Component {
       this.populateSchedule()
     }))
     // .then(this.populateSchedule())
-    .then(this.apiDataLoaded())
+    .then(this.scheduleApiDataLoaded())
+  }
+
+  scheduleApiDataLoaded(){
+    console.log("schedule API data loaded");
+  }
+
+  showApiDataLoaded(){
+    console.log("show API data loaded");
   }
 
   fetchDate(){
@@ -56,10 +71,6 @@ class Main extends Component {
     }
     today = yyyy + '-' + mm + '-' + dd;
     this.setState({currentDate: today})
-  }
-
-  apiDataLoaded(){
-    console.log("loaded");
   }
 
   populateSchedule(){
@@ -125,7 +136,11 @@ class Main extends Component {
     render(){
       return(
         <React.Fragment>
-          <Player/>
+          <div className="player-container">
+            <Player
+              currentShow={this.state.currentShow}
+            />
+          </div>
           <div className="schedule-container">
             <ScheduleContainer
               daysToDisplay={this.state.displayedDays}
