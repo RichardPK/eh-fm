@@ -114,8 +114,8 @@ class Main extends Component {
 
           if(day[1][0].start_timestamp.includes(currentDate)){
             let currentDayInScheduleIndex = scheduleData.indexOf(day);
-            let finalDayInScheduleToDisplay = currentDayInScheduleIndex + 6;
-            let nextSevenDaysSchedule = scheduleData.splice(currentDayInScheduleIndex, finalDayInScheduleToDisplay);
+            let finalDayInScheduleToDisplay = currentDayInScheduleIndex + 7;
+            let nextSevenDaysSchedule = scheduleData.slice(currentDayInScheduleIndex, finalDayInScheduleToDisplay);
             return nextSevenDaysSchedule;
           }
         }
@@ -127,10 +127,10 @@ class Main extends Component {
         <React.Fragment>
           <Player/>
           <div className="schedule-container">
-          <ScheduleContainer
-            daysToDisplay={this.state.displayedDays}
-            selectedDay={this.state.selectedDay}
-          />
+            <ScheduleContainer
+              daysToDisplay={this.state.displayedDays}
+              selectedDay={this.state.selectedDay}
+            />
           </div>
         </React.Fragment>
       )
