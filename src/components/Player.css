@@ -1,6 +1,30 @@
-audio {
-    position: absolute;
-    top: 0px;
-    width: 100vw;
-    background-color: black;
+:root {
+  --main-button-size: 1em;
+  --main-button-half-size: calc(var(--main-button-size) / 1.7);
+}
+
+.player-container {
+  height: 400px;
+}
+
+#audioPlayer {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+}
+
+.custom-player{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.play-button {
+  cursor: pointer;
+  border-style: solid;
+  border-width: var(--main-button-half-size) 0 var(--main-button-half-size) var(--main-button-size);
+  border-color: transparent transparent transparent #000;
+}
+
+.play-button-container{
 }

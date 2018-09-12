@@ -10,7 +10,6 @@ class Player extends Component {
 
   componentDidUpdate(){
     let currentShowName = this.returnShowData();
-    console.log(currentShowName);
   }
 
   returnShowData(){
@@ -26,9 +25,16 @@ class Player extends Component {
 
     return(
       <React.Fragment>
+
         <audio ref={this.audioPlayer} id='audioPlayer' controls name="media">
           <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
         </audio>
+        <div className="custom-player">
+          <div className="play-button-container">
+            <div className='play-button'></div>
+          </div>
+          <p>Current show: {this.returnShowData()}</p>
+        </div>
       </React.Fragment>
     )
 
