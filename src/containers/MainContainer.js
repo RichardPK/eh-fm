@@ -76,7 +76,7 @@ class Main extends Component {
     let showArray = this.convertShowScheduleToArray();
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
     const allShowDays = nextSevenDaysSchedule.map((day, index) => {
-      return <div className="scheduleDayHeaderItem"
+      return <div className="days-header-item"
         onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
         key={index}>
         {day[0]}

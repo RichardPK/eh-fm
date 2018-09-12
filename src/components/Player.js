@@ -5,12 +5,15 @@ class Player extends Component {
   constructor(props){
     super(props)
     this.state = {
-      playing: false
+      playing: false,
+      volume: 1.0
     }
     this.audioPlayer = React.createRef();
     this.returnShowData = this.returnShowData.bind(this);
     this.playClicked = this.playClicked.bind(this);
+    this.volumeClicked = this.volumeClicked.bind(this);
     this.renderPlayPause = this.renderPlayPause.bind(this);
+    this.renderVolume = this.renderVolume.bind(this);
   }
 
   componentDidUpdate(){
@@ -37,6 +40,18 @@ class Player extends Component {
     }
   }
 
+  volumeClicked(){
+    if (this.state.volume !== 0){
+      this.setState({volume: 0}, function(){
+        this.audioPlayer.current.volume = 0;
+      })
+    } else {
+      this.setState({volume: 1}, function(){
+        this.audioPlayer.current.volume = 1;
+      })
+    }
+  }
+
   renderPlayPause(){
     if (this.state.playing === false) {
       return 'play-button'
@@ -45,26 +60,42 @@ class Player extends Component {
     }
   }
 
+  renderVolume(){
+    if (this.state.volume !== 0) {
+      return './volume-up.png'
+    } else {
+      return './volume-off.png'
+    }
+  }
+
   render(){
 
     return(
       <React.Fragment>
 
-        <audio ref={this.audioPlayer} id='audioPlayer' controls name="media">
+        <audio ref={this.audioPlayer} id='audioPlayer' name="media">
           <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
         </audio>
         <div className="custom-player">
-          <div className="play-button-container">
-            <div className={this.renderPlayPause()} onClick={this.playClicked}></div>
+          <div className="left-side-player">
+            <div className="play-button-container">
+              <div className={this.renderPlayPause()} onClick={this.playClicked}></div>
+            </div>
+            <p className="current-show">On air: {this.returnShowData()}</p>
           </div>
-          <p className="current-show">Current show: {this.returnShowData()}</p>
-        </div>
-      </React.Fragment>
-    )
 
+          <div className="right-side-player">
+            <img className="volume-button"
+              src={this.renderVolume()}
+              onClick={this.volumeClicked}
+              alt='volume icon'></img>
+            </div>
+          </div>
+        </React.Fragment>
+      )
+
+    }
 
   }
 
-}
-
-export default Player;
+  export default Player;

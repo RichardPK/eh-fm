@@ -4,18 +4,10 @@
 }
 
 .player-container {
-  height: 400px;
-}
-
-#audioPlayer {
-  position: absolute;
-  top: 0px;
-  width: 100%;
 }
 
 .custom-player{
   padding: 20px;
-  margin-top: 100px;
   display: flex;
   flex-direction: row;
 }
@@ -37,6 +29,21 @@
 
 .play-button-container{
   width: var(--main-button-size);
+}
+
+.left-side-player{
+  display: flex;
+  flex-direction: row;
+}
+
+.right-side-player{
+  margin:0px 0px 0px auto;
+}
+
+.volume-button{
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
 }
 
 .current-show{
