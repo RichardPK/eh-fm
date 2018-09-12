@@ -5,10 +5,21 @@ class Player extends Component {
   constructor(props){
     super(props)
     this.audioPlayer = React.createRef();
+    this.returnShowData = this.returnShowData.bind(this);
   }
 
-  componentDidMount(){
-    console.log(this.audioPlayer);
+  componentDidUpdate(){
+    let currentShowName = this.returnShowData();
+    console.log(currentShowName);
+  }
+
+  returnShowData(){
+    let currentShowName = null;
+    if (this.props.currentShow !== null){
+      let showData = this.props.currentShow;
+      currentShowName = showData.currentShow[0].name;
+    }
+    return currentShowName;
   }
 
   render(){

@@ -36,7 +36,6 @@ class Main extends Component {
       this.scheduleApiCall()
     }))
     .then(this.showApiDataLoaded())
-
   }
 
   scheduleApiCall(){
@@ -76,7 +75,6 @@ class Main extends Component {
   populateSchedule(){
     let showArray = this.convertShowScheduleToArray();
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
-
     const allShowDays = nextSevenDaysSchedule.map((day, index) => {
       return <div className="scheduleDayHeaderItem"
         onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
@@ -104,25 +102,20 @@ class Main extends Component {
     convertShowScheduleToArray(){
       let showSchedule = this.state.showSchedule;
       let showScheduleArray = [];
-
       Object.keys(showSchedule).forEach(function(key){
         showScheduleArray.push(key, showSchedule[key]);
-        // console.log(key, showSchedule[key]);
       })
       let newArray = _.chunk(showScheduleArray, 2)
       let arrayLength = newArray.length;
       let positionToRemove = arrayLength - 1;
-
       newArray.splice(positionToRemove, 1)
       return newArray;
     }
 
     deleteDaysInPast(scheduleData){
       let currentDate = this.state.currentDate;
-
       for (let day of scheduleData){
         if (day[1].length !== 0){
-
           if(day[1][0].start_timestamp.includes(currentDate)){
             let currentDayInScheduleIndex = scheduleData.indexOf(day);
             let finalDayInScheduleToDisplay = currentDayInScheduleIndex + 7;
