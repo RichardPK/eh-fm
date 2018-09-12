@@ -4,12 +4,16 @@ import './Player.css';
 class Player extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      playing: false
+    }
     this.audioPlayer = React.createRef();
     this.returnShowData = this.returnShowData.bind(this);
+    this.playClicked = this.playClicked.bind(this);
+    this.renderPlayPause = this.renderPlayPause.bind(this);
   }
 
   componentDidUpdate(){
-    let currentShowName = this.returnShowData();
   }
 
   returnShowData(){
@@ -19,6 +23,26 @@ class Player extends Component {
       currentShowName = showData.currentShow[0].name;
     }
     return currentShowName;
+  }
+
+  playClicked(){
+    if (this.state.playing === false) {
+      this.setState({playing: true}, function(){
+        this.audioPlayer.current.play();
+      })
+    } else {
+      this.setState({playing: false}, function(){
+        this.audioPlayer.current.pause();
+      })
+    }
+  }
+
+  renderPlayPause(){
+    if (this.state.playing === false) {
+      return 'play-button'
+    } else {
+      return 'pause-button'
+    }
   }
 
   render(){
@@ -31,9 +55,9 @@ class Player extends Component {
         </audio>
         <div className="custom-player">
           <div className="play-button-container">
-            <div className='play-button'></div>
+            <div className={this.renderPlayPause()} onClick={this.playClicked}></div>
           </div>
-          <p>Current show: {this.returnShowData()}</p>
+          <p className="current-show">Current show: {this.returnShowData()}</p>
         </div>
       </React.Fragment>
     )
