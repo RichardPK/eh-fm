@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import ScheduleContainer from './ScheduleContainer'
+import ScheduleContainer from './ScheduleContainer';
+import Player from '../components/Player';
+import './MainContainer.css'
 import _ from 'lodash';
 
 class Main extends Component {
@@ -8,10 +10,14 @@ class Main extends Component {
     this.state = {
       showSchedule: [],
       currentDate: null,
+      currentShow: null,
       selectedDay: null,
       displayedDays: []
     }
-    this.apiCall = this.apiCall.bind(this);
+    this.currentShowApiCall = this.currentShowApiCall.bind(this);
+    this.scheduleApiCall = this.scheduleApiCall.bind(this);
+    this.showApiDataLoaded = this.showApiDataLoaded.bind(this);
+    this.scheduleApiDataLoaded = this.scheduleApiDataLoaded.bind(this);
     this.fetchDate = this.fetchDate.bind(this);
     this.populateSchedule = this.populateSchedule.bind(this);
     this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
@@ -20,11 +26,19 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    this.apiCall();
-
+    this.currentShowApiCall();
   }
 
-  apiCall(){
+  currentShowApiCall(){
+    fetch('https://ehfm.airtime.pro/api/live-info')
+    .then(response => response.json())
+    .then(data => this.setState({ currentShow: data }, function(){
+      this.scheduleApiCall()
+    }))
+    .then(this.showApiDataLoaded())
+  }
+
+  scheduleApiCall(){
     fetch('https://ehfm.airtime.pro/api/week-info')
     .then(response => response.json())
     .then(this.fetchDate())
@@ -32,7 +46,15 @@ class Main extends Component {
       this.populateSchedule()
     }))
     // .then(this.populateSchedule())
-    .then(this.apiDataLoaded())
+    .then(this.scheduleApiDataLoaded())
+  }
+
+  scheduleApiDataLoaded(){
+    console.log("schedule API data loaded");
+  }
+
+  showApiDataLoaded(){
+    console.log("show API data loaded");
   }
 
   fetchDate(){
@@ -50,16 +72,11 @@ class Main extends Component {
     this.setState({currentDate: today})
   }
 
-  apiDataLoaded(){
-    console.log("loaded");
-  }
-
   populateSchedule(){
     let showArray = this.convertShowScheduleToArray();
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
-
     const allShowDays = nextSevenDaysSchedule.map((day, index) => {
-      return <div className="scheduleDayHeaderItem"
+      return <div className="days-header-item"
         onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
         key={index}>
         {day[0]}
@@ -85,29 +102,24 @@ class Main extends Component {
     convertShowScheduleToArray(){
       let showSchedule = this.state.showSchedule;
       let showScheduleArray = [];
-
       Object.keys(showSchedule).forEach(function(key){
         showScheduleArray.push(key, showSchedule[key]);
-        // console.log(key, showSchedule[key]);
       })
       let newArray = _.chunk(showScheduleArray, 2)
       let arrayLength = newArray.length;
       let positionToRemove = arrayLength - 1;
-
       newArray.splice(positionToRemove, 1)
       return newArray;
     }
 
     deleteDaysInPast(scheduleData){
       let currentDate = this.state.currentDate;
-
       for (let day of scheduleData){
         if (day[1].length !== 0){
-
           if(day[1][0].start_timestamp.includes(currentDate)){
             let currentDayInScheduleIndex = scheduleData.indexOf(day);
             let finalDayInScheduleToDisplay = currentDayInScheduleIndex + 7;
-            let nextSevenDaysSchedule = scheduleData.splice(currentDayInScheduleIndex, finalDayInScheduleToDisplay);
+            let nextSevenDaysSchedule = scheduleData.slice(currentDayInScheduleIndex, finalDayInScheduleToDisplay);
             return nextSevenDaysSchedule;
           }
         }
@@ -117,10 +129,17 @@ class Main extends Component {
     render(){
       return(
         <React.Fragment>
-          <ScheduleContainer
-            daysToDisplay={this.state.displayedDays}
-            selectedDay={this.state.selectedDay}
-          />
+          <div className="player-container">
+            <Player
+              currentShow={this.state.currentShow}
+            />
+          </div>
+          <div className="schedule-container">
+            <ScheduleContainer
+              daysToDisplay={this.state.displayedDays}
+              selectedDay={this.state.selectedDay}
+            />
+          </div>
         </React.Fragment>
       )
     }

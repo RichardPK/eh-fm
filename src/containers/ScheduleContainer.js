@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './ScheduleContainer.css';
 
 class ScheduleContainer extends Component {
   constructor(props){
@@ -21,8 +22,12 @@ class ScheduleContainer extends Component {
   render(){
     return(
       <React.Fragment>
-        {this.props.daysToDisplay}
+        <div className="days-header">
+          {this.props.daysToDisplay}
+        </div>
+        <div className="show-schedule">
         {this.renderSelectedDay()}
+        </div>
       </React.Fragment>
     )
   }

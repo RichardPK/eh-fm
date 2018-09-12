@@ -1,0 +1,53 @@
+:root {
+  --main-button-size: 0.8em;
+  --main-button-half-size: calc(var(--main-button-size) / 1.7);
+}
+
+.player-container {
+}
+
+.custom-player{
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.play-button {
+  cursor: pointer;
+  border-style: solid;
+  border-width: var(--main-button-half-size) 0 var(--main-button-half-size) var(--main-button-size);
+  border-color: transparent transparent transparent #000;
+}
+
+.pause-button {
+  cursor: pointer;
+  height: 15px;
+  border-color: #202020;
+  border-style: double;
+  border-width: 0px 0 0px 12px;
+}
+
+.play-button-container{
+  width: var(--main-button-size);
+}
+
+.left-side-player{
+  display: flex;
+  flex-direction: row;
+}
+
+.right-side-player{
+  margin:0px 0px 0px auto;
+}
+
+.volume-button{
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.current-show{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 40px;
+}
