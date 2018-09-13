@@ -77,6 +77,7 @@ class Main extends Component {
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
     const allShowDays = nextSevenDaysSchedule.map((day, index) => {
       return <div className="days-header-item"
+        id={day[0]}
         onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
         key={index}>
         {day[0]}
@@ -92,7 +93,7 @@ class Main extends Component {
 
     handleScheduleDayClick(clickedObj, schedule){
       console.log(schedule);
-      let dayClickedName = clickedObj.target.innerText;
+      let dayClickedName = clickedObj.target.id;
       _.forEach(schedule, function(day){
         if(day[0] === dayClickedName)
         this.handleSelectedDay(day)
