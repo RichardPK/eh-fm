@@ -23,6 +23,8 @@ class Main extends Component {
     this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
     this.deleteDaysInPast = this.deleteDaysInPast.bind(this);
     this.handleScheduleDayClick = this.handleScheduleDayClick.bind(this);
+    this.parseDayData = this.parseDayData.bind(this);
+    this.removeNextFromDay = this.removeNextFromDay.bind(this);
   }
 
   componentDidMount(){
@@ -80,11 +82,31 @@ class Main extends Component {
         id={day[0]}
         onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
         key={index}>
-        {day[0]}
+        {this.parseDayData(day[0])}
       </div>
     })
     this.setState({displayedDays: allShowDays},
       this.handleSelectedDay(nextSevenDaysSchedule[0]));
+    }
+
+    parseDayData(dayName){
+      let namesWithNextInChopped = this.removeNextFromDay(dayName);
+      let splitName = namesWithNextInChopped.split('');
+      let sliceToUpperCase = splitName.slice(0, 1);
+      let upperCaseSlice = sliceToUpperCase[0].toUpperCase();
+      let lowerCaseSlice = splitName.slice(1);
+      lowerCaseSlice.unshift(upperCaseSlice)
+      return lowerCaseSlice.join('');
+    }
+
+    removeNextFromDay(dayName){
+      if(dayName.includes('next')){
+        let splitName = dayName.split('');
+        let cutName = splitName.splice(4);
+        return cutName.join('');
+      } else {
+        return dayName;
+      }
     }
 
     handleSelectedDay(selectedDay){
