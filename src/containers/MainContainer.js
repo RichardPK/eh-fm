@@ -10,6 +10,7 @@ class Main extends Component {
     this.state = {
       showSchedule: [],
       currentDate: null,
+      currentDay: null,
       currentShow: null,
       selectedDay: null,
       displayedDays: []
@@ -25,6 +26,7 @@ class Main extends Component {
     this.handleScheduleDayClick = this.handleScheduleDayClick.bind(this);
     this.parseDayData = this.parseDayData.bind(this);
     this.removeNextFromDay = this.removeNextFromDay.bind(this);
+    this.fetchDay = this.fetchDay.bind(this);
   }
 
   componentDidMount(){
@@ -60,18 +62,32 @@ class Main extends Component {
   }
 
   fetchDate(){
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth()+1; //January is 0!
-    let yyyy = today.getFullYear();
+    let todayDate = new Date();
+    let dd = todayDate.getDate();
+    let mm = todayDate.getMonth()+1; //January is 0!
+    let yyyy = todayDate.getFullYear();
     if(dd<10) {
       dd = '0'+dd
     }
     if(mm<10) {
       mm = '0'+mm
     }
-    today = yyyy + '-' + mm + '-' + dd;
-    this.setState({currentDate: today})
+    let today = yyyy + '-' + mm + '-' + dd;
+    this.setState({currentDate: today}, function(){
+      this.fetchDay(todayDate.getDay())
+    }.bind(this))
+  }
+
+  fetchDay(dayNum){
+    let weekday = new Array(7);
+    weekday[0] =  "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+    this.setState({currentDay: weekday[dayNum]});
   }
 
   populateSchedule(){
@@ -96,7 +112,12 @@ class Main extends Component {
       let upperCaseSlice = sliceToUpperCase[0].toUpperCase();
       let lowerCaseSlice = splitName.slice(1);
       lowerCaseSlice.unshift(upperCaseSlice)
-      return lowerCaseSlice.join('');
+      let finalDayName = lowerCaseSlice.join('');
+      if(finalDayName === this.state.currentDay){
+        return 'Today'
+      } else {
+        return finalDayName;
+      }
     }
 
     removeNextFromDay(dayName){
