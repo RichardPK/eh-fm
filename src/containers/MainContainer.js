@@ -10,6 +10,7 @@ class Main extends Component {
     this.state = {
       showSchedule: [],
       currentDate: null,
+      currentDay: null,
       currentShow: null,
       selectedDay: null,
       displayedDays: []
@@ -23,6 +24,10 @@ class Main extends Component {
     this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
     this.deleteDaysInPast = this.deleteDaysInPast.bind(this);
     this.handleScheduleDayClick = this.handleScheduleDayClick.bind(this);
+    this.parseDayClassName = this.parseDayClassName.bind(this);
+    this.parseDayData = this.parseDayData.bind(this);
+    this.removeNextFromDay = this.removeNextFromDay.bind(this);
+    this.fetchDay = this.fetchDay.bind(this);
   }
 
   componentDidMount(){
@@ -50,40 +55,84 @@ class Main extends Component {
   }
 
   scheduleApiDataLoaded(){
-    console.log("schedule API data loaded");
+    // console.log("schedule API data loaded");
   }
 
   showApiDataLoaded(){
-    console.log("show API data loaded");
+    // console.log("show API data loaded");
   }
 
   fetchDate(){
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth()+1; //January is 0!
-    let yyyy = today.getFullYear();
+    let todayDate = new Date();
+    let dd = todayDate.getDate();
+    let mm = todayDate.getMonth()+1; //January is 0!
+    let yyyy = todayDate.getFullYear();
     if(dd<10) {
       dd = '0'+dd
     }
     if(mm<10) {
       mm = '0'+mm
     }
-    today = yyyy + '-' + mm + '-' + dd;
-    this.setState({currentDate: today})
+    let today = yyyy + '-' + mm + '-' + dd;
+    this.setState({currentDate: today}, function(){
+      this.fetchDay(todayDate.getDay())
+    }.bind(this))
+  }
+
+  fetchDay(dayNum){
+    let weekday = new Array(7);
+    weekday[0] =  "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+    this.setState({currentDay: weekday[dayNum]});
   }
 
   populateSchedule(){
     let showArray = this.convertShowScheduleToArray();
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
     const allShowDays = nextSevenDaysSchedule.map((day, index) => {
-      return <div className="days-header-item"
+      return <div className={this.parseDayClassName(day, index)}
+        id={day[0]}
         onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
         key={index}>
-        {day[0]}
+        {this.parseDayData(day[0])}
       </div>
     })
     this.setState({displayedDays: allShowDays},
       this.handleSelectedDay(nextSevenDaysSchedule[0]));
+    }
+
+    parseDayClassName(day, index){
+      return `days-header-item days-header-${index}`;
+    }
+
+    parseDayData(dayName){
+      let namesWithNextInChopped = this.removeNextFromDay(dayName);
+      let splitName = namesWithNextInChopped.split('');
+      let sliceToUpperCase = splitName.slice(0, 1);
+      let upperCaseSlice = sliceToUpperCase[0].toUpperCase();
+      let lowerCaseSlice = splitName.slice(1);
+      lowerCaseSlice.unshift(upperCaseSlice)
+      let finalDayName = lowerCaseSlice.join('');
+      if(finalDayName === this.state.currentDay){
+        return 'Today'
+      } else {
+        return finalDayName;
+      }
+    }
+
+    removeNextFromDay(dayName){
+      if(dayName.includes('next')){
+        let splitName = dayName.split('');
+        let cutName = splitName.splice(4);
+        return cutName.join('');
+      } else {
+        return dayName;
+      }
     }
 
     handleSelectedDay(selectedDay){
@@ -92,7 +141,7 @@ class Main extends Component {
 
     handleScheduleDayClick(clickedObj, schedule){
       console.log(schedule);
-      let dayClickedName = clickedObj.target.innerText;
+      let dayClickedName = clickedObj.target.id;
       _.forEach(schedule, function(day){
         if(day[0] === dayClickedName)
         this.handleSelectedDay(day)
