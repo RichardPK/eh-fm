@@ -1,3 +1,9 @@
-.schedule-container {
+.body-container {
   padding: 20px;
+  display: flex;
+}
+
+.body-container h1 {
+  font-size: 20px;
+  font-weight: bold;
 }

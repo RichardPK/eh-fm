@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './ScheduleContainer.css';
+import './Schedule.css';
 
-class ScheduleContainer extends Component {
+class Schedule extends Component {
   constructor(props){
     super(props);
     this.showTimeParser = this.showTimeParser.bind(this);
@@ -35,11 +35,14 @@ class ScheduleContainer extends Component {
   render(){
     return(
       <React.Fragment>
-        <div className="days-header">
-          {this.props.daysToDisplay}
-        </div>
-        <div className="show-schedule">
-          {this.renderSelectedDay()}
+        <div className="schedule-container">
+          <h1 className="schedule-header">SCHEDULE</h1>
+          <div className="days-header">
+            {this.props.daysToDisplay}
+          </div>
+          <div className="show-schedule">
+            {this.renderSelectedDay()}
+          </div>
         </div>
       </React.Fragment>
     )
@@ -47,4 +50,4 @@ class ScheduleContainer extends Component {
 
 }
 
-export default ScheduleContainer;
+export default Schedule;
