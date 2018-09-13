@@ -24,6 +24,7 @@ class Main extends Component {
     this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
     this.deleteDaysInPast = this.deleteDaysInPast.bind(this);
     this.handleScheduleDayClick = this.handleScheduleDayClick.bind(this);
+    this.parseDayClassName = this.parseDayClassName.bind(this);
     this.parseDayData = this.parseDayData.bind(this);
     this.removeNextFromDay = this.removeNextFromDay.bind(this);
     this.fetchDay = this.fetchDay.bind(this);
@@ -54,11 +55,11 @@ class Main extends Component {
   }
 
   scheduleApiDataLoaded(){
-    console.log("schedule API data loaded");
+    // console.log("schedule API data loaded");
   }
 
   showApiDataLoaded(){
-    console.log("show API data loaded");
+    // console.log("show API data loaded");
   }
 
   fetchDate(){
@@ -94,7 +95,7 @@ class Main extends Component {
     let showArray = this.convertShowScheduleToArray();
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
     const allShowDays = nextSevenDaysSchedule.map((day, index) => {
-      return <div className="days-header-item"
+      return <div className={this.parseDayClassName(day, index)}
         id={day[0]}
         onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
         key={index}>
@@ -103,6 +104,10 @@ class Main extends Component {
     })
     this.setState({displayedDays: allShowDays},
       this.handleSelectedDay(nextSevenDaysSchedule[0]));
+    }
+
+    parseDayClassName(day, index){
+      return `days-header-item days-header-${index}`;
     }
 
     parseDayData(dayName){
