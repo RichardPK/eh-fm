@@ -1,3 +1,11 @@
+.schedule-container {
+  display: flex;
+  flex-direction: column;
+  width: 45vw;
+padding: 0px 20px 0px 10px;
+}
+
+
 .days-header {
   display: flex;
   flex-wrap: wrap;
@@ -6,21 +14,21 @@
 .days-header-item {
   cursor: pointer;
   padding: 10px;
-  margin-right: 1px;
+  margin-right: 5px;
 }
 
 .days-header-item:hover {
-  background-color: rgba(0, 145, 138, 1);
+  background-color: var(--altblue);
   color: white;
 }
 
 .days-header-0 {
-  background-color: rgba(0, 145, 138, 1);
+  background-color: var(--altblue);
   color: white;
 }
 
 .show-schedule {
-  background-color: rgba(0, 145, 138, 0.1);
+  /* background-color: rgba(0, 145, 138, 0.1); */
   padding: 10px;
   margin-top: 20px;
   display: flex;

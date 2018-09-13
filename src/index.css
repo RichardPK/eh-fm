@@ -1,5 +1,24 @@
+:root {
+  --main-button-size: 0.8em;
+  --main-button-half-size: calc(var(--main-button-size) / 1.7);
+  --playerwhite: rgb(255, 255, 255);
+  --ehfmcolor: rgb(0, 145, 138, 1);
+  --altblue: rgb(3, 181, 170,1);
+  --bgwhite: rgb(247, 240, 240, 1);
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: Archivo;
+  background-color: var(--bgwhite);
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
 }

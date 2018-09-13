@@ -1,0 +1,6 @@
+.currentshow-container {
+  display: flex;
+  flex-direction: column;
+  width: 45vw;
+  padding: 0px 10px 0px 20px;
+}
