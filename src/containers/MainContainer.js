@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import ScheduleContainer from './ScheduleContainer';
+import Schedule from '../components/Schedule';
 import Player from '../components/Player';
-import NavBar from '../components/NavBar'
+import NavBar from '../components/NavBar';
+import CurrentShowDetail from '../components/CurrentShowDetail';
 import './MainContainer.css'
 import _ from 'lodash';
 
@@ -194,11 +195,15 @@ class Main extends Component {
               listenNowClicked={this.listenNowClicked}
             />
           </div>
-          <div className="schedule-container">
-            <ScheduleContainer
+          <div className="body-container">
+            <CurrentShowDetail/>
+
+            <Schedule
               daysToDisplay={this.state.displayedDays}
               selectedDay={this.state.selectedDay}
             />
+
+
           </div>
         </React.Fragment>
       )

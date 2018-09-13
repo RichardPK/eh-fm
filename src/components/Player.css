@@ -9,10 +9,9 @@
 }
 
 .onair-container{
-  color: #efefef;
-  font-size: 12px;
-  border-right: 2px solid white;
-  padding-right: 40px;
+  color: var(--playerwhite);
+  font-size: 11px;
+  padding-right: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,19 +47,20 @@
   cursor: pointer;
   border-style: solid;
   border-width: var(--main-button-half-size) 0 var(--main-button-half-size) var(--main-button-size);
-  border-color: transparent transparent transparent #efefef;
+  border-color: transparent transparent transparent var(--playerwhite);
 }
 
 .pause-button {
   cursor: pointer;
   margin-left: 20px;
   height: 15px;
-  border-color: #efefef;
+  border-color: var(--playerwhite);
   border-style: double;
   border-width: 0px 0 0px 12px;
 }
 
 .play-button-container{
+  border-left: 2px solid white; */
   width: var(--main-button-size);
   padding-right: 20px;
 }
@@ -90,10 +90,10 @@
 }
 
 .current-show{
-  font-weight: bold;
+  /* font-weight: bold; */
   border-right: 2px solid white;
   padding-right: 50px;
-  color: #efefef;
+  color: var(--playerwhite);
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: 40px;

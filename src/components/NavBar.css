@@ -2,6 +2,7 @@
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
+  padding-bottom: 5px;
   display: flex;
   background-color: white;
   flex-direction: row;
@@ -14,9 +15,13 @@
 .nav-link {
   /* vertical-align: middle; */
   font-size: 14px;
-  color: rgb(0, 145, 138, 1);
+  color: var(--ehfmcolor);
   padding-right: 20px;
   /* border-right: 2px solid black; */
+}
+
+p.nav-link{
+  margin: 0px auto 0px auto;
 }
 
 .nav-left {
@@ -38,6 +43,9 @@
   width: 48px;
   height: 48px;
   margin-right: 20px;
+  align-content: center;
+  /* -ms-flex-pack: center; */
+  justify-content: center;
 }
 
 .nav-social {
