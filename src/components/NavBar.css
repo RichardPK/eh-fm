@@ -1,0 +1,50 @@
+.nav-bar {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+/* .nav-bar p {
+  display: inline;
+  font-size: 12px;
+} */
+
+.nav-link {
+  /* vertical-align: middle; */
+  font-size: 12px;
+}
+
+.nav-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ justify-content: center;
+}
+
+.nav-right {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  margin:auto 0px auto auto;
+}
+
+.nav-logo {
+  width: 48px;
+  height: 48px;
+  margin-right: 20px;
+}
+
+.nav-social {
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+}
+
+.nav-chat {
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+}

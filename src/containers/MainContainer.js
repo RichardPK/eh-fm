@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ScheduleContainer from './ScheduleContainer';
 import Player from '../components/Player';
+import NavBar from '../components/NavBar'
 import './MainContainer.css'
 import _ from 'lodash';
 
@@ -178,6 +179,9 @@ class Main extends Component {
     render(){
       return(
         <React.Fragment>
+          <nav className="nav-container">
+            <NavBar></NavBar>
+          </nav>
           <div className="player-container">
             <Player
               currentShow={this.state.currentShow}
