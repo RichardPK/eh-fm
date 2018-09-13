@@ -53,6 +53,7 @@
 
 .pause-button {
   cursor: pointer;
+  margin-left: 20px;
   height: 15px;
   border-color: #efefef;
   border-style: double;
@@ -91,7 +92,7 @@
 .current-show{
   font-weight: bold;
   border-right: 2px solid white;
-  padding-right: 40px;
+  padding-right: 50px;
   color: #efefef;
   margin-top: 0px;
   margin-bottom: 0px;

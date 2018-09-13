@@ -38,6 +38,7 @@ class Player extends Component {
         this.audioPlayer.current.pause();
       })
     }
+    this.props.listenNowClicked();
   }
 
   volumeClicked(){
