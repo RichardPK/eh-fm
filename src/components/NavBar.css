@@ -1,11 +1,13 @@
-.nav-bar {
+.nav-container {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 5px;
-  display: flex;
   background-color: white;
-  flex-direction: row;
+}
+
+.nav-bar {
+  display: flex;
 }
 
 .nav-bar a {
@@ -27,15 +29,12 @@ p.nav-link{
 .nav-left {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+
 }
 
 .nav-right {
   display: flex;
   flex-direction: row;
-  align-content: center;
-  justify-content: center;
   margin:auto 0px auto auto;
 }
 
@@ -43,9 +42,7 @@ p.nav-link{
   width: 48px;
   height: 48px;
   margin-right: 20px;
-  align-content: center;
   /* -ms-flex-pack: center; */
-  justify-content: center;
 }
 
 .nav-social {
