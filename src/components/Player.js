@@ -62,9 +62,9 @@ class Player extends Component {
 
   renderVolume(){
     if (this.state.volume !== 0) {
-      return './volume-up.png'
+      return './volume-up-white.png'
     } else {
-      return './volume-off.png'
+      return './volume-off-white.png'
     }
   }
 
@@ -78,17 +78,24 @@ class Player extends Component {
         </audio>
         <div className="custom-player">
           <div className="left-side-player">
+            <div className="onair-container">
+              ON AIR
+              <div className="onair-circle">
+              </div>
+            </div>
             <div className="play-button-container">
               <div className={this.renderPlayPause()} onClick={this.playClicked}></div>
             </div>
-            <p className="current-show">On air: {this.returnShowData()}</p>
+            <p className="current-show">{this.returnShowData()}</p>
           </div>
 
           <div className="right-side-player">
-            <img className="volume-button"
-              src={this.renderVolume()}
-              onClick={this.volumeClicked}
-              alt='volume icon'></img>
+            <div className="volume-button-container">
+              <img className="volume-button"
+                src={this.renderVolume()}
+                onClick={this.volumeClicked}
+                alt='volume icon'></img>
+              </div>
             </div>
           </div>
         </React.Fragment>
