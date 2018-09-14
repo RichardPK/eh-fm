@@ -1,4 +1,8 @@
 .player-container {
+  position: fixed;
+  top: 66px;
+  width: 100vw;
+  z-index: 100;
 }
 
 .custom-player{
@@ -18,7 +22,7 @@
 }
 
 .onair-circle{
-  background: #efefef;
+  background: rgb(255, 253, 130);
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -53,6 +57,7 @@
 .pause-button {
   cursor: pointer;
   margin-left: 20px;
+  margin-right: 0.7px;
   height: 15px;
   border-color: var(--playerwhite);
   border-style: double;
@@ -97,4 +102,12 @@
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: 40px;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .current-show{
+    border-right: none;
+  }
+
 }
