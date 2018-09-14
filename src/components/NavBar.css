@@ -29,7 +29,7 @@ p.nav-link{
 .nav-left {
   display: flex;
   flex-direction: row;
-
+  align-items: center;
 }
 
 .nav-right {

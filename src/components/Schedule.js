@@ -10,7 +10,6 @@ class Schedule extends Component {
   renderSelectedDay(){
     if(this.props.selectedDay !== null){
       let selectedDay = this.props.selectedDay[1];
-      console.log(selectedDay);
       let showsForThatDay = selectedDay.map((show, index) => {
         return <div key={index} className="show-listing">
           {this.showTimeParser(show)}

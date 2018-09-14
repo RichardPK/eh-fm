@@ -2,5 +2,37 @@
   display: flex;
   flex-direction: column;
   width: 45vw;
-  padding: 0px 10px 0px 20px;
+  margin: 0px 10px 0px 20px;
+
+}
+
+.currentshow-sub-container {
+  background-color: white;
+  padding: 2px;
+  position: relative;
+  color: white;
+  background-color: var(--highlightyellow);
+}
+
+.currentshow-img-container {
+  width: inherit;
+  z-index: -100;
+}
+
+.currentshow-img {
+  width: 100%;
+}
+
+.currentshow-info-container {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+.currentshow-show-name {
+  background-color: rgb(72, 67, 73, 0.8);
+}
+
+.currentshow-show-description {
+  background-color: rgb(72, 67, 73, 0.8);
 }

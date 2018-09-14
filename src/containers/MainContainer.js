@@ -143,7 +143,6 @@ class Main extends Component {
     }
 
     handleScheduleDayClick(clickedObj, schedule){
-      console.log(schedule);
       let dayClickedName = clickedObj.target.id;
       _.forEach(schedule, function(day){
         if(day[0] === dayClickedName)
@@ -196,7 +195,9 @@ class Main extends Component {
             />
           </div>
           <div className="body-container">
-            <CurrentShowDetail/>
+            <CurrentShowDetail
+            currentShow={this.state.currentShow}
+          />
 
             <Schedule
               daysToDisplay={this.state.displayedDays}
