@@ -6,7 +6,7 @@
 }
 
 .currentshow-sub-container {
-  padding: 4px;
+  padding: 4px 4px 1px 4px;
   position: relative;
   color: white;
   background-color: var(--highlightyellow);
@@ -49,8 +49,8 @@
 
 .currentshow-info-container {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
+  bottom: 34px;
+  left: 34px;
   margin-right: 16px;
 }
 
