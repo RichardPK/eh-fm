@@ -1,13 +1,17 @@
 .nav-container {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  background-color: white;
+  position: fixed;
+    width: 100vw;
+    top: 0px;
+    z-index: 100;
 }
 
 .nav-bar {
   display: flex;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  background-color: white;
 }
 
 .nav-bar a {
@@ -29,7 +33,7 @@ p.nav-link{
 .nav-left {
   display: flex;
   flex-direction: row;
-
+  align-items: center;
 }
 
 .nav-right {

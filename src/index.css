@@ -3,7 +3,9 @@
   --main-button-half-size: calc(var(--main-button-size) / 1.7);
   --playerwhite: rgb(255, 255, 255);
   --ehfmcolor: rgb(0, 145, 138, 1);
-  --altblue: rgb(3, 181, 170,1);
+  --altblue: rgb(3, 181, 170, 1);
+  --altblue-80transparent: rgb(3, 181, 170, 0.8);
+  --highlightyellow: rgb(255, 253, 130, 1);
   --bgwhite: rgb(247, 240, 240, 1);
 }
 

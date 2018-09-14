@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Schedule from '../components/Schedule';
 import Player from '../components/Player';
 import NavBar from '../components/NavBar';
@@ -15,8 +16,11 @@ class Main extends Component {
       currentDay: null,
       currentShow: null,
       selectedDay: null,
-      displayedDays: []
+      displayedDays: [],
+      playing: false,
+      volume: 1
     }
+    this.audioPlayer = React.createRef();
     this.currentShowApiCall = this.currentShowApiCall.bind(this);
     this.scheduleApiCall = this.scheduleApiCall.bind(this);
     this.showApiDataLoaded = this.showApiDataLoaded.bind(this);
@@ -30,7 +34,8 @@ class Main extends Component {
     this.parseDayData = this.parseDayData.bind(this);
     this.removeNextFromDay = this.removeNextFromDay.bind(this);
     this.fetchDay = this.fetchDay.bind(this);
-    this.listenNowClicked = this.listenNowClicked.bind(this);
+    this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
+    this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
   }
 
   componentDidMount(){
@@ -98,7 +103,8 @@ class Main extends Component {
     let showArray = this.convertShowScheduleToArray();
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
     const allShowDays = nextSevenDaysSchedule.map((day, index) => {
-      return <div className={this.parseDayClassName(day, index)}
+      return <div
+        className={this.parseDayClassName(day, index)}
         id={day[0]}
         onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
         key={index}>
@@ -110,7 +116,30 @@ class Main extends Component {
     }
 
     parseDayClassName(day, index){
+      // return `days-header-item`;
       return `days-header-item days-header-${index}`;
+    }
+
+    handleScheduleDayClick(clickedObj, schedule){
+      let dayClickedName = clickedObj.target.id;
+      _.forEach(schedule, function(day){
+        if(day[0] === dayClickedName)
+        this.handleSelectedDay(day, clickedObj)
+      }.bind(this));
+    }
+
+    handleSelectedDay(selectedDay, domObject){
+      if (domObject) {
+        let oldSelectedObject = document.getElementsByClassName('days-header-0');
+        oldSelectedObject[0].classList.remove("days-header-0")
+        let classToRemove = domObject.target.classList[1]
+        domObject.target.classList.remove(classToRemove);
+        domObject.target.classList.add("days-header-0")
+      }
+      this.setState({selectedDay: selectedDay}, function(){
+
+      })
+
     }
 
     parseDayData(dayName){
@@ -136,19 +165,6 @@ class Main extends Component {
       } else {
         return dayName;
       }
-    }
-
-    handleSelectedDay(selectedDay){
-      this.setState({selectedDay: selectedDay})
-    }
-
-    handleScheduleDayClick(clickedObj, schedule){
-      console.log(schedule);
-      let dayClickedName = clickedObj.target.id;
-      _.forEach(schedule, function(day){
-        if(day[0] === dayClickedName)
-        this.handleSelectedDay(day)
-      }.bind(this));
     }
 
     convertShowScheduleToArray(){
@@ -178,13 +194,38 @@ class Main extends Component {
       }
     }
 
-    listenNowClicked(){
-      // console.log("Listen Now clicked!");
+    handlePlayPauseClicked(){
+      if (this.state.playing === false) {
+        this.setState({playing: true}, function(){
+          this.audioPlayer.current.play();
+        })
+      } else {
+        this.setState({playing: false}, function(){
+          this.audioPlayer.current.pause();
+        })
+      }
+    }
+
+    handleVolumeClicked(){
+      if (this.state.volume !== 0){
+        this.setState({volume: 0}, function(){
+          this.audioPlayer.current.volume = 0;
+        })
+      } else {
+        this.setState({volume: 1}, function(){
+          this.audioPlayer.current.volume = 1;
+        })
+      }
     }
 
     render(){
       return(
         <React.Fragment>
+
+          <audio ref={this.audioPlayer} id='audioPlayer' name="media">
+            <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
+          </audio>
+
           <nav className="nav-container">
             <NavBar>
             </NavBar>
@@ -192,11 +233,18 @@ class Main extends Component {
           <div className="player-container">
             <Player
               currentShow={this.state.currentShow}
-              listenNowClicked={this.listenNowClicked}
+              playing={this.state.playing}
+              volume={this.state.volume}
+              handlePlayPauseClicked = {this.handlePlayPauseClicked}
+              handleVolumeClicked = {this.handleVolumeClicked}
             />
           </div>
           <div className="body-container">
-            <CurrentShowDetail/>
+            <CurrentShowDetail
+              currentShow={this.state.currentShow}
+              playing={this.state.playing}
+              handlePlayPauseClicked = {this.handlePlayPauseClicked}
+            />
 
             <Schedule
               daysToDisplay={this.state.displayedDays}
