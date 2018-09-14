@@ -21,14 +21,15 @@
 
 .days-header {
   display: flex;
-  align-content: space-around;
-  /* flex-wrap: wrap; */
+  justify-content: space-between;
+  flex-wrap: wrap;
   font-size: 14px;
 }
 
 .days-header-item {
   cursor: pointer;
   padding: 10px;
+  margin-top: 5px;
   /* margin: 5px 5px 5px 5px; */
 }
 
@@ -40,6 +41,7 @@
 .days-header-0 {
   background-color: var(--altblue);
   color: white;
+
 }
 
 .show-schedule {

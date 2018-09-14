@@ -1,4 +1,7 @@
 .player-container {
+  position: fixed;
+  top: 66px;
+  width: 100vw;
 }
 
 .custom-player{
