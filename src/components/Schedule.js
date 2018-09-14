@@ -36,11 +36,14 @@ class Schedule extends Component {
       <React.Fragment>
         <div className="schedule-container">
           <h1 className="schedule-header">SCHEDULE</h1>
-          <div className="days-header">
-            {this.props.daysToDisplay}
-          </div>
-          <div className="show-schedule">
-            {this.renderSelectedDay()}
+          <div className="schedule-subcontainer">
+            <div className="days-header">
+              {this.props.daysToDisplay}
+            </div>
+            <div className="schedule-divider"></div>
+            <div className="show-schedule">
+              {this.renderSelectedDay()}
+            </div>
           </div>
         </div>
       </React.Fragment>
