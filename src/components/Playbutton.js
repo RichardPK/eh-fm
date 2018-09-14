@@ -7,7 +7,6 @@ const Playbutton = (props) => {
   }
 
   const renderPlayPause = function(){
-    console.log("renderPlayPause running");
     if (props.playingTrueFalse === false) {
       return 'play-button'
     } else {

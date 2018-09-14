@@ -13,7 +13,6 @@ class Player extends Component {
     this.returnShowData = this.returnShowData.bind(this);
     this.playClicked = this.playClicked.bind(this);
     this.volumeClicked = this.volumeClicked.bind(this);
-    this.renderPlayPause = this.renderPlayPause.bind(this);
     this.renderVolume = this.renderVolume.bind(this);
   }
 
@@ -51,14 +50,6 @@ class Player extends Component {
       this.setState({volume: 1}, function(){
         this.audioPlayer.current.volume = 1;
       })
-    }
-  }
-
-  renderPlayPause(){
-    if (this.state.playing === false) {
-      return 'play-button'
-    } else {
-      return 'pause-button'
     }
   }
 
