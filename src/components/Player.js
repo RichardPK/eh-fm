@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Playbutton from './Playbutton'
+import Volumebutton from './Volumebutton'
 import './Player.css';
 
 class Player extends Component {
@@ -11,7 +12,6 @@ class Player extends Component {
     this.returnShowData = this.returnShowData.bind(this);
     this.playClicked = this.playClicked.bind(this);
     this.volumeClicked = this.volumeClicked.bind(this);
-    this.renderVolume = this.renderVolume.bind(this);
   }
 
   componentDidUpdate(){
@@ -31,31 +31,13 @@ class Player extends Component {
   }
 
   volumeClicked(){
-    if (this.state.volume !== 0){
-      this.setState({volume: 0}, function(){
-        this.audioPlayer.current.volume = 0;
-      })
-    } else {
-      this.setState({volume: 1}, function(){
-        this.audioPlayer.current.volume = 1;
-      })
-    }
-  }
-
-  renderVolume(){
-    if (this.state.volume !== 0) {
-      return './volume-up-white.png'
-    } else {
-      return './volume-off-white.png'
-    }
+    this.props.handleVolumeClicked();
   }
 
   render(){
 
     return(
       <React.Fragment>
-
-
         <div className="custom-player">
           <div className="left-side-player">
             <div className="onair-container">
@@ -72,14 +54,10 @@ class Player extends Component {
             </div>
             <p className="current-show">{this.returnShowData()}</p>
           </div>
-
           <div className="right-side-player">
-            <div className="volume-button-container">
-              <img className="volume-button"
-                src={this.renderVolume()}
-                onClick={this.volumeClicked}
-                alt='volume icon'></img>
-              </div>
+            <Volumebutton
+              volumeClicked = {this.volumeClicked}
+              volume={this.props.volume}/>
             </div>
           </div>
         </React.Fragment>

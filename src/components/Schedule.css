@@ -26,6 +26,12 @@
   font-size: 14px;
 }
 
+@media only screen and (max-width: 1062px) {
+  .days-header {
+    justify-content: end;
+  }
+}
+
 .days-header-item {
   cursor: pointer;
   padding: 10px;
@@ -41,7 +47,6 @@
 .days-header-0 {
   background-color: var(--altblue);
   color: white;
-
 }
 
 .show-schedule {
@@ -52,18 +57,16 @@
   flex-direction: column;
 }
 
-.show-listing p {
-  display: inline;
-}
-
 .show-listing {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .show-name {
   font-size: 24px;
+  padding-bottom: 10px;
 }
 
 .show-time {
-  margin-right: 40px;
+  /* margin-right: 40px; */
+  width: 180px;
 }

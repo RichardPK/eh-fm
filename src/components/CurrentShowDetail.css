@@ -9,8 +9,8 @@
   padding: 4px;
   position: relative;
   color: white;
-  background-color: black;
-    /* box-shadow: 0px 3px 15px var(--highlightyellow);  */
+  background-color: var(--highlightyellow);
+  /* box-shadow: 0px 3px 15px var(--highlightyellow);  */
 }
 
 .currentshow-img-container {
@@ -20,6 +20,21 @@
 
 .currentshow-img {
   width: 100%;
+}
+
+.currentshow-playbutton-container {
+  padding: 7px;
+  background-color: var(--altblue-80transparent);
+  /* line-height: 25px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  cursor: pointer;
+}
+
+.currentshow-playbutton-container p {
+  margin: 0px;
 }
 
 .currentshow-info-container {
@@ -32,6 +47,7 @@
 .currentshow-show-name {
   /* margin-right: 170px; */
   font-size: 2em;
+  margin-bottom: 0px;
 }
 
 .currentshow-show-name span {

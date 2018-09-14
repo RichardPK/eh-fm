@@ -56,11 +56,16 @@ class CurrentShowDetail extends Component {
               <img className="currentshow-img" src={this.returnShowImgUrl()} alt="current live show"/>
             </div>
             <div className="currentshow-info-container">
-              <Playbutton
-                playingTrueFalse = {this.props.playing}
-                playClicked = {this.playClicked}
-              />
               <h3 className="currentshow-show-name"><span>{this.returnShowName()}</span></h3>
+              <div className="currentshow-playbutton-container"
+                onClick= {this.playClicked}>
+                <p>Listen now:</p>
+                <Playbutton
+                  playingTrueFalse = {this.props.playing}
+                  playClicked = {this.playClicked}
+                />
+              </div>
+
               <p className="currentshow-show-description"><span>{this.returnShowDescription()}</span></p>
             </div>
           </div>

@@ -15,7 +15,8 @@ const Playbutton = (props) => {
   }
 
   return(
-    <div className={renderPlayPause()} onClick={playClickedWithinPlayButton}>
+    <div className={renderPlayPause()}
+      onClick={playClickedWithinPlayButton}>
     </div>
   )
 

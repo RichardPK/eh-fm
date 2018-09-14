@@ -16,7 +16,8 @@ class Main extends Component {
       currentShow: null,
       selectedDay: null,
       displayedDays: [],
-      playing: false
+      playing: false,
+      volume: 1
     }
     this.audioPlayer = React.createRef();
     this.currentShowApiCall = this.currentShowApiCall.bind(this);
@@ -33,6 +34,7 @@ class Main extends Component {
     this.removeNextFromDay = this.removeNextFromDay.bind(this);
     this.fetchDay = this.fetchDay.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
+    this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
   }
 
   componentDidMount(){
@@ -115,6 +117,27 @@ class Main extends Component {
       return `days-header-item days-header-${index}`;
     }
 
+    handleScheduleDayClick(clickedObj, schedule){
+      let dayClickedName = clickedObj.target.id;
+      _.forEach(schedule, function(day){
+        if(day[0] === dayClickedName)
+        this.handleSelectedDay(day, clickedObj)
+      }.bind(this));
+    }
+
+    handleSelectedDay(selectedDay, domObject){
+      if (domObject) {
+        // debugger;
+        // domObject.target.classList.value = "days-header-item days-header-1"
+        // domObject.target.classList.splice(1, 1, "days-header-0")
+      }
+      // console.log(selectedDay);
+      this.setState({selectedDay: selectedDay}, function(){
+
+      })
+
+    }
+
     parseDayData(dayName){
       let namesWithNextInChopped = this.removeNextFromDay(dayName);
       let splitName = namesWithNextInChopped.split('');
@@ -138,18 +161,6 @@ class Main extends Component {
       } else {
         return dayName;
       }
-    }
-
-    handleSelectedDay(selectedDay){
-      this.setState({selectedDay: selectedDay})
-    }
-
-    handleScheduleDayClick(clickedObj, schedule){
-      let dayClickedName = clickedObj.target.id;
-      _.forEach(schedule, function(day){
-        if(day[0] === dayClickedName)
-        this.handleSelectedDay(day)
-      }.bind(this));
     }
 
     convertShowScheduleToArray(){
@@ -191,6 +202,18 @@ class Main extends Component {
       }
     }
 
+    handleVolumeClicked(){
+      if (this.state.volume !== 0){
+        this.setState({volume: 0}, function(){
+          this.audioPlayer.current.volume = 0;
+        })
+      } else {
+        this.setState({volume: 1}, function(){
+          this.audioPlayer.current.volume = 1;
+        })
+      }
+    }
+
     render(){
       return(
         <React.Fragment>
@@ -207,15 +230,17 @@ class Main extends Component {
             <Player
               currentShow={this.state.currentShow}
               playing={this.state.playing}
+              volume={this.state.volume}
               handlePlayPauseClicked = {this.handlePlayPauseClicked}
+              handleVolumeClicked = {this.handleVolumeClicked}
             />
           </div>
           <div className="body-container">
             <CurrentShowDetail
-            currentShow={this.state.currentShow}
-            playing={this.state.playing}
-            handlePlayPauseClicked = {this.handlePlayPauseClicked}
-          />
+              currentShow={this.state.currentShow}
+              playing={this.state.playing}
+              handlePlayPauseClicked = {this.handlePlayPauseClicked}
+            />
 
             <Schedule
               daysToDisplay={this.state.displayedDays}
