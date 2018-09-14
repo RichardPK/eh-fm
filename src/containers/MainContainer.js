@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Schedule from '../components/Schedule';
 import Player from '../components/Player';
 import NavBar from '../components/NavBar';
@@ -102,7 +103,8 @@ class Main extends Component {
     let showArray = this.convertShowScheduleToArray();
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
     const allShowDays = nextSevenDaysSchedule.map((day, index) => {
-      return <div className={this.parseDayClassName(day, index)}
+      return <div
+        className={this.parseDayClassName(day, index)}
         id={day[0]}
         onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
         key={index}>
@@ -114,6 +116,7 @@ class Main extends Component {
     }
 
     parseDayClassName(day, index){
+      // return `days-header-item`;
       return `days-header-item days-header-${index}`;
     }
 
@@ -127,11 +130,12 @@ class Main extends Component {
 
     handleSelectedDay(selectedDay, domObject){
       if (domObject) {
-        // debugger;
-        // domObject.target.classList.value = "days-header-item days-header-1"
-        // domObject.target.classList.splice(1, 1, "days-header-0")
+        let oldSelectedObject = document.getElementsByClassName('days-header-0');
+        oldSelectedObject[0].classList.remove("days-header-0")
+        let classToRemove = domObject.target.classList[1]
+        domObject.target.classList.remove(classToRemove);
+        domObject.target.classList.add("days-header-0")
       }
-      // console.log(selectedDay);
       this.setState({selectedDay: selectedDay}, function(){
 
       })
