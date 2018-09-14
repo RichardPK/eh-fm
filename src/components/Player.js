@@ -6,10 +6,8 @@ class Player extends Component {
   constructor(props){
     super(props)
     this.state = {
-      playing: false,
       volume: 1.0
     }
-    this.audioPlayer = React.createRef();
     this.returnShowData = this.returnShowData.bind(this);
     this.playClicked = this.playClicked.bind(this);
     this.volumeClicked = this.volumeClicked.bind(this);
@@ -29,16 +27,7 @@ class Player extends Component {
   }
 
   playClicked(){
-    if (this.state.playing === false) {
-      this.setState({playing: true}, function(){
-        this.audioPlayer.current.play();
-      })
-    } else {
-      this.setState({playing: false}, function(){
-        this.audioPlayer.current.pause();
-      })
-    }
-    this.props.listenNowClicked();
+    this.props.handlePlayPauseClicked();
   }
 
   volumeClicked(){
@@ -66,9 +55,7 @@ class Player extends Component {
     return(
       <React.Fragment>
 
-        <audio ref={this.audioPlayer} id='audioPlayer' name="media">
-          <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
-        </audio>
+
         <div className="custom-player">
           <div className="left-side-player">
             <div className="onair-container">
@@ -79,7 +66,7 @@ class Player extends Component {
 
             <div className="play-button-container">
               <Playbutton
-                playingTrueFalse = {this.state.playing}
+                playingTrueFalse = {this.props.playing}
                 playClicked = {this.playClicked}
               />
             </div>

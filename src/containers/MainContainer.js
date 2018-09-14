@@ -15,8 +15,10 @@ class Main extends Component {
       currentDay: null,
       currentShow: null,
       selectedDay: null,
-      displayedDays: []
+      displayedDays: [],
+      playing: false
     }
+    this.audioPlayer = React.createRef();
     this.currentShowApiCall = this.currentShowApiCall.bind(this);
     this.scheduleApiCall = this.scheduleApiCall.bind(this);
     this.showApiDataLoaded = this.showApiDataLoaded.bind(this);
@@ -30,7 +32,7 @@ class Main extends Component {
     this.parseDayData = this.parseDayData.bind(this);
     this.removeNextFromDay = this.removeNextFromDay.bind(this);
     this.fetchDay = this.fetchDay.bind(this);
-    this.listenNowClicked = this.listenNowClicked.bind(this);
+    this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
   }
 
   componentDidMount(){
@@ -177,13 +179,26 @@ class Main extends Component {
       }
     }
 
-    listenNowClicked(){
-      // console.log("Listen Now clicked!");
+    handlePlayPauseClicked(){
+      if (this.state.playing === false) {
+        this.setState({playing: true}, function(){
+          this.audioPlayer.current.play();
+        })
+      } else {
+        this.setState({playing: false}, function(){
+          this.audioPlayer.current.pause();
+        })
+      }
     }
 
     render(){
       return(
         <React.Fragment>
+
+          <audio ref={this.audioPlayer} id='audioPlayer' name="media">
+            <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
+          </audio>
+
           <nav className="nav-container">
             <NavBar>
             </NavBar>
@@ -191,12 +206,15 @@ class Main extends Component {
           <div className="player-container">
             <Player
               currentShow={this.state.currentShow}
-              listenNowClicked={this.listenNowClicked}
+              playing={this.state.playing}
+              handlePlayPauseClicked = {this.handlePlayPauseClicked}
             />
           </div>
           <div className="body-container">
             <CurrentShowDetail
             currentShow={this.state.currentShow}
+            playing={this.state.playing}
+            handlePlayPauseClicked = {this.handlePlayPauseClicked}
           />
 
             <Schedule

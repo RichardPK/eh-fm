@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './CurrentShowDetail.css';
+import Playbutton from './Playbutton';
 
 class CurrentShowDetail extends Component {
   constructor(props){
     super(props);
-
+    this.playClicked = this.playClicked.bind(this)
   }
 
   returnShowName(){
@@ -40,7 +41,9 @@ class CurrentShowDetail extends Component {
     return currentShowDescription;
   }
 
-
+  playClicked(){
+    this.props.handlePlayPauseClicked();
+  }
 
   render(){
     return(
@@ -53,6 +56,10 @@ class CurrentShowDetail extends Component {
               <img className="currentshow-img" src={this.returnShowImgUrl()} alt="current live show"/>
             </div>
             <div className="currentshow-info-container">
+              <Playbutton
+                playingTrueFalse = {this.props.playing}
+                playClicked = {this.playClicked}
+              />
               <h3 className="currentshow-show-name"><span>{this.returnShowName()}</span></h3>
               <p className="currentshow-show-description"><span>{this.returnShowDescription()}</span></p>
             </div>
