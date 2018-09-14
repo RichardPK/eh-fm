@@ -47,7 +47,7 @@ class CurrentShowDetail extends Component {
       <React.Fragment>
 
         <div className="currentshow-container">
-          <h1 className="currentshow-header">LIVE NOW</h1>
+          <h1 className="currentshow-header">LIVE NOW:</h1>
           <div className="currentshow-sub-container">
             <div className="currentshow-img-container">
               <img className="currentshow-img" src={this.returnShowImgUrl()} alt="current live show"/>

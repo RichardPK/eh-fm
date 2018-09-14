@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Playbutton from './Playbutton'
 import './Player.css';
 
 class Player extends Component {
@@ -84,8 +85,12 @@ class Player extends Component {
               <div className="onair-circle">
               </div>
             </div>
+
             <div className="play-button-container">
-              <div className={this.renderPlayPause()} onClick={this.playClicked}></div>
+              <Playbutton
+                playingTrueFalse = {this.state.playing}
+                playClicked = {this.playClicked}
+              />
             </div>
             <p className="current-show">{this.returnShowData()}</p>
           </div>
