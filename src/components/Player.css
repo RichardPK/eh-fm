@@ -2,6 +2,7 @@
   position: fixed;
   top: 66px;
   width: 100vw;
+  z-index: 100;
 }
 
 .custom-player{
@@ -101,4 +102,12 @@
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: 40px;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .current-show{
+    border-right: none;
+  }
+
 }

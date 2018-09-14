@@ -36,7 +36,7 @@ class CurrentShowDetail extends Component {
       currentShowDescription = showData.currentShow[0].description;
     }
     if (currentShowDescription === ""){
-      currentShowDescription = "Georgia Anne Muldrow stops into the LA studio for a one-off show of rare and inspirational grooves ahead of her upcoming album on Brainfeeder."
+      currentShowDescription = "Sriracha umami quinoa sartorial moustache. Scenester irony DIY flexitarian typewriter mixtape church-key narwhal Marfa retro shabby chic Helvetica Thundercats viral pug tousled plaid Godard trust fund."
     }
     return currentShowDescription;
   }

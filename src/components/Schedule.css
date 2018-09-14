@@ -6,6 +6,14 @@
   overflow: hidden;
 }
 
+@media only screen and (max-width: 800px) {
+
+  .schedule-container{
+    width: 85vw;
+  }
+
+}
+
 .schedule-subcontainer{
   padding: 20px;
   background-color: white;
@@ -67,6 +75,19 @@
 }
 
 .show-time {
-  /* margin-right: 40px; */
   width: 180px;
+}
+
+@media only screen and (max-width: 800px) {
+  .show-name {
+    font-size: 18px;
+    padding-bottom: 20px;
+  }
+
+  .show-time {
+    width: 120px;
+    font-size: 14px;
+  }
+
+
 }
