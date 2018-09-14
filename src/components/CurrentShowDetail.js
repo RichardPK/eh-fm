@@ -53,8 +53,8 @@ class CurrentShowDetail extends Component {
               <img className="currentshow-img" src={this.returnShowImgUrl()} alt="current live show"/>
             </div>
             <div className="currentshow-info-container">
-              <h3 className="currentshow-show-name">{this.returnShowName()}</h3>
-              <p className="currentshow-show-description">{this.returnShowDescription()}</p>
+              <h3 className="currentshow-show-name"><span>{this.returnShowName()}</span></h3>
+              <p className="currentshow-show-description"><span>{this.returnShowDescription()}</span></p>
             </div>
           </div>
         </div>
