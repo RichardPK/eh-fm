@@ -105,12 +105,15 @@
   margin-left: 40px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1024px){
+  .volume-button-container{
+    display: none;
+
+  }
 
   .current-show{
     border-right: none;
   }
-
 }
 
 @media only screen and (max-width: 520px) {
