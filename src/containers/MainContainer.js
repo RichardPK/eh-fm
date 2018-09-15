@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import Schedule from '../components/Schedule';
 import Player from '../components/Player';
 import NavBar from '../components/NavBar';

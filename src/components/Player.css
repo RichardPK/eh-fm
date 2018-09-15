@@ -10,6 +10,7 @@
   padding: 10px 20px 10px 20px;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .onair-container{
@@ -104,10 +105,26 @@
   margin-left: 40px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1024px){
+  .volume-button-container{
+    display: none;
+
+  }
 
   .current-show{
     border-right: none;
   }
+}
 
+@media only screen and (max-width: 520px) {
+  .current-show{
+    margin-left: 10px;
+    padding-right: 5px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .current-show{
+    font-size: 14px;
+  }
 }

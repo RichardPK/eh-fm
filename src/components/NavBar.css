@@ -15,7 +15,7 @@
 }
 
 .nav-bar a {
-  color: rgb(0, 145, 138, 1);
+  color: var(--ehfmcolor);
 }
 
 .nav-link {
