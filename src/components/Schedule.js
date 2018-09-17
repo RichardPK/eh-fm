@@ -42,18 +42,21 @@ class Schedule extends Component {
   render(){
     return(
       <React.Fragment>
-        <div className="schedule-container">
+        <div className="schedule-header-body-container">
           <h1 className="schedule-header">SCHEDULE:</h1>
-          <div className="schedule-subcontainer">
-            <div className="days-header">
-              {this.props.daysToDisplay}
+          <div className="schedule-container">
+
+            <div className="schedule-subcontainer">
+              <div className="days-header">
+                {this.props.daysToDisplay}
+              </div>
+              <div className="schedule-divider"></div>
+              <table className="show-schedule">
+                <tbody>
+                  {this.renderSelectedDay()}
+                </tbody>
+              </table>
             </div>
-            <div className="schedule-divider"></div>
-            <table className="show-schedule">
-              <tbody>
-                {this.renderSelectedDay()}
-              </tbody>
-            </table>
           </div>
         </div>
       </React.Fragment>
