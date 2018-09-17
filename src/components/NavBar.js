@@ -10,6 +10,9 @@ const NavBar = (props) => {
         {/* <p className="nav-link">INFO</p> */}
         <p className="nav-link"><a href="https://www.mixcloud.com/ehfm/" target="blank">PAST SHOWS</a></p>
       </div>
+      <div className="nav-middle">
+        {/* <a href="/home"><img className="nav-logo-center" src="EHFM_Arched-Logo_Teal_1080.png" alt="eh-fm logo"></img></a> */}
+      </div>
       <div className="nav-right">
         {/* <p className="nav-link"><a href="https://www.mixcloud.com/ehfm/" target="blank">PAST SHOWS</a></p> */}
         <div className="nav-socials-wrapper">

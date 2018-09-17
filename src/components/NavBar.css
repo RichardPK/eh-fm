@@ -49,6 +49,14 @@ p.nav-link{
   /* -ms-flex-pack: center; */
 }
 
+
+.nav-logo-center {
+  width: 200px;
+  /* height: 48px; */
+  margin-right: 20px;
+  /* -ms-flex-pack: center; */
+}
+
 .nav-social {
   width: 18px;
   height: 18px;

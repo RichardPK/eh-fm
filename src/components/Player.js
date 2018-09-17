@@ -22,6 +22,9 @@ class Player extends Component {
     if (this.props.currentShow !== null){
       let showData = this.props.currentShow;
       currentShowName = showData.currentShow[0].name;
+      let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, '\'')
+      let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
+      return parsedForAmpersands;
     }
     return currentShowName;
   }

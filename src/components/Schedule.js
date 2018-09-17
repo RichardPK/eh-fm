@@ -5,6 +5,7 @@ class Schedule extends Component {
   constructor(props){
     super(props);
     this.showTimeParser = this.showTimeParser.bind(this);
+    this.showNameParser = this.showNameParser.bind(this);
   }
 
   renderSelectedDay(){
@@ -13,11 +14,18 @@ class Schedule extends Component {
       let showsForThatDay = selectedDay.map((show, index) => {
         return <tr key={index} className="show-listing">
           {this.showTimeParser(show)}
-          <td className="show-name" key={index}>{show.name}</td>
+          <td className="show-name" key={index}>{this.showNameParser(show)}</td>
         </tr>
       })
       return showsForThatDay;
     }
+  }
+
+  showNameParser(show){
+    let currentShowName = show.name;
+    let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, '\'');
+    let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
+    return parsedForAmpersands;
   }
 
   showTimeParser(show){
