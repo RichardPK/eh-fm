@@ -1,6 +1,6 @@
 .player-container {
   position: fixed;
-  top: 66px;
+  top: 76px;
   width: 100vw;
   z-index: 100;
 }
@@ -113,6 +113,12 @@
 
   .current-show{
     border-right: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .player-container{
+      top: 114px;
   }
 }
 

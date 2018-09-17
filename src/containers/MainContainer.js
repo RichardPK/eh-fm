@@ -4,6 +4,7 @@ import Schedule from '../components/Schedule';
 import Player from '../components/Player';
 import NavBar from '../components/NavBar';
 import CurrentShowDetail from '../components/CurrentShowDetail';
+import LogoHead from '../components/LogoHead';
 import './MainContainer.css'
 import _ from 'lodash';
 
@@ -226,9 +227,12 @@ class Main extends Component {
             <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
           </audio>
 
+          <div className="logo-head-container">
+            <LogoHead/>
+          </div>
+
           <nav className="nav-container">
-            <NavBar>
-            </NavBar>
+            <NavBar/>
           </nav>
           <div className="player-container">
             <Player
