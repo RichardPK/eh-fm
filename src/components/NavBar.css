@@ -31,7 +31,7 @@ p.nav-link{
 }
 
 .nav-left {
-  height: 61px;
+  height: 71px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -77,5 +77,11 @@ p.nav-link{
 
   .nav-left {
     height:31px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .nav-container{
+    top: 76px;
   }
 }
