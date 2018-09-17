@@ -6,7 +6,7 @@ const NavBar = (props) => {
   return(
     <div className="nav-bar">
       <div className="nav-left">
-        <a href="/home"><img className="nav-logo" src="eh-fm-cutout-navbar.png" alt="eh-fm logo"></img></a>
+        {/* <a href="/home"><img className="nav-logo" src="eh-fm-cutout-navbar.png" alt="eh-fm logo"></img></a> */}
         {/* <p className="nav-link">INFO</p> */}
         <p className="nav-link"><a href="https://www.mixcloud.com/ehfm/" target="blank">PAST SHOWS</a></p>
       </div>

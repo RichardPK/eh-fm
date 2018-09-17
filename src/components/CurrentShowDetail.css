@@ -1,7 +1,7 @@
 .currentshow-container {
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  width: 41vw;
   margin: 0px 10px 0px 20px;
 }
 
@@ -9,7 +9,7 @@
   padding: 4px 4px 1px 4px;
   position: relative;
   color: white;
-  background-color: var(--highlightyellow);
+  background-color: var(--notquiteblack);
   /* box-shadow: 0px 3px 15px var(--highlightyellow);  */
 }
 

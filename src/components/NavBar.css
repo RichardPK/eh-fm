@@ -1,13 +1,13 @@
 .nav-container {
   position: fixed;
-    width: 100vw;
-    top: 0px;
-    z-index: 100;
+  width: 100vw;
+  top: 0px;
+  z-index: 100;
 }
 
 .nav-bar {
   display: flex;
-  padding-left: 10px;
+  padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 5px;
@@ -31,6 +31,7 @@ p.nav-link{
 }
 
 .nav-left {
+  height: 71px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -67,4 +68,20 @@ p.nav-link{
   width: 18px;
   height: 18px;
   margin-left: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-container{
+    top: 68px;
+  }
+
+  .nav-left {
+    height:31px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .nav-container{
+    top: 76px;
+  }
 }
