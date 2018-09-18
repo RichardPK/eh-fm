@@ -22,6 +22,8 @@ class Main extends Component {
       volume: 1
     }
     this.audioPlayer = React.createRef();
+    this.callEveryHour = this.callEveryHour.bind(this);
+    this.handleHourCallTimer = this.handleHourCallTimer.bind(this);
     this.currentShowApiCall = this.currentShowApiCall.bind(this);
     this.scheduleApiCall = this.scheduleApiCall.bind(this);
     this.showApiDataLoaded = this.showApiDataLoaded.bind(this);
@@ -39,8 +41,38 @@ class Main extends Component {
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
   }
 
+  callEveryHour(){
+    this.currentShowApiCall();
+
+    setInterval( function(){
+      this.currentShowApiCall()
+    }.bind(this), 1000 * 60 * 60 );
+    console.log("calling callEveryHour");
+    // debugger;
+  }
+
+
+  handleHourCallTimer(){
+    let nextDate = new Date();
+    if(nextDate.getMinutes() === 0) {
+      this.callEveryHour()
+    } else {
+      nextDate.setHours(nextDate.getHours() + 1);
+      nextDate.setMinutes(0);
+      nextDate.setSeconds(0);
+      let difference = nextDate - new Date();
+
+      setTimeout(function() {
+        this.callEveryHour()
+      }.bind(this), difference );
+      console.log("Handling hour call timer");
+      // debugger;
+    }
+  }
+
   componentDidMount(){
     this.currentShowApiCall();
+    this.handleHourCallTimer();
   }
 
   currentShowApiCall(){
