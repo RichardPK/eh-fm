@@ -56,7 +56,7 @@ class CurrentShowDetail extends Component {
       <React.Fragment>
 
         <div className="currentshow-container">
-          <h1 className="currentshow-header">LIVE NOW:</h1>
+          <h1 className="currentshow-header">Live now</h1>
           <div className="currentshow-sub-container">
             <div className="currentshow-img-container">
               <img className="currentshow-img" src={this.returnShowImgUrl()} alt="current live show"/>
@@ -65,7 +65,7 @@ class CurrentShowDetail extends Component {
               <h3 className="currentshow-show-name"><span>{this.returnShowName()}</span></h3>
               <div className="currentshow-playbutton-container"
                 onClick= {this.playClicked}>
-                <p>Listen now:</p>
+                <p>Listen now</p>
                 <Playbutton
                   playingTrueFalse = {this.props.playing}
                   playClicked = {this.playClicked}

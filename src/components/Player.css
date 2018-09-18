@@ -20,6 +20,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 100;
+  letter-spacing: 2px;
 }
 
 .onair-circle{
@@ -103,6 +105,7 @@
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: 40px;
+  letter-spacing: 1px;
 }
 
 @media only screen and (max-width: 1024px){

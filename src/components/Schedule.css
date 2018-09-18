@@ -51,7 +51,7 @@
 .show-schedule {
   /* background-color: rgba(0, 145, 138, 0.1); */
   padding: 10px;
-  margin-top: 40px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -69,17 +69,7 @@
   width: 140px;
 }
 
-@media only screen and (max-width: 800px) {
-
-  .schedule-container{
-    width: 85vw;
-    margin: 0px 10px 0px 10px;
-  }
-
-}
-
-
-@media only screen and (max-width: 1062px) {
+@media only screen and (max-width: 1150px) {
   .days-header {
     justify-content: end;
   }
@@ -89,6 +79,11 @@
   .show-name {
     font-size: 18px;
     padding-bottom: 20px;
+  }
+
+  .schedule-container{
+    width: 85vw;
+    margin: 0px 10px 0px 10px;
   }
 
   .show-time {
