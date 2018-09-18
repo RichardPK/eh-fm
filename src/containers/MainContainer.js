@@ -47,8 +47,6 @@ class Main extends Component {
     setInterval( function(){
       this.currentShowApiCall()
     }.bind(this), 1000 * 60 * 60 );
-    console.log("calling callEveryHour");
-    // debugger;
   }
 
 
@@ -65,8 +63,6 @@ class Main extends Component {
       setTimeout(function() {
         this.callEveryHour()
       }.bind(this), difference );
-      console.log("Handling hour call timer");
-      // debugger;
     }
   }
 
