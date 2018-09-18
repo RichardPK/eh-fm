@@ -37,14 +37,16 @@ class CurrentShowDetail extends Component {
     if (this.props.currentShow !== null){
       let showData = this.props.currentShow;
       currentShowDescription = showData.currentShow[0].description;
-      let parsedForInvertedCommas = currentShowDescription.replace(/&#039;/g, '\'')
-      let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
-      return parsedForAmpersands;
+      if (currentShowDescription === ""){
+        currentShowDescription = "Independent community radio for Edinburgh."
+        return currentShowDescription;
+      } else {
+        let parsedForInvertedCommas = currentShowDescription.replace(/&#039;/g, '\'')
+        let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
+        return parsedForAmpersands;
+      }
     }
-    if (currentShowDescription === ""){
-      currentShowDescription = "Sriracha umami quinoa sartorial moustache. Scenester irony DIY flexitarian typewriter mixtape church-key narwhal Marfa retro shabby chic Helvetica Thundercats viral pug tousled plaid Godard trust fund."
-    }
-    return currentShowDescription;
+
   }
 
   playClicked(){
