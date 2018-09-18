@@ -43,7 +43,7 @@ class Schedule extends Component {
     return(
       <React.Fragment>
         <div className="schedule-header-body-container">
-          <h1 className="schedule-header">SCHEDULE:</h1>
+          <h1 className="schedule-header">Schedule</h1>
           <div className="schedule-container">
 
             <div className="schedule-subcontainer">

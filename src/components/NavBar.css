@@ -26,7 +26,7 @@
   /* border-right: 2px solid black; */
 }
 
-p.nav-link{
+.nav-link p {
   margin: 0px auto 0px auto;
 }
 
@@ -35,6 +35,7 @@ p.nav-link{
   display: flex;
   flex-direction: row;
   align-items: center;
+  letter-spacing: 1px;
 }
 
 .nav-right {
