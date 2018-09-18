@@ -135,6 +135,12 @@
   .currentshow-show-description {
     margin-right: 10%;
   }
+
+  .currentshow-playbutton-container {
+    padding: 5px;
+    font-size: 14px;
+  }
+
 }
 
 @media only screen and (max-width: 400px) {
