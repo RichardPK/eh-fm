@@ -5,7 +5,7 @@ import Player from '../components/Player';
 import NavBar from '../components/NavBar';
 import CurrentShowDetail from '../components/CurrentShowDetail';
 import LogoHead from '../components/LogoHead';
-import './MainContainer.css'
+import './HomeContainer.css'
 import _ from 'lodash';
 
 class Main extends Component {
@@ -249,43 +249,43 @@ class Main extends Component {
 
     render(){
       return(
-        <React.Fragment>
+          <React.Fragment>
 
-          <audio ref={this.audioPlayer} id='audioPlayer' name="media">
-            <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
-          </audio>
+            <audio ref={this.audioPlayer} id='audioPlayer' name="media">
+              <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
+            </audio>
 
-          <div className="logo-head-container">
-            <LogoHead/>
-          </div>
+            <div className="logo-head-container">
+              <LogoHead/>
+            </div>
 
-          <nav className="nav-container">
-            <NavBar/>
-          </nav>
-          <div className="player-container">
-            <Player
-              currentShow={this.state.currentShow}
-              playing={this.state.playing}
-              volume={this.state.volume}
-              handlePlayPauseClicked = {this.handlePlayPauseClicked}
-              handleVolumeClicked = {this.handleVolumeClicked}
-            />
-          </div>
-          <div className="body-container">
-            <CurrentShowDetail
-              currentShow={this.state.currentShow}
-              playing={this.state.playing}
-              handlePlayPauseClicked = {this.handlePlayPauseClicked}
-            />
+            <nav className="nav-container">
+              <NavBar/>
+            </nav>
+            <div className="player-container">
+              <Player
+                currentShow={this.state.currentShow}
+                playing={this.state.playing}
+                volume={this.state.volume}
+                handlePlayPauseClicked = {this.handlePlayPauseClicked}
+                handleVolumeClicked = {this.handleVolumeClicked}
+              />
+            </div>
+            <div className="body-container">
+              <CurrentShowDetail
+                currentShow={this.state.currentShow}
+                playing={this.state.playing}
+                handlePlayPauseClicked = {this.handlePlayPauseClicked}
+              />
 
-            <Schedule
-              daysToDisplay={this.state.displayedDays}
-              selectedDay={this.state.selectedDay}
-            />
+              <Schedule
+                daysToDisplay={this.state.displayedDays}
+                selectedDay={this.state.selectedDay}
+              />
 
 
-          </div>
-        </React.Fragment>
+            </div>
+          </React.Fragment>
       )
     }
 
