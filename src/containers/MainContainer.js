@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 // import ReactDOM from 'react-dom';
 import HeaderContainer from './HeaderContainer';
 import HomeContainer from './HomeContainer';
@@ -36,6 +37,8 @@ class Main extends Component {
     this.fetchDay = this.fetchDay.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
+    //
+    this.renderHomePage = this.renderHomePage.bind(this);
   }
 
   callEveryHour(){
@@ -244,8 +247,19 @@ class Main extends Component {
       }
     }
 
+    renderHomePage() {
+      return <HomeContainer
+        currentShow={this.state.currentShow}
+        playing={this.state.playing}
+        handlePlayPauseClicked = {this.handlePlayPauseClicked}
+        daysToDisplay={this.state.displayedDays}
+        selectedDay={this.state.selectedDay}
+      />
+    }
+
     render(){
       return(
+        <Router>
           <React.Fragment>
 
             <audio ref={this.audioPlayer} id='audioPlayer' name="media">
@@ -258,16 +272,12 @@ class Main extends Component {
               volume={this.state.volume}
               handlePlayPauseClicked = {this.handlePlayPauseClicked}
               handleVolumeClicked = {this.handleVolumeClicked}
-              />
-
-              <HomeContainer
-              currentShow={this.state.currentShow}
-              playing={this.state.playing}
-              handlePlayPauseClicked = {this.handlePlayPauseClicked}
-              daysToDisplay={this.state.displayedDays}
-              selectedDay={this.state.selectedDay}
             />
+
+            <Route exact path="/" render={this.renderHomePage} />
+
           </React.Fragment>
+        </Router>
       )
     }
 
