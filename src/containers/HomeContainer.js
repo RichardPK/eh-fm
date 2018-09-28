@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 // import ReactDOM from 'react-dom';
 import Schedule from '../components/Schedule';
-import Player from '../components/Player';
-import NavBar from '../components/NavBar';
+import HeaderContainer from './HeaderContainer';
 import CurrentShowDetail from '../components/CurrentShowDetail';
-import LogoHead from '../components/LogoHead';
 import './HomeContainer.css'
 import _ from 'lodash';
 
@@ -255,22 +253,14 @@ class Main extends Component {
               <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
             </audio>
 
-            <div className="logo-head-container">
-              <LogoHead/>
-            </div>
-
-            <nav className="nav-container">
-              <NavBar/>
-            </nav>
-            <div className="player-container">
-              <Player
-                currentShow={this.state.currentShow}
-                playing={this.state.playing}
-                volume={this.state.volume}
-                handlePlayPauseClicked = {this.handlePlayPauseClicked}
-                handleVolumeClicked = {this.handleVolumeClicked}
+            <HeaderContainer
+              currentShow={this.state.currentShow}
+              playing={this.state.playing}
+              volume={this.state.volume}
+              handlePlayPauseClicked = {this.handlePlayPauseClicked}
+              handleVolumeClicked = {this.handleVolumeClicked}
               />
-            </div>
+
             <div className="body-container">
               <CurrentShowDetail
                 currentShow={this.state.currentShow}
