@@ -1,0 +1,35 @@
+.resident-list-item {
+  display: flex;
+  flex-direction: column;
+  height: 190px;
+  width: 265px;
+  padding: 5px 5px 4px 5px;
+  margin: 15px 10px 15px 15px;
+  background: white;
+  border-bottom: 3px solid var(--notquiteblack);
+
+  /* align-items: center; */
+}
+
+.resident-list-item-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 180px;
+  overflow: hidden;
+}
+
+.resident-list-item-image img {
+  width: auto;
+  height: 265px;
+  margin: 109px 0px 0px 0px;
+}
+
+.resident-list-item h4 {
+  padding-top: 15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  letter-spacing: 1px;
+  color: var(--notquiteblack);
+}
