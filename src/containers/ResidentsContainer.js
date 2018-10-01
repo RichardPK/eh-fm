@@ -34,6 +34,7 @@ class ResidentsContainer extends Component {
           showTitle = {show.data.show_title}
           showDescription = {show.data.show_description}
           showImage = {show.data.show_image.url}
+          showId = {show.uid}
         />
       })
       return allShows;

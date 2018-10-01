@@ -1,13 +1,15 @@
 import React from 'react';
+import './ResidentListItem.css'
 
 const ResidentListItem = (props) => {
 
   return (
     <React.Fragment>
       <div className="resident-list-item">
-        <h4>{props.showTitle}</h4>
-        <p>{props.showDescription}</p>
-        <img src={props.showImage} alt="show"></img>
+        <div className="resident-list-item-image">
+          <img src={props.showImage} alt="show"></img>
+        </div>
+        <h4 className="resident-list-item-title">{props.showTitle}</h4>
       </div>
 
     </React.Fragment>

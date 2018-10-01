@@ -1,8 +1,6 @@
 .residents-container {
+  margin-top: 143px;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
-  width: 100vw;
-  margin-top: 125px;
-  background-color: white;
 }
