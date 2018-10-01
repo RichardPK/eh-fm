@@ -1,16 +1,11 @@
 import React from 'react';
 import Player from '../components/Player';
 import NavBar from '../components/NavBar';
-import LogoHead from '../components/LogoHead';
 
 const HeaderContainer = (props) => {
 
   return(
     <React.Fragment>
-
-      <div className="logo-head-container">
-        <LogoHead/>
-      </div>
 
       <nav className="nav-container">
         <NavBar/>

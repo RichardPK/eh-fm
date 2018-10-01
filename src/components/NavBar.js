@@ -1,5 +1,7 @@
-import React from 'react'
-import './NavBar.css'
+import React from 'react';
+import './NavBar.css';
+import LogoHead from './LogoHead';
+import './LogoHead.css';
 
 const NavBar = (props) => {
 
@@ -8,11 +10,16 @@ const NavBar = (props) => {
       <div className="nav-left">
         {/* <a href="/home"><img className="nav-logo" src="eh-fm-cutout-navbar.png" alt="eh-fm logo"></img></a> */}
         {/* <p className="nav-link">INFO</p> */}
+        <p className="nav-link"><a href="/residents">Residents</a></p>
         <p className="nav-link"><a href="https://www.mixcloud.com/ehfm/" target="blank">Past Shows</a></p>
+
       </div>
-      <div className="nav-middle">
-        {/* <a href="/home"><img className="nav-logo-center" src="EHFM_Arched-Logo_Teal_1080.png" alt="eh-fm logo"></img></a> */}
+      {/* <div className="nav-middle"> */}
+
+      <div className="logo-head-container">
+        <LogoHead/>
       </div>
+      {/* </div> */}
       <div className="nav-right">
         {/* <p className="nav-link"><a href="https://www.mixcloud.com/ehfm/" target="blank">PAST SHOWS</a></p> */}
         <div className="nav-socials-wrapper">

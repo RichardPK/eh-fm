@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import ReactDOM from 'react-dom';
 import HeaderContainer from './HeaderContainer';
 import HomeContainer from './HomeContainer';
+import ResidentsContainer from './ResidentsContainer';
 import './MainContainer.css'
 import _ from 'lodash';
 
@@ -259,25 +260,30 @@ class Main extends Component {
 
     render(){
       return(
-        <Router>
-          <React.Fragment>
 
-            <audio ref={this.audioPlayer} id='audioPlayer' name="media">
-              <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
-            </audio>
+        <React.Fragment>
 
-            <HeaderContainer
-              currentShow={this.state.currentShow}
-              playing={this.state.playing}
-              volume={this.state.volume}
-              handlePlayPauseClicked = {this.handlePlayPauseClicked}
-              handleVolumeClicked = {this.handleVolumeClicked}
-            />
+          <audio ref={this.audioPlayer} id='audioPlayer' name="media">
+            <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
+          </audio>
 
-            <Route exact path="/" render={this.renderHomePage} />
+          <HeaderContainer
+            currentShow={this.state.currentShow}
+            playing={this.state.playing}
+            volume={this.state.volume}
+            handlePlayPauseClicked = {this.handlePlayPauseClicked}
+            handleVolumeClicked = {this.handleVolumeClicked}
+          />
 
-          </React.Fragment>
-        </Router>
+          <Router>
+            <Switch>
+              <Route exact path="/" render={this.renderHomePage} />
+              <Route path="/residents" component={ResidentsContainer} />
+            </Switch>
+          </Router>
+
+        </React.Fragment>
+
       )
     }
 
