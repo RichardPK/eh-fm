@@ -1,10 +1,10 @@
 .resident-list-item {
   display: flex;
   flex-direction: column;
-  height: 180px;
+  height: 190px;
   width: 265px;
-  padding: 5px 5px 5px 5px;
-  margin: 15px 10px 15px 10px;
+  padding: 5px 5px 4px 5px;
+  margin: 15px 10px 15px 15px;
   background: white;
   border-bottom: 3px solid var(--notquiteblack);
 
@@ -23,7 +23,7 @@
 .resident-list-item-image img {
   width: auto;
   height: 265px;
-  margin: 110px 0px 0px 0px;
+  margin: 109px 0px 0px 0px;
 }
 
 /* .resident-list-item img {
@@ -32,7 +32,8 @@
 } */
 
 .resident-list-item h4 {
-  margin-top: 5px;
+  padding-top: 15px;
+  margin-top: 0px;
   margin-bottom: 0px;
   color: var(--notquiteblack);
 }
