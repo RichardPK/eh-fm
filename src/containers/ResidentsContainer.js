@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Prismic from 'prismic-javascript';
-import './ResidentsContainer.css'
+import './ResidentsContainer.css';
+import ResidentListItem from '../components/ResidentListItem';
 
 class ResidentsContainer extends Component {
   constructor(props){
@@ -8,6 +9,7 @@ class ResidentsContainer extends Component {
     this.state = {
       prismicDoc: null
     }
+    this.renderAllShows = this.renderAllShows.bind(this);
   }
 
   componentDidMount(){
@@ -24,11 +26,30 @@ class ResidentsContainer extends Component {
     });
   }
 
+  renderAllShows() {
+    if (this.state.prismicDoc) {
+      let allShows = this.state.prismicDoc.map((show, index) => {
+        return <ResidentListItem
+          show={show} index={index} key={index}
+          showTitle = {show.data.show_title}
+          showDescription = {show.data.show_description}
+          showImage = {show.data.show_image.url}
+        />
+      })
+      return allShows;
+    }
+    return <p>Loading...</p>;
+  }
+
+
+
   render(){
     return(
-      <div className="residents-container">
-        <p>Hello</p>
-      </div>
+      <React.Fragment>
+        <div className="residents-container">
+          {this.renderAllShows()}
+        </div>
+      </React.Fragment>
     )
   }
 
