@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 // import ReactDOM from 'react-dom';
 import HeaderContainer from './HeaderContainer';
 import HomeContainer from './HomeContainer';
@@ -263,9 +263,12 @@ class Main extends Component {
 
         <React.Fragment>
 
+
           <audio ref={this.audioPlayer} id='audioPlayer' name="media">
             <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg"/>
           </audio>
+
+
 
           <HeaderContainer
             currentShow={this.state.currentShow}
@@ -275,12 +278,10 @@ class Main extends Component {
             handleVolumeClicked = {this.handleVolumeClicked}
           />
 
-          <Router>
             <Switch>
               <Route exact path="/" render={this.renderHomePage} />
               <Route path="/residents" component={ResidentsContainer} />
             </Switch>
-          </Router>
 
         </React.Fragment>
 
