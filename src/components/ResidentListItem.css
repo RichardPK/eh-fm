@@ -26,14 +26,10 @@
   margin: 109px 0px 0px 0px;
 }
 
-/* .resident-list-item img {
-  height: 90%;
-  width: 100%;
-} */
-
 .resident-list-item h4 {
   padding-top: 15px;
   margin-top: 0px;
   margin-bottom: 0px;
+  letter-spacing: 1px;
   color: var(--notquiteblack);
 }

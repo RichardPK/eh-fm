@@ -14,7 +14,7 @@ class ResidentsContainer extends Component {
 
   componentDidMount(){
     console.log("Resident component mounted");
-    const apiEndpoint = "https://testreporpk.cdn.prismic.io/api/v2";
+    const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
 
     Prismic.api(apiEndpoint)
     .then(api => {
