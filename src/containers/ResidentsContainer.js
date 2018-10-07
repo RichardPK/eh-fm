@@ -13,7 +13,7 @@ class ResidentsContainer extends Component {
   }
 
   componentDidMount(){
-    console.log("Resident component mounted");
+    console.log("ResidentsContainer mounted");
     const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
 
     Prismic.api(apiEndpoint)
@@ -34,6 +34,7 @@ class ResidentsContainer extends Component {
           showTitle = {show.data.show_title}
           showDescription = {show.data.show_description}
           showImage = {show.data.show_image.url}
+          thumbnailImage = {show.data.thumbnail_image.url}
           showId = {show.uid}
         />
       })
@@ -50,7 +51,9 @@ class ResidentsContainer extends Component {
         <div className="residents-container">
           {this.renderAllShows()}
         </div>
+
       </React.Fragment>
+
     )
   }
 

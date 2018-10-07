@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import HeaderContainer from './HeaderContainer';
 import HomeContainer from './HomeContainer';
 import ResidentsContainer from './ResidentsContainer';
+import ResidentShowContainer from './ResidentShowContainer';
 import './MainContainer.css'
 import _ from 'lodash';
 
@@ -278,10 +279,13 @@ class Main extends Component {
             handleVolumeClicked = {this.handleVolumeClicked}
           />
 
-            <Switch>
-              <Route exact path="/" render={this.renderHomePage} />
-              <Route path="/residents" component={ResidentsContainer} />
-            </Switch>
+          {this.props.children}
+
+          <Switch>
+            <Route exact path="/" render={this.renderHomePage} />
+            <Route exact path="/residents" component={ResidentsContainer} />
+            <Route path="/residents/:id" component={ResidentShowContainer} />
+          </Switch>
 
         </React.Fragment>
 

@@ -9,7 +9,6 @@ class App extends Component {
 
         <Router>
 
-
           <div className="App">
             <MainContainer />
           </div>
