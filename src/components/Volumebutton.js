@@ -4,9 +4,9 @@ const Volumebutton = (props) => {
 
   const renderVolume = function(){
     if (props.volume !== 0) {
-      return './volume-up-white.png'
+      return 'https://www.ehfm.live/volume-up-white.png'
     } else {
-      return './volume-off-white.png'
+      return 'https://www.ehfm.live/volume-off-white.png'
     }
   }
 
