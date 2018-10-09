@@ -1,3 +1,5 @@
+@import "../styleguide.scss";
+
 .player-container {
   position: fixed;
   top: 86px;
@@ -6,15 +8,37 @@
 }
 
 .custom-player{
-  background-color: var(--ehfmcolor);
-  padding: 10px 20px 10px 20px;
+  background-color: $ehfmcolor;
+  padding: 2px 20px 2px 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
+.now-playing-container{
+  display: flex;
+  align-items: center;
+  padding: 8px 8px 8px 8px;
+  /* THIS PADDING IS CONTROLLING THE HEIGHT OF THE ELEMENT */
+}
+
+.now-playing-container:hover{
+  background-color: white;
+  cursor: pointer;
+
+  p {
+    color: $altblue;
+  }
+
+  .play-button {
+    border-color: transparent transparent transparent $altblue;
+  }
+
+
+}
+
 .onair-container{
-  color: var(--playerwhite);
+  color: $playerwhite;
   font-size: 11px;
   padding-right: 20px;
   display: flex;
@@ -48,13 +72,12 @@
   }
 }
 
-
 .play-button {
   margin-left: 20px;
   cursor: pointer;
   border-style: solid;
-  border-width: var(--main-button-half-size) 0 var(--main-button-half-size) var(--main-button-size);
-  border-color: transparent transparent transparent var(--playerwhite);
+  border-width: $main-button-half-size 0 $main-button-half-size $main-button-size;
+  border-color: transparent transparent transparent $playerwhite;
 }
 
 .pause-button {
@@ -62,14 +85,14 @@
   margin-left: 20px;
   margin-right: 0.7px;
   height: 15px;
-  border-color: var(--playerwhite);
+  border-color: $playerwhite;
   border-style: double;
   border-width: 0px 0 0px 12px;
 }
 
 .play-button-container{
-  border-left: 2px solid white; */
-  width: var(--main-button-size);
+  border-left: 2px solid white;
+  width: $main-button-size;
   padding-right: 20px;
 }
 
@@ -101,7 +124,7 @@
   /* font-weight: bold; */
   border-right: 2px solid white;
   padding-right: 50px;
-  color: var(--playerwhite);
+  color: $playerwhite;
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: 40px;

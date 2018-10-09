@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Playbutton from './Playbutton'
 import Volumebutton from './Volumebutton'
-import './Player.css';
+import './Player.scss';
 
 class Player extends Component {
   constructor(props){
@@ -49,13 +49,15 @@ class Player extends Component {
               </div>
             </div>
 
-            <div className="play-button-container">
-              <Playbutton
-                playingTrueFalse = {this.props.playing}
-                playClicked = {this.playClicked}
-              />
+            <div className="now-playing-container">
+              <div className="play-button-container">
+                <Playbutton
+                  playingTrueFalse = {this.props.playing}
+                  playClicked = {this.playClicked}
+                />
+              </div>
+              <p className="current-show">{this.returnShowData()}</p>
             </div>
-            <p className="current-show">{this.returnShowData()}</p>
           </div>
           <div className="right-side-player">
             <Volumebutton
