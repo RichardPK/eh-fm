@@ -29,6 +29,14 @@ class Player extends Component {
     return currentShowName;
   }
 
+  renderPlayingContainer(){
+    if (this.props.playing === true){
+      return "now-playing-container-white";
+    } else {
+      return "now-playing-container";
+    }
+  }
+
   playClicked(){
     this.props.handlePlayPauseClicked();
   }
@@ -49,7 +57,8 @@ class Player extends Component {
               </div>
             </div>
 
-            <div className="now-playing-container">
+            <div className={this.renderPlayingContainer()}
+              onClick= {this.playClicked}>
               <div className="play-button-container">
                 <Playbutton
                   playingTrueFalse = {this.props.playing}
