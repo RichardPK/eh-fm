@@ -1,10 +1,21 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import './NavBar.css';
+import './NavBar.scss';
 import LogoHead from './LogoHead';
 import './LogoHead.css';
 
 const NavBar = (props) => {
+
+  const residentsURL = "/residents"
+
+  const renderActiveLink = function(){
+    if (window.location.href.includes(residentsURL))
+    {
+      return "nav-link-active"
+    } else {
+      return "nav-link";
+    }
+  }
 
   return(
     <React.Fragment>
@@ -13,7 +24,7 @@ const NavBar = (props) => {
 
             {/* <a href="/home"><img className="nav-logo" src="eh-fm-cutout-navbar.png" alt="eh-fm logo"></img></a> */}
             {/* <p className="nav-link">INFO</p> */}
-            <p className="nav-link"><Link to='/residents'>Residents</Link></p>
+            <p className={renderActiveLink()}><Link to={residentsURL}>Residents</Link></p>
             <p className="nav-link"><a href="https://www.mixcloud.com/ehfm/" target="blank">Past Shows</a></p>
           </div>
           {/* <div className="nav-middle"> */}

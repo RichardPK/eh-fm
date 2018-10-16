@@ -1,3 +1,5 @@
+@import "../styleguide.scss";
+
 .nav-container {
   position: fixed;
   width: 100vw;
@@ -24,10 +26,39 @@
   color: var(--ehfmcolor);
   padding-right: 40px;
   /* border-right: 2px solid black; */
+  p {
+    margin: 0px auto 0px auto;
+  }
+
+  // a {
+  //   border-bottom: 3px solid $altblue
+  // }
 }
 
-.nav-link p {
-  margin: 0px auto 0px auto;
+.nav-link:hover {
+    a {
+      text-decoration: none;
+      border-bottom: 3px solid $altblue;
+      padding-bottom: 2px;
+    }
+}
+
+.nav-link-active {
+
+  font-size: 14px;
+  color: var(--ehfmcolor);
+  padding-right: 40px;
+  /* border-right: 2px solid black; */
+  p {
+    margin: 0px auto 0px auto;
+  }
+
+  a {
+    text-decoration: none;
+    border-bottom: 3px solid $altblue;
+      padding-bottom: 2px;
+  }
+
 }
 
 .nav-left {
