@@ -41,7 +41,21 @@
   display: flex;
   align-items: center;
   padding: 8px 8px 8px 8px;
-  background-color: white;
+  background-color: $ehfmcolor;
+
+  p {
+    color: $playerwhite;
+  }
+
+  .play-button {
+    border-color: transparent transparent transparent $playerwhite;
+  }
+
+}
+
+.now-playing-container-white:hover{
+  background-color: $playerwhite;
+  cursor: pointer;
 
   p {
     color: $altblue;
@@ -51,12 +65,10 @@
     border-color: transparent transparent transparent $altblue;
   }
 
-}
+  .pause-button {
+    border-color: $altblue;
+  }
 
-.now-playing-container-white:hover{
-  // background-color: $ehfmcolor;
-  cursor: pointer;
-  
 }
 
 .onair-container{
@@ -107,7 +119,7 @@
   margin-left: 20px;
   margin-right: 0.7px;
   height: 15px;
-  border-color: $altblue;
+  border-color: $playerwhite;
   border-style: double;
   border-width: 0px 0 0px 12px;
 }

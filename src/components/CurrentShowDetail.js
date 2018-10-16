@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import './CurrentShowDetail.css';
+import './CurrentShowDetail.scss';
 import Playbutton from './Playbutton';
 
 class CurrentShowDetail extends Component {
   constructor(props){
     super(props);
-    this.playClicked = this.playClicked.bind(this)
+    this.playClicked = this.playClicked.bind(this);
+    this.renderPlayingContainer = this.renderPlayingContainer.bind(this);
   }
 
   returnShowName(){
@@ -46,7 +47,14 @@ class CurrentShowDetail extends Component {
         return parsedForAmpersands;
       }
     }
+  }
 
+  renderPlayingContainer(){
+    if (this.props.playing === true){
+      return "currentshow-playbutton-container-white";
+    } else {
+      return "currentshow-playbutton-container";
+    }
   }
 
   playClicked(){
@@ -65,7 +73,7 @@ class CurrentShowDetail extends Component {
             </div>
             <div className="currentshow-info-container">
               <h3 className="currentshow-show-name"><span>{this.returnShowName()}</span></h3>
-              <div className="currentshow-playbutton-container"
+              <div className={this.renderPlayingContainer()}
                 onClick= {this.playClicked}>
                 <p>Listen now</p>
                 <Playbutton
