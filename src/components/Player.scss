@@ -41,14 +41,18 @@
   display: flex;
   align-items: center;
   padding: 8px 8px 8px 8px;
-  background-color: $ehfmcolor;
+  background-color: $playerwhite;
 
   p {
-    color: $playerwhite;
+    color: $altblue;
   }
 
   .play-button {
-    border-color: transparent transparent transparent $playerwhite;
+    border-color: transparent transparent transparent $altblue;
+  }
+
+  .pause-button {
+    border-color: $altblue;
   }
 
 }
