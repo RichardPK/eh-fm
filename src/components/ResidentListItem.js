@@ -1,5 +1,5 @@
 import React from 'react';
-import './ResidentListItem.css';
+import './ResidentListItem.scss';
 // import ResidentShowContainer from '../containers/ResidentShowContainer'
 import { Link } from "react-router-dom";
 

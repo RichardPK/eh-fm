@@ -27,14 +27,14 @@ class ResidentsContainer extends Component {
   }
 
   renderAllShows() {
+
     if (this.state.prismicDoc) {
       let allShows = this.state.prismicDoc.map((show, index) => {
         return <ResidentListItem
           show={show} index={index} key={index}
           showTitle = {show.data.show_title}
           showDescription = {show.data.show_description}
-          showImage = {show.data.show_image.url}
-          thumbnailImage = {show.data.thumbnail_image.url}
+          thumbnailImage = {show.data.show_image.url}
           showId = {show.uid}
         />
       })

@@ -41,12 +41,10 @@ class ResidentShowContainer extends Component {
   renderShowDetail(){
     if (this.state.selectedShow) {
       let show = this.state.selectedShow;
-
       return <ResidentShowDisplay
         showTitle = {show.data.show_title}
         showDescription = {show.data.show_description}
-        showImage = {show.data.show_image.url}
-        thumbnailImage = {show.data.thumbnail_image.url}
+        showImage = {show.data.show_image.fullscreen.url}
         showId = {show.uid}
       />
     }
