@@ -9,8 +9,10 @@ const ResidentShowDisplay = props => {
       </div>
 
       <div className="resident-show-display-container">
-        <h1>{props.showTitle}</h1>
-        <p>{props.showDescription}</p>
+        <h3><span>{props.showTitle}</span></h3>
+        <div className="resident-show-display-description">
+          <p><span>{props.showDescription}</span></p>
+        </div>
       </div>
 
     </React.Fragment>
