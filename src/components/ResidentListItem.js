@@ -11,17 +11,16 @@ const ResidentListItem = (props) => {
 
   return (
     <React.Fragment>
+      <Link to={renderShowPageUrl()}>
       <div className="resident-list-item">
         <div className="resident-list-item-image">
-          <Link to={renderShowPageUrl()}>
+  
             <img src={props.thumbnailImage} alt="show"></img>
-          </Link>
+          
         </div>
         <h4 className="resident-list-item-title">{props.showTitle}</h4>
       </div>
-
-
-
+      </Link>
     </React.Fragment>
   )
 

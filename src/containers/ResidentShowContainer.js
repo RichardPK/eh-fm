@@ -46,6 +46,10 @@ class ResidentShowContainer extends Component {
         showDescription = {show.data.show_description}
         showImage = {show.data.show_image.fullscreen.url}
         showId = {show.uid}
+        facebook = {show.data.socials[0].facebook}
+        twitter = {show.data.socials[0].twitter}
+        instagram = {show.data.socials[0].instagram}
+        showTime = {show.data.show_time}
       />
     }
     return <p>Loading...</p>;
