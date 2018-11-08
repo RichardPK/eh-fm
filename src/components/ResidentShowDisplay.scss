@@ -49,8 +49,9 @@ $spanbg: rgba(72, 67, 73, 0.8);
         }
     }
     .resident-show-socials {
-        display: flex; //   flex-direction: row;
+        display: inline-block; //   flex-direction: row;
         background-color: $spanbg;
+        position: relative;
         img {
             height: 18px;
             width: 18px;
@@ -62,7 +63,14 @@ $spanbg: rgba(72, 67, 73, 0.8);
     }
 
     .resident-show-time {
-        background-color: $spanbg;
-        color: white;
+
+        // background-color: $spanbg;
+
+        span {
+            background-color: $spanbg;
+            padding: 4px;
+            line-height: 56px;
+            color: white;
+        }
     }
 }

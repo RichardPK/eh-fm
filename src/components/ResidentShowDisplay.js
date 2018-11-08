@@ -40,8 +40,14 @@ const ResidentShowDisplay = props => {
   }
 
   function renderShowTime() {
+
     if (props.showTime) {
-      return <span>{props.showTime}</span>
+
+      return (
+        <div className="resident-show-time">
+          <span>{props.showTime}</span>
+        </div>
+      )
     }
   }
 
@@ -54,6 +60,7 @@ const ResidentShowDisplay = props => {
       <h3>
         <span>{props.showTitle}</span>
       </h3>
+          {renderShowTime()}
       <div className="resident-show-display-description">
         <p>
           <span>{props.showDescription}</span>
@@ -65,9 +72,7 @@ const ResidentShowDisplay = props => {
           {renderTwitter()}
           {renderInstagram()}
         </div>
-        <div className="resident-show-time">
-          {renderShowTime()}
-        </div>
+        
       </div>
     </div>
   </React.Fragment>;
