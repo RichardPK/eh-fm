@@ -27,13 +27,13 @@ $spanbg: rgba(72, 67, 73, 0.8);
         margin-bottom: 40px;
     }
     .resident-show-display-description {
-        width: 30vw;
+        width: 40vw;
     }
     h3 {
         font-size: 4.5em;
         letter-spacing: 2px;
         margin-bottom: 0px;
-        margin-top: 60px;
+        margin-top: 20px;
         font-weight: normal;
         color: white;
         span {
@@ -52,19 +52,25 @@ $spanbg: rgba(72, 67, 73, 0.8);
             display: block;
         }
     }
-    .resident-show-socials {
-        display: inline-block; //   flex-direction: row;
-        background-color: $spanbg;
-        position: relative;
-        img {
-            height: 18px;
-            width: 18px;
-        }
-        .social-icon {
-            //   margin: 5px 5px 5px 5px;
-            padding: 5px;
+    .resident-show-footer{
+        bottom: 20px;
+        position: fixed;
+        display: flex;
+        .resident-show-socials {
+            display: flex;
+            background-color: $spanbg;
+            position: relative;
+            img {
+                height: 18px;
+                width: 18px;
+            }
+            .social-icon {
+                //   margin: 5px 5px 5px 5px;
+                padding: 4.5px 5px 2.5px 5px;
+            }
         }
     }
+    
 
     .resident-show-time {
         // background-color: $spanbg;
@@ -76,7 +82,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
             color: white;
             border-bottom: 4px solid white;
             font-weight: 200;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.04em;
         }
     }
     // .resident-show-divider{
