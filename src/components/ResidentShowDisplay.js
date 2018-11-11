@@ -1,13 +1,17 @@
-import React from "react";
+import React, {Component} from "react";
 import "./ResidentShowDisplay.scss";
 
-const ResidentShowDisplay = props => {
+class ResidentShowDisplay extends Component {
+  constructor(props){
+    super(props);
+    this.timeSpan = React.createRef();
+  }
 
-  function renderFacebook() {
-    if (props.facebook) {
+  renderFacebook() {
+    if (this.props.facebook) {
       return (
         <div className="social-icon">
-          <a href={props.facebook} target="blank">
+          <a href={this.props.facebook} target="blank">
             <img src="/facebook-white.png" alt="facebook page" />
           </a>
         </div>
@@ -15,11 +19,11 @@ const ResidentShowDisplay = props => {
     }
   }
 
-  function renderTwitter() {
-    if (props.twitter) {
+  renderTwitter() {
+    if (this.props.twitter) {
       return (
         <div className="social-icon">
-          <a href={props.twitter} target="blank">
+          <a href={this.props.twitter} target="blank">
             <img src="/twitter-white.png" alt="twitter profile" />
           </a>
         </div>
@@ -27,11 +31,11 @@ const ResidentShowDisplay = props => {
     }
   }
 
-  function renderInstagram() {
-    if (props.instagram) {
+  renderInstagram() {
+    if (this.props.instagram) {
       return (
         <div className="social-icon">
-          <a href={props.instagram} target="blank">
+          <a href={this.props.instagram} target="blank">
             <img src="/instagram-white.png" alt="instagram profile" />
           </a>
         </div>
@@ -39,43 +43,63 @@ const ResidentShowDisplay = props => {
     }
   }
 
-  function renderShowTime() {
+  renderShowTime() {
 
-    if (props.showTime) {
+    if (this.props.showTime) {
 
       return (
-        <div className="resident-show-time">
-          <span>{props.showTime}</span>
+        <div className="resident-show-time" >
+          <span ref={this.timeSpan}>{this.props.showTime}</span>
         </div>
       )
     }
   }
 
-  return <React.Fragment>
-    <div className="resident-show-bg-img" style={{ backgroundImage: `url(${props.showImage})` }} />
-    {/* <img src={props.showImage} alt={props.showTitle} /> */}
-    {/* </div> */}
+  // calculateDividerWidth() {
+  //   if (this.timeSpan.current) {
+  //     return this.timeSpan.current.offsetWidth
+  //   }
+  // }
 
-    <div className="resident-show-display-container">
-      <h3>
-        <span>{props.showTitle}</span>
-      </h3>
-          {renderShowTime()}
-      <div className="resident-show-display-description">
-        <p>
-          <span>{props.showDescription}</span>
-        </p>
-      </div>
-      <div className="resident-show-footer">
-        <div className="resident-show-socials">
-          {renderFacebook()}
-          {renderTwitter()}
-          {renderInstagram()}
+  render() {
+    return (
+      <React.Fragment>
+        <div className="resident-show-bg-img" style={{ backgroundImage: `url(${this.props.showImage})` }} />
+        {/* <img src={this.props.showImage} alt={this.props.showTitle} /> */}
+        {/* </div> */}
+
+        <div className="resident-show-display-container">
+
+          <div className="resident-show-title-container">
+
+            <h3>
+              <span>{this.props.showTitle}</span>
+            </h3>
+            {this.renderShowTime()}
+
+            {/* <div className="resident-show-divider" style={{ "width": this.calculateDividerWidth() }} /> */}
+          </div>
+
+
+          <div className="resident-show-display-description">
+
+
+            <p>
+              <span>{this.props.showDescription}</span>
+            </p>
+          </div>
+          <div className="resident-show-footer">
+            <div className="resident-show-socials">
+              {this.renderFacebook()}
+              {this.renderTwitter()}
+              {this.renderInstagram()}
+            </div>
+
+          </div>
         </div>
-        
-      </div>
-    </div>
-  </React.Fragment>;
-};
+      </React.Fragment >
+    )
+  }
+}
 
 export default ResidentShowDisplay;
