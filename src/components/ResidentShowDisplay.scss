@@ -23,7 +23,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    .resident-show-title-container{
+    .resident-show-title-container {
         margin-bottom: 40px;
     }
     .resident-show-display-description {
@@ -35,11 +35,11 @@ $spanbg: rgba(72, 67, 73, 0.8);
         margin-bottom: 0px;
         margin-top: 20px;
         font-weight: normal;
-        color: white;
+        color: white; // line-height: 92px;
         span {
             background-color: $spanbg;
             padding: 4px;
-            line-height: 56px;
+            line-height: 92px;
         }
     }
     p {
@@ -52,7 +52,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
             display: block;
         }
     }
-    .resident-show-footer{
+    .resident-show-footer {
         bottom: 20px;
         position: fixed;
         display: flex;
@@ -70,23 +70,83 @@ $spanbg: rgba(72, 67, 73, 0.8);
             }
         }
     }
-    
-
     .resident-show-time {
         // background-color: $spanbg;
-
         span {
             background-color: $spanbg;
             padding: 4px;
-            line-height: 32px;
+            line-height: 27px;
             color: white;
             border-bottom: 4px solid white;
             font-weight: 200;
             letter-spacing: 0.04em;
         }
-    }
-    // .resident-show-divider{
+    } // .resident-show-divider{
     //     height: 2px;
     //     background-color: white;
     // }
+}
+
+@media only screen and (max-width: 768px) {
+    .resident-show-display-container {
+        h3 {
+            font-size: 3.5em;
+            span {
+                line-height: 73px;
+            }
+        }
+        .resident-show-display-description {
+            width: 50vw;
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .resident-show-display-container {
+        h3 {
+            font-size: 3em;
+            span {
+                line-height: 64px;
+            }
+        }
+        .resident-show-display-description {
+            width: 70vw;
+            p {
+                margin-right: 0%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .resident-show-display-container {
+        h3 {
+            font-size: 3em;
+            span {
+                line-height: 64px;
+            }
+        }
+        .resident-show-display-description {
+            width: 80vw;
+            font-size: 14px;
+        }
+        .resident-show-time {
+            font-size: 14px;
+            span {
+            line-height: 26px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .resident-show-display-container {
+        h3 {
+            font-size: 3em;
+            span {
+            }
+        }
+        .resident-show-display-description {
+        }
+    }
 }
