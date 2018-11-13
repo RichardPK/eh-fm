@@ -115,5 +115,14 @@
 @media only screen and (max-width: 425px) {
   .nav-container{
     top: 76px;
+    .nav-link{
+      font-size: 12px;
+    }
+    .nav-link-active{
+      font-size: 12px;
+    }
+    .right {
+      padding-right: 10px;
+    }
   }
 }

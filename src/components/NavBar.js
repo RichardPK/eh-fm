@@ -25,7 +25,7 @@ const NavBar = (props) => {
             {/* <a href="/home"><img className="nav-logo" src="eh-fm-cutout-navbar.png" alt="eh-fm logo"></img></a> */}
             {/* <p className="nav-link">INFO</p> */}
             <p className={renderActiveLink()}><Link to={residentsURL}>Residents</Link></p>
-            <p className="nav-link"><a href="https://www.mixcloud.com/ehfm/" target="blank">Past Shows</a></p>
+            <p className="nav-link right"><a href="https://www.mixcloud.com/ehfm/" target="blank">Past Shows</a></p>
           </div>
           {/* <div className="nav-middle"> */}
 

@@ -41,7 +41,8 @@ class ResidentShowContainer extends Component {
   renderShowDetail(){
     if (this.state.selectedShow) {
       let show = this.state.selectedShow;
-      return <ResidentShowDisplay
+      return (
+      <ResidentShowDisplay
         showTitle = {show.data.show_title}
         showDescription = {show.data.show_description}
         showImage = {show.data.show_image.fullscreen.url}
@@ -51,6 +52,7 @@ class ResidentShowContainer extends Component {
         instagram = {show.data.socials[0].instagram}
         showTime = {show.data.show_time}
       />
+      )
     }
     return <p>Loading...</p>;
   }
