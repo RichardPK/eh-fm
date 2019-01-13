@@ -7,6 +7,8 @@ import ResidentsContainer from './ResidentsContainer';
 import ResidentShowContainer from './ResidentShowContainer';
 import './MainContainer.css'
 import _ from 'lodash';
+import axios from 'axios';
+
 
 class Main extends Component {
   constructor(props){
@@ -68,7 +70,7 @@ class Main extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.currentShowApiCall();
     this.handleHourCallTimer();
   }
