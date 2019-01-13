@@ -1,19 +1,22 @@
 import React, {Component} from "react";
+import axios from 'axios';
 import "./ResidentShowDisplay.scss";
+import renderHTML from 'react-render-html'
 
 class ResidentShowDisplay extends Component {
   constructor(props){
     super(props);
     this.state = {
-      selectedMixcloudShow: null
+      mixCloudWidget: null
     }
     this.timeSpan = React.createRef();
     this.renderFacebook = this.renderFacebook.bind(this);
     this.renderTwitter = this.renderTwitter.bind(this);
     this.renderInstagram = this.renderInstagram.bind(this);
     this.renderShowTime = this.renderShowTime.bind(this);
-    this.renderMixCloud = this.renderMixCloud.bind(this);
+    this.renderPastShows = this.renderPastShows.bind(this);
     this.renderDate = this.renderDate.bind(this);
+    this.renderShowName = this.renderShowName.bind(this);
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
   }
 
@@ -65,24 +68,41 @@ class ResidentShowDisplay extends Component {
     }
   }
 
-  renderMixCloud() {
+  renderPastShows() {
 
     if (this.props.pastShows) {
 
       let showDisplay = this.props.pastShows.map(show => {
+
+        let tags = show.tags.map(tag => {
+          return(
+            <div className="resident-mixcloud-individual-tag"
+            key={tag.url}>
+            <span>{tag.name}</span>
+            </div>
+          )
+        })
+
         return (
         <div
           className="resident-pastshow-card"
-          onClick={this.handleMixCloudClick}
+          onClick={e => this.handleMixCloudClick(show)}
           key={this.props.pastShows.indexOf(show)}>
-          <span className="resident-mixcloud-showname">{show.name}</span>
+          <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
           <span className="resident-mixcloud-date">{this.renderDate(show.created_time)}</span>
+          <div className="resident-mixcloud-tags-container">{tags}</div>
+          
         </div>)
       })
 
       return showDisplay;
 
     }
+  }
+
+  renderShowName(showName){
+    let name = showName.split("-")[0].trim();
+    return name;
   }
 
   renderDate(date){
@@ -97,15 +117,24 @@ class ResidentShowDisplay extends Component {
     return finalDate;
   }
 
-  handleMixCloudClick() {
-    console.log("clicked");
+  handleMixCloudClick(show) {
+    let url = `https://api.mixcloud.com${show.key}embed-json/`;
+    axios.get(url)
+    .then(res => {
+      this.setState({mixCloudWidget: res.data.html});
+    })
   }
 
-  // calculateDividerWidth() {
-  //   if (this.timeSpan.current) {
-  //     return this.timeSpan.current.offsetWidth
-  //   }
-  // }
+  renderMixCloudPlayer() {
+
+    if (this.state.mixCloudWidget) {
+      return (
+        <div className="resident-mixcloud-widget">
+          {renderHTML(this.state.mixCloudWidget)}
+        </div>
+      )
+    }
+  }
 
   render() {
     return (
@@ -136,7 +165,7 @@ class ResidentShowDisplay extends Component {
             </div>
 
           <div className="resident-show-pastshows-container">
-            {this.renderMixCloud()}
+            {this.renderPastShows()}
           </div>
         
           <div className="resident-show-footer">
@@ -147,6 +176,7 @@ class ResidentShowDisplay extends Component {
             </div>
 
           </div>
+          {this.renderMixCloudPlayer()}
         </div>
       </React.Fragment >
     )
