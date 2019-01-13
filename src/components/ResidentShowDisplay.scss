@@ -87,6 +87,16 @@ $spanbg: rgba(72, 67, 73, 0.8);
     // }
 }
 
+.resident-show-pastshows-container{
+    display: flex;
+    flex-wrap: wrap;
+    .resident-pastshow-card{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .resident-show-display-container {
         h3 {

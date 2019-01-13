@@ -27,17 +27,20 @@ class ResidentShowContainer extends Component {
     console.log("Finding selected show");
   }
 
-  mixCloudAPICall(){
-    let playlist_url = this.state.selectedShow.data.mixcloud_playlist_url;
-    // https://www.mixcloud.com/ehfm/playlists/lunch/
-    let wwwCutPoint = playlist_url.indexOf(".") + 1;
-    let modifiedUrl = playlist_url.slice(wwwCutPoint);
+  mixCloudAPICall() {
+    if (this.state.selectedShow.data.mixcloud_playlist_url) {
+      let playlist_url = this.state.selectedShow.data.mixcloud_playlist_url;
+      // https://www.mixcloud.com/ehfm/playlists/lunch/
 
-    axios.get(`https://api.${modifiedUrl}cloudcasts/`)
-      .then(res => {
-        let shows = res.data.data;
-        this.setState({ pastShows: shows });
-      })
+      let wwwCutPoint = playlist_url.indexOf(".") + 1;
+      let modifiedUrl = playlist_url.slice(wwwCutPoint);
+
+      axios.get(`https://api.${modifiedUrl}cloudcasts/`)
+        .then(res => {
+          let shows = res.data.data;
+          this.setState({ pastShows: shows });
+        })
+    }
   }
 
   componentDidMount(){

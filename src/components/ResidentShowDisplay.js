@@ -4,7 +4,17 @@ import "./ResidentShowDisplay.scss";
 class ResidentShowDisplay extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      selectedMixcloudShow: null
+    }
     this.timeSpan = React.createRef();
+    this.renderFacebook = this.renderFacebook.bind(this);
+    this.renderTwitter = this.renderTwitter.bind(this);
+    this.renderInstagram = this.renderInstagram.bind(this);
+    this.renderShowTime = this.renderShowTime.bind(this);
+    this.renderMixCloud = this.renderMixCloud.bind(this);
+    this.renderDate = this.renderDate.bind(this);
+    this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
   }
 
   renderFacebook() {
@@ -55,6 +65,42 @@ class ResidentShowDisplay extends Component {
     }
   }
 
+  renderMixCloud() {
+
+    if (this.props.pastShows) {
+
+      let showDisplay = this.props.pastShows.map(show => {
+        return (
+        <div
+          className="resident-pastshow-card"
+          onClick={this.handleMixCloudClick}
+          key={this.props.pastShows.indexOf(show)}>
+          <span className="resident-mixcloud-showname">{show.name}</span>
+          <span className="resident-mixcloud-date">{this.renderDate(show.created_time)}</span>
+        </div>)
+      })
+
+      return showDisplay;
+
+    }
+  }
+
+  renderDate(date){
+    let cutDate = date.slice(2, 10);
+    let splitDate = cutDate.split("-");
+
+    let year = splitDate[0];
+    let month = splitDate[1];
+    let day = splitDate[2];
+
+    let finalDate = `${day}.${month}.${year}`
+    return finalDate;
+  }
+
+  handleMixCloudClick() {
+    console.log("clicked");
+  }
+
   // calculateDividerWidth() {
   //   if (this.timeSpan.current) {
   //     return this.timeSpan.current.offsetWidth
@@ -87,7 +133,12 @@ class ResidentShowDisplay extends Component {
             <p>
               <span>{this.props.showDescription}</span>
             </p>
+            </div>
+
+          <div className="resident-show-pastshows-container">
+            {this.renderMixCloud()}
           </div>
+        
           <div className="resident-show-footer">
             <div className="resident-show-socials">
               {this.renderFacebook()}
