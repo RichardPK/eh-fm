@@ -1,6 +1,6 @@
 import React from 'react';
-import CurrentShowDetail from '../components/CurrentShowDetail';
-import Schedule from '../components/Schedule';
+import CurrentShow from '../../components/CurrentShow/CurrentShow';
+import Schedule from '../../components/Schedule/Schedule';
 
 const HomeContainer = (props) => {
 
@@ -9,7 +9,7 @@ const HomeContainer = (props) => {
 
       <div className="body-container">
 
-        <CurrentShowDetail
+        <CurrentShow
           currentShow={props.currentShow}
           playing={props.playing}
           handlePlayPauseClicked = {props.handlePlayPauseClicked}

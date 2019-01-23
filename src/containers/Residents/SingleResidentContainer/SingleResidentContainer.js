@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Prismic from 'prismic-javascript';
-import './ResidentShowContainer.css';
-import ResidentShowDisplay from '../components/ResidentShowDisplay';
+import ResidentShowDisplay from './SingleResidentComponent/SingleResidentComponent';
 import axios from 'axios';
 
 class ResidentShowContainer extends Component {

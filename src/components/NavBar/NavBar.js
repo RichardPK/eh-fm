@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './NavBar.scss';
-import LogoHead from './LogoHead';
-import './LogoHead.css';
+import Logo from './Logo/Logo';
+import './Logo/Logo.scss';
 
 const NavBar = (props) => {
 
@@ -30,7 +30,7 @@ const NavBar = (props) => {
           {/* <div className="nav-middle"> */}
 
           <div className="logo-head-container">
-            <LogoHead/>
+            <Logo/>
           </div>
           {/* </div> */}
           <div className="nav-right">

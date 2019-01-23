@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Route, Switch } from "react-router-dom";
 // import ReactDOM from 'react-dom';
-import HeaderContainer from './HeaderContainer';
-import HomeContainer from './HomeContainer';
-import ResidentsContainer from './ResidentsContainer';
-import ResidentShowContainer from './ResidentShowContainer';
-import './MainContainer.css'
+import Header from '../Header/Header';
+import Home from '../Home/Home';
+import ResidentsContainer from '../Residents/Residents';
+import ResidentShowContainer from '../Residents/SingleResidentContainer/SingleResidentContainer';
+import './Main.scss'
 import _ from 'lodash';
-import axios from 'axios';
 
 
 class Main extends Component {
@@ -252,7 +251,7 @@ class Main extends Component {
     }
 
     renderHomePage() {
-      return <HomeContainer
+      return <Home
         currentShow={this.state.currentShow}
         playing={this.state.playing}
         handlePlayPauseClicked = {this.handlePlayPauseClicked}
@@ -273,7 +272,7 @@ class Main extends Component {
 
 
 
-          <HeaderContainer
+          <Header
             currentShow={this.state.currentShow}
             playing={this.state.playing}
             volume={this.state.volume}

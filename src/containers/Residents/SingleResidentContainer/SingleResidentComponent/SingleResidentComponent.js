@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from 'axios';
-import "./ResidentShowDisplay.scss";
+import "./SingleResidentComponent.scss";
 import renderHTML from 'react-render-html'
 
 class ResidentShowDisplay extends Component {
@@ -89,7 +89,7 @@ class ResidentShowDisplay extends Component {
           onClick={e => this.handleMixCloudClick(show)}
           key={this.props.pastShows.indexOf(show)}>
           <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
-          <span className="resident-mixcloud-date">{this.renderDate(show.created_time)}</span>
+          <span className="resident-mixcloud-date">{this.renderDate(show.name)}</span>
           <div className="resident-mixcloud-tags-container">{tags}</div>
           
         </div>)
@@ -105,16 +105,17 @@ class ResidentShowDisplay extends Component {
     return name;
   }
 
-  renderDate(date){
-    let cutDate = date.slice(2, 10);
-    let splitDate = cutDate.split("-");
+  renderDate(showName){
+    let date = showName.split("-")[1].trim();
+    // let cutDate = date.slice(2, 10);
+    // let splitDate = cutDate.split("-");
 
-    let year = splitDate[0];
-    let month = splitDate[1];
-    let day = splitDate[2];
+    // let year = splitDate[0];
+    // let month = splitDate[1];
+    // let day = splitDate[2];
 
-    let finalDate = `${day}.${month}.${year}`
-    return finalDate;
+    // let finalDate = `${day}.${month}.${year}`
+    return date;
   }
 
   handleMixCloudClick(show) {

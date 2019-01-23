@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Schedule.css';
+import './Schedule.scss';
 
 class Schedule extends Component {
   constructor(props){

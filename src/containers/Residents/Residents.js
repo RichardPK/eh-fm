@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Prismic from 'prismic-javascript';
-import './ResidentsContainer.css';
-import ResidentListItem from '../components/ResidentListItem';
+import './Residents.scss';
+import ResidentListItem from './ResidentsListItem/ResidentListItem';
 
 class ResidentsContainer extends Component {
   constructor(props){

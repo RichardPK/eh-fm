@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Playbutton from './Playbutton'
-import Volumebutton from './Volumebutton'
+import Playbutton from './Playbutton/Playbutton'
+import Volumebutton from './Volumebutton/Volumebutton'
 import './Player.scss';
 
 class Player extends Component {

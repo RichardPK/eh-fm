@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './CurrentShowDetail.scss';
-import Playbutton from './Playbutton';
+import './CurrentShow.scss';
+import Playbutton from '../Player/Playbutton/Playbutton';
 
 class CurrentShowDetail extends Component {
   constructor(props){

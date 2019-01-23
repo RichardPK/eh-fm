@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import './LogoHead.css'
+import './Logo.scss'
 
 const LogoHead = (props) => {
 

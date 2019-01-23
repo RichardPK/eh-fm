@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
-import MainContainer from './containers/MainContainer';
+import MainContainer from './containers/Main/Main';
 import './styleguide.scss'
 
 class App extends Component {

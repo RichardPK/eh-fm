@@ -1,6 +1,6 @@
 import React from 'react';
-import Player from '../components/Player';
-import NavBar from '../components/NavBar';
+import Player from '../../components/Player/Player';
+import NavBar from '../../components/NavBar/NavBar';
 
 const HeaderContainer = (props) => {
 
