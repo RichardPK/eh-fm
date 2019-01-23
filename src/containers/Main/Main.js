@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 // import ReactDOM from 'react-dom';
 import Header from '../Header/Header';
 import Home from '../Home/Home';
@@ -295,4 +296,12 @@ class Main extends Component {
 
   }
 
+  const mapStateToProps = state => {
+    return { playing: state.playing };
+  };
+
+  const Index = connect(
+    mapStateToProps
+  )(Main);
+  
   export default Main;
