@@ -89,7 +89,6 @@ $spanbg: rgba(72, 67, 73, 0.8);
 }
 
 .resident-show-pastshows-container {
-    border-top: 2px solid $ehfmcolor;
     position: absolute;
     top: 90vh;
     color: $notquiteblack;
@@ -101,10 +100,12 @@ $spanbg: rgba(72, 67, 73, 0.8);
         display: flex;
         flex-wrap: wrap;
         .resident-pastshow-card {
-            margin: 5px;
+            border-top: 2px solid $altblue;
+            margin: 20px;
             color: $notquiteblack;
             width: 300px;
-            padding: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
             display: flex;
             flex-direction: column;
             border-radius: 2px;
