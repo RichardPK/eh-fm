@@ -1,9 +1,10 @@
 $spanbg: rgba(72, 67, 73, 0.8);
+@import "../../../../styleguide.scss";
 .resident-show-bg-img {
     background-position: center center !important;
     background-size: cover !important; // background: url(https://ehfm.cdn.prismic.io/ehfm/f91db8d…_ambar-simpang-1107678-unsplash.jpg);
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     display: flex; // justify-content: center;
     // align-items: center;
     overflow: hidden;
@@ -53,7 +54,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
         }
     }
     .resident-show-footer {
-        bottom: 20px;
+        bottom: 110px;
         position: fixed;
         display: flex;
         .resident-show-socials {
@@ -87,15 +88,50 @@ $spanbg: rgba(72, 67, 73, 0.8);
     // }
 }
 
-.resident-show-pastshows-container{
-    color: white;
-    display: flex;
-    flex-wrap: wrap;
-    .resident-pastshow-card{
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
+.resident-show-pastshows-container {
+    border-top: 2px solid $ehfmcolor;
+    position: absolute;
+    top: 90vh;
+    color: $notquiteblack;
+    h1 {
+        font-size: $title;
+        color: $notquiteblack;
     }
+    .cards-container{
+        display: flex;
+        flex-wrap: wrap;
+        .resident-pastshow-card {
+            margin: 5px;
+            color: $notquiteblack;
+            width: 300px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 2px;
+            .showname-date{
+                display: flex;
+                align-items: baseline;
+            }
+            .resident-mixcloud-showname {
+                font-weight: bold;
+                font-size: $largerfont;
+            }
+            .resident-mixcloud-date {
+                font-size: $smallfont;
+                margin-left: 10px;
+            }
+            .resident-mixcloud-tags-container {
+                display: flex;
+                font-size: $tinyfont;
+                color: $ehfmcolor;
+                .mixcloud-tag {
+                    margin: 1px;
+                    padding: 4px;
+                    background-color: $softestwhite;
+                }
+            }
+        }
+    } 
 }
 
 @media only screen and (max-width: 768px) {
@@ -144,7 +180,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
         .resident-show-time {
             font-size: 14px;
             span {
-            line-height: 26px;
+                line-height: 26px;
             }
         }
     }
@@ -154,10 +190,8 @@ $spanbg: rgba(72, 67, 73, 0.8);
     .resident-show-display-container {
         h3 {
             font-size: 3em;
-            span {
-            }
+            span {}
         }
-        .resident-show-display-description {
-        }
+        .resident-show-display-description {}
     }
 }

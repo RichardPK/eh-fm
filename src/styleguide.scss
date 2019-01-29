@@ -2,6 +2,7 @@ $main-button-size: 0.8em;
 $main-button-half-size: $main-button-size / 1.7;
 $playerwhite: rgb(255, 255, 255);
 $softwhite: rgba(255, 255, 255, 0.8);
+$softestwhite: rgba(255, 255, 255, 0.4);
 $ehfmcolor: rgb(0, 145, 138);
 $altblue: rgb(3, 181, 170);
 $altblue-80transparent: rgba(3, 181, 170, 0.8);
@@ -10,3 +11,12 @@ $highlightyellow: rgb(255, 253, 130);
 $bgwhite: rgb(247, 240, 240);
 $notquiteblack: rgb(72, 67, 73);
 $notquiteblack-80transparent: rgba(72, 67, 73, 0.8);
+
+
+// Font sizes
+$tinyfont: 0.8em;
+$smallfont: 0.9em;
+$bodyfont: 1.0em;
+$largerfont: 1.3em;
+$title: 2em;
+$header: 4.5em;

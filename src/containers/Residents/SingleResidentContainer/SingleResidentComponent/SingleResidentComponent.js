@@ -76,7 +76,7 @@ class ResidentShowDisplay extends Component {
 
         let tags = show.tags.map(tag => {
           return(
-            <div className="resident-mixcloud-individual-tag"
+            <div className="mixcloud-tag"
             key={tag.url}>
             <span>{tag.name}</span>
             </div>
@@ -88,14 +88,22 @@ class ResidentShowDisplay extends Component {
           className="resident-pastshow-card"
           onClick={e => this.handleMixCloudClick(show)}
           key={this.props.pastShows.indexOf(show)}>
+          <div className="showname-date">
           <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
           <span className="resident-mixcloud-date">{this.renderDate(show.name)}</span>
+          </div>
           <div className="resident-mixcloud-tags-container">{tags}</div>
-          
         </div>)
       })
 
-      return showDisplay;
+      return (
+        <div className="resident-show-pastshows-container">
+          <h1>Past shows</h1>
+          <div className="cards-container">
+            {showDisplay}
+        </div>
+        </div>
+      )
 
     }
   }
@@ -165,9 +173,7 @@ class ResidentShowDisplay extends Component {
             </p>
             </div>
 
-          <div className="resident-show-pastshows-container">
-            {this.renderPastShows()}
-          </div>
+      
         
           <div className="resident-show-footer">
             <div className="resident-show-socials">
@@ -175,8 +181,10 @@ class ResidentShowDisplay extends Component {
               {this.renderTwitter()}
               {this.renderInstagram()}
             </div>
-
           </div>
+
+            {this.renderPastShows()}
+          
           {this.renderMixCloudPlayer()}
         </div>
       </React.Fragment >
