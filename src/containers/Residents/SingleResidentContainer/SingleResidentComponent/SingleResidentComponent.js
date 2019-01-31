@@ -88,17 +88,20 @@ class ResidentShowDisplay extends Component {
           className="resident-pastshow-card"
           onClick={e => this.handleMixCloudClick(show)}
           key={this.props.pastShows.indexOf(show)}>
-          <div className="showname-date">
-          <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
+          {/* <div className="show-img"
+          style={{ backgroundImage: `url(${show.pictures.large})` }}>
+          </div> */}
+          <div className="showname-info-cont">
           <span className="resident-mixcloud-date">{this.renderDate(show.name)}</span>
-          </div>
+          <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
           <div className="resident-mixcloud-tags-container">{tags}</div>
+          </div>
         </div>)
       })
 
       return (
         <div className="resident-show-pastshows-container">
-          <h1>Past shows</h1>
+          <h1>Archive</h1>
           <div className="cards-container">
             {showDisplay}
         </div>
@@ -115,14 +118,6 @@ class ResidentShowDisplay extends Component {
 
   renderDate(showName){
     let date = showName.split("-")[1].trim();
-    // let cutDate = date.slice(2, 10);
-    // let splitDate = cutDate.split("-");
-
-    // let year = splitDate[0];
-    // let month = splitDate[1];
-    // let day = splitDate[2];
-
-    // let finalDate = `${day}.${month}.${year}`
     return date;
   }
 
@@ -148,9 +143,9 @@ class ResidentShowDisplay extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="resident-show-bg-img" style={{ backgroundImage: `url(${this.props.showImage})` }} />
-        {/* <img src={this.props.showImage} alt={this.props.showTitle} /> */}
-        {/* </div> */}
+        <div className="resident-show-bg-img" 
+        style={{ backgroundImage: `url(${this.props.showImage})` }} 
+        />
 
         <div className="resident-show-display-container">
 
