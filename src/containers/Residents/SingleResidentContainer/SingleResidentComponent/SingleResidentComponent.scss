@@ -99,13 +99,14 @@ $spanbg: rgba(72, 67, 73, 0.8);
         color: $notquiteblack;
     }
     .cards-container{
-        flex-direction: column;
-        flex-wrap: nowrap;
+        display: flex;
+        // flex-direction: column;
+        flex-wrap: wrap;
         .resident-pastshow-card {
             border-bottom: 2px solid $altblue;
-            margin: 15px 10px;
+            margin: 20px 10px;
             color: $notquiteblack;
-            padding: 10px 10px 5px 10px;
+            padding: 10px 0px 5px 0px;
             display: flex;
             flex-direction: column;
             border-radius: 2px;
@@ -134,16 +135,52 @@ $spanbg: rgba(72, 67, 73, 0.8);
                 .mixcloud-tag {
                     margin: 1px;
                     padding: 4px;
-                    background-color: $softestwhite;
+                    background-color: $softwhite;
                 }
-            }
-            &:hover{
-                cursor: pointer;
-                background-color: $altblue-20transparent;
             }
         }
     } 
 }
+
+.mixcloud-cont {
+    position: fixed;
+    bottom: -3px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .close-player-btn{ 
+        margin-right: 10px;
+        text-align: center;
+        align-self: flex-end;
+        background-color: $altblue-60transparent;
+        font-size: $smallfont;
+        padding: 1px 6px 4px 7px;
+        color: $softwhite;
+    }
+    .resident-mixcloud-widget {
+     
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .close-player-btn{
+        &:hover{
+            cursor: pointer;
+            background-color: $softwhite;
+            color: $altblue-60transparent;
+            transition: background-color .2s, color .2s;
+        }
+    }
+
+
+    .resident-pastshow-card {
+        &:hover{
+            cursor: pointer;
+            background-color: $altblue-10transparent;
+            transition: background-color .2s;
+        }
+    }
+} 
 
 @media only screen and (max-width: 768px) {
     .resident-show-display-container {

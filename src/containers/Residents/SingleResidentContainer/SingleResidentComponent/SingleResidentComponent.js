@@ -133,8 +133,16 @@ class ResidentShowDisplay extends Component {
 
     if (this.state.mixCloudWidget) {
       return (
-        <div className="resident-mixcloud-widget">
-          {renderHTML(this.state.mixCloudWidget)}
+        <div className="mixcloud-cont">
+          <div className="close-player-btn"
+          onClick={() => {
+            this.setState({mixCloudWidget: null})
+          }}>
+            <span>x</span>
+          </div>
+          <div className="resident-mixcloud-widget">
+            {renderHTML(this.state.mixCloudWidget)}
+          </div>
         </div>
       )
     }
@@ -178,10 +186,10 @@ class ResidentShowDisplay extends Component {
             </div>
           </div>
 
-            {this.renderPastShows()}
-          
-          {this.renderMixCloudPlayer()}
+           
         </div>
+        {this.renderPastShows()}
+        {this.renderMixCloudPlayer()}
       </React.Fragment >
     )
   }
