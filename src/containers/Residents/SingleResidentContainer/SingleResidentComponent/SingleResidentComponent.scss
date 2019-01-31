@@ -103,13 +103,13 @@ $spanbg: rgba(72, 67, 73, 0.8);
     }
     .cards-container{
         display: flex;
-        // flex-direction: column;
-        flex-wrap: wrap;
+        flex-direction: column;
+        // flex-wrap: wrap;
         .resident-pastshow-card {
             border-bottom: 2px solid $altblue;
             margin: 20px 10px;
             color: $notquiteblack;
-            padding: 10px 0px 5px 0px;
+            padding: 10px 4px 5px 4px;
             display: flex;
             flex-direction: column;
             border-radius: 2px;
