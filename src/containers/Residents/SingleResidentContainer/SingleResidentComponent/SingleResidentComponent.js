@@ -18,6 +18,7 @@ class ResidentShowDisplay extends Component {
     this.renderDate = this.renderDate.bind(this);
     this.renderShowName = this.renderShowName.bind(this);
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
+    this.renderCardContainerMargin = this.renderCardContainerMargin.bind(this);
   }
 
   renderFacebook() {
@@ -102,12 +103,23 @@ class ResidentShowDisplay extends Component {
       return (
         <div className="resident-show-pastshows-container">
           <h1>Archive</h1>
-          <div className="cards-container">
+          <div className="cards-container"
+          style={this.renderCardContainerMargin()} >
             {showDisplay}
         </div>
         </div>
       )
 
+    }
+  }
+
+  renderCardContainerMargin(){
+    if(this.state.mixCloudWidget){
+      return({
+        marginBottom: '123px'
+      })
+    } else {
+      return null;
     }
   }
 
