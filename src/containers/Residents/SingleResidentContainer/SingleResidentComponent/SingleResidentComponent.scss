@@ -4,7 +4,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
     background-position: center center !important;
     background-size: cover !important; // background: url(https://ehfm.cdn.prismic.io/ehfm/f91db8d…_ambar-simpang-1107678-unsplash.jpg);
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     display: flex; // justify-content: center;
     // align-items: center;
     overflow: hidden;
@@ -93,7 +93,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
     margin-left: 40px;
     margin-right: 40px;
     position: absolute;
-    top: 90vh;
+    left: 50%;
     color: $notquiteblack;
     h1 {
         margin-bottom: 0px;
