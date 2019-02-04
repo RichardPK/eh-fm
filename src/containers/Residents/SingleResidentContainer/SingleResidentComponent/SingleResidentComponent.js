@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import "./SingleResidentComponent.scss";
-import renderHTML from 'react-render-html'
+import renderHTML from 'react-render-html';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/pro-regular-svg-icons';
+import { faChevronDown } from '@fortawesome/pro-regular-svg-icons'
 
 class ResidentShowDisplay extends Component {
   constructor(props) {
@@ -86,8 +89,10 @@ class ResidentShowDisplay extends Component {
           className="resident-show-pastshows-container"
           // style={{top: `${displayHeight}px`}}
           >
-          <div className="pastshows-button">
+          <div className="pastshows-button active">
             <h1 onClick={this.toggleArchiveclick}>Archive</h1>
+            <FontAwesomeIcon icon={faChevronDown} 
+            className="down"/>
             </div>
             <div className="cards-container"
               style={this.renderCardContainerMargin()} >
@@ -103,6 +108,7 @@ class ResidentShowDisplay extends Component {
           >
           <div className="pastshows-button">
             <h1 onClick={this.toggleArchiveclick}>Archive</h1>
+            <FontAwesomeIcon icon={faChevronRight} />
             </div>
           </div>
         )
