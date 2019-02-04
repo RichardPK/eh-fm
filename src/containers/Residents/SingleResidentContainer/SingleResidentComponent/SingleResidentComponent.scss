@@ -53,24 +53,18 @@ $spanbg: rgba(72, 67, 73, 0.8);
             display: block;
         }
     }
-    .resident-show-footer {
-        bottom: 110px;
-        position: fixed;
-        display: flex;
         .resident-show-socials {
             display: flex;
-            background-color: $spanbg;
-            position: relative;
             img {
                 height: 18px;
                 width: 18px;
             }
             .social-icon {
+                background-color: $spanbg;
                 //   margin: 5px 5px 5px 5px;
                 padding: 4.5px 5px 2.5px 5px;
             }
         }
-    }
     .resident-show-time {
         // background-color: $spanbg;
         span {
@@ -90,18 +84,28 @@ $spanbg: rgba(72, 67, 73, 0.8);
 
 .resident-show-pastshows-container {
     margin-top: 0px;
-    margin-left: 40px;
-    margin-right: 40px;
-    position: absolute;
-    left: 50%;
-    color: $notquiteblack;
-    h1 {
-        margin-bottom: 0px;
-        padding: 10px 15px;
-        font-size: $title;
-        color: $notquiteblack;
+    // position: absolute;
+    // left: 50%;
+
+    .pastshows-button{
+        background-color: $altblue;
+        position: absolute;
+        bottom: 40px;
+        h1 {
+            padding: 4px;
+            margin: 0px;
+            // padding: 10px 15px;
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: white;
+        }
     }
+    
+    
     .cards-container{
+        position: absolute;
+        top: 100vh;
         display: flex;
         flex-direction: column;
         // flex-wrap: wrap;
@@ -195,6 +199,9 @@ $spanbg: rgba(72, 67, 73, 0.8);
         }
         .resident-show-display-description {
             width: 50vw;
+            p {
+                margin-bottom: 10px;
+            }
         }
     }
 }

@@ -7,7 +7,8 @@ class ResidentShowDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mixCloudWidget: null
+      mixCloudWidget: null,
+      displayShows: false
     }
     this.timeSpan = React.createRef();
     this.showDescription = React.createRef();
@@ -16,6 +17,8 @@ class ResidentShowDisplay extends Component {
     this.renderInstagram = this.renderInstagram.bind(this);
     this.renderShowTime = this.renderShowTime.bind(this);
     this.renderPastShows = this.renderPastShows.bind(this);
+    this.mapPastShows = this.mapPastShows.bind(this);
+    this.toggleArchiveclick = this.toggleArchiveclick.bind(this);
     this.renderDate = this.renderDate.bind(this);
     this.renderShowName = this.renderShowName.bind(this);
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
@@ -74,46 +77,74 @@ class ResidentShowDisplay extends Component {
 
     if (this.props.pastShows) {
 
-      let displayHeight = this.showDescription.current.offsetTop;
-      debugger;
+      // let displayHeight = this.showDescription.current.offsetTop;
+      let showDisplay = this.mapPastShows();
 
-      let showDisplay = this.props.pastShows.map(show => {
-        let tags = show.tags.map(tag => {
-          return (
-            <div className="mixcloud-tag"
-              key={tag.url}>
-              <span>{tag.name}</span>
-            </div>
-          )
-        })
+      if (this.state.displayShows === true){
         return (
-          <div
-            className="resident-pastshow-card"
-            onClick={e => this.handleMixCloudClick(show)}
-            key={this.props.pastShows.indexOf(show)}>
-            {/* <div className="show-img"
-          style={{ backgroundImage: `url(${show.pictures.large})` }}>
-          </div> */}
-            <div className="showname-info-cont">
-              <span className="resident-mixcloud-date">{this.renderDate(show.name)}</span>
-              <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
-              <div className="resident-mixcloud-tags-container">{tags}</div>
+          <div 
+          className="resident-show-pastshows-container"
+          // style={{top: `${displayHeight}px`}}
+          >
+          <div className="pastshows-button">
+            <h1 onClick={this.toggleArchiveclick}>Archive</h1>
             </div>
-          </div>)
-      })
-
-      return (
-        <div 
-        className="resident-show-pastshows-container"
-        style={{top: `${displayHeight}px`}}>
-          <h1>Archive</h1>
-          <div className="cards-container"
-            style={this.renderCardContainerMargin()} >
-            {showDisplay}
+            <div className="cards-container"
+              style={this.renderCardContainerMargin()} >
+              {showDisplay}
+            </div>
           </div>
-        </div>
-      )
+        )
+      } else {
+        return (
+          <div 
+          className="resident-show-pastshows-container"
+          // style={{top: `${displayHeight}px`}}
+          >
+          <div className="pastshows-button">
+            <h1 onClick={this.toggleArchiveclick}>Archive</h1>
+            </div>
+          </div>
+        )
+      }
 
+    }
+  }
+
+  mapPastShows(){
+    let showDisplay = this.props.pastShows.map(show => {
+      let tags = show.tags.map(tag => {
+        return (
+          <div className="mixcloud-tag"
+            key={tag.url}>
+            <span>{tag.name}</span>
+          </div>
+        )
+      })
+      return (
+        <div
+          className="resident-pastshow-card"
+          onClick={e => this.handleMixCloudClick(show)}
+          key={this.props.pastShows.indexOf(show)}>
+          {/* <div className="show-img"
+        style={{ backgroundImage: `url(${show.pictures.large})` }}>
+        </div> */}
+          <div className="showname-info-cont">
+            <span className="resident-mixcloud-date">{this.renderDate(show.name)}</span>
+            <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
+            <div className="resident-mixcloud-tags-container">{tags}</div>
+          </div>
+        </div>)
+    })
+    return showDisplay
+  }
+
+  toggleArchiveclick(){   
+    if (this.state.displayShows === true){
+      this.setState({displayShows: false}
+      )
+    } else {
+      this.setState({displayShows: true})
     }
   }
 
@@ -193,19 +224,16 @@ class ResidentShowDisplay extends Component {
             </p>
           </div>
 
-
-
-          <div className="resident-show-footer">
             <div className="resident-show-socials">
               {this.renderFacebook()}
               {this.renderTwitter()}
               {this.renderInstagram()}
             </div>
-          </div>
 
-
+          {this.renderPastShows()}
+          
         </div>
-        {this.renderPastShows()}
+     
         {this.renderMixCloudPlayer()}
       </React.Fragment >
     )
