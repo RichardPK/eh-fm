@@ -80,7 +80,7 @@ class ResidentShowDisplay extends Component {
 
     if (this.props.pastShows) {
 
-      // let displayHeight = this.showDescription.current.offsetTop;
+      let displayHeight = this.showDescription.current.offsetTop;
       let showDisplay = this.mapPastShows();
 
       if (this.state.displayShows === true){
