@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/pro-regular-svg-icons';
 import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';
 import {faMixcloud} from '@fortawesome/fontawesome-free-brands';
+import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 class ResidentShowDisplay extends Component {
   constructor(props) {
@@ -98,8 +99,9 @@ class ResidentShowDisplay extends Component {
           {mostRecentShow} 
           </div>
 
-          <div className="pastshows-button active">
-            <h1 onClick={this.toggleArchiveclick}>Archive</h1>
+          <div className="pastshows-button active"
+          onClick={this.toggleArchiveclick}>
+            <h1>Archive</h1>
             <FontAwesomeIcon icon={faChevronDown} 
             className="down"/>
             </div>
@@ -121,8 +123,9 @@ class ResidentShowDisplay extends Component {
           {mostRecentShow}
           </div>
 
-          <div className="pastshows-button">
-            <h1 onClick={this.toggleArchiveclick}>Archive</h1>
+          <div className="pastshows-button"
+          onClick={this.toggleArchiveclick}>
+            <h1>Archive</h1>
             <FontAwesomeIcon icon={faChevronRight} />
             </div>
           </div>
@@ -182,10 +185,11 @@ class ResidentShowDisplay extends Component {
 
   toggleArchiveclick(){   
     if (this.state.displayShows === true){
-      this.setState({displayShows: false}
+      this.setState({displayShows: false}, 
       )
     } else {
-      this.setState({displayShows: true})
+      this.setState({displayShows: true},
+        scroll.scrollTo(200))
     }
   }
 
