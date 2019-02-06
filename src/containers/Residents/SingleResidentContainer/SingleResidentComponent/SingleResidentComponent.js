@@ -4,7 +4,8 @@ import "./SingleResidentComponent.scss";
 import renderHTML from 'react-render-html';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/pro-regular-svg-icons';
-import { faChevronDown } from '@fortawesome/pro-regular-svg-icons'
+import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';
+import {faMixcloud} from '@fortawesome/fontawesome-free-brands';
 
 class ResidentShowDisplay extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class ResidentShowDisplay extends Component {
     this.renderShowTime = this.renderShowTime.bind(this);
     this.renderPastShows = this.renderPastShows.bind(this);
     this.mapPastShows = this.mapPastShows.bind(this);
+    this.mapMostRecentShow = this.mapMostRecentShow.bind(this);
     this.toggleArchiveclick = this.toggleArchiveclick.bind(this);
     this.renderDate = this.renderDate.bind(this);
     this.renderShowName = this.renderShowName.bind(this);
@@ -82,7 +84,8 @@ class ResidentShowDisplay extends Component {
 
       let displayHeight = this.showDescription.current.offsetTop;
       let fullShowDisplay = this.mapPastShows();
-      let individualShow = fullShowDisplay[0];
+      // let individualShow = fullShowDisplay[0];
+      let mostRecentShow = this.mapMostRecentShow();
 
       if (this.state.displayShows === true){
         return (
@@ -91,8 +94,8 @@ class ResidentShowDisplay extends Component {
           // style={{top: `${displayHeight}px`}}
           >
           <div className="most-recent">
-          <h1>Listen back</h1>
-          {individualShow}
+          {/* <h1>Listen back</h1> */}
+          {mostRecentShow} 
           </div>
 
           <div className="pastshows-button active">
@@ -114,8 +117,8 @@ class ResidentShowDisplay extends Component {
           >
 
           <div className="most-recent">
-          <h1>Listen back</h1>
-          {individualShow}
+          {/* <h1>Listen back</h1> */}
+          {mostRecentShow}
           </div>
 
           <div className="pastshows-button">
@@ -155,6 +158,24 @@ class ResidentShowDisplay extends Component {
         </div>)
     })
     return showDisplay
+  }
+
+  mapMostRecentShow(){
+    let show = this.props.pastShows[0]
+      return (
+        <div
+          className="resident-pastshow-card"
+          onClick={e => this.handleMixCloudClick(show)}
+          key={this.props.pastShows.indexOf(show)}>
+        {/* <div className="play-button"/> */}
+        <FontAwesomeIcon icon={faMixcloud} 
+            className="faMixcloud"/>
+          <div className="showname-info-cont">
+            <span className="resident-mixcloud-date">{this.renderDate(show.name)}</span>
+            <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
+          </div>
+        </div>
+      )
   }
 
 
@@ -234,6 +255,12 @@ class ResidentShowDisplay extends Component {
             {/* <div className="resident-show-divider" style={{ "width": this.calculateDividerWidth() }} /> */}
           </div>
 
+          <div className="resident-show-socials">
+              {this.renderFacebook()}
+              {this.renderTwitter()}
+              {this.renderInstagram()}
+            </div>
+
 
           <div className="resident-show-display-description"
             ref={this.showDescription}>
@@ -243,12 +270,6 @@ class ResidentShowDisplay extends Component {
               <span>{this.props.showDescription}</span>
             </p>
           </div>
-
-            <div className="resident-show-socials">
-              {this.renderFacebook()}
-              {this.renderTwitter()}
-              {this.renderInstagram()}
-            </div>
 
           {this.renderPastShows()}
           
