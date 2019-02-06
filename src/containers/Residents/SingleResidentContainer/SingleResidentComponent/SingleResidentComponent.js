@@ -160,6 +160,7 @@ class ResidentShowDisplay extends Component {
           </div>
         </div>)
     })
+    showDisplay.splice(0, 1);
     return showDisplay
   }
 

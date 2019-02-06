@@ -36,7 +36,7 @@ class ResidentShowContainer extends Component {
 
       axios.get(`https://api.${modifiedUrl}cloudcasts/`)
         .then(res => {
-          let shows = res.data.data;
+          let shows = res.data.data.reverse();
           this.setState({ pastShows: shows });
         })
     }
