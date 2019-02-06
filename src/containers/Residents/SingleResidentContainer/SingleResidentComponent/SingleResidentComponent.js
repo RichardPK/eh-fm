@@ -81,7 +81,8 @@ class ResidentShowDisplay extends Component {
     if (this.props.pastShows) {
 
       let displayHeight = this.showDescription.current.offsetTop;
-      let showDisplay = this.mapPastShows();
+      let fullShowDisplay = this.mapPastShows();
+      let individualShow = fullShowDisplay[0];
 
       if (this.state.displayShows === true){
         return (
@@ -89,6 +90,11 @@ class ResidentShowDisplay extends Component {
           className="resident-show-pastshows-container"
           // style={{top: `${displayHeight}px`}}
           >
+          <div className="most-recent">
+          <h1>Listen back</h1>
+          {individualShow}
+          </div>
+
           <div className="pastshows-button active">
             <h1 onClick={this.toggleArchiveclick}>Archive</h1>
             <FontAwesomeIcon icon={faChevronDown} 
@@ -96,7 +102,7 @@ class ResidentShowDisplay extends Component {
             </div>
             <div className="cards-container"
               style={this.renderCardContainerMargin()} >
-              {showDisplay}
+              {fullShowDisplay}
             </div>
           </div>
         )
@@ -106,6 +112,12 @@ class ResidentShowDisplay extends Component {
           className="resident-show-pastshows-container"
           // style={{top: `${displayHeight}px`}}
           >
+
+          <div className="most-recent">
+          <h1>Listen back</h1>
+          {individualShow}
+          </div>
+
           <div className="pastshows-button">
             <h1 onClick={this.toggleArchiveclick}>Archive</h1>
             <FontAwesomeIcon icon={faChevronRight} />
@@ -144,6 +156,8 @@ class ResidentShowDisplay extends Component {
     })
     return showDisplay
   }
+
+
 
   toggleArchiveclick(){   
     if (this.state.displayShows === true){

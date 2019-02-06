@@ -87,6 +87,44 @@ $spanbg: rgba(72, 67, 73, 0.8);
     // position: absolute;
     // left: 50%;
 
+    .most-recent{
+        position: absolute;
+        bottom: 140px;    
+
+        h1 {
+            padding: 4px;
+            margin: 0px 5px 0px 0px;
+            // padding: 10px 15px;
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: white;
+            background-color: $spanbg;
+            display: inline-block;
+        }
+
+        .resident-pastshow-card {
+            border: none;
+            padding: 4px;
+            margin: 0px;
+            background: $altblue-10transparent;
+
+            .resident-mixcloud-showname {
+                font-weight: normal;
+                color: white;
+            }
+
+            .resident-mixcloud-date {
+                color: white;
+            }
+
+            .resident-mixcloud-tags-container{
+                display: none;
+            }
+            
+        }
+    }
+
     .pastshows-button{
         background-color: $ehfmcolor;
         position: absolute;
@@ -121,51 +159,52 @@ $spanbg: rgba(72, 67, 73, 0.8);
                 }
         }
     }
+
+    .resident-pastshow-card {
+        border-bottom: 2px solid $ehfmcolor;
+        margin: 20px 10px;
+        color: $notquiteblack;
+        padding: 10px 4px 5px 4px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 2px;
+        // .show-img {
+        //     width: 200px;
+        //     height: 200px;
+        //     background-position: center;
+        // }
+        .showname-info-cont{
+            display: flex;
+            align-items: center;
+        }
+        .resident-mixcloud-showname {
+            font-weight: bold;
+            font-size: $bodyfont;
+            margin-right: 10px;
+        }
+        .resident-mixcloud-date {
+            font-size: $smallfont;
+            margin-right: 10px;
+        }
+        .resident-mixcloud-tags-container {
+            display: flex;
+            font-size: $tinyfont;
+            color: $bodyfont;
+            .mixcloud-tag {
+                margin: 1px;
+                padding: 4px;
+                background-color: $softwhite;
+            }
+        }
+    }
     
     
     .cards-container{
         position: absolute;
-        top: 96vh;
+        top: 100vh;
         display: flex;
         flex-direction: column;
         // flex-wrap: wrap;
-        .resident-pastshow-card {
-            border-bottom: 2px solid $ehfmcolor;
-            margin: 20px 10px;
-            color: $notquiteblack;
-            padding: 10px 4px 5px 4px;
-            display: flex;
-            flex-direction: column;
-            border-radius: 2px;
-            // .show-img {
-            //     width: 200px;
-            //     height: 200px;
-            //     background-position: center;
-            // }
-            .showname-info-cont{
-                display: flex;
-                align-items: center;
-            }
-            .resident-mixcloud-showname {
-                font-weight: bold;
-                font-size: $largerfont;
-                margin-right: 10px;
-            }
-            .resident-mixcloud-date {
-                font-size: $smallfont;
-                margin-right: 10px;
-            }
-            .resident-mixcloud-tags-container {
-                display: flex;
-                font-size: $tinyfont;
-                color: $bodyfont;
-                .mixcloud-tag {
-                    margin: 1px;
-                    padding: 4px;
-                    background-color: $softwhite;
-                }
-            }
-        }
     } 
 }
 
