@@ -95,7 +95,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
             padding: 4px;
             margin: 0px 5px 0px 0px;
             // padding: 10px 15px;
-            font-size: 18px;
+            font-size: $tinyfont;
             font-weight: 400;
             letter-spacing: 1px;
             color: white;
@@ -105,9 +105,9 @@ $spanbg: rgba(72, 67, 73, 0.8);
 
         .resident-pastshow-card {
             border: none;
-            padding: 4px;
+            padding: 8px 4px;
             margin: 0px;
-            background: $altblue-10transparent;
+            background: $ehfmcolor;
 
             .resident-mixcloud-showname {
                 font-weight: normal;
@@ -184,7 +184,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
         }
         .resident-mixcloud-date {
             font-size: $smallfont;
-            margin-right: 10px;
+            margin-right: 15px;
         }
         .resident-mixcloud-tags-container {
             display: flex;
