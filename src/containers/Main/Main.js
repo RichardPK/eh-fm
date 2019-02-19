@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 // import ReactDOM from 'react-dom';
 import Header from '../Header/Header';
@@ -228,38 +228,30 @@ class Main extends Component {
       }
     }
 
-    handlePlayPauseClicked(){
-      if (this.state.playing === false) {
-        this.setState({playing: true}, function(){
-          this.audioPlayer.current.play();
-        })
-        this.props.togglePlaying(true);
-      } else {
-        this.setState({playing: false}, function(){
-          this.audioPlayer.current.pause();
-        })
-        this.props.togglePlaying(false);
-      }
+  handlePlayPauseClicked() {
+    if (this.props.playing === false) {
+      this.audioPlayer.current.play();
+      this.props.togglePlaying(true);
+    } else {
+      this.audioPlayer.current.pause();
+      this.props.togglePlaying(false);
     }
+  }
 
-    handleVolumeClicked(){
-      if (this.state.volume !== 0){
-        this.setState({volume: 0}, function(){
-          this.audioPlayer.current.volume = 0;
-        })
-        this.props.changeVolume(0);
-      } else {
-        this.setState({volume: 1}, function(){
-          this.audioPlayer.current.volume = 1;
-        })
-        this.props.changeVolume(1);
-      }
+  handleVolumeClicked() {
+    if (this.props.volume !== 0) {
+      this.audioPlayer.current.volume = 0;
+      this.props.changeVolume(0);
+    } else {
+      this.audioPlayer.current.volume = 1;
+      this.props.changeVolume(1);
     }
+  }
 
     renderHomePage() {
       return <Home
         currentShow={this.state.currentShow}
-        playing={this.state.playing}
+        playing={this.props.playing}
         handlePlayPauseClicked = {this.handlePlayPauseClicked}
         daysToDisplay={this.state.displayedDays}
         selectedDay={this.state.selectedDay}
@@ -280,8 +272,8 @@ class Main extends Component {
 
           <Header
             currentShow={this.state.currentShow}
-            playing={this.state.playing}
-            volume={this.state.volume}
+            playing={this.props.playing}
+            volume={this.props.volume}
             handlePlayPauseClicked = {this.handlePlayPauseClicked}
             handleVolumeClicked = {this.handleVolumeClicked}
           />
@@ -303,8 +295,8 @@ class Main extends Component {
 
   const mapStateToProps = state => {
     return { 
-      reduxPlaying: state.index.playing,
-      reduxVolume: state.index.volume
+      playing: state.index.playing,
+      volume: state.index.volume
     };
   };
 
@@ -319,9 +311,12 @@ class Main extends Component {
     };
   };
 
-  const Index = connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Main);
+const Index =
+  withRouter(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(Main)
+  );
   
   export default Index;

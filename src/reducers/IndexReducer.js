@@ -2,7 +2,7 @@ import { TOGGLE_PLAYING, CHANGE_VOLUME } from "../actions/action-types";
 
 const initialState = {
     playing: false,
-    volume: 0
+    volume: 1
   };
   function rootReducer(state = initialState, action) {
     switch (action.type) {
