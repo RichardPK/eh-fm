@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import Home from '../Home/Home';
 import ResidentsContainer from '../Residents/Residents';
 import ResidentShowContainer from '../Residents/SingleResidentContainer/SingleResidentContainer';
+import Footer from '../Footer/Footer';
 import './Main.scss'
 import IndexActions from '../../actions/index';
 import _ from 'lodash';
@@ -285,6 +286,8 @@ class Main extends Component {
             <Route exact path="/residents" component={ResidentsContainer} />
             <Route path="/residents/:id" component={ResidentShowContainer} />
           </Switch>
+
+        <Footer/>
 
         </React.Fragment>
 

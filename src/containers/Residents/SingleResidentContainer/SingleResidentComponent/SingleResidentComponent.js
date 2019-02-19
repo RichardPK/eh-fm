@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import axios from 'axios';
 import "./SingleResidentComponent.scss";
 import renderHTML from 'react-render-html';
@@ -7,6 +8,7 @@ import { faChevronRight } from '@fortawesome/pro-regular-svg-icons';
 import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';
 import {faMixcloud} from '@fortawesome/fontawesome-free-brands';
 import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
+import IndexActions from '../../../../actions/index';
 
 class ResidentShowDisplay extends Component {
   constructor(props) {
@@ -28,6 +30,7 @@ class ResidentShowDisplay extends Component {
     this.renderDate = this.renderDate.bind(this);
     this.renderShowName = this.renderShowName.bind(this);
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
+    this.renderShowBgImgStyle = this.renderShowBgImgStyle.bind(this);
     this.renderCardContainerMargin = this.renderCardContainerMargin.bind(this);
   }
 
@@ -195,11 +198,15 @@ class ResidentShowDisplay extends Component {
   }
 
   renderCardContainerMargin() {
-    if (this.state.mixCloudWidget) {
+    console.log("HELLO");
+    
+    if (this.props.mixCloudWidget) {
+      console.log("Yes");
       return ({
         marginBottom: '123px'
       })
     } else {
+      console.log("no");
       return null;
     }
   }
@@ -218,34 +225,34 @@ class ResidentShowDisplay extends Component {
     let url = `https://api.mixcloud.com${show.key}embed-json/`;
     axios.get(url)
       .then(res => {
-        this.setState({ mixCloudWidget: res.data.html });
+        this.props.setMixcloudWidget(res.data.html);
       })
   }
 
-  renderMixCloudPlayer() {
+  renderShowBgImgStyle() {
+    let margin = null
 
-    if (this.state.mixCloudWidget) {
-      return (
-        <div className="mixcloud-cont">
-          <div className="close-player-btn"
-            onClick={() => {
-              this.setState({ mixCloudWidget: null })
-            }}>
-            <span>x</span>
-          </div>
-          <div className="resident-mixcloud-widget">
-            {renderHTML(this.state.mixCloudWidget)}
-          </div>
-        </div>
-      )
+    if (this.props.mixCloudWidget) {
+      margin = '123px'
+    } else {
+      margin = null;
     }
+
+    return (
+      {
+        backgroundImage: `url(${this.props.showImage})`,
+        marginBottom: margin
+      }
+    )
   }
 
   render() {
     return (
       <React.Fragment>
         <div className="resident-show-bg-img"
-          style={{ backgroundImage: `url(${this.props.showImage})` }}
+          style={
+            this.renderShowBgImgStyle()  
+          }
         />
 
         <div className="resident-show-display-container">
@@ -280,10 +287,39 @@ class ResidentShowDisplay extends Component {
           
         </div>
      
-        {this.renderMixCloudPlayer()}
+        {/* {this.renderMixCloudPlayer()}s */}
       </React.Fragment >
     )
   }
 }
 
-export default ResidentShowDisplay;
+const mapStateToProps = state => {
+  return { 
+    playing: state.index.playing,
+    volume: state.index.volume,
+    mixCloudWidget: state.index.mixCloudWidget
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    togglePlaying: toggle => {
+      dispatch(IndexActions.switchPlaying(toggle));
+    },
+    changeVolume: value => {
+      dispatch(IndexActions.switchVolume(value));
+    },
+    setMixcloudWidget: value => {
+      dispatch(IndexActions.setMixcloudWidget(value));
+    }
+  };
+};
+
+const Index =
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ResidentShowDisplay)
+;
+
+export default Index;

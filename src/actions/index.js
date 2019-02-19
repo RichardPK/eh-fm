@@ -1,4 +1,4 @@
-import { TOGGLE_PLAYING, CHANGE_VOLUME } from "./action-types";
+import { TOGGLE_PLAYING, CHANGE_VOLUME, SET_MIXCLOUD_WIDGET } from "./action-types";
 
 
 const Actions = {
@@ -15,7 +15,16 @@ const Actions = {
       type: CHANGE_VOLUME,
       payload: value
     });
-  }  
+  },
+
+  setMixcloudWidget: value => dispatch => {
+    dispatch({
+      type: SET_MIXCLOUD_WIDGET,
+      payload: value
+    });
+  },
+  
+  
   
 }
 

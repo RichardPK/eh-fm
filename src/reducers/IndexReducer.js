@@ -1,8 +1,9 @@
-import { TOGGLE_PLAYING, CHANGE_VOLUME } from "../actions/action-types";
+import { TOGGLE_PLAYING, CHANGE_VOLUME, SET_MIXCLOUD_WIDGET } from "../actions/action-types";
 
 const initialState = {
     playing: false,
-    volume: 1
+    volume: 1,
+    mixCloudWidget: null
   };
   function rootReducer(state = initialState, action) {
     switch (action.type) {
@@ -16,7 +17,13 @@ const initialState = {
         return {
           ...state,
           volume: action.payload
-        }
+        };
+        break
+        case SET_MIXCLOUD_WIDGET:
+        return {
+            ...state,
+            mixCloudWidget: action.payload
+        };
         default:
         return state;
     }

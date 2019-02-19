@@ -223,25 +223,25 @@ $spanbg: rgba(72, 67, 73, 0.8);
     } 
 }
 
-.mixcloud-cont {
-    position: fixed;
-    bottom: -3px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    .close-player-btn{ 
-        margin-right: 10px;
-        text-align: center;
-        align-self: flex-end;
-        background-color: $altblue-60transparent;
-        font-size: $smallfont;
-        padding: 1px 6px 4px 7px;
-        color: $softwhite;
-    }
-    .resident-mixcloud-widget {
+// .mixcloud-cont {
+//     position: fixed;
+//     bottom: -3px;
+//     width: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     .close-player-btn{ 
+//         margin-right: 10px;
+//         text-align: center;
+//         align-self: flex-end;
+//         background-color: $altblue-60transparent;
+//         font-size: $smallfont;
+//         padding: 1px 6px 4px 7px;
+//         color: $softwhite;
+//     }
+//     .resident-mixcloud-widget {
      
-    }
-}
+//     }
+// }
 
 @media only screen and (min-width: 768px) {
     .close-player-btn{
