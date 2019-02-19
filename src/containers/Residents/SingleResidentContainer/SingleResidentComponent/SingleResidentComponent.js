@@ -188,9 +188,12 @@ class ResidentShowDisplay extends Component {
 
 
   toggleArchiveclick(){   
+    
     if (this.state.displayShows === true){
-      this.setState({displayShows: false}, 
-      )
+      scroll.scrollTo(0) 
+      Events.scrollEvent.register('end', function() {
+        this.setState({displayShows: false});
+      }.bind(this));
     } else {
       this.setState({displayShows: true},
         scroll.scrollTo(200))
@@ -198,15 +201,11 @@ class ResidentShowDisplay extends Component {
   }
 
   renderCardContainerMargin() {
-    console.log("HELLO");
-    
     if (this.props.mixCloudWidget) {
-      console.log("Yes");
       return ({
         marginBottom: '123px'
       })
     } else {
-      console.log("no");
       return null;
     }
   }
@@ -276,8 +275,6 @@ class ResidentShowDisplay extends Component {
 
           <div className="resident-show-display-description"
             ref={this.showDescription}>
-
-
             <p>
               <span>{this.props.showDescription}</span>
             </p>
@@ -286,8 +283,6 @@ class ResidentShowDisplay extends Component {
           {this.renderPastShows()}
           
         </div>
-     
-        {/* {this.renderMixCloudPlayer()}s */}
       </React.Fragment >
     )
   }
