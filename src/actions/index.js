@@ -1,4 +1,4 @@
-import { TOGGLE_PLAYING } from "./action-types";
+import { TOGGLE_PLAYING, CHANGE_VOLUME } from "./action-types";
 
 
 const Actions = {
@@ -8,7 +8,14 @@ const Actions = {
       type: TOGGLE_PLAYING,
       payload: toggle
     });
-  }
+  },
+
+  switchVolume: value => dispatch => {
+    dispatch({
+      type: CHANGE_VOLUME,
+      payload: value
+    });
+  }  
   
 }
 

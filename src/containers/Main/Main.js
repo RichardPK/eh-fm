@@ -233,10 +233,12 @@ class Main extends Component {
         this.setState({playing: true}, function(){
           this.audioPlayer.current.play();
         })
+        this.props.togglePlaying(true);
       } else {
         this.setState({playing: false}, function(){
           this.audioPlayer.current.pause();
         })
+        this.props.togglePlaying(false);
       }
     }
 
@@ -245,10 +247,12 @@ class Main extends Component {
         this.setState({volume: 0}, function(){
           this.audioPlayer.current.volume = 0;
         })
+        this.props.changeVolume(0);
       } else {
         this.setState({volume: 1}, function(){
           this.audioPlayer.current.volume = 1;
         })
+        this.props.changeVolume(1);
       }
     }
 
@@ -298,13 +302,19 @@ class Main extends Component {
   }
 
   const mapStateToProps = state => {
-    return { playing: state.index.playing };
+    return { 
+      reduxPlaying: state.index.playing,
+      reduxVolume: state.index.volume
+    };
   };
 
   const mapDispatchToProps = dispatch => {
     return {
       togglePlaying: toggle => {
         dispatch(IndexActions.switchPlaying(toggle));
+      },
+      changeVolume: value => {
+        dispatch(IndexActions.switchVolume(value));
       }
     };
   };

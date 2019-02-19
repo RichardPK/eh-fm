@@ -1,1 +1,2 @@
-export const TOGGLE_PLAYING = "TOGGLE_PLAYING"
+export const TOGGLE_PLAYING = "TOGGLE_PLAYING";
+export const CHANGE_VOLUME = "CHANGE_VOLUME";

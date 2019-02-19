@@ -1,8 +1,8 @@
-import { TOGGLE_PLAYING } from "../actions/action-types";
+import { TOGGLE_PLAYING, CHANGE_VOLUME } from "../actions/action-types";
 
 const initialState = {
     playing: false,
-    volume: true
+    volume: 0
   };
   function rootReducer(state = initialState, action) {
     switch (action.type) {
@@ -11,6 +11,12 @@ const initialState = {
             ...state,
             playing: action.payload
         };
+        break
+        case CHANGE_VOLUME:
+        return {
+          ...state,
+          volume: action.payload
+        }
         default:
         return state;
     }
