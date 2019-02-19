@@ -7,6 +7,7 @@ import Home from '../Home/Home';
 import ResidentsContainer from '../Residents/Residents';
 import ResidentShowContainer from '../Residents/SingleResidentContainer/SingleResidentContainer';
 import './Main.scss'
+import IndexActions from '../../actions/index';
 import _ from 'lodash';
 
 
@@ -297,11 +298,20 @@ class Main extends Component {
   }
 
   const mapStateToProps = state => {
-    return { playing: state.playing };
+    return { playing: state.index.playing };
+  };
+
+  const mapDispatchToProps = dispatch => {
+    return {
+      togglePlaying: toggle => {
+        dispatch(IndexActions.switchPlaying(toggle));
+      }
+    };
   };
 
   const Index = connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
   )(Main);
   
-  export default Main;
+  export default Index;
