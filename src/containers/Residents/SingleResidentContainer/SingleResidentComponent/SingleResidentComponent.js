@@ -192,9 +192,11 @@ class ResidentShowDisplay extends Component {
     if (this.state.displayShows === true){
       scroll.scrollTo(0) 
       Events.scrollEvent.register('end', function() {
+        console.log("End");
         this.setState({displayShows: false});
       }.bind(this));
     } else {
+      Events.scrollEvent.remove('end');
       this.setState({displayShows: true},
         scroll.scrollTo(200))
     }
