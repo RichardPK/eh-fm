@@ -40,20 +40,6 @@
   }
 }
 
-.currentshow-playbutton-container:hover{
-  background-color: $playerwhite;
-  color: $altblue;
-
-  p {
-    color: $altblue;
-  }
-
-  .play-button {
-    border-color: transparent transparent transparent $altblue;
-  }
-
-}
-
 .currentshow-playbutton-container-white {
   padding: 10px;
   background-color: $altblue;
@@ -68,19 +54,6 @@
   p {
     color: $playerwhite;
     margin: 0px;
-  }
-}
-
-.currentshow-playbutton-container-white:hover{
-  background-color: $playerwhite;
-  color: $altblue;
-
-  p {
-    color: $altblue;
-  }
-  
-  .pause-button {
-    border-color: $altblue;
   }
 }
 
@@ -107,6 +80,37 @@
 
 .currentshow-show-description {
   margin-right: 20%;
+}
+
+@media only screen and (min-width: 768px) {
+
+  .currentshow-playbutton-container:hover{
+    background-color: $playerwhite;
+    color: $altblue;
+  
+    p {
+      color: $altblue;
+    }
+  
+    .play-button {
+      border-color: transparent transparent transparent $altblue;
+    }
+  
+  }
+
+  .currentshow-playbutton-container-white:hover{
+    background-color: $playerwhite;
+    color: $altblue;
+  
+    p {
+      color: $altblue;
+    }
+    
+    .pause-button {
+      border-color: $altblue;
+    }
+  }
+
 }
 
 .currentshow-show-description span {
@@ -183,7 +187,7 @@
     margin-right: 10%;
   }
 
-  .currentshow-playbutton-container {
+  .currentshow-playbutton-container, .currentshow-playbutton-container-white {
     padding: 5px;
     font-size: 14px;
   }
@@ -236,7 +240,7 @@
     margin-right: 5px;
   }
 
-  .currentshow-playbutton-container{
+  .currentshow-playbutton-container, .currentshow-playbutton-container-white {
     padding: 4px;
   }
 
