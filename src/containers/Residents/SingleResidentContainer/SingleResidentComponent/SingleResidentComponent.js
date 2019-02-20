@@ -9,6 +9,7 @@ import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';
 import {faMixcloud} from '@fortawesome/fontawesome-free-brands';
 import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 import IndexActions from '../../../../actions/index';
+import PastShowCard from './PastShowCard/PastShowCard';
 
 class ResidentShowDisplay extends Component {
   constructor(props) {
@@ -149,19 +150,29 @@ class ResidentShowDisplay extends Component {
         )
       })
       return (
-        <div
-          className="resident-pastshow-card"
-          onClick={e => this.handleMixCloudClick(show)}
-          key={this.props.pastShows.indexOf(show)}>
-          {/* <div className="show-img"
-        style={{ backgroundImage: `url(${show.pictures.large})` }}>
-        </div> */}
-          <div className="showname-info-cont">
-            <span className="resident-mixcloud-date">{this.renderDate(show.name)}</span>
-            <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
-            <div className="resident-mixcloud-tags-container">{tags}</div>
-          </div>
-        </div>)
+
+          <PastShowCard
+            handleMixCloudClick={e => this.handleMixCloudClick(show)}
+            key={this.props.pastShows.indexOf(show)}
+            renderDate={this.renderDate(show.name)}
+            renderShowName={this.renderShowName(show.name)}
+            tags={tags}
+          />
+
+        // <div
+        //   className="resident-pastshow-card"
+        //   onClick={e => this.handleMixCloudClick(show)}
+        //   key={this.props.pastShows.indexOf(show)}>
+        //   {/* <div className="show-img"
+        // style={{ backgroundImage: `url(${show.pictures.large})` }}>
+        // </div> */}
+        //   <div className="showname-info-cont">
+        //     <span className="resident-mixcloud-date">{this.renderDate(show.name)}</span>
+        //     <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
+        //     <div className="resident-mixcloud-tags-container">{tags}</div>
+        //   </div>
+        // </div>
+        )
     })
     showDisplay.splice(0, 1);
     return showDisplay
@@ -281,6 +292,7 @@ class ResidentShowDisplay extends Component {
               <span>{this.props.showDescription}</span>
             </p>
           </div>
+
 
           {this.renderPastShows()}
           
