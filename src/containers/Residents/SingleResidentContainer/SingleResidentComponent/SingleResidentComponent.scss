@@ -323,9 +323,14 @@ $spanbg: rgba(72, 67, 73, 0.8);
 @media only screen and (max-width: 425px) {
 
         
-    .resident-show-pastshows-container .cards-container{
-        left: 0;
-    } 
+    .resident-show-pastshows-container {
+      .cards-container {
+          left: 0;
+      }
+      .pastshows-button {
+          bottom: 10px;
+      }
+  }
 
         .resident-mixcloud-tags-container{
             .mixcloud-tag{
