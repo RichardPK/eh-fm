@@ -203,11 +203,12 @@ $spanbg: rgba(72, 67, 73, 0.8);
             margin-right: 15px;
         }
         .resident-mixcloud-tags-container {
+            flex-wrap: wrap;
             display: flex;
             font-size: $tinyfont;
             color: $bodyfont;
             .mixcloud-tag {
-                margin: 0px 2px;
+                margin: 2px 2px;
                 padding: 4px;
                 background-color: $softwhite;
             }
@@ -320,6 +321,29 @@ $spanbg: rgba(72, 67, 73, 0.8);
 }
 
 @media only screen and (max-width: 425px) {
+
+        .resident-mixcloud-tags-container{
+            .mixcloud-tag{
+                span{
+                    font-size: 12px;
+                } 
+            }    
+        }
+
+        span.resident-mixcloud-showname {
+                font-size: 14px !important;
+        }
+
+        span.resident-mixcloud-date {
+            font-size: 12px !important;
+        }
+
+        .resident-pastshow-card{
+            margin: 10px 10px !important;
+            padding: 10px 4px 10px 4px !important;
+
+        }
+
     .resident-show-display-container {
         h3 {
             font-size: 3em;
