@@ -249,6 +249,7 @@ class Main extends Component {
         handlePlayPauseClicked = {this.handlePlayPauseClicked}
         daysToDisplay={this.state.displayedDays}
         selectedDay={this.state.selectedDay}
+        mixCloudWidget={this.props.mixCloudWidget}
       />
     }
 
@@ -292,7 +293,8 @@ class Main extends Component {
   const mapStateToProps = state => {
     return { 
       playing: state.index.playing,
-      volume: state.index.volume
+      volume: state.index.volume,
+      mixCloudWidget: state.index.mixCloudWidget
     };
   };
 

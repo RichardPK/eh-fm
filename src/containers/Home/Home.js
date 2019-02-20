@@ -7,7 +7,8 @@ const HomeContainer = (props) => {
   return(
     <React.Fragment>
 
-      <div className="body-container">
+      <div className="body-container" 
+      style={{ marginBottom: (props.mixCloudWidget ? '123px' : null) }}>
 
         <CurrentShow
           currentShow={props.currentShow}
