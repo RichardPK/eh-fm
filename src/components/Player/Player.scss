@@ -202,4 +202,13 @@
     top: 114px;
     font-size: 12px;
   }
+
+  .play-button {
+    border-width: $main-button-half-size 0 $main-button-half-size $main-button-size;
+  }
+  
+  .pause-button {
+    height: 11.28px;
+    border-width: 0px 0 0px $main-button-size;
+  }
 }
