@@ -12,6 +12,7 @@ const HeaderContainer = (props) => {
       </nav>
       <div className="player-container">
         <Player
+          key = {props.playing}
           currentShow={props.currentShow}
           playing={props.playing}
           volume={props.volume}

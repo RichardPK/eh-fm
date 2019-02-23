@@ -33,7 +33,6 @@
   justify-content: center;
   width: 140px;
   letter-spacing: 1px;
-  cursor: pointer;
 
   p {
     margin: 0px;
@@ -49,7 +48,6 @@
   justify-content: center;
   width: 140px;
   letter-spacing: 1px;
-  cursor: pointer;
 
   p {
     color: $playerwhite;
@@ -83,6 +81,14 @@
 }
 
 @media only screen and (min-width: 768px) {
+
+  .currentshow-playbutton-container {
+    cursor: pointer;
+  }
+
+  .currentshow-playbutton-container-white {
+    cursor: pointer;
+  }
 
   .currentshow-playbutton-container:hover{
     background-color: $playerwhite;
