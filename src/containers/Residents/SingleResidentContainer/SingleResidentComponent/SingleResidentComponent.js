@@ -103,12 +103,12 @@ class ResidentShowDisplay extends Component {
           {mostRecentShow} 
           </div>
 
-          <div className="pastshows-button active"
+          {/* <div className="pastshows-button active"
           onClick={this.toggleArchiveclick}>
             <h1>Archive</h1>
             <FontAwesomeIcon icon={faChevronDown} 
             className="down"/>
-            </div>
+            </div> */}
             <div className="cards-container"
               style={this.renderCardContainerMargin()} >
               {fullShowDisplay}
@@ -127,11 +127,11 @@ class ResidentShowDisplay extends Component {
           {mostRecentShow}
           </div>
 
-          <div className="pastshows-button"
+          {/* <div className="pastshows-button"
           onClick={this.toggleArchiveclick}>
             <h1>Archive</h1>
             <FontAwesomeIcon icon={faChevronRight} />
-            </div>
+            </div> */}
           </div>
         )
       }
@@ -294,6 +294,19 @@ class ResidentShowDisplay extends Component {
             </p>
           </div>
           </div>
+
+          { this.state.displayShows ? 
+          <div className="pastshows-button active"
+          onClick={this.toggleArchiveclick}>
+            <h1>Archive</h1>
+            <FontAwesomeIcon icon={faChevronDown} 
+            className="down"/>
+            </div> : 
+            <div className="pastshows-button"
+            onClick={this.toggleArchiveclick}>
+              <h1>Archive</h1>
+              <FontAwesomeIcon icon={faChevronRight} />
+              </div> }
 
           {this.renderPastShows()}
           

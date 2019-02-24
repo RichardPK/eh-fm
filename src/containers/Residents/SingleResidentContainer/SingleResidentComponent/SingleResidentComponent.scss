@@ -79,6 +79,38 @@ $spanbg: rgba(72, 67, 73, 0.8);
     //     height: 2px;
     //     background-color: white;
     // }
+    .pastshows-button {
+        background-color: $ehfmcolor;
+        position: absolute;
+        bottom: 40px;
+        display: flex;
+        align-items: center;
+        min-width: 102px;
+        h1 {
+            padding: 4px;
+            margin: 0px 5px 0px 0px; // padding: 10px 15px;
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: white;
+        }
+        svg {
+            color: white;
+            padding-right: 8px;
+        }
+        .fa-chevron-right {
+            margin-left: 4px;
+        }
+        &.active {
+            background-color: white;
+            h1 {
+                color: $ehfmcolor;
+            }
+            svg {
+                color: $ehfmcolor;
+            }
+        }
+    }
 }
 
 .resident-show-pastshows-container {
@@ -126,38 +158,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
             }
         }
     }
-    .pastshows-button {
-        background-color: $ehfmcolor;
-        position: absolute;
-        bottom: 40px;
-        display: flex;
-        align-items: center;
-        min-width: 102px;
-        h1 {
-            padding: 4px;
-            margin: 0px 5px 0px 0px; // padding: 10px 15px;
-            font-size: 18px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            color: white;
-        }
-        svg {
-            color: white;
-            padding-right: 8px;
-        }
-        .fa-chevron-right {
-            margin-left: 4px;
-        }
-        &.active {
-            background-color: white;
-            h1 {
-                color: $ehfmcolor;
-            }
-            svg {
-                color: $ehfmcolor;
-            }
-        }
-    }
+
     .resident-pastshow-card {
         border-bottom: 2px solid $ehfmcolor;
         margin: 15px 10px;
@@ -297,10 +298,10 @@ $spanbg: rgba(72, 67, 73, 0.8);
             left: 0;
         }
         .pastshows-button {
-            bottom: 0;
+            // bottom: 0;
             min-width: 0px;
             max-width: 90px;
-            position: relative;
+            // position: relative;
             margin-top: 100px;
             h1 {
                 font-size: 14px;
@@ -408,7 +409,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
     }
     .resident-show-pastshows-container {
         .pastshows-button {
-            margin-top: 40px;
+            // margin-top: 40px;
         }
     }
 }
