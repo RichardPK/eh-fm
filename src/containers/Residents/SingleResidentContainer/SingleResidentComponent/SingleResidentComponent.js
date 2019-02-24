@@ -269,6 +269,7 @@ class ResidentShowDisplay extends Component {
 
         <div className="resident-show-display-container">
 
+          <div className="resident-show-text-container">
           <div className="resident-show-title-container">
 
             <h3>
@@ -292,7 +293,7 @@ class ResidentShowDisplay extends Component {
               <span>{this.props.showDescription}</span>
             </p>
           </div>
-
+          </div>
 
           {this.renderPastShows()}
           
