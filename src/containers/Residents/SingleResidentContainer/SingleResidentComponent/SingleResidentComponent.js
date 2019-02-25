@@ -33,6 +33,7 @@ class ResidentShowDisplay extends Component {
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
     this.renderShowBgImgStyle = this.renderShowBgImgStyle.bind(this);
     this.renderCardContainerMargin = this.renderCardContainerMargin.bind(this);
+    this.renderArchiveButton = this.renderArchiveButton.bind(this);
   }
 
   renderFacebook() {
@@ -258,6 +259,31 @@ class ResidentShowDisplay extends Component {
     )
   }
 
+  renderArchiveButton() {
+    if(this.props.pastShows){
+      if (this.state.displayShows) {
+        return (
+          <div className="pastshows-button active"
+            onClick={this.toggleArchiveclick}>
+            <h1>Archive</h1>
+            <FontAwesomeIcon icon={faChevronDown}
+              className="down" />
+          </div>
+        )
+      } else {
+        return (
+          <div className="pastshows-button"
+            onClick={this.toggleArchiveclick}>
+            <h1>Archive</h1>
+            <FontAwesomeIcon icon={faChevronRight} />
+          </div>)
+      }
+    } else {
+      return null;
+    }
+    
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -295,18 +321,7 @@ class ResidentShowDisplay extends Component {
           </div>
           </div>
 
-          { this.state.displayShows ? 
-          <div className="pastshows-button active"
-          onClick={this.toggleArchiveclick}>
-            <h1>Archive</h1>
-            <FontAwesomeIcon icon={faChevronDown} 
-            className="down"/>
-            </div> : 
-            <div className="pastshows-button"
-            onClick={this.toggleArchiveclick}>
-              <h1>Archive</h1>
-              <FontAwesomeIcon icon={faChevronRight} />
-              </div> }
+          {this.renderArchiveButton()}
 
           {this.renderPastShows()}
           
