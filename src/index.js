@@ -16,7 +16,7 @@ import thunk from 'redux-thunk';
 
 import Main from './containers/Main/Main';
 import './styleguide.scss';
-import './index.css';
+import './index.scss';
 import * as serviceWorker from "./registerServiceWorker";
 import history from "./history";
 
