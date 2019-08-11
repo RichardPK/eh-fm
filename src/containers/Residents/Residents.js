@@ -17,11 +17,16 @@ class ResidentsContainer extends Component {
     const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
 
     Prismic.api(apiEndpoint).then((api) => {
-      api.query(Prismic.Predicates.at("document.type", "show"), { pageSize: 100 }).then((response) => {
-        if (response) {
-          this.setState({ prismicDoc: response.results });
-        }
-      });
+      api
+        .query(Prismic.Predicates.at("document.type", "show"), {
+          pageSize: 100,
+          orderings: "[my.show.show_title]"
+        })
+        .then((response) => {
+          if (response) {
+            this.setState({ prismicDoc: response.results });
+          }
+        });
     });
   }
 
