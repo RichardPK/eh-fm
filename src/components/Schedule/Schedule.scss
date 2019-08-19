@@ -4,7 +4,8 @@
   width: 41vw;
   margin: 0px 20px 0px 10px;
   overflow: hidden;
-  box-shadow: 0px 1px 10px 0.1px rgba(0,0,0,0.1);
+  box-shadow: 0px 1px 10px 0.1px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
 }
 
 .schedule-header {
@@ -12,7 +13,7 @@
   margin-right: 20px;
 }
 
-.schedule-subcontainer{
+.schedule-subcontainer {
   padding: 20px;
   background-color: white;
 }
@@ -20,9 +21,8 @@
 .schedule-divider {
   height: 4px;
   width: 100%;
-  background-color: var(--altblue)
+  background-color: var(--altblue);
 }
-
 
 .days-header {
   display: flex;
@@ -83,7 +83,7 @@
     padding-bottom: 20px;
   }
 
-  .schedule-container{
+  .schedule-container {
     width: 85vw;
     margin: 0px 10px 0px 10px;
   }
@@ -93,7 +93,7 @@
     font-size: 14px;
   }
 
-  @media only screen and (max-width: 320px){
+  @media only screen and (max-width: 320px) {
     .show-name {
       font-size: 14px;
       padding-bottom: 10px;
@@ -104,5 +104,4 @@
       font-size: 12px;
     }
   }
-
 }
