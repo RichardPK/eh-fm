@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Prismic from "prismic-javascript";
 import ResidentShowDisplay from "./SingleResidentComponent/SingleResidentComponent";
 import axios from "axios";
+import MetaTags from "react-meta-tags";
 
 class ResidentShowContainer extends Component {
   constructor(props) {
@@ -75,7 +76,30 @@ class ResidentShowContainer extends Component {
   }
 
   render() {
-    return <div className="resident-show-container">{this.renderShowDetail()}</div>;
+    let titleString;
+
+    if (this.state.selectedShow) {
+      titleString = `${this.state.selectedShow.data.show_title} | EH-FM`;
+    }
+
+    return (
+      <React.Fragment>
+        {this.state.selectedShow ? (
+          <React.Fragment>
+            <MetaTags>
+              <title>{titleString}</title>
+              <meta name="description" content={this.state.selectedShow.data.show_description} />
+              <meta property="og:title" content={titleString} />
+              <meta property="og:description" content={this.state.selectedShow.data.show_description} />
+              <meta name="twitter:image" content={this.state.selectedShow.data.show_image.larger.url} />
+              <meta property="og:url" content={window.location.href} />
+              <meta property="og:image" content={this.state.selectedShow.data.show_image.larger.url} />
+            </MetaTags>
+            <div className="resident-show-container">{this.renderShowDetail()}</div>
+          </React.Fragment>
+        ) : null}
+      </React.Fragment>
+    );
   }
 }
 

@@ -24,7 +24,6 @@ class ResidentsContainer extends Component {
         })
         .then((response) => {
           if (response) {
-            debugger;
             this.setState({ prismicDoc: response.results });
           }
         });
