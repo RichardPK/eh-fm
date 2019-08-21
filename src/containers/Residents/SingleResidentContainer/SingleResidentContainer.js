@@ -72,7 +72,7 @@ class ResidentShowContainer extends Component {
         />
       );
     }
-    return <p>Loading...</p>;
+    return <p>Loading</p>;
   }
 
   render() {
