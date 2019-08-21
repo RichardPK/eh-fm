@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Prismic from "prismic-javascript";
 import ResidentShowDisplay from "./SingleResidentComponent/SingleResidentComponent";
 import axios from "axios";
-import MetaTags from "react-meta-tags";
+import { Helmet } from "react-helmet";
 
 class ResidentShowContainer extends Component {
   constructor(props) {
@@ -86,7 +86,7 @@ class ResidentShowContainer extends Component {
       <React.Fragment>
         {this.state.selectedShow ? (
           <React.Fragment>
-            <MetaTags>
+            <Helmet>
               <title>{titleString}</title>
               <meta name="description" content={this.state.selectedShow.data.show_description} />
               <meta property="og:title" content={titleString} />
@@ -94,7 +94,7 @@ class ResidentShowContainer extends Component {
               <meta name="twitter:image" content={this.state.selectedShow.data.show_image.larger.url} />
               <meta property="og:url" content={window.location.href} />
               <meta property="og:image" content={this.state.selectedShow.data.show_image.larger.url} />
-            </MetaTags>
+            </Helmet>
             <div className="resident-show-container">{this.renderShowDetail()}</div>
           </React.Fragment>
         ) : null}

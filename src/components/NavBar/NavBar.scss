@@ -9,8 +9,8 @@
 
 .nav-bar {
   display: flex;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   padding-top: 10px;
   padding-bottom: 5px;
   background-color: white;
@@ -22,7 +22,7 @@
 
 .nav-link {
   /* vertical-align: middle; */
-  font-size: 14px;
+  font-size: 16px;
   color: var(--ehfmcolor);
   padding-right: 40px;
   /* border-right: 2px solid black; */
@@ -36,7 +36,7 @@
 }
 
 .nav-link-active {
-  font-size: 14px;
+  font-size: 18px;
   color: var(--ehfmcolor);
   padding-right: 40px;
   /* border-right: 2px solid black; */
@@ -106,6 +106,10 @@
     top: 68px;
   }
 
+  .nav-link {
+    font-size: 14px;
+  }
+
   .nav-left {
     height: 31px;
   }
@@ -113,6 +117,11 @@
 
 @media only screen and (max-width: 425px) {
   .nav-container {
+    .nav-bar {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
     .nav-link {
       font-size: 12px;
     }

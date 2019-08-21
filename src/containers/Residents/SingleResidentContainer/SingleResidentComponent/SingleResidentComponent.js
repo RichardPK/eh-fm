@@ -216,7 +216,7 @@ class ResidentShowDisplay extends Component {
 
   renderShowName(showName) {
     if (showName.includes("-")) {
-      let name = showName.split("-")[0].trim();
+      let name = showName.split(" - ")[0].trim();
       return name;
     } else {
       return showName;
@@ -225,7 +225,7 @@ class ResidentShowDisplay extends Component {
 
   renderDate(showName) {
     if (showName.includes("-")) {
-      let date = showName.split("-")[1].trim();
+      let date = showName.split(" - ")[1].trim();
       return date;
     } else {
       return;

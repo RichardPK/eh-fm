@@ -7,24 +7,22 @@
   z-index: 100;
 }
 
-.custom-player{
+.custom-player {
   background-color: $ehfmcolor;
-  padding: 2px 20px 2px 20px;
+  padding: 2px 30px 2px 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.now-playing-container{
+.now-playing-container {
   display: flex;
   align-items: center;
   padding: 8px 8px 8px 8px;
   /* THIS PADDING IS CONTROLLING THE HEIGHT OF THE ELEMENT */
 }
 
-
-
-.now-playing-container:hover{
+.now-playing-container:hover {
   background-color: $playerwhite;
   cursor: pointer;
 
@@ -37,7 +35,7 @@
   }
 }
 
-.now-playing-container-white{
+.now-playing-container-white {
   display: flex;
   align-items: center;
   padding: 8px 8px 8px 8px;
@@ -54,10 +52,9 @@
   .pause-button {
     border-color: $altblue;
   }
-
 }
 
-.now-playing-container-white:hover{
+.now-playing-container-white:hover {
   background-color: $playerwhite;
   cursor: pointer;
 
@@ -72,10 +69,9 @@
   .pause-button {
     border-color: $altblue;
   }
-
 }
 
-.onair-container{
+.onair-container {
   color: $playerwhite;
   font-size: 11px;
   padding-right: 20px;
@@ -86,7 +82,7 @@
   letter-spacing: 2px;
 }
 
-.onair-circle{
+.onair-circle {
   background: rgb(255, 253, 130);
   width: 8px;
   height: 8px;
@@ -98,14 +94,14 @@
   animation-fill-mode: forwards; */
 }
 
-@keyframes fader{
-  0%{
+@keyframes fader {
+  0% {
     opacity: 1;
   }
-  50%{
+  50% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }
@@ -128,7 +124,7 @@
   border-width: 0px 0 0px 12px;
 }
 
-.play-button-container{
+.play-button-container {
   border-left: 2px solid white;
   width: $main-button-size;
   padding-right: 20px;
@@ -139,26 +135,26 @@
   padding-left: 20px;
 }
 
-.left-side-player{
+.left-side-player {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-.right-side-player{
-  margin:0px 0px 0px auto;
+.right-side-player {
+  margin: 0px 0px 0px auto;
   align-items: center;
   justify-content: center;
 }
 
-.volume-button{
+.volume-button {
   cursor: pointer;
   width: 16px;
   height: 16px;
 }
 
-.current-show{
+.current-show {
   /* font-weight: bold; */
   border-right: 2px solid white;
   padding-right: 50px;
@@ -169,25 +165,24 @@
   letter-spacing: 1px;
 }
 
-@media only screen and (max-width: 1024px){
-  .volume-button-container{
+@media only screen and (max-width: 1024px) {
+  .volume-button-container {
     display: none;
-
   }
 
-  .current-show{
+  .current-show {
     border-right: none;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .player-container{
+  .player-container {
     top: 114px;
   }
 }
 
 @media only screen and (max-width: 520px) {
-  .current-show{
+  .current-show {
     margin-left: 10px;
     padding-right: 5px;
   }
@@ -198,11 +193,15 @@
     padding-right: 10px;
   }
 
-  .player-container{
+  .player-container {
     top: 114px;
     font-size: 12px;
+
+    .custom-player {
+      padding: 2px 20px 2px 20px;
+    }
   }
-  
+
   .pause-button {
     height: 11.28px;
     border-width: 0px 0 0px $main-button-size;
