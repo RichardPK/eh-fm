@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Prismic from "prismic-javascript";
 import "./Residents.scss";
 import ResidentListItem from "./ResidentsListItem/ResidentListItem";
+import { Helmet } from "react-helmet";
 
 class ResidentsContainer extends Component {
   constructor(props) {
@@ -53,6 +54,15 @@ class ResidentsContainer extends Component {
   render() {
     return (
       <React.Fragment>
+        <Helmet>
+          <title>Residents | EH-FM</title>
+          <meta property="og:title" content="Residents | EH-FM" />
+          <meta name="description" content="The people defining the sound of EH-FM" />
+          <meta property="og:description" content="The people defining the sound of EH-FM" />
+          <meta property="og:url" content="http://www.ehfm.live/residents" />
+          <meta name="twitter:image" content="https://www.ehfm.live/placeholder-showimg.jpg" />
+          <meta name="twitter:image" content="https://www.ehfm.live/placeholder-showimg.jpg" />
+        </Helmet>
         <div className="residents-container">{this.renderAllShows()}</div>
       </React.Fragment>
     );

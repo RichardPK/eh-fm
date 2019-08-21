@@ -88,11 +88,11 @@ class ResidentShowContainer extends Component {
           <React.Fragment>
             <Helmet>
               <title>{titleString}</title>
-              <meta name="description" content={this.state.selectedShow.data.show_description} />
               <meta property="og:title" content={titleString} />
+              <meta name="description" content={this.state.selectedShow.data.show_description} />
               <meta property="og:description" content={this.state.selectedShow.data.show_description} />
-              <meta name="twitter:image" content={this.state.selectedShow.data.show_image.larger.url} />
               <meta property="og:url" content={window.location.href} />
+              <meta name="twitter:image" content={this.state.selectedShow.data.show_image.larger.url} />
               <meta property="og:image" content={this.state.selectedShow.data.show_image.larger.url} />
             </Helmet>
             <div className="resident-show-container">{this.renderShowDetail()}</div>
