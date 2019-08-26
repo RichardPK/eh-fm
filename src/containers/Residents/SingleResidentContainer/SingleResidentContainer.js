@@ -3,13 +3,14 @@ import Prismic from "prismic-javascript";
 import ResidentShowDisplay from "./SingleResidentComponent/SingleResidentComponent";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 class ResidentShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showId: this.props.match.params.id,
-      prismicDoc: null,
       pastShows: null,
       selectedShow: null
     };
@@ -18,8 +19,12 @@ class ResidentShowContainer extends Component {
     this.mixCloudAPICall = this.mixCloudAPICall.bind(this);
   }
 
+  componentDidMount() {
+    this.findSelectedShow();
+  }
+
   findSelectedShow() {
-    for (let show of this.state.prismicDoc) {
+    for (let show of this.props.residents) {
       if (show.uid === this.state.showId) {
         this.setState({ selectedShow: show }, this.mixCloudAPICall);
       }
@@ -40,19 +45,6 @@ class ResidentShowContainer extends Component {
         this.setState({ pastShows: shows });
       });
     }
-  }
-
-  componentDidMount() {
-    console.log("Individual show component mounted");
-    const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
-
-    Prismic.api(apiEndpoint).then((api) => {
-      api.query(Prismic.Predicates.at("document.type", "show"), { pageSize: 100 }).then((response) => {
-        if (response) {
-          this.setState({ prismicDoc: response.results }, this.findSelectedShow);
-        }
-      });
-    });
   }
 
   renderShowDetail() {
@@ -103,4 +95,21 @@ class ResidentShowContainer extends Component {
   }
 }
 
-export default ResidentShowContainer;
+const mapStateToProps = (state) => {
+  return {
+    residents: state.residents
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+const connectedResidentShowContainer = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ResidentShowContainer)
+);
+
+export default connectedResidentShowContainer;

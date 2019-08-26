@@ -3,37 +3,19 @@ import Prismic from "prismic-javascript";
 import "./Residents.scss";
 import ResidentListItem from "./ResidentsListItem/ResidentListItem";
 import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 class ResidentsContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      prismicDoc: null
-    };
+
     this.renderAllShows = this.renderAllShows.bind(this);
   }
 
-  componentDidMount() {
-    console.log("ResidentsContainer mounted");
-    const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
-
-    Prismic.api(apiEndpoint).then((api) => {
-      api
-        .query(Prismic.Predicates.at("document.type", "show"), {
-          pageSize: 100,
-          orderings: "[my.show.show_title]"
-        })
-        .then((response) => {
-          if (response) {
-            this.setState({ prismicDoc: response.results });
-          }
-        });
-    });
-  }
-
   renderAllShows() {
-    if (this.state.prismicDoc) {
-      let allShows = this.state.prismicDoc.map((show, index) => {
+    if (this.props.residents.length) {
+      let allShows = this.props.residents.map((show, index) => {
         return (
           <ResidentListItem
             show={show}
@@ -70,4 +52,21 @@ class ResidentsContainer extends Component {
   }
 }
 
-export default ResidentsContainer;
+const mapStateToProps = (state) => {
+  return {
+    residents: state.residents
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+const connectedResidentsContainer = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ResidentsContainer)
+);
+
+export default connectedResidentsContainer;
