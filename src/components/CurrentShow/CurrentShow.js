@@ -7,6 +7,7 @@ class CurrentShowDetail extends Component {
     super(props);
     this.playClicked = this.playClicked.bind(this);
     this.renderPlayingContainer = this.renderPlayingContainer.bind(this);
+    this.findShowUrlInPrismic = this.findShowUrlInPrismic.bind(this);
   }
 
   returnShowName() {
@@ -21,16 +22,33 @@ class CurrentShowDetail extends Component {
     return currentShowName;
   }
 
+  findShowUrlInPrismic() {
+    let result;
+    const currentShowName = this.returnShowName();
+    if (this.props.residents && currentShowName) {
+      const filtered = this.props.residents.filter((resident) => currentShowName.includes(resident.data.show_title));
+      result = filtered[0].data.show_image.larger.url;
+    }
+
+    return result;
+  }
+
   returnShowImgUrl() {
-    let currentShowImgUrl = null;
-    if (this.props.currentShow !== null) {
-      let showData = this.props.currentShow;
-      currentShowImgUrl = showData.currentShow[0].image_path;
+    let linkedPrismicImg = this.findShowUrlInPrismic();
+
+    if (linkedPrismicImg) {
+      return linkedPrismicImg;
+    } else {
+      let currentShowImgUrl = null;
+      if (this.props.currentShow !== null) {
+        let showData = this.props.currentShow;
+        currentShowImgUrl = showData.currentShow[0].image_path;
+      }
+      if (currentShowImgUrl === "") {
+        currentShowImgUrl = "./placeholder-showimg.jpg";
+      }
+      return currentShowImgUrl;
     }
-    if (currentShowImgUrl === "") {
-      currentShowImgUrl = "./placeholder-showimg.jpg";
-    }
-    return currentShowImgUrl;
   }
 
   returnShowDescription() {

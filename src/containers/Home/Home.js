@@ -20,6 +20,7 @@ const HomeContainer = (props) => {
       <div className="body-container" style={{ marginBottom: props.mixCloudWidget ? "123px" : null }}>
         <CurrentShow
           currentShow={props.currentShow}
+          residents={props.residents}
           playing={props.playing}
           handlePlayPauseClicked={props.handlePlayPauseClicked}
         />

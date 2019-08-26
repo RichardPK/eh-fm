@@ -270,6 +270,7 @@ class Main extends Component {
         daysToDisplay={this.state.displayedDays}
         selectedDay={this.state.selectedDay}
         mixCloudWidget={this.props.mixCloudWidget}
+        residents={this.props.residents}
       />
     );
   }
