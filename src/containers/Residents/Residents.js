@@ -40,7 +40,7 @@ class ResidentsContainer extends Component {
             index={index}
             key={index}
             showTitle={show.data.show_title}
-            showDescription={show.data.show_description}
+            showDescription={show.data.show_descriptiosn}
             thumbnailImage={show.data.show_image.url}
             showId={show.uid}
           />
@@ -56,6 +56,7 @@ class ResidentsContainer extends Component {
       <div className="residents-container">
         <Helmet>
           <title>Residents | EH-FM</title>
+          <meta name="fragment" content="!" />
           <meta property="og:title" content="Residents | EH-FM" />
           <meta name="description" content="The people defining the sound of EH-FM" />
           <meta property="og:description" content="The people defining the sound of EH-FM" />

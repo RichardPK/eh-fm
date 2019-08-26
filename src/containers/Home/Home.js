@@ -8,6 +8,7 @@ const HomeContainer = (props) => {
     <React.Fragment>
       <Helmet>
         <title>EH-FM</title>
+        <meta name="fragment" content="!" />
         <meta property="og:title" data-react-helmet="true" content="EH-FM" />
         <meta name="description" data-react-helmet="true" content="Independent community radio for Edinburgh" />
         <meta property="og:description" data-react-helmet="true" content="Independent community radio for Edinburgh" />
