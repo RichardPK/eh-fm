@@ -27,7 +27,9 @@ class CurrentShowDetail extends Component {
     const currentShowName = this.returnShowName();
     if (this.props.residents && currentShowName) {
       const filtered = this.props.residents.filter((resident) => currentShowName.includes(resident.data.show_title));
-      result = filtered[0].data.show_image.larger.url;
+      if (filtered.length > 0) {
+        result = filtered[0].data.show_image.larger.url;
+      }
     }
 
     return result;
