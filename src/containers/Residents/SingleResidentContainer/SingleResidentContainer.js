@@ -29,7 +29,6 @@ class ResidentShowContainer extends Component {
         this.setState({ selectedShow: show }, this.mixCloudAPICall);
       }
     }
-    console.log("Finding selected show");
   }
 
   mixCloudAPICall() {
