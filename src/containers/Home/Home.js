@@ -10,10 +10,10 @@ const HomeContainer = (props) => {
         <title>EH-FM</title>
         <meta name="fragment" content="!" />
         <meta property="og:title" data-react-helmet="true" content="EH-FM" />
-        <meta name="description" data-react-helmet="true" content="Independent community radio for Edinburgh" />
-        <meta property="og:description" data-react-helmet="true" content="Independent community radio for Edinburgh" />
+        <meta name="description" data-react-helmet="true" content="EH-FM is an Edinburgh-based online radio station, providing a platform for the capital's local artists and broadcasting 24 hours a day." />
+        <meta property="og:description" data-react-helmet="true" content="EH-FM is an Edinburgh-based online radio station, providing a platform for the capital's local artists and broadcasting 24 hours a day." />
         <meta property="og:url" data-react-helmet="true" content="http://www.ehfm.live" />
-        <meta name="twitter:image" data-react-helmet="true" content="https://www.ehfm.live/placeholder-showimg.jpg" />
+        <meta property="og:image" data-react-helmet="true" content="https://www.ehfm.live/placeholder-showimg.jpg" />
         <meta name="twitter:image" data-react-helmet="true" content="https://www.ehfm.live/placeholder-showimg.jpg" />
       </Helmet>
 
