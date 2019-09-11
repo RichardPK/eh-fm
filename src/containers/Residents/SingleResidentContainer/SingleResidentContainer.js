@@ -81,11 +81,29 @@ class ResidentShowContainer extends Component {
               <title>{titleString}</title>
               <meta name="fragment" content="!" />
               <meta property="og:title" data-react-helmet="true" content={titleString} />
-              <meta name="description" data-react-helmet="true" content={this.state.selectedShow.data.show_description} />
-              <meta property="og:description" data-react-helmet="true" content={this.state.selectedShow.data.show_description} />
+              <meta
+                name="description"
+                data-react-helmet="true"
+                content={this.state.selectedShow.data.show_description}
+              />
+              <meta
+                property="og:description"
+                data-react-helmet="true"
+                content={this.state.selectedShow.data.show_description}
+              />
               <meta property="og:url" data-react-helmet="true" content={window.location.href} />
-              <meta name="twitter:image" data-react-helmet="true" content={this.state.selectedShow.data.show_image.larger.url} />
-              <meta property="og:image" data-react-helmet="true" content={this.state.selectedShow.data.show_image.larger.url} />
+              <meta
+                name="twitter:image"
+                data-react-helmet="true"
+                content={this.state.selectedShow.data.show_image.larger.url}
+              />
+              <meta
+                property="og:image"
+                data-react-helmet="true"
+                content={this.state.selectedShow.data.show_image.larger.url}
+              />
+              <meta property="og:image:width" content={this.state.selectedShow.data.show_image.dimensions.width} />
+              <meta property="og:image:height" content={this.state.selectedShow.data.show_image.dimensions.height} />
             </Helmet>
             <div className="resident-show-container">{this.renderShowDetail()}</div>
           </React.Fragment>
