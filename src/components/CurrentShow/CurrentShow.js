@@ -24,9 +24,15 @@ class CurrentShowDetail extends Component {
 
   findShowUrlInPrismic() {
     let result;
+    let toLowerCase;
     const currentShowName = this.returnShowName();
-    if (this.props.residents && currentShowName) {
-      const filtered = this.props.residents.filter((resident) => currentShowName.includes(resident.data.show_title));
+    if (currentShowName) {
+      toLowerCase = currentShowName.toLowerCase();
+    }
+    if (this.props.residents && toLowerCase) {
+      const filtered = this.props.residents.filter((resident) =>
+        toLowerCase.includes(resident.data.show_title.toLowerCase())
+      );
       if (filtered.length > 0) {
         result = filtered[0].data.show_image.larger.url;
       }
