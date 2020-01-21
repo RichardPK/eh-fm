@@ -6,7 +6,6 @@ import Home from "../Home/Home";
 import ResidentsContainer from "../Residents/Residents";
 import ResidentShowContainer from "../Residents/SingleResidentContainer/SingleResidentContainer";
 import Footer from "../Footer/Footer";
-import "./Main.scss";
 import IndexActions from "../../actions/index";
 import ResidentsActions from "../../actions/ResidentsActions";
 import _ from "lodash";

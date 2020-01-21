@@ -4,6 +4,7 @@ import Schedule from "../../components/Schedule/Schedule";
 import { Helmet } from "react-helmet";
 import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
 import styled from "styled-components";
+import Colors from "../../consts/Colors";
 
 const HomeContainer = props => {
   return (
@@ -39,10 +40,7 @@ const HomeContainer = props => {
         />
       </Helmet>
 
-      <div
-        className="body-container"
-        style={{ marginBottom: props.mixCloudWidget ? "123px" : null }}
-      >
+      <BodyContainer mixCloudWidget={props.mixCloudWidget}>
         <CurrentShow
           currentShow={props.currentShow}
           residents={props.residents}
@@ -54,11 +52,33 @@ const HomeContainer = props => {
           daysToDisplay={props.daysToDisplay}
           selectedDay={props.selectedDay}
         />
-      </div>
+      </BodyContainer>
     </React.Fragment>
   );
 };
 
-const BodyContainer = styled.div``;
+const BodyContainer = styled.div`
+  padding: 20px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  margin-top: 125px;
+  margin-bottom: ${props => (props.mixCloudWidget ? `123px` : `auto`)};
+
+  h1 {
+    font-size: 18px;
+    font-weight: 500;
+    color: ${Colors.notQuiteBlack};
+  }
+
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 150px;
+  }
+`;
 
 export default HomeContainer;
