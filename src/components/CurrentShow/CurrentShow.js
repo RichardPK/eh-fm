@@ -3,7 +3,7 @@ import "./CurrentShow.scss";
 import Playbutton from "../Player/Playbutton/Playbutton";
 import styled from "styled-components";
 import Devices from "../../consts/Devices";
-import { Heading4, Heading3 } from "../text-elements/index";
+import { Heading4, Heading3, Body } from "../text-elements/index";
 import Colors from "../../consts/Colors";
 
 class CurrentShowDetail extends Component {
@@ -111,13 +111,8 @@ class CurrentShowDetail extends Component {
               />
             </ImageWrapper>
             <InfoWrapper>
-              {/* <h3 className="currentshow-show-name">
-                <span>{this.returnShowName()}</span>
-              </h3> */}
               <NameWrapper>
-                <ShowName>
-                  <span>{this.returnShowName()}</span>
-                </ShowName>
+                <ShowName>{this.returnShowName()}</ShowName>
               </NameWrapper>
               <div
                 className={this.renderPlayingContainer()}
@@ -129,10 +124,11 @@ class CurrentShowDetail extends Component {
                   playClicked={this.playClicked}
                 />
               </div>
-
-              <p className="currentshow-show-description">
-                <span>{this.returnShowDescription()}</span>
-              </p>
+              <DescriptionWrapper>
+                <ShowDescription>
+                  {this.returnShowDescription()}
+                </ShowDescription>
+              </DescriptionWrapper>
             </InfoWrapper>
           </WhiteWrapper>
         </Wrapper>
@@ -200,5 +196,19 @@ const NameWrapper = styled.div`
   background-color: ${Colors.notquiteBlack80Transparent};
   padding: 4px;
 `;
+
+const DescriptionWrapper = styled.div`
+  display: inline-block;
+  background-color: ${Colors.notquiteBlack80Transparent};
+  padding: 4px;
+  margin-right: 10%;
+  margin-top: 2rem;
+
+  @media ${Devices.tablet} {
+    margin-right: 25%;
+  }
+`;
+
+const ShowDescription = styled(Body)``;
 
 export default CurrentShowDetail;

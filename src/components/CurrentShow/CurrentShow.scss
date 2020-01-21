@@ -31,10 +31,6 @@
   }
 }
 
-.currentshow-show-description {
-  margin-right: 20%;
-}
-
 @media only screen and (min-width: 768px) {
   .currentshow-playbutton-container {
     cursor: pointer;
@@ -71,45 +67,7 @@
   }
 }
 
-.currentshow-show-description span {
-  padding: 4px;
-  background-color: rgba(72, 67, 73, 0.8);
-  line-height: 24px;
-  display: block;
-}
-
-@media only screen and (max-width: 1160px) {
-  .currentshow-show-description span {
-    font-size: 14px;
-    line-height: 20px;
-  }
-
-  .currentshow-show-description {
-    margin-right: 10%;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .currentshow-show-description span {
-    font-size: 18px;
-    line-height: 25px;
-  }
-
-  .currentshow-show-description {
-    margin-right: 25%;
-  }
-}
-
 @media only screen and (max-width: 520px) {
-  .currentshow-show-description span {
-    font-size: 14px;
-    line-height: 20px;
-  }
-
-  .currentshow-show-description {
-    margin-right: 10%;
-  }
-
   .currentshow-playbutton-container,
   .currentshow-playbutton-container-white {
     padding: 5px;
@@ -117,27 +75,7 @@
   }
 }
 
-@media only screen and (max-width: 400px) {
-  .currentshow-show-description span {
-    font-size: 12px;
-    line-height: 18px;
-  }
-
-  .currentshow-show-description {
-    margin-right: 10%;
-  }
-}
-
 @media only screen and (max-width: 320px) {
-  .currentshow-show-description span {
-    font-size: 12px;
-    line-height: 18px;
-  }
-
-  .currentshow-show-description {
-    margin-right: 5px;
-  }
-
   .currentshow-playbutton-container,
   .currentshow-playbutton-container-white {
     padding: 4px;

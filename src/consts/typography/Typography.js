@@ -43,8 +43,8 @@ const modularScaleDesktop = {
     lineHeight: TypographyUtils.convertPixelToEm(24)
   },
   body: {
-    fontSize: TypographyUtils.convertPixelToEm(18),
-    lineHeight: TypographyUtils.convertPixelToEm(24)
+    fontSize: TypographyUtils.convertPixelToEm(16),
+    lineHeight: TypographyUtils.convertPixelToEm(20)
   },
   boldDetail: {
     fontSize: TypographyUtils.convertPixelToEm(16),
@@ -56,7 +56,7 @@ const modularScaleDesktop = {
   },
   tiny: {
     fontSize: TypographyUtils.convertPixelToEm(14),
-    lineHeight: TypographyUtils.convertPixelToEm(18)
+    lineHeight: TypographyUtils.convertPixelToEm(16)
   }
 };
 
@@ -82,8 +82,8 @@ const modularScaleMobile = {
     lineHeight: TypographyUtils.convertPixelToEm(22)
   },
   body: {
-    fontSize: TypographyUtils.convertPixelToEm(16),
-    lineHeight: TypographyUtils.convertPixelToEm(22)
+    fontSize: TypographyUtils.convertPixelToEm(12),
+    lineHeight: TypographyUtils.convertPixelToEm(16)
   },
   boldDetail: {
     fontSize: TypographyUtils.convertPixelToEm(14),
@@ -94,8 +94,8 @@ const modularScaleMobile = {
     lineHeight: TypographyUtils.convertPixelToEm(20)
   },
   tiny: {
-    fontSize: TypographyUtils.convertPixelToEm(14),
-    lineHeight: TypographyUtils.convertPixelToEm(18)
+    fontSize: TypographyUtils.convertPixelToEm(10),
+    lineHeight: TypographyUtils.convertPixelToEm(12)
   }
 };
 
