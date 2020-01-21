@@ -8,6 +8,7 @@ const Header3 = ({ children, className }) => {
 
 const Wrapper = styled.h3`
   ${Typography.heading3}
+  letter-spacing: 1.5px;
 `;
 
 export default Header3;

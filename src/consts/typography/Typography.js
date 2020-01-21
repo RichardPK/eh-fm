@@ -128,7 +128,7 @@ export default {
   `,
 
   heading3: `
-  ${genericStyles.bold}
+  ${genericStyles.regular}
   
   ${TypographyUtils.fontSizeCalc(
     modularScaleDesktop.heading3.fontSize,

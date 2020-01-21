@@ -3,7 +3,7 @@ import "./CurrentShow.scss";
 import Playbutton from "../Player/Playbutton/Playbutton";
 import styled from "styled-components";
 import Devices from "../../consts/Devices";
-import { Heading4 } from "../text-elements/index";
+import { Heading4, Heading3 } from "../text-elements/index";
 import Colors from "../../consts/Colors";
 
 class CurrentShowDetail extends Component {
@@ -111,9 +111,14 @@ class CurrentShowDetail extends Component {
               />
             </ImageWrapper>
             <InfoWrapper>
-              <h3 className="currentshow-show-name">
+              {/* <h3 className="currentshow-show-name">
                 <span>{this.returnShowName()}</span>
-              </h3>
+              </h3> */}
+              <NameWrapper>
+                <ShowName>
+                  <span>{this.returnShowName()}</span>
+                </ShowName>
+              </NameWrapper>
               <div
                 className={this.renderPlayingContainer()}
                 onClick={this.playClicked}
@@ -186,6 +191,13 @@ const InfoWrapper = styled.div`
   @media ${Devices.mobileL} {
     margin-right: 16px;
   }
+`;
+
+const ShowName = styled(Heading3)``;
+
+const NameWrapper = styled.div`
+  background-color: ${Colors.notquiteBlack80Transparent};
+  padding: 4px;
 `;
 
 export default CurrentShowDetail;

@@ -8,6 +8,7 @@ const Header4 = ({ children, className }) => {
 
 const Wrapper = styled.h4`
   ${Typography.heading4}
+  letter-spacing: 1px;
 `;
 
 export default Header4;
