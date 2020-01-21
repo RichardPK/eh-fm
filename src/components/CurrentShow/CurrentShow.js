@@ -3,6 +3,8 @@ import "./CurrentShow.scss";
 import Playbutton from "../Player/Playbutton/Playbutton";
 import styled from "styled-components";
 import Devices from "../../consts/Devices";
+import { Heading4 } from "../text-elements/index";
+import Colors from "../../consts/Colors";
 
 class CurrentShowDetail extends Component {
   constructor(props) {
@@ -99,7 +101,7 @@ class CurrentShowDetail extends Component {
     return (
       <React.Fragment>
         <Wrapper>
-          <h1 className="currentshow-header">Live now</h1>
+          <Heading4Component>Live now</Heading4Component>
           <div className="currentshow-sub-container">
             <div className="currentshow-img-container">
               <img
@@ -145,6 +147,11 @@ const Wrapper = styled.div`
     width: 41vw;
     margin: 0px 10px 0px 20px;
   }
+`;
+
+const Heading4Component = styled(Heading4)`
+  color: ${Colors.notQuiteBlack};
+  margin: 1rem 2rem;
 `;
 
 export default CurrentShowDetail;

@@ -1,12 +1,5 @@
 @import "../../styleguide.scss";
 
-.currentshow-container {
-  display: flex;
-  flex-direction: column;
-  width: 41vw;
-  margin: 0px 10px 0px 20px;
-}
-
 .currentshow-sub-container {
   padding: 4px 4px 1px 4px;
   border-radius: 5px;
@@ -150,12 +143,6 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .currentshow-container {
-    width: 85vw;
-    margin: 0px 10px 0px 10px;
-    margin-bottom: 40px;
-  }
-
   .currentshow-show-name {
     font-size: 2em;
   }
