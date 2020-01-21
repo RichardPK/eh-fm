@@ -26,14 +26,15 @@ class Main extends Component {
       volume: 1
     };
     this.audioPlayer = React.createRef();
-    this.getResidents = this.getResidents.bind(this);
     this.callEveryHour = this.callEveryHour.bind(this);
     this.handleHourCallTimer = this.handleHourCallTimer.bind(this);
     this.currentShowApiCall = this.currentShowApiCall.bind(this);
     this.scheduleApiCall = this.scheduleApiCall.bind(this);
     this.fetchDate = this.fetchDate.bind(this);
     this.populateSchedule = this.populateSchedule.bind(this);
-    this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
+    this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(
+      this
+    );
     this.deleteDaysInPast = this.deleteDaysInPast.bind(this);
     this.handleScheduleDayClick = this.handleScheduleDayClick.bind(this);
     this.parseDayClassName = this.parseDayClassName.bind(this);
@@ -49,7 +50,7 @@ class Main extends Component {
   componentDidMount() {
     this.currentShowApiCall();
     this.handleHourCallTimer();
-    this.getResidents();
+    this.props.getResidents();
   }
 
   callEveryHour() {
@@ -82,14 +83,10 @@ class Main extends Component {
     }
   }
 
-  getResidents() {
-    this.props.getResidents();
-  }
-
   currentShowApiCall() {
     fetch("https://ehfm.airtime.pro/api/live-info")
-      .then((response) => response.json())
-      .then((data) =>
+      .then(response => response.json())
+      .then(data =>
         this.setState({ currentShow: data }, function() {
           this.scheduleApiCall();
         })
@@ -98,9 +95,9 @@ class Main extends Component {
 
   scheduleApiCall() {
     fetch("https://ehfm.airtime.pro/api/week-info")
-      .then((response) => response.json())
+      .then(response => response.json())
       .then(this.fetchDate())
-      .then((data) =>
+      .then(data =>
         this.setState({ showSchedule: data }, function() {
           this.populateSchedule();
         })
@@ -148,14 +145,19 @@ class Main extends Component {
           <div
             className={this.parseDayClassName(day, index)}
             id={day[0]}
-            onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
+            onClick={day =>
+              this.handleScheduleDayClick(day, nextSevenDaysSchedule)
+            }
             key={index}
           >
             {this.parseDayData(day[0])}
           </div>
         );
       });
-      this.setState({ displayedDays: allShowDays }, this.handleSelectedDay(nextSevenDaysSchedule[0]));
+      this.setState(
+        { displayedDays: allShowDays },
+        this.handleSelectedDay(nextSevenDaysSchedule[0])
+      );
     }
   }
 
@@ -233,7 +235,10 @@ class Main extends Component {
           if (day[1][0].start_timestamp.includes(currentDate)) {
             let currentDayInScheduleIndex = scheduleData.indexOf(day);
             let finalDayInScheduleToDisplay = currentDayInScheduleIndex + 7;
-            let nextSevenDaysSchedule = scheduleData.slice(currentDayInScheduleIndex, finalDayInScheduleToDisplay);
+            let nextSevenDaysSchedule = scheduleData.slice(
+              currentDayInScheduleIndex,
+              finalDayInScheduleToDisplay
+            );
             return nextSevenDaysSchedule;
           }
         }
@@ -279,7 +284,10 @@ class Main extends Component {
     return (
       <React.Fragment>
         <audio ref={this.audioPlayer} id="audioPlayer" name="media">
-          <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg" />
+          <source
+            src="http://ehfm.out.airtime.pro:8000/ehfm_a"
+            type="audio/mpeg"
+          />
         </audio>
 
         <Header
@@ -308,7 +316,7 @@ class Main extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     playing: state.index.playing,
     volume: state.index.volume,
@@ -317,12 +325,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    togglePlaying: (toggle) => {
+    togglePlaying: toggle => {
       dispatch(IndexActions.switchPlaying(toggle));
     },
-    changeVolume: (value) => {
+    changeVolume: value => {
       dispatch(IndexActions.switchVolume(value));
     },
     getResidents: () => {
@@ -331,11 +339,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const Index = withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Main)
-);
+const Index = withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
 
 export default Index;
