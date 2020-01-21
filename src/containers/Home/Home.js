@@ -41,7 +41,7 @@ const HomeContainer = props => {
         />
       </Helmet>
 
-      <BodyContainer mixCloudWidget={props.mixCloudWidget}>
+      <Wrapper mixCloudWidget={props.mixCloudWidget}>
         <CurrentShow
           currentShow={props.currentShow}
           residents={props.residents}
@@ -53,12 +53,12 @@ const HomeContainer = props => {
           daysToDisplay={props.daysToDisplay}
           selectedDay={props.selectedDay}
         />
-      </BodyContainer>
+      </Wrapper>
     </React.Fragment>
   );
 };
 
-const BodyContainer = styled.div`
+const Wrapper = styled.div`
   padding: 20px;
   justify-content: center;
   margin-bottom: ${props => (props.mixCloudWidget ? `123px` : `auto`)};

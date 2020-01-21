@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./CurrentShow.scss";
 import Playbutton from "../Player/Playbutton/Playbutton";
+import styled from "styled-components";
+import Devices from "../../consts/Devices";
 
 class CurrentShowDetail extends Component {
   constructor(props) {
@@ -30,7 +32,7 @@ class CurrentShowDetail extends Component {
       toLowerCase = currentShowName.toLowerCase();
     }
     if (this.props.residents && toLowerCase) {
-      const filtered = this.props.residents.filter((resident) =>
+      const filtered = this.props.residents.filter(resident =>
         toLowerCase.includes(resident.data.show_title.toLowerCase())
       );
       if (filtered.length > 0) {
@@ -68,8 +70,14 @@ class CurrentShowDetail extends Component {
         currentShowDescription = "Independent community radio for Edinburgh.";
         return currentShowDescription;
       } else {
-        let parsedForInvertedCommas = currentShowDescription.replace(/&#039;/g, "'");
-        let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, "&");
+        let parsedForInvertedCommas = currentShowDescription.replace(
+          /&#039;/g,
+          "'"
+        );
+        let parsedForAmpersands = parsedForInvertedCommas.replace(
+          /&amp;/g,
+          "&"
+        );
         return parsedForAmpersands;
       }
     }
@@ -90,19 +98,29 @@ class CurrentShowDetail extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="currentshow-container">
+        <Wrapper>
           <h1 className="currentshow-header">Live now</h1>
           <div className="currentshow-sub-container">
             <div className="currentshow-img-container">
-              <img className="currentshow-img" src={this.returnShowImgUrl()} alt="current live show" />
+              <img
+                className="currentshow-img"
+                src={this.returnShowImgUrl()}
+                alt="current live show"
+              />
             </div>
             <div className="currentshow-info-container">
               <h3 className="currentshow-show-name">
                 <span>{this.returnShowName()}</span>
               </h3>
-              <div className={this.renderPlayingContainer()} onClick={this.playClicked}>
+              <div
+                className={this.renderPlayingContainer()}
+                onClick={this.playClicked}
+              >
                 <p>Listen now</p>
-                <Playbutton playingTrueFalse={this.props.playing} playClicked={this.playClicked} />
+                <Playbutton
+                  playingTrueFalse={this.props.playing}
+                  playClicked={this.playClicked}
+                />
               </div>
 
               <p className="currentshow-show-description">
@@ -110,10 +128,23 @@ class CurrentShowDetail extends Component {
               </p>
             </div>
           </div>
-        </div>
+        </Wrapper>
       </React.Fragment>
     );
   }
 }
+
+const Wrapper = styled.div`
+  width: 85vw;
+  margin: 0px 10px 0px 10px;
+  margin-bottom: 40px;
+
+  @media ${Devices.tablet} {
+    display: flex;
+    flex-direction: column;
+    width: 41vw;
+    margin: 0px 10px 0px 20px;
+  }
+`;
 
 export default CurrentShowDetail;
