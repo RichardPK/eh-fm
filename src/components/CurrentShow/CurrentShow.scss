@@ -1,20 +1,5 @@
 @import "../../styleguide.scss";
 
-.currentshow-img-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  width: inherit;
-  z-index: -1;
-}
-
-.currentshow-img {
-  height: auto;
-  margin: 0px 0px 0px 0px;
-  width: 100%;
-}
-
 .currentshow-playbutton-container {
   padding: 10px;
   background-color: $altblue;

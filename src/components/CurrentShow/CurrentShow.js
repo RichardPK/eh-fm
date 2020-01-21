@@ -103,13 +103,13 @@ class CurrentShowDetail extends Component {
         <Wrapper>
           <Heading4Component>Live now</Heading4Component>
           <WhiteWrapper>
-            <div className="currentshow-img-container">
-              <img
+            <ImageWrapper>
+              <CurrentShowImage
                 className="currentshow-img"
                 src={this.returnShowImgUrl()}
                 alt="current live show"
               />
-            </div>
+            </ImageWrapper>
             <div className="currentshow-info-container">
               <h3 className="currentshow-show-name">
                 <span>{this.returnShowName()}</span>
@@ -160,6 +160,21 @@ const WhiteWrapper = styled.div`
   position: relative;
   color: white;
   background-color: white;
+`;
+
+const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: inherit;
+  z-index: -1;
+`;
+
+const CurrentShowImage = styled.img`
+  height: auto;
+  margin: 0px 0px 0px 0px;
+  width: 100%;
 `;
 
 export default CurrentShowDetail;
