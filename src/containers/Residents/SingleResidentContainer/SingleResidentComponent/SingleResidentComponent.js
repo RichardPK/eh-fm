@@ -144,6 +144,7 @@ class ResidentShowDisplay extends Component {
         onClick={e => this.handleMixCloudClick(show)}
         key={this.props.pastShows.indexOf(show)}
       >
+        {/* Font Awesome icon needs replacing */}
         {/* <FontAwesomeIcon icon={faMixcloud} className="faMixcloud" /> */}
         <div className="showname-info-cont">
           <span className="resident-mixcloud-date">
@@ -236,6 +237,7 @@ class ResidentShowDisplay extends Component {
             onClick={this.toggleArchiveclick}
           >
             <h1>Archive</h1>
+            {/* Font Awesome icon needs replacing */}
             {/* <FontAwesomeIcon icon={faChevronDown} className="down" /> */}
           </div>
         );
@@ -243,6 +245,7 @@ class ResidentShowDisplay extends Component {
         return (
           <div className="pastshows-button" onClick={this.toggleArchiveclick}>
             <h1>Archive</h1>
+            {/* Font Awesome icon needs replacing */}
             {/* <FontAwesomeIcon icon={faChevronRight} /> */}
           </div>
         );
