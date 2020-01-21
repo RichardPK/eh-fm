@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
 import styled from "styled-components";
 import Colors from "../../consts/Colors";
+import Devices from "../../consts/Devices";
 
 const HomeContainer = props => {
   return (
@@ -59,11 +60,11 @@ const HomeContainer = props => {
 
 const BodyContainer = styled.div`
   padding: 20px;
-  display: flex;
-  align-items: end;
   justify-content: center;
-  margin-top: 125px;
   margin-bottom: ${props => (props.mixCloudWidget ? `123px` : `auto`)};
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
 
   h1 {
     font-size: 18px;
@@ -71,13 +72,11 @@ const BodyContainer = styled.div`
     color: ${Colors.notQuiteBlack};
   }
 
-  @media only screen and (max-width: 800px) {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  @media only screen and (max-width: 768px) {
-    margin-top: 150px;
+  @media ${Devices.tablet} {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    margin-top: 125px;
   }
 `;
 

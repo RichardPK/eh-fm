@@ -1,4 +1,4 @@
-import sizes from './Sizes';
+import sizes from "./Sizes";
 
 export default {
   mobileS: `(min-width: ${sizes.mobileS})`,
@@ -9,7 +9,6 @@ export default {
   laptopL: `(min-width: ${sizes.laptopL})`,
   desktop: `(min-width: ${sizes.desktop})`,
   desktopL: `(min-width: ${sizes.desktop})`,
-  layoutBreak: `(min-width: 1595px)`,
   mobileHeightShort: `(min-height: ${sizes.mobileHeightShort})`,
   mobileHeightMedium: `(min-height: ${sizes.mobileHeightMedium})`,
   mobileHeightTall: `(min-height: ${sizes.mobileHeightTall})`
