@@ -196,6 +196,7 @@ const InfoWrapper = styled.div`
 const ShowName = styled(Heading3)``;
 
 const NameWrapper = styled.div`
+  display: inline-block;
   background-color: ${Colors.notquiteBlack80Transparent};
   padding: 4px;
 `;

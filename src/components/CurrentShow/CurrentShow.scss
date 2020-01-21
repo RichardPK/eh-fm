@@ -31,20 +31,6 @@
   }
 }
 
-.currentshow-show-name {
-  /* margin-right: 170px; */
-  font-size: 2.5em;
-  letter-spacing: 1.5px;
-  margin-bottom: 0px;
-  font-weight: normal;
-}
-
-.currentshow-show-name span {
-  background-color: rgba(72, 67, 73, 0.8);
-  padding: 4px;
-  line-height: 56px;
-}
-
 .currentshow-show-description {
   margin-right: 20%;
 }
@@ -93,14 +79,6 @@
 }
 
 @media only screen and (max-width: 1160px) {
-  .currentshow-show-name {
-    font-size: 1.5em;
-  }
-
-  .currentshow-show-name span {
-    line-height: 36px;
-  }
-
   .currentshow-show-description span {
     font-size: 14px;
     line-height: 20px;
@@ -112,14 +90,6 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .currentshow-show-name {
-    font-size: 2em;
-  }
-
-  .currentshow-show-name span {
-    line-height: 46px;
-  }
-
   .currentshow-show-description span {
     font-size: 18px;
     line-height: 25px;
@@ -131,14 +101,6 @@
 }
 
 @media only screen and (max-width: 520px) {
-  .currentshow-show-name {
-    font-size: 1.5em;
-  }
-
-  .currentshow-show-name span {
-    line-height: 36px;
-  }
-
   .currentshow-show-description span {
     font-size: 14px;
     line-height: 20px;
@@ -156,14 +118,6 @@
 }
 
 @media only screen and (max-width: 400px) {
-  .currentshow-show-name {
-    font-size: 1.2em;
-  }
-
-  .currentshow-show-name span {
-    line-height: 31px;
-  }
-
   .currentshow-show-description span {
     font-size: 12px;
     line-height: 18px;
@@ -175,10 +129,6 @@
 }
 
 @media only screen and (max-width: 320px) {
-  .currentshow-show-name {
-    font-size: 1.2em;
-  }
-
   .currentshow-show-description span {
     font-size: 12px;
     line-height: 18px;
