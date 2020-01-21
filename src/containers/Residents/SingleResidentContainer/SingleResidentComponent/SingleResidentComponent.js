@@ -7,7 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/pro-regular-svg-icons";
 import { faChevronDown } from "@fortawesome/pro-regular-svg-icons";
 import { faMixcloud } from "@fortawesome/fontawesome-free-brands";
-import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from "react-scroll";
+import {
+  Link,
+  DirectLink,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller
+} from "react-scroll";
 import IndexActions from "../../../../actions/index";
 import PastShowCard from "./PastShowCard/PastShowCard";
 
@@ -84,49 +92,25 @@ class ResidentShowDisplay extends Component {
 
   renderPastShows() {
     if (this.props.pastShows) {
-      // let displayHeight = this.showDescription.current.offsetTop;
       let fullShowDisplay = this.mapPastShows();
-      // let individualShow = fullShowDisplay[0];
       let mostRecentShow = this.mapMostRecentShow();
 
       if (this.state.displayShows === true) {
         return (
-          <div
-            className="resident-show-pastshows-container"
-            // style={{top: `${displayHeight}px`}}
-          >
-            <div className="most-recent">
-              {/* <h1>Listen back</h1> */}
-              {mostRecentShow}
-            </div>
-
-            {/* <div className="pastshows-button active"
-          onClick={this.toggleArchiveclick}>
-            <h1>Archive</h1>
-            <FontAwesomeIcon icon={faChevronDown} 
-            className="down"/>
-            </div> */}
-            <div className="cards-container" style={this.renderCardContainerMargin()}>
+          <div className="resident-show-pastshows-container">
+            <div className="most-recent">{mostRecentShow}</div>
+            <div
+              className="cards-container"
+              style={this.renderCardContainerMargin()}
+            >
               {fullShowDisplay}
             </div>
           </div>
         );
       } else {
         return (
-          <div
-            className="resident-show-pastshows-container"
-            // style={{top: `${displayHeight}px`}}
-          >
-            <div className="most-recent">
-              {/* <h1>Listen back</h1> */}
-              {mostRecentShow}
-            </div>
-
-            {/* <div className="pastshows-button"
-          onClick={this.toggleArchiveclick}>
-            <h1>Archive</h1>
-            <FontAwesomeIcon icon={faChevronRight} />
-            </div> */}
+          <div className="resident-show-pastshows-container">
+            <div className="most-recent">{mostRecentShow}</div>
           </div>
         );
       }
@@ -134,8 +118,8 @@ class ResidentShowDisplay extends Component {
   }
 
   mapPastShows() {
-    let showDisplay = this.props.pastShows.map((show) => {
-      let tags = show.tags.map((tag) => {
+    let showDisplay = this.props.pastShows.map(show => {
+      let tags = show.tags.map(tag => {
         return (
           <div className="mixcloud-tag" key={tag.url}>
             <span>{tag.name}</span>
@@ -144,26 +128,12 @@ class ResidentShowDisplay extends Component {
       });
       return (
         <PastShowCard
-          handleMixCloudClick={(e) => this.handleMixCloudClick(show)}
+          handleMixCloudClick={e => this.handleMixCloudClick(show)}
           key={this.props.pastShows.indexOf(show)}
           renderDate={this.renderDate(show.name)}
           renderShowName={this.renderShowName(show.name)}
           tags={tags}
         />
-
-        // <div
-        //   className="resident-pastshow-card"
-        //   onClick={e => this.handleMixCloudClick(show)}
-        //   key={this.props.pastShows.indexOf(show)}>
-        //   {/* <div className="show-img"
-        // style={{ backgroundImage: `url(${show.pictures.large})` }}>
-        // </div> */}
-        //   <div className="showname-info-cont">
-        //     <span className="resident-mixcloud-date">{this.renderDate(show.name)}</span>
-        //     <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
-        //     <div className="resident-mixcloud-tags-container">{tags}</div>
-        //   </div>
-        // </div>
       );
     });
     showDisplay.splice(0, 1);
@@ -175,14 +145,17 @@ class ResidentShowDisplay extends Component {
     return (
       <div
         className="resident-pastshow-card"
-        onClick={(e) => this.handleMixCloudClick(show)}
+        onClick={e => this.handleMixCloudClick(show)}
         key={this.props.pastShows.indexOf(show)}
       >
-        {/* <div className="play-button"/> */}
         <FontAwesomeIcon icon={faMixcloud} className="faMixcloud" />
         <div className="showname-info-cont">
-          <span className="resident-mixcloud-date">{this.renderDate(show.name)}</span>
-          <span className="resident-mixcloud-showname">{this.renderShowName(show.name)}</span>
+          <span className="resident-mixcloud-date">
+            {this.renderDate(show.name)}
+          </span>
+          <span className="resident-mixcloud-showname">
+            {this.renderShowName(show.name)}
+          </span>
         </div>
       </div>
     );
@@ -238,7 +211,7 @@ class ResidentShowDisplay extends Component {
 
   handleMixCloudClick(show) {
     let url = `https://api.mixcloud.com${show.key}embed-json/`;
-    axios.get(url).then((res) => {
+    axios.get(url).then(res => {
       this.props.setMixcloudWidget(res.data.html);
     });
   }
@@ -262,7 +235,10 @@ class ResidentShowDisplay extends Component {
     if (this.props.pastShows) {
       if (this.state.displayShows) {
         return (
-          <div className="pastshows-button active" onClick={this.toggleArchiveclick}>
+          <div
+            className="pastshows-button active"
+            onClick={this.toggleArchiveclick}
+          >
             <h1>Archive</h1>
             <FontAwesomeIcon icon={faChevronDown} className="down" />
           </div>
@@ -283,7 +259,10 @@ class ResidentShowDisplay extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="resident-show-bg-img" style={this.renderShowBgImgStyle()} />
+        <div
+          className="resident-show-bg-img"
+          style={this.renderShowBgImgStyle()}
+        />
 
         <div className="resident-show-display-container">
           <div className="resident-show-text-container">
@@ -292,8 +271,6 @@ class ResidentShowDisplay extends Component {
                 <span>{this.props.showTitle}</span>
               </h3>
               {this.renderShowTime()}
-
-              {/* <div className="resident-show-divider" style={{ "width": this.calculateDividerWidth() }} /> */}
             </div>
 
             <div className="resident-show-socials">
@@ -303,7 +280,10 @@ class ResidentShowDisplay extends Component {
             </div>
 
             {this.props.showDescription ? (
-              <div className="resident-show-display-description" ref={this.showDescription}>
+              <div
+                className="resident-show-display-description"
+                ref={this.showDescription}
+              >
                 <p>
                   <span>{this.props.showDescription}</span>
                 </p>
@@ -320,7 +300,7 @@ class ResidentShowDisplay extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     playing: state.index.playing,
     volume: state.index.volume,
@@ -328,22 +308,19 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    togglePlaying: (toggle) => {
+    togglePlaying: toggle => {
       dispatch(IndexActions.switchPlaying(toggle));
     },
-    changeVolume: (value) => {
+    changeVolume: value => {
       dispatch(IndexActions.switchVolume(value));
     },
-    setMixcloudWidget: (value) => {
+    setMixcloudWidget: value => {
       dispatch(IndexActions.setMixcloudWidget(value));
     }
   };
 };
 
-const Index = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ResidentShowDisplay);
+const Index = connect(mapStateToProps, mapDispatchToProps)(ResidentShowDisplay);
 export default Index;
