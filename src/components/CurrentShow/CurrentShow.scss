@@ -31,13 +31,6 @@
   }
 }
 
-.currentshow-info-container {
-  position: absolute;
-  bottom: 34px;
-  left: 34px;
-  margin-right: 16px;
-}
-
 .currentshow-show-name {
   /* margin-right: 170px; */
   font-size: 2.5em;
@@ -163,10 +156,6 @@
 }
 
 @media only screen and (max-width: 400px) {
-  .currentshow-info-container {
-    bottom: 10px;
-  }
-
   .currentshow-show-name {
     font-size: 1.2em;
   }
@@ -186,11 +175,6 @@
 }
 
 @media only screen and (max-width: 320px) {
-  .currentshow-info-container {
-    bottom: 5px;
-    left: 15px;
-  }
-
   .currentshow-show-name {
     font-size: 1.2em;
   }

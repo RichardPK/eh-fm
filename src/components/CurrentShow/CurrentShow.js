@@ -110,7 +110,7 @@ class CurrentShowDetail extends Component {
                 alt="current live show"
               />
             </ImageWrapper>
-            <div className="currentshow-info-container">
+            <InfoWrapper>
               <h3 className="currentshow-show-name">
                 <span>{this.returnShowName()}</span>
               </h3>
@@ -128,7 +128,7 @@ class CurrentShowDetail extends Component {
               <p className="currentshow-show-description">
                 <span>{this.returnShowDescription()}</span>
               </p>
-            </div>
+            </InfoWrapper>
           </WhiteWrapper>
         </Wrapper>
       </React.Fragment>
@@ -175,6 +175,17 @@ const CurrentShowImage = styled.img`
   height: auto;
   margin: 0px 0px 0px 0px;
   width: 100%;
+`;
+
+const InfoWrapper = styled.div`
+  position: absolute;
+  bottom: 5px;
+  left: 15px;
+  bottom: 15px;
+
+  @media ${Devices.mobileL} {
+    margin-right: 16px;
+  }
 `;
 
 export default CurrentShowDetail;
