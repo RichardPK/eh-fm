@@ -3,10 +3,6 @@ import { connect } from "react-redux";
 import axios from "axios";
 import "./SingleResidentComponent.scss";
 import renderHTML from "react-render-html";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/pro-regular-svg-icons";
-import { faChevronDown } from "@fortawesome/pro-regular-svg-icons";
-import { faMixcloud } from "@fortawesome/fontawesome-free-brands";
 import {
   Link,
   DirectLink,
@@ -148,7 +144,7 @@ class ResidentShowDisplay extends Component {
         onClick={e => this.handleMixCloudClick(show)}
         key={this.props.pastShows.indexOf(show)}
       >
-        <FontAwesomeIcon icon={faMixcloud} className="faMixcloud" />
+        {/* <FontAwesomeIcon icon={faMixcloud} className="faMixcloud" /> */}
         <div className="showname-info-cont">
           <span className="resident-mixcloud-date">
             {this.renderDate(show.name)}
@@ -240,14 +236,14 @@ class ResidentShowDisplay extends Component {
             onClick={this.toggleArchiveclick}
           >
             <h1>Archive</h1>
-            <FontAwesomeIcon icon={faChevronDown} className="down" />
+            {/* <FontAwesomeIcon icon={faChevronDown} className="down" /> */}
           </div>
         );
       } else {
         return (
           <div className="pastshows-button" onClick={this.toggleArchiveclick}>
             <h1>Archive</h1>
-            <FontAwesomeIcon icon={faChevronRight} />
+            {/* <FontAwesomeIcon icon={faChevronRight} /> */}
           </div>
         );
       }
