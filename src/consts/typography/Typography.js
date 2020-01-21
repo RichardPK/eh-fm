@@ -35,8 +35,8 @@ const modularScaleDesktop = {
     lineHeight: TypographyUtils.convertPixelToEm(48)
   },
   heading4: {
-    fontSize: TypographyUtils.convertPixelToEm(24),
-    lineHeight: TypographyUtils.convertPixelToEm(28)
+    fontSize: TypographyUtils.convertPixelToEm(22),
+    lineHeight: TypographyUtils.convertPixelToEm(26)
   },
   cta: {
     fontSize: TypographyUtils.convertPixelToEm(18),
