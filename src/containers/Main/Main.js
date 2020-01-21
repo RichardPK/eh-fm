@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-// import ReactDOM from 'react-dom';
 import Header from "../Header/Header";
 import Home from "../Home/Home";
 import ResidentsContainer from "../Residents/Residents";
@@ -43,7 +42,6 @@ class Main extends Component {
     this.fetchDay = this.fetchDay.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
-    //
     this.renderHomePage = this.renderHomePage.bind(this);
   }
 
@@ -162,7 +160,6 @@ class Main extends Component {
   }
 
   parseDayClassName(day, index) {
-    // return `days-header-item`;
     return `days-header-item days-header-${index}`;
   }
 
