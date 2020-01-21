@@ -10,7 +10,6 @@ import "./Main.scss";
 import IndexActions from "../../actions/index";
 import ResidentsActions from "../../actions/ResidentsActions";
 import _ from "lodash";
-import styled from "styled-components";
 
 class Main extends Component {
   constructor(props) {
@@ -43,7 +42,6 @@ class Main extends Component {
     this.fetchDay = this.fetchDay.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
-    this.renderHomePage = this.renderHomePage.bind(this);
   }
 
   componentDidMount() {
