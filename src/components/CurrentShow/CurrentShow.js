@@ -102,7 +102,7 @@ class CurrentShowDetail extends Component {
       <React.Fragment>
         <Wrapper>
           <Heading4Component>Live now</Heading4Component>
-          <div className="currentshow-sub-container">
+          <WhiteWrapper>
             <div className="currentshow-img-container">
               <img
                 className="currentshow-img"
@@ -129,7 +129,7 @@ class CurrentShowDetail extends Component {
                 <span>{this.returnShowDescription()}</span>
               </p>
             </div>
-          </div>
+          </WhiteWrapper>
         </Wrapper>
       </React.Fragment>
     );
@@ -151,7 +151,15 @@ const Wrapper = styled.div`
 
 const Heading4Component = styled(Heading4)`
   color: ${Colors.notQuiteBlack};
-  margin: 1rem 2rem;
+  margin: 10px 20px 10px 10px;
+`;
+
+const WhiteWrapper = styled.div`
+  padding: 4px 4px 1px;
+  border-radius: 5px;
+  position: relative;
+  color: white;
+  background-color: white;
 `;
 
 export default CurrentShowDetail;
