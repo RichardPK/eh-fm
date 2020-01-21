@@ -10,6 +10,7 @@ import "./Main.scss";
 import IndexActions from "../../actions/index";
 import ResidentsActions from "../../actions/ResidentsActions";
 import _ from "lodash";
+import styled from "styled-components";
 
 class Main extends Component {
   constructor(props) {
@@ -263,20 +264,6 @@ class Main extends Component {
     }
   }
 
-  renderHomePage() {
-    return (
-      <Home
-        currentShow={this.state.currentShow}
-        playing={this.props.playing}
-        handlePlayPauseClicked={this.handlePlayPauseClicked}
-        daysToDisplay={this.state.displayedDays}
-        selectedDay={this.state.selectedDay}
-        mixCloudWidget={this.props.mixCloudWidget}
-        residents={this.props.residents}
-      />
-    );
-  }
-
   render() {
     return (
       <React.Fragment>
@@ -300,7 +287,21 @@ class Main extends Component {
             {this.props.children}
 
             <Switch>
-              <Route exact path="/" render={this.renderHomePage} />
+              <Route
+                exact
+                path="/"
+                component={() => (
+                  <Home
+                    currentShow={this.state.currentShow}
+                    playing={this.props.playing}
+                    handlePlayPauseClicked={this.handlePlayPauseClicked}
+                    daysToDisplay={this.state.displayedDays}
+                    selectedDay={this.state.selectedDay}
+                    mixCloudWidget={this.props.mixCloudWidget}
+                    residents={this.props.residents}
+                  />
+                )}
+              />
               <Route exact path="/residents" component={ResidentsContainer} />
               <Route path="/residents/:id" component={ResidentShowContainer} />
             </Switch>
