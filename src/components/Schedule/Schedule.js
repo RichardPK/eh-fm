@@ -96,11 +96,14 @@ const Inner = styled.div`
   display: flex;
   padding: 20px;
   flex-direction: column;
-  /* width: 41vw; */
-  margin: 0px 20px 0px 10px;
+  margin: 0px;
   overflow: hidden;
   box-shadow: 0px 1px 10px 0.1px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
+
+  @media ${Devices.tablet} {
+    margin: 0px 20px 0px 10px;
+  }
 `;
 
 export default Schedule;

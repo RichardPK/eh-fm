@@ -1,21 +1,6 @@
-.schedule-container {
-  display: flex;
-  flex-direction: column;
-  width: 41vw;
-  margin: 0px 20px 0px 10px;
-  overflow: hidden;
-  box-shadow: 0px 1px 10px 0.1px rgba(0, 0, 0, 0.05);
-  border-radius: 5px;
-}
-
 .schedule-header {
   margin-left: 10px;
   margin-right: 20px;
-}
-
-.schedule-subcontainer {
-  padding: 20px;
-  background-color: white;
 }
 
 .schedule-divider {
@@ -81,11 +66,6 @@
   .show-name {
     font-size: 18px;
     padding-bottom: 20px;
-  }
-
-  .schedule-container {
-    width: 85vw;
-    margin: 0px 10px 0px 10px;
   }
 
   .show-time {
