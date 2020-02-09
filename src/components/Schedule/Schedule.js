@@ -8,8 +8,12 @@ import Colors from '../../consts/Colors';
 class Schedule extends Component {
   constructor(props) {
     super(props);
+    this.renderSelectedDay = this.renderSelectedDay.bind(this);
     this.showTimeParser = this.showTimeParser.bind(this);
     this.showNameParser = this.showNameParser.bind(this);
+    this.parseDayData = this.parseDayData.bind(this);
+    this.removeNextFromDay = this.removeNextFromDay.bind(this);
+    this.renderNextSevenDaysHeaders = this.renderNextSevenDaysHeaders.bind(this);
   }
 
   renderSelectedDay() {
@@ -56,12 +60,42 @@ class Schedule extends Component {
     );
   }
 
+  parseDayData(dayName) {
+    let namesWithNextInChopped = this.removeNextFromDay(dayName);
+    let splitName = namesWithNextInChopped.split('');
+    let sliceToUpperCase = splitName.slice(0, 1);
+    let upperCaseSlice = sliceToUpperCase[0].toUpperCase();
+    let lowerCaseSlice = splitName.slice(1);
+    lowerCaseSlice.unshift(upperCaseSlice);
+    let finalDayName = lowerCaseSlice.join('');
+    if (finalDayName === this.state.currentDay) {
+      return 'Today';
+    } else {
+      return finalDayName;
+    }
+  }
+
+  removeNextFromDay(dayName) {
+    if (dayName.includes('next')) {
+      let splitName = dayName.split('');
+      let cutName = splitName.splice(4);
+      return cutName.join('');
+    } else {
+      return dayName;
+    }
+  }
+
+  renderNextSevenDaysHeaders() {
+    console.log(this.props.nextSevenDaysSchedule);
+    debugger;
+  }
+
   render() {
     return (
       <Wrapper>
         <Heading4Component>Schedule</Heading4Component>
         <Inner>
-          <DaysHeaderWrapper>{this.props.daysToDisplay}</DaysHeaderWrapper>
+          <DaysHeaderWrapper>{this.renderNextSevenDaysHeaders()}</DaysHeaderWrapper>
           <Divider />
           <table className="show-schedule">
             <tbody>{this.renderSelectedDay()}</tbody>

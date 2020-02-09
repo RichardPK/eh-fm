@@ -37,7 +37,10 @@ const HomeContainer = (props) => {
           handlePlayPauseClicked={props.handlePlayPauseClicked}
         />
 
-        <Schedule daysToDisplay={props.daysToDisplay} selectedDay={props.selectedDay} />
+        <Schedule
+          nextSevenDaysSchedule={props.nextSevenDaysSchedule}
+          selectedDay={props.selectedDay}
+        />
       </Wrapper>
     </React.Fragment>
   );

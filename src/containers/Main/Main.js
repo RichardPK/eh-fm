@@ -19,7 +19,7 @@ class Main extends Component {
       currentDay: null,
       currentShow: null,
       selectedDay: null,
-      displayedDays: [],
+      nextSevenDaysSchedule: [],
       playing: false,
       volume: 1
     };
@@ -134,22 +134,23 @@ class Main extends Component {
     let showArray = this.convertShowScheduleToArray();
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
     if (nextSevenDaysSchedule) {
-      const allShowDays = nextSevenDaysSchedule.map((day, index) => {
-        return (
-          <div
-            className={this.parseDayClassName(day, index)}
-            id={day[0]}
-            onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
-            key={index}
-          >
-            {this.parseDayData(day[0])}
-          </div>
-        );
-      });
-      this.setState(
-        { displayedDays: allShowDays },
-        this.handleSelectedDay(nextSevenDaysSchedule[0])
-      );
+      this.setState({ nextSevenDaysSchedule });
+      // const allShowDays = nextSevenDaysSchedule.map((day, index) => {
+      //   return (
+      //     <div
+      //       className={this.parseDayClassName(day, index)}
+      //       id={day[0]}
+      //       onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
+      //       key={index}
+      //     >
+      //       {this.parseDayData(day[0])}
+      //     </div>
+      //   );
+      // });
+      // this.setState(
+      //   { displayedDays: allShowDays },
+      //   this.handleSelectedDay(nextSevenDaysSchedule[0])
+      // );
     }
   }
 
@@ -285,7 +286,7 @@ class Main extends Component {
                     currentShow={this.state.currentShow}
                     playing={this.props.playing}
                     handlePlayPauseClicked={this.handlePlayPauseClicked}
-                    daysToDisplay={this.state.displayedDays}
+                    nextSevenDaysSchedule={this.state.nextSevenDaysSchedule}
                     selectedDay={this.state.selectedDay}
                     mixCloudWidget={this.props.mixCloudWidget}
                     residents={this.props.residents}
