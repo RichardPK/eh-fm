@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { Route, Switch, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import Header from "../Header/Header";
-import Home from "../Home/Home";
-import ResidentsContainer from "../Residents/Residents";
-import ResidentShowContainer from "../Residents/SingleResidentContainer/SingleResidentContainer";
-import Footer from "../Footer/Footer";
-import IndexActions from "../../actions/index";
-import ResidentsActions from "../../actions/ResidentsActions";
-import _ from "lodash";
+import React, { Component } from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Header from '../Header/Header';
+import Home from '../Home/Home';
+import ResidentsContainer from '../Residents/Residents';
+import ResidentShowContainer from '../Residents/SingleResidentContainer/SingleResidentContainer';
+import Footer from '../Footer/Footer';
+import IndexActions from '../../actions/index';
+import ResidentsActions from '../../actions/ResidentsActions';
+import _ from 'lodash';
 
 class Main extends Component {
   constructor(props) {
@@ -30,9 +30,7 @@ class Main extends Component {
     this.scheduleApiCall = this.scheduleApiCall.bind(this);
     this.fetchDate = this.fetchDate.bind(this);
     this.populateSchedule = this.populateSchedule.bind(this);
-    this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(
-      this
-    );
+    this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
     this.deleteDaysInPast = this.deleteDaysInPast.bind(this);
     this.handleScheduleDayClick = this.handleScheduleDayClick.bind(this);
     this.parseDayClassName = this.parseDayClassName.bind(this);
@@ -80,9 +78,9 @@ class Main extends Component {
   }
 
   currentShowApiCall() {
-    fetch("https://ehfm.airtime.pro/api/live-info")
-      .then(response => response.json())
-      .then(data =>
+    fetch('https://ehfm.airtime.pro/api/live-info')
+      .then((response) => response.json())
+      .then((data) =>
         this.setState({ currentShow: data }, function() {
           this.scheduleApiCall();
         })
@@ -90,10 +88,10 @@ class Main extends Component {
   }
 
   scheduleApiCall() {
-    fetch("https://ehfm.airtime.pro/api/week-info")
-      .then(response => response.json())
+    fetch('https://ehfm.airtime.pro/api/week-info')
+      .then((response) => response.json())
       .then(this.fetchDate())
-      .then(data =>
+      .then((data) =>
         this.setState({ showSchedule: data }, function() {
           this.populateSchedule();
         })
@@ -106,12 +104,12 @@ class Main extends Component {
     let mm = todayDate.getMonth() + 1; //January is 0!
     let yyyy = todayDate.getFullYear();
     if (dd < 10) {
-      dd = "0" + dd;
+      dd = '0' + dd;
     }
     if (mm < 10) {
-      mm = "0" + mm;
+      mm = '0' + mm;
     }
-    let today = yyyy + "-" + mm + "-" + dd;
+    let today = yyyy + '-' + mm + '-' + dd;
     this.setState(
       { currentDate: today },
       function() {
@@ -122,13 +120,13 @@ class Main extends Component {
 
   fetchDay(dayNum) {
     let weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
+    weekday[0] = 'Sunday';
+    weekday[1] = 'Monday';
+    weekday[2] = 'Tuesday';
+    weekday[3] = 'Wednesday';
+    weekday[4] = 'Thursday';
+    weekday[5] = 'Friday';
+    weekday[6] = 'Saturday';
     this.setState({ currentDay: weekday[dayNum] });
   }
 
@@ -141,9 +139,7 @@ class Main extends Component {
           <div
             className={this.parseDayClassName(day, index)}
             id={day[0]}
-            onClick={day =>
-              this.handleScheduleDayClick(day, nextSevenDaysSchedule)
-            }
+            onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
             key={index}
           >
             {this.parseDayData(day[0])}
@@ -173,35 +169,35 @@ class Main extends Component {
 
   handleSelectedDay(selectedDay, domObject) {
     if (domObject) {
-      let oldSelectedObject = document.getElementsByClassName("days-header-0");
-      oldSelectedObject[0].classList.remove("days-header-0");
+      let oldSelectedObject = document.getElementsByClassName('days-header-0');
+      oldSelectedObject[0].classList.remove('days-header-0');
       let classToRemove = domObject.target.classList[1];
       domObject.target.classList.remove(classToRemove);
-      domObject.target.classList.add("days-header-0");
+      domObject.target.classList.add('days-header-0');
     }
     this.setState({ selectedDay: selectedDay }, function() {});
   }
 
   parseDayData(dayName) {
     let namesWithNextInChopped = this.removeNextFromDay(dayName);
-    let splitName = namesWithNextInChopped.split("");
+    let splitName = namesWithNextInChopped.split('');
     let sliceToUpperCase = splitName.slice(0, 1);
     let upperCaseSlice = sliceToUpperCase[0].toUpperCase();
     let lowerCaseSlice = splitName.slice(1);
     lowerCaseSlice.unshift(upperCaseSlice);
-    let finalDayName = lowerCaseSlice.join("");
+    let finalDayName = lowerCaseSlice.join('');
     if (finalDayName === this.state.currentDay) {
-      return "Today";
+      return 'Today';
     } else {
       return finalDayName;
     }
   }
 
   removeNextFromDay(dayName) {
-    if (dayName.includes("next")) {
-      let splitName = dayName.split("");
+    if (dayName.includes('next')) {
+      let splitName = dayName.split('');
       let cutName = splitName.splice(4);
-      return cutName.join("");
+      return cutName.join('');
     } else {
       return dayName;
     }
@@ -265,10 +261,7 @@ class Main extends Component {
     return (
       <React.Fragment>
         <audio ref={this.audioPlayer} id="audioPlayer" name="media">
-          <source
-            src="http://ehfm.out.airtime.pro:8000/ehfm_a"
-            type="audio/mpeg"
-          />
+          <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg" />
         </audio>
 
         <Header
@@ -311,7 +304,7 @@ class Main extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     playing: state.index.playing,
     volume: state.index.volume,
@@ -320,12 +313,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    togglePlaying: toggle => {
+    togglePlaying: (toggle) => {
       dispatch(IndexActions.switchPlaying(toggle));
     },
-    changeVolume: value => {
+    changeVolume: (value) => {
       dispatch(IndexActions.switchVolume(value));
     },
     getResidents: () => {
@@ -334,6 +327,11 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const Index = withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
+const Index = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Main)
+);
 
 export default Index;

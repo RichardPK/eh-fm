@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Schedule.scss';
 import styled from 'styled-components';
 import Devices from '../../consts/Devices';
-import { Heading4, Heading3, Body } from '../text-elements/index';
+import { Heading4, Cta } from '../text-elements/index';
 import Colors from '../../consts/Colors';
 
 class Schedule extends Component {
@@ -61,8 +61,8 @@ class Schedule extends Component {
       <Wrapper>
         <Heading4Component>Schedule</Heading4Component>
         <Inner>
-          <div className="days-header">{this.props.daysToDisplay}</div>
-          <div className="schedule-divider"></div>
+          <DaysHeaderWrapper>{this.props.daysToDisplay}</DaysHeaderWrapper>
+          <Divider />
           <table className="show-schedule">
             <tbody>{this.renderSelectedDay()}</tbody>
           </table>
@@ -105,5 +105,38 @@ const Inner = styled.div`
     margin: 0px 20px 0px 10px;
   }
 `;
+
+const Divider = styled.div`
+  height: 4px;
+  width: 100%;
+  background-color: ${Colors.altBlue};
+`;
+
+const DaysHeaderWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 14px;
+
+  .days-header-item {
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 5px;
+
+    @media ${Devices.tablet} {
+      &:hover {
+        background-color: var(--altblue);
+        color: white;
+      }
+    }
+  }
+
+  .days-header-0 {
+    background-color: var(--altblue);
+    color: white;
+  }
+`;
+
+const DaysHeader = styled(Cta)``;
 
 export default Schedule;

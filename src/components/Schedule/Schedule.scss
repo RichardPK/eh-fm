@@ -1,32 +1,14 @@
-.schedule-header {
-  margin-left: 10px;
-  margin-right: 20px;
-}
+// .days-header-item {
+//   cursor: pointer;
+//   padding: 10px;
+//   margin-top: 5px;
+//   /* margin: 5px 5px 5px 5px; */
+// }
 
-.schedule-divider {
-  height: 4px;
-  width: 100%;
-  background-color: var(--altblue);
-}
-
-.days-header {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  font-size: 14px;
-}
-
-.days-header-item {
-  cursor: pointer;
-  padding: 10px;
-  margin-top: 5px;
-  /* margin: 5px 5px 5px 5px; */
-}
-
-.days-header-0 {
-  background-color: var(--altblue);
-  color: white;
-}
+// .days-header-0 {
+//   background-color: var(--altblue);
+//   color: white;
+// }
 
 .show-schedule {
   /* background-color: rgba(0, 145, 138, 0.1); */
@@ -50,10 +32,10 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .days-header-item:hover {
-    background-color: var(--altblue);
-    color: white;
-  }
+  // .days-header-item:hover {
+  //   background-color: var(--altblue);
+  //   color: white;
+  // }
 }
 
 @media only screen and (max-width: 1150px) {
