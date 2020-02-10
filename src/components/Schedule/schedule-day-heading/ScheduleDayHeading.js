@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
-const ScheduleDayHeading = ({ dayName, currentDay }) => {
+const ScheduleDayHeading = ({ dayName, currentDay, onClick }) => {
   const parseDayData = (dayName) => {
     let namesWithNextInChopped = removeNextFromDay(dayName);
     let splitName = namesWithNextInChopped.split('');
@@ -27,7 +27,7 @@ const ScheduleDayHeading = ({ dayName, currentDay }) => {
     }
   };
 
-  return <Wrapper>{parseDayData(dayName)}</Wrapper>;
+  return <Wrapper onClick={() => onClick(dayName)}>{parseDayData(dayName)}</Wrapper>;
 };
 
 const Wrapper = styled.div``;

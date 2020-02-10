@@ -17,6 +17,7 @@ class Schedule extends Component {
     this.renderSelectedDay = this.renderSelectedDay.bind(this);
     this.showTimeParser = this.showTimeParser.bind(this);
     this.showNameParser = this.showNameParser.bind(this);
+    this.handleDayClick = this.handleDayClick.bind(this);
   }
 
   renderSelectedDay() {
@@ -63,6 +64,13 @@ class Schedule extends Component {
     );
   }
 
+  handleDayClick(day) {
+    let selectedDay = this.props.nextSevenDaysSchedule.filter((daySchedule) => {
+      return daySchedule[0] === day;
+    });
+    this.setState({ selectedDay: selectedDay[0] });
+  }
+
   render() {
     return (
       <Wrapper>
@@ -71,7 +79,11 @@ class Schedule extends Component {
           <DaysHeaderWrapper>
             {this.props.nextSevenDaysSchedule.map((scheduleDay) => {
               return (
-                <ScheduleDayHeading dayName={scheduleDay[0]} currentDay={this.props.currentDay} />
+                <ScheduleDayHeading
+                  onClick={this.handleDayClick}
+                  dayName={scheduleDay[0]}
+                  currentDay={this.props.currentDay}
+                />
               );
             })}
           </DaysHeaderWrapper>
