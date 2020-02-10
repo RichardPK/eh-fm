@@ -33,9 +33,6 @@ class Main extends Component {
     this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
     this.deleteDaysInPast = this.deleteDaysInPast.bind(this);
     this.handleScheduleDayClick = this.handleScheduleDayClick.bind(this);
-    this.parseDayClassName = this.parseDayClassName.bind(this);
-    this.parseDayData = this.parseDayData.bind(this);
-    this.removeNextFromDay = this.removeNextFromDay.bind(this);
     this.fetchDay = this.fetchDay.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
@@ -110,12 +107,9 @@ class Main extends Component {
       mm = '0' + mm;
     }
     let today = yyyy + '-' + mm + '-' + dd;
-    this.setState(
-      { currentDate: today },
-      function() {
-        this.fetchDay(todayDate.getDay());
-      }.bind(this)
-    );
+    this.setState({ currentDate: today }, () => {
+      this.fetchDay(todayDate.getDay());
+    });
   }
 
   fetchDay(dayNum) {
@@ -154,10 +148,6 @@ class Main extends Component {
     }
   }
 
-  parseDayClassName(day, index) {
-    return `days-header-item days-header-${index}`;
-  }
-
   handleScheduleDayClick(clickedObj, schedule) {
     let dayClickedName = clickedObj.target.id;
     _.forEach(
@@ -177,31 +167,6 @@ class Main extends Component {
       domObject.target.classList.add('days-header-0');
     }
     this.setState({ selectedDay: selectedDay }, function() {});
-  }
-
-  parseDayData(dayName) {
-    let namesWithNextInChopped = this.removeNextFromDay(dayName);
-    let splitName = namesWithNextInChopped.split('');
-    let sliceToUpperCase = splitName.slice(0, 1);
-    let upperCaseSlice = sliceToUpperCase[0].toUpperCase();
-    let lowerCaseSlice = splitName.slice(1);
-    lowerCaseSlice.unshift(upperCaseSlice);
-    let finalDayName = lowerCaseSlice.join('');
-    if (finalDayName === this.state.currentDay) {
-      return 'Today';
-    } else {
-      return finalDayName;
-    }
-  }
-
-  removeNextFromDay(dayName) {
-    if (dayName.includes('next')) {
-      let splitName = dayName.split('');
-      let cutName = splitName.splice(4);
-      return cutName.join('');
-    } else {
-      return dayName;
-    }
   }
 
   convertShowScheduleToArray() {
@@ -290,6 +255,7 @@ class Main extends Component {
                     selectedDay={this.state.selectedDay}
                     mixCloudWidget={this.props.mixCloudWidget}
                     residents={this.props.residents}
+                    currentDay={this.state.currentDay}
                   />
                 )}
               />

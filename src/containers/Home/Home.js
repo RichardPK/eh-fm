@@ -39,6 +39,7 @@ const HomeContainer = (props) => {
 
         <Schedule
           nextSevenDaysSchedule={props.nextSevenDaysSchedule}
+          currentDay={props.currentDay}
           selectedDay={props.selectedDay}
         />
       </Wrapper>
