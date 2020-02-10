@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const ScheduleDayHeading = ({ dayName, currentDay }) => {
-  console.log(currentDay);
   const parseDayData = (dayName) => {
     let namesWithNextInChopped = removeNextFromDay(dayName);
     let splitName = namesWithNextInChopped.split('');

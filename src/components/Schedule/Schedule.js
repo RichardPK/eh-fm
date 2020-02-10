@@ -9,15 +9,20 @@ import Colors from '../../consts/Colors';
 class Schedule extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      selectedDay: this.props.nextSevenDaysSchedule[0]
+    };
+
     this.renderSelectedDay = this.renderSelectedDay.bind(this);
     this.showTimeParser = this.showTimeParser.bind(this);
     this.showNameParser = this.showNameParser.bind(this);
   }
 
   renderSelectedDay() {
-    if (this.props.selectedDay !== null) {
-      let selectedDay = this.props.selectedDay[1];
-      let showsForThatDay = selectedDay.map((show, index) => {
+    if (this.state.selectedDay) {
+      let selectedDayShows = this.state.selectedDay[1];
+      let showsForThatDay = selectedDayShows.map((show, index) => {
         return (
           <tr key={index} className="show-listing">
             {this.showTimeParser(show)}
@@ -66,9 +71,7 @@ class Schedule extends Component {
           <DaysHeaderWrapper>
             {this.props.nextSevenDaysSchedule.map((scheduleDay) => {
               return (
-                <ScheduleDayHeading dayName={scheduleDay[0]} currentDay={this.props.currentDay}>
-                  {}
-                </ScheduleDayHeading>
+                <ScheduleDayHeading dayName={scheduleDay[0]} currentDay={this.props.currentDay} />
               );
             })}
           </DaysHeaderWrapper>
