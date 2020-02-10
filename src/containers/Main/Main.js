@@ -18,7 +18,6 @@ class Main extends Component {
       currentDate: null,
       currentDay: null,
       currentShow: null,
-      selectedDay: null,
       nextSevenDaysSchedule: [],
       playing: false,
       volume: 1
@@ -32,7 +31,6 @@ class Main extends Component {
     this.populateSchedule = this.populateSchedule.bind(this);
     this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
     this.deleteDaysInPast = this.deleteDaysInPast.bind(this);
-    this.handleScheduleDayClick = this.handleScheduleDayClick.bind(this);
     this.fetchDay = this.fetchDay.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
@@ -78,7 +76,7 @@ class Main extends Component {
     fetch('https://ehfm.airtime.pro/api/live-info')
       .then((response) => response.json())
       .then((data) =>
-        this.setState({ currentShow: data }, function() {
+        this.setState({ currentShow: data }, () => {
           this.scheduleApiCall();
         })
       );
@@ -146,27 +144,6 @@ class Main extends Component {
       //   this.handleSelectedDay(nextSevenDaysSchedule[0])
       // );
     }
-  }
-
-  handleScheduleDayClick(clickedObj, schedule) {
-    let dayClickedName = clickedObj.target.id;
-    _.forEach(
-      schedule,
-      function(day) {
-        if (day[0] === dayClickedName) this.handleSelectedDay(day, clickedObj);
-      }.bind(this)
-    );
-  }
-
-  handleSelectedDay(selectedDay, domObject) {
-    if (domObject) {
-      let oldSelectedObject = document.getElementsByClassName('days-header-0');
-      oldSelectedObject[0].classList.remove('days-header-0');
-      let classToRemove = domObject.target.classList[1];
-      domObject.target.classList.remove(classToRemove);
-      domObject.target.classList.add('days-header-0');
-    }
-    this.setState({ selectedDay: selectedDay }, function() {});
   }
 
   convertShowScheduleToArray() {
@@ -252,7 +229,6 @@ class Main extends Component {
                     playing={this.props.playing}
                     handlePlayPauseClicked={this.handlePlayPauseClicked}
                     nextSevenDaysSchedule={this.state.nextSevenDaysSchedule}
-                    selectedDay={this.state.selectedDay}
                     mixCloudWidget={this.props.mixCloudWidget}
                     residents={this.props.residents}
                     currentDay={this.state.currentDay}
