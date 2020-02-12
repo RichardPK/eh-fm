@@ -111,39 +111,14 @@ class Main extends Component {
   }
 
   fetchDay(dayNum) {
-    let weekday = new Array(7);
-    weekday[0] = 'Sunday';
-    weekday[1] = 'Monday';
-    weekday[2] = 'Tuesday';
-    weekday[3] = 'Wednesday';
-    weekday[4] = 'Thursday';
-    weekday[5] = 'Friday';
-    weekday[6] = 'Saturday';
-    this.setState({ currentDay: weekday[dayNum] });
+    let weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    this.setState({ currentDay: weekdays[dayNum] });
   }
 
   populateSchedule() {
     let showArray = this.convertShowScheduleToArray();
     let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
-    if (nextSevenDaysSchedule) {
-      this.setState({ nextSevenDaysSchedule });
-      // const allShowDays = nextSevenDaysSchedule.map((day, index) => {
-      //   return (
-      //     <div
-      //       className={this.parseDayClassName(day, index)}
-      //       id={day[0]}
-      //       onClick={(day) => this.handleScheduleDayClick(day, nextSevenDaysSchedule)}
-      //       key={index}
-      //     >
-      //       {this.parseDayData(day[0])}
-      //     </div>
-      //   );
-      // });
-      // this.setState(
-      //   { displayedDays: allShowDays },
-      //   this.handleSelectedDay(nextSevenDaysSchedule[0])
-      // );
-    }
+    nextSevenDaysSchedule && this.setState({ nextSevenDaysSchedule });
   }
 
   convertShowScheduleToArray() {

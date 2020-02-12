@@ -40,6 +40,8 @@ const Wrapper = styled.div`
   padding: 10px;
   margin-top: 5px;
   transition: all 0.2s ease-out;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   ${(props) =>
     props.selected
       ? `

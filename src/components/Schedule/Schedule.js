@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Devices from '../../consts/Devices';
 import { Heading4, Cta } from '../text-elements/index';
 import ScheduleDayHeading from './schedule-day-heading/ScheduleDayHeading';
+import DailyShowSchedule from './daily-show-schedule/DailyShowSchedule';
 import Colors from '../../consts/Colors';
 
 class Schedule extends Component {
@@ -13,56 +14,8 @@ class Schedule extends Component {
     this.state = {
       selectedDay: this.props.nextSevenDaysSchedule[0]
     };
-
-    this.renderSelectedDay = this.renderSelectedDay.bind(this);
-    this.showTimeParser = this.showTimeParser.bind(this);
-    this.showNameParser = this.showNameParser.bind(this);
     this.handleDayClick = this.handleDayClick.bind(this);
     this.isDaySelected = this.isDaySelected.bind(this);
-  }
-
-  renderSelectedDay() {
-    if (this.state.selectedDay) {
-      let selectedDayShows = this.state.selectedDay[1];
-      let showsForThatDay = selectedDayShows.map((show, index) => {
-        return (
-          <tr key={index} className="show-listing">
-            {this.showTimeParser(show)}
-            <td className="show-name" key={index}>
-              {this.showNameParser(show)}
-            </td>
-          </tr>
-        );
-      });
-      return showsForThatDay;
-    }
-  }
-
-  showNameParser(show) {
-    let currentShowName = show.name;
-    let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, "'");
-    let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
-    return parsedForAmpersands;
-  }
-
-  showTimeParser(show) {
-    let startTime = show.start_timestamp;
-    let endTime = show.end_timestamp;
-    let parsedStart = startTime
-      .split(' ')
-      .splice(1)
-      .join()
-      .slice(0, -3);
-    let parsedEnd = endTime
-      .split(' ')
-      .splice(1)
-      .join()
-      .slice(0, -3);
-    return (
-      <td className="show-time">
-        {parsedStart} - {parsedEnd}
-      </td>
-    );
   }
 
   handleDayClick(day) {
@@ -94,9 +47,7 @@ class Schedule extends Component {
             })}
           </DaysHeaderWrapper>
           <Divider />
-          <table className="show-schedule">
-            <tbody>{this.renderSelectedDay()}</tbody>
-          </table>
+          <DailyShowSchedule selectedDay={this.state.selectedDay} />
         </Inner>
       </Wrapper>
     );
@@ -167,7 +118,5 @@ const DaysHeaderWrapper = styled.div`
     color: white;
   }
 `;
-
-const DaysHeader = styled(Cta)``;
 
 export default Schedule;
