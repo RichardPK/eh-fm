@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
+import Colors from '../../../consts/Colors';
 
-const ScheduleDayHeading = ({ dayName, currentDay, onClick }) => {
+const ScheduleDayHeading = ({ dayName, currentDay, onClick, selected }) => {
   const parseDayData = (dayName) => {
     let namesWithNextInChopped = removeNextFromDay(dayName);
     let splitName = namesWithNextInChopped.split('');
@@ -27,9 +28,25 @@ const ScheduleDayHeading = ({ dayName, currentDay, onClick }) => {
     }
   };
 
-  return <Wrapper onClick={() => onClick(dayName)}>{parseDayData(dayName)}</Wrapper>;
+  return (
+    <Wrapper onClick={() => onClick(dayName)} selected={selected}>
+      {parseDayData(dayName)}
+    </Wrapper>
+  );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 5px;
+  transition: all 0.2s ease-out;
+  ${(props) =>
+    props.selected
+      ? `
+  background-color: ${Colors.altBlue};
+  color: ${Colors.bgWhite};
+  `
+      : ``}
+`;
 
 export default ScheduleDayHeading;

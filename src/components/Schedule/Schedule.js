@@ -18,6 +18,7 @@ class Schedule extends Component {
     this.showTimeParser = this.showTimeParser.bind(this);
     this.showNameParser = this.showNameParser.bind(this);
     this.handleDayClick = this.handleDayClick.bind(this);
+    this.isDaySelected = this.isDaySelected.bind(this);
   }
 
   renderSelectedDay() {
@@ -71,6 +72,10 @@ class Schedule extends Component {
     this.setState({ selectedDay: selectedDay[0] });
   }
 
+  isDaySelected(day) {
+    return day === this.state.selectedDay;
+  }
+
   render() {
     return (
       <Wrapper>
@@ -83,6 +88,7 @@ class Schedule extends Component {
                   onClick={this.handleDayClick}
                   dayName={scheduleDay[0]}
                   currentDay={this.props.currentDay}
+                  selected={this.isDaySelected(scheduleDay)}
                 />
               );
             })}
