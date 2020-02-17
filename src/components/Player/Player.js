@@ -72,6 +72,10 @@ class Player extends Component {
 }
 
 const PlayerWrapper = styled.div`
+  position: fixed;
+  top: 114px;
+  width: 100vw;
+  z-index: 100;
   background-color: ${Colors.ehfmPrimary};
   padding: 2px 20px 2px 20px;
   display: flex;
@@ -79,6 +83,10 @@ const PlayerWrapper = styled.div`
   align-items: center;
   @media ${Devices.mobileL} {
     padding: 2px 30px 2px 30px;
+  }
+
+  @media ${Devices.tablet} {
+    top: 86px;
   }
 `;
 
