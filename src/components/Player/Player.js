@@ -50,7 +50,7 @@ class Player extends Component {
   render() {
     return (
       <PlayerWrapper>
-        <div className="left-side-player">
+        <Left>
           <div className="onair-container">
             ON AIR
             <div className="onair-circle"></div>
@@ -62,32 +62,38 @@ class Player extends Component {
             </div>
             <p className="current-show">{this.returnShowData()}</p>
           </div>
-        </div>
-        <div className="right-side-player">
+        </Left>
+        <Right>
           <Volumebutton volumeClicked={this.volumeClicked} volume={this.props.volume} />
-        </div>
+        </Right>
       </PlayerWrapper>
     );
   }
 }
 
 const PlayerWrapper = styled.div`
-  position: fixed;
-  top: 114px;
-  width: 100vw;
-  z-index: 100;
   background-color: ${Colors.ehfmPrimary};
   padding: 2px 20px 2px 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   @media ${Devices.mobileL} {
     padding: 2px 30px 2px 30px;
   }
+`;
 
-  @media ${Devices.tablet} {
-    top: 86px;
-  }
+const Left = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Right = styled.div`
+  margin: 0px 0px 0px auto;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default Player;
