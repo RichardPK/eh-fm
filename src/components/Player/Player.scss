@@ -1,4 +1,4 @@
-@import "../../styleguide.scss";
+@import '../../styleguide.scss';
 
 .player-container {
   position: fixed;
@@ -19,7 +19,6 @@
   display: flex;
   align-items: center;
   padding: 8px 8px 8px 8px;
-  /* THIS PADDING IS CONTROLLING THE HEIGHT OF THE ELEMENT */
 }
 
 .now-playing-container:hover {
