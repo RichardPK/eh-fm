@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Schedule.scss';
 import styled from 'styled-components';
 import Devices from '../../consts/Devices';
 import { Heading4, Cta } from '../text-elements/index';
