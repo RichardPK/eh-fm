@@ -5,6 +5,8 @@ import Volumebutton from './Volumebutton/Volumebutton';
 import './Player.scss';
 import Devices from '../../consts/Devices';
 import Colors from '../../consts/Colors';
+import OnAir from './on-air/OnAir';
+import NowPlaying from './now-playing/NowPlaying';
 
 class Player extends Component {
   constructor(props) {
@@ -12,59 +14,23 @@ class Player extends Component {
     this.state = {
       volume: 1.0
     };
-    this.returnShowData = this.returnShowData.bind(this);
-    this.playClicked = this.playClicked.bind(this);
-    this.volumeClicked = this.volumeClicked.bind(this);
   }
 
   componentDidUpdate() {}
-
-  returnShowData() {
-    let currentShowName = null;
-    if (this.props.currentShow !== null) {
-      let showData = this.props.currentShow;
-      currentShowName = showData.currentShow[0].name;
-      let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, "'");
-      let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
-      return parsedForAmpersands;
-    }
-    return currentShowName;
-  }
-
-  renderPlayingContainer() {
-    if (this.props.playing === true) {
-      return 'now-playing-container-white';
-    } else {
-      return 'now-playing-container';
-    }
-  }
-
-  playClicked() {
-    this.props.handlePlayPauseClicked();
-  }
-
-  volumeClicked() {
-    this.props.handleVolumeClicked();
-  }
 
   render() {
     return (
       <PlayerWrapper>
         <Left>
-          <div className="onair-container">
-            ON AIR
-            <div className="onair-circle"></div>
-          </div>
-
-          <div className={this.renderPlayingContainer()} onClick={this.playClicked}>
-            <div className="play-button-container">
-              <Playbutton playingTrueFalse={this.props.playing} playClicked={this.playClicked} />
-            </div>
-            <p className="current-show">{this.returnShowData()}</p>
-          </div>
+          <OnAir />
+          <NowPlaying
+            playing={this.props.playing}
+            handlePlayPauseClicked={this.props.handlePlayPauseClicked}
+            currentShow={this.props.currentShow}
+          />
         </Left>
         <Right>
-          <Volumebutton volumeClicked={this.volumeClicked} volume={this.props.volume} />
+          <Volumebutton volumeClicked={this.props.handleVolumeClicked} volume={this.props.volume} />
         </Right>
       </PlayerWrapper>
     );

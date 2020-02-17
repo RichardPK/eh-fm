@@ -28,7 +28,6 @@ const PlayerOuter = styled.div`
   position: fixed;
   width: 100vw;
   z-index: 100;
-
   top: 114px;
 
   @media ${Devices.tablet} {

@@ -1,4 +1,4 @@
-import TypographyUtils from "./TypographyUtils";
+import TypographyUtils from './TypographyUtils';
 
 const genericStyles = {
   bold: `
@@ -55,8 +55,8 @@ const modularScaleDesktop = {
     lineHeight: TypographyUtils.convertPixelToEm(22)
   },
   tiny: {
-    fontSize: TypographyUtils.convertPixelToEm(14),
-    lineHeight: TypographyUtils.convertPixelToEm(16)
+    fontSize: TypographyUtils.convertPixelToEm(12),
+    lineHeight: TypographyUtils.convertPixelToEm(14)
   }
 };
 
