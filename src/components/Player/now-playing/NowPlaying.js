@@ -27,9 +27,9 @@ const NowPlaying = ({ handlePlayPauseClicked, playing, currentShow }) => {
 
   return (
     <Wrapper playing={playing} onClick={handlePlayPauseClicked}>
-      <div className="play-button-container">
+      <PlaybuttonContainer>
         <Playbutton playingTrueFalse={playing} playClicked={handlePlayPauseClicked} />
-      </div>
+      </PlaybuttonContainer>
       <p className="current-show">{returnShowData()}</p>
     </Wrapper>
   );
@@ -75,18 +75,10 @@ const Wrapper = styled.div`
   }
 `;
 
-// background-color: $playerwhite;
-
-// // p {
-// //   color: $altblue;
-// // }
-
-// // .play-button {
-// //   border-color: transparent transparent transparent $altblue;
-// // }
-
-// // .pause-button {
-// //   border-color: $altblue;
-// // }
+const PlaybuttonContainer = styled.div`
+  border-left: 2px solid ${Colors.playerWhite};
+  width: 0.8em;
+  padding-right: 20px;
+`;
 
 export default NowPlaying;
