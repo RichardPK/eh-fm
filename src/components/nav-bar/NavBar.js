@@ -28,9 +28,9 @@ const NavBar = props => {
               <Link to={residentsURL}>Residents</Link>
             </p>
           </Left>
-          <div className="logo-head-container">
+          <HeaderLogoWrapper>
             <Logo />
-          </div>
+          </HeaderLogoWrapper>
           <Right>
             <Socials />
           </Right>
@@ -78,6 +78,24 @@ const Left = styled.div`
 
   @media ${Devices.tablet} {
     height: 71px;
+  }
+`;
+
+const HeaderLogoWrapper = styled.div`
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  top: -70px;
+  padding-left: 50vw;
+  padding-right: 50vw;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  background-color: white;
+
+  @media ${Devices.tablet} {
+    top: 0px;
+    padding-left: 0;
+    padding-right: 0;
   }
 `;
 
