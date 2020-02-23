@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./CurrentShow.scss";
-import PlayPauseButton from "../Player/PlayPauseButton/PlayPauseButton";
+import PlayPauseButton from "../Player/play-pause-button/PlayPauseButton";
 import styled from "styled-components";
 import Devices from "../../consts/Devices";
 import { Heading4, Heading3, Body } from "../text-elements/index";

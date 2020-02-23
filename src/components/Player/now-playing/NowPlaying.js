@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import PlayPauseButton from "../PlayPauseButton/PlayPauseButton";
+import PlayPauseButton from "../play-pause-button/PlayPauseButton";
 import Devices from "../../../consts/Devices";
 import Colors from "../../../consts/Colors";
 import { Body } from "../../text-elements/index";

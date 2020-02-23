@@ -39,7 +39,7 @@ class ResidentShowContainer extends Component {
       let wwwCutPoint = playlist_url.indexOf(".") + 1;
       let modifiedUrl = playlist_url.slice(wwwCutPoint);
 
-      axios.get(`https://api.${modifiedUrl}cloudcasts/`).then((res) => {
+      axios.get(`https://api.${modifiedUrl}cloudcasts/`).then(res => {
         let shows = res.data.data.reverse();
         this.setState({ pastShows: shows });
       });
@@ -80,7 +80,11 @@ class ResidentShowContainer extends Component {
             <Helmet>
               <title>{titleString}</title>
               <meta name="fragment" content="!" />
-              <meta property="og:title" data-react-helmet="true" content={titleString} />
+              <meta
+                property="og:title"
+                data-react-helmet="true"
+                content={titleString}
+              />
               <meta
                 name="description"
                 data-react-helmet="true"
@@ -91,7 +95,11 @@ class ResidentShowContainer extends Component {
                 data-react-helmet="true"
                 content={this.state.selectedShow.data.show_description}
               />
-              <meta property="og:url" data-react-helmet="true" content={window.location.href} />
+              <meta
+                property="og:url"
+                data-react-helmet="true"
+                content={window.location.href}
+              />
               <meta
                 name="twitter:image"
                 data-react-helmet="true"
@@ -102,10 +110,22 @@ class ResidentShowContainer extends Component {
                 data-react-helmet="true"
                 content={this.state.selectedShow.data.show_image.larger.url}
               />
-              <meta property="og:image:width" content={this.state.selectedShow.data.show_image.dimensions.width} />
-              <meta property="og:image:height" content={this.state.selectedShow.data.show_image.dimensions.height} />
+              <meta
+                property="og:image:width"
+                content={
+                  this.state.selectedShow.data.show_image.dimensions.width
+                }
+              />
+              <meta
+                property="og:image:height"
+                content={
+                  this.state.selectedShow.data.show_image.dimensions.height
+                }
+              />
             </Helmet>
-            <div className="resident-show-container">{this.renderShowDetail()}</div>
+            <div className="resident-show-container">
+              {this.renderShowDetail()}
+            </div>
           </React.Fragment>
         ) : null}
       </React.Fragment>
@@ -113,21 +133,18 @@ class ResidentShowContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     residents: state.residents
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {};
 };
 
 const connectedResidentShowContainer = withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ResidentShowContainer)
+  connect(mapStateToProps, mapDispatchToProps)(ResidentShowContainer)
 );
 
 export default connectedResidentShowContainer;
