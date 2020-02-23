@@ -1,4 +1,4 @@
-import TypographyUtils from './TypographyUtils';
+import TypographyUtils from "./TypographyUtils";
 
 const genericStyles = {
   bold: `
@@ -39,8 +39,8 @@ const modularScaleDesktop = {
     lineHeight: TypographyUtils.convertPixelToEm(26)
   },
   cta: {
-    fontSize: TypographyUtils.convertPixelToEm(18),
-    lineHeight: TypographyUtils.convertPixelToEm(24)
+    fontSize: TypographyUtils.convertPixelToEm(16),
+    lineHeight: TypographyUtils.convertPixelToEm(20)
   },
   body: {
     fontSize: TypographyUtils.convertPixelToEm(16),
@@ -78,8 +78,8 @@ const modularScaleMobile = {
     lineHeight: TypographyUtils.convertPixelToEm(24)
   },
   cta: {
-    fontSize: TypographyUtils.convertPixelToEm(16),
-    lineHeight: TypographyUtils.convertPixelToEm(22)
+    fontSize: TypographyUtils.convertPixelToEm(14),
+    lineHeight: TypographyUtils.convertPixelToEm(18)
   },
   body: {
     fontSize: TypographyUtils.convertPixelToEm(12),

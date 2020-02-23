@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PlayPauseButton from "../player/play-pause-button/PlayPauseButton";
 import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
+import { Cta } from "../text-elements/index";
 
 const ListenNowButton = ({ playing, playClicked }) => {
   return (
@@ -10,7 +11,7 @@ const ListenNowButton = ({ playing, playClicked }) => {
       className={"currentshow-playbutton-container"}
       onClick={playClicked}
     >
-      <p>Listen now</p>
+      <ListenNowText>Listen now</ListenNowText>
       <PlayPauseButton playingTrueFalse={playing} playClicked={playClicked} />
     </Wrapper>
   );
@@ -53,6 +54,10 @@ const Wrapper = styled.div`
     font-size: 14px;
     padding: 10px;
   }
+`;
+
+const ListenNowText = styled(Cta)`
+  font-weight: normal;
 `;
 
 export default ListenNowButton;

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./CurrentShow.scss";
 import ListenNowButton from "../listen-now-button/ListenNowButton";
 import styled from "styled-components";
 import Devices from "../../consts/Devices";
