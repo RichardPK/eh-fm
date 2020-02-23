@@ -46,36 +46,20 @@ class ResidentShowContainer extends Component {
     }
   }
 
-  renderShowDetail() {
-    if (this.state.selectedShow) {
-      let show = this.state.selectedShow;
-      return (
-        <ResidentShowDisplay
-          showTitle={show.data.show_title}
-          showDescription={show.data.show_description}
-          showImage={show.data.show_image.fullscreen.url}
-          showId={show.uid}
-          facebook={show.data.socials[0].facebook}
-          twitter={show.data.socials[0].twitter}
-          instagram={show.data.socials[0].instagram}
-          showTime={show.data.show_time}
-          pastShows={this.state.pastShows}
-        />
-      );
-    }
-    return <p>Loading</p>;
-  }
+  renderShowDetail() {}
 
   render() {
     let titleString;
 
-    if (this.state.selectedShow) {
+    let show = this.state.selectedShow;
+
+    if (show) {
       titleString = `${this.state.selectedShow.data.show_title} | EH-FM`;
     }
 
     return (
       <React.Fragment>
-        {this.state.selectedShow ? (
+        {show ? (
           <React.Fragment>
             <Helmet>
               <title>{titleString}</title>
@@ -124,10 +108,22 @@ class ResidentShowContainer extends Component {
               />
             </Helmet>
             <div className="resident-show-container">
-              {this.renderShowDetail()}
+              <ResidentShowDisplay
+                showTitle={show.data.show_title}
+                showDescription={show.data.show_description}
+                showImage={show.data.show_image.fullscreen.url}
+                showId={show.uid}
+                facebook={show.data.socials[0].facebook}
+                twitter={show.data.socials[0].twitter}
+                instagram={show.data.socials[0].instagram}
+                showTime={show.data.show_time}
+                pastShows={this.state.pastShows}
+              />
             </div>
           </React.Fragment>
-        ) : null}
+        ) : (
+          <p>Loading</p>
+        )}
       </React.Fragment>
     );
   }

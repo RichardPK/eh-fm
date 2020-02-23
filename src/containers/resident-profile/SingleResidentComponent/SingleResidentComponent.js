@@ -12,7 +12,7 @@ import {
   scrollSpy,
   scroller
 } from "react-scroll";
-import IndexActions from "../../../../actions/index";
+import IndexActions from "../../../actions/index";
 import PastShowCard from "./PastShowCard/PastShowCard";
 
 class ResidentShowDisplay extends Component {

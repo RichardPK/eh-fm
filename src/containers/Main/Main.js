@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Header from "../header/Header";
 import Home from "../home/Home";
 import ResidentsContainer from "../residents/Residents";
-import ResidentShowContainer from "../residents/SingleResidentContainer/SingleResidentContainer";
+import ResidentProfile from "../resident-profile/ResidentProfile";
 import Footer from "../footer/Footer";
 import IndexActions from "../../actions/index";
 import ResidentsActions from "../../actions/ResidentsActions";
@@ -224,7 +224,7 @@ class Main extends Component {
                 )}
               />
               <Route exact path="/residents" component={ResidentsContainer} />
-              <Route path="/residents/:id" component={ResidentShowContainer} />
+              <Route path="/residents/:id" component={ResidentProfile} />
             </Switch>
 
             <Footer />
