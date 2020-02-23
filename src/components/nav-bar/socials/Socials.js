@@ -6,18 +6,32 @@ import ChatangoLogo from "../../../assets/images/chat-teal.png";
 
 const Socials = () => {
   return (
-    <div className="nav-socials-wrapper">
+    <Wrapper>
       <a href="https://www.instagram.com/ehfm_live/" target="blank">
-        <img className="nav-social" src={InstagramLogo} alt="instagram"></img>
+        <NavSocial src={InstagramLogo} alt="instagram" />
       </a>
       <a href="https://www.facebook.com/ehfm.live" target="blank">
-        <img className="nav-social" src={FacebookLogo} alt="facebook"></img>
+        <NavSocial src={FacebookLogo} alt="facebook" />
       </a>
       <a href="http://eh-fm.chatango.com/" target="blank">
-        <img className="nav-chat" src={ChatangoLogo} alt="chatango"></img>
+        <NavChat src={ChatangoLogo} alt="chatango" />
       </a>
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div``;
+
+const NavSocial = styled.img`
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+`;
+
+const NavChat = styled.img`
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+`;
 
 export default Socials;

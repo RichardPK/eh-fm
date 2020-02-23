@@ -1,18 +1,5 @@
 @import "../../styleguide.scss";
 
-.nav-bar {
-  display: flex;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  background-color: white;
-}
-
-.nav-bar a {
-  color: var(--ehfmcolor);
-}
-
 .nav-link {
   /* vertical-align: middle; */
   font-size: 16px;
@@ -44,20 +31,6 @@
   }
 }
 
-.nav-left {
-  height: 71px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  letter-spacing: 1px;
-}
-
-.nav-right {
-  display: flex;
-  flex-direction: row;
-  margin: auto 0px auto auto;
-}
-
 .nav-logo {
   width: 48px;
   height: 48px;
@@ -70,18 +43,6 @@
   /* height: 48px; */
   margin-right: 20px;
   /* -ms-flex-pack: center; */
-}
-
-.nav-social {
-  width: 18px;
-  height: 18px;
-  margin-left: 10px;
-}
-
-.nav-chat {
-  width: 18px;
-  height: 18px;
-  margin-left: 10px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -102,25 +63,13 @@
   .nav-link-active {
     font-size: 14px;
   }
-
-  .nav-left {
-    height: 31px;
-  }
 }
 
 @media only screen and (max-width: 425px) {
-  .nav-bar {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
   .nav-link {
     font-size: 12px;
   }
   .nav-link-active {
     font-size: 12px;
-  }
-  .right {
-    padding-right: 10px;
   }
 }
