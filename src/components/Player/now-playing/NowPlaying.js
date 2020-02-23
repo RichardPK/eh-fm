@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PlayPauseButton from "../PlayPauseButton/PlayPauseButton";
 import Devices from "../../../consts/Devices";
 import Colors from "../../../consts/Colors";
+import { Body } from "../../text-elements/index";
 
 const NowPlaying = ({ handlePlayPauseClicked, playing, currentShow }) => {
   const returnShowData = () => {
@@ -25,7 +26,7 @@ const NowPlaying = ({ handlePlayPauseClicked, playing, currentShow }) => {
           playClicked={handlePlayPauseClicked}
         />
       </PlaybuttonContainer>
-      <p className="current-show">{returnShowData()}</p>
+      <CurrentShowText>{returnShowData()}</CurrentShowText>
     </Wrapper>
   );
 };
@@ -38,7 +39,7 @@ const Wrapper = styled.div`
   background-color: ${props =>
     props.playing ? Colors.playerWhite : Colors.ehfmPrimary};
 
-  p {
+  span {
     color: ${props => (props.playing ? Colors.altBlue : Colors.playerWhite)};
   }
 
@@ -56,7 +57,7 @@ const Wrapper = styled.div`
       background-color: ${Colors.playerWhite};
       cursor: pointer;
 
-      p {
+      span {
         color: ${Colors.altBlue};
       }
 
@@ -75,6 +76,16 @@ const PlaybuttonContainer = styled.div`
   border-left: 2px solid ${Colors.playerWhite};
   width: 0.8em;
   padding-right: 20px;
+`;
+
+const CurrentShowText = styled(Body)`
+  border-right: 2px solid white;
+  padding-right: 50px;
+  color: ${Colors.playerWhite};
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 40px;
+  letter-spacing: 1px;
 `;
 
 export default NowPlaying;
