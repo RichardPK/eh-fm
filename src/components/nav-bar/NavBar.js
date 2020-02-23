@@ -25,21 +25,14 @@ const NavBar = props => {
       <Wrapper>
         <div className="nav-bar">
           <div className="nav-left">
-            {/* <a href="/home"><img className="nav-logo" src="eh-fm-cutout-navbar.png" alt="eh-fm logo"></img></a> */}
-            {/* <p className="nav-link">INFO</p> */}
             <p className={renderActiveLink()}>
               <Link to={residentsURL}>Residents</Link>
             </p>
-            {/* <p className="nav-link right"><a href="https://www.mixcloud.com/ehfm/" target="blank">Past Shows</a></p> */}
           </div>
-          {/* <div className="nav-middle"> */}
-
           <div className="logo-head-container">
             <Logo />
           </div>
-          {/* </div> */}
           <div className="nav-right">
-            {/* <p className="nav-link"><a href="https://www.mixcloud.com/ehfm/" target="blank">PAST SHOWS</a></p> */}
             <div className="nav-socials-wrapper">
               <a href="https://www.instagram.com/ehfm_live/" target="blank">
                 <img
