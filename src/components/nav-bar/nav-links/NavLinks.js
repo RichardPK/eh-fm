@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import Devices from "../../../consts/Devices";
 import Colors from "../../../consts/Colors";
 
-const Socials = () => {
+const NavLinks = () => {
   return (
     <NavLinksWrapper>
       <StyledNavLink to={"/residents"} activeClassName="nav-link-active">
@@ -18,20 +18,19 @@ const Socials = () => {
 const NavLinksWrapper = styled.div`
   .nav-link-active {
     border-bottom: 3px solid ${Colors.altBlue};
-    padding-bottom: 2px;
   }
 `;
 
 const StyledNavLink = styled(NavLink)`
   display: flex;
   color: ${Colors.ehfmPrimary};
-  padding-right: 40px;
+  padding: 2px 0 0;
+  border-bottom: 3px solid ${Colors.playerWhite};
 
   @media ${Devices.tablet} {
     &:hover {
       text-decoration: none;
       border-bottom: 3px solid ${Colors.altBlue};
-      padding-bottom: 2px;
     }
   }
 `;
@@ -40,4 +39,4 @@ const NavText = styled(Cta)`
   font-weight: normal;
 `;
 
-export default Socials;
+export default NavLinks;
