@@ -7,9 +7,7 @@ import Devices from "../../consts/Devices";
 const HeaderContainer = props => {
   return (
     <React.Fragment>
-      <nav className="nav-container">
-        <NavBar />
-      </nav>
+      <NavBar />
       <PlayerOuter>
         <Player
           key={props.playing}

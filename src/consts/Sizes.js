@@ -11,5 +11,5 @@ export default {
   mobileHeightTall: "750px",
   mainButtonSize: `${0.8}em`,
   mainButtonHalfSize: () => `${0.8 / 1.7}em`,
-  maxInnerWidth: `1200px`
+  maxInnerWidth: `1240px`
 };

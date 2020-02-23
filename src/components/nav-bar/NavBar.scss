@@ -1,12 +1,5 @@
 @import "../../styleguide.scss";
 
-.nav-container {
-  position: fixed;
-  width: 100vw;
-  top: 0px;
-  z-index: 100;
-}
-
 .nav-bar {
   display: flex;
   padding-left: 30px;
@@ -102,10 +95,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .nav-container {
-    top: 68px;
-  }
-
   .nav-link {
     font-size: 14px;
   }
@@ -120,20 +109,18 @@
 }
 
 @media only screen and (max-width: 425px) {
-  .nav-container {
-    .nav-bar {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
+  .nav-bar {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-    .nav-link {
-      font-size: 12px;
-    }
-    .nav-link-active {
-      font-size: 12px;
-    }
-    .right {
-      padding-right: 10px;
-    }
+  .nav-link {
+    font-size: 12px;
+  }
+  .nav-link-active {
+    font-size: 12px;
+  }
+  .right {
+    padding-right: 10px;
   }
 }
