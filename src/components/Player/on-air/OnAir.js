@@ -40,6 +40,18 @@ const Circle = styled.div`
   margin-left: 7px;
   animation: fader 3s infinite;
   animation-timing-function: ease-out;
+
+  @keyframes fader {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 export default OnAir;
