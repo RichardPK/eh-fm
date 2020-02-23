@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./CurrentShow.scss";
-import PlayPauseButton from "../Player/play-pause-button/PlayPauseButton";
+import ListenNowButton from "../listen-now-button/ListenNowButton";
 import styled from "styled-components";
 import Devices from "../../consts/Devices";
 import { Heading4, Heading3, Body } from "../text-elements/index";
@@ -10,7 +10,6 @@ class CurrentShowDetail extends Component {
   constructor(props) {
     super(props);
     this.playClicked = this.playClicked.bind(this);
-    this.renderPlayingContainer = this.renderPlayingContainer.bind(this);
     this.findShowUrlInPrismic = this.findShowUrlInPrismic.bind(this);
   }
 
@@ -85,14 +84,6 @@ class CurrentShowDetail extends Component {
     }
   }
 
-  renderPlayingContainer() {
-    if (this.props.playing === true) {
-      return "currentshow-playbutton-container-white";
-    } else {
-      return "currentshow-playbutton-container";
-    }
-  }
-
   playClicked() {
     this.props.handlePlayPauseClicked();
   }
@@ -113,16 +104,10 @@ class CurrentShowDetail extends Component {
             <NameWrapper>
               <ShowName>{this.returnShowName()}</ShowName>
             </NameWrapper>
-            <div
-              className={this.renderPlayingContainer()}
-              onClick={this.playClicked}
-            >
-              <p>Listen now</p>
-              <PlayPauseButton
-                playingTrueFalse={this.props.playing}
-                playClicked={this.playClicked}
-              />
-            </div>
+            <ListenNowButton
+              playing={this.props.playing}
+              playClicked={this.playClicked}
+            />
             <DescriptionWrapper>
               <ShowDescription>{this.returnShowDescription()}</ShowDescription>
             </DescriptionWrapper>

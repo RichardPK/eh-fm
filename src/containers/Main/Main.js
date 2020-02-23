@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import Header from "../Header/Header";
+import Header from "../header/Header";
 import Home from "../home/Home";
 import ResidentsContainer from "../residents/Residents";
 import ResidentShowContainer from "../residents/SingleResidentContainer/SingleResidentContainer";
-import Footer from "../Footer/Footer";
+import Footer from "../footer/Footer";
 import IndexActions from "../../actions/index";
 import ResidentsActions from "../../actions/ResidentsActions";
 import _ from "lodash";
