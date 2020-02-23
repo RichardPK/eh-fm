@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ResidentProfileSocial from "../resident-profile-social/ResidentProfileSocial";
 
 const ProfileText = ({ props }) => {
   const renderShowTime = () => {
@@ -48,6 +49,18 @@ const ProfileText = ({ props }) => {
     }
   };
 
+  const hrefs = {
+    instagram: props.instagram,
+    facebook: props.facebook,
+    twitter: props.twitter
+  };
+
+  const imgSrcs = {
+    instagram: "/instagram-white.png",
+    facebook: "/facebook-white.png",
+    twitter: "/twitter-white.png"
+  };
+
   return (
     <div className="resident-show-text-container">
       <div className="resident-show-title-container">
@@ -58,9 +71,29 @@ const ProfileText = ({ props }) => {
       </div>
 
       <div className="resident-show-socials">
-        {renderFacebook()}
-        {renderTwitter()}
-        {renderInstagram()}
+        {props.facebook && (
+          <ResidentProfileSocial
+            type={"facebook"}
+            hrefs={hrefs}
+            imgSrcs={imgSrcs}
+          />
+        )}
+
+        {props.twitter && (
+          <ResidentProfileSocial
+            type={"twitter"}
+            hrefs={hrefs}
+            imgSrcs={imgSrcs}
+          />
+        )}
+
+        {props.instagram && (
+          <ResidentProfileSocial
+            type={"instagram"}
+            hrefs={hrefs}
+            imgSrcs={imgSrcs}
+          />
+        )}
       </div>
 
       {props.showDescription ? (
