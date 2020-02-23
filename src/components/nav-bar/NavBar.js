@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./NavBar.scss";
 import Logo from "./logo/Logo";
 import Devices from "../../consts/Devices";
 import Socials from "./socials/Socials";
 import Colors from "../../consts/Colors";
+import { Cta } from "../text-elements/index";
 
 const NavBar = props => {
   const residentsURL = "/residents";
@@ -23,9 +24,14 @@ const NavBar = props => {
       <Wrapper>
         <Inner>
           <Left>
-            <p className={renderActiveLink()}>
-              <Link to={residentsURL}>Residents</Link>
-            </p>
+            <NavLinksWrapper>
+              <StyledNavLink
+                to={residentsURL}
+                activeClassName="nav-link-active"
+              >
+                <NavText>Residents</NavText>
+              </StyledNavLink>
+            </NavLinksWrapper>
           </Left>
           <HeaderLogoWrapper>
             <Logo />
@@ -78,6 +84,31 @@ const Left = styled.div`
   @media ${Devices.tablet} {
     height: 71px;
   }
+`;
+
+const NavLinksWrapper = styled.div`
+  .nav-link-active {
+    border-bottom: 3px solid ${Colors.altBlue};
+    padding-bottom: 2px;
+  }
+`;
+
+const StyledNavLink = styled(NavLink)`
+  display: flex;
+  color: ${Colors.ehfmPrimary};
+  padding-right: 40px;
+
+  @media ${Devices.tablet} {
+    &:hover {
+      text-decoration: none;
+      border-bottom: 3px solid ${Colors.altBlue};
+      padding-bottom: 2px;
+    }
+  }
+`;
+
+const NavText = styled(Cta)`
+  font-weight: normal;
 `;
 
 const HeaderLogoWrapper = styled.div`
