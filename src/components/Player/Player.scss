@@ -1,4 +1,4 @@
-@import '../../styleguide.scss';
+@import "../../styleguide.scss";
 
 .player-container {
   position: fixed;
@@ -109,7 +109,8 @@
   margin-left: 20px;
   cursor: pointer;
   border-style: solid;
-  border-width: $main-button-half-size 0 $main-button-half-size $main-button-size;
+  border-width: $main-button-half-size 0 $main-button-half-size
+    $main-button-size;
   border-color: transparent transparent transparent $playerwhite;
 }
 
@@ -127,11 +128,6 @@
   border-left: 2px solid white;
   width: $main-button-size;
   padding-right: 20px;
-}
-
-.volume-button-container {
-  border-left: 2px solid white;
-  padding-left: 20px;
 }
 
 .left-side-player {
@@ -165,10 +161,6 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .volume-button-container {
-    display: none;
-  }
-
   .current-show {
     border-right: none;
   }
