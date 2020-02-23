@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import "./NavBar.scss";
 import Logo from "./logo/Logo";
-import "./logo/Logo.scss";
 import Devices from "../../consts/Devices";
 import Socials from "./socials/Socials";
 import Colors from "../../consts/Colors";
