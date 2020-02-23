@@ -6,6 +6,7 @@ import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
 import styled from "styled-components";
 import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
+import Sizes from "../../consts/Sizes";
 
 const HomeContainer = props => {
   return (
@@ -59,13 +60,14 @@ const HomeContainer = props => {
 };
 
 const Wrapper = styled.div`
+  max-width: ${Sizes.maxInnerWidth};
   padding: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: ${props => (props.mixCloudWidget ? `123px` : `auto`)};
   flex-direction: column;
-  align-items: center;
-  margin-top: 150px;
+  margin: 150px auto 0;
 
   h1 {
     font-size: 18px;
@@ -77,7 +79,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: end;
-    margin-top: 125px;
+    margin: 125px auto 0;
   }
 `;
 
