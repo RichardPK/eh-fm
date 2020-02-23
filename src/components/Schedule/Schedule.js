@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import Devices from '../../consts/Devices';
-import { Heading4, Cta } from '../text-elements/index';
-import ScheduleDayHeading from './schedule-day-heading/ScheduleDayHeading';
-import DailyShowSchedule from './daily-show-schedule/DailyShowSchedule';
-import Colors from '../../consts/Colors';
+import React, { Component } from "react";
+import styled from "styled-components";
+import Devices from "../../consts/Devices";
+import { Heading4, Cta } from "../text-elements/index";
+import ScheduleDayHeading from "./schedule-day-heading/ScheduleDayHeading";
+import DailyShowSchedule from "./daily-show-schedule/DailyShowSchedule";
+import Colors from "../../consts/Colors";
 
 class Schedule extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Schedule extends Component {
   }
 
   handleDayClick(day) {
-    let selectedDay = this.props.nextSevenDaysSchedule.filter((daySchedule) => {
+    let selectedDay = this.props.nextSevenDaysSchedule.filter(daySchedule => {
       return daySchedule[0] === day;
     });
     this.setState({ selectedDay: selectedDay[0] });
@@ -34,7 +34,7 @@ class Schedule extends Component {
         <Heading4Component>Schedule</Heading4Component>
         <Inner>
           <DaysHeaderWrapper>
-            {this.props.nextSevenDaysSchedule.map((scheduleDay) => {
+            {this.props.nextSevenDaysSchedule.map(scheduleDay => {
               return (
                 <ScheduleDayHeading
                   onClick={this.handleDayClick}

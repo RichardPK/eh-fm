@@ -1,6 +1,6 @@
 import React from "react";
 import CurrentShow from "../../components/current-show/CurrentShow";
-import Schedule from "../../components/Schedule/Schedule";
+import Schedule from "../../components/schedule/Schedule";
 import { Helmet } from "react-helmet";
 import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
 import styled from "styled-components";
