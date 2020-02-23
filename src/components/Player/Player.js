@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import Playbutton from './Playbutton/Playbutton';
-import Volumebutton from './Volumebutton/Volumebutton';
-import './Player.scss';
-import Devices from '../../consts/Devices';
-import Colors from '../../consts/Colors';
-import OnAir from './on-air/OnAir';
-import NowPlaying from './now-playing/NowPlaying';
+import React, { Component } from "react";
+import styled from "styled-components";
+import Volumebutton from "./Volumebutton/Volumebutton";
+import "./Player.scss";
+import Devices from "../../consts/Devices";
+import Colors from "../../consts/Colors";
+import OnAir from "./on-air/OnAir";
+import NowPlaying from "./now-playing/NowPlaying";
 
 class Player extends Component {
   constructor(props) {
@@ -30,7 +29,10 @@ class Player extends Component {
           />
         </Left>
         <Right>
-          <Volumebutton volumeClicked={this.props.handleVolumeClicked} volume={this.props.volume} />
+          <Volumebutton
+            volumeClicked={this.props.handleVolumeClicked}
+            volume={this.props.volume}
+          />
         </Right>
       </PlayerWrapper>
     );

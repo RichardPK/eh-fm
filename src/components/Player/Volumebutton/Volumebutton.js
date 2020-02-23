@@ -1,24 +1,24 @@
-import React from 'react';
+import React from "react";
 
-const Volumebutton = (props) => {
-
-  const renderVolume = function(){
+const Volumebutton = props => {
+  const renderVolume = function() {
     if (props.volume !== 0) {
-      return 'https://www.ehfm.live/volume-up-white.png'
+      return "https://www.ehfm.live/volume-up-white.png";
     } else {
-      return 'https://www.ehfm.live/volume-off-white.png'
+      return "https://www.ehfm.live/volume-off-white.png";
     }
-  }
+  };
 
-  return(
+  return (
     <div className="volume-button-container">
-      <img className="volume-button"
+      <img
+        className="volume-button"
         src={renderVolume()}
         onClick={props.volumeClicked}
-        alt='volume icon'></img>
-      </div>
-    )
+        alt="volume control"
+      ></img>
+    </div>
+  );
+};
 
-  }
-
-  export default Volumebutton;
+export default Volumebutton;

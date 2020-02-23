@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import './CurrentShow.scss';
-import Playbutton from '../Player/Playbutton/Playbutton';
-import styled from 'styled-components';
-import Devices from '../../consts/Devices';
-import { Heading4, Heading3, Body } from '../text-elements/index';
-import Colors from '../../consts/Colors';
+import React, { Component } from "react";
+import "./CurrentShow.scss";
+import PlayPauseButton from "../Player/PlayPauseButton/PlayPauseButton";
+import styled from "styled-components";
+import Devices from "../../consts/Devices";
+import { Heading4, Heading3, Body } from "../text-elements/index";
+import Colors from "../../consts/Colors";
 
 class CurrentShowDetail extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class CurrentShowDetail extends Component {
       let showData = this.props.currentShow;
       currentShowName = showData.currentShow[0].name;
       let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, "'");
-      let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
+      let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, "&");
       return parsedForAmpersands;
     }
     return currentShowName;
@@ -34,7 +34,7 @@ class CurrentShowDetail extends Component {
       toLowerCase = currentShowName.toLowerCase();
     }
     if (this.props.residents && toLowerCase) {
-      const filtered = this.props.residents.filter((resident) =>
+      const filtered = this.props.residents.filter(resident =>
         toLowerCase.includes(resident.data.show_title.toLowerCase())
       );
       if (filtered.length > 0) {
@@ -56,8 +56,8 @@ class CurrentShowDetail extends Component {
         let showData = this.props.currentShow;
         currentShowImgUrl = showData.currentShow[0].image_path;
       }
-      if (currentShowImgUrl === '') {
-        currentShowImgUrl = './placeholder-showimg.jpg';
+      if (currentShowImgUrl === "") {
+        currentShowImgUrl = "./placeholder-showimg.jpg";
       }
       return currentShowImgUrl;
     }
@@ -68,12 +68,18 @@ class CurrentShowDetail extends Component {
     if (this.props.currentShow !== null) {
       let showData = this.props.currentShow;
       currentShowDescription = showData.currentShow[0].description;
-      if (currentShowDescription === '') {
-        currentShowDescription = 'Independent community radio for Edinburgh.';
+      if (currentShowDescription === "") {
+        currentShowDescription = "Independent community radio for Edinburgh.";
         return currentShowDescription;
       } else {
-        let parsedForInvertedCommas = currentShowDescription.replace(/&#039;/g, "'");
-        let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
+        let parsedForInvertedCommas = currentShowDescription.replace(
+          /&#039;/g,
+          "'"
+        );
+        let parsedForAmpersands = parsedForInvertedCommas.replace(
+          /&amp;/g,
+          "&"
+        );
         return parsedForAmpersands;
       }
     }
@@ -81,9 +87,9 @@ class CurrentShowDetail extends Component {
 
   renderPlayingContainer() {
     if (this.props.playing === true) {
-      return 'currentshow-playbutton-container-white';
+      return "currentshow-playbutton-container-white";
     } else {
-      return 'currentshow-playbutton-container';
+      return "currentshow-playbutton-container";
     }
   }
 
@@ -107,9 +113,15 @@ class CurrentShowDetail extends Component {
             <NameWrapper>
               <ShowName>{this.returnShowName()}</ShowName>
             </NameWrapper>
-            <div className={this.renderPlayingContainer()} onClick={this.playClicked}>
+            <div
+              className={this.renderPlayingContainer()}
+              onClick={this.playClicked}
+            >
               <p>Listen now</p>
-              <Playbutton playingTrueFalse={this.props.playing} playClicked={this.playClicked} />
+              <PlayPauseButton
+                playingTrueFalse={this.props.playing}
+                playClicked={this.playClicked}
+              />
             </div>
             <DescriptionWrapper>
               <ShowDescription>{this.returnShowDescription()}</ShowDescription>

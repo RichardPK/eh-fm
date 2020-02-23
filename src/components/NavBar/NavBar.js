@@ -7,7 +7,7 @@ import InstagramLogo from "../../assets/images/instagram-teal.png";
 import FacebookLogo from "../../assets/images/facebook-teal.png";
 import ChatangoLogo from "../../assets/images/chat-teal.png";
 
-const NavBar = (props) => {
+const NavBar = props => {
   const residentsURL = "/residents";
 
   const renderActiveLink = function() {
@@ -39,13 +39,21 @@ const NavBar = (props) => {
           {/* <p className="nav-link"><a href="https://www.mixcloud.com/ehfm/" target="blank">PAST SHOWS</a></p> */}
           <div className="nav-socials-wrapper">
             <a href="https://www.instagram.com/ehfm_live/" target="blank">
-              <img className="nav-social" src={InstagramLogo} alt="eh-fm instagram logo"></img>
+              <img
+                className="nav-social"
+                src={InstagramLogo}
+                alt="instagram"
+              ></img>
             </a>
             <a href="https://www.facebook.com/ehfm.live" target="blank">
-              <img className="nav-social" src={FacebookLogo} alt="eh-fm facebook logo"></img>
+              <img
+                className="nav-social"
+                src={FacebookLogo}
+                alt="facebook"
+              ></img>
             </a>
             <a href="http://eh-fm.chatango.com/" target="blank">
-              <img className="nav-chat" src={ChatangoLogo} alt="eh-fm chatango logo"></img>
+              <img className="nav-chat" src={ChatangoLogo} alt="chatango"></img>
             </a>
           </div>
         </div>
