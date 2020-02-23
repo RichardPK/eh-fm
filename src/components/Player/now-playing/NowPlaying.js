@@ -79,13 +79,22 @@ const PlaybuttonContainer = styled.div`
 `;
 
 const CurrentShowText = styled(Body)`
-  border-right: 2px solid white;
-  padding-right: 50px;
   color: ${Colors.playerWhite};
   margin-top: 0px;
   margin-bottom: 0px;
-  margin-left: 40px;
   letter-spacing: 1px;
+  border-right: none;
+  margin-left: 10px;
+  padding-right: 5px;
+
+  @media ${Devices.laptop} {
+    border-right: 2px solid white;
+  }
+
+  @media ${Devices.mobileL} {
+    margin-left: 40px;
+    padding-right: 50px;
+  }
 `;
 
 export default NowPlaying;

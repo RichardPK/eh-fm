@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Volumebutton from "./Volumebutton/Volumebutton";
+import VolumeButton from "./VolumeButton/VolumeButton";
 import "./Player.scss";
 import Devices from "../../consts/Devices";
 import Colors from "../../consts/Colors";
@@ -29,7 +29,7 @@ class Player extends Component {
           />
         </Left>
         <Right>
-          <Volumebutton
+          <VolumeButton
             volumeClicked={this.props.handleVolumeClicked}
             volume={this.props.volume}
           />
