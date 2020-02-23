@@ -14,6 +14,7 @@ import {
   scroller
 } from "react-scroll";
 import IndexActions from "../../actions/index";
+import ProfileText from "./profile-text/ProfileText";
 import PastShowCard from "./past-show-card/PastShowCard";
 
 class ResidentProfile extends Component {
@@ -23,12 +24,6 @@ class ResidentProfile extends Component {
       mixCloudWidget: null,
       displayShows: false
     };
-    this.timeSpan = React.createRef();
-    this.showDescription = React.createRef();
-    this.renderFacebook = this.renderFacebook.bind(this);
-    this.renderTwitter = this.renderTwitter.bind(this);
-    this.renderInstagram = this.renderInstagram.bind(this);
-    this.renderShowTime = this.renderShowTime.bind(this);
     this.renderPastShows = this.renderPastShows.bind(this);
     this.mapPastShows = this.mapPastShows.bind(this);
     this.mapMostRecentShow = this.mapMostRecentShow.bind(this);
@@ -38,52 +33,6 @@ class ResidentProfile extends Component {
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
     this.renderCardContainerMargin = this.renderCardContainerMargin.bind(this);
     this.renderArchiveButton = this.renderArchiveButton.bind(this);
-  }
-
-  renderFacebook() {
-    if (this.props.facebook) {
-      return (
-        <div className="social-icon">
-          <a href={this.props.facebook} target="blank">
-            <img src="/facebook-white.png" alt="facebook page" />
-          </a>
-        </div>
-      );
-    }
-  }
-
-  renderTwitter() {
-    if (this.props.twitter) {
-      return (
-        <div className="social-icon">
-          <a href={this.props.twitter} target="blank">
-            <img src="/twitter-white.png" alt="twitter profile" />
-          </a>
-        </div>
-      );
-    }
-  }
-
-  renderInstagram() {
-    if (this.props.instagram) {
-      return (
-        <div className="social-icon">
-          <a href={this.props.instagram} target="blank">
-            <img src="/instagram-white.png" alt="instagram profile" />
-          </a>
-        </div>
-      );
-    }
-  }
-
-  renderShowTime() {
-    if (this.props.showTime) {
-      return (
-        <div className="resident-show-time">
-          <span ref={this.timeSpan}>{this.props.showTime}</span>
-        </div>
-      );
-    }
   }
 
   renderPastShows() {
@@ -248,31 +197,7 @@ class ResidentProfile extends Component {
           showImage={this.props.showImage}
         />
         <div className="resident-show-display-container">
-          <div className="resident-show-text-container">
-            <div className="resident-show-title-container">
-              <h3>
-                <span>{this.props.showTitle}</span>
-              </h3>
-              {this.renderShowTime()}
-            </div>
-
-            <div className="resident-show-socials">
-              {this.renderFacebook()}
-              {this.renderTwitter()}
-              {this.renderInstagram()}
-            </div>
-
-            {this.props.showDescription ? (
-              <div
-                className="resident-show-display-description"
-                ref={this.showDescription}
-              >
-                <p>
-                  <span>{this.props.showDescription}</span>
-                </p>
-              </div>
-            ) : null}
-          </div>
+          <ProfileText props={this.props} />
 
           {this.renderArchiveButton()}
 
