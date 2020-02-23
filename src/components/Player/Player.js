@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import VolumeButton from "./VolumeButton/VolumeButton";
-import "./Player.scss";
 import Devices from "../../consts/Devices";
 import Colors from "../../consts/Colors";
 import OnAir from "./on-air/OnAir";

@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
-import Colors from '../../../consts/Colors';
-import { Tiny } from '../../text-elements/index';
+import React, { useRef, useState } from "react";
+import styled from "styled-components";
+import Colors from "../../../consts/Colors";
+import { Tiny } from "../../text-elements/index";
+import Devices from "../../../consts/Devices";
 
 const OnAir = ({}) => {
   return (
@@ -15,12 +16,16 @@ const OnAir = ({}) => {
 const OnAirWrapper = styled.div`
   color: ${Colors.playerWhite};
   font-size: 11px;
-  padding-right: 20px;
+  padding-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 100;
   letter-spacing: 2px;
+
+  @media ${Devices.mobileL} {
+    padding-right: 20px;
+  }
 `;
 
 const OnAirText = styled(Tiny)`
