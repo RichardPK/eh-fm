@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Logo.scss";
 import Logo from "../../../assets/images/EHFM_Arched-Logo_Teal_1080.png";
 
-const LogoHead = (props) => {
+const LogoHead = props => {
   return (
     <React.Fragment>
       <div className="logo-head">
