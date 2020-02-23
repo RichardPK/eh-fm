@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import "./SingleResidentComponent.scss";
+import "./ResidentProfile.scss";
+import styled from "styled-components";
 import renderHTML from "react-render-html";
 import {
   Link,
@@ -12,10 +13,10 @@ import {
   scrollSpy,
   scroller
 } from "react-scroll";
-import IndexActions from "../../../actions/index";
-import PastShowCard from "./PastShowCard/PastShowCard";
+import IndexActions from "../../actions/index";
+import PastShowCard from "./past-show-card/PastShowCard";
 
-class ResidentShowDisplay extends Component {
+class ResidentProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +36,6 @@ class ResidentShowDisplay extends Component {
     this.renderDate = this.renderDate.bind(this);
     this.renderShowName = this.renderShowName.bind(this);
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
-    this.renderShowBgImgStyle = this.renderShowBgImgStyle.bind(this);
     this.renderCardContainerMargin = this.renderCardContainerMargin.bind(this);
     this.renderArchiveButton = this.renderArchiveButton.bind(this);
   }
@@ -213,21 +213,6 @@ class ResidentShowDisplay extends Component {
     });
   }
 
-  renderShowBgImgStyle() {
-    let margin = null;
-
-    if (this.props.mixCloudWidget) {
-      margin = "123px";
-    } else {
-      margin = null;
-    }
-
-    return {
-      backgroundImage: `url(${this.props.showImage})`,
-      marginBottom: margin
-    };
-  }
-
   renderArchiveButton() {
     if (this.props.pastShows) {
       if (this.state.displayShows) {
@@ -258,11 +243,10 @@ class ResidentShowDisplay extends Component {
   render() {
     return (
       <React.Fragment>
-        <div
-          className="resident-show-bg-img"
-          style={this.renderShowBgImgStyle()}
+        <BackgroundImage
+          mixCloudWidget={this.props.mixCloudWidget}
+          showImage={this.props.showImage}
         />
-
         <div className="resident-show-display-container">
           <div className="resident-show-text-container">
             <div className="resident-show-title-container">
@@ -299,6 +283,26 @@ class ResidentShowDisplay extends Component {
   }
 }
 
+const BackgroundImage = styled.div`
+  background-position: center center !important;
+  background-size: cover !important;
+  width: 100vw;
+  height: calc(100vh - 100px);
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  z-index: -100;
+  top: 100px;
+  left: 0;
+  margin-bottom: ${props => (props.mixCloudWidget ? "123px" : "0")};
+  background-image: url(${props => props.showImage});
+
+  img {
+    max-width: 100%;
+    margin: auto;
+  }
+`;
+
 const mapStateToProps = state => {
   return {
     playing: state.index.playing,
@@ -321,5 +325,5 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const Index = connect(mapStateToProps, mapDispatchToProps)(ResidentShowDisplay);
+const Index = connect(mapStateToProps, mapDispatchToProps)(ResidentProfile);
 export default Index;

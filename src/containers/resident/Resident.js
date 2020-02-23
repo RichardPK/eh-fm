@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Prismic from "prismic-javascript";
-import ResidentShowDisplay from "./SingleResidentComponent/SingleResidentComponent";
+import ResidentProfile from "../../components/resident-profile/ResidentProfile";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
@@ -15,7 +15,6 @@ class ResidentShowContainer extends Component {
       selectedShow: null
     };
     this.findSelectedShow = this.findSelectedShow.bind(this);
-    this.renderShowDetail = this.renderShowDetail.bind(this);
     this.mixCloudAPICall = this.mixCloudAPICall.bind(this);
   }
 
@@ -46,11 +45,8 @@ class ResidentShowContainer extends Component {
     }
   }
 
-  renderShowDetail() {}
-
   render() {
     let titleString;
-
     let show = this.state.selectedShow;
 
     if (show) {
@@ -72,12 +68,12 @@ class ResidentShowContainer extends Component {
               <meta
                 name="description"
                 data-react-helmet="true"
-                content={this.state.selectedShow.data.show_description}
+                content={show.data.show_description}
               />
               <meta
                 property="og:description"
                 data-react-helmet="true"
-                content={this.state.selectedShow.data.show_description}
+                content={show.data.show_description}
               />
               <meta
                 property="og:url"
@@ -87,28 +83,24 @@ class ResidentShowContainer extends Component {
               <meta
                 name="twitter:image"
                 data-react-helmet="true"
-                content={this.state.selectedShow.data.show_image.larger.url}
+                content={show.data.show_image.larger.url}
               />
               <meta
                 property="og:image"
                 data-react-helmet="true"
-                content={this.state.selectedShow.data.show_image.larger.url}
+                content={show.data.show_image.larger.url}
               />
               <meta
                 property="og:image:width"
-                content={
-                  this.state.selectedShow.data.show_image.dimensions.width
-                }
+                content={show.data.show_image.dimensions.width}
               />
               <meta
                 property="og:image:height"
-                content={
-                  this.state.selectedShow.data.show_image.dimensions.height
-                }
+                content={show.data.show_image.dimensions.height}
               />
             </Helmet>
             <div className="resident-show-container">
-              <ResidentShowDisplay
+              <ResidentProfile
                 showTitle={show.data.show_title}
                 showDescription={show.data.show_description}
                 showImage={show.data.show_image.fullscreen.url}
