@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Colors from "../../../consts/Colors";
 import ResidentProfileSocial from "../resident-profile-social/ResidentProfileSocial";
 import Devices from "../../../consts/Devices";
+import { Heading1 } from "../../text-elements/index";
 
 const ProfileText = ({ props }) => {
   const renderShowTime = () => {
@@ -29,12 +30,11 @@ const ProfileText = ({ props }) => {
 
   return (
     <div className="resident-show-text-container">
-      <div className="resident-show-title-container">
-        <h3>
-          <span>{props.showTitle}</span>
-        </h3>
+      <TitleAndTimeWrapper>
+        <ShowTitle>{props.showTitle}</ShowTitle>
+
         {renderShowTime()}
-      </div>
+      </TitleAndTimeWrapper>
 
       <SocialsWrapper>
         {props.facebook && (
@@ -72,6 +72,24 @@ const ProfileText = ({ props }) => {
     </div>
   );
 };
+
+const TitleAndTimeWrapper = styled.div`
+  background-color: transparent;
+  @media ${Devices.mobileL} {
+    background-color: ${Colors.spanBg};
+  }
+`;
+
+const ShowTitle = styled(Heading1)`
+  margin-top: 0px;
+  color: ${Colors.playerWhite};
+  font-weight: normal;
+  padding: 4px;
+
+  @media ${Devices.mobileL} {
+    margin-top: 20px;
+  }
+`;
 
 const SocialsWrapper = styled.div`
   display: flex;

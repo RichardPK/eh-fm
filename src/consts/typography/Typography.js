@@ -23,16 +23,16 @@ const genericStyles = {
 
 const modularScaleDesktop = {
   heading1: {
-    fontSize: TypographyUtils.convertPixelToEm(244),
-    lineHeight: TypographyUtils.convertPixelToEm(260)
-  },
-  heading2: {
     fontSize: TypographyUtils.convertPixelToEm(60),
     lineHeight: TypographyUtils.convertPixelToEm(65)
   },
+  heading2: {
+    fontSize: TypographyUtils.convertPixelToEm(48),
+    lineHeight: TypographyUtils.convertPixelToEm(54)
+  },
   heading3: {
-    fontSize: TypographyUtils.convertPixelToEm(40),
-    lineHeight: TypographyUtils.convertPixelToEm(48)
+    fontSize: TypographyUtils.convertPixelToEm(36),
+    lineHeight: TypographyUtils.convertPixelToEm(42)
   },
   heading4: {
     fontSize: TypographyUtils.convertPixelToEm(22),
@@ -62,11 +62,11 @@ const modularScaleDesktop = {
 
 const modularScaleMobile = {
   heading1: {
-    fontSize: TypographyUtils.convertPixelToEm(52),
-    lineHeight: TypographyUtils.convertPixelToEm(58)
+    fontSize: TypographyUtils.convertPixelToEm(48),
+    lineHeight: TypographyUtils.convertPixelToEm(54)
   },
   heading2: {
-    fontSize: TypographyUtils.convertPixelToEm(35),
+    fontSize: TypographyUtils.convertPixelToEm(36),
     lineHeight: TypographyUtils.convertPixelToEm(42)
   },
   heading3: {
