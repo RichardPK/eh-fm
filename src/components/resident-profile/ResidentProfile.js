@@ -17,6 +17,7 @@ import IndexActions from "../../actions/index";
 import ProfileText from "./profile-text/ProfileText";
 import PastShowCard from "./past-show-card/PastShowCard";
 import MostRecentShowbutton from "./most-recent-show-button/MostRecentShowButton";
+import ArchiveButton from "./archive-button/ArchiveButton";
 
 class ResidentProfile extends Component {
   constructor(props) {
@@ -29,10 +30,10 @@ class ResidentProfile extends Component {
     };
     this.renderPastShows = this.renderPastShows.bind(this);
     this.mapPastShows = this.mapPastShows.bind(this);
-    this.toggleArchiveclick = this.toggleArchiveclick.bind(this);
+    this.handleArchiveButtonClick = this.handleArchiveButtonClick.bind(this);
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
     this.renderCardContainerMargin = this.renderCardContainerMargin.bind(this);
-    this.renderArchiveButton = this.renderArchiveButton.bind(this);
+    // this.renderArchiveButton = this.renderArchiveButton.bind(this);
     this.getMostRecentShow = this.getMostRecentShow.bind(this);
     this.renderShowName = this.renderShowName.bind(this);
     this.renderDate = this.renderDate.bind(this);
@@ -139,7 +140,7 @@ class ResidentProfile extends Component {
     return showDisplay;
   }
 
-  toggleArchiveclick() {
+  handleArchiveButtonClick() {
     if (this.state.displayShows === true) {
       scroll.scrollTo(0);
       Events.scrollEvent.register(
@@ -173,32 +174,32 @@ class ResidentProfile extends Component {
     });
   }
 
-  renderArchiveButton() {
-    if (this.props.pastShows) {
-      if (this.state.displayShows) {
-        return (
-          <div
-            className="pastshows-button active"
-            onClick={this.toggleArchiveclick}
-          >
-            <h1>Archive</h1>
-            {/* Font Awesome icon needs replacing */}
-            {/* <FontAwesomeIcon icon={faChevronDown} className="down" /> */}
-          </div>
-        );
-      } else {
-        return (
-          <div className="pastshows-button" onClick={this.toggleArchiveclick}>
-            <h1>Archive</h1>
-            {/* Font Awesome icon needs replacing */}
-            {/* <FontAwesomeIcon icon={faChevronRight} /> */}
-          </div>
-        );
-      }
-    } else {
-      return null;
-    }
-  }
+  // renderArchiveButton() {
+  //   if (this.props.pastShows) {
+  //     if (this.state.displayShows) {
+  //       return (
+  //         <div
+  //           className="pastshows-button active"
+  //           onClick={this.handleArchiveButtonClick}
+  //         >
+  //           <h1>Archive</h1>
+  //           {/* Font Awesome icon needs replacing */}
+  //           {/* <FontAwesomeIcon icon={faChevronDown} className="down" /> */}
+  //         </div>
+  //       );
+  //     } else {
+  //       return (
+  //         <div className="pastshows-button" onClick={this.handleArchiveButtonClick}>
+  //           <h1>Archive</h1>
+  //           {/* Font Awesome icon needs replacing */}
+  //           {/* <FontAwesomeIcon icon={faChevronRight} /> */}
+  //         </div>
+  //       );
+  //     }
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
   render() {
     return (
@@ -210,15 +211,20 @@ class ResidentProfile extends Component {
         <div className="resident-show-display-container">
           <ProfileText props={this.props} />
           {this.props.pastShows && this.state.orderedShows && (
-            <MostRecentShowbutton
-              mostRecentShow={this.state.mostRecentShow}
-              handleMostRecentShowButtonClick={this.handleMixCloudClick}
-              date={this.renderDate(this.state.mostRecentShow.name)}
-              showName={this.renderShowName(this.state.mostRecentShow.name)}
-            />
+            <React.Fragment>
+              <MostRecentShowbutton
+                mostRecentShow={this.state.mostRecentShow}
+                handleMostRecentShowButtonClick={this.handleMixCloudClick}
+                date={this.renderDate(this.state.mostRecentShow.name)}
+                showName={this.renderShowName(this.state.mostRecentShow.name)}
+              />
+              <ArchiveButton
+                handleArchiveButtonClick={this.handleArchiveButtonClick}
+              />
+            </React.Fragment>
           )}
 
-          {this.renderArchiveButton()}
+          {/* {this.renderArchiveButton()} */}
 
           {this.renderPastShows()}
         </div>

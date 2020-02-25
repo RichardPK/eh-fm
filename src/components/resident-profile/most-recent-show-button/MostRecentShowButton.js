@@ -4,6 +4,7 @@ import Colors from "../../../consts/Colors";
 import { Cta } from "../../text-elements/index";
 import { ReactSVG } from "react-svg";
 import MixCloud from "../../../assets/svgs/mixcloud.svg";
+import Devices from "../../../consts/Devices";
 // import { ReactComponent as MixCloud } from "../../../assets/svgs/mixcloud.svg";
 
 const MostRecentShowbutton = ({
@@ -38,19 +39,22 @@ const Wrapper = styled.div`
     height: 1.75rem;
     width: auto;
     margin-right: 0.75rem;
+    margin-top: 0.1rem;
 
     path {
       fill: ${Colors.playerWhite};
     }
   }
 
-  &:hover {
-    background-color: ${Colors.playerWhite};
-    color: ${Colors.ehfmPrimary};
-    transition: background-color 0.2s;
+  @media ${Devices.tablet} {
+    &:hover {
+      background-color: ${Colors.playerWhite};
+      color: ${Colors.ehfmPrimary};
+      transition: background-color 0.2s;
 
-    path {
-      fill: ${Colors.ehfmPrimary};
+      path {
+        fill: ${Colors.ehfmPrimary};
+      }
     }
   }
 `;
