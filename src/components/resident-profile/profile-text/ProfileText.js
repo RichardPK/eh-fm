@@ -6,16 +6,6 @@ import Devices from "../../../consts/Devices";
 import { Heading1, Body, BodyExtraSpacing } from "../../text-elements/index";
 
 const ProfileText = ({ props }) => {
-  const renderShowTime = () => {
-    if (props.showTime) {
-      return (
-        <div className="resident-show-time">
-          <span>{props.showTime}</span>
-        </div>
-      );
-    }
-  };
-
   const hrefs = {
     instagram: props.instagram,
     facebook: props.facebook,
@@ -29,7 +19,7 @@ const ProfileText = ({ props }) => {
   };
 
   return (
-    <div className="resident-show-text-container">
+    <Wrapper>
       <TitleAndTimeWrapper>
         <ShowTitle>{props.showTitle}</ShowTitle>
 
@@ -67,9 +57,11 @@ const ProfileText = ({ props }) => {
           <DescriptionText>{props.showDescription}</DescriptionText>
         </DescriptionWrapper>
       )}
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div``;
 
 const TitleAndTimeWrapper = styled.div`
   background-color: transparent;
