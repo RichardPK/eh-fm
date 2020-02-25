@@ -7,12 +7,12 @@ $spanbg: rgba(72, 67, 73, 0.8);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  .resident-show-title-container {
-    margin-bottom: 4px;
-  }
-  .resident-show-display-description {
-    // width: 40vw;
-  }
+  // .resident-show-title-container {
+  //   margin-bottom: 4px;
+  // }
+  // .resident-show-display-description {
+  // width: 40vw;
+  // }
   // h3 {
   //   font-size: 4.5em;
   //   letter-spacing: 2px;
@@ -26,16 +26,16 @@ $spanbg: rgba(72, 67, 73, 0.8);
   //     line-height: 92px;
   //   }
   // }
-  p {
-    margin-right: 20%;
-    color: white;
-    span {
-      padding: 4px;
-      background-color: $spanbg;
-      line-height: 24px;
-      display: block;
-    }
-  }
+  // p {
+  //   margin-right: 20%;
+  //   color: white;
+  //   span {
+  //     padding: 4px;
+  //     background-color: $spanbg;
+  //     line-height: 24px;
+  //     display: block;
+  //   }
+  // }
 
   //     height: 2px;
   //     background-color: white;
@@ -239,12 +239,12 @@ $spanbg: rgba(72, 67, 73, 0.8);
   .resident-show-display-container {
     margin-top: 163px;
 
-    .resident-show-display-description {
-      // width: 80vw;
-      p {
-        margin-bottom: 10px;
-      }
-    }
+    // .resident-show-display-description {
+    //   // width: 80vw;
+    //   p {
+    //     margin-bottom: 10px;
+    //   }
+    // }
   }
 }
 
@@ -293,34 +293,34 @@ $spanbg: rgba(72, 67, 73, 0.8);
       }
     }
 
-    .resident-show-time {
-      span {
-        background-color: transparent;
-      }
-    }
+    // .resident-show-time {
+    //   span {
+    //     background-color: transparent;
+    //   }
+    // }
 
-    .resident-show-display-description {
-      // width: 100%;
-      p {
-        background-color: none;
-        margin-right: 0%;
-      }
-    }
+    // .resident-show-display-description {
+    //   // width: 100%;
+    //   p {
+    //     background-color: none;
+    //     margin-right: 0%;
+    //   }
+    // }
   }
 }
 
 @media only screen and (max-width: 375px) {
   .resident-show-display-container {
-    .resident-show-display-description {
-      // width: 80vw;
-      font-size: 14px;
-    }
-    .resident-show-time {
-      font-size: 14px;
-      span {
-        line-height: 26px;
-      }
-    }
+    // .resident-show-display-description {
+    //   // width: 80vw;
+    //   font-size: 14px;
+    // }
+    // .resident-show-time {
+    //   font-size: 14px;
+    //   span {
+    //     line-height: 26px;
+    //   }
+    // }
   }
   .resident-show-pastshows-container {
     .most-recent {
