@@ -41,12 +41,12 @@ $spanbg: rgba(72, 67, 73, 0.8);
   //     background-color: white;
   // }
   .pastshows-button {
-    background-color: $ehfmcolor;
-    position: absolute;
-    bottom: 20px;
-    display: flex;
-    align-items: center;
-    min-width: 102px;
+    // background-color: $ehfmcolor;
+    // position: absolute;
+    // bottom: 20px;
+    // display: flex;
+    // align-items: center;
+    // min-width: 102px;
     h1 {
       padding: 4px;
       margin: 0px 5px 0px 0px; // padding: 10px 15px;
@@ -192,19 +192,19 @@ $spanbg: rgba(72, 67, 73, 0.8);
       transition: background-color 0.2s, color 0.2s;
     }
   }
-  .pastshows-button {
-    &:hover {
-      cursor: pointer;
-      background-color: white;
-      transition: background-color 0.2s, color 0.2s;
-      h1 {
-        color: $ehfmcolor;
-      }
-      svg {
-        color: $ehfmcolor;
-      }
-    }
-  }
+  // .pastshows-button {
+  //   &:hover {
+  //     cursor: pointer;
+  //     background-color: white;
+  //     transition: background-color 0.2s, color 0.2s;
+  //     h1 {
+  //       color: $ehfmcolor;
+  //     }
+  //     svg {
+  //       color: $ehfmcolor;
+  //     }
+  //   }
+  // }
   .resident-pastshow-card {
     &:hover {
       cursor: pointer;
