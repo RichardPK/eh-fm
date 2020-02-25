@@ -61,7 +61,15 @@ const ProfileText = ({ props }) => {
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  background-color: ${Colors.spanBgSolid};
+  padding-left: 5px;
+  padding-right: 5px;
+
+  @media ${Devices.mobileL} {
+    background-color: transparent;
+  }
+`;
 
 const TitleAndTimeWrapper = styled.div`
   background-color: transparent;

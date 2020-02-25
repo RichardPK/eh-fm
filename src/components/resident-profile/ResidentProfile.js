@@ -18,6 +18,7 @@ import ProfileText from "./profile-text/ProfileText";
 import PastShowCard from "./past-show-card/PastShowCard";
 import MostRecentShowbutton from "./most-recent-show-button/MostRecentShowButton";
 import ArchiveButton from "./archive-button/ArchiveButton";
+import PastShows from "./past-shows/PastShows";
 
 class ResidentProfile extends Component {
   constructor(props) {
