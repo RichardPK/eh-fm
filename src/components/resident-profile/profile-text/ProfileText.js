@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import Colors from "../../../consts/Colors";
 import ResidentProfileSocial from "../resident-profile-social/ResidentProfileSocial";
+import Devices from "../../../consts/Devices";
 
 const ProfileText = ({ props }) => {
   const renderShowTime = () => {
@@ -8,42 +10,6 @@ const ProfileText = ({ props }) => {
       return (
         <div className="resident-show-time">
           <span>{props.showTime}</span>
-        </div>
-      );
-    }
-  };
-
-  const renderFacebook = () => {
-    if (props.facebook) {
-      return (
-        <div className="social-icon">
-          <a href={props.facebook} target="blank">
-            <img src="/facebook-white.png" alt="facebook page" />
-          </a>
-        </div>
-      );
-    }
-  };
-
-  const renderTwitter = () => {
-    if (props.twitter) {
-      return (
-        <div className="social-icon">
-          <a href={props.twitter} target="blank">
-            <img src="/twitter-white.png" alt="twitter profile" />
-          </a>
-        </div>
-      );
-    }
-  };
-
-  const renderInstagram = () => {
-    if (props.instagram) {
-      return (
-        <div className="social-icon">
-          <a href={props.instagram} target="blank">
-            <img src="/instagram-white.png" alt="instagram profile" />
-          </a>
         </div>
       );
     }
@@ -70,7 +36,7 @@ const ProfileText = ({ props }) => {
         {renderShowTime()}
       </div>
 
-      <div className="resident-show-socials">
+      <SocialsWrapper>
         {props.facebook && (
           <ResidentProfileSocial
             type={"facebook"}
@@ -94,7 +60,7 @@ const ProfileText = ({ props }) => {
             imgSrcs={imgSrcs}
           />
         )}
-      </div>
+      </SocialsWrapper>
 
       {props.showDescription ? (
         <div className="resident-show-display-description">
@@ -106,5 +72,9 @@ const ProfileText = ({ props }) => {
     </div>
   );
 };
+
+const SocialsWrapper = styled.div`
+  display: flex;
+`;
 
 export default ProfileText;

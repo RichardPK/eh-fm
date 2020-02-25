@@ -13,5 +13,6 @@ export default {
   highlightYellow: `rgb(255, 253, 130)`,
   bgWhite: `rgb(247, 240, 240)`,
   notQuiteBlack: `rgb(72, 67, 73)`,
-  notquiteBlack80Transparent: `rgba(72, 67, 73, 0.8)`
+  notquiteBlack80Transparent: `rgba(72, 67, 73, 0.8)`,
+  spanBg: `rgba(72, 67, 73, 0.8)`
 };

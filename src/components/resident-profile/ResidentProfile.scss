@@ -36,17 +36,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
       display: block;
     }
   }
-  .resident-show-socials {
-    display: flex;
-    img {
-      height: 14px;
-      width: 14px;
-    }
-    .social-icon {
-      background-color: $spanbg; //   margin: 5px 5px 5px 5px;
-      padding: 4.5px 5px 2.5px 5px;
-    }
-  }
+
   .resident-show-time {
     // background-color: $spanbg;
     span {
@@ -338,11 +328,7 @@ $spanbg: rgba(72, 67, 73, 0.8);
         background-color: transparent;
       }
     }
-    .resident-show-socials {
-      .social-icon {
-        background-color: transparent;
-      }
-    }
+
     h3 {
       font-size: 2.8em;
       span {
@@ -392,8 +378,6 @@ $spanbg: rgba(72, 67, 73, 0.8);
       span {
         line-height: 52px;
       }
-    }
-    .resident-show-display-description {
     }
   }
   .resident-show-pastshows-container {
