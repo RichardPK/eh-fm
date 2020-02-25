@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Colors from "../../../consts/Colors";
 import { Cta } from "../../text-elements/index";
-import { ReactComponent as MixCloud } from "../../../assets/svgs/mixcloud.svg";
+import { ReactSVG } from "react-svg";
+import MixCloud from "../../../assets/svgs/mixcloud.svg";
+// import { ReactComponent as MixCloud } from "../../../assets/svgs/mixcloud.svg";
 
 const MostRecentShowbutton = ({
   mostRecentShow,
@@ -15,8 +17,7 @@ const MostRecentShowbutton = ({
       // className="resident-pastshow-card"
       onClick={() => handleMostRecentShowButtonClick(mostRecentShow)}
     >
-      {/* <MixCloud /> */}
-
+      <ReactSVG src={MixCloud} />
       <Date>{date}</Date>
       <ShowName>{showName}</ShowName>
     </Wrapper>
@@ -26,16 +27,31 @@ const MostRecentShowbutton = ({
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  padding: 0.5rem;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
   width: fit-content;
   background: ${Colors.ehfmPrimary};
   color: ${Colors.playerWhite};
   cursor: pointer;
 
+  svg {
+    height: 1.75rem;
+    width: auto;
+    margin-right: 0.75rem;
+
+    path {
+      fill: ${Colors.playerWhite};
+    }
+  }
+
   &:hover {
     background-color: ${Colors.playerWhite};
     color: ${Colors.ehfmPrimary};
     transition: background-color 0.2s;
+
+    path {
+      fill: ${Colors.ehfmPrimary};
+    }
   }
 `;
 
