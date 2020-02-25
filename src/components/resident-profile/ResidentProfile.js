@@ -210,14 +210,12 @@ class ResidentProfile extends Component {
         <div className="resident-show-display-container">
           <ProfileText props={this.props} />
           {this.props.pastShows && this.state.orderedShows && (
-            <MostRecentShowWrapper>
-              <MostRecentShowbutton
-                mostRecentShow={this.state.mostRecentShow}
-                handleMostRecentShowButtonClick={this.handleMixCloudClick}
-                date={this.renderDate(this.state.mostRecentShow.name)}
-                showName={this.renderShowName(this.state.mostRecentShow.name)}
-              />
-            </MostRecentShowWrapper>
+            <MostRecentShowbutton
+              mostRecentShow={this.state.mostRecentShow}
+              handleMostRecentShowButtonClick={this.handleMixCloudClick}
+              date={this.renderDate(this.state.mostRecentShow.name)}
+              showName={this.renderShowName(this.state.mostRecentShow.name)}
+            />
           )}
 
           {this.renderArchiveButton()}
@@ -248,8 +246,6 @@ const BackgroundImage = styled.div`
     margin: auto;
   }
 `;
-
-const MostRecentShowWrapper = styled.div``;
 
 const mapStateToProps = state => {
   return {

@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import Colors from "../../../consts/Colors";
+import { Cta } from "../../text-elements/index";
+import { ReactComponent as MixCloud } from "../../../assets/svgs/mixcloud.svg";
 
 const MostRecentShowbutton = ({
   mostRecentShow,
@@ -7,23 +10,42 @@ const MostRecentShowbutton = ({
   date,
   showName
 }) => {
-  const mapMostRecentShow = () => {
-    return (
-      <div
-        className="resident-pastshow-card"
-        onClick={() => handleMostRecentShowButtonClick(mostRecentShow)}
-      >
-        {/* Font Awesome icon needs replacing */}
-        {/* <FontAwesomeIcon icon={faMixcloud} className="faMixcloud" /> */}
-        <div className="showname-info-cont">
-          <span className="resident-mixcloud-date">{date}</span>
-          <span className="resident-mixcloud-showname">{showName}</span>
-        </div>
-      </div>
-    );
-  };
+  return (
+    <Wrapper
+      // className="resident-pastshow-card"
+      onClick={() => handleMostRecentShowButtonClick(mostRecentShow)}
+    >
+      {/* <MixCloud /> */}
 
-  return mapMostRecentShow();
+      <Date>{date}</Date>
+      <ShowName>{showName}</ShowName>
+    </Wrapper>
+  );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  width: fit-content;
+  background: ${Colors.ehfmPrimary};
+  color: ${Colors.playerWhite};
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${Colors.playerWhite};
+    color: ${Colors.ehfmPrimary};
+    transition: background-color 0.2s;
+  }
+`;
+
+const Date = styled(Cta)`
+  font-weight: normal;
+  margin-right: 0.75rem;
+`;
+
+const ShowName = styled(Cta)`
+  font-weight: normal;
+`;
 
 export default MostRecentShowbutton;
