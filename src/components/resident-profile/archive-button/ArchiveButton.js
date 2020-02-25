@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   cursor: pointer;
 
   svg {
-    margin-top: 3px;
+    margin-top: ${props => (props.displayShows ? `5px` : `3px`)};
     margin-left: 0.5rem;
     padding-right: 2px;
     height: 1rem;

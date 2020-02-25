@@ -33,7 +33,6 @@ class ResidentProfile extends Component {
     this.handleArchiveButtonClick = this.handleArchiveButtonClick.bind(this);
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
     this.renderCardContainerMargin = this.renderCardContainerMargin.bind(this);
-    // this.renderArchiveButton = this.renderArchiveButton.bind(this);
     this.getMostRecentShow = this.getMostRecentShow.bind(this);
     this.renderShowName = this.renderShowName.bind(this);
     this.renderDate = this.renderDate.bind(this);
@@ -174,33 +173,6 @@ class ResidentProfile extends Component {
     });
   }
 
-  // renderArchiveButton() {
-  //   if (this.props.pastShows) {
-  //     if (this.state.displayShows) {
-  //       return (
-  //         <div
-  //           className="pastshows-button active"
-  //           onClick={this.handleArchiveButtonClick}
-  //         >
-  //           <h1>Archive</h1>
-  //           {/* Font Awesome icon needs replacing */}
-  //           {/* <FontAwesomeIcon icon={faChevronDown} className="down" /> */}
-  //         </div>
-  //       );
-  //     } else {
-  //       return (
-  //         <div className="pastshows-button" onClick={this.handleArchiveButtonClick}>
-  //           <h1>Archive</h1>
-  //           {/* Font Awesome icon needs replacing */}
-  //           {/* <FontAwesomeIcon icon={faChevronRight} /> */}
-  //         </div>
-  //       );
-  //     }
-  //   } else {
-  //     return null;
-  //   }
-  // }
-
   render() {
     return (
       <React.Fragment>
@@ -224,8 +196,6 @@ class ResidentProfile extends Component {
               />
             </React.Fragment>
           )}
-
-          {/* {this.renderArchiveButton()} */}
 
           {this.renderPastShows()}
         </div>
