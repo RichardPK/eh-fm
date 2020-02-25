@@ -50,9 +50,9 @@ const modularScaleDesktop = {
     fontSize: TypographyUtils.convertPixelToEm(16),
     lineHeight: TypographyUtils.convertPixelToEm(22)
   },
-  regDetail: {
+  bodyExtraSpacing: {
     fontSize: TypographyUtils.convertPixelToEm(16),
-    lineHeight: TypographyUtils.convertPixelToEm(22)
+    lineHeight: TypographyUtils.convertPixelToEm(26)
   },
   tiny: {
     fontSize: TypographyUtils.convertPixelToEm(12),
@@ -89,9 +89,9 @@ const modularScaleMobile = {
     fontSize: TypographyUtils.convertPixelToEm(14),
     lineHeight: TypographyUtils.convertPixelToEm(20)
   },
-  regDetail: {
+  bodyExtraSpacing: {
     fontSize: TypographyUtils.convertPixelToEm(14),
-    lineHeight: TypographyUtils.convertPixelToEm(20)
+    lineHeight: TypographyUtils.convertPixelToEm(22)
   },
   tiny: {
     fontSize: TypographyUtils.convertPixelToEm(10),
@@ -194,16 +194,16 @@ export default {
   )};
   `,
 
-  regDetail: `
+  bodyExtraSpacing: `
   ${genericStyles.regular}
   ${TypographyUtils.fontSizeCalc(
-    modularScaleDesktop.regDetail.fontSize,
-    modularScaleMobile.regDetail.fontSize
+    modularScaleDesktop.bodyExtraSpacing.fontSize,
+    modularScaleMobile.bodyExtraSpacing.fontSize
   )};
   
   ${TypographyUtils.lineHeightCalc(
-    modularScaleDesktop.regDetail.lineHeight,
-    modularScaleMobile.regDetail.lineHeight
+    modularScaleDesktop.bodyExtraSpacing.lineHeight,
+    modularScaleMobile.bodyExtraSpacing.lineHeight
   )};
   `,
 

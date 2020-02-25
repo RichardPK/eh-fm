@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Colors from "../../../consts/Colors";
 import ResidentProfileSocial from "../resident-profile-social/ResidentProfileSocial";
 import Devices from "../../../consts/Devices";
-import { Heading1, Body } from "../../text-elements/index";
+import { Heading1, Body, BodyExtraSpacing } from "../../text-elements/index";
 
 const ProfileText = ({ props }) => {
   const renderShowTime = () => {
@@ -62,13 +62,11 @@ const ProfileText = ({ props }) => {
         )}
       </SocialsWrapper>
 
-      {props.showDescription ? (
-        <div className="resident-show-display-description">
-          <p>
-            <span>{props.showDescription}</span>
-          </p>
-        </div>
-      ) : null}
+      {props.showDescription && (
+        <DescriptionWrapper>
+          <DescriptionText>{props.showDescription}</DescriptionText>
+        </DescriptionWrapper>
+      )}
     </div>
   );
 };
@@ -87,10 +85,6 @@ const ShowTitle = styled(Heading1)`
   color: ${Colors.playerWhite};
   font-weight: normal;
   padding: 4px;
-
-  @media ${Devices.mobileL} {
-    margin-top: 20px;
-  }
 `;
 
 const ShowTime = styled(Body)`
@@ -101,6 +95,27 @@ const ShowTime = styled(Body)`
 
 const SocialsWrapper = styled.div`
   display: flex;
+`;
+
+const DescriptionWrapper = styled.div`
+  width: 100%;
+  background-color: transparent;
+  margin: 0.5rem 0 0;
+  padding: 4px;
+
+  @media ${Devices.mobileL} {
+    width: 80vw;
+    background-color: ${Colors.spanBg};
+    margin: 1rem 0;
+  }
+
+  @media ${Devices.tablet} {
+    width: 40vw;
+  }
+`;
+
+const DescriptionText = styled(BodyExtraSpacing)`
+  color: ${Colors.playerWhite};
 `;
 
 export default ProfileText;
