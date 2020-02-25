@@ -220,6 +220,7 @@ class ResidentProfile extends Component {
               />
               <ArchiveButton
                 handleArchiveButtonClick={this.handleArchiveButtonClick}
+                displayShows={this.state.displayShows}
               />
             </React.Fragment>
           )}

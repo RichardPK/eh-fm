@@ -6,9 +6,12 @@ import { Heading4 } from "../../text-elements/index";
 import { ReactSVG } from "react-svg";
 import ArrowRight from "../../../assets/svgs/arrow-right.svg";
 
-const ArchiveButton = ({ handleArchiveButtonClick }) => {
+const ArchiveButton = ({ handleArchiveButtonClick, displayShows }) => {
   return (
-    <Wrapper onClick={() => handleArchiveButtonClick()}>
+    <Wrapper
+      onClick={() => handleArchiveButtonClick()}
+      displayShows={displayShows}
+    >
       <Title>Archive</Title>
       <ReactSVG src={ArrowRight} />
     </Wrapper>
@@ -16,8 +19,10 @@ const ArchiveButton = ({ handleArchiveButtonClick }) => {
 };
 
 const Wrapper = styled.div`
-  background-color: ${Colors.ehfmPrimary};
-  color: ${Colors.playerWhite};
+  background-color: ${props =>
+    props.displayShows ? Colors.playerWhite : Colors.ehfmPrimary};
+  color: ${props =>
+    props.displayShows ? Colors.ehfmPrimary : Colors.playerWhite};
   position: absolute;
   padding: 4px;
   min-width: 0px;
@@ -34,9 +39,12 @@ const Wrapper = styled.div`
     padding-right: 2px;
     height: 1rem;
     width: auto;
+    ${props => (props.displayShows ? `transform: rotate(90deg);` : ``)}
+    transition: 0.2s transform ease-out;
 
     path {
-      fill: white;
+      fill: ${props =>
+        props.displayShows ? Colors.ehfmPrimary : Colors.playerWhite};
     }
   }
 
