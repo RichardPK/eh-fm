@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PastShowCard from "../past-show-card/PastShowCard";
+import Colors from "../../../consts/Colors";
 
 const PastShows = ({
   displayShows,
@@ -10,7 +11,7 @@ const PastShows = ({
   handleMixCloudClick
 }) => {
   const mapPastShows = () => {
-    let showDisplay = allPastShows.map(show => {
+    let showDisplay = allPastShows.map((show, i) => {
       let tags = show.tags.map(tag => {
         return (
           <div className="mixcloud-tag" key={tag.url}>
@@ -21,9 +22,9 @@ const PastShows = ({
       return (
         <PastShowCard
           handleMixCloudClick={() => handleMixCloudClick(show)}
-          // key={this.props.pastShows.indexOf(show)}
-          renderDate={() => renderDate(show.name)}
-          renderShowName={() => renderShowName(show.name)}
+          key={i}
+          renderDate={renderDate(show.name)}
+          renderShowName={renderShowName(show.name)}
           tags={tags}
         />
       );
@@ -33,7 +34,9 @@ const PastShows = ({
   };
 
   return displayShows ? (
-    <PastShowsWrapper>{mapPastShows()}</PastShowsWrapper>
+    <PastShowsWrapper className="cards-container">
+      {mapPastShows()}
+    </PastShowsWrapper>
   ) : null;
 };
 
