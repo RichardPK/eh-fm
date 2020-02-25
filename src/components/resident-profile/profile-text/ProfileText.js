@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Colors from "../../../consts/Colors";
 import ResidentProfileSocial from "../resident-profile-social/ResidentProfileSocial";
 import Devices from "../../../consts/Devices";
-import { Heading1 } from "../../text-elements/index";
+import { Heading1, Body } from "../../text-elements/index";
 
 const ProfileText = ({ props }) => {
   const renderShowTime = () => {
@@ -33,7 +33,7 @@ const ProfileText = ({ props }) => {
       <TitleAndTimeWrapper>
         <ShowTitle>{props.showTitle}</ShowTitle>
 
-        {renderShowTime()}
+        {props.showTime && <ShowTime>{props.showTime}</ShowTime>}
       </TitleAndTimeWrapper>
 
       <SocialsWrapper>
@@ -75,6 +75,8 @@ const ProfileText = ({ props }) => {
 
 const TitleAndTimeWrapper = styled.div`
   background-color: transparent;
+  display: inline-block;
+  border-bottom: 4px solid white;
   @media ${Devices.mobileL} {
     background-color: ${Colors.spanBg};
   }
@@ -89,6 +91,12 @@ const ShowTitle = styled(Heading1)`
   @media ${Devices.mobileL} {
     margin-top: 20px;
   }
+`;
+
+const ShowTime = styled(Body)`
+  color: ${Colors.playerWhite};
+  padding: 4px;
+  letter-spacing: 0.04em;
 `;
 
 const SocialsWrapper = styled.div`
