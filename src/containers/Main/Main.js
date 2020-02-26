@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { Route, Switch, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import Header from "../header/Header";
-import Home from "../home/Home";
-import ResidentsContainer from "../residents/Residents";
-import Resident from "../resident/Resident";
-import Footer from "../footer/Footer";
-import IndexActions from "../../actions/index";
-import ResidentsActions from "../../actions/ResidentsActions";
-import _ from "lodash";
+import React, { Component } from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Header from '../header/Header';
+import Home from '../home/Home';
+import ResidentsContainer from '../residents/Residents';
+import Resident from '../resident/Resident';
+import Footer from '../footer/Footer';
+import IndexActions from '../../actions/index';
+import ResidentsActions from '../../actions/ResidentsActions';
+import _ from 'lodash';
 
 class Main extends Component {
   constructor(props) {
@@ -29,9 +29,7 @@ class Main extends Component {
     this.scheduleApiCall = this.scheduleApiCall.bind(this);
     this.fetchDate = this.fetchDate.bind(this);
     this.populateSchedule = this.populateSchedule.bind(this);
-    this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(
-      this
-    );
+    this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
     this.deleteDaysInPast = this.deleteDaysInPast.bind(this);
     this.fetchDay = this.fetchDay.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
@@ -75,9 +73,9 @@ class Main extends Component {
   }
 
   currentShowApiCall() {
-    fetch("https://ehfm.airtime.pro/api/live-info")
-      .then(response => response.json())
-      .then(data =>
+    fetch('https://ehfm.airtime.pro/api/live-info')
+      .then((response) => response.json())
+      .then((data) =>
         this.setState({ currentShow: data }, () => {
           this.scheduleApiCall();
         })
@@ -85,10 +83,10 @@ class Main extends Component {
   }
 
   scheduleApiCall() {
-    fetch("https://ehfm.airtime.pro/api/week-info")
-      .then(response => response.json())
+    fetch('https://ehfm.airtime.pro/api/week-info')
+      .then((response) => response.json())
       .then(this.fetchDate())
-      .then(data =>
+      .then((data) =>
         this.setState({ showSchedule: data }, function() {
           this.populateSchedule();
         })
@@ -101,27 +99,19 @@ class Main extends Component {
     let mm = todayDate.getMonth() + 1; //January is 0!
     let yyyy = todayDate.getFullYear();
     if (dd < 10) {
-      dd = "0" + dd;
+      dd = '0' + dd;
     }
     if (mm < 10) {
-      mm = "0" + mm;
+      mm = '0' + mm;
     }
-    let today = yyyy + "-" + mm + "-" + dd;
+    let today = yyyy + '-' + mm + '-' + dd;
     this.setState({ currentDate: today }, () => {
       this.fetchDay(todayDate.getDay());
     });
   }
 
   fetchDay(dayNum) {
-    let weekdays = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
+    let weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     this.setState({ currentDay: weekdays[dayNum] });
   }
 
@@ -189,10 +179,7 @@ class Main extends Component {
     return (
       <React.Fragment>
         <audio ref={this.audioPlayer} id="audioPlayer" name="media">
-          <source
-            src="http://ehfm.out.airtime.pro:8000/ehfm_a"
-            type="audio/mpeg"
-          />
+          <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg" />
         </audio>
 
         <Header
@@ -235,7 +222,7 @@ class Main extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     playing: state.index.playing,
     volume: state.index.volume,
@@ -244,12 +231,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    togglePlaying: toggle => {
+    togglePlaying: (toggle) => {
       dispatch(IndexActions.switchPlaying(toggle));
     },
-    changeVolume: value => {
+    changeVolume: (value) => {
       dispatch(IndexActions.switchVolume(value));
     },
     getResidents: () => {
@@ -258,6 +245,11 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const Index = withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
+const Index = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Main)
+);
 
 export default Index;
