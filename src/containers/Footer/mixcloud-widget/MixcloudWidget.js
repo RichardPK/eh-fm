@@ -20,7 +20,7 @@ class ResidentShowDisplay extends Component {
             >
               <span>x</span>
             </CloseButton>
-            <div className="resident-mixcloud-widget">{renderHTML(this.props.mixCloudWidget)}</div>
+            <WidgetWrapper>{renderHTML(this.props.mixCloudWidget)}</WidgetWrapper>
           </Wrapper>
         )}
       </React.Fragment>
@@ -54,6 +54,8 @@ const CloseButton = styled.div`
     }
   }
 `;
+
+const WidgetWrapper = styled.div``;
 
 const mapStateToProps = (state) => {
   return {

@@ -9,7 +9,8 @@ const PastShows = ({
   allPastShows,
   renderDate,
   renderShowName,
-  handleMixCloudClick
+  handleMixCloudClick,
+  mixCloudWidget
 }) => {
   const showsToDisplay = allPastShows.map((show, i) => {
     return (
@@ -24,7 +25,9 @@ const PastShows = ({
   });
   showsToDisplay.splice(0, 1);
 
-  return displayShows ? <PastShowsWrapper>{showsToDisplay}</PastShowsWrapper> : null;
+  return displayShows ? (
+    <PastShowsWrapper mixCloudWidget={mixCloudWidget}>{showsToDisplay}</PastShowsWrapper>
+  ) : null;
 };
 
 const PastShowsWrapper = styled.div`
@@ -33,6 +36,7 @@ const PastShowsWrapper = styled.div`
   top: 100vh;
   display: flex;
   flex-direction: column;
+  margin-bottom: ${(props) => (props.mixCloudWidget ? '123px' : 'auto')};
 
   @media ${Devices.mobileL} {
     left: 20px;

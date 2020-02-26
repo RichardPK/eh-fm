@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import ResidentListItem from "../../components/resident-list-item/ResidentListItem";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
-import Devices from "../../consts/Devices";
-import Sizes from "../../consts/Sizes";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import ResidentListItem from '../../components/resident-list-item/ResidentListItem';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import PlaceholderShowImg from '../../assets/images/placeholder-showimg.jpg';
+import Devices from '../../consts/Devices';
+import Sizes from '../../consts/Sizes';
 
 class ResidentsContainer extends Component {
   render() {
@@ -15,11 +15,7 @@ class ResidentsContainer extends Component {
         <Helmet>
           <title>Residents | EH-FM</title>
           <meta name="fragment" content="!" />
-          <meta
-            property="og:title"
-            data-react-helmet="true"
-            content="Residents | EH-FM"
-          />
+          <meta property="og:title" data-react-helmet="true" content="Residents | EH-FM" />
           <meta
             name="description"
             data-react-helmet="true"
@@ -35,18 +31,10 @@ class ResidentsContainer extends Component {
             data-react-helmet="true"
             content="http://www.ehfm.live/residents"
           />
-          <meta
-            name="twitter:image"
-            data-react-helmet="true"
-            content={PlaceholderShowImg}
-          />
-          <meta
-            name="og:image"
-            data-react-helmet="true"
-            content={PlaceholderShowImg}
-          />
+          <meta name="twitter:image" data-react-helmet="true" content={PlaceholderShowImg} />
+          <meta name="og:image" data-react-helmet="true" content={PlaceholderShowImg} />
         </Helmet>
-        <Wrapper>
+        <Wrapper mixCloudWidget={this.props.mixCloudWidget}>
           {this.props.residents.length ? (
             this.props.residents.map((show, index) => {
               return (
@@ -76,25 +64,29 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 163px auto 0;
+  margin: 163px auto ${(props) => (props.mixCloudWidget ? '123px' : 0)};
 
   @media ${Devices.tablet} {
-    margin: 143px auto 0;
+    margin: 143px auto ${(props) => (props.mixCloudWidget ? '123px' : 0)};
   }
 `;
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    residents: state.residents
+    residents: state.residents,
+    mixCloudWidget: state.index.mixCloudWidget
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
 const connectedResidentsContainer = withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ResidentsContainer)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ResidentsContainer)
 );
 
 export default connectedResidentsContainer;

@@ -176,7 +176,7 @@ class ResidentProfile extends Component {
           mixCloudWidget={this.props.mixCloudWidget}
           showImage={this.props.showImage}
         />
-        <div className="resident-show-display-container">
+        <Wrapper>
           <ProfileText props={this.props} />
           {this.props.pastShows && this.state.orderedShows && (
             <React.Fragment>
@@ -196,10 +196,11 @@ class ResidentProfile extends Component {
                 handleMixCloudClick={this.handleMixCloudClick}
                 renderDate={this.renderDate}
                 renderShowName={this.renderShowName}
+                mixCloudWidget={this.props.mixCloudWidget}
               />
             </React.Fragment>
           )}
-        </div>
+        </Wrapper>
       </React.Fragment>
     );
   }
@@ -216,13 +217,21 @@ const BackgroundImage = styled.div`
   z-index: -100;
   top: 100px;
   left: 0;
-  margin-bottom: ${(props) => (props.mixCloudWidget ? '123px' : '0')};
+  margin-bottom: ${(props) => (props.mixCloudWidget ? '123px' : 'auto')};
   background-image: url(${(props) => props.showImage});
 
   img {
     max-width: 100%;
     margin: auto;
   }
+`;
+
+const Wrapper = styled.div`
+  margin-top: 143px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 `;
 
 const mapStateToProps = (state) => {

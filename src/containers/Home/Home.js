@@ -1,14 +1,14 @@
-import React from "react";
-import CurrentShow from "../../components/current-show/CurrentShow";
-import Schedule from "../../components/schedule/Schedule";
-import { Helmet } from "react-helmet";
-import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
-import styled from "styled-components";
-import Colors from "../../consts/Colors";
-import Devices from "../../consts/Devices";
-import Sizes from "../../consts/Sizes";
+import React from 'react';
+import CurrentShow from '../../components/current-show/CurrentShow';
+import Schedule from '../../components/schedule/Schedule';
+import { Helmet } from 'react-helmet';
+import PlaceholderShowImg from '../../assets/images/placeholder-showimg.jpg';
+import styled from 'styled-components';
+import Colors from '../../consts/Colors';
+import Devices from '../../consts/Devices';
+import Sizes from '../../consts/Sizes';
 
-const HomeContainer = props => {
+const HomeContainer = (props) => {
   return (
     <React.Fragment>
       <Helmet>
@@ -25,21 +25,9 @@ const HomeContainer = props => {
           data-react-helmet="true"
           content="EH-FM is an Edinburgh-based online radio station, providing a platform for the capital's local artists and broadcasting 24 hours a day."
         />
-        <meta
-          property="og:url"
-          data-react-helmet="true"
-          content="https://www.ehfm.live"
-        />
-        <meta
-          property="og:image"
-          data-react-helmet="true"
-          content={PlaceholderShowImg}
-        />
-        <meta
-          name="twitter:image"
-          data-react-helmet="true"
-          content={PlaceholderShowImg}
-        />
+        <meta property="og:url" data-react-helmet="true" content="https://www.ehfm.live" />
+        <meta property="og:image" data-react-helmet="true" content={PlaceholderShowImg} />
+        <meta name="twitter:image" data-react-helmet="true" content={PlaceholderShowImg} />
       </Helmet>
 
       <Wrapper mixCloudWidget={props.mixCloudWidget}>
@@ -65,9 +53,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: ${props => (props.mixCloudWidget ? `123px` : `auto`)};
   flex-direction: column;
-  margin: 150px auto 0;
+  margin: 150px auto ${(props) => (props.mixCloudWidget ? `123px` : 0)};
 
   h1 {
     font-size: 18px;
@@ -79,7 +66,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: end;
-    margin: 125px auto 0;
+    margin: 125px auto ${(props) => (props.mixCloudWidget ? `123px` : 0)};
   }
 `;
 

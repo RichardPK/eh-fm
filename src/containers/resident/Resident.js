@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import Prismic from 'prismic-javascript';
 import ResidentProfile from '../../components/resident-profile/ResidentProfile';
 import axios from 'axios';
@@ -85,7 +86,7 @@ class ResidentShowContainer extends Component {
               <meta property="og:image:width" content={show.data.show_image.dimensions.width} />
               <meta property="og:image:height" content={show.data.show_image.dimensions.height} />
             </Helmet>
-            <div className="resident-show-container">
+            <Wrapper mixCloudWidget={this.props.mixCloudWidget}>
               <ResidentProfile
                 showTitle={show.data.show_title}
                 showDescription={show.data.show_description}
@@ -96,8 +97,9 @@ class ResidentShowContainer extends Component {
                 instagram={show.data.socials[0].instagram}
                 showTime={show.data.show_time}
                 pastShows={this.state.pastShows}
+                mixCloudWidget={this.props.mixCloudWidget}
               />
-            </div>
+            </Wrapper>
           </React.Fragment>
         ) : (
           <p>Loading</p>
@@ -107,9 +109,14 @@ class ResidentShowContainer extends Component {
   }
 }
 
+const Wrapper = styled.div`
+  margin-bottom: ${(props) => (props.mixCloudWidget ? `123px` : 'auto')};
+`;
+
 const mapStateToProps = (state) => {
   return {
-    residents: state.residents
+    residents: state.residents,
+    mixCloudWidget: state.index.mixCloudWidget
   };
 };
 
