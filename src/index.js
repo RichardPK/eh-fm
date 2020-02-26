@@ -11,7 +11,6 @@ import rootReducer from './reducers/RootReducer';
 import thunk from 'redux-thunk';
 
 import Main from './containers/main/Main';
-import './styleguide.scss';
 import './index.scss';
 import * as serviceWorker from './registerServiceWorker';
 import history from './history';
