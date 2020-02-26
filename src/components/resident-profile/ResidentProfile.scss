@@ -1,5 +1,5 @@
 $spanbg: rgba(72, 67, 73, 0.8);
-@import "../../styleguide.scss";
+@import '../../styleguide.scss';
 
 .resident-show-display-container {
   margin-top: 143px;
@@ -91,12 +91,12 @@ $spanbg: rgba(72, 67, 73, 0.8);
       display: inline-block;
     }
     .resident-pastshow-card {
-      border: none;
-      padding: 8px 4px;
-      margin: 0px;
-      background: $ehfmcolor;
-      flex-direction: row;
-      align-items: center;
+      // border: none;
+      // padding: 8px 4px;
+      // margin: 0px;
+      // background: $ehfmcolor;
+      // flex-direction: row;
+      // align-items: center;
       .play-button {
         margin: 0px 20px 0px 10px;
       }
@@ -121,13 +121,13 @@ $spanbg: rgba(72, 67, 73, 0.8);
   }
 
   .resident-pastshow-card {
-    border-bottom: 2px solid $ehfmcolor;
-    margin: 15px 10px;
-    color: $notquiteblack;
-    padding: 10px 4px 5px 4px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 2px; // .show-img {
+    // border-bottom: 2px solid $ehfmcolor;
+    // margin: 15px 10px;
+    // color: $notquiteblack;
+    // padding: 10px 4px 5px 4px;
+    // display: flex;
+    // flex-direction: column;
+    // border-radius: 2px; // .show-img {
     //     width: 200px;
     //     height: 200px;
     //     background-position: center;
@@ -205,34 +205,34 @@ $spanbg: rgba(72, 67, 73, 0.8);
   //     }
   //   }
   // }
-  .resident-pastshow-card {
-    &:hover {
-      cursor: pointer;
-      background-color: $altblue-10transparent;
-      transition: background-color 0.2s;
-    }
-  }
-  .most-recent {
-    .resident-pastshow-card {
-      &:hover {
-        cursor: pointer;
-        background-color: white;
-        transition: background-color 0.2s;
-        .play-button {
-          border-color: transparent transparent transparent $ehfmcolor;
-        }
-        .resident-mixcloud-showname {
-          color: $ehfmcolor;
-        }
-        .resident-mixcloud-date {
-          color: $ehfmcolor;
-        }
-        svg {
-          color: $ehfmcolor;
-        }
-      }
-    }
-  }
+  // .resident-pastshow-card {
+  // &:hover {
+  //   cursor: pointer;
+  //   background-color: $altblue-10transparent;
+  //   transition: background-color 0.2s;
+  // }
+  // }
+  // .most-recent {
+  //   .resident-pastshow-card {
+  //     &:hover {
+  //       cursor: pointer;
+  //       background-color: white;
+  //       transition: background-color 0.2s;
+  //       .play-button {
+  //         border-color: transparent transparent transparent $ehfmcolor;
+  //       }
+  //       .resident-mixcloud-showname {
+  //         color: $ehfmcolor;
+  //       }
+  //       .resident-mixcloud-date {
+  //         color: $ehfmcolor;
+  //       }
+  //       svg {
+  //         color: $ehfmcolor;
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 @media only screen and (max-width: 768px) {
@@ -250,14 +250,14 @@ $spanbg: rgba(72, 67, 73, 0.8);
 
 @media only screen and (max-width: 425px) {
   .resident-show-pastshows-container {
-    .most-recent {
-      .resident-pastshow-card {
-        padding: 5px !important;
-      }
-    }
-    .cards-container {
-      left: 0;
-    }
+    // .most-recent {
+    //   .resident-pastshow-card {
+    //     padding: 5px !important;
+    //   }
+    // // }
+    // .cards-container {
+    //   left: 0;
+    // }
   }
 
   .resident-mixcloud-tags-container {
@@ -273,15 +273,15 @@ $spanbg: rgba(72, 67, 73, 0.8);
   span.resident-mixcloud-date {
     font-size: 12px !important;
   }
-  .resident-pastshow-card {
-    margin: 10px 10px !important;
-    padding: 10px 4px 10px 4px !important;
-  }
-  .most-recent {
-    .resident-pastshow-card {
-      margin: 0px !important;
-    }
-  }
+  // .resident-pastshow-card {
+  //   margin: 10px 10px !important;
+  //   padding: 10px 4px 10px 4px !important;
+  // }
+  // .most-recent {
+  //   .resident-pastshow-card {
+  //     margin: 0px !important;
+  //   }
+  // }
   .resident-show-display-container {
     .pastshows-button {
       min-width: 0px;

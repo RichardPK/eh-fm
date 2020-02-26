@@ -1,7 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import PastShowCard from "../past-show-card/PastShowCard";
-import Colors from "../../../consts/Colors";
+import React from 'react';
+import styled from 'styled-components';
+import PastShowCard from '../past-show-card/PastShowCard';
+import Colors from '../../../consts/Colors';
+import Devices from '../../../consts/Devices';
 
 const PastShows = ({
   displayShows,
@@ -10,36 +11,32 @@ const PastShows = ({
   renderShowName,
   handleMixCloudClick
 }) => {
-  const mapPastShows = () => {
-    let showDisplay = allPastShows.map((show, i) => {
-      let tags = show.tags.map(tag => {
-        return (
-          <div className="mixcloud-tag" key={tag.url}>
-            <span>{tag.name}</span>
-          </div>
-        );
-      });
-      return (
-        <PastShowCard
-          handleMixCloudClick={() => handleMixCloudClick(show)}
-          key={i}
-          renderDate={renderDate(show.name)}
-          renderShowName={renderShowName(show.name)}
-          tags={tags}
-        />
-      );
-    });
-    showDisplay.splice(0, 1);
-    return showDisplay;
-  };
+  const showsToDisplay = allPastShows.map((show, i) => {
+    return (
+      <PastShowCard
+        handleMixCloudClick={() => handleMixCloudClick(show)}
+        key={i}
+        date={renderDate(show.name)}
+        showName={renderShowName(show.name)}
+        tags={show.tags}
+      />
+    );
+  });
+  showsToDisplay.splice(0, 1);
 
-  return displayShows ? (
-    <PastShowsWrapper className="cards-container">
-      {mapPastShows()}
-    </PastShowsWrapper>
-  ) : null;
+  return displayShows ? <PastShowsWrapper>{showsToDisplay}</PastShowsWrapper> : null;
 };
 
-const PastShowsWrapper = styled.div``;
+const PastShowsWrapper = styled.div`
+  left: 0;
+  position: absolute;
+  top: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  @media ${Devices.mobileL} {
+    left: 30px;
+  }
+`;
 
 export default PastShows;

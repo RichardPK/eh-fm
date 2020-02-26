@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import axios from "axios";
-import "./ResidentProfile.scss";
-import styled from "styled-components";
-import renderHTML from "react-render-html";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import './ResidentProfile.scss';
+import styled from 'styled-components';
+import renderHTML from 'react-render-html';
 import {
   Link,
   DirectLink,
@@ -12,13 +12,13 @@ import {
   animateScroll as scroll,
   scrollSpy,
   scroller
-} from "react-scroll";
-import IndexActions from "../../actions/index";
-import ProfileText from "./profile-text/ProfileText";
-import PastShowCard from "./past-show-card/PastShowCard";
-import MostRecentShowbutton from "./most-recent-show-button/MostRecentShowButton";
-import ArchiveButton from "./archive-button/ArchiveButton";
-import PastShows from "./past-shows/PastShows";
+} from 'react-scroll';
+import IndexActions from '../../actions/index';
+import ProfileText from './profile-text/ProfileText';
+import PastShowCard from './past-show-card/PastShowCard';
+import MostRecentShowbutton from './most-recent-show-button/MostRecentShowButton';
+import ArchiveButton from './archive-button/ArchiveButton';
+import PastShows from './past-shows/PastShows';
 
 class ResidentProfile extends Component {
   constructor(props) {
@@ -40,9 +40,7 @@ class ResidentProfile extends Component {
   }
 
   componentDidUpdate() {
-    this.props.pastShows && !this.state.mostRecentShow
-      ? this.getMostRecentShow()
-      : null;
+    this.props.pastShows && !this.state.mostRecentShow ? this.getMostRecentShow() : null;
   }
 
   // renderPastShows() {
@@ -95,16 +93,14 @@ class ResidentProfile extends Component {
   // }
 
   getMostRecentShow() {
-    let arrayWithModifiedTimestamps = this.props.pastShows.map(show => {
+    let arrayWithModifiedTimestamps = this.props.pastShows.map((show) => {
       show.created_timestamp = Date.parse(show.created_time);
       return show;
     });
 
-    let orderedByTimestamp = arrayWithModifiedTimestamps.sort(
-      (showA, showB) => {
-        return showA.created_timestamp + showB.created_timestamp;
-      }
-    );
+    let orderedByTimestamp = arrayWithModifiedTimestamps.sort((showA, showB) => {
+      return showA.created_timestamp + showB.created_timestamp;
+    });
 
     if (orderedByTimestamp.length > 0) {
       this.setState({
@@ -113,24 +109,24 @@ class ResidentProfile extends Component {
       });
     } else {
       this.setState({
-        mostRecentShow: "none"
+        mostRecentShow: 'none'
       });
     }
   }
 
-  renderShowName = showName => {
-    if (showName.includes("-")) {
-      let name = showName.split(" - ")[0].trim();
+  renderShowName = (showName) => {
+    if (showName.includes('-')) {
+      let name = showName.split(' - ')[0].trim();
       return name;
     } else {
       return showName;
     }
   };
 
-  renderDate = showName => {
-    let dateToReturn = "";
-    if (showName.includes("-")) {
-      let date = showName.split(" - ")[1];
+  renderDate = (showName) => {
+    let dateToReturn = '';
+    if (showName.includes('-')) {
+      let date = showName.split(' - ')[1];
       if (date) {
         dateToReturn = date.trim();
       }
@@ -144,14 +140,14 @@ class ResidentProfile extends Component {
     if (this.state.displayShows === true) {
       scroll.scrollTo(0);
       Events.scrollEvent.register(
-        "end",
+        'end',
         function() {
-          console.log("End");
+          console.log('End');
           this.setState({ displayShows: false });
         }.bind(this)
       );
     } else {
-      Events.scrollEvent.remove("end");
+      Events.scrollEvent.remove('end');
       this.setState({ displayShows: true }, scroll.scrollTo(200));
     }
   }
@@ -159,7 +155,7 @@ class ResidentProfile extends Component {
   renderCardContainerMargin() {
     if (this.props.mixCloudWidget) {
       return {
-        marginBottom: "123px"
+        marginBottom: '123px'
       };
     } else {
       return null;
@@ -168,7 +164,7 @@ class ResidentProfile extends Component {
 
   handleMixCloudClick(show) {
     let url = `https://api.mixcloud.com${show.key}embed-json/`;
-    axios.get(url).then(res => {
+    axios.get(url).then((res) => {
       this.props.setMixcloudWidget(res.data.html);
     });
   }
@@ -220,8 +216,8 @@ const BackgroundImage = styled.div`
   z-index: -100;
   top: 100px;
   left: 0;
-  margin-bottom: ${props => (props.mixCloudWidget ? "123px" : "0")};
-  background-image: url(${props => props.showImage});
+  margin-bottom: ${(props) => (props.mixCloudWidget ? '123px' : '0')};
+  background-image: url(${(props) => props.showImage});
 
   img {
     max-width: 100%;
@@ -229,7 +225,7 @@ const BackgroundImage = styled.div`
   }
 `;
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     playing: state.index.playing,
     volume: state.index.volume,
@@ -237,19 +233,22 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    togglePlaying: toggle => {
+    togglePlaying: (toggle) => {
       dispatch(IndexActions.switchPlaying(toggle));
     },
-    changeVolume: value => {
+    changeVolume: (value) => {
       dispatch(IndexActions.switchVolume(value));
     },
-    setMixcloudWidget: value => {
+    setMixcloudWidget: (value) => {
       dispatch(IndexActions.setMixcloudWidget(value));
     }
   };
 };
 
-const Index = connect(mapStateToProps, mapDispatchToProps)(ResidentProfile);
+const Index = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ResidentProfile);
 export default Index;

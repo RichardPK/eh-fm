@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import Prismic from "prismic-javascript";
-import ResidentProfile from "../../components/resident-profile/ResidentProfile";
-import axios from "axios";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import Prismic from 'prismic-javascript';
+import ResidentProfile from '../../components/resident-profile/ResidentProfile';
+import axios from 'axios';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class ResidentShowContainer extends Component {
   constructor(props) {
@@ -35,10 +35,10 @@ class ResidentShowContainer extends Component {
       let playlist_url = this.state.selectedShow.data.mixcloud_playlist_url;
       // https://www.mixcloud.com/ehfm/playlists/lunch/
 
-      let wwwCutPoint = playlist_url.indexOf(".") + 1;
+      let wwwCutPoint = playlist_url.indexOf('.') + 1;
       let modifiedUrl = playlist_url.slice(wwwCutPoint);
 
-      axios.get(`https://api.${modifiedUrl}cloudcasts/`).then(res => {
+      axios.get(`https://api.${modifiedUrl}cloudcasts/`).then((res) => {
         let shows = res.data.data.reverse();
         this.setState({ pastShows: shows });
       });
@@ -60,11 +60,7 @@ class ResidentShowContainer extends Component {
             <Helmet>
               <title>{titleString}</title>
               <meta name="fragment" content="!" />
-              <meta
-                property="og:title"
-                data-react-helmet="true"
-                content={titleString}
-              />
+              <meta property="og:title" data-react-helmet="true" content={titleString} />
               <meta
                 name="description"
                 data-react-helmet="true"
@@ -75,11 +71,7 @@ class ResidentShowContainer extends Component {
                 data-react-helmet="true"
                 content={show.data.show_description}
               />
-              <meta
-                property="og:url"
-                data-react-helmet="true"
-                content={window.location.href}
-              />
+              <meta property="og:url" data-react-helmet="true" content={window.location.href} />
               <meta
                 name="twitter:image"
                 data-react-helmet="true"
@@ -90,14 +82,8 @@ class ResidentShowContainer extends Component {
                 data-react-helmet="true"
                 content={show.data.show_image.larger.url}
               />
-              <meta
-                property="og:image:width"
-                content={show.data.show_image.dimensions.width}
-              />
-              <meta
-                property="og:image:height"
-                content={show.data.show_image.dimensions.height}
-              />
+              <meta property="og:image:width" content={show.data.show_image.dimensions.width} />
+              <meta property="og:image:height" content={show.data.show_image.dimensions.height} />
             </Helmet>
             <div className="resident-show-container">
               <ResidentProfile
@@ -121,18 +107,21 @@ class ResidentShowContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     residents: state.residents
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
 const connectedResidentShowContainer = withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ResidentShowContainer)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ResidentShowContainer)
 );
 
 export default connectedResidentShowContainer;
