@@ -2,24 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../../consts/Colors';
 import Devices from '../../../consts/Devices';
+import { Body, Heading4 } from '../../text-elements/index';
+import ShowTag from '../show-tag/ShowTag';
 
 const PastShowCard = (props) => {
-  let tags = props.tags.map((tag) => {
-    return (
-      <div className="mixcloud-tag" key={tag.url}>
-        <span>{tag.name}</span>
-      </div>
-    );
-  });
-
   return (
     <React.Fragment>
       <Wrapper onClick={props.handleMixCloudClick} key={props.key}>
-        <div className="showname-info-cont">
-          <span className="resident-mixcloud-date">{props.date}</span>
-          <span className="resident-mixcloud-showname">{props.showName}</span>
-          <div className="resident-mixcloud-tags-container">{tags}</div>
-        </div>
+        <Inner>
+          <Date>{props.date}</Date>
+          <ShowName>{props.showName}</ShowName>
+          <TagWrapper>
+            {props.tags.map((tag) => {
+              return <ShowTag name={tag.name} url={tag.url} />;
+            })}
+          </TagWrapper>
+        </Inner>
       </Wrapper>
     </React.Fragment>
   );
@@ -46,6 +44,25 @@ const Wrapper = styled.div`
       transition: background-color 0.2s ease-out;
     }
   }
+`;
+
+const Inner = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Date = styled(Body)`
+  margin-right: 1rem;
+`;
+
+const ShowName = styled(Heading4)`
+  font-weight: normal;
+  margin-right: 0.5rem;
+`;
+
+const TagWrapper = styled.div`
+  flex-wrap: wrap;
+  display: flex;
 `;
 
 export default PastShowCard;
