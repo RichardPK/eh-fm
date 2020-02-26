@@ -1,72 +1,84 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import "./MixcloudWidget.scss";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import './MixcloudWidget.scss';
 import renderHTML from 'react-render-html';
 import IndexActions from '../../../actions/index';
+import Colors from '../../../consts/Colors';
+import Devices from '../../../consts/Devices';
 
 class ResidentShowDisplay extends Component {
-  constructor(props) {
-    super(props);
-    this.renderMixCloudPlayer = this.renderMixCloudPlayer.bind(this);
-  }
-
-  
-
-  renderMixCloudPlayer() {
-
-    if (this.props.mixCloudWidget) {
-      return (
-        <div className="mixcloud-cont">
-          <div className="close-player-btn"
-            onClick={() => {
-              this.props.setMixcloudWidget(null);
-            }}>
-            <span>x</span>
-          </div>
-          <div className="resident-mixcloud-widget">
-            {renderHTML(this.props.mixCloudWidget)}
-          </div>
-        </div>
-      )
-    }
-  }
-
   render() {
     return (
       <React.Fragment>
-        {this.renderMixCloudPlayer()}
-      </React.Fragment >
-    )
+        {this.props.mixCloudWidget && (
+          <Wrapper>
+            <CloseButton
+              onClick={() => {
+                this.props.setMixcloudWidget(null);
+              }}
+            >
+              <span>x</span>
+            </CloseButton>
+            <div className="resident-mixcloud-widget">{renderHTML(this.props.mixCloudWidget)}</div>
+          </Wrapper>
+        )}
+      </React.Fragment>
+    );
   }
 }
 
-const mapStateToProps = state => {
-  return { 
+const Wrapper = styled.div`
+  position: fixed;
+  bottom: -3px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const CloseButton = styled.div`
+  margin-right: 10px;
+  text-align: center;
+  align-self: flex-end;
+  background-color: ${Colors.altBlue60Transparent};
+  font-size: 14px;
+  padding: 1px 6px 4px 7px;
+  color: ${Colors.softWhite};
+  cursor: pointer;
+
+  @media ${Devices.tablet} {
+    &:hover {
+      background-color: ${Colors.softWhite};
+      color: ${Colors.altBlue60Transparent};
+      transition: background-color 0.2s, color 0.2s;
+    }
+  }
+`;
+
+const mapStateToProps = (state) => {
+  return {
     playing: state.index.playing,
     volume: state.index.volume,
     mixCloudWidget: state.index.mixCloudWidget
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    togglePlaying: toggle => {
+    togglePlaying: (toggle) => {
       dispatch(IndexActions.switchPlaying(toggle));
     },
-    changeVolume: value => {
+    changeVolume: (value) => {
       dispatch(IndexActions.switchVolume(value));
     },
-    setMixcloudWidget: value => {
+    setMixcloudWidget: (value) => {
       dispatch(IndexActions.setMixcloudWidget(value));
     }
   };
 };
 
-const Index =
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ResidentShowDisplay)
-;
-
+const Index = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ResidentShowDisplay);
 export default Index;

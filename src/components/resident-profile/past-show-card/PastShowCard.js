@@ -25,7 +25,7 @@ const PastShowCard = (props) => {
 
 const Wrapper = styled.div`
   border-bottom: 2px solid ${Colors.ehfmPrimary};
-  margin: 10px 10px;
+  margin: 10px 10px 0;
   padding: 5px;
   color: ${Colors.notQuiteBlack};
   display: flex;
@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   cursor: pointer;
 
   @media ${Devices.mobileL} {
-    margin: 15px 10px;
+    margin: 15px 0;
     padding: 10px 4px 10px 4px;
   }
 

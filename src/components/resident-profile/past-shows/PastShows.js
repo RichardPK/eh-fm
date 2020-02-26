@@ -35,7 +35,7 @@ const PastShowsWrapper = styled.div`
   flex-direction: column;
 
   @media ${Devices.mobileL} {
-    left: 30px;
+    left: 20px;
   }
 `;
 
