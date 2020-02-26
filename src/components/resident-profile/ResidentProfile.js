@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import './ResidentProfile.scss';
+
 import styled from 'styled-components';
 import renderHTML from 'react-render-html';
 import {
