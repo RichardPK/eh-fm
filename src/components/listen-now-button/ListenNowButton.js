@@ -1,16 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import PlayPauseButton from "../player/play-pause-button/PlayPauseButton";
-import Colors from "../../consts/Colors";
-import Devices from "../../consts/Devices";
-import { Cta } from "../text-elements/index";
+import React from 'react';
+import styled from 'styled-components';
+import PlayPauseButton from '../player/play-pause-button/PlayPauseButton';
+import Colors from '../../consts/Colors';
+import Devices from '../../consts/Devices';
+import { Cta } from '../text-elements/index';
 
 const ListenNowButton = ({ playing, playClicked }) => {
   return (
-    <Wrapper
-      className={"currentshow-playbutton-container"}
-      onClick={playClicked}
-    >
+    <Wrapper className={'currentshow-playbutton-container'} onClick={playClicked}>
       <ListenNowText>Listen now</ListenNowText>
       <PlayPauseButton playingTrueFalse={playing} playClicked={playClicked} />
     </Wrapper>
@@ -20,7 +17,6 @@ const ListenNowButton = ({ playing, playClicked }) => {
 const Wrapper = styled.div`
   cursor: pointer;
   padding: 4px;
-  padding: 10px;
   background-color: ${Colors.altBlue};
   display: flex;
   align-items: center;
@@ -32,7 +28,18 @@ const Wrapper = styled.div`
     margin: 0px;
   }
 
+  @media ${Devices.mobileS} {
+    padding: 5px;
+  }
+
+  @media ${Devices.mobileL} {
+    font-size: 14px;
+    padding: 8px;
+  }
+
   @media ${Devices.tablet} {
+    padding: 10px;
+
     &:hover {
       background-color: ${Colors.playerWhite};
       color: ${Colors.altBlue};
@@ -45,14 +52,6 @@ const Wrapper = styled.div`
         border-color: ${Colors.altBlue};
       }
     }
-  }
-  @media ${Devices.mobileS} {
-    padding: 5px;
-  }
-
-  @media ${Devices.mobileL} {
-    font-size: 14px;
-    padding: 10px;
   }
 `;
 
