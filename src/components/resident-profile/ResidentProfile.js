@@ -29,8 +29,6 @@ class ResidentProfile extends Component {
       orderedShows: null,
       mostRecentShow: null
     };
-    // this.renderPastShows = this.renderPastShows.bind(this);
-    // this.mapPastShows = this.mapPastShows.bind(this);
     this.handleArchiveButtonClick = this.handleArchiveButtonClick.bind(this);
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
     this.renderCardContainerMargin = this.renderCardContainerMargin.bind(this);
@@ -42,55 +40,6 @@ class ResidentProfile extends Component {
   componentDidUpdate() {
     this.props.pastShows && !this.state.mostRecentShow ? this.getMostRecentShow() : null;
   }
-
-  // renderPastShows() {
-  //   if (this.props.pastShows) {
-  //     let fullShowDisplay = this.mapPastShows();
-
-  //     if (this.state.displayShows === true) {
-  //       return (
-  //         <div className="resident-show-pastshows-container">
-  //           {/* <div className="most-recent">{mostRecentShow}</div> */}
-  //           <div
-  //             className="cards-container"
-  //             style={this.renderCardContainerMargin()}
-  //           >
-  //             {fullShowDisplay}
-  //           </div>
-  //         </div>
-  //       );
-  //     } else {
-  //       // return (
-  //       //   <div className="resident-show-pastshows-container">
-  //       //     <div className="most-recent">{mostRecentShow}</div>
-  //       //   </div>
-  //       // );
-  //     }
-  //   }
-  // }
-
-  // mapPastShows() {
-  //   let showDisplay = this.props.pastShows.map(show => {
-  //     let tags = show.tags.map(tag => {
-  //       return (
-  //         <div className="mixcloud-tag" key={tag.url}>
-  //           <span>{tag.name}</span>
-  //         </div>
-  //       );
-  //     });
-  //     return (
-  //       <PastShowCard
-  //         handleMixCloudClick={e => this.handleMixCloudClick(show)}
-  //         key={this.props.pastShows.indexOf(show)}
-  //         renderDate={this.renderDate(show.name)}
-  //         renderShowName={this.renderShowName(show.name)}
-  //         tags={tags}
-  //       />
-  //     );
-  //   });
-  //   showDisplay.splice(0, 1);
-  //   return showDisplay;
-  // }
 
   getMostRecentShow() {
     let arrayWithModifiedTimestamps = this.props.pastShows.map((show) => {

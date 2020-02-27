@@ -1,17 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import Colors from "../../../consts/Colors";
-import Devices from "../../../consts/Devices";
-import { Heading4 } from "../../text-elements/index";
-import { ReactSVG } from "react-svg";
-import ArrowRight from "../../../assets/svgs/arrow-right.svg";
+import React from 'react';
+import styled from 'styled-components';
+import Colors from '../../../consts/Colors';
+import Devices from '../../../consts/Devices';
+import { Heading4 } from '../../text-elements/index';
+import { ReactSVG } from 'react-svg';
+import ArrowRight from '../../../assets/svgs/arrow-right.svg';
 
 const ArchiveButton = ({ handleArchiveButtonClick, displayShows }) => {
   return (
-    <Wrapper
-      onClick={() => handleArchiveButtonClick()}
-      displayShows={displayShows}
-    >
+    <Wrapper onClick={() => handleArchiveButtonClick()} displayShows={displayShows}>
       <Title>Archive</Title>
       <ReactSVG src={ArrowRight} />
     </Wrapper>
@@ -19,10 +16,8 @@ const ArchiveButton = ({ handleArchiveButtonClick, displayShows }) => {
 };
 
 const Wrapper = styled.div`
-  background-color: ${props =>
-    props.displayShows ? Colors.playerWhite : Colors.ehfmPrimary};
-  color: ${props =>
-    props.displayShows ? Colors.ehfmPrimary : Colors.playerWhite};
+  background-color: ${(props) => (props.displayShows ? Colors.playerWhite : Colors.ehfmPrimary)};
+  color: ${(props) => (props.displayShows ? Colors.ehfmPrimary : Colors.playerWhite)};
   position: absolute;
   padding: 4px;
   min-width: 0px;
@@ -34,17 +29,16 @@ const Wrapper = styled.div`
   cursor: pointer;
 
   svg {
-    margin-top: ${props => (props.displayShows ? `5px` : `3px`)};
+    margin-top: ${(props) => (props.displayShows ? `5px` : `3px`)};
     margin-left: 0.5rem;
     padding-right: 2px;
     height: 1rem;
     width: auto;
-    ${props => (props.displayShows ? `transform: rotate(90deg);` : ``)}
+    ${(props) => (props.displayShows ? `transform: rotate(90deg);` : ``)}
     transition: 0.2s transform ease-out;
 
     path {
-      fill: ${props =>
-        props.displayShows ? Colors.ehfmPrimary : Colors.playerWhite};
+      fill: ${(props) => (props.displayShows ? Colors.ehfmPrimary : Colors.playerWhite)};
     }
   }
 
