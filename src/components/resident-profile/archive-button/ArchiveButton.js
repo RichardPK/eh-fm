@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   background-color: ${(props) => (props.displayShows ? Colors.playerWhite : Colors.ehfmPrimary)};
   color: ${(props) => (props.displayShows ? Colors.ehfmPrimary : Colors.playerWhite)};
   position: absolute;
-  padding: 4px;
+  padding: 0.25rem 0.3rem 0.25rem 0.5rem;
   min-width: 0px;
   max-width: 90px;
   bottom: 10px;
@@ -44,8 +44,9 @@ const Wrapper = styled.div`
 
   @media ${Devices.mobileL} {
     bottom: 20px;
-    min-width: 102px;
-    max-width: 200px;
+    padding: 0.5rem 0.75rem 0.5rem 1rem;
+    /* min-width: 102px;
+    max-width: 200px; */
   }
 
   @media ${Devices.tablet} {

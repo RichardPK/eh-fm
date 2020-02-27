@@ -19,6 +19,7 @@ import PastShowCard from './past-show-card/PastShowCard';
 import MostRecentShowbutton from './most-recent-show-button/MostRecentShowButton';
 import ArchiveButton from './archive-button/ArchiveButton';
 import PastShows from './past-shows/PastShows';
+import Sizes from '../../consts/Sizes';
 
 class ResidentProfile extends Component {
   constructor(props) {
@@ -176,7 +177,8 @@ const BackgroundImage = styled.div`
 `;
 
 const Wrapper = styled.div`
-  margin-top: 143px;
+  /* max-width: ${Sizes.maxInnerWidth}; */
+  margin: 143px auto 0;
   padding: 20px;
   display: flex;
   flex-direction: column;

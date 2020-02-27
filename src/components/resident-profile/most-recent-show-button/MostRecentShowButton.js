@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import Colors from "../../../consts/Colors";
-import { Cta } from "../../text-elements/index";
-import { ReactSVG } from "react-svg";
-import MixCloud from "../../../assets/svgs/mixcloud.svg";
-import Devices from "../../../consts/Devices";
+import React from 'react';
+import styled from 'styled-components';
+import Colors from '../../../consts/Colors';
+import { Cta } from '../../text-elements/index';
+import { ReactSVG } from 'react-svg';
+import MixCloud from '../../../assets/svgs/mixcloud.svg';
+import Devices from '../../../consts/Devices';
 // import { ReactComponent as MixCloud } from "../../../assets/svgs/mixcloud.svg";
 
 const MostRecentShowbutton = ({
@@ -30,6 +30,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0.25rem 0.5rem;
+  margin-left: 5px;
   width: fit-content;
   background: ${Colors.ehfmPrimary};
   color: ${Colors.playerWhite};
