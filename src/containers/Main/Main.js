@@ -179,7 +179,7 @@ class Main extends Component {
     return (
       <React.Fragment>
         <audio ref={this.audioPlayer} id="audioPlayer" name="media">
-          <source src="http://ehfm.out.airtime.pro:8000/ehfm_a" type="audio/mpeg" />
+          <source src="https://ehfm.out.airtime.pro/ehfm_a" type="audio/mpeg" />
         </audio>
 
         <Header
