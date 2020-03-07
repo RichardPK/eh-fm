@@ -178,6 +178,8 @@ const BackgroundImage = styled.div`
 
 const Wrapper = styled.div`
   /* max-width: ${Sizes.maxInnerWidth}; */
+  position: relative;
+  height: calc(100vh - 183px);
   margin: 143px auto 0;
   padding: 20px;
   display: flex;

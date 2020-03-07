@@ -54,9 +54,17 @@ const Wrapper = styled.div`
   background-color: ${Colors.spanBgSolid};
   padding-left: 5px;
   padding-right: 5px;
+  position: absolute;
+  right: 20px;
+  left: 20px;
+  bottom: 102px;
 
   @media ${Devices.mobileL} {
+    position: relative;
     background-color: transparent;
+    right: auto;
+    left: auto;
+    bottom: auto;
   }
 `;
 
