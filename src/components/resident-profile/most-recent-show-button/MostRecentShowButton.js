@@ -26,11 +26,14 @@ const MostRecentShowbutton = ({
 };
 
 const Wrapper = styled.div`
+  position: absolute;
+  bottom: 42px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.25rem 0.5rem;
-  margin-left: 5px;
+  margin-left: 0px;
   width: fit-content;
   background: ${Colors.ehfmPrimary};
   color: ${Colors.playerWhite};
@@ -45,6 +48,13 @@ const Wrapper = styled.div`
     path {
       fill: ${Colors.playerWhite};
     }
+  }
+
+  @media ${Devices.mobileL} {
+    position: relative;
+    margin-left: 5px;
+    margin-bottom: 0;
+    bottom: auto;
   }
 
   @media ${Devices.tablet} {
