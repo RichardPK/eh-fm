@@ -38,9 +38,9 @@ class ResidentShowContainer extends Component {
 
       let wwwCutPoint = playlist_url.indexOf('.') + 1;
       let modifiedUrl = playlist_url.slice(wwwCutPoint);
+      const showsToReturn = `50`;
 
-      axios.get(`https://api.${modifiedUrl}cloudcasts/?limit=50`).then((res) => {
-        debugger;
+      axios.get(`https://api.${modifiedUrl}cloudcasts/?limit=${showsToReturn}`).then((res) => {
         let shows = res.data.data.reverse();
         this.setState({ pastShows: shows });
       });
