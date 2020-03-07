@@ -25,20 +25,21 @@ const ProfileText = ({ props }) => {
 
         {props.showTime && <ShowTime>{props.showTime}</ShowTime>}
       </TitleAndTimeWrapper>
+      {props.facebook || props.twitter || props.instagram ? (
+        <SocialsWrapper>
+          {props.facebook && (
+            <ResidentProfileSocial type={'facebook'} hrefs={hrefs} imgSrcs={imgSrcs} />
+          )}
 
-      <SocialsWrapper>
-        {props.facebook && (
-          <ResidentProfileSocial type={'facebook'} hrefs={hrefs} imgSrcs={imgSrcs} />
-        )}
+          {props.twitter && (
+            <ResidentProfileSocial type={'twitter'} hrefs={hrefs} imgSrcs={imgSrcs} />
+          )}
 
-        {props.twitter && (
-          <ResidentProfileSocial type={'twitter'} hrefs={hrefs} imgSrcs={imgSrcs} />
-        )}
-
-        {props.instagram && (
-          <ResidentProfileSocial type={'instagram'} hrefs={hrefs} imgSrcs={imgSrcs} />
-        )}
-      </SocialsWrapper>
+          {props.instagram && (
+            <ResidentProfileSocial type={'instagram'} hrefs={hrefs} imgSrcs={imgSrcs} />
+          )}
+        </SocialsWrapper>
+      ) : null}
 
       {props.showDescription && (
         <DescriptionWrapper>
@@ -83,12 +84,13 @@ const ShowTime = styled(Body)`
 
 const SocialsWrapper = styled.div`
   display: flex;
+  margin-bottom: 0.5rem;
 `;
 
 const DescriptionWrapper = styled.div`
   width: 100%;
   background-color: transparent;
-  margin: 0.5rem 0 0;
+  margin-bottom: 0.5rem;
   padding: 4px;
 
   @media ${Devices.mobileL} {

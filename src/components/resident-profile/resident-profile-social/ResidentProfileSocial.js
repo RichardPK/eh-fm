@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Colors from "../../../consts/Colors";
-import Devices from "../../../consts/Devices";
+import React from 'react';
+import styled from 'styled-components';
+import Colors from '../../../consts/Colors';
+import Devices from '../../../consts/Devices';
 
 const ResidentProfileSocial = ({ hrefs, type, imgSrcs }) => {
   return (
