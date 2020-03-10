@@ -33,7 +33,7 @@ const PastShows = ({
 const PastShowsWrapper = styled.div`
   left: 0;
   position: absolute;
-  top: 100vh;
+  top: calc(100vh - 130px);
   display: flex;
   flex-direction: column;
   margin-bottom: ${(props) => (props.mixCloudWidget ? '123px' : 'auto')};

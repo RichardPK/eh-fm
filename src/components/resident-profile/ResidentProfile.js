@@ -20,6 +20,7 @@ import MostRecentShowbutton from './most-recent-show-button/MostRecentShowButton
 import ArchiveButton from './archive-button/ArchiveButton';
 import PastShows from './past-shows/PastShows';
 import Sizes from '../../consts/Sizes';
+import BackgroundImage from './background-image/BackgroundImage';
 
 class ResidentProfile extends Component {
   constructor(props) {
@@ -156,28 +157,10 @@ class ResidentProfile extends Component {
   }
 }
 
-const BackgroundImage = styled.div`
-  background-position: center center !important;
-  background-size: cover !important;
-  width: 100vw;
-  height: calc(100vh - 100px);
-  display: flex;
-  overflow: hidden;
-  position: absolute;
-  z-index: -100;
-  top: 100px;
-  left: 0;
-  margin-bottom: ${(props) => (props.mixCloudWidget ? '123px' : 'auto')};
-  background-image: url(${(props) => props.showImage});
-
-  img {
-    max-width: 100%;
-    margin: auto;
-  }
-`;
-
 const Wrapper = styled.div`
   /* max-width: ${Sizes.maxInnerWidth}; */
+  position: relative;
+  height: calc(100vh - 183px);
   margin: 143px auto 0;
   padding: 20px;
   display: flex;

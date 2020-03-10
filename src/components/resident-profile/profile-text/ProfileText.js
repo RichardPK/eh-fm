@@ -25,20 +25,21 @@ const ProfileText = ({ props }) => {
 
         {props.showTime && <ShowTime>{props.showTime}</ShowTime>}
       </TitleAndTimeWrapper>
+      {props.facebook || props.twitter || props.instagram ? (
+        <SocialsWrapper>
+          {props.facebook && (
+            <ResidentProfileSocial type={'facebook'} hrefs={hrefs} imgSrcs={imgSrcs} />
+          )}
 
-      <SocialsWrapper>
-        {props.facebook && (
-          <ResidentProfileSocial type={'facebook'} hrefs={hrefs} imgSrcs={imgSrcs} />
-        )}
+          {props.twitter && (
+            <ResidentProfileSocial type={'twitter'} hrefs={hrefs} imgSrcs={imgSrcs} />
+          )}
 
-        {props.twitter && (
-          <ResidentProfileSocial type={'twitter'} hrefs={hrefs} imgSrcs={imgSrcs} />
-        )}
-
-        {props.instagram && (
-          <ResidentProfileSocial type={'instagram'} hrefs={hrefs} imgSrcs={imgSrcs} />
-        )}
-      </SocialsWrapper>
+          {props.instagram && (
+            <ResidentProfileSocial type={'instagram'} hrefs={hrefs} imgSrcs={imgSrcs} />
+          )}
+        </SocialsWrapper>
+      ) : null}
 
       {props.showDescription && (
         <DescriptionWrapper>
@@ -53,9 +54,17 @@ const Wrapper = styled.div`
   background-color: ${Colors.spanBgSolid};
   padding-left: 5px;
   padding-right: 5px;
+  position: absolute;
+  right: 20px;
+  left: 20px;
+  bottom: 102px;
 
   @media ${Devices.mobileL} {
+    position: relative;
     background-color: transparent;
+    right: auto;
+    left: auto;
+    bottom: auto;
   }
 `;
 
@@ -83,22 +92,24 @@ const ShowTime = styled(Body)`
 
 const SocialsWrapper = styled.div`
   display: flex;
+  margin-bottom: 0.5rem;
 `;
 
 const DescriptionWrapper = styled.div`
   width: 100%;
   background-color: transparent;
-  margin: 0.5rem 0 0;
+  margin-bottom: 0.5rem;
   padding: 4px;
 
   @media ${Devices.mobileL} {
-    width: 80vw;
+    max-width: 80vw;
+    width: fit-content;
     background-color: ${Colors.spanBg};
     margin: 1rem 0;
   }
 
   @media ${Devices.tablet} {
-    width: 40vw;
+    max-width: 40vw;
   }
 `;
 

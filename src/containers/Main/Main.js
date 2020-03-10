@@ -9,6 +9,7 @@ import Footer from '../footer/Footer';
 import IndexActions from '../../actions/index';
 import ResidentsActions from '../../actions/ResidentsActions';
 import _ from 'lodash';
+import Analytics from '../../components/analytics/Analytics';
 
 class Main extends Component {
   constructor(props) {
@@ -181,7 +182,7 @@ class Main extends Component {
         <audio ref={this.audioPlayer} id="audioPlayer" name="media">
           <source src="https://ehfm.out.airtime.pro/ehfm_a" type="audio/mpeg" />
         </audio>
-
+        <Analytics url={window.location.pathname + window.location.search} />
         <Header
           currentShow={this.state.currentShow}
           playing={this.props.playing}
