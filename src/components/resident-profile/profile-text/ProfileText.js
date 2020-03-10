@@ -102,13 +102,14 @@ const DescriptionWrapper = styled.div`
   padding: 4px;
 
   @media ${Devices.mobileL} {
-    width: 80vw;
+    max-width: 80vw;
+    width: fit-content;
     background-color: ${Colors.spanBg};
     margin: 1rem 0;
   }
 
   @media ${Devices.tablet} {
-    width: 40vw;
+    max-width: 40vw;
   }
 `;
 
