@@ -10,12 +10,12 @@ const Wrapper = styled.div`
   background-position: center center !important;
   background-size: cover !important;
   width: 100vw;
-  height: calc(100vh - 100px);
+  height: 100vh;
   display: flex;
   overflow: hidden;
   position: absolute;
   z-index: -100;
-  top: 100px;
+  top: 0;
   left: 0;
   margin-bottom: ${(props) => (props.mixCloudWidget ? '123px' : 'auto')};
   background-image: url(${(props) => props.showImage});
@@ -25,7 +25,9 @@ const Wrapper = styled.div`
     margin: auto;
   }
 
-  @media ${Devices.mobile} {
+  @media ${Devices.mobileL} {
+    top: 100px;
+    height: calc(100vh - 100px);
   }
 `;
 
