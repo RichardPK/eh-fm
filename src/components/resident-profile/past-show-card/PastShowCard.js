@@ -13,8 +13,8 @@ const PastShowCard = (props) => {
           <Date>{props.date}</Date>
           <ShowName>{props.showName}</ShowName>
           <TagWrapper>
-            {props.tags.map((tag) => {
-              return <ShowTag name={tag.name} url={tag.url} />;
+            {props.tags.map((tag, i) => {
+              return <ShowTag key={i} index={i} name={tag.name} url={tag.url} />;
             })}
           </TagWrapper>
         </Inner>
@@ -53,16 +53,32 @@ const Inner = styled.div`
 
 const Date = styled(Body)`
   margin-right: 1rem;
+  flex: 0.25;
+  display: flex;
+  @media ${Devices.mobileL} {
+    /* display: block;
+    flex: auto; */
+  }
 `;
 
 const ShowName = styled(Heading4)`
   font-weight: normal;
   margin-right: 0.5rem;
+  display: flex;
+  flex: 1.5;
+  @media ${Devices.mobileL} {
+    /* display: block; */
+    /* flex: auto; */
+  }
 `;
 
 const TagWrapper = styled.div`
   flex-wrap: wrap;
   display: flex;
+  flex: 0.25;
+  @media ${Devices.mobileL} {
+    /* flex: auto; */
+  }
 `;
 
 export default PastShowCard;
