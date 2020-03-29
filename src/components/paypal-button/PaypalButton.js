@@ -8,7 +8,7 @@ import Devices from '../../consts/Devices';
 
 const PaypalButton = ({}) => {
   let [hovered, setHovered] = useState(false);
-
+  //
   return (
     <Wrapper
       onMouseOver={() => {
