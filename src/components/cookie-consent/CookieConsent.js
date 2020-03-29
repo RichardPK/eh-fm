@@ -8,9 +8,9 @@ import Devices from '../../consts/Devices';
 const CookieConsent = ({}) => {
   const handleCookieConsentClick = (response) => {
     if (response === 'positive') {
-      console.log('Pos');
+      console.log('Posa');
     } else {
-      console.log('Neg');
+      console.log('Nega');
     }
   };
 
