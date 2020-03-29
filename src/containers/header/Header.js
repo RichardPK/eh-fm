@@ -1,10 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import Player from "../../components/player/Player";
-import NavBar from "../../components/nav-bar/NavBar";
-import Devices from "../../consts/Devices";
+import React from 'react';
+import styled from 'styled-components';
+import Player from '../../components/player/Player';
+import NavBar from '../../components/nav-bar/NavBar';
+import Devices from '../../consts/Devices';
+import CookiesConsent from '../../components/cookie-consent/CookieConsent';
 
-const HeaderContainer = props => {
+const HeaderContainer = (props) => {
   return (
     <React.Fragment>
       <NavBar />
@@ -18,6 +19,7 @@ const HeaderContainer = props => {
           handleVolumeClicked={props.handleVolumeClicked}
         />
       </PlayerOuter>
+      <CookiesConsent />
     </React.Fragment>
   );
 };
