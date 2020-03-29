@@ -30,17 +30,17 @@ const Wrapper = styled.div`
 const Link = styled.a``;
 
 const InnerWrapper = styled.div`
-  padding: 0.2rem 0.3rem;
+  padding: 0.25rem 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  background-color: ${Colors.bgWhite};
+  border-radius: 2px;
+  background-color: ${Colors.ehfmPrimary};
 `;
 
 const DonateText = styled(Body)`
   margin-left: 0.5rem;
-  color: ${Colors.ehfmPrimary};
+  color: ${Colors.playerWhite};
 `;
 
 const IconWrapper = styled.div`
@@ -52,14 +52,15 @@ const IconWrapper = styled.div`
       width: 20px;
 
       #path3355-4 {
-        fill: ${Colors.altBlue} !important;
+        fill: ${Colors.playerWhite} !important;
       }
 
       #path3351-2 {
-        fill: ${Colors.ehfmPrimary} !important;
+        fill: ${Colors.softGrey} !important;
+        /* fill: ${Colors.red} !important; */
       }
       #path3353-3 {
-        fill: ${Colors.ehfmPrimary80} !important;
+        fill: ${Colors.altBlue80Transparent} !important;
       }
     }
   }
