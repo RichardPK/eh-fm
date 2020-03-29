@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Colors from '../../consts/Colors';
 import { ReactSVG } from 'react-svg';
 import PayPalIcon from '../../assets/svgs/paypal.svg';
-import { Body } from '../text-elements/index';
+import { Cta } from '../text-elements/index';
 import Devices from '../../consts/Devices';
 
 const PaypalButton = ({}) => {
@@ -26,10 +26,10 @@ const PaypalButton = ({}) => {
 
 const Wrapper = styled.div`
   position: relative;
-  margin-right: 0.5rem;
+  margin-right: 0rem;
 
   @media ${Devices.mobileL} {
-    margin-right: 0.75rem;
+    /* margin-right: 0.75rem; */
   }
 
   @media ${Devices.tablet} {
@@ -48,8 +48,10 @@ const InnerWrapper = styled.div`
   background-color: ${Colors.ehfmPrimary};
 `;
 
-const DonateText = styled(Body)`
+const DonateText = styled(Cta)`
+  font-weight: normal;
   margin-left: 0.5rem;
+  margin-right: 0.25rem;
   color: ${Colors.playerWhite};
 `;
 

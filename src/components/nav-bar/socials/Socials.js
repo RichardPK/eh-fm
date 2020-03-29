@@ -28,8 +28,12 @@ const Socials = () => {
 };
 
 const Wrapper = styled.div`
-  display: flex;
+  display: none;
   margin-top: 3px;
+
+  @media ${Devices.tablet} {
+    display: flex;
+  }
 `;
 
 const SocialInnerWrapper = styled.div`
