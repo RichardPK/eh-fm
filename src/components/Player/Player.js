@@ -5,7 +5,6 @@ import Devices from '../../consts/Devices';
 import Colors from '../../consts/Colors';
 import OnAir from './on-air/OnAir';
 import NowPlaying from './now-playing/NowPlaying';
-import PaypalButton from '../paypal-button/PaypalButton';
 
 class Player extends Component {
   constructor(props) {
@@ -30,7 +29,6 @@ class Player extends Component {
         </Left>
         <Right>
           <VolumeButton volumeClicked={this.props.handleVolumeClicked} volume={this.props.volume} />
-          <PaypalButton />
         </Right>
       </PlayerWrapper>
     );

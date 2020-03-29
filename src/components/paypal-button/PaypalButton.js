@@ -13,10 +13,10 @@ const PaypalButton = ({}) => {
         target="_blank"
       >
         <InnerWrapper>
-          <DonateText>Donate</DonateText>
           <IconWrapper>
             <ReactSVG src={PayPalIcon} />
           </IconWrapper>
+          <DonateText>Donate</DonateText>
         </InnerWrapper>
       </Link>
     </Wrapper>
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 const Link = styled.a``;
 
 const InnerWrapper = styled.div`
-  padding: 2px 4px;
+  padding: 0.2rem 0.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,6 +39,7 @@ const InnerWrapper = styled.div`
 `;
 
 const DonateText = styled(Body)`
+  margin-left: 0.5rem;
   color: ${Colors.ehfmPrimary};
 `;
 

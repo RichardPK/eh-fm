@@ -1,12 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import Logo from "./logo/Logo";
-import Devices from "../../consts/Devices";
-import Socials from "./socials/Socials";
-import Colors from "../../consts/Colors";
-import NavLinks from "./nav-links/NavLinks";
+import React from 'react';
+import styled from 'styled-components';
+import Logo from './logo/Logo';
+import Devices from '../../consts/Devices';
+import Socials from './socials/Socials';
+import Colors from '../../consts/Colors';
+import NavLinks from './nav-links/NavLinks';
+import PaypalButton from '../paypal-button/PaypalButton';
 
-const NavBar = props => {
+const NavBar = (props) => {
   return (
     <React.Fragment>
       <Wrapper>
@@ -18,6 +19,7 @@ const NavBar = props => {
             <Logo />
           </HeaderLogoWrapper>
           <Right>
+            <PaypalButton />
             <Socials />
           </Right>
         </Inner>
@@ -88,6 +90,8 @@ const HeaderLogoWrapper = styled.div`
 const Right = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   margin: auto 0px auto auto;
 `;
 
