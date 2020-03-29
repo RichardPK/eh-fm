@@ -7,17 +7,26 @@ import { Cta } from '../text-elements/index';
 import Devices from '../../consts/Devices';
 
 const PaypalButton = ({}) => {
+  let [hovered, setHovered] = useState(false);
+
   return (
-    <Wrapper>
+    <Wrapper
+      onMouseOver={() => {
+        setHovered(true);
+      }}
+      onMouseOut={() => {
+        setHovered(false);
+      }}
+    >
       <Link
         href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FNHL37CAF2JDJ&source=url"
         target="_blank"
       >
-        <InnerWrapper>
-          <IconWrapper>
+        <InnerWrapper hovered={hovered}>
+          <IconWrapper hovered={hovered}>
             <ReactSVG src={PayPalIcon} />
           </IconWrapper>
-          <DonateText>Donate</DonateText>
+          <DonateText hovered={hovered}>Donate</DonateText>
         </InnerWrapper>
       </Link>
     </Wrapper>
@@ -45,14 +54,16 @@ const InnerWrapper = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 2px;
-  background-color: ${Colors.ehfmPrimary};
+  background-color: ${(props) => (props.hovered ? Colors.ehfmPrimary10 : Colors.ehfmPrimary)};
+  transition: background-color, 0.2s ease-out;
 `;
 
 const DonateText = styled(Cta)`
   font-weight: normal;
   margin-left: 0.5rem;
   margin-right: 0.25rem;
-  color: ${Colors.playerWhite};
+  color: ${(props) => (props.hovered ? Colors.ehfmPrimary : Colors.playerWhite)};
+  transition: color, 0.2s ease-out;
 `;
 
 const IconWrapper = styled.div`
@@ -64,12 +75,13 @@ const IconWrapper = styled.div`
       width: 20px;
 
       #path3355-4 {
-        fill: ${Colors.playerWhite} !important;
+        fill: ${(props) => (props.hovered ? Colors.ehfmPrimary : Colors.playerWhite)} !important;
+        transition: fill, 0.2s ease-out;
       }
 
       #path3351-2 {
-        fill: ${Colors.softGrey} !important;
-        /* fill: ${Colors.red} !important; */
+        fill: ${(props) => (props.hovered ? Colors.altBlue : Colors.softWhite)} !important;
+        transition: fill, 0.2s ease-out;
       }
       #path3353-3 {
         fill: ${Colors.altBlue80Transparent} !important;
