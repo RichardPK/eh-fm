@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { Cta } from "../../text-elements/index";
-import { Link, NavLink } from "react-router-dom";
-import Devices from "../../../consts/Devices";
-import Colors from "../../../consts/Colors";
+import React from 'react';
+import styled from 'styled-components';
+import { Cta } from '../../text-elements/index';
+import { Link, NavLink } from 'react-router-dom';
+import Devices from '../../../consts/Devices';
+import Colors from '../../../consts/Colors';
 
 const NavLinks = () => {
   return (
     <NavLinksWrapper>
-      <StyledNavLink to={"/residents"} activeClassName="nav-link-active">
+      <StyledNavLink to={'/residents'} activeClassName="nav-link-active">
         <NavText>Residents</NavText>
       </StyledNavLink>
     </NavLinksWrapper>
@@ -26,6 +26,7 @@ const StyledNavLink = styled(NavLink)`
   color: ${Colors.ehfmPrimary};
   padding: 2px 0 0;
   border-bottom: 3px solid ${Colors.playerWhite};
+  transition: all, 0.1s ease-out;
 
   @media ${Devices.tablet} {
     &:hover {

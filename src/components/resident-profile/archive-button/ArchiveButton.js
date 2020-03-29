@@ -50,10 +50,10 @@ const Wrapper = styled.div`
   }
 
   @media ${Devices.tablet} {
+    transition: all 0.2s;
     &:hover {
       background-color: ${Colors.playerWhite};
       color: ${Colors.ehfmPrimary};
-      transition: background-color 0.2s;
 
       path {
         fill: ${Colors.ehfmPrimary};

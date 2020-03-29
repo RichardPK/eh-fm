@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import Colors from "../../consts/Colors";
-import Devices from "../../consts/Devices";
-import { Cta } from "../text-elements/index";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import Colors from '../../consts/Colors';
+import Devices from '../../consts/Devices';
+import { Cta } from '../text-elements/index';
 
-const ResidentListItem = props => {
+const ResidentListItem = (props) => {
   return (
     <React.Fragment>
       <Link to={`/residents/${props.showId}`}>
@@ -49,6 +49,7 @@ const ImageWrapper = styled.div`
   align-items: center;
   width: auto;
   overflow: hidden;
+  transition: all, 0.2s ease-out;
 
   @media ${Devices.tablet} {
     &:hover {

@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
-import styled from "styled-components";
-import PlayPauseButton from "../play-pause-button/PlayPauseButton";
-import Devices from "../../../consts/Devices";
-import Colors from "../../../consts/Colors";
-import { Body } from "../../text-elements/index";
+import React, { useRef, useState } from 'react';
+import styled from 'styled-components';
+import PlayPauseButton from '../play-pause-button/PlayPauseButton';
+import Devices from '../../../consts/Devices';
+import Colors from '../../../consts/Colors';
+import { Body } from '../../text-elements/index';
 
 const NowPlaying = ({ handlePlayPauseClicked, playing, currentShow }) => {
   const returnShowData = () => {
@@ -12,7 +12,7 @@ const NowPlaying = ({ handlePlayPauseClicked, playing, currentShow }) => {
       let showData = currentShow;
       currentShowName = showData.currentShow[0].name;
       let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, "'");
-      let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, "&");
+      let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
       return parsedForAmpersands;
     }
     return currentShowName;
@@ -21,10 +21,7 @@ const NowPlaying = ({ handlePlayPauseClicked, playing, currentShow }) => {
   return (
     <Wrapper playing={playing} onClick={handlePlayPauseClicked}>
       <PlaybuttonContainer>
-        <PlayPauseButton
-          playingTrueFalse={playing}
-          playClicked={handlePlayPauseClicked}
-        />
+        <PlayPauseButton playingTrueFalse={playing} playClicked={handlePlayPauseClicked} />
       </PlaybuttonContainer>
       <CurrentShowText>{returnShowData()}</CurrentShowText>
     </Wrapper>
@@ -36,16 +33,15 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 8px 8px 8px 8px;
   cursor: pointer;
-  background-color: ${props =>
-    props.playing ? Colors.playerWhite : Colors.ehfmPrimary};
+  background-color: ${(props) => (props.playing ? Colors.playerWhite : Colors.ehfmPrimary)};
 
   span {
-    color: ${props => (props.playing ? Colors.altBlue : Colors.playerWhite)};
+    color: ${(props) => (props.playing ? Colors.altBlue : Colors.playerWhite)};
   }
 
   .play-button {
     border-color: transparent transparent transparent
-      ${props => (props.playing ? Colors.altBlue : Colors.playerWhite)};
+      ${(props) => (props.playing ? Colors.altBlue : Colors.playerWhite)};
   }
 
   .pause-button {

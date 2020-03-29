@@ -39,9 +39,9 @@ const Wrapper = styled.div`
   }
 
   @media ${Devices.tablet} {
+    transition: all 0.2s;
     &:hover {
       background-color: ${Colors.altBlue20Transparent};
-      transition: background-color 0.2s ease-out;
     }
   }
 `;
