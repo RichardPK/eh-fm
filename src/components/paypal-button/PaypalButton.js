@@ -25,6 +25,7 @@ const PaypalButton = ({}) => {
 
 const Wrapper = styled.div`
   position: relative;
+  margin-right: 1rem;
 `;
 
 const Link = styled.a``;

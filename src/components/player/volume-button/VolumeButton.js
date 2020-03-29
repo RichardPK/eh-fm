@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   @media ${Devices.laptop} {
     display: flex;
     border-left: 2px solid ${Colors.playerWhite};
-    padding: 2px 8px 2px 20px;
+    padding: 2px 0 2px 20px;
   }
 `;
 
