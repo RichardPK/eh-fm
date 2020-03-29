@@ -4,6 +4,7 @@ import Colors from '../../consts/Colors';
 import { ReactSVG } from 'react-svg';
 import PayPalIcon from '../../assets/svgs/paypal.svg';
 import { Body } from '../text-elements/index';
+import Devices from '../../consts/Devices';
 
 const PaypalButton = ({}) => {
   return (
@@ -25,7 +26,15 @@ const PaypalButton = ({}) => {
 
 const Wrapper = styled.div`
   position: relative;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+
+  @media ${Devices.mobileL} {
+    margin-right: 0.75rem;
+  }
+
+  @media ${Devices.tablet} {
+    margin-right: 1rem;
+  }
 `;
 
 const Link = styled.a``;

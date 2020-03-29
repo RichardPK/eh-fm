@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import InstagramLogo from '../../../assets/images/instagram-teal.png';
 import FacebookLogo from '../../../assets/images/facebook-teal.png';
 import ChatangoLogo from '../../../assets/images/chat-teal.png';
+import Devices from '../../../consts/Devices';
 
 const Socials = () => {
   return (
@@ -28,28 +29,29 @@ const Socials = () => {
 
 const Wrapper = styled.div`
   display: flex;
+  margin-top: 3px;
 `;
 
 const SocialInnerWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-
-  a {
-    width: 100%;
-    height: 100%;
-  }
+  margin-left: 10px;
 `;
 
 const NavSocial = styled.img`
-  width: 18px;
-  height: 18px;
-  margin-left: 10px;
+  width: auto;
+  height: 16px;
+
+  @media ${Devices.tablet} {
+    height: 18px;
+  }
 `;
 
 const NavChat = styled.img`
-  width: 18px;
-  height: 18px;
-  margin-left: 10px;
+  width: auto;
+  height: 16px;
+
+  @media ${Devices.tablet} {
+    height: 18px;
+  }
 `;
 
 export default Socials;
