@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Colors from "../../../consts/Colors";
-import Devices from "../../../consts/Devices";
+import React from 'react';
+import styled from 'styled-components';
+import Colors from '../../../consts/Colors';
+import Devices from '../../../consts/Devices';
 
-const VolumeButton = props => (
+const VolumeButton = (props) => (
   <Wrapper>
     <Volume
       className="volume-button"
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   @media ${Devices.laptop} {
     display: flex;
     border-left: 2px solid ${Colors.playerWhite};
-    padding-left: 20px;
+    padding: 2px 8px 2px 20px;
   }
 `;
 

@@ -5,7 +5,6 @@ import { Cta } from '../../text-elements/index';
 import { ReactSVG } from 'react-svg';
 import MixCloud from '../../../assets/svgs/mixcloud.svg';
 import Devices from '../../../consts/Devices';
-// import { ReactComponent as MixCloud } from "../../../assets/svgs/mixcloud.svg";
 
 const MostRecentShowbutton = ({
   mostRecentShow,

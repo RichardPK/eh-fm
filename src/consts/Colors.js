@@ -5,6 +5,7 @@ export default {
   softWhite: `rgba(255, 255, 255, 0.8)`,
   softestWhite: `rgba(255, 255, 255, 0.4)`,
   ehfmPrimary: `rgb(0, 145, 138)`,
+  ehfmPrimary80: `rgb(0, 145, 138, 0.8)`,
   altBlue: `rgb(3, 181, 170)`,
   altBlue80Transparent: `rgba(3, 181, 170, 0.8)`,
   altBlue60Transparent: `rgba(3, 181, 170, 0.8)`,

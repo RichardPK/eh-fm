@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import VolumeButton from "./volume-button/VolumeButton";
-import Devices from "../../consts/Devices";
-import Colors from "../../consts/Colors";
-import OnAir from "./on-air/OnAir";
-import NowPlaying from "./now-playing/NowPlaying";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import VolumeButton from './volume-button/VolumeButton';
+import Devices from '../../consts/Devices';
+import Colors from '../../consts/Colors';
+import OnAir from './on-air/OnAir';
+import NowPlaying from './now-playing/NowPlaying';
+import PaypalButton from '../paypal-button/PaypalButton';
 
 class Player extends Component {
   constructor(props) {
@@ -28,10 +29,8 @@ class Player extends Component {
           />
         </Left>
         <Right>
-          <VolumeButton
-            volumeClicked={this.props.handleVolumeClicked}
-            volume={this.props.volume}
-          />
+          <VolumeButton volumeClicked={this.props.handleVolumeClicked} volume={this.props.volume} />
+          <PaypalButton />
         </Right>
       </PlayerWrapper>
     );
@@ -52,13 +51,13 @@ const PlayerWrapper = styled.div`
 
 const Left = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
 `;
 
 const Right = styled.div`
-  margin: 0px 0px 0px auto;
+  display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
 `;
