@@ -37,10 +37,6 @@ const Wrapper = styled.div`
   position: relative;
   margin-right: 0rem;
 
-  @media ${Devices.mobileL} {
-    /* margin-right: 0.75rem; */
-  }
-
   @media ${Devices.tablet} {
     margin-right: 1rem;
   }

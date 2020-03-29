@@ -39,6 +39,7 @@ const Wrapper = styled.div`
 
   @media ${Devices.tablet} {
     padding: 10px;
+    transition: all, 0.2s ease-out;
 
     &:hover {
       background-color: ${Colors.playerWhite};
