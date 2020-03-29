@@ -41,12 +41,14 @@ const CookieConsent = ({}) => {
 
 const Wrapper = styled.div`
   position: fixed;
-  top: 154px;
+  /* top: 154px; */
+  bottom: 0;
   z-index: 2;
   width: 100vw;
 
   @media ${Devices.tablet} {
-    top: 126px;
+    /* top: 126px; */
+    bottom: 0;
   }
 `;
 

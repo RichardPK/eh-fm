@@ -5,6 +5,7 @@ import CookieConsent from '../../components/cookie-consent/CookieConsent';
 const FooterContainer = (props) => {
   return (
     <React.Fragment>
+      <CookieConsent />
       <MixcloudWidget />
     </React.Fragment>
   );
