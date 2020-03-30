@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
-import styled from "styled-components";
-import { Heading4, Body } from "../../text-elements/index";
+import React, { useRef, useState } from 'react';
+import styled from 'styled-components';
+import { Heading4, Body } from '../../text-elements/index';
 
 const DailyShowSchedule = ({ selectedDay }) => {
   const renderSelectedDay = () => {
@@ -13,7 +13,11 @@ const DailyShowSchedule = ({ selectedDay }) => {
               <ShowTime>{showTimeParser(show)}</ShowTime>
             </ShowTimeWrapper>
             <ShowNameWrapper key={index}>
-              <ShowName>{showNameParser(show)}</ShowName>
+              {show.name.includes('with') ? (
+                <ShowName>{showNameParser(show)}</ShowName>
+              ) : (
+                <ShowName>{showNameParser(show)}</ShowName>
+              )}
             </ShowNameWrapper>
           </ShowRow>
         );
@@ -22,23 +26,37 @@ const DailyShowSchedule = ({ selectedDay }) => {
     }
   };
 
-  const showNameParser = show => {
+  const showNameParser = (show) => {
     let currentShowName = show.name;
     let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, "'");
-    let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, "&");
+    let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
+    if (parsedForAmpersands.includes('with')) {
+      const arraySeparatedByWith = parsedForAmpersands.split('with');
+      if (arraySeparatedByWith.length > 2) {
+        return parsedForAmpersands;
+      } else {
+        const secondHalf = italicise(arraySeparatedByWith[1]);
+        debugger;
+        return arraySeparatedByWith[0] + 'with ' + secondHalf;
+      }
+    }
     return parsedForAmpersands;
   };
 
-  const showTimeParser = show => {
+  const italicise = (stringToItalicise) => {
+    return <i>{stringToItalicise}</i>;
+  };
+
+  const showTimeParser = (show) => {
     let startTime = show.start_timestamp;
     let endTime = show.end_timestamp;
     let parsedStart = startTime
-      .split(" ")
+      .split(' ')
       .splice(1)
       .join()
       .slice(0, -3);
     let parsedEnd = endTime
-      .split(" ")
+      .split(' ')
       .splice(1)
       .join()
       .slice(0, -3);
