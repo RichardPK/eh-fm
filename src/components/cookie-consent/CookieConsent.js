@@ -4,6 +4,8 @@ import { Body } from '../text-elements/index';
 import Colors from '../../consts/Colors';
 import CookiesButton from './cookies-button/CookiesButton';
 import Devices from '../../consts/Devices';
+import { SerializerStream } from 'parse5';
+import Sizes from '../../consts/Sizes';
 
 const CookieConsent = ({}) => {
   const handleCookieConsentClick = (response) => {
@@ -18,8 +20,10 @@ const CookieConsent = ({}) => {
     <Wrapper>
       <Inner>
         <CookiesText>
-          🍪 This website uses cookies to help us make eh-fm better. You can read more about how,{' '}
-          {<a href="https://www.iubenda.com/">here</a>}.
+          🍪 This website uses cookies to help us make eh-fm better. You can check out our policy{' '}
+          {<a href="https://www.iubenda.com/privacy-policy/61514814">here</a>}. You accept the use
+          of cookies by closing or dismissing this notice, by clicking a link, button or by
+          continuing to browse otherwise.
         </CookiesText>
         {/* <CookiesButton positive onClick={() => handleCookieConsentClick('positive')}>
         I'm OK with that
@@ -43,8 +47,10 @@ const Wrapper = styled.div`
   position: fixed;
   /* top: 154px; */
   bottom: 0;
-  z-index: 2;
+  /* left: 50%;
+  transform: translateX(-50%); */
   width: 100vw;
+  z-index: 2;
 
   @media ${Devices.tablet} {
     /* top: 126px; */
@@ -53,13 +59,17 @@ const Wrapper = styled.div`
 `;
 
 const Inner = styled.div`
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  margin: 0px auto;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  max-width: ${Sizes.maxInnerWidth};
   background-color: ${Colors.playerWhiteCustom(0.95)};
-  padding: 1rem 30px;
 `;
 
 const CookiesText = styled(Body)`
+  padding: 1rem 30px;
   color: ${Colors.ehfmPrimary};
   a {
     color: ${Colors.ehfmPrimary};
@@ -68,6 +78,9 @@ const CookiesText = styled(Body)`
 `;
 
 const CloseButton = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
   text-align: center;
   align-self: flex-end;
   font-size: 14px;
