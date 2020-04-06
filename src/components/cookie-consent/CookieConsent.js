@@ -19,25 +19,21 @@ const CookieConsent = ({}) => {
   return (
     <Wrapper>
       <Inner>
-        <CookiesText>
-          🍪 This website uses cookies to help us make eh-fm better. You can check out our policy{' '}
-          {<a href="https://www.iubenda.com/privacy-policy/61514814">here</a>}. You accept the use
-          of cookies by closing or dismissing this notice, by clicking a link, button or by
-          continuing to browse otherwise.
-        </CookiesText>
-        {/* <CookiesButton positive onClick={() => handleCookieConsentClick('positive')}>
-        I'm OK with that
-      </CookiesButton>
-      <CookiesButton negative onClick={() => handleCookieConsentClick('negative')}>
-        Not OK
-      </CookiesButton> */}
-        <CloseButton
-          onClick={() => {
-            console.log('Cross clicked');
-          }}
-        >
-          <span>x</span>
-        </CloseButton>
+        <WhiteBox>
+          <CookiesText>
+            🍪 This website uses cookies to help us make eh-fm better. You can check out our policy{' '}
+            {<a href="https://www.iubenda.com/privacy-policy/61514814">here</a>}. You accept the use
+            of cookies by closing or dismissing this notice, by clicking a link, button or by
+            continuing to browse otherwise.
+          </CookiesText>
+          <CloseButton
+            onClick={() => {
+              console.log('Cross clicked');
+            }}
+          >
+            <span>x</span>
+          </CloseButton>
+        </WhiteBox>
       </Inner>
     </Wrapper>
   );
@@ -59,12 +55,16 @@ const Wrapper = styled.div`
 `;
 
 const Inner = styled.div`
+  margin: 0px auto;
+  max-width: ${Sizes.maxInnerWidth};
+`;
+
+const WhiteBox = styled.div`
   position: relative;
   display: flex;
-  margin: 0px auto;
+  margin: 0px 40px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  max-width: ${Sizes.maxInnerWidth};
   background-color: ${Colors.playerWhiteCustom(0.95)};
 `;
 
