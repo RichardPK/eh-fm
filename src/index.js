@@ -6,6 +6,8 @@ import { render } from 'react-dom';
 
 import { Provider } from 'react-redux';
 
+import { CookiesProvider } from 'react-cookie';
+
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers/RootReducer';
 import thunk from 'redux-thunk';
@@ -23,13 +25,15 @@ const store = createStore(
 );
 
 render(
-  <Router>
-    <Provider store={store}>
-      <div className="App">
-        <Main />
-      </div>
-    </Provider>
-  </Router>,
+  <CookiesProvider>
+    <Router>
+      <Provider store={store}>
+        <div className="App">
+          <Main />
+        </div>
+      </Provider>
+    </Router>
+  </CookiesProvider>,
   document.getElementById('root')
 );
 

@@ -10,6 +10,7 @@ import IndexActions from '../../actions/index';
 import ResidentsActions from '../../actions/ResidentsActions';
 import _ from 'lodash';
 import Analytics from '../../components/analytics/Analytics';
+import { withCookies, Cookies } from 'react-cookie';
 
 class Main extends Component {
   constructor(props) {
@@ -35,12 +36,19 @@ class Main extends Component {
     this.fetchDay = this.fetchDay.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
+    this.checkCookies = this.checkCookies.bind(this);
   }
 
   componentDidMount() {
     this.currentShowApiCall();
     this.handleHourCallTimer();
     this.props.getResidents();
+    this.checkCookies();
+  }
+
+  checkCookies() {
+    console.log(this.props.cookies);
+    debugger;
   }
 
   callEveryHour() {
@@ -253,4 +261,4 @@ const Index = withRouter(
   )(Main)
 );
 
-export default Index;
+export default withCookies(Index);
