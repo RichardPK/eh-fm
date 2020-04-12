@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Body } from '../text-elements/index';
 import Colors from '../../consts/Colors';
@@ -6,18 +6,22 @@ import CookiesButton from './cookies-button/CookiesButton';
 import Devices from '../../consts/Devices';
 import { SerializerStream } from 'parse5';
 import Sizes from '../../consts/Sizes';
+import { withCookies, Cookies } from 'react-cookie';
 
-const CookieConsent = ({}) => {
-  const handleCookieConsentClick = (response) => {
-    if (response === 'positive') {
-      console.log('Posa');
-    } else {
-      console.log('Nega');
+const CookieConsent = ({ cookies }) => {
+  const [showConsentBanner, setShowConsentBanner] = useState(true);
+
+  useEffect(() => {
+    if (showConsentBanner === true) {
+      let cookie = cookies.get('eh-fm');
+      if (cookie) {
+        setShowConsentBanner(false);
+      }
     }
-  };
+  }, [showConsentBanner]);
 
   return (
-    <Wrapper>
+    <Wrapper showConsentBanner={showConsentBanner}>
       <Inner>
         <WhiteBox>
           <CookiesText>
@@ -28,7 +32,8 @@ const CookieConsent = ({}) => {
           </CookiesText>
           <CloseButton
             onClick={() => {
-              console.log('Cross clicked');
+              cookies.set('eh-fm', true);
+              setShowConsentBanner(false);
             }}
           >
             <span>x</span>
@@ -40,6 +45,7 @@ const CookieConsent = ({}) => {
 };
 
 const Wrapper = styled.div`
+  display: ${(props) => (props.showConsentBanner ? 'block' : 'none')};
   background-color: ${Colors.playerWhiteCustom(0.95)};
   position: fixed;
   bottom: 0;
@@ -90,4 +96,4 @@ const CloseButton = styled.div`
   } */
 `;
 
-export default CookieConsent;
+export default withCookies(CookieConsent);
