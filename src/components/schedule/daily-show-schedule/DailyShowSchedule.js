@@ -36,7 +36,7 @@ const DailyShowSchedule = ({ selectedDay }) => {
         return parsedForAmpersands;
       } else {
         const secondHalf = italicise(arraySeparatedByWith[1]);
-        debugger;
+        // debugger;
         return arraySeparatedByWith[0] + 'with ' + secondHalf;
       }
     }

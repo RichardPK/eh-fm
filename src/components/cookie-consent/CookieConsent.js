@@ -40,18 +40,11 @@ const CookieConsent = ({}) => {
 };
 
 const Wrapper = styled.div`
+  background-color: ${Colors.playerWhiteCustom(0.95)};
   position: fixed;
-  /* top: 154px; */
   bottom: 0;
-  /* left: 50%;
-  transform: translateX(-50%); */
   width: 100vw;
   z-index: 2;
-
-  @media ${Devices.tablet} {
-    /* top: 126px; */
-    bottom: 0;
-  }
 `;
 
 const Inner = styled.div`
@@ -79,8 +72,8 @@ const CookiesText = styled(Body)`
 
 const CloseButton = styled.div`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 1rem;
+  right: 0;
   text-align: center;
   align-self: flex-end;
   font-size: 14px;
