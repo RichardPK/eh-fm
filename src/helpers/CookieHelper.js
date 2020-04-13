@@ -13,4 +13,4 @@ const CookieHelper = () => {
   };
 };
 
-export CookieHelper;
+export default CookieHelper;

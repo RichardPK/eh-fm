@@ -24,6 +24,14 @@ class Main extends Component {
       playing: false,
       volume: 1
     };
+
+    this.props.history.listen((location, action) => {
+      const { cookies } = this.props;
+      if (!cookies.get('ehfm')) {
+        cookies.set('ehfm', 1);
+      }
+    });
+
     this.audioPlayer = React.createRef();
     this.callEveryHour = this.callEveryHour.bind(this);
     this.handleHourCallTimer = this.handleHourCallTimer.bind(this);
