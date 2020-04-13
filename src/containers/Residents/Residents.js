@@ -34,7 +34,10 @@ class ResidentsContainer extends Component {
           <meta name="twitter:image" data-react-helmet="true" content={PlaceholderShowImg} />
           <meta name="og:image" data-react-helmet="true" content={PlaceholderShowImg} />
         </Helmet>
-        <Wrapper mixCloudWidget={this.props.mixCloudWidget}>
+        <Wrapper
+          mixCloudWidget={this.props.mixCloudWidget}
+          cookiesBannerShowing={this.props.cookies.get('ehfm') !== '1'}
+        >
           {this.props.residents.length ? (
             this.props.residents.map((show, index) => {
               return (
@@ -64,10 +67,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 163px auto ${(props) => (props.mixCloudWidget ? '123px' : 0)};
+  margin: 163px auto
+    ${(props) => (props.cookiesBannerShowing ? '95px' : props.mixCloudWidget ? `123px` : 0)};
 
   @media ${Devices.tablet} {
-    margin: 143px auto ${(props) => (props.mixCloudWidget ? '123px' : 0)};
+    margin: 143px auto
+      ${(props) => (props.cookiesBannerShowing ? '70px' : props.mixCloudWidget ? `123px` : 0)};
   }
 `;
 

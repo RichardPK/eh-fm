@@ -30,7 +30,10 @@ const HomeContainer = (props) => {
         <meta name="twitter:image" data-react-helmet="true" content={PlaceholderShowImg} />
       </Helmet>
 
-      <Wrapper mixCloudWidget={props.mixCloudWidget}>
+      <Wrapper
+        mixCloudWidget={props.mixCloudWidget}
+        cookiesBannerShowing={props.cookies.get('ehfm') !== '1'}
+      >
         <CurrentShow
           currentShow={props.currentShow}
           residents={props.residents}
@@ -54,7 +57,8 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 150px auto ${(props) => (props.mixCloudWidget ? `123px` : 0)};
+  margin: 150px auto
+    ${(props) => (props.cookiesBannerShowing ? '95px' : props.mixCloudWidget ? `123px` : 0)};
 
   h1 {
     font-size: 18px;
@@ -66,7 +70,8 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: end;
-    margin: 125px auto ${(props) => (props.mixCloudWidget ? `123px` : 0)};
+    margin: 125px auto
+      ${(props) => (props.cookiesBannerShowing ? '70px' : props.mixCloudWidget ? `123px` : 0)};
   }
 `;
 

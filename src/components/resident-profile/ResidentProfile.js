@@ -13,6 +13,7 @@ import {
   scrollSpy,
   scroller
 } from 'react-scroll';
+import { withCookies } from 'react-cookie';
 import IndexActions from '../../actions/index';
 import ProfileText from './profile-text/ProfileText';
 import PastShowCard from './past-show-card/PastShowCard';
@@ -117,6 +118,10 @@ class ResidentProfile extends Component {
     let url = `https://api.mixcloud.com${show.key}embed-json/`;
     axios.get(url).then((res) => {
       this.props.setMixcloudWidget(res.data.html);
+      const { cookies } = this.props;
+      if (!cookies.get('ehfm')) {
+        cookies.set('ehfm', 1, { path: '/' });
+      }
     });
   }
 
@@ -194,4 +199,5 @@ const Index = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ResidentProfile);
-export default Index;
+
+export default withCookies(Index);

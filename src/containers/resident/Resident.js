@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { withCookies } from 'react-cookie';
 
 class ResidentShowContainer extends Component {
   constructor(props) {
@@ -89,6 +90,7 @@ class ResidentShowContainer extends Component {
             </Helmet>
             <Wrapper mixCloudWidget={this.props.mixCloudWidget}>
               <ResidentProfile
+                cookies={this.props.cookies}
                 showTitle={show.data.show_title}
                 showDescription={show.data.show_description}
                 showImage={show.data.show_image.fullscreen.url}
@@ -132,4 +134,4 @@ const connectedResidentShowContainer = withRouter(
   )(ResidentShowContainer)
 );
 
-export default connectedResidentShowContainer;
+export default withCookies(connectedResidentShowContainer);

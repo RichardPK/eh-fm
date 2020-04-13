@@ -28,7 +28,7 @@ class Main extends Component {
     this.props.history.listen((location, action) => {
       const { cookies } = this.props;
       if (!cookies.get('ehfm')) {
-        cookies.set('ehfm', 1);
+        cookies.set('ehfm', 1, { path: '/' });
       }
     });
 
