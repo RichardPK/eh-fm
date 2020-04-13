@@ -35,8 +35,16 @@ const CookieConsent = () => {
                 here
               </a>
             }
-            . You accept the use of cookies by closing or dismissing this notice, by clicking a link
-            or button or by continuing to browse otherwise.
+            . By continuing to use the site or by dismissing this window, you accept the use of
+            cookies as detailed in{' '}
+            <a
+              href="https://www.iubenda.com/privacy-policy/61514814"
+              target="_blank"
+              alt="privacy policy"
+            >
+              our policy
+            </a>
+            .
           </CookiesText>
           <CloseButton
             onClick={() => {
