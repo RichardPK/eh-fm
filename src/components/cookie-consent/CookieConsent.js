@@ -6,9 +6,9 @@ import CookiesButton from './cookies-button/CookiesButton';
 import Devices from '../../consts/Devices';
 import { SerializerStream } from 'parse5';
 import Sizes from '../../consts/Sizes';
-import { withCookies, useCookies } from 'react-cookie';
+import { useCookies } from 'react-cookie';
 
-const CookieConsent = ({ cookies }) => {
+const CookieConsent = () => {
   const [showConsentBanner, setShowConsentBanner] = useState(true);
   const [cookie, setCookie] = useCookies(['ehfm']);
 
@@ -104,4 +104,4 @@ const CloseButton = styled.div`
   } */
 `;
 
-export default withCookies(CookieConsent);
+export default CookieConsent;

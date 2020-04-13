@@ -208,7 +208,7 @@ class Main extends Component {
               <Route
                 exact
                 path="/"
-                render={() => (
+                component={() => (
                   <Home
                     cookies={this.props.cookies}
                     currentShow={this.state.currentShow}
@@ -224,11 +224,11 @@ class Main extends Component {
               <Route
                 exact
                 path="/residents"
-                render={() => <ResidentsContainer cookies={this.props.cookies} />}
+                component={() => <ResidentsContainer cookies={this.props.cookies} />}
               />
               <Route
                 path="/residents/:id"
-                render={() => <Resident cookies={this.props.cookies} />}
+                component={() => <Resident cookies={this.props.cookies} />}
               />
             </Switch>
 
