@@ -7,13 +7,14 @@ import Devices from '../../consts/Devices';
 import { SerializerStream } from 'parse5';
 import Sizes from '../../consts/Sizes';
 import { withCookies, Cookies } from 'react-cookie';
+import CookieHelper from '../../helpers/CookieHelper';
 
 const CookieConsent = ({ cookies }) => {
   const [showConsentBanner, setShowConsentBanner] = useState(true);
 
   useEffect(() => {
     if (showConsentBanner === true) {
-      let cookie = cookies.get('eh-fm');
+      let cookie = CookieHelper.getEhfmCookie(cookies);
       if (cookie) {
         setShowConsentBanner(false);
       }
@@ -32,7 +33,7 @@ const CookieConsent = ({ cookies }) => {
           </CookiesText>
           <CloseButton
             onClick={() => {
-              cookies.set('eh-fm', true);
+              CookieHelper.setEhfmCookie(cookies);
               setShowConsentBanner(false);
             }}
           >
