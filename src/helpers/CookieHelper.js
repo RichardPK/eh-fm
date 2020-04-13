@@ -1,6 +1,16 @@
-import { withCookies } from 'react-cookie';
+import React, { useRef, useState, useEffect } from 'react';
+import { withCookies, useCookies } from 'react-cookie';
 
-export default withCookies({
-  setEhfmCookie: (cookies) => cookies.set('eh-fm', 1),
-  getEhfmCookie: (cookies) => cookies.get('eh-fm')
-});
+const CookieHelper = () => {
+  const [cookie, setCookie] = useCookies(['ehfm']);
+
+  const setEhfmCookie = () => {
+    setCookie('ehfm', 1);
+  };
+
+  const getEhfmCookie = () => {
+    return cookie.ehfm;
+  };
+};
+
+export CookieHelper;

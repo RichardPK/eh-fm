@@ -6,15 +6,15 @@ import CookiesButton from './cookies-button/CookiesButton';
 import Devices from '../../consts/Devices';
 import { SerializerStream } from 'parse5';
 import Sizes from '../../consts/Sizes';
-import { withCookies, Cookies } from 'react-cookie';
-import CookieHelper from '../../helpers/CookieHelper';
+import { withCookies, useCookies } from 'react-cookie';
+import { CookieHelper } from '../../helpers/CookieHelper';
 
 const CookieConsent = ({ cookies }) => {
   const [showConsentBanner, setShowConsentBanner] = useState(true);
 
   useEffect(() => {
     if (showConsentBanner === true) {
-      let cookie = CookieHelper.getEhfmCookie(cookies);
+      let cookie = CookieHelper.getEhfmCookie();
       if (cookie) {
         setShowConsentBanner(false);
       }
@@ -41,7 +41,7 @@ const CookieConsent = ({ cookies }) => {
           </CookiesText>
           <CloseButton
             onClick={() => {
-              CookieHelper.setEhfmCookie(cookies);
+              CookieHelper.setEhfmCookie();
               setShowConsentBanner(false);
             }}
           >
