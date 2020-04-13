@@ -27,9 +27,17 @@ const CookieConsent = ({ cookies }) => {
         <WhiteBox>
           <CookiesText>
             🍪 This website uses cookies to help us make eh-fm better. You can check out our policy{' '}
-            {<a href="https://www.iubenda.com/privacy-policy/61514814">here</a>}. You accept the use
-            of cookies by closing or dismissing this notice, by clicking a link, button or by
-            continuing to browse otherwise.
+            {
+              <a
+                href="https://www.iubenda.com/privacy-policy/61514814"
+                target="_blank"
+                alt="privacy policy"
+              >
+                here
+              </a>
+            }
+            . You accept the use of cookies by closing or dismissing this notice, by clicking a link
+            or button or by continuing to browse otherwise.
           </CookiesText>
           <CloseButton
             onClick={() => {
