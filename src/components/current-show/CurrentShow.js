@@ -117,7 +117,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 41vw;
-    margin: 0px 10px 0px 20px;
+    margin: 0px 10px 0px 40px;
   }
 `;
 
@@ -127,7 +127,7 @@ const Heading4Component = styled(Heading4)`
 `;
 
 const WhiteWrapper = styled.div`
-  padding: 4px 4px 1px;
+  padding: 4px;
   border-radius: 5px;
   position: relative;
   color: white;

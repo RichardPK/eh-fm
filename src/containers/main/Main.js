@@ -10,6 +10,7 @@ import IndexActions from '../../actions/index';
 import ResidentsActions from '../../actions/ResidentsActions';
 import _ from 'lodash';
 import Analytics from '../../components/analytics/Analytics';
+import { withCookies } from 'react-cookie';
 
 class Main extends Component {
   constructor(props) {
@@ -23,6 +24,14 @@ class Main extends Component {
       playing: false,
       volume: 1
     };
+
+    this.props.history.listen((location, action) => {
+      const { cookies } = this.props;
+      if (!cookies.get('ehfm')) {
+        cookies.set('ehfm', 1, { path: '/' });
+      }
+    });
+
     this.audioPlayer = React.createRef();
     this.callEveryHour = this.callEveryHour.bind(this);
     this.handleHourCallTimer = this.handleHourCallTimer.bind(this);
@@ -201,6 +210,7 @@ class Main extends Component {
                 path="/"
                 component={() => (
                   <Home
+                    cookies={this.props.cookies}
                     currentShow={this.state.currentShow}
                     playing={this.props.playing}
                     handlePlayPauseClicked={this.handlePlayPauseClicked}
@@ -211,8 +221,15 @@ class Main extends Component {
                   />
                 )}
               />
-              <Route exact path="/residents" component={ResidentsContainer} />
-              <Route path="/residents/:id" component={Resident} />
+              <Route
+                exact
+                path="/residents"
+                component={() => <ResidentsContainer cookies={this.props.cookies} />}
+              />
+              <Route
+                path="/residents/:id"
+                component={() => <Resident cookies={this.props.cookies} />}
+              />
             </Switch>
 
             <Footer />
@@ -253,4 +270,4 @@ const Index = withRouter(
   )(Main)
 );
 
-export default Index;
+export default withCookies(Index);

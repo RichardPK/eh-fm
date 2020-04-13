@@ -2,6 +2,7 @@ export default {
   mainButtonSize: `0.8em`,
   mainButtonHalfSize: `0.5em`,
   playerWhite: `rgb(255, 255, 255)`,
+  playerWhiteCustom: (customVal) => `rgba(255, 255, 255, ${customVal})`,
   softWhite: `rgba(255, 255, 255, 0.8)`,
   softestWhite: `rgba(255, 255, 255, 0.4)`,
   ehfmPrimary: `rgb(0, 145, 138)`,
