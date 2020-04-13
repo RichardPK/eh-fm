@@ -2,9 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Body } from '../text-elements/index';
 import Colors from '../../consts/Colors';
-import CookiesButton from './cookies-button/CookiesButton';
 import Devices from '../../consts/Devices';
-import { SerializerStream } from 'parse5';
 import Sizes from '../../consts/Sizes';
 import { useCookies } from 'react-cookie';
 
