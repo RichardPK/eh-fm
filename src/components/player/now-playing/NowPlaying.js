@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import PlayPauseButton from '../play-pause-button/PlayPauseButton';
 import Devices from '../../../consts/Devices';
 import Colors from '../../../consts/Colors';

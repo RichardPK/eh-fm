@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import renderHTML from 'react-render-html';
 import IndexActions from '../../../actions/index';
 import Colors from '../../../consts/Colors';

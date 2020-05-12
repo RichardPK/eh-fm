@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Colors from '../../../consts/Colors';
 import Devices from '../../../consts/Devices';
 import { Body, Heading4 } from '../../text-elements/index';

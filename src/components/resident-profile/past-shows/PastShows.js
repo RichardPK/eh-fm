@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import PastShowCard from '../past-show-card/PastShowCard';
 import Colors from '../../../consts/Colors';
 import Devices from '../../../consts/Devices';

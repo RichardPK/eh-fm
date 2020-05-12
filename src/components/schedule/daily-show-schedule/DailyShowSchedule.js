@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Heading4, Body } from '../../text-elements/index';
 
 const DailyShowSchedule = ({ selectedDay }) => {

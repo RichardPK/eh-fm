@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Devices from '../../consts/Devices';
 import { Heading4, Cta } from '../text-elements/index';
 import ScheduleDayHeading from './schedule-day-heading/ScheduleDayHeading';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import Prismic from 'prismic-javascript';
+import styled from 'styled-components/macro';
 import ResidentProfile from '../../components/resident-profile/ResidentProfile';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';

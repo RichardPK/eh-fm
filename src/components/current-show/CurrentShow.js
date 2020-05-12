@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ListenNowButton from '../listen-now-button/ListenNowButton';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Devices from '../../consts/Devices';
 import { Heading4, Heading3, Body } from '../text-elements/index';
 import Colors from '../../consts/Colors';

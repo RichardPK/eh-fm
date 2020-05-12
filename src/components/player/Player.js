@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import VolumeButton from './volume-button/VolumeButton';
 import Devices from '../../consts/Devices';
 import Colors from '../../consts/Colors';

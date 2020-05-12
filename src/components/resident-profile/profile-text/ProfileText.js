@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Colors from '../../../consts/Colors';
 import ResidentProfileSocial from '../resident-profile-social/ResidentProfileSocial';
 import Devices from '../../../consts/Devices';

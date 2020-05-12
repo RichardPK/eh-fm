@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import PlayPauseButton from '../player/play-pause-button/PlayPauseButton';
 import Colors from '../../consts/Colors';
 import Devices from '../../consts/Devices';

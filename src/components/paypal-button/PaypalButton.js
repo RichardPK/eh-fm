@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Colors from '../../consts/Colors';
 import { ReactSVG } from 'react-svg';
 import PayPalIcon from '../../assets/svgs/paypal.svg';

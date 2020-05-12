@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Devices from '../../../consts/Devices';
 
 const BackgroundImage = ({ mixCloudWidget, showImage }) => {

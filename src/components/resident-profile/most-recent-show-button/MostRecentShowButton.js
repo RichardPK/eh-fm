@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Colors from '../../../consts/Colors';
 import { Cta } from '../../text-elements/index';
 import { ReactSVG } from 'react-svg';

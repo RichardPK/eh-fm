@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import ResidentListItem from '../../components/resident-list-item/ResidentListItem';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';

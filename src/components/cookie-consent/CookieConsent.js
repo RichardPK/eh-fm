@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Body } from '../text-elements/index';
 import Colors from '../../consts/Colors';
 import Devices from '../../consts/Devices';

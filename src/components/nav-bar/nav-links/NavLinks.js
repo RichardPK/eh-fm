@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Cta } from '../../text-elements/index';
 import { Link, NavLink } from 'react-router-dom';
 import Devices from '../../../consts/Devices';

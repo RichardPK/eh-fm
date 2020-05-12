@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import InstagramLogo from '../../../assets/images/instagram-teal.png';
 import FacebookLogo from '../../../assets/images/facebook-teal.png';
 import ChatangoLogo from '../../../assets/images/chat-teal.png';

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import styled from 'styled-components';
-import renderHTML from 'react-render-html';
+import styled from 'styled-components/macro';
 import {
   Link,
   DirectLink,
@@ -41,7 +40,9 @@ class ResidentProfile extends Component {
   }
 
   componentDidUpdate() {
-    this.props.pastShows && !this.state.mostRecentShow ? this.getMostRecentShow() : null;
+    if (this.props.pastShows && !this.state.mostRecentShow) {
+      this.getMostRecentShow();
+    }
   }
 
   getMostRecentShow() {
