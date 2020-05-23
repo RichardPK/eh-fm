@@ -1,14 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CurrentShow from '../../components/current-show/CurrentShow';
 import Schedule from '../../components/schedule/Schedule';
 import { Helmet } from 'react-helmet';
-import PlaceholderShowImg from '../../assets/images/placeholder-showimg.jpg';
+import Prismic from 'prismic-javascript';
 import styled from 'styled-components/macro';
 import Colors from '../../consts/Colors';
 import Devices from '../../consts/Devices';
 import Sizes from '../../consts/Sizes';
+import PlaceholderShowImg from '../../assets/images/placeholder-showimg.jpg';
+import HighlightsCarousel from '../../components/carousels/highlights-carousel/HighlightsCarousel';
+import SecondaryCarousel from '../../components/carousels/secondary-carousel/SecondaryCarousel';
 
 const HomeContainer = (props) => {
+  const apiEndpoint = 'https://ehfm.cdn.prismic.io/api/v2';
+  const [highlightedCarouselItems, setHighlightedCarouselItems] = useState([]);
+  const [secondaryCarouselItems, setSecondaryCarouelItens] = useState([]);
+
+  const getCarouselItems = () => {
+    Prismic.api(apiEndpoint).then((api) => {
+      api
+        .query(Prismic.Predicates.at('document.type', 'home_feature'), {
+          pageSize: 100,
+          orderings: '[my.show.show_title]'
+        })
+        .then((response) => {
+          if (response) {
+            const highlightedFeatureItems = response.results.filter((featuredItem) => {
+              return featuredItem.data.highlighted;
+            });
+            setHighlightedCarouselItems(highlightedFeatureItems);
+
+            const secondaryFeatureItems = response.results.filter((featuredItem) => {
+              return !featuredItem.data.highlighted;
+            });
+            setSecondaryCarouelItens(secondaryFeatureItems);
+          }
+        });
+    });
+  };
+
+  useEffect(() => {
+    getCarouselItems();
+  }, []);
+
   return (
     <React.Fragment>
       <Helmet>
@@ -34,7 +68,9 @@ const HomeContainer = (props) => {
         mixCloudWidget={props.mixCloudWidget}
         cookiesBannerShowing={props.cookies.get('ehfm') !== '1'}
       >
-        <CurrentShow
+        <HighlightsCarousel data={highlightedCarouselItems}></HighlightsCarousel>
+        <SecondaryCarousel data={secondaryCarouselItems}></SecondaryCarousel>
+        {/* <CurrentShow
           currentShow={props.currentShow}
           residents={props.residents}
           playing={props.playing}
@@ -44,7 +80,7 @@ const HomeContainer = (props) => {
         <Schedule
           nextSevenDaysSchedule={props.nextSevenDaysSchedule}
           currentDay={props.currentDay}
-        />
+        /> */}
       </Wrapper>
     </React.Fragment>
   );
