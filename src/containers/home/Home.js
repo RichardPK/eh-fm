@@ -88,7 +88,7 @@ const HomeContainer = (props) => {
 
 const Wrapper = styled.div`
   max-width: ${Sizes.maxInnerWidth};
-  padding: 20px;
+  padding: 3rem 20px;
   display: flex;
   justify-content: center;
   align-items: center;

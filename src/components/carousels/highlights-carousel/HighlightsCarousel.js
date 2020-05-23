@@ -5,7 +5,7 @@ import CarouselItem from '../../carousel-item/CarouselItem';
 
 const HighlightsCarousel = ({ data }) => {
   const params = {
-    slidesPerView: 2,
+    slidesPerView: 4,
     loop: true,
     spaceBetween: 30
   };
