@@ -5,14 +5,23 @@ import Colors from '../../consts/Colors';
 import Image from '../image/Image';
 
 const CarouselItem = ({ data }) => {
+  let [hovered, setHovered] = useState(false);
+
   return (
-    <Wrapper>
+    <Wrapper
+      onMouseOver={() => {
+        setHovered(true);
+      }}
+      onMouseOut={() => {
+        setHovered(false);
+      }}
+    >
       <TextWrapper>
         <CategoryBody>{data.category}</CategoryBody>
         <Heading4>{data.headline}</Heading4>
         <FlavourHeading>{data.flavour_text}</FlavourHeading>
       </TextWrapper>
-      <ImageWrapper>
+      <ImageWrapper hovered={hovered}>
         <Image baseUrl={data.image.url} width={450} height={250} fit="crop" />
       </ImageWrapper>
     </Wrapper>
@@ -26,13 +35,15 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  /* background-color: ${Colors.playerWhite}; */
-  padding: .5rem 2rem;
+  margin: 0.5rem 2rem;
   border-radius: 4px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const TextWrapper = styled.div`
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   /* justify-content: flex-start; */
 `;
 
@@ -52,6 +63,8 @@ const ImageWrapper = styled.div`
   justify-content: center;
   border-radius: 4px;
   overflow: hidden;
+  opacity: ${(props) => (props.hovered ? 0.8 : 1)};
+  transition: opacity, 0.2s ease-out;
 `;
 
 export default CarouselItem;
