@@ -3,9 +3,16 @@ import styled from 'styled-components/macro';
 import { Heading4, Body } from '../text-elements/index';
 import Colors from '../../consts/Colors';
 import Image from '../image/Image';
+import history from '../../history';
 
 const CarouselItem = ({ data }) => {
   let [hovered, setHovered] = useState(false);
+
+  const handleClick = (link, type) => {
+    if (type.toLowerCase() === 'link') {
+      window.location = link.url;
+    }
+  };
 
   return (
     <Wrapper
@@ -14,6 +21,9 @@ const CarouselItem = ({ data }) => {
       }}
       onMouseOut={() => {
         setHovered(false);
+      }}
+      onClick={() => {
+        handleClick(data.link, data.type);
       }}
     >
       <TextWrapper>
