@@ -8,7 +8,8 @@ const FooterContainer = (props) => {
     <React.Fragment>
       <CookieConsent />
       <MixcloudWidget />
-      <Chatango />
+      {/* Comment out during development */}
+      {/* <Chatango /> */}
     </React.Fragment>
   );
 };
