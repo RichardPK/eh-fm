@@ -13,7 +13,7 @@ const CarouselItem = ({ data }) => {
         <FlavourHeading>{data.flavour_text}</FlavourHeading>
       </TextWrapper>
       <ImageWrapper>
-        <Image baseUrl={data.image.url} width={350} height={250} fit="crop" />
+        <Image baseUrl={data.image.url} width={450} height={250} fit="crop" />
       </ImageWrapper>
     </Wrapper>
   );
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   /* background-color: ${Colors.playerWhite}; */
-  padding: 4px;
+  padding: .5rem 2rem;
   border-radius: 4px;
 `;
 
@@ -36,12 +36,13 @@ const TextWrapper = styled.div`
   /* justify-content: flex-start; */
 `;
 
-const FlavourHeading = styled(Heading4)`
-  color: ${Colors.notquiteBlack80Transparent};
-`;
-
 const CategoryBody = styled(Body)`
   color: ${Colors.altBlue};
+  padding-bottom: 4px;
+`;
+
+const FlavourHeading = styled(Heading4)`
+  color: ${Colors.notquiteBlack80Transparent};
 `;
 
 const ImageWrapper = styled.div`

@@ -7,7 +7,7 @@ const HighlightsCarousel = ({ data }) => {
   const params = {
     slidesPerView: 3.3,
     loop: true,
-    spaceBetween: 30
+    spaceBetween: 70
   };
 
   return (
