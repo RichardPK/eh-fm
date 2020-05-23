@@ -1,6 +1,6 @@
 {
   "name": "eh-fm",
-  "homepage": "http://ehfm-staging.s3-website.us-east-2.amazonaws.com/",
+  "homepage": "https://ehfm.live",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
