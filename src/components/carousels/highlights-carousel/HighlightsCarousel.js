@@ -5,17 +5,24 @@ import CarouselItem from '../../carousel-item/CarouselItem';
 
 const HighlightsCarousel = ({ data }) => {
   const params = {
-    slidesPerView: 1,
-    spaceBetween: 10
+    slidesPerView: 2,
+    loop: true,
+    spaceBetween: 30
   };
 
   return (
     <Wrapper>
-      <Swiper {...params}>
-        {data.map((carouselItemData) => {
-          return <CarouselItem data={carouselItemData.data} />;
-        })}
-      </Swiper>
+      {data.length > 0 ? (
+        <Swiper {...params}>
+          {data.map((carouselItemData) => {
+            return (
+              <div key={carouselItemData.id}>
+                <CarouselItem data={carouselItemData.data} />
+              </div>
+            );
+          })}
+        </Swiper>
+      ) : null}
     </Wrapper>
   );
 };
