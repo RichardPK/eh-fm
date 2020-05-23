@@ -5,7 +5,7 @@ import CarouselItem from '../../carousel-item/CarouselItem';
 
 const HighlightsCarousel = ({ data }) => {
   const params = {
-    slidesPerView: 4,
+    slidesPerView: 3.3,
     loop: true,
     spaceBetween: 30
   };
@@ -29,6 +29,7 @@ const HighlightsCarousel = ({ data }) => {
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 40vh;
 `;
 
 export default HighlightsCarousel;
