@@ -89,10 +89,10 @@ const HomeContainer = (props) => {
 const Wrapper = styled.div`
   max-width: ${Sizes.maxInnerWidth};
   padding: 20px;
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
   margin: 150px auto
     ${(props) => (props.cookiesBannerShowing ? '95px' : props.mixCloudWidget ? `123px` : 0)};
 
@@ -103,9 +103,9 @@ const Wrapper = styled.div`
   }
 
   @media ${Devices.tablet} {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    align-items: end;
+    align-items: end; */
     margin: 125px auto
       ${(props) => (props.cookiesBannerShowing ? '70px' : props.mixCloudWidget ? `123px` : 0)};
   }

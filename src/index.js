@@ -14,6 +14,7 @@ import thunk from 'redux-thunk';
 
 import Main from './containers/main/Main';
 import './index.scss';
+import 'swiper/swiper.scss';
 import * as serviceWorker from './registerServiceWorker';
 import history from './history';
 
