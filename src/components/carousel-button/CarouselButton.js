@@ -30,7 +30,7 @@ const CarouselButton = ({ type, customText, hierarchy, hovered }) => {
 
 const Wrapper = styled.div`
   background-color: ${(props) =>
-    props.hovered ? Colors.ehfmPrimaryCustom(0.2) : Colors.ehfmPrimary};
+    props.hovered ? Colors.ehfmPrimaryCustom(0.9) : Colors.ehfmPrimary};
   border-top-right-radius: 10px;
   display: flex;
   align-items: center;
