@@ -38,6 +38,7 @@ const SecondaryCarouselItem = ({ data, hierarchy }) => {
 };
 
 const Wrapper = styled.div`
+  position: relative;
   width: 100%;
   min-height: 25vh;
   display: flex;

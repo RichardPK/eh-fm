@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import { Heading4, Body } from '../../text-elements/index';
 import Colors from '../../../consts/Colors';
 import Image from '../../image/Image';
+import CarouselButton from '../../carousel-button/CarouselButton';
 
 const PrimaryCarouselItem = ({ data, hierarchy }) => {
   let [hovered, setHovered] = useState(false);
@@ -39,6 +40,7 @@ const PrimaryCarouselItem = ({ data, hierarchy }) => {
 };
 
 const Wrapper = styled.div`
+  position: relative;
   width: 100%;
   min-height: 370px;
   display: flex;

@@ -43,7 +43,7 @@ const Divider = styled.div`
   margin: 2rem;
   height: 2px;
   /* width: 100%; */
-  background-color: ${Colors.notquiteBlack50Transparent};
+  background-color: ${Colors.softGrey};
 `;
 
 export default HighlightsCarousel;
