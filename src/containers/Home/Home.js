@@ -8,13 +8,15 @@ import Colors from '../../consts/Colors';
 import Devices from '../../consts/Devices';
 import Sizes from '../../consts/Sizes';
 import PlaceholderShowImg from '../../assets/images/placeholder-showimg.jpg';
-import HighlightsCarousel from '../../components/carousels/highlights-carousel/HighlightsCarousel';
-import SecondaryCarousel from '../../components/carousels/secondary-carousel/SecondaryCarousel';
+import Carousel from '../../components/carousel/Carousel';
 
 const HomeContainer = (props) => {
   const apiEndpoint = 'https://ehfm.cdn.prismic.io/api/v2';
   const [highlightedCarouselItems, setHighlightedCarouselItems] = useState([]);
   const [secondaryCarouselItems, setSecondaryCarouelItens] = useState([]);
+
+  const SecondaryCarousel = Carousel;
+  const PrimaryCarousel = Carousel;
 
   const getCarouselItems = () => {
     Prismic.api(apiEndpoint).then((api) => {
@@ -68,8 +70,11 @@ const HomeContainer = (props) => {
         mixCloudWidget={props.mixCloudWidget}
         cookiesBannerShowing={props.cookies.get('ehfm') !== '1'}
       >
-        <HighlightsCarousel data={highlightedCarouselItems}></HighlightsCarousel>
-        <SecondaryCarousel data={secondaryCarouselItems}></SecondaryCarousel>
+        <PrimaryCarousel data={highlightedCarouselItems} hierarchy={'primary'}></PrimaryCarousel>
+        <SecondaryCarousel
+          data={secondaryCarouselItems}
+          hierarchy={'secondary'}
+        ></SecondaryCarousel>
         {/* <CurrentShow
           currentShow={props.currentShow}
           residents={props.residents}
@@ -88,7 +93,7 @@ const HomeContainer = (props) => {
 
 const Wrapper = styled.div`
   /* max-width: ${Sizes.maxInnerWidth}; */
-  padding: 3rem 0;
+  padding: 2rem 0;
   display: flex;
   justify-content: center;
   align-items: center;

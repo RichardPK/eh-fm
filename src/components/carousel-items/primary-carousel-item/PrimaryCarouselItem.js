@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components/macro';
-import { Heading4, Body } from '../text-elements/index';
-import Colors from '../../consts/Colors';
-import Image from '../image/Image';
-import history from '../../history';
+import { Heading4, Body } from '../../text-elements/index';
+import Colors from '../../../consts/Colors';
+import Image from '../../image/Image';
 
-const CarouselItem = ({ data }) => {
+const PrimaryCarouselItem = ({ data, hierarchy }) => {
   let [hovered, setHovered] = useState(false);
 
   const handleClick = (link, type) => {
@@ -16,6 +15,7 @@ const CarouselItem = ({ data }) => {
 
   return (
     <Wrapper
+      hierarchy={hierarchy}
       onMouseOver={() => {
         setHovered(true);
       }}
@@ -40,10 +40,10 @@ const CarouselItem = ({ data }) => {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 40vh;
+  min-height: 370px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   justify-content: space-between;
   margin: 0.5rem 2rem;
   border-radius: 4px;
@@ -68,6 +68,7 @@ const FlavourHeading = styled(Heading4)`
 
 const ImageWrapper = styled.div`
   width: 100%;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,4 +78,4 @@ const ImageWrapper = styled.div`
   transition: opacity, 0.2s ease-out;
 `;
 
-export default CarouselItem;
+export default PrimaryCarouselItem;

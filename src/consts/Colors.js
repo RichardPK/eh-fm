@@ -17,6 +17,7 @@ export default {
   bgWhite: `rgb(247, 240, 240)`,
   notQuiteBlack: `rgb(72, 67, 73)`,
   notquiteBlack80Transparent: `rgba(72, 67, 73, 0.8)`,
+  notquiteBlack50Transparent: `rgba(72, 67, 73, 0.5)`,
   spanBg: `rgba(72, 67, 73, 0.8)`,
   spanBgSolid: `rgba(72,67,73,0.97)`,
   softGrey: `rgb(223, 223, 223)`,
