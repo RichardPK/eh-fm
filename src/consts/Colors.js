@@ -6,6 +6,7 @@ export default {
   softWhite: `rgba(255, 255, 255, 0.8)`,
   softestWhite: `rgba(255, 255, 255, 0.4)`,
   ehfmPrimary: `rgb(0, 145, 138)`,
+  ehfmPrimaryCustom: (customVal) => `rgba(0, 145, 138, ${customVal})`,
   ehfmPrimary80: `rgb(0, 145, 138, 0.8)`,
   ehfmPrimary10: `rgb(0, 145, 138, 0.1)`,
   altBlue: `rgb(3, 181, 170)`,

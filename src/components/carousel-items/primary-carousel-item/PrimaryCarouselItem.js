@@ -36,7 +36,12 @@ const PrimaryCarouselItem = ({ data, hierarchy }) => {
         <Image baseUrl={data.image.url} width={450} height={250} fit="crop" />
       </ImageWrapper>
       <ButtonWrapper>
-        <CarouselButton type={data.type} hierarchy={hierarchy} hovered={hovered} />
+        <CarouselButton
+          type={data.type}
+          hierarchy={hierarchy}
+          hovered={hovered}
+          customText={data.custom_link_text}
+        />
       </ButtonWrapper>
     </Wrapper>
   );

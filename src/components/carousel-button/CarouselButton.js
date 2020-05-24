@@ -3,25 +3,34 @@ import styled from 'styled-components/macro';
 import Colors from '../../consts/Colors';
 import { ReactSVG } from 'react-svg';
 import { Cta } from '../text-elements/index';
-import { ReactComponent as MixCloudSvg } from '../../assets/svgs/mixcloud.svg';
+import { ReactComponent as MixCloud } from '../../assets/svgs/mixcloud.svg';
+import { ReactComponent as ExternalLink } from '../../assets/svgs/external-link.svg';
 
-const CarouselButton = ({ type, hierarchy, hovered }) => {
+const CarouselButton = ({ type, customText, hierarchy, hovered }) => {
   return (
     <Wrapper hovered={hovered} hierarchy={hierarchy}>
       {type === 'Past show' ? (
         <>
-          <IconWrapper>
-            <MixCloudSvg />
+          <IconWrapper mixcloud={true}>
+            <MixCloud />
           </IconWrapper>
-          <CtaText hovered={hovered}>Listen now</CtaText>
+          <CtaText hovered={hovered}>{customText ? customText : 'Listen now'}</CtaText>
         </>
-      ) : null}
+      ) : (
+        <>
+          <IconWrapper>
+            <ExternalLink />
+          </IconWrapper>
+          <CtaText hovered={hovered}>{customText ? customText : 'Visit'}</CtaText>
+        </>
+      )}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  background-color: ${(props) => (props.hovered ? Colors.ehfmPrimary10 : Colors.ehfmPrimary)};
+  background-color: ${(props) =>
+    props.hovered ? Colors.ehfmPrimaryCustom(0.2) : Colors.ehfmPrimary};
   border-top-right-radius: 10px;
   display: flex;
   align-items: center;
@@ -40,8 +49,8 @@ const IconWrapper = styled.div`
   margin-right: 0.5rem;
 
   svg {
-    height: 20px;
-    width: 20px;
+    height: 100%;
+    width: ${(props) => (props.mixcloud ? '20px' : '15px')};
 
     path {
       fill: white;
