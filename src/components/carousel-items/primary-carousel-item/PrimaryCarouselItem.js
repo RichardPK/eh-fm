@@ -35,6 +35,9 @@ const PrimaryCarouselItem = ({ data, hierarchy }) => {
       <ImageWrapper hovered={hovered}>
         <Image baseUrl={data.image.url} width={450} height={250} fit="crop" />
       </ImageWrapper>
+      <ButtonWrapper>
+        <CarouselButton type={data.type} hierarchy={hierarchy} hovered={hovered} />
+      </ButtonWrapper>
     </Wrapper>
   );
 };
@@ -78,6 +81,12 @@ const ImageWrapper = styled.div`
   overflow: hidden;
   opacity: ${(props) => (props.hovered ? 0.8 : 1)};
   transition: opacity, 0.2s ease-out;
+`;
+
+const ButtonWrapper = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
 `;
 
 export default PrimaryCarouselItem;
