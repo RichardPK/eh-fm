@@ -8,7 +8,8 @@ import Colors from '../../consts/Colors';
 const HighlightsCarousel = ({ data, hierarchy }) => {
   const params = {
     slidesPerView: hierarchy === 'primary' ? 3.3 : 6.2,
-    // loop: true,
+    loop: true,
+    loopFillGroupWithBlank: true,
     spaceBetween: hierarchy === 'primary' ? 60 : 30
   };
 

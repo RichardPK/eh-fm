@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components/macro';
 import Colors from '../../consts/Colors';
-import { ReactSVG } from 'react-svg';
 import { Cta } from '../text-elements/index';
 import { ReactComponent as MixCloud } from '../../assets/svgs/mixcloud.svg';
 import { ReactComponent as ExternalLink } from '../../assets/svgs/external-link.svg';
@@ -14,7 +13,7 @@ const CarouselButton = ({ type, customText, hierarchy, hovered }) => {
           <IconWrapper mixcloud={true}>
             <MixCloud />
           </IconWrapper>
-          <CtaText hovered={hovered}>{customText ? customText : 'Listen now'}</CtaText>
+          <CtaText hovered={hovered}>{customText ? customText : 'Listen back'}</CtaText>
         </>
       ) : (
         <>

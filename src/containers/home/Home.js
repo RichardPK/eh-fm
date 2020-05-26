@@ -13,7 +13,7 @@ import Carousel from '../../components/carousel/Carousel';
 const HomeContainer = (props) => {
   const apiEndpoint = 'https://ehfm.cdn.prismic.io/api/v2';
   const [highlightedCarouselItems, setHighlightedCarouselItems] = useState([]);
-  const [secondaryCarouselItems, setSecondaryCarouelItens] = useState([]);
+  const [secondaryCarouselItems, setSecondaryCarouselItems] = useState([]);
 
   const SecondaryCarousel = Carousel;
   const PrimaryCarousel = Carousel;
@@ -27,17 +27,32 @@ const HomeContainer = (props) => {
         })
         .then((response) => {
           if (response) {
-            const highlightedFeatureItems = response.results.filter((featuredItem) => {
-              return featuredItem.data.highlighted;
-            });
-            setHighlightedCarouselItems(highlightedFeatureItems);
-
-            const secondaryFeatureItems = response.results.filter((featuredItem) => {
-              return !featuredItem.data.highlighted;
-            });
-            setSecondaryCarouelItens(secondaryFeatureItems);
+            setHighlightedItems(response);
+            setSecondaryItems(response);
           }
         });
+    });
+  };
+
+  const setHighlightedItems = (response) => {
+    const highlightedFeatureItems = response.results.filter((featuredItem) => {
+      return featuredItem.data.highlighted;
+    });
+    setHighlightedCarouselItems(reverseChronologicalSort(highlightedFeatureItems));
+  };
+
+  const setSecondaryItems = (response) => {
+    const secondaryFeatureItems = response.results.filter((featuredItem) => {
+      return !featuredItem.data.highlighted;
+    });
+    setSecondaryCarouselItems(reverseChronologicalSort(secondaryFeatureItems));
+  };
+
+  const reverseChronologicalSort = (array) => {
+    return array.sort((item1, item2) => {
+      const firstDate = new Date(item1.first_publication_date);
+      const secondDate = new Date(item2.first_publication_date);
+      return secondDate - firstDate;
     });
   };
 
