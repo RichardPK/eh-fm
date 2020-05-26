@@ -4,15 +4,10 @@ import { Heading4, Body } from '../../text-elements/index';
 import Colors from '../../../consts/Colors';
 import Image from '../../image/Image';
 import CarouselButton from '../../carousel-button/CarouselButton';
+import CarouselLinkHelper from '../../../helpers/CarouselLinkHelper';
 
 const PrimaryCarouselItem = ({ data, hierarchy }) => {
   let [hovered, setHovered] = useState(false);
-
-  const handleClick = (link, type) => {
-    if (type.toLowerCase() === 'link') {
-      window.location = link.url;
-    }
-  };
 
   return (
     <Wrapper
@@ -24,7 +19,7 @@ const PrimaryCarouselItem = ({ data, hierarchy }) => {
         setHovered(false);
       }}
       onClick={() => {
-        handleClick(data.link, data.type);
+        CarouselLinkHelper(data.link, data.type);
       }}
     >
       <TextWrapper>
