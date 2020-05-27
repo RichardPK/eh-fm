@@ -1,10 +1,10 @@
-import History from '../history';
+import { useHistory } from 'react-router-dom';
 
 export default (link, type) => {
   const url = link.url;
   if (type.toLowerCase() === 'link') {
     if (isInternal(url)) {
-      History.push(splitUrl(url));
+      useHistory.push(splitUrl(url));
     } else {
       window.open(url, '_blank');
     }
