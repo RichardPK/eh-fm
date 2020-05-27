@@ -57,6 +57,8 @@ const HomeContainer = (props) => {
   };
 
   useEffect(() => {
+    // Find out why this component is re-rendering when play is changing.
+    // Debug issue with carousel hover.
     getCarouselItems();
   }, []);
 

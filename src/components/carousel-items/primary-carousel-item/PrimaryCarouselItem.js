@@ -12,6 +12,7 @@ const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouse
     <Wrapper
       hierarchy={hierarchy}
       onMouseOver={() => {
+        // console.log('hovered' + data.headline);
         setHovered(true);
         carouselRef.autoplay.stop();
       }}

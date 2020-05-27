@@ -12,11 +12,11 @@ const SecondaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carou
       hierarchy={hierarchy}
       onMouseOver={() => {
         setHovered(true);
-        carouselRef.autoplay.stop();
+        // carouselRef.autoplay.stop();
       }}
       onMouseOut={() => {
         setHovered(false);
-        carouselRef.autoplay.start();
+        // carouselRef.autoplay.start();
       }}
       onClick={() => {
         handleCarouselItemClick(data.link, data.type);
