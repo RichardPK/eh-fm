@@ -4,7 +4,7 @@ import { Body, Tiny } from '../../text-elements/index';
 import Colors from '../../../consts/Colors';
 import Image from '../../image/Image';
 
-const SecondaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick }) => {
+const SecondaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouselRef }) => {
   let [hovered, setHovered] = useState(false);
 
   return (
@@ -12,9 +12,11 @@ const SecondaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick }) => 
       hierarchy={hierarchy}
       onMouseOver={() => {
         setHovered(true);
+        carouselRef.autoplay.stop();
       }}
       onMouseOut={() => {
         setHovered(false);
+        carouselRef.autoplay.start();
       }}
       onClick={() => {
         handleCarouselItemClick(data.link, data.type);

@@ -7,14 +7,19 @@ import SecondaryCarouselItem from '../carousel-items/secondary-carousel-item/Sec
 import Colors from '../../consts/Colors';
 import { isInternal, splitUrl } from '../../helpers/CarouselLinkHelper';
 
-const HighlightsCarousel = ({ data, hierarchy }) => {
+const Carousel = ({ data, hierarchy }) => {
+  const [carouselRef, setCarouselRef] = useState(null);
   const history = useHistory();
 
   const params = {
     slidesPerView: hierarchy === 'primary' ? 3.3 : 6.3,
     loop: true,
     loopFillGroupWithBlank: true,
-    spaceBetween: hierarchy === 'primary' ? 60 : 30
+    spaceBetween: hierarchy === 'primary' ? 60 : 30,
+    autoplay: {
+      delay: hierarchy === 'primary' ? 10000 : 10000,
+      disableOnInteraction: false
+    }
   };
 
   const handleCarouselItemClick = (link, type) => {
@@ -28,10 +33,17 @@ const HighlightsCarousel = ({ data, hierarchy }) => {
     }
   };
 
+  console.log(carouselRef ? carouselRef.autoplay.running : null);
+
   return (
     <Wrapper hierarchy={hierarchy}>
       {data.length > 0 ? (
-        <Swiper {...params}>
+        <Swiper
+          {...params}
+          getSwiper={(swiperEl) => {
+            setCarouselRef(swiperEl);
+          }}
+        >
           {data.map((carouselItemData) => {
             return (
               <div key={carouselItemData.id}>
@@ -40,12 +52,14 @@ const HighlightsCarousel = ({ data, hierarchy }) => {
                     data={carouselItemData.data}
                     hierarchy={hierarchy}
                     handleCarouselItemClick={handleCarouselItemClick}
+                    carouselRef={carouselRef}
                   />
                 ) : (
                   <SecondaryCarouselItem
                     data={carouselItemData.data}
                     hierarchy={hierarchy}
                     handleCarouselItemClick={handleCarouselItemClick}
+                    carouselRef={carouselRef}
                   />
                 )}
               </div>
@@ -70,4 +84,4 @@ const Divider = styled.div`
   background-color: ${Colors.softGrey};
 `;
 
-export default HighlightsCarousel;
+export default Carousel;

@@ -5,7 +5,7 @@ import Colors from '../../../consts/Colors';
 import Image from '../../image/Image';
 import CarouselButton from '../../carousel-button/CarouselButton';
 
-const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick }) => {
+const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouselRef }) => {
   let [hovered, setHovered] = useState(false);
 
   return (
@@ -13,9 +13,11 @@ const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick }) => {
       hierarchy={hierarchy}
       onMouseOver={() => {
         setHovered(true);
+        carouselRef.autoplay.stop();
       }}
       onMouseOut={() => {
         setHovered(false);
+        carouselRef.autoplay.start();
       }}
       onClick={() => {
         handleCarouselItemClick(data.link, data.type);
