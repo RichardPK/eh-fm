@@ -4,9 +4,8 @@ import { Heading4, Body } from '../../text-elements/index';
 import Colors from '../../../consts/Colors';
 import Image from '../../image/Image';
 import CarouselButton from '../../carousel-button/CarouselButton';
-import CarouselLinkHelper from '../../../helpers/CarouselLinkHelper';
 
-const PrimaryCarouselItem = ({ data, hierarchy }) => {
+const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick }) => {
   let [hovered, setHovered] = useState(false);
 
   return (
@@ -19,7 +18,7 @@ const PrimaryCarouselItem = ({ data, hierarchy }) => {
         setHovered(false);
       }}
       onClick={() => {
-        CarouselLinkHelper(data.link, data.type);
+        handleCarouselItemClick(data.link, data.type);
       }}
     >
       <TextWrapper>

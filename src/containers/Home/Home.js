@@ -9,6 +9,7 @@ import Devices from '../../consts/Devices';
 import Sizes from '../../consts/Sizes';
 import PlaceholderShowImg from '../../assets/images/placeholder-showimg.jpg';
 import Carousel from '../../components/carousel/Carousel';
+import { isInternal, splitUrl } from '../../helpers/CarouselLinkHelper';
 
 const HomeContainer = (props) => {
   const apiEndpoint = 'https://ehfm.cdn.prismic.io/api/v2';

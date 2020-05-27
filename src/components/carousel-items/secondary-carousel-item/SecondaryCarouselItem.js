@@ -4,14 +4,8 @@ import { Body, Tiny } from '../../text-elements/index';
 import Colors from '../../../consts/Colors';
 import Image from '../../image/Image';
 
-const SecondaryCarouselItem = ({ data, hierarchy }) => {
+const SecondaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick }) => {
   let [hovered, setHovered] = useState(false);
-
-  const handleClick = (link, type) => {
-    if (type.toLowerCase() === 'link') {
-      window.location = link.url;
-    }
-  };
 
   return (
     <Wrapper
@@ -23,7 +17,7 @@ const SecondaryCarouselItem = ({ data, hierarchy }) => {
         setHovered(false);
       }}
       onClick={() => {
-        handleClick(data.link, data.type);
+        handleCarouselItemClick(data.link, data.type);
       }}
     >
       <ImageWrapper hovered={hovered}>
