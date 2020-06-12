@@ -64,8 +64,8 @@ const HomeContainer = (props) => {
   return (
     <React.Fragment>
       <MetaData
-        title={"EH-FM | Edinburgh Community Radio broadcast"}
-        url={"https://www.ehfm.live"}
+        title={"EH-FM | Edinburgh Community Radio"}
+        url={window.location.href}
         imageSrc={PlaceholderShowImg}
         description={
           "EH-FM is an Edinburgh-based online radio station, providing a platform for the capital's local artists and broadcasting 24 hours a day."

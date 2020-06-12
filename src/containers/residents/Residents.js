@@ -1,42 +1,28 @@
-import React, { Component } from 'react';
-import styled from 'styled-components/macro';
-import ResidentListItem from '../../components/resident-list-item/ResidentListItem';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import PlaceholderShowImg from '../../assets/images/placeholder-showimg.jpg';
-import Devices from '../../consts/Devices';
-import Sizes from '../../consts/Sizes';
+import React, { Component } from "react";
+import styled from "styled-components/macro";
+import ResidentListItem from "../../components/resident-list-item/ResidentListItem";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
+import Devices from "../../consts/Devices";
+import Sizes from "../../consts/Sizes";
+import MetaData from "../../components/metadata/MetaData";
 
 class ResidentsContainer extends Component {
   render() {
     return (
       <React.Fragment>
-        <Helmet>
-          <title>Residents | EH-FM</title>
-          <meta name="fragment" content="!" />
-          <meta property="og:title" data-react-helmet="true" content="Residents | EH-FM" />
-          <meta
-            name="description"
-            data-react-helmet="true"
-            content="Get to know our presenters and listen back to the archive of previous shows."
-          />
-          <meta
-            property="og:description"
-            data-react-helmet="true"
-            content="Get to know our presenters and listen back to the archive of previous shows."
-          />
-          <meta
-            property="og:url"
-            data-react-helmet="true"
-            content="http://www.ehfm.live/residents"
-          />
-          <meta name="twitter:image" data-react-helmet="true" content={PlaceholderShowImg} />
-          <meta name="og:image" data-react-helmet="true" content={PlaceholderShowImg} />
-        </Helmet>
+        <MetaData
+          title={"Residents | EH-FM"}
+          url={window.location.href}
+          imageSrc={PlaceholderShowImg}
+          description={
+            "Get to know our presenters and listen back to the archive of previous shows."
+          }
+        />
         <Wrapper
           mixCloudWidget={this.props.mixCloudWidget}
-          cookiesBannerShowing={this.props.cookies.get('ehfm') !== '1'}
+          cookiesBannerShowing={this.props.cookies.get("ehfm") !== "1"}
         >
           {this.props.residents.length ? (
             this.props.residents.map((show, index) => {
@@ -68,18 +54,24 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 163px auto
-    ${(props) => (props.cookiesBannerShowing ? '95px' : props.mixCloudWidget ? `123px` : 0)};
+    ${(props) =>
+      props.cookiesBannerShowing ? "95px" : props.mixCloudWidget ? `123px` : 0};
 
   @media ${Devices.tablet} {
     margin: 143px auto
-      ${(props) => (props.cookiesBannerShowing ? '70px' : props.mixCloudWidget ? `123px` : 0)};
+      ${(props) =>
+        props.cookiesBannerShowing
+          ? "70px"
+          : props.mixCloudWidget
+          ? `123px`
+          : 0};
   }
 `;
 
 const mapStateToProps = (state) => {
   return {
     residents: state.residents,
-    mixCloudWidget: state.index.mixCloudWidget
+    mixCloudWidget: state.index.mixCloudWidget,
   };
 };
 
@@ -88,10 +80,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const connectedResidentsContainer = withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ResidentsContainer)
+  connect(mapStateToProps, mapDispatchToProps)(ResidentsContainer)
 );
 
 export default connectedResidentsContainer;
