@@ -6,6 +6,7 @@ import Sizes from "../../consts/Sizes";
 import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
 import Carousel from "../../components/carousel/Carousel";
 import MetaData from "../../components/metadata/MetaData";
+import LiveRadioSchema from "../../components/schema/live-radio-schema/LiveRadioSchema";
 
 const HomeContainer = (props) => {
   const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
@@ -71,6 +72,7 @@ const HomeContainer = (props) => {
           "EH-FM is an Edinburgh-based online radio station, providing a platform for the capital's local artists and broadcasting 24 hours a day."
         }
       />
+      <LiveRadioSchema />
 
       <Wrapper
         mixCloudWidget={props.mixCloudWidget}
