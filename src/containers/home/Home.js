@@ -12,40 +12,69 @@ import Carousel from '../../components/carousel/Carousel';
 
 const HomeContainer = (props) => {
   const apiEndpoint = 'https://ehfm.cdn.prismic.io/api/v2';
-  const [highlightedCarouselItems, setHighlightedCarouselItems] = useState([]);
-  const [secondaryCarouselItems, setSecondaryCarouselItems] = useState([]);
-
-  const SecondaryCarousel = Carousel;
   const PrimaryCarousel = Carousel;
 
-  const getCarouselItems = () => {
+  const [allCarouselItems, setAllCarouselItems] = useState([]);
+  const [highlightedCarouselItems, setHighlightedCarouselItems] = useState([]);
+
+  const [additionalCarousels, setAdditionalCarousels] = useState([]);
+
+  useEffect(() => {
+    // Find out why this component is re-rendering when play is changing.
+    // Debug issue with carousel hover.
     Prismic.api(apiEndpoint).then((api) => {
-      api
-        .query(Prismic.Predicates.at('document.type', 'home_feature'), {
-          pageSize: 100,
-          orderings: '[my.show.show_title]'
-        })
-        .then((response) => {
-          if (response) {
-            setHighlightedItems(response);
-            setSecondaryItems(response);
-          }
+      getPrimaryCarousel(api);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (allCarouselItems.length > 0) {
+      Prismic.api(apiEndpoint).then((api) => {
+        getOtherCarousels(api);
+      });
+    }
+  }, [allCarouselItems]);
+
+  const getPrimaryCarousel = async (api) => {
+    api
+      .query(Prismic.Predicates.at('document.type', 'home_feature'), {
+        pageSize: 100,
+        orderings: '[my.show.show_title]'
+      })
+      .then((response) => {
+        if (response) {
+          setAllCarouselItems(response.results);
+          setHighlightedItems(response.results);
+        }
+      });
+  };
+
+  const getOtherCarousels = (api) => {
+    api
+      .query(Prismic.Predicates.at('document.type', 'home_carousel'), {
+        pageSize: 100
+      })
+      .then((secondQueryResponse) => {
+        const parsedCarouselsData = secondQueryResponse.results.map((rawCarouselData) => {
+          return completeCarouselData(rawCarouselData);
         });
-    });
+        setAdditionalCarousels(parsedCarouselsData);
+      });
   };
 
-  const setHighlightedItems = (response) => {
-    const highlightedFeatureItems = response.results.filter((featuredItem) => {
-      return featuredItem.data.highlighted;
-    });
-    setHighlightedCarouselItems(reverseChronologicalSort(highlightedFeatureItems));
+  const completeCarouselData = (rawData) => {
+    console.log(allCarouselItems);
+    // debugger;
   };
 
-  const setSecondaryItems = (response) => {
-    const secondaryFeatureItems = response.results.filter((featuredItem) => {
-      return !featuredItem.data.highlighted;
-    });
-    setSecondaryCarouselItems(reverseChronologicalSort(secondaryFeatureItems));
+  const setHighlightedItems = (results) => {
+    setHighlightedCarouselItems(
+      reverseChronologicalSort(
+        results.filter((featuredItem) => {
+          return featuredItem.data.highlighted;
+        })
+      )
+    );
   };
 
   const reverseChronologicalSort = (array) => {
@@ -55,12 +84,6 @@ const HomeContainer = (props) => {
       return secondDate - firstDate;
     });
   };
-
-  useEffect(() => {
-    // Find out why this component is re-rendering when play is changing.
-    // Debug issue with carousel hover.
-    getCarouselItems();
-  }, []);
 
   return (
     <React.Fragment>
@@ -87,22 +110,22 @@ const HomeContainer = (props) => {
         mixCloudWidget={props.mixCloudWidget}
         cookiesBannerShowing={props.cookies.get('ehfm') !== '1'}
       >
-        <PrimaryCarousel data={highlightedCarouselItems} hierarchy={'primary'}></PrimaryCarousel>
-        <SecondaryCarousel
-          data={secondaryCarouselItems}
-          hierarchy={'secondary'}
-        ></SecondaryCarousel>
-        {/* <CurrentShow
-          currentShow={props.currentShow}
-          residents={props.residents}
-          playing={props.playing}
-          handlePlayPauseClicked={props.handlePlayPauseClicked}
-        />
+        {highlightedCarouselItems.length > 0 ? (
+          <PrimaryCarousel data={highlightedCarouselItems} hierarchy={'primary'} />
+        ) : null}
 
-        <Schedule
-          nextSevenDaysSchedule={props.nextSevenDaysSchedule}
-          currentDay={props.currentDay}
-        /> */}
+        {/* {additionalCarousels
+          ? additionalCarousels.map((carouselResponse) => {
+              const sortedData = reverseChronologicalSort(carouselResponse.data.carousel_items);
+
+              return (
+                <HomeCarouselWrapper>
+                  <h1>{carouselResponse.data.carousel_name}</h1>
+                  <Carousel data={sortedData} hierarchy={'secondary'} />
+                </HomeCarouselWrapper>
+              );
+            })
+          : null} */}
       </Wrapper>
     </React.Fragment>
   );
@@ -123,5 +146,7 @@ const Wrapper = styled.div`
       ${(props) => (props.cookiesBannerShowing ? '70px' : props.mixCloudWidget ? `123px` : 0)};
   }
 `;
+
+const HomeCarouselWrapper = styled.div``;
 
 export default HomeContainer;

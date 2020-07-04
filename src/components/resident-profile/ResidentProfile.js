@@ -95,7 +95,6 @@ class ResidentProfile extends Component {
       Events.scrollEvent.register(
         'end',
         function() {
-          console.log('End');
           this.setState({ displayShows: false });
         }.bind(this)
       );
