@@ -56,15 +56,20 @@ const HomeContainer = (props) => {
       })
       .then((secondQueryResponse) => {
         const parsedCarouselsData = secondQueryResponse.results.map((rawCarouselData) => {
-          return completeCarouselData(rawCarouselData);
+          rawCarouselData.data.carousel_items = completeCarouselData(rawCarouselData);
+          return rawCarouselData.data;
         });
         setAdditionalCarousels(parsedCarouselsData);
       });
   };
 
   const completeCarouselData = (rawData) => {
-    console.log(allCarouselItems);
-    // debugger;
+    return rawData.data.carousel_items.map((originalCarouselItem) => {
+      const completedItemData = allCarouselItems.find((item) => {
+        return item.id === originalCarouselItem.carousel_item.id;
+      });
+      return completedItemData;
+    });
   };
 
   const setHighlightedItems = (results) => {
@@ -114,18 +119,17 @@ const HomeContainer = (props) => {
           <PrimaryCarousel data={highlightedCarouselItems} hierarchy={'primary'} />
         ) : null}
 
-        {/* {additionalCarousels
-          ? additionalCarousels.map((carouselResponse) => {
-              const sortedData = reverseChronologicalSort(carouselResponse.data.carousel_items);
-
+        {additionalCarousels.length > 0
+          ? additionalCarousels.map((carousel) => {
+              const sortedData = reverseChronologicalSort(carousel.carousel_items);
               return (
                 <HomeCarouselWrapper>
-                  <h1>{carouselResponse.data.carousel_name}</h1>
+                  <h1>{carousel.carousel_name}</h1>
                   <Carousel data={sortedData} hierarchy={'secondary'} />
                 </HomeCarouselWrapper>
               );
             })
-          : null} */}
+          : null}
       </Wrapper>
     </React.Fragment>
   );
