@@ -18,7 +18,7 @@ const Carousel = ({ data, hierarchy }) => {
         spaceBetween: hierarchy === 'primary' ? 60 : 30
       },
       1024: {
-        slidesPerView: hierarchy === 'primary' ? 2.3 : 6.3,
+        slidesPerView: hierarchy === 'primary' ? 2.3 : 5.3,
         spaceBetween: hierarchy === 'primary' ? 60 : 30
       },
       768: {

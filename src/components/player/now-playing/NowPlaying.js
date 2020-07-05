@@ -33,15 +33,15 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 8px 8px 8px 8px;
   cursor: pointer;
-  background-color: ${(props) => (props.playing ? Colors.playerWhite : Colors.ehfmPrimary)};
+  background-color: ${(props) => (props.playing ? Colors.ehfmPrimary : Colors.playerWhite)};
 
   span {
-    color: ${(props) => (props.playing ? Colors.altBlue : Colors.playerWhite)};
+    color: ${(props) => (props.playing ? Colors.playerWhite : Colors.altBlue)};
   }
 
   .play-button {
     border-color: transparent transparent transparent
-      ${(props) => (props.playing ? Colors.altBlue : Colors.playerWhite)};
+      ${(props) => (props.playing ? Colors.playerWhite : Colors.altBlue)};
   }
 
   .pause-button {

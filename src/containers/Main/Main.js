@@ -197,6 +197,7 @@ class Main extends Component {
         <Header />
         <Player
           currentShow={this.state.currentShow}
+          residents={this.props.residents}
           playing={this.props.playing}
           volume={this.props.volume}
           handlePlayPauseClicked={this.handlePlayPauseClicked}

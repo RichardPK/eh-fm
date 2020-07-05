@@ -31,7 +31,7 @@ class CurrentShowDetail extends Component {
     if (currentShowName) {
       toLowerCase = currentShowName.toLowerCase();
     }
-    if (this.props.residents && toLowerCase) {
+    if (this.props.residents.length > 0 && toLowerCase) {
       const filtered = this.props.residents.filter((resident) =>
         toLowerCase.includes(resident.data.show_title.toLowerCase())
       );
@@ -109,15 +109,13 @@ class CurrentShowDetail extends Component {
 }
 
 const Wrapper = styled.div`
-  width: 85vw;
+  width: 100%;
   margin: 0px 10px 0px 10px;
   margin-bottom: 40px;
 
   @media ${Devices.tablet} {
     display: flex;
     flex-direction: column;
-    width: 41vw;
-    margin: 0px 10px 0px 40px;
   }
 `;
 

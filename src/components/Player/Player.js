@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/macro';
+import CurrentShow from '../current-show/CurrentShow';
 import VolumeButton from './volume-button/VolumeButton';
 import Logo from '../nav-bar/logo/Logo';
 import Devices from '../../consts/Devices';
@@ -23,6 +24,12 @@ class Player extends Component {
         <HeaderLogoWrapper>
           <Logo />
         </HeaderLogoWrapper>
+        <CurrentShow
+          currentShow={this.props.currentShow}
+          residents={this.props.residents}
+          playing={this.props.playing}
+          handlePlayPauseClicked={this.props.handlePlayPauseClicked}
+        />
         <PlayerWrapper>
           <Left>
             <OnAir />
@@ -57,7 +64,7 @@ const PlayerOuter = styled.div`
 
 const PlayerWrapper = styled.div`
   height: 100vh;
-  background-color: ${Colors.ehfmPrimary};
+  background-color: ${Colors.playerWhite};
   padding: 2px 20px 2px 20px;
   display: flex;
   flex-direction: row;

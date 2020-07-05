@@ -14,11 +14,11 @@ const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouse
       onMouseOver={() => {
         // console.log('hovered' + data.headline);
         setHovered(true);
-        carouselRef.autoplay.stop();
+        carouselRef && carouselRef.autoplay.stop();
       }}
       onMouseOut={() => {
         setHovered(false);
-        carouselRef.autoplay.start();
+        carouselRef && carouselRef.autoplay.start();
       }}
       onClick={() => {
         handleCarouselItemClick(data.link, data.type);

@@ -11,6 +11,7 @@ const VolumeButton = (props) => (
         props.volume === 0
           ? `https://www.ehfm.live/volume-off-white.png`
           : `https://www.ehfm.live/volume-up-white.png`
+        // change to SVG
       }
       onClick={props.volumeClicked}
       alt="volume control"
@@ -23,7 +24,7 @@ const Wrapper = styled.div`
 
   @media ${Devices.laptop} {
     display: flex;
-    border-left: 2px solid ${Colors.playerWhite};
+    border-left: 2px solid ${Colors.altBlue};
     padding: 2px 0 2px 20px;
   }
 `;

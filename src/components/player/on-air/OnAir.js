@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
-import styled from "styled-components";
-import Colors from "../../../consts/Colors";
-import { Tiny } from "../../text-elements/index";
-import Devices from "../../../consts/Devices";
+import React, { useRef, useState } from 'react';
+import styled from 'styled-components';
+import Colors from '../../../consts/Colors';
+import { Tiny } from '../../text-elements/index';
+import Devices from '../../../consts/Devices';
 
 const OnAir = ({}) => {
   return (
@@ -14,7 +14,7 @@ const OnAir = ({}) => {
 };
 
 const OnAirWrapper = styled.div`
-  color: ${Colors.playerWhite};
+  color: ${Colors.notquiteBlack80Transparent};
   font-size: 11px;
   padding-right: 10px;
   display: flex;
@@ -33,7 +33,7 @@ const OnAirText = styled(Tiny)`
 `;
 
 const Circle = styled.div`
-  background: ${Colors.highlightYellow};
+  background: ${Colors.altBlue};
   width: 8px;
   height: 8px;
   border-radius: 50%;
