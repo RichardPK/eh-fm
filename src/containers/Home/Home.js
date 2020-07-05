@@ -7,6 +7,7 @@ import styled from 'styled-components/macro';
 import Colors from '../../consts/Colors';
 import Devices from '../../consts/Devices';
 import Sizes from '../../consts/Sizes';
+import { Heading4 } from '../../components/text-elements/index';
 import PlaceholderShowImg from '../../assets/images/placeholder-showimg.jpg';
 import Carousel from '../../components/carousel/Carousel';
 
@@ -125,7 +126,7 @@ const HomeContainer = (props) => {
               const sortedData = reverseChronologicalSort(carousel.carousel_items);
               return (
                 <AdditionalCarouselWrapper key={carousel.id}>
-                  <h1>{carousel.carousel_name}</h1>
+                  <AdditionalCarouselHeading>{carousel.carousel_name}</AdditionalCarouselHeading>
                   <Carousel data={sortedData} hierarchy={'secondary'} autoplay={false} />
                 </AdditionalCarouselWrapper>
               );
@@ -155,8 +156,16 @@ const Wrapper = styled.div`
 const AdditionalCarouselWrapper = styled.div`
   height: 100%;
   width: 100%;
+  margin-bottom: 1.5rem;
   /* position: relative;
   display: block; */
+`;
+
+const AdditionalCarouselHeading = styled(Heading4)`
+  color: ${Colors.notquiteBlack80Transparent};
+  /* font-weight: normal; */
+  margin-left: 30px;
+  margin: 0px 0px 0.5rem 30px;
 `;
 
 export default HomeContainer;

@@ -13,15 +13,18 @@ const Carousel = ({ data, hierarchy }) => {
 
   const params = {
     slidesPerView: hierarchy === 'primary' ? 3.3 : 6.3,
-    loop: true,
-    loopFillGroupWithBlank: false,
-    loopAdditionalSlides: 4,
+    loop: false,
+    // loopFillGroupWithBlank: true,
+    // loopAdditionalSlides: 4,
     spaceBetween: hierarchy === 'primary' ? 60 : 30,
     speed: 400,
-    autoplay: {
-      delay: hierarchy === 'primary' ? 10000 : 10000,
-      disableOnInteraction: false
-    }
+    autoplay:
+      hierarchy === 'primary'
+        ? {
+            delay: hierarchy === 'primary' ? 10000 : 10000,
+            disableOnInteraction: false
+          }
+        : false
   };
 
   const handleCarouselItemClick = (link, type) => {
