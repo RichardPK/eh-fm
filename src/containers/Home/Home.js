@@ -156,7 +156,7 @@ const Wrapper = styled.div`
 const AdditionalCarouselWrapper = styled.div`
   height: 100%;
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   /* position: relative;
   display: block; */
 `;

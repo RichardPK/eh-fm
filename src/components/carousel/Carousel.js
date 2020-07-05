@@ -13,9 +13,8 @@ const Carousel = ({ data, hierarchy }) => {
 
   const params = {
     slidesPerView: hierarchy === 'primary' ? 3.3 : 6.3,
-    loop: false,
-    // loopFillGroupWithBlank: true,
-    // loopAdditionalSlides: 4,
+    slidesPerGroup: 1,
+    loop: hierarchy === 'primary' ? true : false,
     spaceBetween: hierarchy === 'primary' ? 60 : 30,
     speed: 400,
     autoplay:
@@ -24,7 +23,19 @@ const Carousel = ({ data, hierarchy }) => {
             delay: hierarchy === 'primary' ? 10000 : 10000,
             disableOnInteraction: false
           }
-        : false
+        : false,
+    on: {
+      slideChange: (carouselRef) => {
+        if (carouselRef) {
+          console.log('being called');
+          carouselRef.loopDestroy();
+          carouselRef.loopCreate();
+        } else {
+          debugger;
+          console.log('not being called');
+        }
+      }
+    }
   };
 
   const handleCarouselItemClick = (link, type) => {
@@ -38,7 +49,7 @@ const Carousel = ({ data, hierarchy }) => {
     }
   };
 
-  console.log(carouselRef ? carouselRef.autoplay.running : null);
+  console.log(carouselRef ? `Autoplay running: ${carouselRef.autoplay.running}` : `No carouselRef`);
 
   return (
     <Wrapper hierarchy={hierarchy}>
