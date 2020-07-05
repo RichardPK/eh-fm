@@ -23,19 +23,7 @@ const Carousel = ({ data, hierarchy }) => {
             delay: hierarchy === 'primary' ? 10000 : 10000,
             disableOnInteraction: false
           }
-        : false,
-    on: {
-      slideChange: (carouselRef) => {
-        if (carouselRef) {
-          console.log('being called');
-          carouselRef.loopDestroy();
-          carouselRef.loopCreate();
-        } else {
-          debugger;
-          console.log('not being called');
-        }
-      }
-    }
+        : false
   };
 
   const handleCarouselItemClick = (link, type) => {
