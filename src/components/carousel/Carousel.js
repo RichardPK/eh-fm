@@ -14,7 +14,7 @@ const Carousel = ({ data, hierarchy }) => {
   const params = {
     slidesPerView: hierarchy === 'primary' ? 3.3 : 6.3,
     loop: true,
-    loopFillGroupWithBlank: true,
+    loopFillGroupWithBlank: false,
     loopAdditionalSlides: 4,
     spaceBetween: hierarchy === 'primary' ? 60 : 30,
     speed: 400,

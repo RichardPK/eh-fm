@@ -57,6 +57,7 @@ const HomeContainer = (props) => {
       .then((secondQueryResponse) => {
         const parsedCarouselsData = secondQueryResponse.results.map((rawCarouselData) => {
           rawCarouselData.data.carousel_items = completeCarouselData(rawCarouselData);
+          rawCarouselData.data.id = rawCarouselData.id;
           return rawCarouselData.data;
         });
         setAdditionalCarousels(parsedCarouselsData);
@@ -116,17 +117,17 @@ const HomeContainer = (props) => {
         cookiesBannerShowing={props.cookies.get('ehfm') !== '1'}
       >
         {highlightedCarouselItems.length > 0 ? (
-          <PrimaryCarousel data={highlightedCarouselItems} hierarchy={'primary'} />
+          <PrimaryCarousel data={highlightedCarouselItems} hierarchy={'primary'} autoplay={true} />
         ) : null}
 
         {additionalCarousels.length > 0
           ? additionalCarousels.map((carousel) => {
               const sortedData = reverseChronologicalSort(carousel.carousel_items);
               return (
-                <HomeCarouselWrapper>
+                <AdditionalCarouselWrapper key={carousel.id}>
                   <h1>{carousel.carousel_name}</h1>
-                  <Carousel data={sortedData} hierarchy={'secondary'} />
-                </HomeCarouselWrapper>
+                  <Carousel data={sortedData} hierarchy={'secondary'} autoplay={false} />
+                </AdditionalCarouselWrapper>
               );
             })
           : null}
@@ -151,6 +152,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const HomeCarouselWrapper = styled.div``;
+const AdditionalCarouselWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  /* position: relative;
+  display: block; */
+`;
 
 export default HomeContainer;
