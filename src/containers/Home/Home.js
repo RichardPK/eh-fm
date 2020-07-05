@@ -139,7 +139,7 @@ const HomeContainer = (props) => {
 
 const Wrapper = styled.div`
   /* max-width: ${Sizes.maxInnerWidth}; */
-  padding: 2rem 0;
+  padding: 0 0 2rem 0;
   display: flex;
   justify-content: center;
   align-items: center;

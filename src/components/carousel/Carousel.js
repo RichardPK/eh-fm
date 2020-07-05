@@ -12,10 +12,30 @@ const Carousel = ({ data, hierarchy }) => {
   const history = useHistory();
 
   const params = {
-    slidesPerView: hierarchy === 'primary' ? 3.3 : 6.3,
+    breakpoints: {
+      1640: {
+        slidesPerView: hierarchy === 'primary' ? 3.3 : 6.3,
+        spaceBetween: hierarchy === 'primary' ? 60 : 30
+      },
+      1024: {
+        slidesPerView: hierarchy === 'primary' ? 2.3 : 6.3,
+        spaceBetween: hierarchy === 'primary' ? 60 : 30
+      },
+      768: {
+        slidesPerView: hierarchy === 'primary' ? 2.3 : 4.3,
+        spaceBetween: hierarchy === 'primary' ? 50 : 25
+      },
+      640: {
+        slidesPerView: hierarchy === 'primary' ? 2.3 : 4.3,
+        spaceBetween: hierarchy === 'primary' ? 40 : 20
+      },
+      320: {
+        slidesPerView: hierarchy === 'primary' ? 2.3 : 4.3,
+        spaceBetween: hierarchy === 'primary' ? 30 : 15
+      }
+    },
     slidesPerGroup: 1,
     loop: hierarchy === 'primary' ? true : false,
-    spaceBetween: hierarchy === 'primary' ? 60 : 30,
     speed: 400,
     autoplay:
       hierarchy === 'primary'

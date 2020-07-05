@@ -15,9 +15,6 @@ const NavBar = (props) => {
           <Left>
             <NavLinks />
           </Left>
-          <HeaderLogoWrapper>
-            <Logo />
-          </HeaderLogoWrapper>
           <Right>
             <PaypalButton />
             <Socials />
@@ -31,11 +28,11 @@ const NavBar = (props) => {
 const Wrapper = styled.nav`
   position: fixed;
   width: 100vw;
-  z-index: 100;
+  z-index: 2;
   top: 68px;
+  top: 0px;
 
   @media ${Devices.tablet} {
-    top: 0px;
   }
 `;
 
@@ -45,7 +42,7 @@ const Inner = styled.div`
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 5px;
-  background-color: white;
+  background-color: ${Colors.bgWhite};
 
   a {
     color: ${Colors.ehfmPrimary};

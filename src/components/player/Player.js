@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/macro';
 import VolumeButton from './volume-button/VolumeButton';
+import Logo from '../nav-bar/logo/Logo';
 import Devices from '../../consts/Devices';
 import Colors from '../../consts/Colors';
 import OnAir from './on-air/OnAir';
@@ -19,6 +20,9 @@ class Player extends Component {
   render() {
     return (
       <PlayerOuter>
+        <HeaderLogoWrapper>
+          <Logo />
+        </HeaderLogoWrapper>
         <PlayerWrapper>
           <Left>
             <OnAir />
@@ -42,12 +46,12 @@ class Player extends Component {
 
 const PlayerOuter = styled.div`
   position: fixed;
-  /* width: 100vw; */
-  z-index: 100;
-  top: 114px;
+  z-index: 3;
+  width: 375px;
+  /* ABOVE VALUE WIP */
 
   @media ${Devices.tablet} {
-    top: 86px;
+    top: 0;
   }
 `;
 
@@ -61,6 +65,24 @@ const PlayerWrapper = styled.div`
   justify-content: space-between;
   @media ${Devices.mobileL} {
     padding: 2px 30px 2px 30px;
+  }
+`;
+
+const HeaderLogoWrapper = styled.div`
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  top: -70px;
+  padding-left: 50vw;
+  padding-right: 50vw;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  background-color: white;
+
+  @media ${Devices.tablet} {
+    top: 0px;
+    padding-left: 0;
+    padding-right: 0;
   }
 `;
 

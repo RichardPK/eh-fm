@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Header from '../header/Header';
 import Player from '../../components/player/Player';
@@ -202,9 +203,8 @@ class Main extends Component {
           handleVolumeClicked={this.handleVolumeClicked}
         />
         {this.props.residents.length ? (
-          <React.Fragment>
+          <MainWrapper>
             {this.props.children}
-
             <Switch>
               <Route
                 exact
@@ -234,12 +234,16 @@ class Main extends Component {
             </Switch>
 
             <Footer />
-          </React.Fragment>
+          </MainWrapper>
         ) : null}
       </React.Fragment>
     );
   }
 }
+
+const MainWrapper = styled.div`
+  margin-left: 375px;
+`;
 
 const mapStateToProps = (state) => {
   return {
