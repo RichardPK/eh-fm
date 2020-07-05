@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from '../header/Header';
+import Player from '../../components/player/Player';
 import Home from '../home/Home';
 import ResidentsContainer from '../residents/Residents';
 import Resident from '../resident/Resident';
@@ -192,14 +193,14 @@ class Main extends Component {
           <source src="https://ehfm.out.airtime.pro/ehfm_a" type="audio/mpeg" />
         </audio>
         <Analytics url={window.location.pathname + window.location.search} />
-        <Header
+        <Header />
+        <Player
           currentShow={this.state.currentShow}
           playing={this.props.playing}
           volume={this.props.volume}
           handlePlayPauseClicked={this.handlePlayPauseClicked}
           handleVolumeClicked={this.handleVolumeClicked}
         />
-
         {this.props.residents.length ? (
           <React.Fragment>
             {this.props.children}

@@ -18,24 +18,41 @@ class Player extends Component {
 
   render() {
     return (
-      <PlayerWrapper>
-        <Left>
-          <OnAir />
-          <NowPlaying
-            playing={this.props.playing}
-            handlePlayPauseClicked={this.props.handlePlayPauseClicked}
-            currentShow={this.props.currentShow}
-          />
-        </Left>
-        <Right>
-          <VolumeButton volumeClicked={this.props.handleVolumeClicked} volume={this.props.volume} />
-        </Right>
-      </PlayerWrapper>
+      <PlayerOuter>
+        <PlayerWrapper>
+          <Left>
+            <OnAir />
+            <NowPlaying
+              playing={this.props.playing}
+              handlePlayPauseClicked={this.props.handlePlayPauseClicked}
+              currentShow={this.props.currentShow}
+            />
+          </Left>
+          <Right>
+            <VolumeButton
+              volumeClicked={this.props.handleVolumeClicked}
+              volume={this.props.volume}
+            />
+          </Right>
+        </PlayerWrapper>
+      </PlayerOuter>
     );
   }
 }
 
+const PlayerOuter = styled.div`
+  position: fixed;
+  /* width: 100vw; */
+  z-index: 100;
+  top: 114px;
+
+  @media ${Devices.tablet} {
+    top: 86px;
+  }
+`;
+
 const PlayerWrapper = styled.div`
+  height: 100vh;
   background-color: ${Colors.ehfmPrimary};
   padding: 2px 20px 2px 20px;
   display: flex;
