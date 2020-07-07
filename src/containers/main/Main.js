@@ -195,17 +195,17 @@ class Main extends Component {
         </audio>
         <Analytics url={window.location.pathname + window.location.search} />
         <Header />
-        <Player
-          currentShow={this.state.currentShow}
-          residents={this.props.residents}
-          playing={this.props.playing}
-          volume={this.props.volume}
-          handlePlayPauseClicked={this.handlePlayPauseClicked}
-          handleVolumeClicked={this.handleVolumeClicked}
-        />
+
         {this.props.residents.length ? (
           <MainWrapper>
-            {this.props.children}
+            <Player
+              currentShow={this.state.currentShow}
+              residents={this.props.residents}
+              playing={this.props.playing}
+              volume={this.props.volume}
+              handlePlayPauseClicked={this.handlePlayPauseClicked}
+              handleVolumeClicked={this.handleVolumeClicked}
+            />
             <Switch>
               <Route
                 exact
@@ -243,7 +243,9 @@ class Main extends Component {
 }
 
 const MainWrapper = styled.div`
-  margin-left: 375px;
+  width: 100%;
+  display: flex;
+  position: relative;
 `;
 
 const mapStateToProps = (state) => {

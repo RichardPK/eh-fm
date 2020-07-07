@@ -24,12 +24,14 @@ class Player extends Component {
         <HeaderLogoWrapper>
           <Logo />
         </HeaderLogoWrapper>
-        <CurrentShow
-          currentShow={this.props.currentShow}
-          residents={this.props.residents}
-          playing={this.props.playing}
-          handlePlayPauseClicked={this.props.handlePlayPauseClicked}
-        />
+        <CurrentShowWrapper>
+          <CurrentShow
+            currentShow={this.props.currentShow}
+            residents={this.props.residents}
+            playing={this.props.playing}
+            handlePlayPauseClicked={this.props.handlePlayPauseClicked}
+          />
+        </CurrentShowWrapper>
         <PlayerWrapper>
           <Left>
             <OnAir />
@@ -52,14 +54,15 @@ class Player extends Component {
 }
 
 const PlayerOuter = styled.div`
-  position: fixed;
   z-index: 3;
-  width: 375px;
+  background-color: ${Colors.playerWhite};
+  display: flex;
+  flex-direction: column;
   /* ABOVE VALUE WIP */
+`;
 
-  @media ${Devices.tablet} {
-    top: 0;
-  }
+const CurrentShowWrapper = styled.div`
+  width: 375px;
 `;
 
 const PlayerWrapper = styled.div`
@@ -76,7 +79,7 @@ const PlayerWrapper = styled.div`
 `;
 
 const HeaderLogoWrapper = styled.div`
-  position: absolute;
+  /* position: absolute;
   transform: translateX(-50%);
   left: 50%;
   top: -70px;
@@ -84,12 +87,12 @@ const HeaderLogoWrapper = styled.div`
   padding-right: 50vw;
   padding-top: 10px;
   padding-bottom: 5px;
-  background-color: white;
+  background-color: white; */
 
   @media ${Devices.tablet} {
-    top: 0px;
+    /* top: 0px;
     padding-left: 0;
-    padding-right: 0;
+    padding-right: 0; */
   }
 `;
 
