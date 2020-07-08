@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
+import Devices from '../../consts/Devices';
 import styled from 'styled-components/macro';
 import {
   Link,
@@ -171,6 +171,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+
+  margin: 150px auto 0;
+
+  @media ${Devices.tablet} {
+    margin: 125px auto 0;
+  }
 `;
 
 const mapStateToProps = (state) => {

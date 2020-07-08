@@ -67,11 +67,11 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 163px auto
+  margin: 150px auto
     ${(props) => (props.cookiesBannerShowing ? '95px' : props.mixCloudWidget ? `123px` : 0)};
 
   @media ${Devices.tablet} {
-    margin: 143px auto
+    margin: 125px auto
       ${(props) => (props.cookiesBannerShowing ? '70px' : props.mixCloudWidget ? `123px` : 0)};
   }
 `;

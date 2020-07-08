@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components/macro';
 import PlayPauseButton from '../play-pause-button/PlayPauseButton';
-import Devices from '../../../consts/Devices';
-import Colors from '../../../consts/Colors';
-import { Body } from '../../text-elements/index';
+import Devices from '../../../../consts/Devices';
+import Colors from '../../../../consts/Colors';
+import { Body } from '../../../text-elements/index';
 
 const NowPlaying = ({ handlePlayPauseClicked, playing, currentShow }) => {
   const returnShowData = () => {

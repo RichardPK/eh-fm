@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import Colors from '../../../consts/Colors';
-import Devices from '../../../consts/Devices';
+import Colors from '../../../../consts/Colors';
+import Devices from '../../../../consts/Devices';
 
 const VolumeButton = (props) => (
   <Wrapper>

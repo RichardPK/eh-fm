@@ -3,7 +3,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { connect } from 'react-redux';
 import Header from '../header/Header';
-import Player from '../../components/player/Player';
+import SidePlayer from '../../components/side-player/SidePlayer';
 import Home from '../home/Home';
 import ResidentsContainer from '../residents/Residents';
 import Resident from '../resident/Resident';
@@ -198,7 +198,7 @@ class Main extends Component {
 
         {this.props.residents.length ? (
           <MainWrapper>
-            <Player
+            <SidePlayer
               currentShow={this.state.currentShow}
               residents={this.props.residents}
               playing={this.props.playing}

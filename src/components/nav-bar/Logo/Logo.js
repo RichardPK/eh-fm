@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import Logo from "../../../assets/images/EHFM_Arched-Logo_Teal_1080.png";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import Logo from '../../../assets/images/EHFM_Arched-Logo_Teal_1080.png';
 
-const LogoHead = props => {
+const LogoHead = (props) => {
   return (
     <React.Fragment>
       <Wrapper>
@@ -15,9 +15,7 @@ const LogoHead = props => {
   );
 };
 
-const Wrapper = styled.div`
-  margin-top: 17px;
-`;
+const Wrapper = styled.div``;
 
 const LogoImg = styled.img`
   height: 36px;

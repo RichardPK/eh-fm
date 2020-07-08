@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import Colors from '../../../consts/Colors';
-import { Tiny } from '../../text-elements/index';
-import Devices from '../../../consts/Devices';
+import Colors from '../../../../consts/Colors';
+import { Tiny } from '../../../text-elements/index';
+import Devices from '../../../../consts/Devices';
 
 const OnAir = ({}) => {
   return (

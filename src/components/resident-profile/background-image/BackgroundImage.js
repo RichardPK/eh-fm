@@ -9,7 +9,7 @@ const BackgroundImage = ({ mixCloudWidget, showImage }) => {
 const Wrapper = styled.div`
   background-position: center center !important;
   background-size: cover !important;
-  width: 100vw;
+  width: calc(100vw - 385px);
   height: 100vh;
   display: flex;
   overflow: hidden;
@@ -26,7 +26,6 @@ const Wrapper = styled.div`
   }
 
   @media ${Devices.mobileL} {
-    top: 100px;
     height: calc(100vh - 100px);
   }
 `;

@@ -97,7 +97,7 @@ class CurrentShowDetail extends Component {
             <NameWrapper>
               <ShowName>{this.returnShowName()}</ShowName>
             </NameWrapper>
-            <ListenNowButton playing={this.props.playing} playClicked={this.playClicked} />
+            {/* <ListenNowButton playing={this.props.playing} playClicked={this.playClicked} /> */}
             <DescriptionWrapper>
               <ShowDescription>{this.returnShowDescription()}</ShowDescription>
             </DescriptionWrapper>
@@ -123,7 +123,7 @@ const Heading4Component = styled(Heading4)`
 `;
 
 const WhiteWrapper = styled.div`
-  padding: 4px;
+  padding: 4px 4px 0;
   border-radius: 5px;
   position: relative;
   color: white;

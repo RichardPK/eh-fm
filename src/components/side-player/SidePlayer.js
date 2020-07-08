@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/macro';
 import CurrentShow from '../current-show/CurrentShow';
-import VolumeButton from './volume-button/VolumeButton';
+import Player from './player/Player';
 import Logo from '../nav-bar/logo/Logo';
 import Devices from '../../consts/Devices';
 import Colors from '../../consts/Colors';
-import OnAir from './on-air/OnAir';
-import NowPlaying from './now-playing/NowPlaying';
 
-class Player extends Component {
+class SidePlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +18,7 @@ class Player extends Component {
 
   render() {
     return (
-      <PlayerOuter>
+      <SidePlayerOuter>
         <HeaderLogoWrapper>
           <Logo />
         </HeaderLogoWrapper>
@@ -33,27 +31,20 @@ class Player extends Component {
           />
         </CurrentShowWrapper>
         <PlayerWrapper>
-          <Left>
-            <OnAir />
-            <NowPlaying
-              playing={this.props.playing}
-              handlePlayPauseClicked={this.props.handlePlayPauseClicked}
-              currentShow={this.props.currentShow}
-            />
-          </Left>
-          <Right>
-            <VolumeButton
-              volumeClicked={this.props.handleVolumeClicked}
-              volume={this.props.volume}
-            />
-          </Right>
+          <Player
+            playing={this.props.playing}
+            handlePlayPauseClicked={this.props.handlePlayPauseClicked}
+            currentShow={this.props.currentShow}
+            volumeClicked={this.props.handleVolumeClicked}
+            volume={this.props.volume}
+          />
         </PlayerWrapper>
-      </PlayerOuter>
+      </SidePlayerOuter>
     );
   }
 }
 
-const PlayerOuter = styled.div`
+const SidePlayerOuter = styled.div`
   top: 0;
   left: 0;
   z-index: 3;
@@ -65,6 +56,7 @@ const PlayerOuter = styled.div`
 `;
 
 const HeaderLogoWrapper = styled.div`
+  margin-top: 2rem;
   @media ${Devices.tablet} {
   }
 `;
@@ -72,14 +64,13 @@ const HeaderLogoWrapper = styled.div`
 const CurrentShowWrapper = styled.div`
   position: relative;
   width: 375px;
-  margin-bottom: 5px;
-  padding: 5px;
+  padding: 5px 5px 0;
 `;
 
 const PlayerWrapper = styled.div`
-  height: 100vh;
-  background-color: ${Colors.playerWhite};
+  background-color: ${Colors.ehfmPrimary};
   padding: 2px 20px 2px 20px;
+  margin: 0 5px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -89,17 +80,4 @@ const PlayerWrapper = styled.div`
   }
 `;
 
-const Left = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Right = styled.div`
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-`;
-
-export default Player;
+export default SidePlayer;
