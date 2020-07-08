@@ -243,9 +243,10 @@ class Main extends Component {
 }
 
 const MainWrapper = styled.div`
-  width: 100vw;
-  display: flex;
+  width: calc(100vw - 385px);
+  /* display: flex; */
   position: relative;
+  margin-left: 385px;
 `;
 
 const mapStateToProps = (state) => {

@@ -54,13 +54,14 @@ class Player extends Component {
 }
 
 const PlayerOuter = styled.div`
+  top: 0;
+  left: 0;
   z-index: 3;
-  background-color: ${Colors.playerWhite};
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* ABOVE VALUE WIP */
+  position: fixed;
+  background-color: ${Colors.playerWhite};
 `;
 
 const HeaderLogoWrapper = styled.div`
