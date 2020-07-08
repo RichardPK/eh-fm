@@ -58,11 +58,21 @@ const PlayerOuter = styled.div`
   background-color: ${Colors.playerWhite};
   display: flex;
   flex-direction: column;
+  align-items: center;
+
   /* ABOVE VALUE WIP */
 `;
 
+const HeaderLogoWrapper = styled.div`
+  @media ${Devices.tablet} {
+  }
+`;
+
 const CurrentShowWrapper = styled.div`
+  position: relative;
   width: 375px;
+  margin-bottom: 5px;
+  padding: 5px;
 `;
 
 const PlayerWrapper = styled.div`
@@ -75,24 +85,6 @@ const PlayerWrapper = styled.div`
   justify-content: space-between;
   @media ${Devices.mobileL} {
     padding: 2px 30px 2px 30px;
-  }
-`;
-
-const HeaderLogoWrapper = styled.div`
-  /* position: absolute;
-  transform: translateX(-50%);
-  left: 50%;
-  top: -70px;
-  padding-left: 50vw;
-  padding-right: 50vw;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  background-color: white; */
-
-  @media ${Devices.tablet} {
-    /* top: 0px;
-    padding-left: 0;
-    padding-right: 0; */
   }
 `;
 

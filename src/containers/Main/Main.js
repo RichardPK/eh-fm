@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { connect } from 'react-redux';
 import Header from '../header/Header';
 import Player from '../../components/player/Player';
@@ -243,7 +243,7 @@ class Main extends Component {
 }
 
 const MainWrapper = styled.div`
-  width: 100%;
+  width: 100vw;
   display: flex;
   position: relative;
 `;

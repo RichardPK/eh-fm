@@ -138,14 +138,10 @@ const HomeContainer = (props) => {
 };
 
 const Wrapper = styled.div`
-  /* max-width: ${Sizes.maxInnerWidth}; */
-  padding: 0 0 2rem 0;
+  width: calc(100vw - 385px);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   position: relative;
-  width: 100%;
+  flex-direction: column;
   margin: 150px auto
     ${(props) => (props.cookiesBannerShowing ? '95px' : props.mixCloudWidget ? `123px` : 0)};
 
@@ -156,7 +152,6 @@ const Wrapper = styled.div`
 `;
 
 const AdditionalCarouselWrapper = styled.div`
-  height: 100%;
   width: 100%;
   margin-bottom: 2rem;
   /* position: relative;
