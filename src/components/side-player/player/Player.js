@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components/macro';
-import OnAir from './on-air/OnAir';
 import NowPlaying from './now-playing/NowPlaying';
 import VolumeButton from './volume-button/VolumeButton';
 
@@ -8,7 +7,6 @@ const Player = ({ playing, handlePlayPauseClicked, currentShow, handleVolumeClic
   return (
     <>
       <Left>
-        <OnAir />
         <NowPlaying
           playing={playing}
           handlePlayPauseClicked={handlePlayPauseClicked}

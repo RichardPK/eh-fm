@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components/macro';
 import Devices from '../../consts/Devices';
 import { Heading4, Cta } from '../text-elements/index';
-import ScheduleDayHeading from './schedule-day-heading/ScheduleDayHeading';
 import DailyShowSchedule from './daily-show-schedule/DailyShowSchedule';
 import Colors from '../../consts/Colors';
 
@@ -35,14 +34,14 @@ class Schedule extends Component {
         <Inner>
           <DaysHeaderWrapper>
             {this.props.nextSevenDaysSchedule.map((scheduleDay) => {
-              return (
-                <ScheduleDayHeading
-                  onClick={this.handleDayClick}
-                  dayName={scheduleDay[0]}
-                  currentDay={this.props.currentDay}
-                  selected={this.isDaySelected(scheduleDay)}
-                />
-              );
+              // return (
+              //   <ScheduleDayHeading
+              //     onClick={this.handleDayClick}
+              //     dayName={scheduleDay[0]}
+              //     currentDay={this.props.currentDay}
+              //     selected={this.isDaySelected(scheduleDay)}
+              //   />
+              // );
             })}
           </DaysHeaderWrapper>
           <Divider />

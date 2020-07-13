@@ -52,7 +52,7 @@ const SidePlayerOuter = styled.div`
   flex-direction: column;
   align-items: center;
   position: fixed;
-  background-color: ${Colors.playerWhite};
+  background-color: ${Colors.ehfmPrimary};
 `;
 
 const HeaderLogoWrapper = styled.div`

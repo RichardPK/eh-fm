@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListenNowButton from '../listen-now-button/ListenNowButton';
+import OnAir from '../side-player/player/on-air/OnAir';
 import styled from 'styled-components/macro';
 import Devices from '../../consts/Devices';
 import { Heading4, Heading3, Body } from '../text-elements/index';
@@ -84,9 +85,11 @@ class CurrentShowDetail extends Component {
   render() {
     return (
       <Wrapper>
-        <Heading4Component>Live now</Heading4Component>
         <WhiteWrapper>
           <ImageWrapper>
+            <OnAirWrapper>
+              <OnAir />
+            </OnAirWrapper>
             <CurrentShowImage
               className="currentshow-img"
               src={this.returnShowImgUrl()}
@@ -110,6 +113,7 @@ class CurrentShowDetail extends Component {
 
 const Wrapper = styled.div`
   width: 100%;
+  position: relative;
 
   @media ${Devices.tablet} {
     display: flex;
@@ -117,9 +121,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const Heading4Component = styled(Heading4)`
-  color: ${Colors.notQuiteBlack};
-  margin: 10px 20px 10px 10px;
+const OnAirWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 const WhiteWrapper = styled.div`
