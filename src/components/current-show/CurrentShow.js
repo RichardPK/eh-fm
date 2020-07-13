@@ -85,27 +85,25 @@ class CurrentShowDetail extends Component {
   render() {
     return (
       <Wrapper>
-        <WhiteWrapper>
-          <ImageWrapper>
-            <OnAirWrapper>
-              <OnAir />
-            </OnAirWrapper>
-            <CurrentShowImage
-              className="currentshow-img"
-              src={this.returnShowImgUrl()}
-              alt="current live show"
-            />
-          </ImageWrapper>
-          <InfoWrapper>
-            <NameWrapper>
-              <ShowName>{this.returnShowName()}</ShowName>
-            </NameWrapper>
-            {/* <ListenNowButton playing={this.props.playing} playClicked={this.playClicked} /> */}
-            <DescriptionWrapper>
-              <ShowDescription>{this.returnShowDescription()}</ShowDescription>
-            </DescriptionWrapper>
-          </InfoWrapper>
-        </WhiteWrapper>
+        <OnAirWrapper>
+          <OnAir />
+        </OnAirWrapper>
+        <ImageWrapper>
+          <CurrentShowImage
+            className="currentshow-img"
+            src={this.returnShowImgUrl()}
+            alt="current live show"
+          />
+        </ImageWrapper>
+        <InfoWrapper>
+          <NameWrapper>
+            <ShowName>{this.returnShowName()}</ShowName>
+          </NameWrapper>
+          {/* <ListenNowButton playing={this.props.playing} playClicked={this.playClicked} /> */}
+          <DescriptionWrapper>
+            <ShowDescription>{this.returnShowDescription()}</ShowDescription>
+          </DescriptionWrapper>
+        </InfoWrapper>
       </Wrapper>
     );
   }
@@ -123,19 +121,12 @@ const Wrapper = styled.div`
 
 const OnAirWrapper = styled.div`
   position: absolute;
-  top: 0;
+  top: -5;
   left: 0;
 `;
 
-const WhiteWrapper = styled.div`
-  padding: 4px 4px 0;
-  border-radius: 5px;
-  position: relative;
-  color: white;
-  background-color: white;
-`;
-
 const ImageWrapper = styled.div`
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;

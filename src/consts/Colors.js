@@ -16,6 +16,7 @@ export default {
   altBlue10Transparent: `rgba(3, 181, 170, 0.1)`,
   highlightYellow: `rgb(255, 253, 130)`,
   bgWhite: `rgb(247, 240, 240)`,
+  bgWhiteCustom: (customVal) => `rgba(247, 240, 240, ${customVal})`,
   notQuiteBlack: `rgb(72, 67, 73)`,
   notquiteBlack80Transparent: `rgba(72, 67, 73, 0.8)`,
   notquiteBlack50Transparent: `rgba(72, 67, 73, 0.5)`,

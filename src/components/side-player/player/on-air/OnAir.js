@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Colors from '../../../../consts/Colors';
 import { Tiny } from '../../../text-elements/index';
 import Devices from '../../../../consts/Devices';
@@ -15,21 +15,22 @@ const OnAir = ({}) => {
 
 const OnAirWrapper = styled.div`
   color: ${Colors.notquiteBlack80Transparent};
-  font-size: 11px;
-  padding-right: 10px;
+  padding: 0.4rem 0.5rem 0.4rem 0.4rem;
+  background-color: ${Colors.bgWhiteCustom(0.9)};
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 100;
-  letter-spacing: 2px;
+  border-bottom-right-radius: 12px;
+  border-top-left-radius: 4px;
 
   @media ${Devices.mobileL} {
-    padding-right: 20px;
   }
 `;
 
 const OnAirText = styled(Tiny)`
-  font-weight: 100;
+  font-weight: 200;
+  letter-spacing: 1px;
+  color: ${Colors.altBlue};
 `;
 
 const Circle = styled.div`

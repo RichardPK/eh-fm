@@ -19,9 +19,7 @@ class SidePlayer extends Component {
   render() {
     return (
       <SidePlayerOuter>
-        <HeaderLogoWrapper>
-          <Logo />
-        </HeaderLogoWrapper>
+        <Logo />
         <CurrentShowWrapper>
           <CurrentShow
             currentShow={this.props.currentShow}
@@ -53,18 +51,13 @@ const SidePlayerOuter = styled.div`
   align-items: center;
   position: fixed;
   background-color: ${Colors.ehfmPrimary};
-`;
-
-const HeaderLogoWrapper = styled.div`
-  margin-top: 2rem;
-  @media ${Devices.tablet} {
-  }
+  padding-top: 2rem;
+  width: 350px;
 `;
 
 const CurrentShowWrapper = styled.div`
   position: relative;
-  width: 375px;
-  padding: 5px 5px 0;
+  padding: 1rem 0.5rem 0.5rem;
 `;
 
 const PlayerWrapper = styled.div`
