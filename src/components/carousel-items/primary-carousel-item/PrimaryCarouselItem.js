@@ -47,7 +47,7 @@ const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouse
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  min-height: 370px;
+  /* min-height: 370px; */
   display: flex;
   flex-direction: column;
   /* align-items: flex-start; */
@@ -75,7 +75,7 @@ const FlavourHeading = styled(Heading4)`
 
 const ImageWrapper = styled.div`
   width: 100%;
-  height: 250px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;

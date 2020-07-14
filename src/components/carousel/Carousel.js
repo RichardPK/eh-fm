@@ -14,23 +14,23 @@ const Carousel = ({ data, hierarchy }) => {
   const params = {
     breakpoints: {
       1640: {
-        slidesPerView: hierarchy === 'primary' ? 3.3 : 6.3,
+        slidesPerView: hierarchy === 'primary' ? 3.2 : 6.2,
         spaceBetween: hierarchy === 'primary' ? 60 : 30
       },
       1024: {
-        slidesPerView: hierarchy === 'primary' ? 2.3 : 5.3,
+        slidesPerView: hierarchy === 'primary' ? 2.2 : 5.2,
         spaceBetween: hierarchy === 'primary' ? 60 : 30
       },
       768: {
-        slidesPerView: hierarchy === 'primary' ? 2.3 : 4.3,
+        slidesPerView: hierarchy === 'primary' ? 2.2 : 4.2,
         spaceBetween: hierarchy === 'primary' ? 50 : 25
       },
       640: {
-        slidesPerView: hierarchy === 'primary' ? 2.3 : 4.3,
+        slidesPerView: hierarchy === 'primary' ? 2.2 : 4.2,
         spaceBetween: hierarchy === 'primary' ? 40 : 20
       },
       320: {
-        slidesPerView: hierarchy === 'primary' ? 2.3 : 4.3,
+        slidesPerView: hierarchy === 'primary' ? 2.2 : 4.2,
         spaceBetween: hierarchy === 'primary' ? 30 : 15
       }
     },
