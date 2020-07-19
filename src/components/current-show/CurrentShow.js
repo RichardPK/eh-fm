@@ -14,7 +14,7 @@ const CurrentShow = (props) => {
 
   useEffect(() => {
     getShowInPrismic();
-  }, []);
+  }, [prismicShow]);
 
   const getShowInPrismic = () => {
     let toLowerCase;
@@ -124,16 +124,6 @@ const OnAirWrapper = styled.div`
   position: absolute;
   top: -5;
   left: 0;
-`;
-
-const ImageWrapper = styled.div`
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  width: inherit;
-  z-index: -1;
 `;
 
 const CurrentShowImageWrapper = styled.div`
