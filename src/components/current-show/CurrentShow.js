@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import ListenNowButton from '../listen-now-button/ListenNowButton';
 import OnAir from '../side-player/player/on-air/OnAir';
 import styled from 'styled-components/macro';
@@ -6,8 +6,33 @@ import Devices from '../../consts/Devices';
 import { Heading4, Heading3, Body } from '../text-elements/index';
 import Colors from '../../consts/Colors';
 
-const CurrentShowDetail = (props) => {
-  const returnShowName = () => {
+const CurrentShow = (props) => {
+  const [prismicShow, setPrismicShow] = useState(null);
+  const SHOW_NOT_FOUND = 'SHOW_NOT_FOUND';
+
+  useEffect(() => {
+    getShowInPrismic();
+  }, []);
+
+  const getShowInPrismic = () => {
+    let toLowerCase;
+    const currentShowName = parseShowName();
+    if (currentShowName) {
+      toLowerCase = currentShowName.toLowerCase();
+    }
+    if (props.residents.length > 0 && toLowerCase) {
+      const filtered = props.residents.filter((resident) =>
+        toLowerCase.includes(resident.data.show_title.toLowerCase())
+      );
+      if (filtered.length > 0) {
+        setPrismicShow(filtered[0].data);
+      } else {
+        setPrismicShow(SHOW_NOT_FOUND);
+      }
+    }
+  };
+
+  const parseShowName = () => {
     let currentShowName = null;
     if (props.currentShow !== null) {
       let showData = props.currentShow;
@@ -19,27 +44,9 @@ const CurrentShowDetail = (props) => {
     return currentShowName;
   };
 
-  const findShowUrlInPrismic = () => {
-    let result;
-    let toLowerCase;
-    const currentShowName = returnShowName();
-    if (currentShowName) {
-      toLowerCase = currentShowName.toLowerCase();
-    }
-    if (props.residents.length > 0 && toLowerCase) {
-      const filtered = props.residents.filter((resident) =>
-        toLowerCase.includes(resident.data.show_title.toLowerCase())
-      );
-      if (filtered.length > 0) {
-        result = filtered[0].data.show_image.larger.url;
-      }
-    }
-
-    return result;
-  };
-
   const returnShowImgUrl = () => {
-    let linkedPrismicImg = findShowUrlInPrismic();
+    // prismicShow.show_image.larger.url;
+    let linkedPrismicImg = prismicShow && prismicShow.show_image.larger.url;
 
     if (linkedPrismicImg) {
       return linkedPrismicImg;
@@ -77,21 +84,21 @@ const CurrentShowDetail = (props) => {
       <OnAirWrapper>
         <OnAir />
       </OnAirWrapper>
-      <ImageWrapper>
-        <CurrentShowImage
-          className="currentshow-img"
-          src={returnShowImgUrl()}
-          alt="current live show"
-        />
-      </ImageWrapper>
-      <InfoWrapper>
-        <NameWrapper>
-          <ShowName>{returnShowName()}</ShowName>
-        </NameWrapper>
-        <DescriptionWrapper>
-          <ShowDescription>{returnShowDescription()}</ShowDescription>
-        </DescriptionWrapper>
-      </InfoWrapper>
+      {prismicShow ? (
+        <>
+          <ImageWrapper>
+            <CurrentShowImage src={returnShowImgUrl()} alt="current live show" />
+          </ImageWrapper>
+          <InfoWrapper>
+            <NameWrapper>
+              <ShowName>{parseShowName()}</ShowName>
+            </NameWrapper>
+            <DescriptionWrapper>
+              <ShowDescription>{returnShowDescription()}</ShowDescription>
+            </DescriptionWrapper>
+          </InfoWrapper>
+        </>
+      ) : null}
     </Wrapper>
   );
 };
@@ -162,4 +169,4 @@ const DescriptionWrapper = styled.div`
 
 const ShowDescription = styled(Body)``;
 
-export default CurrentShowDetail;
+export default CurrentShow;
