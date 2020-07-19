@@ -137,7 +137,7 @@ const ImageWrapper = styled.div`
 `;
 
 const CurrentShowImageWrapper = styled.div`
-  height: 300px;
+  height: 100%;
   width: 100%;
 
   img {
