@@ -5,6 +5,7 @@ import styled from 'styled-components/macro';
 import Devices from '../../consts/Devices';
 import { Heading4, Heading3, Body } from '../text-elements/index';
 import Colors from '../../consts/Colors';
+import Image from '../image/Image';
 
 const CurrentShow = (props) => {
   const [prismicShow, setPrismicShow] = useState(null);
@@ -45,21 +46,26 @@ const CurrentShow = (props) => {
   };
 
   const returnShowImgUrl = () => {
-    // prismicShow.show_image.larger.url;
-    let linkedPrismicImg = prismicShow && prismicShow.show_image.larger.url;
+    let currentShowImgUrl = null;
+    if (props.currentShow !== null) {
+      let showData = props.currentShow;
+      currentShowImgUrl = showData.currentShow[0].image_path;
+    }
+    if (currentShowImgUrl === '') {
+      currentShowImgUrl = './placeholder-showimg.jpg';
+    }
+    return currentShowImgUrl;
+  };
 
-    if (linkedPrismicImg) {
-      return linkedPrismicImg;
-    } else {
-      let currentShowImgUrl = null;
-      if (props.currentShow !== null) {
-        let showData = props.currentShow;
-        currentShowImgUrl = showData.currentShow[0].image_path;
-      }
-      if (currentShowImgUrl === '') {
-        currentShowImgUrl = './placeholder-showimg.jpg';
-      }
-      return currentShowImgUrl;
+  const prismicShowImgUrl = () => {
+    return prismicShow && prismicShow.show_image.url.split('&')[0];
+  };
+
+  const returnImage = () => {
+    if (prismicShowImgUrl()) {
+      return (
+        <Image baseUrl={prismicShowImgUrl()} width={500} height={500} alt="current live show" />
+      );
     }
   };
 
@@ -86,9 +92,7 @@ const CurrentShow = (props) => {
       </OnAirWrapper>
       {prismicShow ? (
         <>
-          <ImageWrapper>
-            <CurrentShowImage src={returnShowImgUrl()} alt="current live show" />
-          </ImageWrapper>
+          <ImageWrapper>{returnImage()}</ImageWrapper>
           <InfoWrapper>
             <NameWrapper>
               <ShowName>{parseShowName()}</ShowName>
@@ -129,10 +133,12 @@ const ImageWrapper = styled.div`
   z-index: -1;
 `;
 
-const CurrentShowImage = styled.img`
-  height: auto;
-  margin: 0px 0px 0px 0px;
-  width: 100%;
+const CurrentShowImageWrapper = styled.div`
+  img {
+    height: auto;
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+  }
 `;
 
 const InfoWrapper = styled.div`
