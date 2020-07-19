@@ -6,6 +6,7 @@ import Devices from '../../consts/Devices';
 import { Heading4, Heading3, Body } from '../text-elements/index';
 import Colors from '../../consts/Colors';
 import Image from '../image/Image';
+import PlaceholderImage from '../../assets/images/placeholder-showimg.jpg';
 
 const CurrentShow = (props) => {
   const [prismicShow, setPrismicShow] = useState(null);
@@ -45,16 +46,8 @@ const CurrentShow = (props) => {
     return currentShowName;
   };
 
-  const returnShowImgUrl = () => {
-    let currentShowImgUrl = null;
-    if (props.currentShow !== null) {
-      let showData = props.currentShow;
-      currentShowImgUrl = showData.currentShow[0].image_path;
-    }
-    if (currentShowImgUrl === '') {
-      currentShowImgUrl = './placeholder-showimg.jpg';
-    }
-    return currentShowImgUrl;
+  const airTimeShowImgUrl = () => {
+    return props.currentShow && props.currentShow.currentShow[0].image_path;
   };
 
   const prismicShowImgUrl = () => {
@@ -66,6 +59,10 @@ const CurrentShow = (props) => {
       return (
         <Image baseUrl={prismicShowImgUrl()} width={500} height={500} alt="current live show" />
       );
+    } else if (airTimeShowImgUrl()) {
+      return <Image baseUrl={airTimeShowImgUrl()} alt="current live show" />;
+    } else {
+      return <Image baseUrl={PlaceholderImage} alt="ehfm placeholder" />;
     }
   };
 
@@ -92,7 +89,7 @@ const CurrentShow = (props) => {
       </OnAirWrapper>
       {prismicShow ? (
         <>
-          <ImageWrapper>{returnImage()}</ImageWrapper>
+          <CurrentShowImageWrapper>{returnImage()}</CurrentShowImageWrapper>
           <InfoWrapper>
             <NameWrapper>
               <ShowName>{parseShowName()}</ShowName>
@@ -135,8 +132,7 @@ const ImageWrapper = styled.div`
 
 const CurrentShowImageWrapper = styled.div`
   img {
-    height: auto;
-    margin: 0px 0px 0px 0px;
+    border-radius: 5px;
     width: 100%;
   }
 `;
