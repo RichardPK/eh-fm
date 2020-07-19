@@ -6,34 +6,28 @@ import Devices from '../../consts/Devices';
 import { Heading4, Heading3, Body } from '../text-elements/index';
 import Colors from '../../consts/Colors';
 
-class CurrentShowDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.playClicked = this.playClicked.bind(this);
-    this.findShowUrlInPrismic = this.findShowUrlInPrismic.bind(this);
-  }
-
-  returnShowName() {
+const CurrentShowDetail = (props) => {
+  const returnShowName = () => {
     let currentShowName = null;
-    if (this.props.currentShow !== null) {
-      let showData = this.props.currentShow;
+    if (props.currentShow !== null) {
+      let showData = props.currentShow;
       currentShowName = showData.currentShow[0].name;
       let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, "'");
       let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
       return parsedForAmpersands;
     }
     return currentShowName;
-  }
+  };
 
-  findShowUrlInPrismic() {
+  const findShowUrlInPrismic = () => {
     let result;
     let toLowerCase;
-    const currentShowName = this.returnShowName();
+    const currentShowName = returnShowName();
     if (currentShowName) {
       toLowerCase = currentShowName.toLowerCase();
     }
-    if (this.props.residents.length > 0 && toLowerCase) {
-      const filtered = this.props.residents.filter((resident) =>
+    if (props.residents.length > 0 && toLowerCase) {
+      const filtered = props.residents.filter((resident) =>
         toLowerCase.includes(resident.data.show_title.toLowerCase())
       );
       if (filtered.length > 0) {
@@ -42,17 +36,17 @@ class CurrentShowDetail extends Component {
     }
 
     return result;
-  }
+  };
 
-  returnShowImgUrl() {
-    let linkedPrismicImg = this.findShowUrlInPrismic();
+  const returnShowImgUrl = () => {
+    let linkedPrismicImg = findShowUrlInPrismic();
 
     if (linkedPrismicImg) {
       return linkedPrismicImg;
     } else {
       let currentShowImgUrl = null;
-      if (this.props.currentShow !== null) {
-        let showData = this.props.currentShow;
+      if (props.currentShow !== null) {
+        let showData = props.currentShow;
         currentShowImgUrl = showData.currentShow[0].image_path;
       }
       if (currentShowImgUrl === '') {
@@ -60,12 +54,12 @@ class CurrentShowDetail extends Component {
       }
       return currentShowImgUrl;
     }
-  }
+  };
 
-  returnShowDescription() {
+  const returnShowDescription = () => {
     let currentShowDescription = null;
-    if (this.props.currentShow !== null) {
-      let showData = this.props.currentShow;
+    if (props.currentShow !== null) {
+      let showData = props.currentShow;
       currentShowDescription = showData.currentShow[0].description;
       if (currentShowDescription === '') {
         currentShowDescription = 'Independent community radio for Edinburgh.';
@@ -76,38 +70,31 @@ class CurrentShowDetail extends Component {
         return parsedForAmpersands;
       }
     }
-  }
+  };
 
-  playClicked() {
-    this.props.handlePlayPauseClicked();
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <OnAirWrapper>
-          <OnAir />
-        </OnAirWrapper>
-        <ImageWrapper>
-          <CurrentShowImage
-            className="currentshow-img"
-            src={this.returnShowImgUrl()}
-            alt="current live show"
-          />
-        </ImageWrapper>
-        <InfoWrapper>
-          <NameWrapper>
-            <ShowName>{this.returnShowName()}</ShowName>
-          </NameWrapper>
-          {/* <ListenNowButton playing={this.props.playing} playClicked={this.playClicked} /> */}
-          <DescriptionWrapper>
-            <ShowDescription>{this.returnShowDescription()}</ShowDescription>
-          </DescriptionWrapper>
-        </InfoWrapper>
-      </Wrapper>
-    );
-  }
-}
+  return (
+    <Wrapper>
+      <OnAirWrapper>
+        <OnAir />
+      </OnAirWrapper>
+      <ImageWrapper>
+        <CurrentShowImage
+          className="currentshow-img"
+          src={returnShowImgUrl()}
+          alt="current live show"
+        />
+      </ImageWrapper>
+      <InfoWrapper>
+        <NameWrapper>
+          <ShowName>{returnShowName()}</ShowName>
+        </NameWrapper>
+        <DescriptionWrapper>
+          <ShowDescription>{returnShowDescription()}</ShowDescription>
+        </DescriptionWrapper>
+      </InfoWrapper>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   width: 100%;
