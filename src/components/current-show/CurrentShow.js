@@ -57,7 +57,13 @@ const CurrentShow = (props) => {
   const returnImage = () => {
     if (prismicShowImgUrl()) {
       return (
-        <Image baseUrl={prismicShowImgUrl()} width={500} height={500} alt="current live show" />
+        <Image
+          baseUrl={prismicShowImgUrl()}
+          width={500}
+          height={500}
+          alt="current live show"
+          fit={'crop'}
+        />
       );
     } else if (airTimeShowImgUrl()) {
       return <Image baseUrl={airTimeShowImgUrl()} alt="current live show" />;
@@ -131,8 +137,12 @@ const ImageWrapper = styled.div`
 `;
 
 const CurrentShowImageWrapper = styled.div`
+  height: 300px;
+  width: 100%;
+
   img {
     border-radius: 5px;
+    height: auto;
     width: 100%;
   }
 `;
