@@ -9,30 +9,29 @@ import VolumeButton from './volume-button/VolumeButton';
 
 const Player = ({ playing, handlePlayPauseClicked, currentShow, handleVolumeClicked, volume }) => {
   return (
-    <>
-      <Left>
-        <Wrapper playing={playing} onClick={handlePlayPauseClicked}>
-          <PlaybuttonContainer>
-            <PlayPauseButton playingTrueFalse={playing} playClicked={handlePlayPauseClicked} />
-          </PlaybuttonContainer>
-        </Wrapper>
+    <OuterWrapper>
+      <Left playing={playing} onClick={handlePlayPauseClicked}>
+        <PlaybuttonContainer>
+          <PlayPauseButton playingTrueFalse={playing} playClicked={handlePlayPauseClicked} />
+        </PlaybuttonContainer>
       </Left>
       <Right>
         <VolumeButton volumeClicked={handleVolumeClicked} volume={volume} />
       </Right>
-    </>
+    </OuterWrapper>
   );
 };
+
+const OuterWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
 
 const Left = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
   padding: 8px 8px 8px 8px;
   cursor: pointer;
   background-color: ${(props) => (props.playing ? Colors.ehfmPrimary : Colors.playerWhite)};

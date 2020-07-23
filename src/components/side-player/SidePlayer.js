@@ -21,12 +21,14 @@ class SidePlayer extends Component {
       <SidePlayerOuter>
         <Logo />
         <CurrentShowWrapper>
-          <CurrentShow
-            currentShow={this.props.currentShow}
-            residents={this.props.residents}
-            playing={this.props.playing}
-            handlePlayPauseClicked={this.props.handlePlayPauseClicked}
-          />
+          {this.props.currentShow ? (
+            <CurrentShow
+              currentShow={this.props.currentShow}
+              residents={this.props.residents}
+              playing={this.props.playing}
+              handlePlayPauseClicked={this.props.handlePlayPauseClicked}
+            />
+          ) : null}
         </CurrentShowWrapper>
         <PlayerWrapper>
           <Player
@@ -61,16 +63,8 @@ const CurrentShowWrapper = styled.div`
 `;
 
 const PlayerWrapper = styled.div`
-  background-color: ${Colors.ehfmPrimary};
-  padding: 2px 20px 2px 20px;
-  margin: 0 5px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  @media ${Devices.mobileL} {
-    padding: 2px 30px 2px 30px;
-  }
+  /* background-color: ${Colors.ehfmPrimary}; */
+  padding: 0 0.5rem 0.5rem;
 `;
 
 export default SidePlayer;
