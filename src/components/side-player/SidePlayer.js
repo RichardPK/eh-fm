@@ -35,7 +35,7 @@ class SidePlayer extends Component {
             playing={this.props.playing}
             handlePlayPauseClicked={this.props.handlePlayPauseClicked}
             currentShow={this.props.currentShow}
-            volumeClicked={this.props.handleVolumeClicked}
+            handleVolumeClicked={this.props.handleVolumeClicked}
             volume={this.props.volume}
           />
         </PlayerWrapper>

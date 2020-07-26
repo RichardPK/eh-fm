@@ -6,17 +6,21 @@ import Devices from '../../../consts/Devices';
 import { Body } from '../../text-elements/index';
 import PlayPauseButton from './play-pause-button/PlayPauseButton';
 import VolumeButton from './volume-button/VolumeButton';
+import { ReactComponent as Volume } from '../../../assets/svgs/volume.svg';
+import { ReactComponent as MuteVolume } from '../../../assets/svgs/volume-mute.svg';
 
 const Player = ({ playing, handlePlayPauseClicked, currentShow, handleVolumeClicked, volume }) => {
   return (
     <OuterWrapper>
       <Left playing={playing} onClick={handlePlayPauseClicked}>
-        <PlaybuttonContainer>
+        <PlayPauseWrapper>
           <PlayPauseButton playingTrueFalse={playing} playClicked={handlePlayPauseClicked} />
-        </PlaybuttonContainer>
+        </PlayPauseWrapper>
       </Left>
       <Right>
-        <VolumeButton volumeClicked={handleVolumeClicked} volume={volume} />
+        <VolumeWrapper onClick={() => handleVolumeClicked()}>
+          {volume === 0 ? <MuteVolume /> : <Volume />}
+        </VolumeWrapper>
       </Right>
     </OuterWrapper>
   );
@@ -26,60 +30,55 @@ const OuterWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: ${(props) => (props.playing ? Colors.ehfmPrimary : Colors.playerWhite)};
 `;
 
 const Left = styled.div`
   display: flex;
+  flex: 1;
   align-items: center;
-  justify-content: center;
-  padding: 8px 8px 8px 8px;
+  justify-content: flex-start;
+  padding: 0.5rem;
   cursor: pointer;
-  background-color: ${(props) => (props.playing ? Colors.ehfmPrimary : Colors.playerWhite)};
-
-  span {
-    color: ${(props) => (props.playing ? Colors.playerWhite : Colors.altBlue)};
-  }
-
-  .play-button {
-    border-color: transparent transparent transparent
-      ${(props) => (props.playing ? Colors.playerWhite : Colors.altBlue)};
-  }
-
-  .pause-button {
-    border-color: ${Colors.altBlue};
-  }
 
   @media ${Devices.tablet} {
     &:hover {
-      background-color: ${Colors.playerWhite};
       cursor: pointer;
-
-      span {
-        color: ${Colors.altBlue};
-      }
-
-      .play-button {
-        border-color: transparent transparent transparent ${Colors.altBlue};
-      }
-
-      .pause-button {
-        border-color: ${Colors.altBlue};
-      }
     }
   }
 `;
 
-const PlaybuttonContainer = styled.div`
-  border-left: 2px solid ${Colors.playerWhite};
-  width: 0.8em;
+const PlayPauseWrapper = styled.div`
   padding-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 1rem;
+    fill: ${Colors.ehfmPrimary};
+  }
 `;
 
 const Right = styled.div`
   display: flex;
+  flex: 1;
+  padding: 0.5rem;
   position: relative;
   align-items: center;
+  justify-content: flex-end;
+`;
+
+const VolumeWrapper = styled.div`
+  cursor: pointer;
+  display: flex;
   justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 1rem;
+    fill: ${Colors.ehfmPrimary};
+  }
 `;
 
 export default Player;

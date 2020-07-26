@@ -7,20 +7,8 @@ import { ReactComponent as PlayButton } from '../../../../assets/svgs/play-butto
 import { ReactComponent as PauseButton } from '../../../../assets/svgs/pause.svg';
 
 const Playbutton = (props) => {
-  return (
-    <Wrapper onClick={() => props.playClicked()}>
-      {props.playingTrueFalse ? <StyledPauseButton /> : <StyledPlayButton />}
-    </Wrapper>
-  );
+  return <>{props.playingTrueFalse ? <StyledPauseButton /> : <StyledPlayButton />}</>;
 };
-
-const Wrapper = styled.div`
-  cursor: pointer;
-
-  svg {
-    fill: ${Colors.ehfmPrimary};
-  }
-`;
 
 const StyledPlayButton = styled(PlayButton)``;
 
