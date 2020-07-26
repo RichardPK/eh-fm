@@ -115,6 +115,7 @@ const CurrentShow = (props) => {
 const Wrapper = styled.div`
   width: 100%;
   position: relative;
+  overflow: hidden;
 
   @media ${Devices.tablet} {
     display: flex;
@@ -163,11 +164,11 @@ const DescriptionWrapper = styled.div`
   display: inline-block;
   background-color: ${Colors.notquiteBlack80Transparent};
   padding: 4px;
-  margin-right: 10%;
+  /* margin-right: 10%; */
   margin-top: 2rem;
 
   @media ${Devices.tablet} {
-    margin-right: 25%;
+    /* margin-right: 25%; */
   }
 `;
 
