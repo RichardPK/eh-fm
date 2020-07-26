@@ -51,7 +51,9 @@ const CurrentShow = (props) => {
   };
 
   const prismicShowImgUrl = () => {
-    return prismicShow && prismicShow.show_image.url.split('&')[0];
+    return (
+      prismicShow && prismicShow !== 'SHOW_NOT_FOUND' && prismicShow.show_image.url.split('&')[0]
+    );
   };
 
   const returnImage = () => {
