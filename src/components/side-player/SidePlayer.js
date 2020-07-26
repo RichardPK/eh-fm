@@ -59,13 +59,13 @@ const SidePlayerOuter = styled.div`
 
 const CurrentShowWrapper = styled.div`
   position: relative;
-  padding: 1rem 0.5rem 0.5rem;
+  padding: 1rem 0.5rem 0;
   /* min-height: 350px;
   min-width: 300px; */
 `;
 
 const PlayerWrapper = styled.div`
-  /* background-color: ${Colors.ehfmPrimary}; */
+  width: calc(100% - 1rem);
   padding: 0 0.5rem 0.5rem;
 `;
 

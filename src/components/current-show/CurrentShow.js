@@ -144,10 +144,9 @@ const InfoWrapper = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  bottom: 5px;
-  left: 15px;
-  bottom: 15px;
-  margin-right: 15px;
+  left: 1rem;
+  bottom: 1rem;
+  margin-right: 1rem;
 
   @media ${Devices.mobileL} {
     /* margin-right: 16px; */

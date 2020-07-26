@@ -11,7 +11,7 @@ import { ReactComponent as MuteVolume } from '../../../assets/svgs/volume-mute.s
 
 const Player = ({ playing, handlePlayPauseClicked, currentShow, handleVolumeClicked, volume }) => {
   return (
-    <OuterWrapper>
+    <Wrapper>
       <Left playing={playing} onClick={handlePlayPauseClicked}>
         <PlayPauseWrapper>
           <PlayPauseButton playingTrueFalse={playing} playClicked={handlePlayPauseClicked} />
@@ -22,11 +22,12 @@ const Player = ({ playing, handlePlayPauseClicked, currentShow, handleVolumeClic
           {volume === 0 ? <MuteVolume /> : <Volume />}
         </VolumeWrapper>
       </Right>
-    </OuterWrapper>
+    </Wrapper>
   );
 };
 
-const OuterWrapper = styled.div`
+const Wrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -39,6 +40,7 @@ const Left = styled.div`
   align-items: center;
   justify-content: flex-start;
   padding: 0.5rem;
+  margin-left: 0.75rem;
   cursor: pointer;
 
   @media ${Devices.tablet} {
@@ -53,9 +55,10 @@ const PlayPauseWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-right: 1.5px solid ${Colors.ehfmPrimary};
 
   svg {
-    width: 1rem;
+    width: 1.1rem;
     fill: ${Colors.ehfmPrimary};
   }
 `;
@@ -64,6 +67,7 @@ const Right = styled.div`
   display: flex;
   flex: 1;
   padding: 0.5rem;
+  margin-right: 0.5rem;
   position: relative;
   align-items: center;
   justify-content: flex-end;
