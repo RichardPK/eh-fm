@@ -60,6 +60,8 @@ const SidePlayerOuter = styled.div`
 const CurrentShowWrapper = styled.div`
   position: relative;
   padding: 1rem 0.5rem 0.5rem;
+  /* min-height: 350px;
+  min-width: 300px; */
 `;
 
 const PlayerWrapper = styled.div`

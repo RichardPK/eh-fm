@@ -18,6 +18,7 @@ export default {
   bgWhite: `rgb(247, 240, 240)`,
   bgWhiteCustom: (customVal) => `rgba(247, 240, 240, ${customVal})`,
   notQuiteBlack: `rgb(72, 67, 73)`,
+  notQuiteBlackCustom: (customVal) => `rgba(72, 67, 73, ${customVal})`,
   notquiteBlack80Transparent: `rgba(72, 67, 73, 0.8)`,
   notquiteBlack50Transparent: `rgba(72, 67, 73, 0.5)`,
   spanBg: `rgba(72, 67, 73, 0.8)`,

@@ -142,6 +142,8 @@ const CurrentShowImageWrapper = styled.div`
 
 const InfoWrapper = styled.div`
   position: absolute;
+  display: flex;
+  flex-direction: column;
   bottom: 5px;
   left: 15px;
   bottom: 15px;
@@ -152,26 +154,25 @@ const InfoWrapper = styled.div`
   }
 `;
 
-const ShowName = styled(Heading3)``;
+const ShowName = styled(Heading3)`
+  color: ${Colors.playerWhite};
+`;
 
 const NameWrapper = styled.div`
-  display: inline-block;
-  background-color: ${Colors.notquiteBlack80Transparent};
+  /* display: inline-block; */
+  background-color: ${Colors.notQuiteBlackCustom(0.75)};
   padding: 4px;
 `;
 
 const DescriptionWrapper = styled.div`
-  display: inline-block;
-  background-color: ${Colors.notquiteBlack80Transparent};
+  /* display: inline-block; */
+  background-color: ${Colors.notQuiteBlackCustom(0.75)};
   padding: 4px;
-  /* margin-right: 10%; */
-  margin-top: 2rem;
-
-  @media ${Devices.tablet} {
-    /* margin-right: 25%; */
-  }
+  margin-top: 0.25rem;
 `;
 
-const ShowDescription = styled(Body)``;
+const ShowDescription = styled(Body)`
+  color: ${Colors.playerWhite};
+`;
 
 export default CurrentShow;
