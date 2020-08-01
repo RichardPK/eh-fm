@@ -13,6 +13,7 @@ import ResidentsActions from '../../actions/ResidentsActions';
 import _ from 'lodash';
 import Analytics from '../../components/analytics/Analytics';
 import { withCookies } from 'react-cookie';
+import Moment from 'react-moment';
 
 class Main extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Main extends Component {
       currentDate: null,
       currentDay: null,
       currentShow: null,
-      todaysSchedule: [],
+      todaysSchedule: null,
       playing: false,
       volume: 1
     };
@@ -46,6 +47,7 @@ class Main extends Component {
     this.fetchDay = this.fetchDay.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
+    this.getRemainingShowsToday = this.getRemainingShowsToday.bind(this);
   }
 
   componentDidMount() {
@@ -130,6 +132,7 @@ class Main extends Component {
   populateSchedule() {
     let showArray = this.convertShowScheduleToArray();
     let todaysSchedule = this.getTodaysSchedule(showArray);
+    let remainingShowsToday = this.getRemainingShowsToday(todaysSchedule);
     todaysSchedule && this.setState({ todaysSchedule });
   }
 
@@ -160,6 +163,11 @@ class Main extends Component {
         }
       }
     }
+  }
+
+  getRemainingShowsToday(todaysSchedule) {
+    const shows = todaysSchedule[1];
+    debugger;
   }
 
   handlePlayPauseClicked() {
@@ -200,6 +208,7 @@ class Main extends Component {
               volume={this.props.volume}
               handlePlayPauseClicked={this.handlePlayPauseClicked}
               handleVolumeClicked={this.handleVolumeClicked}
+              todaysSchedule={this.state.todaysSchedule}
             />
             <Switch>
               <Route
@@ -211,7 +220,6 @@ class Main extends Component {
                     currentShow={this.state.currentShow}
                     playing={this.props.playing}
                     handlePlayPauseClicked={this.handlePlayPauseClicked}
-                    todaysSchedule={this.state.todaysSchedule}
                     mixCloudWidget={this.props.mixCloudWidget}
                     residents={this.props.residents}
                     currentDay={this.state.currentDay}
