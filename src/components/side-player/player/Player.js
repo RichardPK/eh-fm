@@ -31,7 +31,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: ${(props) => (props.playing ? Colors.ehfmPrimary : Colors.playerWhite)};
+  /* background-color: ${(props) => (props.playing ? Colors.ehfmPrimary : Colors.playerWhite)}; */
+  background-color: ${Colors.ehfmPrimary};
+  border: 1px solid ${Colors.playerWhite};
 `;
 
 const Left = styled.div`
@@ -55,11 +57,11 @@ const PlayPauseWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1.5px solid ${Colors.ehfmPrimary};
+  border-right: 1.5px solid ${Colors.playerWhite};
 
   svg {
-    width: 1.1rem;
-    fill: ${Colors.ehfmPrimary};
+    width: 1rem;
+    fill: ${Colors.playerWhite};
   }
 `;
 
@@ -81,7 +83,7 @@ const VolumeWrapper = styled.div`
 
   svg {
     width: 1rem;
-    fill: ${Colors.ehfmPrimary};
+    fill: ${Colors.playerWhite};
   }
 `;
 

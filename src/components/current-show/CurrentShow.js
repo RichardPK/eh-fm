@@ -130,12 +130,12 @@ const OnAirWrapper = styled.div`
 `;
 
 const CurrentShowImageWrapper = styled.div`
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
 
   img {
     border-radius: 5px;
-    height: auto;
+    /* height: auto; */
     width: 100%;
   }
 `;
@@ -158,13 +158,11 @@ const ShowName = styled(Heading3)`
 `;
 
 const NameWrapper = styled.div`
-  /* display: inline-block; */
   background-color: ${Colors.notQuiteBlackCustom(0.75)};
   padding: 4px;
 `;
 
 const DescriptionWrapper = styled.div`
-  /* display: inline-block; */
   background-color: ${Colors.notQuiteBlackCustom(0.75)};
   padding: 4px;
   margin-top: 0.25rem;

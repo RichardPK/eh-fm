@@ -22,7 +22,7 @@ class Main extends Component {
       currentDate: null,
       currentDay: null,
       currentShow: null,
-      nextSevenDaysSchedule: [],
+      todaysSchedule: [],
       playing: false,
       volume: 1
     };
@@ -42,7 +42,7 @@ class Main extends Component {
     this.fetchDate = this.fetchDate.bind(this);
     this.populateSchedule = this.populateSchedule.bind(this);
     this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(this);
-    this.deleteDaysInPast = this.deleteDaysInPast.bind(this);
+    this.getTodaysSchedule = this.getTodaysSchedule.bind(this);
     this.fetchDay = this.fetchDay.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
@@ -129,8 +129,8 @@ class Main extends Component {
 
   populateSchedule() {
     let showArray = this.convertShowScheduleToArray();
-    let nextSevenDaysSchedule = this.deleteDaysInPast(showArray);
-    nextSevenDaysSchedule && this.setState({ nextSevenDaysSchedule });
+    let todaysSchedule = this.getTodaysSchedule(showArray);
+    todaysSchedule && this.setState({ todaysSchedule });
   }
 
   convertShowScheduleToArray() {
@@ -148,19 +148,14 @@ class Main extends Component {
     }
   }
 
-  deleteDaysInPast(scheduleData) {
+  getTodaysSchedule(scheduleData) {
     let currentDate = this.state.currentDate;
     if (scheduleData) {
       for (let day of scheduleData) {
         if (day[1].length !== 0) {
           if (day[1][0].start_timestamp.includes(currentDate)) {
             let currentDayInScheduleIndex = scheduleData.indexOf(day);
-            let finalDayInScheduleToDisplay = currentDayInScheduleIndex + 7;
-            let nextSevenDaysSchedule = scheduleData.slice(
-              currentDayInScheduleIndex,
-              finalDayInScheduleToDisplay
-            );
-            return nextSevenDaysSchedule;
+            return scheduleData[currentDayInScheduleIndex];
           }
         }
       }
@@ -216,7 +211,7 @@ class Main extends Component {
                     currentShow={this.state.currentShow}
                     playing={this.props.playing}
                     handlePlayPauseClicked={this.handlePlayPauseClicked}
-                    nextSevenDaysSchedule={this.state.nextSevenDaysSchedule}
+                    todaysSchedule={this.state.todaysSchedule}
                     mixCloudWidget={this.props.mixCloudWidget}
                     residents={this.props.residents}
                     currentDay={this.state.currentDay}
