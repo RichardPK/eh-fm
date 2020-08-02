@@ -22,13 +22,16 @@ const Schedule = ({ showsUpNext }) => {
             );
           })}
       </ScheduleItemsWrapper>
+      <GradientWrapper />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
+  height: 33%;
   padding: 1rem 1.5rem 0;
 `;
 
@@ -39,13 +42,30 @@ const ComingUpText = styled(Body)`
 `;
 
 const ScheduleItemsWrapper = styled.div`
-  height: 60px;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   ::-webkit-scrollbar {
     display: none;
   }
+`;
+
+const GradientWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  align-self: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  pointer-events: none;
+  height: 50%;
+  background-image: linear-gradient(
+    to bottom,
+    ${Colors.playerWhiteCustom(0)},
+    ${Colors.playerWhiteCustom(0.9)}
+  );
+  /* background-color: red; */
+  z-index: 1;
 `;
 
 export default Schedule;
