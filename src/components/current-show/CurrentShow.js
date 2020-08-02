@@ -8,7 +8,7 @@ import Colors from '../../consts/Colors';
 import Image from '../image/Image';
 import PlaceholderImage from '../../assets/images/placeholder-showimg.jpg';
 
-const CurrentShow = (props) => {
+const CurrentShow = ({ currentShow, residents, playing, handlePlayPauseClicked }) => {
   const [prismicShow, setPrismicShow] = useState(null);
   const SHOW_NOT_FOUND = 'SHOW_NOT_FOUND';
 
@@ -22,8 +22,8 @@ const CurrentShow = (props) => {
     if (currentShowName) {
       toLowerCase = currentShowName.toLowerCase();
     }
-    if (props.residents.length > 0 && toLowerCase) {
-      const filtered = props.residents.filter((resident) =>
+    if (residents.length > 0 && toLowerCase) {
+      const filtered = residents.filter((resident) =>
         toLowerCase.includes(resident.data.show_title.toLowerCase())
       );
       if (filtered.length > 0) {
@@ -36,8 +36,8 @@ const CurrentShow = (props) => {
 
   const parseShowName = () => {
     let currentShowName = null;
-    if (props.currentShow !== null) {
-      let showData = props.currentShow;
+    if (currentShow !== null) {
+      let showData = currentShow;
       currentShowName = showData.currentShow[0].name;
       let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, "'");
       let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
@@ -47,7 +47,7 @@ const CurrentShow = (props) => {
   };
 
   const airTimeShowImgUrl = () => {
-    return props.currentShow && props.currentShow.currentShow[0].image_path;
+    return currentShow && currentShow.currentShow[0].image_path;
   };
 
   const prismicShowImgUrl = () => {
@@ -76,8 +76,8 @@ const CurrentShow = (props) => {
 
   const returnShowDescription = () => {
     let currentShowDescription = null;
-    if (props.currentShow !== null) {
-      let showData = props.currentShow;
+    if (currentShow !== null) {
+      let showData = currentShow;
       currentShowDescription = showData.currentShow[0].description;
       if (currentShowDescription === '') {
         currentShowDescription = 'Independent community radio for Edinburgh.';
