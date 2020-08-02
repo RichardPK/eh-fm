@@ -39,7 +39,7 @@ const CurrentShow = ({
         <Image
           baseUrl={prismicShowImgUrl()}
           width={500}
-          height={750}
+          height={600}
           alt="current live show"
           fit={"crop"}
         />
@@ -74,7 +74,7 @@ const CurrentShow = ({
   };
 
   return (
-    <Wrapper>
+    <Wrapper onClick={handlePlayPauseClicked}>
       <OnAirWrapper>
         <OnAir />
       </OnAirWrapper>
@@ -104,6 +104,7 @@ const Wrapper = styled.div`
   @media ${Devices.tablet} {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
   }
 `;
 
