@@ -267,6 +267,7 @@ const MainWrapper = styled.div`
   /* width: calc(100vw - 385px); */
   display: grid;
   grid-template: auto 1fr auto / auto 1fr auto;
+  /* https://codepen.io/una/pen/mdVbdBy /*
   /* display: flex; */
   position: relative;
   margin-left: 385px;
