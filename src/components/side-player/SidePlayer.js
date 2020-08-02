@@ -62,7 +62,7 @@ const SidePlayerOuter = styled.div`
 const CurrentShowAndPlayerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem 0.5rem 0.75rem;
+  padding: 2rem 0.5rem 1rem;
 `;
 
 const ScheduleWrapper = styled.div`

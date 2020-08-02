@@ -49,7 +49,6 @@ const Left = styled.div`
 
 const PlayPauseWrapper = styled.div`
   padding: 0.5rem 1.25rem;
-  /* margin-left: ; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,14 +64,14 @@ const PlayPauseWrapper = styled.div`
   }
 
   @media ${Devices.tablet} {
+    cursor: pointer;
     &:hover {
-      cursor: pointer;
-      svg {
+      /* svg {
         fill: ${(props) =>
           props.playing ? Colors.playerWhite : Colors.ehfmPrimary};
       }
       background-color: ${(props) =>
-        props.playing ? Colors.ehfmPrimary : Colors.playerWhite};
+        props.playing ? Colors.ehfmPrimary : Colors.playerWhite}; */
     }
   }
 `;
