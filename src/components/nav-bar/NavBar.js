@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Logo from './logo/Logo';
-import Devices from '../../consts/Devices';
-import Socials from './socials/Socials';
-import Colors from '../../consts/Colors';
-import NavLinks from './nav-links/NavLinks';
-import PaypalButton from '../paypal-button/PaypalButton';
+import React from "react";
+import styled from "styled-components/macro";
+import Logo from "./logo/Logo";
+import Devices from "../../consts/Devices";
+import Socials from "./socials/Socials";
+import Colors from "../../consts/Colors";
+import NavLinks from "./nav-links/NavLinks";
+import PaypalButton from "../paypal-button/PaypalButton";
 
 const NavBar = (props) => {
   return (
@@ -27,7 +27,7 @@ const NavBar = (props) => {
 
 const Wrapper = styled.nav`
   position: fixed;
-  width: 100vw;
+  width: 100%;
   z-index: 2;
   top: 68px;
   top: 0px;
