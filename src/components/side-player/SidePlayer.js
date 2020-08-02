@@ -19,7 +19,7 @@ const SidePlayer = ({
   return (
     <SidePlayerOuter>
       <Logo />
-      <CurrentShowWrapper>
+      <CurrentShowAndPlayerWrapper>
         {currentShow ? (
           <CurrentShow
             currentShow={currentShow}
@@ -28,8 +28,6 @@ const SidePlayer = ({
             handlePlayPauseClicked={handlePlayPauseClicked}
           />
         ) : null}
-      </CurrentShowWrapper>
-      <PlayerWrapper>
         <Player
           playing={playing}
           handlePlayPauseClicked={handlePlayPauseClicked}
@@ -37,7 +35,7 @@ const SidePlayer = ({
           handleVolumeClicked={handleVolumeClicked}
           volume={volume}
         />
-      </PlayerWrapper>
+      </CurrentShowAndPlayerWrapper>
       <ScheduleWrapper>
         <Schedule showsUpNext={showsUpNext} />
       </ScheduleWrapper>
@@ -59,14 +57,10 @@ const SidePlayerOuter = styled.div`
   height: 100%;
 `;
 
-const CurrentShowWrapper = styled.div`
-  position: relative;
-  padding: 1rem 0.5rem 0;
-`;
-
-const PlayerWrapper = styled.div`
-  width: calc(100% - 1rem);
-  padding: 0 0.5rem 0.5rem;
+const CurrentShowAndPlayerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.5rem 0.75rem;
 `;
 
 const ScheduleWrapper = styled.div`

@@ -114,6 +114,7 @@ const CurrentShow = ({ currentShow, residents, playing, handlePlayPauseClicked }
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
   position: relative;
   overflow: hidden;
 
@@ -130,12 +131,13 @@ const OnAirWrapper = styled.div`
 `;
 
 const CurrentShowImageWrapper = styled.div`
-  /* height: 100%; */
+  height: 100%;
   width: 100%;
 
   img {
-    border-radius: 5px;
-    /* height: auto; */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 100%;
     width: 100%;
   }
 `;
