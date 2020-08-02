@@ -18,7 +18,9 @@ const ScheduleItem = ({ showName, starts }) => {
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
-  margin-bottom: 0.2rem;
+  padding-bottom: 0.15rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid ${Colors.notQuiteBlackCustom(0.2)};
 `;
 
 const Name = styled(Body)``;
