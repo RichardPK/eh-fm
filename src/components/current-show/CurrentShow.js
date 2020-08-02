@@ -62,7 +62,7 @@ const CurrentShow = ({ currentShow, residents, playing, handlePlayPauseClicked }
         <Image
           baseUrl={prismicShowImgUrl()}
           width={500}
-          height={500}
+          height={750}
           alt="current live show"
           fit={'crop'}
         />

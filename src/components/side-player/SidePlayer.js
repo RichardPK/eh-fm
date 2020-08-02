@@ -6,6 +6,7 @@ import Logo from '../nav-bar/logo/Logo';
 import Schedule from '../schedule/Schedule';
 import Devices from '../../consts/Devices';
 import Colors from '../../consts/Colors';
+import Chatango from '../chatango/Chatango';
 
 const SidePlayer = ({
   currentShow,
@@ -39,6 +40,8 @@ const SidePlayer = ({
       <ScheduleWrapper>
         <Schedule showsUpNext={showsUpNext} />
       </ScheduleWrapper>
+
+      <Chatango />
     </SidePlayerOuter>
   );
 };
@@ -60,12 +63,13 @@ const SidePlayerOuter = styled.div`
 const CurrentShowAndPlayerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem 0.5rem 0.75rem;
+  padding: 2rem 0.5rem 0.75rem;
 `;
 
 const ScheduleWrapper = styled.div`
   height: 100%;
   width: 100%;
+  border-top: ${Colors.bgWhite};
   background-color: ${Colors.playerWhite};
 `;
 
