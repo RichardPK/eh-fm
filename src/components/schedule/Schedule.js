@@ -12,9 +12,13 @@ const Schedule = ({ showsUpNext }) => {
       <ComingUpText>Coming up...</ComingUpText>
       <ScheduleItemsWrapper>
         {showsUpNext &&
-          showsUpNext.map((scheduleItemData) => {
+          showsUpNext.map((scheduleItemData, i) => {
             return (
-              <ScheduleItem showName={scheduleItemData.name} starts={scheduleItemData.starts} />
+              <ScheduleItem
+                key={i}
+                showName={scheduleItemData.name}
+                starts={scheduleItemData.starts}
+              />
             );
           })}
       </ScheduleItemsWrapper>
@@ -31,12 +35,17 @@ const Wrapper = styled.div`
 const ComingUpText = styled(Body)`
   color: ${Colors.notQuiteBlack};
   font-weight: normal;
+  margin-bottom: 0.75rem;
 `;
 
 const ScheduleItemsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  height: 60px;
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export default Schedule;

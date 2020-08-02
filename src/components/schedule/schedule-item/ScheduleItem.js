@@ -18,6 +18,7 @@ const ScheduleItem = ({ showName, starts }) => {
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
+  margin-bottom: 0.2rem;
 `;
 
 const Name = styled(Body)``;
