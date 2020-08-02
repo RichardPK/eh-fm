@@ -6,14 +6,14 @@ import DailyShowSchedule from './daily-show-schedule/DailyShowSchedule';
 import Colors from '../../consts/Colors';
 import ScheduleItem from './schedule-item/ScheduleItem';
 
-const Schedule = ({ todaysSchedule }) => {
+const Schedule = ({ showsUpNext }) => {
   return (
     <Wrapper>
       <Heading4Component>Coming up...</Heading4Component>
       <ScheduleItemsWrapper>
-        {todaysSchedule &&
-          todaysSchedule[1].map((scheduleItemData) => {
-            debugger;
+        {showsUpNext &&
+          showsUpNext.map((scheduleItemData) => {
+            // debugger;
             return <ScheduleItem />;
           })}
       </ScheduleItemsWrapper>

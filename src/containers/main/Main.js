@@ -13,7 +13,7 @@ import ResidentsActions from '../../actions/ResidentsActions';
 import _ from 'lodash';
 import Analytics from '../../components/analytics/Analytics';
 import { withCookies } from 'react-cookie';
-import Moment from 'react-moment';
+import moment from 'moment';
 
 class Main extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Main extends Component {
       currentDate: null,
       currentDay: null,
       currentShow: null,
-      todaysSchedule: null,
+      showsUpNext: null,
       playing: false,
       volume: 1
     };
@@ -130,10 +130,10 @@ class Main extends Component {
   }
 
   populateSchedule() {
-    let showArray = this.convertShowScheduleToArray();
-    let todaysSchedule = this.getTodaysSchedule(showArray);
-    let remainingShowsToday = this.getRemainingShowsToday(todaysSchedule);
-    todaysSchedule && this.setState({ todaysSchedule });
+    const showArray = this.convertShowScheduleToArray();
+    const todaysSchedule = this.getTodaysSchedule(showArray);
+    const showsUpNext = this.getRemainingShowsToday(todaysSchedule);
+    showsUpNext && this.setState({ showsUpNext });
   }
 
   convertShowScheduleToArray() {
@@ -167,7 +167,15 @@ class Main extends Component {
 
   getRemainingShowsToday(todaysSchedule) {
     const shows = todaysSchedule[1];
-    debugger;
+    const now = Date.now();
+    let remainingShows = [];
+    for (let show of shows) {
+      const startTimeInMs = moment(show.start_timestamp, 'YYYY-MM-DD HH:mm:ss').valueOf();
+      if (startTimeInMs > now) {
+        remainingShows.push(show);
+      }
+    }
+    return remainingShows;
   }
 
   handlePlayPauseClicked() {
@@ -208,22 +216,14 @@ class Main extends Component {
               volume={this.props.volume}
               handlePlayPauseClicked={this.handlePlayPauseClicked}
               handleVolumeClicked={this.handleVolumeClicked}
-              todaysSchedule={this.state.todaysSchedule}
+              showsUpNext={this.state.showsUpNext}
             />
             <Switch>
               <Route
                 exact
                 path="/"
                 component={() => (
-                  <Home
-                    cookies={this.props.cookies}
-                    currentShow={this.state.currentShow}
-                    playing={this.props.playing}
-                    handlePlayPauseClicked={this.handlePlayPauseClicked}
-                    mixCloudWidget={this.props.mixCloudWidget}
-                    residents={this.props.residents}
-                    currentDay={this.state.currentDay}
-                  />
+                  <Home cookies={this.props.cookies} mixCloudWidget={this.props.mixCloudWidget} />
                 )}
               />
               <Route

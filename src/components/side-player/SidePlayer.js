@@ -7,46 +7,43 @@ import Schedule from '../schedule/Schedule';
 import Devices from '../../consts/Devices';
 import Colors from '../../consts/Colors';
 
-class SidePlayer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      volume: 1.0
-    };
-  }
-
-  componentDidUpdate() {}
-
-  render() {
-    return (
-      <SidePlayerOuter>
-        <Logo />
-        <CurrentShowWrapper>
-          {this.props.currentShow ? (
-            <CurrentShow
-              currentShow={this.props.currentShow}
-              residents={this.props.residents}
-              playing={this.props.playing}
-              handlePlayPauseClicked={this.props.handlePlayPauseClicked}
-            />
-          ) : null}
-        </CurrentShowWrapper>
-        <PlayerWrapper>
-          <Player
-            playing={this.props.playing}
-            handlePlayPauseClicked={this.props.handlePlayPauseClicked}
-            currentShow={this.props.currentShow}
-            handleVolumeClicked={this.props.handleVolumeClicked}
-            volume={this.props.volume}
+const SidePlayer = ({
+  currentShow,
+  residents,
+  playing,
+  volume,
+  handlePlayPauseClicked,
+  handleVolumeClicked,
+  showsUpNext
+}) => {
+  return (
+    <SidePlayerOuter>
+      <Logo />
+      <CurrentShowWrapper>
+        {currentShow ? (
+          <CurrentShow
+            currentShow={currentShow}
+            residents={residents}
+            playing={playing}
+            handlePlayPauseClicked={handlePlayPauseClicked}
           />
-        </PlayerWrapper>
-        <ScheduleWrapper>
-          <Schedule todaysSchedule={this.props.todaysSchedule} />
-        </ScheduleWrapper>
-      </SidePlayerOuter>
-    );
-  }
-}
+        ) : null}
+      </CurrentShowWrapper>
+      <PlayerWrapper>
+        <Player
+          playing={playing}
+          handlePlayPauseClicked={handlePlayPauseClicked}
+          currentShow={currentShow}
+          handleVolumeClicked={handleVolumeClicked}
+          volume={volume}
+        />
+      </PlayerWrapper>
+      <ScheduleWrapper>
+        <Schedule showsUpNext={showsUpNext} />
+      </ScheduleWrapper>
+    </SidePlayerOuter>
+  );
+};
 
 const SidePlayerOuter = styled.div`
   top: 0;
