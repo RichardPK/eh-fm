@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import InstagramLogo from '../../../assets/images/instagram-teal.png';
-import FacebookLogo from '../../../assets/images/facebook-teal.png';
-import ChatangoLogo from '../../../assets/images/chat-teal.png';
-import Devices from '../../../consts/Devices';
+import React from "react";
+import styled from "styled-components/macro";
+import InstagramLogo from "../../../assets/images/instagram-teal.png";
+import FacebookLogo from "../../../assets/images/facebook-teal.png";
+import ChatangoLogo from "../../../assets/images/chat-teal.png";
+import Devices from "../../../consts/Devices";
 
 const Socials = () => {
   return (
@@ -18,11 +18,11 @@ const Socials = () => {
           <NavSocial src={FacebookLogo} alt="facebook" />
         </a>
       </SocialInnerWrapper>
-      <SocialInnerWrapper>
+      {/* <SocialInnerWrapper>
         <a href="http://eh-fm.chatango.com/" target="blank">
           <NavChat src={ChatangoLogo} alt="chatango" />
         </a>
-      </SocialInnerWrapper>
+      </SocialInnerWrapper> */}
     </Wrapper>
   );
 };
