@@ -128,11 +128,11 @@ class ResidentProfile extends Component {
   render() {
     return (
       <React.Fragment>
-        <BackgroundImage
-          mixCloudWidget={this.props.mixCloudWidget}
-          showImage={this.props.showImage}
-        />
         <Wrapper>
+          <BackgroundImage
+            mixCloudWidget={this.props.mixCloudWidget}
+            showImage={this.props.showImage}
+          />
           <ProfileText props={this.props} />
           {this.props.pastShows && this.state.orderedShows && (
             <React.Fragment>
@@ -172,10 +172,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
 
-  margin: 150px auto 0;
+  margin: 2rem auto 0;
 
   @media ${Devices.tablet} {
-    margin: 125px auto 0;
+    margin: 1.5rem auto 0;
   }
 `;
 

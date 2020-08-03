@@ -9,8 +9,8 @@ const BackgroundImage = ({ mixCloudWidget, showImage }) => {
 const Wrapper = styled.div`
   background-position: center center !important;
   background-size: cover !important;
-  width: calc(100vw - 385px);
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   overflow: hidden;
   position: absolute;
