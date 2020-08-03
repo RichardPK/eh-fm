@@ -10,13 +10,24 @@ import { ReactComponent as Volume } from '../../../assets/svgs/volume.svg';
 import { ReactComponent as MuteVolume } from '../../../assets/svgs/volume-mute.svg';
 
 const Player = ({ playing, handlePlayPauseClicked, currentShow, handleVolumeClicked, volume }) => {
+  const [hovered, setHovered] = useState(false);
   return (
     <Wrapper>
-      <Left>
-        <PlayPauseWrapper playing={playing} onClick={handlePlayPauseClicked}>
-          <PlayBorder />
+      <Left
+        onClick={handlePlayPauseClicked}
+        playing={playing}
+        hovered={hovered}
+        onMouseOver={() => {
+          setHovered(true);
+        }}
+        onMouseOut={() => {
+          setHovered(false);
+        }}
+      >
+        <PlayPauseWrapper playing={playing} hovered={hovered}>
           <PlayPauseButton playingTrueFalse={playing} />
         </PlayPauseWrapper>
+        <PlayBorder />
       </Left>
       <Right>
         <VolumeWrapper onClick={() => handleVolumeClicked()}>
@@ -37,32 +48,27 @@ const Wrapper = styled.div`
 
 const Left = styled.div`
   display: flex;
+  position: relative;
   flex: 1;
   align-items: center;
-  justify-content: flex-start;
+  justify-self: flex-start;
+  cursor: pointer;
+  background-color: ${(props) =>
+    props.hovered || props.playing ? Colors.playerWhite : Colors.ehfmPrimary};
+  transition: all 0.2s ease-out;
 `;
 
 const PlayPauseWrapper = styled.div`
-  position: relative;
   padding: 0.5rem 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => (props.playing ? Colors.playerWhite : Colors.ehfmPrimary)};
   transition: all 0.2s ease-out;
-
-  svg {
-    width: 1rem;
-    fill: ${(props) => (props.playing ? Colors.ehfmPrimary : Colors.playerWhite)};
-  }
-
   @media ${Devices.tablet} {
-    cursor: pointer;
-    &:hover {
-      /* svg {
-        fill: ${(props) => (props.playing ? Colors.playerWhite : Colors.ehfmPrimary)};
-      }
-      background-color: ${(props) => (props.playing ? Colors.ehfmPrimary : Colors.playerWhite)}; */
+    svg {
+      width: 1rem;
+      fill: ${(props) =>
+        props.hovered || props.playing ? Colors.ehfmPrimary : Colors.playerWhite};
     }
   }
 `;
@@ -79,15 +85,15 @@ const PlayBorder = styled.div`
 
 const Right = styled.div`
   display: flex;
-  flex: 1;
-  padding: 0.5rem;
-  margin-right: 0.5rem;
+  /* flex: 1; */
+
   position: relative;
-  align-items: center;
-  justify-content: flex-end;
+  align-self: center;
+  justify-self: flex-end;
 `;
 
 const VolumeWrapper = styled.div`
+  padding: 0.5rem 1.25rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
