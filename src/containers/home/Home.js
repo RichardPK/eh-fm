@@ -138,15 +138,16 @@ const HomeContainer = (props) => {
 };
 
 const Wrapper = styled.div`
-  width: calc(100vw - 385px);
+  /* width: calc(100vw - 385px); */
+  grid-column: 2 / 4;
   display: flex;
   position: relative;
   flex-direction: column;
-  margin: 150px 0
+  margin: 2rem 0
     ${(props) => (props.cookiesBannerShowing ? '95px' : props.mixCloudWidget ? `123px` : 0)};
 
   @media ${Devices.tablet} {
-    margin: 125px 0
+    margin: 1.5rem 0
       ${(props) => (props.cookiesBannerShowing ? '70px' : props.mixCloudWidget ? `123px` : 0)};
   }
 `;

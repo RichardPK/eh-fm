@@ -62,7 +62,8 @@ class ResidentsContainer extends Component {
 }
 
 const Wrapper = styled.div`
-  max-width: ${Sizes.maxInnerWidth};
+  /* max-width: ${Sizes.maxInnerWidth}; */
+  grid-column: 2 / 4;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;

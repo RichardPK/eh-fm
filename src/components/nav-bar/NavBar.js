@@ -1,33 +1,30 @@
-import React from "react";
-import styled from "styled-components/macro";
-import Logo from "./logo/Logo";
-import Devices from "../../consts/Devices";
-import Socials from "./socials/Socials";
-import Colors from "../../consts/Colors";
-import NavLinks from "./nav-links/NavLinks";
-import PaypalButton from "../paypal-button/PaypalButton";
+import React from 'react';
+import styled from 'styled-components/macro';
+import Logo from './logo/Logo';
+import Devices from '../../consts/Devices';
+import Socials from './socials/Socials';
+import Colors from '../../consts/Colors';
+import NavLinks from './nav-links/NavLinks';
+import PaypalButton from '../paypal-button/PaypalButton';
 
 const NavBar = (props) => {
   return (
-    <React.Fragment>
-      <Wrapper>
-        <Inner>
-          <Left>
-            <NavLinks />
-          </Left>
-          <Right>
-            <PaypalButton />
-            <Socials />
-          </Right>
-        </Inner>
-      </Wrapper>
-    </React.Fragment>
+    <Wrapper>
+      <Inner>
+        <Left>
+          <NavLinks />
+        </Left>
+        <Right>
+          <PaypalButton />
+          <Socials />
+        </Right>
+      </Inner>
+    </Wrapper>
   );
 };
 
 const Wrapper = styled.nav`
-  position: fixed;
-  width: 100%;
+  grid-column: 2 / 4;
   z-index: 2;
   top: 68px;
   top: 0px;

@@ -93,7 +93,7 @@ const Right = styled.div`
 `;
 
 const VolumeWrapper = styled.div`
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   display: flex;
   justify-content: center;

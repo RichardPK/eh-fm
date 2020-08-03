@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import styled from "styled-components/macro";
-import CurrentShow from "../current-show/CurrentShow";
-import Player from "./player/Player";
-import Logo from "../nav-bar/logo/Logo";
-import Schedule from "../schedule/Schedule";
-import Devices from "../../consts/Devices";
-import Colors from "../../consts/Colors";
-import ChatangoWidget from "../chatango/chatango-widget/ChatangoWidget";
+import React, { Component } from 'react';
+import styled from 'styled-components/macro';
+import CurrentShow from '../current-show/CurrentShow';
+import Player from './player/Player';
+import Logo from '../nav-bar/logo/Logo';
+import Schedule from '../schedule/Schedule';
+import Devices from '../../consts/Devices';
+import Colors from '../../consts/Colors';
+import ChatangoWidget from '../chatango/chatango-widget/ChatangoWidget';
 
 const SidePlayer = ({
   currentShow,
@@ -15,7 +15,7 @@ const SidePlayer = ({
   volume,
   handlePlayPauseClicked,
   handleVolumeClicked,
-  showsUpNext,
+  showsUpNext
 }) => {
   return (
     <SidePlayerOuter>
@@ -46,13 +46,14 @@ const SidePlayer = ({
 };
 
 const SidePlayerOuter = styled.div`
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
   top: 0;
   left: 0;
   z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
   background-color: ${Colors.ehfmPrimary};
   padding-top: 2rem;
   width: 350px;
