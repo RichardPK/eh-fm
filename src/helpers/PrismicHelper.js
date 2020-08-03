@@ -1,4 +1,13 @@
-const SHOW_NOT_FOUND = "SHOW_NOT_FOUND";
+const SHOW_NOT_FOUND = 'SHOW_NOT_FOUND';
+
+const parsedForInvertedCommas = (string) => string.replace(/&#039;/g, "'");
+const parsedForAmpersands = (string) => string.replace(/&amp;/g, '&');
+
+export const sanitiseString = (string) => {
+  let noAmpersands = parsedForAmpersands(string);
+  let andNoCommas = parsedForInvertedCommas(noAmpersands);
+  return andNoCommas;
+};
 
 export const getShowInPrismic = ({ residents, currentShow }) => {
   let toLowerCase;
@@ -23,9 +32,8 @@ export const parseShowName = (currentShow) => {
   if (currentShow !== null) {
     let showData = currentShow;
     currentShowName = showData.currentShow[0].name;
-    let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, "'");
-    let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, "&");
-    return parsedForAmpersands;
+    let sanitisedString = sanitiseString(currentShowName);
+    return sanitisedString;
   }
   return currentShowName;
 };

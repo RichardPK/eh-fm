@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
-import ListenNowButton from "../listen-now-button/ListenNowButton";
-import OnAir from "../side-player/player/on-air/OnAir";
-import styled from "styled-components/macro";
-import Devices from "../../consts/Devices";
-import { Heading4, Heading3, Body } from "../text-elements/index";
-import { getShowInPrismic, parseShowName } from "../../helpers/PrismicHelper";
-import Colors from "../../consts/Colors";
-import Image from "../image/Image";
-import PlaceholderImage from "../../assets/images/placeholder-showimg.jpg";
+import React, { useEffect, useState } from 'react';
+import ListenNowButton from '../listen-now-button/ListenNowButton';
+import OnAir from '../side-player/player/on-air/OnAir';
+import styled from 'styled-components/macro';
+import Devices from '../../consts/Devices';
+import { Heading4, Heading3, Body } from '../text-elements/index';
+import { getShowInPrismic, parseShowName, sanitiseString } from '../../helpers/PrismicHelper';
+import Colors from '../../consts/Colors';
+import Image from '../image/Image';
+import PlaceholderImage from '../../assets/images/placeholder-showimg.jpg';
 
-const CurrentShow = ({
-  currentShow,
-  residents,
-  playing,
-  handlePlayPauseClicked,
-}) => {
+const CurrentShow = ({ currentShow, residents, playing, handlePlayPauseClicked }) => {
   const [prismicShow, setPrismicShow] = useState(null);
 
   useEffect(() => {
@@ -27,9 +22,7 @@ const CurrentShow = ({
 
   const prismicShowImgUrl = () => {
     return (
-      prismicShow &&
-      prismicShow !== "SHOW_NOT_FOUND" &&
-      prismicShow.show_image.url.split("&")[0]
+      prismicShow && prismicShow !== 'SHOW_NOT_FOUND' && prismicShow.show_image.url.split('&')[0]
     );
   };
 
@@ -41,7 +34,7 @@ const CurrentShow = ({
           width={500}
           height={600}
           alt="current live show"
-          fit={"crop"}
+          fit={'crop'}
         />
       );
     } else if (airTimeShowImgUrl()) {
@@ -53,22 +46,17 @@ const CurrentShow = ({
 
   const returnShowDescription = () => {
     let currentShowDescription = null;
+    if (prismicShow && prismicShow.show_description) {
+      return sanitiseString(prismicShow.show_description);
+    }
     if (currentShow !== null) {
       let showData = currentShow;
       currentShowDescription = showData.currentShow[0].description;
-      if (currentShowDescription === "") {
-        currentShowDescription = "Independent community radio for Edinburgh.";
+      if (currentShowDescription === '') {
+        currentShowDescription = 'Independent community radio for Edinburgh.';
         return currentShowDescription;
       } else {
-        let parsedForInvertedCommas = currentShowDescription.replace(
-          /&#039;/g,
-          "'"
-        );
-        let parsedForAmpersands = parsedForInvertedCommas.replace(
-          /&amp;/g,
-          "&"
-        );
-        return parsedForAmpersands;
+        return sanitiseString(currentShowDescription);
       }
     }
   };
