@@ -9,19 +9,24 @@ import PaypalButton from '../paypal-button/PaypalButton';
 
 const NavBar = (props) => {
   return (
-    <Wrapper>
-      <Inner>
-        <Left>
-          <NavLinks />
-        </Left>
-        <Right>
-          <PaypalButton />
-          <Socials />
-        </Right>
-      </Inner>
-    </Wrapper>
+    <>
+      <FakeNavBar />
+      <Wrapper>
+        <Inner>
+          <Left>
+            <NavLinks />
+          </Left>
+          <Right>
+            <PaypalButton />
+            <Socials />
+          </Right>
+        </Inner>
+      </Wrapper>
+    </>
   );
 };
+
+const FakeNavBar = styled.div``;
 
 const Wrapper = styled.nav`
   grid-column: 2 / 4;
