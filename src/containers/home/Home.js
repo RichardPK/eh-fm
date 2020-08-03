@@ -138,7 +138,6 @@ const HomeContainer = (props) => {
 };
 
 const Wrapper = styled.div`
-  /* width: calc(100vw - 385px); */
   grid-column: 2 / 4;
   display: flex;
   position: relative;

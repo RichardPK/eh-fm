@@ -18,42 +18,50 @@ const SidePlayer = ({
   showsUpNext
 }) => {
   return (
-    <SidePlayerOuter>
-      <Logo />
-      <CurrentShowAndPlayerWrapper>
-        {currentShow ? (
-          <CurrentShow
-            currentShow={currentShow}
-            residents={residents}
+    <>
+      <FakeSidePlayer />
+      <SidePlayerOuter>
+        <Logo />
+        <CurrentShowAndPlayerWrapper>
+          {currentShow ? (
+            <CurrentShow
+              currentShow={currentShow}
+              residents={residents}
+              playing={playing}
+              handlePlayPauseClicked={handlePlayPauseClicked}
+            />
+          ) : null}
+          <Player
             playing={playing}
             handlePlayPauseClicked={handlePlayPauseClicked}
+            currentShow={currentShow}
+            handleVolumeClicked={handleVolumeClicked}
+            volume={volume}
           />
-        ) : null}
-        <Player
-          playing={playing}
-          handlePlayPauseClicked={handlePlayPauseClicked}
-          currentShow={currentShow}
-          handleVolumeClicked={handleVolumeClicked}
-          volume={volume}
-        />
-      </CurrentShowAndPlayerWrapper>
-      <ScheduleWrapper>
-        <Schedule showsUpNext={showsUpNext} />
-      </ScheduleWrapper>
-      <ChatangoWidget />
-    </SidePlayerOuter>
+        </CurrentShowAndPlayerWrapper>
+        <ScheduleWrapper>
+          <Schedule showsUpNext={showsUpNext} />
+        </ScheduleWrapper>
+        <ChatangoWidget />
+      </SidePlayerOuter>
+    </>
   );
 };
 
-const SidePlayerOuter = styled.div`
+const FakeSidePlayer = styled.div`
   grid-column: 1 / 2;
   grid-row: 1 / 3;
+  width: 350px;
+`;
+
+const SidePlayerOuter = styled.div`
   top: 0;
   left: 0;
   z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
   background-color: ${Colors.ehfmPrimary};
   padding-top: 2rem;
   width: 350px;
