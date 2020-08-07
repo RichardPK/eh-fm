@@ -235,7 +235,7 @@ class Main extends Component {
               <Route
                 exact
                 path="/"
-                component={() => (
+                render={() => (
                   <Home
                     cookies={this.props.cookies}
                     mixCloudWidget={this.props.mixCloudWidget}

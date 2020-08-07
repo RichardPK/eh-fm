@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, memo } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
 import Swiper from "react-id-swiper";
@@ -105,4 +105,4 @@ const Wrapper = styled.div`
     props.hierarchy === "primary" ? "0 0 5rem" : "0 0 1rem"};
 `;
 
-export default Carousel;
+export default memo(Carousel);
