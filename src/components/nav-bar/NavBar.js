@@ -1,11 +1,12 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Logo from './logo/Logo';
-import Devices from '../../consts/Devices';
-import Socials from './socials/Socials';
-import Colors from '../../consts/Colors';
-import NavLinks from './nav-links/NavLinks';
-import PaypalButton from '../paypal-button/PaypalButton';
+import React from "react";
+import styled from "styled-components/macro";
+import Logo from "./logo/Logo";
+import Devices from "../../consts/Devices";
+import Sizes from "../../consts/Sizes";
+import Socials from "./socials/Socials";
+import Colors from "../../consts/Colors";
+import NavLinks from "./nav-links/NavLinks";
+import PaypalButton from "../paypal-button/PaypalButton";
 
 const NavBar = (props) => {
   return (
@@ -26,13 +27,20 @@ const NavBar = (props) => {
   );
 };
 
-const FakeNavBar = styled.div``;
+const FakeNavBar = styled.div`
+  height: ${Sizes.navHeight}px;
+  width: calc(100% - ${Sizes.sidePlayerWidth}px);
+  grid-column: 2 / 4;
+  z-index: -1;
+`;
 
 const Wrapper = styled.nav`
+  position: fixed;
   grid-column: 2 / 4;
   z-index: 2;
-  top: 68px;
-  top: 0px;
+  top: 0;
+  left: ${Sizes.sidePlayerWidth}px;
+  width: calc(100% - ${Sizes.sidePlayerWidth}px);
 
   @media ${Devices.tablet} {
   }
@@ -65,24 +73,6 @@ const Left = styled.div`
 
   @media ${Devices.tablet} {
     height: 71px;
-  }
-`;
-
-const HeaderLogoWrapper = styled.div`
-  position: absolute;
-  transform: translateX(-50%);
-  left: 50%;
-  top: -70px;
-  padding-left: 50vw;
-  padding-right: 50vw;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  background-color: white;
-
-  @media ${Devices.tablet} {
-    top: 0px;
-    padding-left: 0;
-    padding-right: 0;
   }
 `;
 

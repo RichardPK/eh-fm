@@ -1,6 +1,4 @@
 export default {
-  mainButtonSize: `0.8em`,
-  mainButtonHalfSize: `0.5em`,
   playerWhite: `rgb(255, 255, 255)`,
   playerWhiteCustom: (customVal) => `rgba(255, 255, 255, ${customVal})`,
   softWhite: `rgba(255, 255, 255, 0.8)`,
@@ -24,5 +22,5 @@ export default {
   spanBg: `rgba(72, 67, 73, 0.8)`,
   spanBgSolid: `rgba(72,67,73,0.97)`,
   softGrey: `rgb(223, 223, 223)`,
-  softerGrey: `rgb(239, 239, 239)`
+  softerGrey: `rgb(239, 239, 239)`,
 };
