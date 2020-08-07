@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ListenNowButton from "../listen-now-button/ListenNowButton";
 import OnAir from "../side-player/player/on-air/OnAir";
 import styled from "styled-components/macro";
@@ -72,6 +73,9 @@ const CurrentShow = ({
     }
   };
 
+  // console.log(prismicShow);
+  // debugger;
+
   return (
     <Wrapper>
       <OnAirWrapper>
@@ -81,9 +85,17 @@ const CurrentShow = ({
         <>
           <CurrentShowImageWrapper>{returnImage()}</CurrentShowImageWrapper>
           <InfoWrapper>
-            <NameWrapper>
-              <ShowName>{parseShowName(currentShow)}</ShowName>
-            </NameWrapper>
+            {prismicShow === SHOW_NOT_FOUND ? (
+              <NameWrapper>
+                <ShowName>{parseShowName(currentShow)}</ShowName>
+              </NameWrapper>
+            ) : (
+              <Link to={prismicShow.data}>
+                <NameWrapper>
+                  <ShowName>{parseShowName(currentShow)}</ShowName>
+                </NameWrapper>
+              </Link>
+            )}
             <DescriptionWrapper>
               <ShowDescription>{returnShowDescription()}</ShowDescription>
             </DescriptionWrapper>

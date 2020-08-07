@@ -2,24 +2,21 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components/macro";
 import Colors from "../../consts/Colors";
 
-const HoveredLine = ({ hovered, zIndex, offset }) => {
-  return <Wrapper hovered={hovered} zIndex={zIndex} offset={offset} />;
+const HoveredLine = ({ hovered, zIndex, bottomOffset }) => {
+  return (
+    <Wrapper hovered={hovered} zIndex={zIndex} bottomOffset={bottomOffset} />
+  );
 };
 
 const Wrapper = styled.div`
   z-index: ${(props) => (props.zIndex ? props.zIndex : 0)};
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: calc(${(props) => props.bottomOffset} - 4px);
+  /* transform: translateY(-50%); */
   left: 0;
   transition: width 0.3s;
-  width: ${(props) =>
-    props.offset && props.hovered
-      ? `calc(110% - ${props.offset})`
-      : props.hovered
-      ? "110%"
-      : "0px"};
-  height: 100%;
+  width: ${(props) => (props.hovered ? "120%" : "0px")};
+  height: 4px;
   background-color: ${Colors.altBlueHover()};
 `;
 
