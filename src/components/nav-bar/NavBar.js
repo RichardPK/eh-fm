@@ -55,10 +55,6 @@ const Inner = styled.div`
   background-color: ${Colors.bgWhiteCustom(0.95)};
   /* border-bottom: 1px solid ${Colors.ehfmPrimary}; */
 
-  a {
-    color: ${Colors.ehfmPrimary};
-  }
-
   @media ${Devices.mobileL} {
     padding-left: 30px;
     padding-right: 30px;
