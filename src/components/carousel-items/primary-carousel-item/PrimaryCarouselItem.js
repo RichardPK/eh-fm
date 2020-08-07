@@ -53,6 +53,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 100%;
   display: grid;
+  height: 400px;
   grid-template-rows: 1fr auto;
   /* margin: 0.5rem 2rem; */
   border-radius: 4px;
