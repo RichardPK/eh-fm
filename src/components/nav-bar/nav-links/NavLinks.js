@@ -7,8 +7,8 @@ import NavLinkComponent from "./NavLink/NavLink";
 
 const NavLinks = () => {
   const linksArray = [
-    { target: "/", text: "Spotlight" },
-    { target: "/residents", text: "Residents" },
+    { target: "/", text: "SPOTLIGHT" },
+    { target: "/residents", text: "RESIDENTS" },
   ];
 
   return (

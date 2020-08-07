@@ -19,7 +19,7 @@ const NavLinkComponent = ({ target, text }) => {
       to={target}
     >
       <NavText>{text}</NavText>
-      <HoverLine hovered={hovered} />
+      <HoverLine hovered={hovered} width={"100%"} />
     </StyledNavLink>
   );
 };
