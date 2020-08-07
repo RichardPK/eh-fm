@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import CurrentShow from '../../components/current-show/CurrentShow';
-import Schedule from '../../components/schedule/Schedule';
-import { Helmet } from 'react-helmet';
-import Prismic from 'prismic-javascript';
-import styled from 'styled-components/macro';
-import Colors from '../../consts/Colors';
-import Devices from '../../consts/Devices';
-import Sizes from '../../consts/Sizes';
-import { Heading4 } from '../../components/text-elements/index';
-import PlaceholderShowImg from '../../assets/images/placeholder-showimg.jpg';
-import Carousel from '../../components/carousel/Carousel';
+import React, { useEffect, useState } from "react";
+import CurrentShow from "../../components/current-show/CurrentShow";
+import Schedule from "../../components/schedule/Schedule";
+import { Helmet } from "react-helmet";
+import Prismic from "prismic-javascript";
+import styled from "styled-components/macro";
+import Colors from "../../consts/Colors";
+import Devices from "../../consts/Devices";
+import Sizes from "../../consts/Sizes";
+import { Heading4 } from "../../components/text-elements/index";
+import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
+import Carousel from "../../components/carousel/Carousel";
 
 const HomeContainer = (props) => {
-  const apiEndpoint = 'https://ehfm.cdn.prismic.io/api/v2';
+  const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
   const PrimaryCarousel = Carousel;
 
   const [allCarouselItems, setAllCarouselItems] = useState([]);
@@ -38,9 +38,9 @@ const HomeContainer = (props) => {
 
   const getPrimaryCarousel = async (api) => {
     api
-      .query(Prismic.Predicates.at('document.type', 'home_feature'), {
+      .query(Prismic.Predicates.at("document.type", "home_feature"), {
         pageSize: 100,
-        orderings: '[my.show.show_title]'
+        orderings: "[my.show.show_title]",
       })
       .then((response) => {
         if (response) {
@@ -52,15 +52,19 @@ const HomeContainer = (props) => {
 
   const getOtherCarousels = (api) => {
     api
-      .query(Prismic.Predicates.at('document.type', 'home_carousel'), {
-        pageSize: 100
+      .query(Prismic.Predicates.at("document.type", "home_carousel"), {
+        pageSize: 100,
       })
       .then((secondQueryResponse) => {
-        const parsedCarouselsData = secondQueryResponse.results.map((rawCarouselData) => {
-          rawCarouselData.data.carousel_items = completeCarouselData(rawCarouselData);
-          rawCarouselData.data.id = rawCarouselData.id;
-          return rawCarouselData.data;
-        });
+        const parsedCarouselsData = secondQueryResponse.results.map(
+          (rawCarouselData) => {
+            rawCarouselData.data.carousel_items = completeCarouselData(
+              rawCarouselData
+            );
+            rawCarouselData.data.id = rawCarouselData.id;
+            return rawCarouselData.data;
+          }
+        );
         setAdditionalCarousels(parsedCarouselsData);
       });
   };
@@ -108,26 +112,50 @@ const HomeContainer = (props) => {
           data-react-helmet="true"
           content="EH-FM is an Edinburgh-based online radio station, providing a platform for the capital's local artists and broadcasting 24 hours a day."
         />
-        <meta property="og:url" data-react-helmet="true" content="https://www.ehfm.live" />
-        <meta property="og:image" data-react-helmet="true" content={PlaceholderShowImg} />
-        <meta name="twitter:image" data-react-helmet="true" content={PlaceholderShowImg} />
+        <meta
+          property="og:url"
+          data-react-helmet="true"
+          content="https://www.ehfm.live"
+        />
+        <meta
+          property="og:image"
+          data-react-helmet="true"
+          content={PlaceholderShowImg}
+        />
+        <meta
+          name="twitter:image"
+          data-react-helmet="true"
+          content={PlaceholderShowImg}
+        />
       </Helmet>
 
       <Wrapper
         mixCloudWidget={props.mixCloudWidget}
-        cookiesBannerShowing={props.cookies.get('ehfm') !== '1'}
+        cookiesBannerShowing={props.cookies.get("ehfm") !== "1"}
       >
         {highlightedCarouselItems.length > 0 ? (
-          <PrimaryCarousel data={highlightedCarouselItems} hierarchy={'primary'} autoplay={true} />
+          <PrimaryCarousel
+            data={highlightedCarouselItems}
+            hierarchy={"primary"}
+            autoplay={true}
+          />
         ) : null}
 
         {additionalCarousels.length > 0
           ? additionalCarousels.map((carousel) => {
-              const sortedData = reverseChronologicalSort(carousel.carousel_items);
+              const sortedData = reverseChronologicalSort(
+                carousel.carousel_items
+              );
               return (
                 <AdditionalCarouselWrapper key={carousel.id}>
-                  <AdditionalCarouselHeading>{carousel.carousel_name}</AdditionalCarouselHeading>
-                  <Carousel data={sortedData} hierarchy={'secondary'} autoplay={false} />
+                  <AdditionalCarouselHeading>
+                    {carousel.carousel_name}
+                  </AdditionalCarouselHeading>
+                  <Carousel
+                    data={sortedData}
+                    hierarchy={"secondary"}
+                    autoplay={false}
+                  />
                 </AdditionalCarouselWrapper>
               );
             })
@@ -143,11 +171,17 @@ const Wrapper = styled.div`
   position: relative;
   flex-direction: column;
   margin: 2rem 0
-    ${(props) => (props.cookiesBannerShowing ? '95px' : props.mixCloudWidget ? `123px` : 0)};
+    ${(props) =>
+      props.cookiesBannerShowing ? "95px" : props.mixCloudWidget ? `123px` : 0};
 
   @media ${Devices.tablet} {
     margin: 1.5rem 0
-      ${(props) => (props.cookiesBannerShowing ? '70px' : props.mixCloudWidget ? `123px` : 0)};
+      ${(props) =>
+        props.cookiesBannerShowing
+          ? "70px"
+          : props.mixCloudWidget
+          ? `123px`
+          : 0};
   }
 `;
 
@@ -159,7 +193,7 @@ const AdditionalCarouselWrapper = styled.div`
 `;
 
 const AdditionalCarouselHeading = styled(Heading4)`
-  color: ${Colors.notquiteBlack80Transparent};
+  color: ${Colors.notQuiteBlack(0.8)};
   /* font-weight: normal; */
   margin-left: 30px;
   margin: 0px 0px 0.5rem 30px;

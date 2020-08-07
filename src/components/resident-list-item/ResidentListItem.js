@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   padding: 5px 5px 4px 5px;
   margin: 15px 5px;
   background: white;
-  border-bottom: 2px solid ${Colors.notQuiteBlack};
+  border-bottom: 2px solid ${Colors.notQuiteBlack()};
   height: 190px;
   width: 70vw;
 
@@ -70,7 +70,7 @@ const ShowImage = styled.img`
 
 const ShowTitle = styled(Cta)`
   padding-top: 15px;
-  color: ${Colors.notQuiteBlack};
+  color: ${Colors.notQuiteBlack()};
   font-weight: normal;
   letter-spacing: 1px;
 `;

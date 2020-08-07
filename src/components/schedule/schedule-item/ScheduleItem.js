@@ -46,7 +46,7 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 4fr;
   padding-bottom: 0.15rem;
   margin-bottom: 0.25rem;
-  border-bottom: 1px solid ${Colors.notQuiteBlackCustom(0.2)};
+  border-bottom: 1px solid ${Colors.notQuiteBlack(0.2)};
 
   /* a {
     position: relative;
@@ -60,7 +60,7 @@ const Name = styled(Body)`
 `;
 
 const Time = styled(Body)`
-  color: ${Colors.notQuiteBlack};
+  color: ${Colors.notQuiteBlack()};
 `;
 
 export default ScheduleItem;

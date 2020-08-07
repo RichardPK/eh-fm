@@ -43,7 +43,7 @@ const Wrapper = styled.div`
 `;
 
 const ComingUpText = styled(Body)`
-  color: ${Colors.notQuiteBlack};
+  color: ${Colors.notQuiteBlack()};
   font-weight: normal;
   margin-bottom: 0.75rem;
 `;

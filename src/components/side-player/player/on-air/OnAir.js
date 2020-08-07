@@ -14,7 +14,7 @@ const OnAir = ({}) => {
 };
 
 const OnAirWrapper = styled.div`
-  color: ${Colors.notquiteBlack80Transparent};
+  color: ${Colors.notQuiteBlack(0.8)};
   padding: 0.4rem 0.5rem 0.4rem 0.4rem;
   background-color: ${Colors.bgWhiteCustom(0.9)};
   display: flex;

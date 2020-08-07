@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   border-bottom: 2px solid ${Colors.ehfmPrimary};
   margin: 10px 10px 0;
   padding: 5px;
-  color: ${Colors.notQuiteBlack};
+  color: ${Colors.notQuiteBlack()};
   display: flex;
   flex-direction: column;
   border-radius: 2px;

@@ -142,12 +142,12 @@ const ShowName = styled(Heading3)`
 `;
 
 const NameWrapper = styled.div`
-  background-color: ${Colors.notQuiteBlackCustom(0.75)};
+  background-color: ${Colors.notQuiteBlack(0.75)};
   padding: 4px;
 `;
 
 const DescriptionWrapper = styled.div`
-  background-color: ${Colors.notQuiteBlackCustom(0.75)};
+  background-color: ${Colors.notQuiteBlack(0.75)};
   padding: 4px;
   margin-top: 0.25rem;
 `;

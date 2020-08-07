@@ -75,7 +75,7 @@ const CategoryBody = styled(Body)`
 `;
 
 const FlavourHeading = styled(Heading4)`
-  color: ${Colors.notquiteBlack80Transparent};
+  color: ${Colors.notQuiteBlack(0.6)};
 `;
 
 const ImageWrapper = styled.div`
