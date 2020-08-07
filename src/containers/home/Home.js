@@ -7,9 +7,10 @@ import styled from "styled-components/macro";
 import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
-import { Heading4 } from "../../components/text-elements/index";
+import { Heading4, Body } from "../../components/text-elements/index";
 import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
 import Carousel from "../../components/carousel/Carousel";
+import AdditionalCarouselHeading from "../../components/additional-carousel-heading/AdditionalCarouselHeading";
 
 const HomeContainer = (props) => {
   const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
@@ -140,7 +141,6 @@ const HomeContainer = (props) => {
               hierarchy={"primary"}
               autoplay={true}
             />
-            {/* <Divider /> */}
           </>
         ) : null}
 
@@ -151,14 +151,9 @@ const HomeContainer = (props) => {
               );
               return (
                 <AdditionalCarouselWrapper key={carousel.id}>
-                  <HeadingWrapper>
-                    <AdditionalCarouselHeading>
-                      {carousel.carousel_name}
-                    </AdditionalCarouselHeading>
-                    <DividerWrapper>
-                      <Divider />
-                    </DividerWrapper>
-                  </HeadingWrapper>
+                  <AdditionalCarouselHeading
+                    carouselName={carousel.carousel_name}
+                  />
                   <Carousel
                     data={sortedData}
                     hierarchy={"secondary"}
@@ -193,35 +188,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const DividerWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  margin: auto 0 6px 0.75rem;
-`;
-
-const Divider = styled.div`
-  height: 2px;
-  width: calc(80% - 3.5rem);
-  background-color: ${Colors.notQuiteBlack(0.1)};
-`;
-
 const AdditionalCarouselWrapper = styled.div`
-  /* width: 100%; */
-  margin-bottom: 2rem;
-`;
-
-const HeadingWrapper = styled.div`
-  display: flex;
-  align-content: center;
-  margin-left: 2rem;
-  margin: 0px 0px 0.5rem 2rem;
-`;
-
-const AdditionalCarouselHeading = styled(Heading4)`
-  color: ${Colors.notQuiteBlack(0.5)};
-  white-space: nowrap;
-
-  /* font-weight: normal; */
+  margin-bottom: 2.75rem;
 `;
 
 export default HomeContainer;

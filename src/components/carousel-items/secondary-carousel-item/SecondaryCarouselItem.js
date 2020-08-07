@@ -39,6 +39,7 @@ const SecondaryCarouselItem = ({
 };
 
 const Wrapper = styled.div`
+  margin: 0 3rem;
   position: relative;
   width: 100%;
   display: grid;

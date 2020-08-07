@@ -52,10 +52,10 @@ const PrimaryCarouselItem = ({
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 450px;
   display: grid;
   grid-template-rows: 1fr auto;
-  /* margin: 0.5rem 2rem; */
+  margin: 0 3rem;
   border-radius: 4px;
   :hover {
     cursor: pointer;
@@ -81,7 +81,7 @@ const ImageWrapper = styled.div`
   grid-row: 2/2;
   /* width: 100%; */
 
-  height: 300px;
+  height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;

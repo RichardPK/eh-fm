@@ -15,11 +15,11 @@ const Carousel = ({ data, hierarchy }) => {
     breakpoints: {
       1640: {
         slidesPerView: hierarchy === "primary" ? 3.2 : 6.2,
-        spaceBetween: hierarchy === "primary" ? 60 : 30,
+        spaceBetween: hierarchy === "primary" ? 90 : 30,
       },
       1024: {
         slidesPerView: hierarchy === "primary" ? 2.2 : 5.2,
-        spaceBetween: hierarchy === "primary" ? 60 : 30,
+        spaceBetween: hierarchy === "primary" ? 75 : 30,
       },
       768: {
         slidesPerView: hierarchy === "primary" ? 2.2 : 4.2,
@@ -102,7 +102,7 @@ const Carousel = ({ data, hierarchy }) => {
 const Wrapper = styled.div`
   width: 100%;
   margin: ${(props) =>
-    props.hierarchy === "primary" ? "0rem 2rem 2rem" : "0rem 2rem 1rem"};
+    props.hierarchy === "primary" ? "0 0 5rem" : "0 0 1rem"};
 `;
 
 export default Carousel;
