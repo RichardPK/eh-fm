@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   @media ${Devices.mobileL} {
     height: 140px;
     width: 30vw;
-    margin: 15px 10px 15px 15px;
+    margin: 1rem 0.75rem 1rem 1rem;
   }
 
   @media ${Devices.tablet} {

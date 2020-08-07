@@ -172,13 +172,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   margin: 2rem 0
     ${(props) =>
-      props.cookiesBannerShowing ? "95px" : props.mixCloudWidget ? `123px` : 0};
+      props.cookiesBannerShowing ? "70px" : props.mixCloudWidget ? `123px` : 0};
 
   @media ${Devices.tablet} {
-    margin: 1.5rem 0
+    margin: 2.5rem 0
       ${(props) =>
         props.cookiesBannerShowing
-          ? "70px"
+          ? "95px"
           : props.mixCloudWidget
           ? `123px`
           : 0};

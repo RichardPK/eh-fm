@@ -7,7 +7,7 @@ import Devices from "../../../../consts/Devices";
 const OnAir = ({}) => {
   return (
     <OnAirWrapper>
-      <OnAirText>ON AIR</OnAirText>
+      <OnAirText>on air</OnAirText>
       <Circle />
     </OnAirWrapper>
   );

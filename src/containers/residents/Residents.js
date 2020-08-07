@@ -75,19 +75,19 @@ class ResidentsContainer extends Component {
 const Wrapper = styled.div`
   /* max-width: ${Sizes.maxInnerWidth}; */
   grid-column: 2 / 4;
-  padding: 20px;
+  padding: 0 20px 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 2rem auto
     ${(props) =>
-      props.cookiesBannerShowing ? "95px" : props.mixCloudWidget ? `123px` : 0};
+      props.cookiesBannerShowing ? "70px" : props.mixCloudWidget ? `123px` : 0};
 
   @media ${Devices.tablet} {
-    margin: 1.5rem auto
+    margin: 2.5rem auto
       ${(props) =>
         props.cookiesBannerShowing
-          ? "70px"
+          ? "95px"
           : props.mixCloudWidget
           ? `123px`
           : 0};
