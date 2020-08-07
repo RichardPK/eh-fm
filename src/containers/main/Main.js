@@ -245,7 +245,7 @@ class Main extends Component {
               <Route
                 exact
                 path="/residents"
-                component={() => (
+                render={() => (
                   <ResidentsContainer cookies={this.props.cookies} />
                 )}
               />

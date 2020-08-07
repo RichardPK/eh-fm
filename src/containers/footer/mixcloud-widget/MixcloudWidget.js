@@ -31,6 +31,7 @@ class ResidentShowDisplay extends Component {
 
 const Wrapper = styled.div`
   position: fixed;
+  z-index: 2;
   bottom: -3px;
   width: 100%;
   display: flex;

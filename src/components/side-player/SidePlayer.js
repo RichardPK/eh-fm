@@ -57,7 +57,7 @@ const FakeSidePlayer = styled.div`
 const SidePlayerOuter = styled.div`
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
