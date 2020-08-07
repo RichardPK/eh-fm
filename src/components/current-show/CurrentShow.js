@@ -74,7 +74,9 @@ const CurrentShow = ({
   };
 
   // console.log(prismicShow);
-  // debugger;
+  // if (prismicShow !== SHOW_NOT_FOUND) {
+  //   debugger;
+  // }
 
   return (
     <Wrapper>
@@ -90,7 +92,7 @@ const CurrentShow = ({
                 <ShowName>{parseShowName(currentShow)}</ShowName>
               </NameWrapper>
             ) : (
-              <Link to={prismicShow.data}>
+              <Link to={`/residents/${prismicShow.uid}`}>
                 <NameWrapper>
                   <ShowName>{parseShowName(currentShow)}</ShowName>
                 </NameWrapper>

@@ -8,7 +8,15 @@ import HoverLine from "../../../hoverLine/HoverLine";
 
 const NavLinkComponent = ({ target, text }) => {
   const [hovered, setHovered] = useState(false);
-  const isActive = () => window.location.pathname === target;
+  const isActive = () => {
+    if (
+      window.location.pathname.includes("residents") &&
+      target.includes("residents")
+    ) {
+      return true;
+    }
+    return window.location.pathname === target;
+  };
 
   return (
     <StyledNavLink
