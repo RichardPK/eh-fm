@@ -7,7 +7,7 @@ import NavLinkComponent from "./NavLink/NavLink";
 
 const NavLinks = () => {
   const linksArray = [
-    { target: "/", text: "SPOTLIGHT" },
+    { target: "/", text: "HOME" },
     { target: "/residents", text: "RESIDENTS" },
   ];
 
@@ -22,10 +22,6 @@ const NavLinks = () => {
 
 const NavLinksWrapper = styled.div`
   display: flex;
-
-  .nav-link-active {
-    border-bottom: 3px solid ${Colors.altBlueText()};
-  }
 `;
 
 export default NavLinks;

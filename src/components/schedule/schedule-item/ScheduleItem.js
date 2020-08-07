@@ -31,7 +31,7 @@ const ScheduleItem = ({ showName, starts, foundShow }) => {
             }}
           >
             <Name hovered={hovered}>
-              {showName} <HoverLine hovered={hovered} zIndex={-1} />
+              {showName} <HoverLine hovered={hovered} zIndex={-1} placeholder />
             </Name>
           </Link>
         </Wrapper>

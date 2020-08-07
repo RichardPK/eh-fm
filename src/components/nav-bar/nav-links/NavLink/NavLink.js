@@ -8,6 +8,8 @@ import HoverLine from "../../../hoverLine/HoverLine";
 
 const NavLinkComponent = ({ target, text }) => {
   const [hovered, setHovered] = useState(false);
+  const isActive = () => window.location.pathname === target;
+
   return (
     <StyledNavLink
       onMouseOver={() => {
@@ -19,14 +21,14 @@ const NavLinkComponent = ({ target, text }) => {
       to={target}
     >
       <NavText>{text}</NavText>
-      <HoverLine hovered={hovered} width={"100%"} />
+      <HoverLine hovered={isActive() || hovered} width={"100%"} />
     </StyledNavLink>
   );
 };
 
 const StyledNavLink = styled(NavLink)`
   position: relative;
-  color: ${Colors.ehfmPrimary};
+  color: ${Colors.notQuiteBlack()};
   display: flex;
   padding: 2px 0 0;
   transition: all, 0.1s ease-out;
