@@ -12,6 +12,9 @@ const Image = ({ baseUrl, width, height, fit, alt }) => {
 
 const Img = styled.img`
   max-width: 100%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
   /* max-height: 100%; */
 `;
 
