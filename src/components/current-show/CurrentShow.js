@@ -5,6 +5,7 @@ import styled from "styled-components/macro";
 import Devices from "../../consts/Devices";
 import { Heading4, Heading3, Body } from "../text-elements/index";
 import {
+  SHOW_NOT_FOUND,
   getShowInPrismic,
   parseShowName,
   sanitiseString,
@@ -26,14 +27,14 @@ const CurrentShow = ({
   }, [prismicShow]);
 
   const airTimeShowImgUrl = () => {
-    return currentShow && currentShow.currentShow[0].image_path;
+    return currentShow && currentShow.image_path;
   };
 
   const prismicShowImgUrl = () => {
     return (
       prismicShow &&
-      prismicShow !== "SHOW_NOT_FOUND" &&
-      prismicShow.show_image.url.split("&")[0]
+      prismicShow !== SHOW_NOT_FOUND &&
+      prismicShow.data.show_image.url.split("&")[0]
     );
   };
 
@@ -57,12 +58,11 @@ const CurrentShow = ({
 
   const returnShowDescription = () => {
     let currentShowDescription = null;
-    if (prismicShow && prismicShow.show_description) {
-      return sanitiseString(prismicShow.show_description);
+    if (prismicShow && prismicShow.data && prismicShow.data.show_description) {
+      return sanitiseString(prismicShow.data.show_description);
     }
     if (currentShow !== null) {
-      let showData = currentShow;
-      currentShowDescription = showData.currentShow[0].description;
+      currentShowDescription = currentShow.description;
       if (currentShowDescription === "") {
         currentShowDescription = "Independent community radio for Edinburgh.";
         return currentShowDescription;

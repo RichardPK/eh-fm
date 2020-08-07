@@ -52,7 +52,8 @@ const Inner = styled.div`
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 5px;
-  background-color: ${Colors.bgWhite};
+  background-color: ${Colors.bgWhiteCustom(0.95)};
+  /* border-bottom: 1px solid ${Colors.ehfmPrimary}; */
 
   a {
     color: ${Colors.ehfmPrimary};

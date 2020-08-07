@@ -8,6 +8,9 @@ import Colors from "../../../consts/Colors";
 const NavLinks = () => {
   return (
     <NavLinksWrapper>
+      <StyledNavLink to={"/"} activeClassName="nav-link-active">
+        <NavText>Spotlight</NavText>
+      </StyledNavLink>
       <StyledNavLink to={"/residents"} activeClassName="nav-link-active">
         <NavText>Residents</NavText>
       </StyledNavLink>
@@ -16,6 +19,8 @@ const NavLinks = () => {
 };
 
 const NavLinksWrapper = styled.div`
+  display: flex;
+
   .nav-link-active {
     border-bottom: 3px solid ${Colors.altBlue};
   }
@@ -25,8 +30,8 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   color: ${Colors.ehfmPrimary};
   padding: 2px 0 0;
-  border-bottom: 3px solid ${Colors.bgWhite};
   transition: all, 0.1s ease-out;
+  margin-right: 4rem;
 
   @media ${Devices.tablet} {
     &:hover {

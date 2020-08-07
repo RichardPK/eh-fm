@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import styled from 'styled-components/macro';
-import CurrentShow from '../current-show/CurrentShow';
-import Player from './player/Player';
-import Logo from '../nav-bar/logo/Logo';
-import Schedule from '../schedule/Schedule';
-import Devices from '../../consts/Devices';
-import Colors from '../../consts/Colors';
-import ChatangoWidget from '../chatango/chatango-widget/ChatangoWidget';
+import React, { Component } from "react";
+import styled from "styled-components/macro";
+import CurrentShow from "../current-show/CurrentShow";
+import Player from "./player/Player";
+import Logo from "../nav-bar/logo/Logo";
+import Schedule from "../schedule/Schedule";
+import Devices from "../../consts/Devices";
+import Colors from "../../consts/Colors";
+import ChatangoWidget from "../chatango/chatango-widget/ChatangoWidget";
 
 const SidePlayer = ({
   currentShow,
@@ -15,7 +15,7 @@ const SidePlayer = ({
   volume,
   handlePlayPauseClicked,
   handleVolumeClicked,
-  showsUpNext
+  showsUpNext,
 }) => {
   return (
     <>
@@ -40,7 +40,7 @@ const SidePlayer = ({
           />
         </CurrentShowAndPlayerWrapper>
         <ScheduleWrapper>
-          <Schedule showsUpNext={showsUpNext} />
+          <Schedule residents={residents} showsUpNext={showsUpNext} />
         </ScheduleWrapper>
         <ChatangoWidget />
       </SidePlayerOuter>

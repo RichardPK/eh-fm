@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
-import Colors from '../../consts/Colors';
-import Devices from '../../consts/Devices';
-import { Cta } from '../text-elements/index';
+import React from "react";
+import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
+import Colors from "../../consts/Colors";
+import Devices from "../../consts/Devices";
+import { Cta } from "../text-elements/index";
 
 const ResidentListItem = (props) => {
   return (

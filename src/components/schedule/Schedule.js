@@ -1,23 +1,30 @@
-import React, { Component } from 'react';
-import styled from 'styled-components/macro';
-import Devices from '../../consts/Devices';
-import { Body } from '../text-elements/index';
-import DailyShowSchedule from './daily-show-schedule/DailyShowSchedule';
-import Colors from '../../consts/Colors';
-import ScheduleItem from './schedule-item/ScheduleItem';
+import React, { Component } from "react";
+import styled from "styled-components/macro";
+import Devices from "../../consts/Devices";
+import { Body } from "../text-elements/index";
+import DailyShowSchedule from "./daily-show-schedule/DailyShowSchedule";
+import Colors from "../../consts/Colors";
+import ScheduleItem from "./schedule-item/ScheduleItem";
+import { getShowInPrismic } from "../../helpers/PrismicHelper";
 
-const Schedule = ({ showsUpNext }) => {
+const Schedule = ({ showsUpNext, residents }) => {
   return (
     <Wrapper>
       <ComingUpText>Coming up...</ComingUpText>
       <ScheduleItemsWrapper>
         {showsUpNext &&
           showsUpNext.map((scheduleItemData, i) => {
+            const foundShow = getShowInPrismic({
+              residents,
+              currentShow: scheduleItemData,
+            });
+
             return (
               <ScheduleItem
                 key={i}
                 showName={scheduleItemData.name}
                 starts={scheduleItemData.starts}
+                foundShow={foundShow}
               />
             );
           })}
