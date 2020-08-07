@@ -14,6 +14,7 @@ import {
 import Colors from "../../consts/Colors";
 import Image from "../image/Image";
 import PlaceholderImage from "../../assets/images/placeholder-showimg.jpg";
+import HoveredLine from "../hoverLine/HoverLine";
 
 const CurrentShow = ({
   currentShow,
@@ -22,6 +23,7 @@ const CurrentShow = ({
   handlePlayPauseClicked,
 }) => {
   const [prismicShow, setPrismicShow] = useState(null);
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     setPrismicShow(getShowInPrismic({ residents, currentShow }));
@@ -73,11 +75,6 @@ const CurrentShow = ({
     }
   };
 
-  // console.log(prismicShow);
-  // if (prismicShow !== SHOW_NOT_FOUND) {
-  //   debugger;
-  // }
-
   return (
     <Wrapper>
       <OnAirWrapper>
@@ -93,8 +90,16 @@ const CurrentShow = ({
               </NameWrapper>
             ) : (
               <Link to={`/residents/${prismicShow.uid}`}>
-                <NameWrapper>
+                <NameWrapper
+                  onMouseOver={() => {
+                    setHovered(true);
+                  }}
+                  onMouseOut={() => {
+                    setHovered(false);
+                  }}
+                >
                   <ShowName>{parseShowName(currentShow)}</ShowName>
+                  <HoveredLine hovered={hovered} width={"100%"} />
                 </NameWrapper>
               </Link>
             )}
@@ -156,6 +161,7 @@ const ShowName = styled(Heading3)`
 `;
 
 const NameWrapper = styled.div`
+  position: relative;
   background-color: ${Colors.notQuiteBlack(0.75)};
   padding: 4px;
 `;

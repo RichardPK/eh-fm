@@ -22,6 +22,7 @@ const NavLinks = () => {
 
 const NavLinksWrapper = styled.div`
   display: flex;
+  margin-bottom: 2px;
 `;
 
 export default NavLinks;
