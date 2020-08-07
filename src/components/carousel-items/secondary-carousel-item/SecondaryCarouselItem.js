@@ -41,11 +41,8 @@ const SecondaryCarouselItem = ({
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  min-height: 25vh;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0.5rem 2rem;
+  display: grid;
+  grid-template-rows: 1fr auto;
   border-radius: 4px;
   :hover {
     cursor: pointer;
@@ -54,7 +51,6 @@ const Wrapper = styled.div`
 
 const TextWrapper = styled.div`
   padding-top: 0.5rem;
-  /* justify-content: flex-start; */
 `;
 
 const CategoryBody = styled(Body)`
