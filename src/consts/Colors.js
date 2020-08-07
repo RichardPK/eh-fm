@@ -10,7 +10,8 @@ export default {
   altBlueText: (customVal) => `rgba(3, 181, 170, ${customVal ? customVal : 1})`,
   altBlueHover: (customVal) =>
     `rgba(0, 204, 194, ${customVal ? customVal : 1})`,
-  highlightYellow: `rgb(255, 253, 130)`,
+  highlightYellow: (customVal) =>
+    `rgb(248, 250, 144), ${customVal ? customVal : 1})`,
   bgWhite: `rgb(247, 240, 240)`,
   bgWhiteCustom: (customVal) => `rgba(247, 240, 240, ${customVal})`,
   notQuiteBlack: (customVal) => `rgba(0, 20, 39, ${customVal ? customVal : 1})`,

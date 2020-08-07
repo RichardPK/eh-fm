@@ -57,6 +57,8 @@ const Name = styled(Body)`
   display: inline-block;
   position: relative;
   z-index: 1;
+  /* color: ${(props) => (props.hovered ? Colors.playerWhite : "#00000")};
+  transition: color 0.3s ease-out; */
 `;
 
 const Time = styled(Body)`

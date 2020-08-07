@@ -9,7 +9,7 @@ const HoveredLine = ({ hovered, zIndex, offset }) => {
 const Wrapper = styled.div`
   z-index: ${(props) => (props.zIndex ? props.zIndex : 0)};
   position: absolute;
-  top: 30%;
+  top: 50%;
   transform: translateY(-50%);
   left: 0;
   transition: width 0.3s;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
       : props.hovered
       ? "110%"
       : "0px"};
-  height: 1rem;
+  height: 100%;
   background-color: ${Colors.altBlueHover()};
 `;
 
