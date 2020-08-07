@@ -22,7 +22,7 @@ const NavLinksWrapper = styled.div`
   display: flex;
 
   .nav-link-active {
-    border-bottom: 3px solid ${Colors.altBlue};
+    border-bottom: 3px solid ${Colors.altBlueText()};
   }
 `;
 
@@ -36,7 +36,7 @@ const StyledNavLink = styled(NavLink)`
   @media ${Devices.tablet} {
     &:hover {
       text-decoration: none;
-      border-bottom: 3px solid ${Colors.altBlue};
+      border-bottom: 3px solid ${Colors.altBlueText()};
     }
   }
 `;

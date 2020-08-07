@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Colors from '../../../consts/Colors';
-import Devices from '../../../consts/Devices';
-import { Body, Heading4 } from '../../text-elements/index';
-import ShowTag from '../show-tag/ShowTag';
+import React from "react";
+import styled from "styled-components/macro";
+import Colors from "../../../consts/Colors";
+import Devices from "../../../consts/Devices";
+import { Body, Heading4 } from "../../text-elements/index";
+import ShowTag from "../show-tag/ShowTag";
 
 const PastShowCard = (props) => {
   return (
@@ -14,7 +14,9 @@ const PastShowCard = (props) => {
           <ShowName>{props.showName}</ShowName>
           <TagWrapper>
             {props.tags.map((tag, i) => {
-              return <ShowTag key={i} index={i} name={tag.name} url={tag.url} />;
+              return (
+                <ShowTag key={i} index={i} name={tag.name} url={tag.url} />
+              );
             })}
           </TagWrapper>
         </Inner>
@@ -41,7 +43,7 @@ const Wrapper = styled.div`
   @media ${Devices.tablet} {
     transition: all 0.2s;
     &:hover {
-      background-color: ${Colors.altBlue20Transparent};
+      background-color: ${Colors.altBlueHover(0.2)};
     }
   }
 `;
