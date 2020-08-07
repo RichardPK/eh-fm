@@ -95,21 +95,14 @@ const Carousel = ({ data, hierarchy }) => {
           })}
         </Swiper>
       ) : null}
-      {hierarchy === "primary" ? <Divider /> : null}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   width: 100%;
-  margin: 0.5rem 2rem;
-`;
-
-const Divider = styled.div`
-  margin: 2rem;
-  height: 2px;
-  /* width: 100%; */
-  background-color: ${Colors.softGrey};
+  margin: ${(props) =>
+    props.hierarchy === "primary" ? "0rem 2rem 2rem" : "0rem 2rem 1rem"};
 `;
 
 export default Carousel;

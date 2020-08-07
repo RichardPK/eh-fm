@@ -134,11 +134,14 @@ const HomeContainer = (props) => {
         cookiesBannerShowing={props.cookies.get("ehfm") !== "1"}
       >
         {highlightedCarouselItems.length > 0 ? (
-          <PrimaryCarousel
-            data={highlightedCarouselItems}
-            hierarchy={"primary"}
-            autoplay={true}
-          />
+          <>
+            <PrimaryCarousel
+              data={highlightedCarouselItems}
+              hierarchy={"primary"}
+              autoplay={true}
+            />
+            {/* <Divider /> */}
+          </>
         ) : null}
 
         {additionalCarousels.length > 0
@@ -148,9 +151,14 @@ const HomeContainer = (props) => {
               );
               return (
                 <AdditionalCarouselWrapper key={carousel.id}>
-                  <AdditionalCarouselHeading>
-                    {carousel.carousel_name}
-                  </AdditionalCarouselHeading>
+                  <HeadingWrapper>
+                    <AdditionalCarouselHeading>
+                      {carousel.carousel_name}
+                    </AdditionalCarouselHeading>
+                    <DividerWrapper>
+                      <Divider />
+                    </DividerWrapper>
+                  </HeadingWrapper>
                   <Carousel
                     data={sortedData}
                     hierarchy={"secondary"}
@@ -185,18 +193,35 @@ const Wrapper = styled.div`
   }
 `;
 
-const AdditionalCarouselWrapper = styled.div`
+const DividerWrapper = styled.div`
+  position: relative;
   width: 100%;
+  margin: auto 0 6px 0.75rem;
+`;
+
+const Divider = styled.div`
+  height: 2px;
+  width: calc(80% - 3.5rem);
+  background-color: ${Colors.notQuiteBlack(0.1)};
+`;
+
+const AdditionalCarouselWrapper = styled.div`
+  /* width: 100%; */
   margin-bottom: 2rem;
-  /* position: relative;
-  display: block; */
+`;
+
+const HeadingWrapper = styled.div`
+  display: flex;
+  align-content: center;
+  margin-left: 2rem;
+  margin: 0px 0px 0.5rem 2rem;
 `;
 
 const AdditionalCarouselHeading = styled(Heading4)`
-  color: ${Colors.notQuiteBlack(0.8)};
+  color: ${Colors.notQuiteBlack(0.5)};
+  white-space: nowrap;
+
   /* font-weight: normal; */
-  margin-left: 30px;
-  margin: 0px 0px 0.5rem 30px;
 `;
 
 export default HomeContainer;
