@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import styled from 'styled-components/macro';
-import renderHTML from 'react-render-html';
-import IndexActions from '../../../actions/index';
-import Colors from '../../../consts/Colors';
-import Devices from '../../../consts/Devices';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import styled from "styled-components/macro";
+import renderHTML from "react-render-html";
+import IndexActions from "../../../actions/index";
+import Colors from "../../../consts/Colors";
+import Devices from "../../../consts/Devices";
 
 class ResidentShowDisplay extends Component {
   render() {
@@ -19,7 +19,9 @@ class ResidentShowDisplay extends Component {
             >
               <span>x</span>
             </CloseButton>
-            <WidgetWrapper>{renderHTML(this.props.mixCloudWidget)}</WidgetWrapper>
+            <WidgetWrapper>
+              {renderHTML(this.props.mixCloudWidget)}
+            </WidgetWrapper>
           </Wrapper>
         )}
       </React.Fragment>
@@ -29,6 +31,7 @@ class ResidentShowDisplay extends Component {
 
 const Wrapper = styled.div`
   position: fixed;
+  z-index: 2;
   bottom: -3px;
   width: 100%;
   display: flex;
@@ -39,7 +42,7 @@ const CloseButton = styled.div`
   margin-right: 10px;
   text-align: center;
   align-self: flex-end;
-  background-color: ${Colors.altBlue60Transparent};
+  background-color: ${Colors.altBlueHover(0.6)};
   font-size: 14px;
   padding: 1px 6px 4px 7px;
   color: ${Colors.softWhite};
@@ -48,7 +51,7 @@ const CloseButton = styled.div`
   @media ${Devices.tablet} {
     &:hover {
       background-color: ${Colors.softWhite};
-      color: ${Colors.altBlue60Transparent};
+      color: ${Colors.altBlueHover(0.6)};
       transition: background-color 0.2s, color 0.2s;
     }
   }
@@ -60,7 +63,7 @@ const mapStateToProps = (state) => {
   return {
     playing: state.index.playing,
     volume: state.index.volume,
-    mixCloudWidget: state.index.mixCloudWidget
+    mixCloudWidget: state.index.mixCloudWidget,
   };
 };
 
@@ -74,12 +77,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setMixcloudWidget: (value) => {
       dispatch(IndexActions.setMixcloudWidget(value));
-    }
+    },
   };
 };
 
-const Index = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ResidentShowDisplay);
+const Index = connect(mapStateToProps, mapDispatchToProps)(ResidentShowDisplay);
 export default Index;

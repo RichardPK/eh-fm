@@ -1,11 +1,16 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components/macro';
-import { Heading4, Body } from '../../text-elements/index';
-import Colors from '../../../consts/Colors';
-import Image from '../../image/Image';
-import CarouselButton from '../../carousel-button/CarouselButton';
+import React, { useRef, useState } from "react";
+import styled from "styled-components/macro";
+import { Heading4, Body } from "../../text-elements/index";
+import Colors from "../../../consts/Colors";
+import Image from "../../image/Image";
+import CarouselButton from "../../carousel-button/CarouselButton";
 
-const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouselRef }) => {
+const PrimaryCarouselItem = ({
+  data,
+  hierarchy,
+  handleCarouselItemClick,
+  carouselRef,
+}) => {
   let [hovered, setHovered] = useState(false);
 
   return (
@@ -14,11 +19,11 @@ const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouse
       onMouseOver={() => {
         // console.log('hovered' + data.headline);
         setHovered(true);
-        carouselRef.autoplay.stop();
+        carouselRef && carouselRef.autoplay.stop();
       }}
       onMouseOut={() => {
         setHovered(false);
-        carouselRef.autoplay.start();
+        carouselRef && carouselRef.autoplay.start();
       }}
       onClick={() => {
         handleCarouselItemClick(data.link, data.type);
@@ -30,16 +35,16 @@ const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouse
         <FlavourHeading>{data.flavour_text}</FlavourHeading>
       </TextWrapper>
       <ImageWrapper hovered={hovered}>
-        <Image baseUrl={data.image.url} width={450} height={250} fit="crop" />
+        <Image baseUrl={data.image.url} width={900} height={600} fit="crop" />
+        <ButtonWrapper>
+          <CarouselButton
+            type={data.type}
+            hierarchy={hierarchy}
+            hovered={hovered}
+            customText={data.custom_link_text}
+          />
+        </ButtonWrapper>
       </ImageWrapper>
-      <ButtonWrapper>
-        <CarouselButton
-          type={data.type}
-          hierarchy={hierarchy}
-          hovered={hovered}
-          customText={data.custom_link_text}
-        />
-      </ButtonWrapper>
     </Wrapper>
   );
 };
@@ -47,12 +52,10 @@ const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouse
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  min-height: 370px;
-  display: flex;
-  flex-direction: column;
-  /* align-items: flex-start; */
-  justify-content: space-between;
-  margin: 0.5rem 2rem;
+  height: 450px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  margin: 0 3rem;
   border-radius: 4px;
   :hover {
     cursor: pointer;
@@ -61,21 +64,24 @@ const Wrapper = styled.div`
 
 const TextWrapper = styled.div`
   padding-bottom: 0.5rem;
+  grid-row: 1/2;
   /* justify-content: flex-start; */
 `;
 
 const CategoryBody = styled(Body)`
-  color: ${Colors.altBlue};
+  color: ${Colors.altBlueText()};
   padding-bottom: 4px;
 `;
 
 const FlavourHeading = styled(Heading4)`
-  color: ${Colors.notquiteBlack80Transparent};
+  color: ${Colors.notQuiteBlack(0.6)};
 `;
 
 const ImageWrapper = styled.div`
-  width: 100%;
-  height: 250px;
+  grid-row: 2/2;
+  /* width: 100%; */
+
+  height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;

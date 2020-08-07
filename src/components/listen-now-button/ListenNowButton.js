@@ -1,13 +1,16 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import PlayPauseButton from '../player/play-pause-button/PlayPauseButton';
-import Colors from '../../consts/Colors';
-import Devices from '../../consts/Devices';
-import { Cta } from '../text-elements/index';
+import React from "react";
+import styled from "styled-components/macro";
+import PlayPauseButton from "../side-player/player/play-pause-button/PlayPauseButton";
+import Colors from "../../consts/Colors";
+import Devices from "../../consts/Devices";
+import { Cta } from "../text-elements/index";
 
 const ListenNowButton = ({ playing, playClicked }) => {
   return (
-    <Wrapper className={'currentshow-playbutton-container'} onClick={playClicked}>
+    <Wrapper
+      className={"currentshow-playbutton-container"}
+      onClick={playClicked}
+    >
       <ListenNowText>Listen now</ListenNowText>
       <PlayPauseButton playingTrueFalse={playing} playClicked={playClicked} />
     </Wrapper>
@@ -17,7 +20,7 @@ const ListenNowButton = ({ playing, playClicked }) => {
 const Wrapper = styled.div`
   cursor: pointer;
   padding: 4px;
-  background-color: ${Colors.altBlue};
+  background-color: ${Colors.altBlueHover()};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,14 +45,15 @@ const Wrapper = styled.div`
 
     &:hover {
       background-color: ${Colors.playerWhite};
-      color: ${Colors.altBlue};
+      color: ${Colors.altBlueHover()};
 
       .play-button {
-        border-color: transparent transparent transparent ${Colors.altBlue};
+        border-color: transparent transparent transparent
+          ${Colors.altBlueHover()};
       }
 
       .pause-button {
-        border-color: ${Colors.altBlue};
+        border-color: ${Colors.altBlueHover()};
       }
     }
   }

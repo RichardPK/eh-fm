@@ -1,10 +1,15 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components/macro';
-import { Body, Tiny } from '../../text-elements/index';
-import Colors from '../../../consts/Colors';
-import Image from '../../image/Image';
+import React, { useRef, useState } from "react";
+import styled from "styled-components/macro";
+import { Body, Tiny } from "../../text-elements/index";
+import Colors from "../../../consts/Colors";
+import Image from "../../image/Image";
 
-const SecondaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouselRef }) => {
+const SecondaryCarouselItem = ({
+  data,
+  hierarchy,
+  handleCarouselItemClick,
+  carouselRef,
+}) => {
   let [hovered, setHovered] = useState(false);
 
   return (
@@ -34,13 +39,11 @@ const SecondaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carou
 };
 
 const Wrapper = styled.div`
+  margin: 0 3rem;
   position: relative;
   width: 100%;
-  min-height: 25vh;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0.5rem 2rem;
+  display: grid;
+  grid-template-rows: 1fr auto;
   border-radius: 4px;
   :hover {
     cursor: pointer;
@@ -49,11 +52,10 @@ const Wrapper = styled.div`
 
 const TextWrapper = styled.div`
   padding-top: 0.5rem;
-  /* justify-content: flex-start; */
 `;
 
 const CategoryBody = styled(Body)`
-  color: ${Colors.altBlue};
+  color: ${Colors.altBlueText()};
   padding-bottom: 2px;
 `;
 

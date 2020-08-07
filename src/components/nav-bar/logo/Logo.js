@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import Logo from "../../../assets/images/EHFM_Arched-Logo_Teal_1080.png";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../../assets/svgs/ehfm-logo.svg';
 
-const LogoHead = props => {
+const LogoHead = (props) => {
   return (
     <React.Fragment>
       <Wrapper>
         <Link to="/">
-          <LogoImg className="arched-logo" src={Logo} alt="ehfm arched logo" />
+          <StyledLogo />
         </Link>
       </Wrapper>
     </React.Fragment>
@@ -16,11 +16,16 @@ const LogoHead = props => {
 };
 
 const Wrapper = styled.div`
-  margin-top: 17px;
+  /* display: flex; */
 `;
 
-const LogoImg = styled.img`
-  height: 36px;
+const StyledLogo = styled(Logo)`
+  height: 2.5rem;
+  width: auto;
+  path,
+  polygon {
+    fill: white;
+  }
 `;
 
 export default LogoHead;

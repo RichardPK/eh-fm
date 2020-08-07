@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
-import Colors from '../../consts/Colors';
-import Devices from '../../consts/Devices';
-import { Cta } from '../text-elements/index';
+import React from "react";
+import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
+import Colors from "../../consts/Colors";
+import Devices from "../../consts/Devices";
+import { Cta } from "../text-elements/index";
 
 const ResidentListItem = (props) => {
   return (
@@ -27,14 +27,14 @@ const Wrapper = styled.div`
   padding: 5px 5px 4px 5px;
   margin: 15px 5px;
   background: white;
-  border-bottom: 2px solid ${Colors.notQuiteBlack};
+  border-bottom: 2px solid ${Colors.notQuiteBlack()};
   height: 190px;
   width: 70vw;
 
   @media ${Devices.mobileL} {
     height: 140px;
     width: 30vw;
-    margin: 15px 10px 15px 15px;
+    margin: 1rem 0.75rem 1rem 1rem;
   }
 
   @media ${Devices.tablet} {
@@ -70,7 +70,7 @@ const ShowImage = styled.img`
 
 const ShowTitle = styled(Cta)`
   padding-top: 15px;
-  color: ${Colors.notQuiteBlack};
+  color: ${Colors.notQuiteBlack()};
   font-weight: normal;
   letter-spacing: 1px;
 `;

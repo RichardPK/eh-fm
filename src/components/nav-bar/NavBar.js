@@ -1,41 +1,48 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Logo from './logo/Logo';
-import Devices from '../../consts/Devices';
-import Socials from './socials/Socials';
-import Colors from '../../consts/Colors';
-import NavLinks from './nav-links/NavLinks';
-import PaypalButton from '../paypal-button/PaypalButton';
+import React from "react";
+import styled from "styled-components/macro";
+import Logo from "./logo/Logo";
+import Devices from "../../consts/Devices";
+import Sizes from "../../consts/Sizes";
+import Socials from "./socials/Socials";
+import Colors from "../../consts/Colors";
+import NavLinks from "./nav-links/NavLinks";
+import PaypalButton from "../paypal-button/PaypalButton";
 
 const NavBar = (props) => {
   return (
-    <React.Fragment>
+    <>
+      <FakeNavBar />
       <Wrapper>
         <Inner>
           <Left>
             <NavLinks />
           </Left>
-          <HeaderLogoWrapper>
-            <Logo />
-          </HeaderLogoWrapper>
           <Right>
             <PaypalButton />
             <Socials />
           </Right>
         </Inner>
       </Wrapper>
-    </React.Fragment>
+    </>
   );
 };
 
+const FakeNavBar = styled.div`
+  height: ${Sizes.navHeight}px;
+  width: calc(100% - ${Sizes.sidePlayerWidth}px);
+  grid-column: 2 / 4;
+  z-index: -1;
+`;
+
 const Wrapper = styled.nav`
   position: fixed;
-  width: 100vw;
-  z-index: 100;
-  top: 68px;
+  grid-column: 2 / 4;
+  z-index: 2;
+  top: 0;
+  left: ${Sizes.sidePlayerWidth}px;
+  width: calc(100% - ${Sizes.sidePlayerWidth}px);
 
   @media ${Devices.tablet} {
-    top: 0px;
   }
 `;
 
@@ -45,11 +52,8 @@ const Inner = styled.div`
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 5px;
-  background-color: white;
-
-  a {
-    color: ${Colors.ehfmPrimary};
-  }
+  background-color: ${Colors.bgWhiteCustom(0.95)};
+  /* border-bottom: 1px solid ${Colors.ehfmPrimary}; */
 
   @media ${Devices.mobileL} {
     padding-left: 30px;
@@ -66,24 +70,6 @@ const Left = styled.div`
 
   @media ${Devices.tablet} {
     height: 71px;
-  }
-`;
-
-const HeaderLogoWrapper = styled.div`
-  position: absolute;
-  transform: translateX(-50%);
-  left: 50%;
-  top: -70px;
-  padding-left: 50vw;
-  padding-right: 50vw;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  background-color: white;
-
-  @media ${Devices.tablet} {
-    top: 0px;
-    padding-left: 0;
-    padding-right: 0;
   }
 `;
 

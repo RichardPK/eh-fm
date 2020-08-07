@@ -1,39 +1,40 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
-import Colors from "../../../consts/Colors";
-import { Tiny } from "../../text-elements/index";
-import Devices from "../../../consts/Devices";
+import styled from "styled-components/macro";
+import Colors from "../../../../consts/Colors";
+import { Tiny } from "../../../text-elements/index";
+import Devices from "../../../../consts/Devices";
 
 const OnAir = ({}) => {
   return (
     <OnAirWrapper>
-      <OnAirText>ON AIR</OnAirText>
+      <OnAirText>on air</OnAirText>
       <Circle />
     </OnAirWrapper>
   );
 };
 
 const OnAirWrapper = styled.div`
-  color: ${Colors.playerWhite};
-  font-size: 11px;
-  padding-right: 10px;
+  color: ${Colors.notQuiteBlack(0.8)};
+  padding: 0.4rem 0.5rem 0.4rem 0.4rem;
+  background-color: ${Colors.bgWhiteCustom(0.9)};
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 100;
-  letter-spacing: 2px;
+  border-bottom-right-radius: 12px;
+  border-top-left-radius: 4px;
 
   @media ${Devices.mobileL} {
-    padding-right: 20px;
   }
 `;
 
 const OnAirText = styled(Tiny)`
-  font-weight: 100;
+  font-weight: 200;
+  letter-spacing: 1px;
+  color: ${Colors.altBlueText()};
 `;
 
 const Circle = styled.div`
-  background: ${Colors.highlightYellow};
+  background: ${Colors.altBlueText()};
   width: 8px;
   height: 8px;
   border-radius: 50%;

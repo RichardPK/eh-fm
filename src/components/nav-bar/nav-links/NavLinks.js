@@ -1,43 +1,28 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { Cta } from '../../text-elements/index';
-import { Link, NavLink } from 'react-router-dom';
-import Devices from '../../../consts/Devices';
-import Colors from '../../../consts/Colors';
+import React from "react";
+import styled from "styled-components/macro";
+import { Cta } from "../../text-elements/index";
+import Devices from "../../../consts/Devices";
+import Colors from "../../../consts/Colors";
+import NavLinkComponent from "./NavLink/NavLink";
 
 const NavLinks = () => {
+  const linksArray = [
+    { target: "/", text: "HOME" },
+    { target: "/residents", text: "RESIDENTS" },
+  ];
+
   return (
     <NavLinksWrapper>
-      <StyledNavLink to={'/residents'} activeClassName="nav-link-active">
-        <NavText>Residents</NavText>
-      </StyledNavLink>
+      {linksArray.map((linkData) => (
+        <NavLinkComponent target={linkData.target} text={linkData.text} />
+      ))}
     </NavLinksWrapper>
   );
 };
 
 const NavLinksWrapper = styled.div`
-  .nav-link-active {
-    border-bottom: 3px solid ${Colors.altBlue};
-  }
-`;
-
-const StyledNavLink = styled(NavLink)`
   display: flex;
-  color: ${Colors.ehfmPrimary};
-  padding: 2px 0 0;
-  border-bottom: 3px solid ${Colors.playerWhite};
-  transition: all, 0.1s ease-out;
-
-  @media ${Devices.tablet} {
-    &:hover {
-      text-decoration: none;
-      border-bottom: 3px solid ${Colors.altBlue};
-    }
-  }
-`;
-
-const NavText = styled(Cta)`
-  font-weight: normal;
+  margin-bottom: 2px;
 `;
 
 export default NavLinks;
