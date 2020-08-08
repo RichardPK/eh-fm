@@ -118,7 +118,6 @@ class ResidentShowContainer extends Component {
 
 const Wrapper = styled.div`
   position: relative;
-  margin-bottom: ${(props) => (props.mixCloudWidget ? `123px` : 'auto')};
   grid-column: 2 / 4;
 `;
 

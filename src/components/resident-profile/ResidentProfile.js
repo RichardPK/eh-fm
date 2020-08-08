@@ -126,7 +126,7 @@ class ResidentProfile extends Component {
   render() {
     return (
       <React.Fragment>
-        <Wrapper>
+        <Wrapper mixCloudWidget={this.props.mixCloudWidget}>
           <ProfileText props={this.props} />
           {this.props.pastShows && this.state.orderedShows && (
             <React.Fragment>
@@ -163,7 +163,7 @@ class ResidentProfile extends Component {
 const Wrapper = styled.div`
   position: relative;
   height: calc(100vh - 183px);
-  margin: 143px auto 0;
+  margin: 143px auto ${(props) => (props.mixCloudWidget ? `123px` : 0)};
   padding: 20px;
   display: flex;
   flex-direction: column;
