@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import styled from 'styled-components/macro';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { withCookies } from 'react-cookie';
 import moment from 'moment';
@@ -49,6 +50,7 @@ class Main extends Component {
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
     this.getRemainingShowsToday = this.getRemainingShowsToday.bind(this);
+    this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
   }
 
   componentDidMount() {
@@ -199,6 +201,17 @@ class Main extends Component {
     }
   }
 
+  handleMixCloudClick(show) {
+    let url = `https://api.mixcloud.com${show.key}embed-json/`;
+    axios.get(url).then((res) => {
+      this.props.setMixcloudWidget(res.data.html);
+      const { cookies } = this.props;
+      if (!cookies.get('ehfm')) {
+        cookies.set('ehfm', 1, { path: '/' });
+      }
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -224,13 +237,22 @@ class Main extends Component {
               <Route
                 path="/residents/:id"
                 render={() => (
-                  <Resident cookies={this.props.cookies} key={window.location.pathname} />
+                  <Resident
+                    cookies={this.props.cookies}
+                    key={window.location.pathname}
+                    handleMixCloudClick={this.handleMixCloudClick}
+                  />
                 )}
               />
               <Route
                 exact
                 path="/residents"
-                render={() => <ResidentsContainer cookies={this.props.cookies} />}
+                render={() => (
+                  <ResidentsContainer
+                    cookies={this.props.cookies}
+                    handleMixCloudClick={this.handleMixCloudClick}
+                  />
+                )}
               />
               <Route
                 exact
@@ -274,6 +296,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getResidents: () => {
       dispatch(ResidentsActions.getResidents());
+    },
+    setMixcloudWidget: (value) => {
+      dispatch(IndexActions.setMixcloudWidget(value));
     }
   };
 };

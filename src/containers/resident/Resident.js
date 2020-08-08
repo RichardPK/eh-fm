@@ -105,6 +105,7 @@ class ResidentShowContainer extends Component {
                 showTime={show.data.show_time}
                 pastShows={this.state.pastShows}
                 mixCloudWidget={this.props.mixCloudWidget}
+                handleMixCloudClick={this.props.handleMixCloudClick}
               />
             </Wrapper>
           </React.Fragment>

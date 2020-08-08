@@ -30,7 +30,6 @@ class ResidentProfile extends Component {
       mostRecentShow: null
     };
     this.handleArchiveButtonClick = this.handleArchiveButtonClick.bind(this);
-    this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
     this.renderCardContainerMargin = this.renderCardContainerMargin.bind(this);
     this.getMostRecentShow = this.getMostRecentShow.bind(this);
     this.renderShowName = this.renderShowName.bind(this);
@@ -112,17 +111,6 @@ class ResidentProfile extends Component {
     }
   }
 
-  handleMixCloudClick(show) {
-    let url = `https://api.mixcloud.com${show.key}embed-json/`;
-    axios.get(url).then((res) => {
-      this.props.setMixcloudWidget(res.data.html);
-      const { cookies } = this.props;
-      if (!cookies.get('ehfm')) {
-        cookies.set('ehfm', 1, { path: '/' });
-      }
-    });
-  }
-
   render() {
     return (
       <React.Fragment>
@@ -132,7 +120,7 @@ class ResidentProfile extends Component {
             <React.Fragment>
               <MostRecentShowbutton
                 mostRecentShow={this.state.mostRecentShow}
-                handleMostRecentShowButtonClick={this.handleMixCloudClick}
+                handleMostRecentShowButtonClick={this.props.handleMixCloudClick}
                 date={this.renderDate(this.state.mostRecentShow.name)}
                 showName={this.renderShowName(this.state.mostRecentShow.name)}
               />
@@ -145,7 +133,7 @@ class ResidentProfile extends Component {
                   <PastShows
                     displayShows={this.state.displayShows}
                     allPastShows={this.state.orderedShows}
-                    handleMixCloudClick={this.handleMixCloudClick}
+                    handleMixCloudClick={this.props.handleMixCloudClick}
                     renderDate={this.renderDate}
                     renderShowName={this.renderShowName}
                     mixCloudWidget={this.props.mixCloudWidget}
