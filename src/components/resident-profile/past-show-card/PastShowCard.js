@@ -19,23 +19,15 @@ const PastShowCard = (props) => {
   );
 };
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-radius: 2px;
-`;
-
 const Inner = styled.div`
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   border-bottom: 2px solid ${Colors.ehfmPrimary};
   cursor: pointer;
-  margin: 10px 10px 0;
   padding: 5px;
   color: ${Colors.notQuiteBlack()};
   @media ${Devices.mobileL} {
-    margin: 15px 0;
-    padding: 10px 4px 10px 4px;
+    padding: 10px 4px;
   }
 
   @media ${Devices.tablet} {

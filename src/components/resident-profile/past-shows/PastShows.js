@@ -31,7 +31,8 @@ const PastShows = ({
 };
 
 const PastShowsWrapper = styled.div`
-  left: 0;
+  left: 5px;
+  right: 5px;
   position: absolute;
   top: calc(100vh - 130px);
   display: flex;
@@ -40,6 +41,7 @@ const PastShowsWrapper = styled.div`
 
   @media ${Devices.mobileL} {
     left: 20px;
+    right: 20px;
   }
 `;
 
