@@ -118,7 +118,8 @@ class ResidentShowContainer extends Component {
 
 const Wrapper = styled.div`
   position: relative;
-  grid-column: 2 / 4;
+  grid-column: 2 / 2;
+  grid-row: 2 / 2;
 `;
 
 const mapStateToProps = (state) => {

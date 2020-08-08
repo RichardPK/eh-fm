@@ -162,7 +162,8 @@ class ResidentProfile extends Component {
 
 const Wrapper = styled.div`
   position: relative;
-  height: calc(100vh - 183px);
+  /* minus nav bar, padding & top margin. Took off slightly more to create bar at bottom */
+  height: calc(100vh - 126px - 3.5rem);
   margin: 143px auto ${(props) => (props.mixCloudWidget ? `123px` : 0)};
   padding: 20px;
   display: flex;
