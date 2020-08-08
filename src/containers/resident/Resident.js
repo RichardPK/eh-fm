@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import styled from "styled-components/macro";
-import axios from "axios";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { withCookies } from "react-cookie";
-import ResidentProfile from "../../components/resident-profile/ResidentProfile";
-import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
+import React, { Component } from 'react';
+import styled from 'styled-components/macro';
+import axios from 'axios';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { withCookies } from 'react-cookie';
+import ResidentProfile from '../../components/resident-profile/ResidentProfile';
+import BackgroundImage from '../../components/resident-profile/background-image/BackgroundImage';
 
 class ResidentShowContainer extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class ResidentShowContainer extends Component {
     this.state = {
       showId: this.props.match.params.id,
       pastShows: null,
-      selectedShow: null,
+      selectedShow: null
     };
     this.findSelectedShow = this.findSelectedShow.bind(this);
     this.mixCloudAPICall = this.mixCloudAPICall.bind(this);
@@ -37,16 +37,14 @@ class ResidentShowContainer extends Component {
       let playlist_url = this.state.selectedShow.data.mixcloud_playlist_url;
       // https://www.mixcloud.com/ehfm/playlists/lunch/
 
-      let wwwCutPoint = playlist_url.indexOf(".") + 1;
+      let wwwCutPoint = playlist_url.indexOf('.') + 1;
       let modifiedUrl = playlist_url.slice(wwwCutPoint);
       const showsToReturn = `100`;
 
-      axios
-        .get(`https://api.${modifiedUrl}cloudcasts/?limit=${showsToReturn}`)
-        .then((res) => {
-          let shows = res.data.data.reverse();
-          this.setState({ pastShows: shows });
-        });
+      axios.get(`https://api.${modifiedUrl}cloudcasts/?limit=${showsToReturn}`).then((res) => {
+        let shows = res.data.data.reverse();
+        this.setState({ pastShows: shows });
+      });
     }
   }
 
@@ -65,11 +63,7 @@ class ResidentShowContainer extends Component {
             <Helmet>
               <title>{titleString}</title>
               <meta name="fragment" content="!" />
-              <meta
-                property="og:title"
-                data-react-helmet="true"
-                content={titleString}
-              />
+              <meta property="og:title" data-react-helmet="true" content={titleString} />
               <meta
                 name="description"
                 data-react-helmet="true"
@@ -80,11 +74,7 @@ class ResidentShowContainer extends Component {
                 data-react-helmet="true"
                 content={show.data.show_description}
               />
-              <meta
-                property="og:url"
-                data-react-helmet="true"
-                content={window.location.href}
-              />
+              <meta property="og:url" data-react-helmet="true" content={window.location.href} />
               <meta
                 name="twitter:image"
                 data-react-helmet="true"
@@ -95,14 +85,8 @@ class ResidentShowContainer extends Component {
                 data-react-helmet="true"
                 content={show.data.show_image.larger.url}
               />
-              <meta
-                property="og:image:width"
-                content={show.data.show_image.dimensions.width}
-              />
-              <meta
-                property="og:image:height"
-                content={show.data.show_image.dimensions.height}
-              />
+              <meta property="og:image:width" content={show.data.show_image.dimensions.width} />
+              <meta property="og:image:height" content={show.data.show_image.dimensions.height} />
             </Helmet>
             <BackgroundImage
               mixCloudWidget={this.props.mixCloudWidget}
@@ -121,6 +105,7 @@ class ResidentShowContainer extends Component {
                 showTime={show.data.show_time}
                 pastShows={this.state.pastShows}
                 mixCloudWidget={this.props.mixCloudWidget}
+                handleMixCloudClick={this.props.handleMixCloudClick}
               />
             </Wrapper>
           </React.Fragment>
@@ -134,14 +119,14 @@ class ResidentShowContainer extends Component {
 
 const Wrapper = styled.div`
   position: relative;
-  margin-bottom: ${(props) => (props.mixCloudWidget ? `123px` : "auto")};
-  grid-column: 2 / 4;
+  grid-column: 2 / 2;
+  grid-row: 2 / 2;
 `;
 
 const mapStateToProps = (state) => {
   return {
     residents: state.residents,
-    mixCloudWidget: state.index.mixCloudWidget,
+    mixCloudWidget: state.index.mixCloudWidget
   };
 };
 
@@ -150,7 +135,10 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const connectedResidentShowContainer = withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ResidentShowContainer)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ResidentShowContainer)
 );
 
 export default withCookies(connectedResidentShowContainer);

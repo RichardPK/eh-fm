@@ -15,7 +15,7 @@ const MostRecentShowbutton = ({
   return (
     <Wrapper
       // className="resident-pastshow-card"
-      onClick={() => handleMostRecentShowButtonClick(mostRecentShow)}
+      onClick={() => handleMostRecentShowButtonClick(mostRecentShow.key)}
     >
       <ReactSVG src={MixCloud} />
       <Date>{date}</Date>
