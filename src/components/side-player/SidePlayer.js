@@ -6,7 +6,6 @@ import Logo from "../nav-bar/logo/Logo";
 import Schedule from "../schedule/Schedule";
 import Devices from "../../consts/Devices";
 import Colors from "../../consts/Colors";
-import ChatangoWidget from "../chatango/chatango-widget/ChatangoWidget";
 
 const SidePlayer = ({
   currentShow,
@@ -42,7 +41,6 @@ const SidePlayer = ({
         <ScheduleWrapper>
           <Schedule residents={residents} showsUpNext={showsUpNext} />
         </ScheduleWrapper>
-        <ChatangoWidget />
       </SidePlayerOuter>
     </>
   );

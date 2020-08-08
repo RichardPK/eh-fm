@@ -14,6 +14,8 @@ import Footer from "../footer/Footer";
 import IndexActions from "../../actions/index";
 import ResidentsActions from "../../actions/ResidentsActions";
 import Analytics from "../../components/analytics/Analytics";
+import ChatangoWidget from "../../components/chatango/chatango-widget/ChatangoWidget";
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -216,6 +218,7 @@ class Main extends Component {
         <audio ref={this.audioPlayer} id="audioPlayer" name="media">
           <source src="https://ehfm.out.airtime.pro/ehfm_a" type="audio/mpeg" />
         </audio>
+        <ChatangoWidget />
         <Analytics url={window.location.pathname + window.location.search} />
 
         {this.props.residents.length ? (
