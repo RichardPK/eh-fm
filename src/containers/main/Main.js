@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import styled from "styled-components/macro";
 import { connect } from "react-redux";
+import { withCookies } from "react-cookie";
+import moment from "moment";
+import _ from "lodash";
 import Header from "../header/Header";
 import SidePlayer from "../../components/side-player/SidePlayer";
 import Home from "../home/Home";
@@ -10,11 +13,7 @@ import Resident from "../resident/Resident";
 import Footer from "../footer/Footer";
 import IndexActions from "../../actions/index";
 import ResidentsActions from "../../actions/ResidentsActions";
-import _ from "lodash";
 import Analytics from "../../components/analytics/Analytics";
-import { withCookies } from "react-cookie";
-import moment from "moment";
-
 class Main extends Component {
   constructor(props) {
     super(props);
