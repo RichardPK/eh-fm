@@ -3,7 +3,9 @@ import styled from "styled-components/macro";
 
 const ChatangoWidget = ({}) => {
   useEffect(() => {
+    console.log("render");
     const script = document.createElement("script");
+    // make conditional render to prevent creating shitload of script elements
     const body = document.body;
     script.type = "text/javascript";
     script.src = "https://st.chatango.com/js/gz/emb.js";
@@ -17,9 +19,10 @@ const ChatangoWidget = ({}) => {
     body.appendChild(script);
 
     return () => {
+      console.log("unrender");
       document.body.removeChild(script);
     };
-  }, []);
+  });
 
   return null;
 };
