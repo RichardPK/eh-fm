@@ -1,16 +1,11 @@
-import React, { useRef, useState } from "react";
-import styled from "styled-components/macro";
-import { Heading4, Body } from "../../text-elements/index";
-import Colors from "../../../consts/Colors";
-import Image from "../../image/Image";
-import CarouselButton from "../../carousel-button/CarouselButton";
+import React, { useRef, useState } from 'react';
+import styled from 'styled-components/macro';
+import { Heading4, Body } from '../../text-elements/index';
+import Colors from '../../../consts/Colors';
+import Image from '../../image/Image';
+import CarouselButton from '../../carousel-button/CarouselButton';
 
-const PrimaryCarouselItem = ({
-  data,
-  hierarchy,
-  handleCarouselItemClick,
-  carouselRef,
-}) => {
+const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouselRef }) => {
   let [hovered, setHovered] = useState(false);
 
   return (

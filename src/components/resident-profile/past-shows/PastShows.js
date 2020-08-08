@@ -15,7 +15,7 @@ const PastShows = ({
   const showsToDisplay = allPastShows.map((show, i) => {
     return (
       <PastShowCard
-        handleMixCloudClick={() => handleMixCloudClick(show)}
+        handleMixCloudClick={() => handleMixCloudClick(show.key)}
         key={i}
         date={renderDate(show.name)}
         showName={renderShowName(show.name)}

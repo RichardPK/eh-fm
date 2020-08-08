@@ -201,8 +201,8 @@ class Main extends Component {
     }
   }
 
-  handleMixCloudClick(show) {
-    let url = `https://api.mixcloud.com${show.key}embed-json/`;
+  handleMixCloudClick(showPath) {
+    let url = `https://api.mixcloud.com${showPath}embed-json/`;
     axios.get(url).then((res) => {
       this.props.setMixcloudWidget(res.data.html);
       const { cookies } = this.props;
@@ -258,7 +258,11 @@ class Main extends Component {
                 exact
                 path="/"
                 render={() => (
-                  <Home cookies={this.props.cookies} mixCloudWidget={this.props.mixCloudWidget} />
+                  <Home
+                    cookies={this.props.cookies}
+                    mixCloudWidget={this.props.mixCloudWidget}
+                    handleMixCloudClick={this.handleMixCloudClick}
+                  />
                 )}
               />
             </Switch>

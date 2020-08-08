@@ -8,7 +8,7 @@ import { ReactComponent as ExternalLink } from '../../assets/svgs/external-link.
 const CarouselButton = ({ type, customText, hierarchy, hovered }) => {
   return (
     <Wrapper hovered={hovered} hierarchy={hierarchy}>
-      {type === 'Past show' ? (
+      {type.toLowerCase() === 'past show' ? (
         <>
           <IconWrapper mixcloud={true}>
             <MixCloud />
