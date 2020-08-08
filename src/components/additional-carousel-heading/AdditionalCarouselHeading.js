@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import CurrentShow from "../../components/current-show/CurrentShow";
-import Schedule from "../../components/schedule/Schedule";
-import { Helmet } from "react-helmet";
-import Prismic from "prismic-javascript";
-import styled from "styled-components/macro";
-import Colors from "../../consts/Colors";
-import Devices from "../../consts/Devices";
-import Sizes from "../../consts/Sizes";
-import { Heading4, Body } from "../../components/text-elements/index";
-import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
-import Carousel from "../../components/carousel/Carousel";
+import React, { useEffect, useState } from 'react';
+import CurrentShow from '../../components/current-show/CurrentShow';
+import Schedule from '../../components/schedule/Schedule';
+import { Helmet } from 'react-helmet';
+import Prismic from 'prismic-javascript';
+import styled from 'styled-components/macro';
+import Colors from '../../consts/Colors';
+import Devices from '../../consts/Devices';
+import Sizes from '../../consts/Sizes';
+import { Heading4, Body } from '../../components/text-elements/index';
+import PlaceholderShowImg from '../../assets/images/placeholder-showimg.jpg';
+import Carousel from '../../components/carousel/Carousel';
 
 const HomeContainer = ({ carouselName }) => {
   return (

@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import styled from "styled-components/macro";
-import renderHTML from "react-render-html";
-import IndexActions from "../../../actions/index";
-import Colors from "../../../consts/Colors";
-import Devices from "../../../consts/Devices";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components/macro';
+import renderHTML from 'react-render-html';
+import IndexActions from '../../../actions/index';
+import Colors from '../../../consts/Colors';
+import Devices from '../../../consts/Devices';
+import LoadingPlaceholder from '../../../components/loading-placeholder/LoadingPlaceholder';
 
 class ResidentShowDisplay extends Component {
   render() {
@@ -19,9 +20,8 @@ class ResidentShowDisplay extends Component {
             >
               <span>x</span>
             </CloseButton>
-            <WidgetWrapper>
-              {renderHTML(this.props.mixCloudWidget)}
-            </WidgetWrapper>
+            <WidgetWrapper>{renderHTML(this.props.mixCloudWidget)}</WidgetWrapper>
+            <LoadingPlaceholder height={'calc(100% - 21px)'} zIndex={-1} />
           </Wrapper>
         )}
       </React.Fragment>
@@ -57,13 +57,15 @@ const CloseButton = styled.div`
   }
 `;
 
-const WidgetWrapper = styled.div``;
+const WidgetWrapper = styled.div`
+  z-index: 1;
+`;
 
 const mapStateToProps = (state) => {
   return {
     playing: state.index.playing,
     volume: state.index.volume,
-    mixCloudWidget: state.index.mixCloudWidget,
+    mixCloudWidget: state.index.mixCloudWidget
   };
 };
 
@@ -77,9 +79,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     setMixcloudWidget: (value) => {
       dispatch(IndexActions.setMixcloudWidget(value));
-    },
+    }
   };
 };
 
-const Index = connect(mapStateToProps, mapDispatchToProps)(ResidentShowDisplay);
+const Index = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ResidentShowDisplay);
 export default Index;
