@@ -20,14 +20,19 @@ const PastShowCard = (props) => {
 };
 
 const Wrapper = styled.div`
-  margin: 10px 10px 0;
-  padding: 5px;
-  color: ${Colors.notQuiteBlack()};
   display: flex;
   flex-direction: column;
   border-radius: 2px;
-  cursor: pointer;
+`;
 
+const Inner = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  border-bottom: 2px solid ${Colors.ehfmPrimary};
+  cursor: pointer;
+  margin: 10px 10px 0;
+  padding: 5px;
+  color: ${Colors.notQuiteBlack()};
   @media ${Devices.mobileL} {
     margin: 15px 0;
     padding: 10px 4px 10px 4px;
@@ -41,16 +46,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const Inner = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
-  border-bottom: 2px solid ${Colors.ehfmPrimary};
-`;
-
 const Date = styled(Body)`
   grid-column: 1 / 2;
   margin-right: 1rem;
   display: flex;
+  align-items: center;
 `;
 
 const ShowName = styled(Heading4)`
@@ -58,12 +58,14 @@ const ShowName = styled(Heading4)`
   font-weight: normal;
   margin-right: 0.5rem;
   display: flex;
+  align-items: center;
 `;
 
 const TagWrapper = styled.div`
   grid-column: 3 / 3;
   flex-wrap: wrap;
   display: flex;
+  align-items: center;
 `;
 
 export default PastShowCard;

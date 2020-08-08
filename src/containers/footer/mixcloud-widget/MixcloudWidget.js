@@ -6,11 +6,12 @@ import IndexActions from '../../../actions/index';
 import Colors from '../../../consts/Colors';
 import Devices from '../../../consts/Devices';
 import LoadingPlaceholder from '../../../components/loading-placeholder/LoadingPlaceholder';
+import Sizes from '../../../consts/Sizes';
 
 class ResidentShowDisplay extends Component {
   render() {
     return (
-      <React.Fragment>
+      <>
         {this.props.mixCloudWidget && (
           <Wrapper>
             <CloseButton
@@ -24,7 +25,7 @@ class ResidentShowDisplay extends Component {
             <LoadingPlaceholder height={'calc(100% - 21px)'} zIndex={-1} />
           </Wrapper>
         )}
-      </React.Fragment>
+      </>
     );
   }
 }
@@ -33,7 +34,8 @@ const Wrapper = styled.div`
   position: fixed;
   z-index: 2;
   bottom: -3px;
-  width: 100%;
+  right: 0;
+  width: calc(100% - ${Sizes.sidePlayerWidth}px);
   display: flex;
   flex-direction: column;
 `;
