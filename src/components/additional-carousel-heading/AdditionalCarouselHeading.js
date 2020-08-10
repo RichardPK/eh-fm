@@ -37,7 +37,7 @@ const Divider = styled.div`
 const HeadingWrapper = styled.div`
   display: flex;
   align-content: center;
-  margin: 0px 0px 0.75rem 3rem;
+  margin: 0 0 0.75rem 0;
 `;
 
 const AdditionalCarouselHeading = styled(Heading4)`

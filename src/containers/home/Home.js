@@ -62,7 +62,8 @@ const HomeContainer = (props) => {
           rawCarouselData.data.id = rawCarouselData.id;
           return rawCarouselData.data;
         });
-        setAdditionalCarousels(parsedCarouselsData);
+        const carouselsByPosition = sortCarouselsByPosition(parsedCarouselsData);
+        setAdditionalCarousels(carouselsByPosition);
       });
   };
 
@@ -83,6 +84,12 @@ const HomeContainer = (props) => {
         })
       )
     );
+  };
+
+  const sortCarouselsByPosition = (array) => {
+    return array.sort((item1, item2) => {
+      return item1.position - item2.position;
+    });
   };
 
   const reverseChronologicalSort = (array) => {
@@ -162,6 +169,8 @@ const Wrapper = styled.div`
     margin: 2.5rem 0
       ${(props) => (props.cookiesBannerShowing ? '95px' : props.mixCloudWidget ? `123px` : 0)};
   }
+
+  padding: 0 3rem;
 `;
 
 const AdditionalCarouselWrapper = styled.div`

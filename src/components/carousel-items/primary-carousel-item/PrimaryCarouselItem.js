@@ -50,7 +50,6 @@ const Wrapper = styled.div`
   height: 450px;
   display: grid;
   grid-template-rows: 1fr auto;
-  margin: 0 3rem;
   border-radius: 4px;
   :hover {
     cursor: pointer;

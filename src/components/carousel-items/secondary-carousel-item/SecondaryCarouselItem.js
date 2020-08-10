@@ -1,15 +1,10 @@
-import React, { useRef, useState } from "react";
-import styled from "styled-components/macro";
-import { Body, Tiny } from "../../text-elements/index";
-import Colors from "../../../consts/Colors";
-import Image from "../../image/Image";
+import React, { useRef, useState } from 'react';
+import styled from 'styled-components/macro';
+import { Body, Tiny } from '../../text-elements/index';
+import Colors from '../../../consts/Colors';
+import Image from '../../image/Image';
 
-const SecondaryCarouselItem = ({
-  data,
-  hierarchy,
-  handleCarouselItemClick,
-  carouselRef,
-}) => {
+const SecondaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouselRef }) => {
   let [hovered, setHovered] = useState(false);
 
   return (
@@ -39,7 +34,7 @@ const SecondaryCarouselItem = ({
 };
 
 const Wrapper = styled.div`
-  margin: 0 3rem;
+  /* margin: 0 3rem; */
   position: relative;
   width: 100%;
   display: grid;

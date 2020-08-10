@@ -14,23 +14,23 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
   const params = {
     breakpoints: {
       1640: {
-        slidesPerView: hierarchy === 'primary' ? 3.2 : 6.2,
-        spaceBetween: hierarchy === 'primary' ? 90 : 30
+        slidesPerView: hierarchy === 'primary' ? 3.1 : 6,
+        spaceBetween: hierarchy === 'primary' ? 75 : 32
       },
       1024: {
-        slidesPerView: hierarchy === 'primary' ? 2.2 : 5.2,
-        spaceBetween: hierarchy === 'primary' ? 75 : 30
+        slidesPerView: hierarchy === 'primary' ? 2.15 : 5,
+        spaceBetween: hierarchy === 'primary' ? 60 : 32
       },
       768: {
-        slidesPerView: hierarchy === 'primary' ? 2.2 : 4.2,
-        spaceBetween: hierarchy === 'primary' ? 50 : 25
+        slidesPerView: hierarchy === 'primary' ? 2 : 3,
+        spaceBetween: hierarchy === 'primary' ? 40 : 25
       },
       640: {
-        slidesPerView: hierarchy === 'primary' ? 2.2 : 4.2,
+        slidesPerView: hierarchy === 'primary' ? 1 : 2,
         spaceBetween: hierarchy === 'primary' ? 40 : 20
       },
       320: {
-        slidesPerView: hierarchy === 'primary' ? 2.2 : 4.2,
+        slidesPerView: hierarchy === 'primary' ? 1 : 2,
         spaceBetween: hierarchy === 'primary' ? 30 : 15
       }
     },
@@ -100,7 +100,6 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
 };
 
 const Wrapper = styled.div`
-  width: 100%;
   margin: ${(props) => (props.hierarchy === 'primary' ? '0 0 5rem' : '0 0 1rem')};
 `;
 
