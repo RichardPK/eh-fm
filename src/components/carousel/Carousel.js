@@ -1,4 +1,4 @@
-import React, { useRef, useState, memo } from 'react';
+import React, { useRef, useState, memo, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import Swiper from 'react-id-swiper';
@@ -10,6 +10,15 @@ import { isInternal, splitUrl } from '../../helpers/CarouselLinkHelper';
 const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
   const [carouselRef, setCarouselRef] = useState(null);
   const history = useHistory();
+
+  useEffect(() => {
+    const slides = document.querySelectorAll('.swiper-slide-duplicate');
+
+    for (let slide of slides) {
+      // debugger;
+      slide.addEventListener('click', () => console.log('clicked!'));
+    }
+  }, []);
 
   const params = {
     breakpoints: {
@@ -40,7 +49,7 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
     autoplay:
       hierarchy === 'primary'
         ? {
-            delay: hierarchy === 'primary' ? 10000 : 10000,
+            delay: hierarchy === 'primary' ? 7000 : 7000,
             disableOnInteraction: false
           }
         : false
