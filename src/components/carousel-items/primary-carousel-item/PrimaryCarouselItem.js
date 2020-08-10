@@ -26,7 +26,7 @@ const PrimaryCarouselItem = ({ data, hierarchy, handleCarouselItemClick, carouse
     >
       <TextWrapper>
         <CategoryBody>{data.category}</CategoryBody>
-        <Heading4>{data.headline}</Heading4>
+        <Heading4 className="carousel-item-headline">{data.headline}</Heading4>
         <FlavourHeading>{data.flavour_text}</FlavourHeading>
       </TextWrapper>
       <ImageWrapper hovered={hovered}>
@@ -83,6 +83,10 @@ const ImageWrapper = styled.div`
   overflow: hidden;
   opacity: ${(props) => (props.hovered ? 0.8 : 1)};
   transition: opacity, 0.2s ease-out;
+
+  :hover {
+    opacity: 0.8;
+  }
 `;
 
 const ButtonWrapper = styled.div`

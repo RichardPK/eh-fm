@@ -12,11 +12,20 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
   const history = useHistory();
 
   useEffect(() => {
-    const slides = document.querySelectorAll('.swiper-slide-duplicate');
+    if (hierarchy === 'primary') {
+      const duplicateSlides = document.querySelectorAll('.swiper-primary-duplicate-slide');
 
-    for (let slide of slides) {
-      // debugger;
-      slide.addEventListener('click', () => console.log('clicked!'));
+      duplicateSlides.forEach((slide, i) => {
+        if (data) {
+          const slideHeadlineText = slide.getElementsByClassName('carousel-item-headline')[0]
+            .innerText;
+          const slideData = data.filter((carouselItemData) => {
+            return carouselItemData.data.headline === slideHeadlineText;
+          });
+          const foundItemData = slideData[0].data;
+          slide.onclick = () => handleCarouselItemClick(foundItemData.link, foundItemData.type);
+        }
+      });
     }
   }, []);
 
@@ -43,6 +52,8 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
         spaceBetween: hierarchy === 'primary' ? 30 : 15
       }
     },
+    slideDuplicateClass:
+      hierarchy === 'primary' ? 'swiper-primary-duplicate-slide' : 'swiper-slide-duplicate',
     slidesPerGroup: 1,
     loop: hierarchy === 'primary' ? true : false,
     speed: 400,
