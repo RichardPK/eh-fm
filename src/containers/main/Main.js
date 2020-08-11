@@ -14,8 +14,14 @@ import Resident from '../resident/Resident';
 import Footer from '../footer/Footer';
 import IndexActions from '../../actions/index';
 import ResidentsActions from '../../actions/ResidentsActions';
-import Analytics from '../../components/analytics/Analytics';
+import PageViewAnalytics from '../../components/analytics/PageViewAnalytics';
 import ChatangoWidget from '../../components/chatango/chatango-widget/ChatangoWidget';
+import {
+  clickedPlay,
+  clickedStop,
+  clickedMute,
+  clickedUnmute
+} from '../../components/analytics/ClickEventAnalytics';
 
 class Main extends Component {
   constructor(props) {
@@ -185,9 +191,11 @@ class Main extends Component {
     if (this.props.playing === false) {
       this.audioPlayer.current.play();
       this.props.togglePlaying(true);
+      clickedPlay();
     } else {
       this.audioPlayer.current.pause();
       this.props.togglePlaying(false);
+      clickedStop();
     }
   }
 
@@ -195,9 +203,11 @@ class Main extends Component {
     if (this.props.volume !== 0) {
       this.audioPlayer.current.volume = 0;
       this.props.changeVolume(0);
+      clickedMute();
     } else {
       this.audioPlayer.current.volume = 1;
       this.props.changeVolume(1);
+      clickedUnmute();
     }
   }
 
@@ -219,7 +229,7 @@ class Main extends Component {
           <source src="https://ehfm.out.airtime.pro/ehfm_a" type="audio/mpeg" />
         </audio>
         <ChatangoWidget />
-        <Analytics url={window.location.pathname + window.location.search} />
+        <PageViewAnalytics url={window.location.pathname + window.location.search} />
 
         {this.props.residents.length ? (
           <MainWrapper>

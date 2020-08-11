@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import ReactGA from 'react-ga';
 
-const Analytics = ({ url }) => {
+const PageViewAnalytics = ({ url }) => {
   useEffect(() => {
     ReactGA.initialize('UA-122943131-1');
   }, []);
@@ -12,4 +12,4 @@ const Analytics = ({ url }) => {
   return <React.Fragment />;
 };
 
-export default Analytics;
+export default PageViewAnalytics;
