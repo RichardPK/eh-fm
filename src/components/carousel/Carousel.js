@@ -120,6 +120,7 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
 };
 
 const Wrapper = styled.div`
+  cursor: grab;
   margin: ${(props) => (props.hierarchy === 'primary' ? '0 0 5rem' : '0 0 1rem')};
 `;
 
