@@ -76,10 +76,10 @@ class Main extends Component {
       this.callEveryHour();
     } else {
       nextDate.setHours(nextDate.getHours() + 1);
-      nextDate.setMinutes(0);
+      nextDate.setMinutes(1);
       nextDate.setSeconds(0);
       let difference = nextDate - new Date();
-
+      debugger;
       setTimeout(
         function() {
           this.callEveryHour();
