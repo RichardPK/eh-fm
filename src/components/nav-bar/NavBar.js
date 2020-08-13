@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components/macro";
-import Logo from "./logo/Logo";
-import Devices from "../../consts/Devices";
-import Sizes from "../../consts/Sizes";
-import Socials from "./socials/Socials";
-import Colors from "../../consts/Colors";
-import NavLinks from "./nav-links/NavLinks";
-import PaypalButton from "../paypal-button/PaypalButton";
+import React from 'react';
+import styled from 'styled-components/macro';
+import Logo from './logo/Logo';
+import Devices from '../../consts/Devices';
+import Sizes from '../../consts/Sizes';
+import Socials from './socials/Socials';
+import Colors from '../../consts/Colors';
+import NavLinks from './nav-links/NavLinks';
+import PaypalButton from '../paypal-button/PaypalButton';
 
 const NavBar = (props) => {
   return (
@@ -30,13 +30,13 @@ const NavBar = (props) => {
 const FakeNavBar = styled.div`
   height: ${Sizes.navHeight}px;
   width: calc(100% - ${Sizes.sidePlayerWidth}px);
-  grid-column: 2 / 4;
+  grid-column: 2 / 2;
+  grid-row: 1 / 1;
   z-index: -1;
 `;
 
 const Wrapper = styled.nav`
   position: fixed;
-  grid-column: 2 / 4;
   z-index: 2;
   top: 0;
   left: ${Sizes.sidePlayerWidth}px;

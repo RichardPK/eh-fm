@@ -158,10 +158,9 @@ const HomeContainer = (props) => {
 };
 
 const Wrapper = styled.div`
-  grid-column: 2 / 4;
   display: flex;
-  position: relative;
   flex-direction: column;
+  max-width: calc(100vw - ${Sizes.sidePlayerWidth}px - 6rem);
   margin: 2rem 0
     ${(props) => (props.cookiesBannerShowing ? '70px' : props.mixCloudWidget ? `123px` : 0)};
 

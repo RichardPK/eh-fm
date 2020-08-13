@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import styled from "styled-components/macro";
-import CurrentShow from "../current-show/CurrentShow";
-import Player from "./player/Player";
-import Logo from "../nav-bar/logo/Logo";
-import Schedule from "../schedule/Schedule";
-import Devices from "../../consts/Devices";
-import Colors from "../../consts/Colors";
+import React, { Component } from 'react';
+import styled from 'styled-components/macro';
+import CurrentShow from '../current-show/CurrentShow';
+import Player from './player/Player';
+import Logo from '../nav-bar/logo/Logo';
+import Schedule from '../schedule/Schedule';
+import Devices from '../../consts/Devices';
+import Colors from '../../consts/Colors';
+import Sizes from '../../consts/Sizes';
 
 const SidePlayer = ({
   currentShow,
@@ -14,7 +15,7 @@ const SidePlayer = ({
   volume,
   handlePlayPauseClicked,
   handleVolumeClicked,
-  showsUpNext,
+  showsUpNext
 }) => {
   return (
     <>
@@ -47,9 +48,9 @@ const SidePlayer = ({
 };
 
 const FakeSidePlayer = styled.div`
-  grid-column: 1 / 2;
-  grid-row: 1 / 3;
-  width: 350px;
+  grid-column: 1 / 1;
+  grid-row: 1 / 2;
+  width: ${Sizes.sidePlayerWidth}px;
 `;
 
 const SidePlayerOuter = styled.div`
@@ -62,7 +63,7 @@ const SidePlayerOuter = styled.div`
   position: fixed;
   background-color: ${Colors.ehfmPrimary};
   padding-top: 2rem;
-  width: 350px;
+  width: ${Sizes.sidePlayerWidth}px;
   height: 100%;
 `;
 

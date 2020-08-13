@@ -85,7 +85,6 @@ class Main extends Component {
       nextDate.setMinutes(1);
       nextDate.setSeconds(0);
       let difference = nextDate - new Date();
-      debugger;
       setTimeout(
         function() {
           this.callEveryHour();
@@ -243,40 +242,41 @@ class Main extends Component {
               handleVolumeClicked={this.handleVolumeClicked}
               showsUpNext={this.state.showsUpNext}
             />
-            <Switch>
-              <Route
-                path="/residents/:id"
-                render={() => (
-                  <Resident
-                    cookies={this.props.cookies}
-                    key={window.location.pathname}
-                    handleMixCloudClick={this.handleMixCloudClick}
-                  />
-                )}
-              />
-              <Route
-                exact
-                path="/residents"
-                render={() => (
-                  <ResidentsContainer
-                    cookies={this.props.cookies}
-                    handleMixCloudClick={this.handleMixCloudClick}
-                  />
-                )}
-              />
-              <Route
-                exact
-                path="/"
-                render={() => (
-                  <Home
-                    cookies={this.props.cookies}
-                    mixCloudWidget={this.props.mixCloudWidget}
-                    handleMixCloudClick={this.handleMixCloudClick}
-                  />
-                )}
-              />
-            </Switch>
-
+            <MainInner>
+              <Switch>
+                <Route
+                  path="/residents/:id"
+                  render={() => (
+                    <Resident
+                      cookies={this.props.cookies}
+                      key={window.location.pathname}
+                      handleMixCloudClick={this.handleMixCloudClick}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/residents"
+                  render={() => (
+                    <ResidentsContainer
+                      cookies={this.props.cookies}
+                      handleMixCloudClick={this.handleMixCloudClick}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/"
+                  render={() => (
+                    <Home
+                      cookies={this.props.cookies}
+                      mixCloudWidget={this.props.mixCloudWidget}
+                      handleMixCloudClick={this.handleMixCloudClick}
+                    />
+                  )}
+                />
+              </Switch>
+            </MainInner>
             <Footer />
           </MainWrapper>
         ) : null}
@@ -287,8 +287,14 @@ class Main extends Component {
 
 const MainWrapper = styled.div`
   display: grid;
-  grid-template: auto 1fr / auto 1fr;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
   position: relative;
+`;
+
+const MainInner = styled.div`
+  grid-column: 2 / 4;
+  grid-row: 2 / 2;
 `;
 
 const mapStateToProps = (state) => {

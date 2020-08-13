@@ -31,7 +31,7 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
 
   const params = {
     breakpoints: {
-      1640: {
+      1800: {
         slidesPerView: hierarchy === 'primary' ? 3.1 : 6,
         spaceBetween: hierarchy === 'primary' ? 75 : 32
       },
