@@ -71,6 +71,18 @@ const CurrentShowAndPlayerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2rem 0.5rem 1rem;
+
+  @media not all and (min-resolution: 0.001dpcm) {
+    @media {
+      display: inline-block;
+    }
+  }
+
+  @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
+    @media {
+      display: inline-block;
+    }
+  }
 `;
 
 const ScheduleWrapper = styled.div`

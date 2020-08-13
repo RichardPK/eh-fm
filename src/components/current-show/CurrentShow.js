@@ -130,14 +130,9 @@ const OnAirWrapper = styled.div`
 `;
 
 const CurrentShowImageWrapper = styled.div`
-  height: 100%;
-  width: 100%;
-
   img {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    height: 100%;
-    width: 100%;
   }
 `;
 
