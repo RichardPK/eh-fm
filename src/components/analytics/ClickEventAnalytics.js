@@ -1,25 +1,41 @@
 import ReactGA from 'react-ga';
 
-export const clickedPlay = () =>
+const clientId = () =>
+  ReactGA.ga((tracker) => {
+    return tracker.get('clientId');
+  });
+
+const date = new Date();
+
+export const clickedPlay = () => {
   ReactGA.event({
     category: 'Player',
-    action: 'Playing'
+    action: 'Playing',
+    clientId: clientId(),
+    timestamp: date
   });
+};
 
 export const clickedStop = () =>
   ReactGA.event({
     category: 'Player',
-    action: 'Stopped'
+    action: 'Stopped',
+    clientId: clientId(),
+    timestamp: date
   });
 
 export const clickedMute = () =>
   ReactGA.event({
     category: 'Player',
-    action: 'Muted'
+    action: 'Muted',
+    clientId: clientId(),
+    timestamp: date
   });
 
 export const clickedUnmute = () =>
   ReactGA.event({
     category: 'Player',
-    action: 'Unmuted'
+    action: 'Unmuted',
+    clientId: clientId(),
+    timestamp: date
   });
