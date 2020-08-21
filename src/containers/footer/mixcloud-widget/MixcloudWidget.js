@@ -37,9 +37,14 @@ const Wrapper = styled.div`
   z-index: 2;
   bottom: -3px;
   right: 0;
-  width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
   display: flex;
   flex-direction: column;
+
+  width: 100%;
+
+  @media ${Devices.tablet} {
+    width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
+  }
 
   @media ${Devices.laptop} and ${Devices.laptopHeightS} {
     width: calc(100% - ${Sizes.sidePlayerWidth}px);
