@@ -75,7 +75,7 @@ const PlayPauseWrapper = styled.div`
       width: 1rem;
       fill: ${(props) =>
         props.hovered || props.playing
-          ? Colors.ehfmPrimary
+          ? Colors.ehfmPrimary()
           : Colors.playerWhite};
     }
   }
