@@ -10,6 +10,7 @@ const PrimaryCarouselItem = ({
   hierarchy,
   handleCarouselItemClick,
   carouselRef,
+  index,
 }) => {
   let [hovered, setHovered] = useState(false);
 
@@ -26,7 +27,7 @@ const PrimaryCarouselItem = ({
         carouselRef && carouselRef.autoplay.start();
       }}
       onClick={() => {
-        handleCarouselItemClick(data.link, data.type);
+        handleCarouselItemClick(data.link, data.type, index);
       }}
     >
       <TextWrapper>

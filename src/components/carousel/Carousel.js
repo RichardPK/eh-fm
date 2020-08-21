@@ -7,6 +7,7 @@ import SecondaryCarouselItem from "../carousel-items/secondary-carousel-item/Sec
 import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
 import { isInternal, splitUrl } from "../../helpers/CarouselLinkHelper";
+import { clickedCarouselItem } from "../analytics/ClickEventAnalytics";
 
 const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
   const [carouselRef, setCarouselRef] = useState(null);
@@ -73,7 +74,9 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
         : false,
   };
 
-  const handleCarouselItemClick = (link, type) => {
+  const handleCarouselItemClick = (link, type, index) => {
+    clickedCarouselItem(link, type, index);
+
     const url = link.url;
     if (type.toLowerCase() === "link") {
       if (isInternal(url)) {
@@ -103,7 +106,7 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
             setCarouselRef(swiperEl);
           }}
         >
-          {data.map((carouselItemData) => {
+          {data.map((carouselItemData, i) => {
             return (
               <div key={carouselItemData.id}>
                 {hierarchy === "primary" ? (
@@ -112,6 +115,7 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
                     hierarchy={hierarchy}
                     handleCarouselItemClick={handleCarouselItemClick}
                     carouselRef={carouselRef}
+                    index={i}
                   />
                 ) : (
                   <SecondaryCarouselItem
@@ -119,6 +123,7 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
                     hierarchy={hierarchy}
                     handleCarouselItemClick={handleCarouselItemClick}
                     carouselRef={carouselRef}
+                    index={i}
                   />
                 )}
               </div>

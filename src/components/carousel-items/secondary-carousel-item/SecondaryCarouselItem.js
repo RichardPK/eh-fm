@@ -9,6 +9,7 @@ const SecondaryCarouselItem = ({
   hierarchy,
   handleCarouselItemClick,
   carouselRef,
+  index,
 }) => {
   let [hovered, setHovered] = useState(false);
 
@@ -24,7 +25,7 @@ const SecondaryCarouselItem = ({
         // carouselRef.autoplay.start();
       }}
       onClick={() => {
-        handleCarouselItemClick(data.link, data.type);
+        handleCarouselItemClick(data.link, data.type, index);
       }}
     >
       <ImageWrapper hovered={hovered}>
