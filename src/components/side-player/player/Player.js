@@ -8,6 +8,7 @@ import PlayPauseButton from "./play-pause-button/PlayPauseButton";
 import VolumeButton from "./volume-button/VolumeButton";
 import { ReactComponent as Volume } from "../../../assets/svgs/volume.svg";
 import { ReactComponent as MuteVolume } from "../../../assets/svgs/volume-mute.svg";
+import OnAir from "./on-air/OnAir";
 
 const Player = ({
   playing,
@@ -19,6 +20,9 @@ const Player = ({
   const [hovered, setHovered] = useState(false);
   return (
     <Wrapper>
+      <OnAirWrapper>
+        <OnAir />
+      </OnAirWrapper>
       <Left
         onClick={handlePlayPauseClicked}
         playing={playing}
@@ -30,13 +34,15 @@ const Player = ({
           setHovered(false);
         }}
       >
-        {currentShow ? (
-          <CurrentShowText>{currentShow.name}</CurrentShowText>
-        ) : null}
-
         <PlayPauseWrapper playing={playing} hovered={hovered}>
           <PlayPauseButton playingTrueFalse={playing} />
         </PlayPauseWrapper>
+
+        {currentShow ? (
+          <CurrentShowText playing={playing} hovered={hovered}>
+            {currentShow.name}
+          </CurrentShowText>
+        ) : null}
         <PlayBorder />
       </Left>
       <Right>
@@ -79,10 +85,22 @@ const Left = styled.div`
   background-color: ${(props) =>
     props.hovered || props.playing ? Colors.playerWhite : Colors.ehfmPrimary()};
   transition: all 0.2s ease-out;
+  white-space: nowrap;
+  overflow: hidden;
+`;
+
+const OnAirWrapper = styled.div`
+  display: block;
+  margin-right: 1rem;
+
+  @media ${Devices.tablet} {
+    display: none;
+  }
 `;
 
 const CurrentShowText = styled(Cta)`
-  color: ${Colors.playerWhite};
+  color: ${(props) =>
+    props.hovered || props.playing ? Colors.ehfmPrimary() : Colors.playerWhite};
   font-weight: normal;
   display: block;
 
@@ -108,6 +126,12 @@ const PlayPauseWrapper = styled.div`
       width: 1rem;
     }
   }
+
+  border-left: 1px solid ${Colors.playerWhite};
+
+  @media ${Devices.tablet} {
+    border: none;
+  }
 `;
 
 const PlayBorder = styled.div`
@@ -115,22 +139,25 @@ const PlayBorder = styled.div`
   right: 0;
   transform: translateY(-50%);
   top: 50%;
-  height: 66%;
+  height: 100%;
   width: 1px;
   background-color: ${Colors.playerWhite};
+
+  @media ${Devices.tablet} {
+    height: 66%;
+  }
 `;
 
 const Right = styled.div`
   display: flex;
   /* flex: 1; */
-
   position: relative;
   align-self: center;
   justify-self: flex-end;
 `;
 
 const VolumeWrapper = styled.div`
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0 0.5rem 1rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -139,6 +166,10 @@ const VolumeWrapper = styled.div`
   svg {
     width: 0.8rem;
     fill: ${Colors.playerWhite};
+  }
+
+  @media ${Devices.tablet} {
+    padding: 0.5rem 1rem;
   }
 `;
 

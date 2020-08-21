@@ -12,7 +12,7 @@ export default {
   mobileHeightTall: "750px",
   maxInnerWidth: `1240px`,
   navHeight: 86,
-  mobileNavHeight: 75,
+  mobileNavHeight: 120,
   sidePlayerWidth: 350,
   sidePlayerWidthSmaller: 300,
   buttonRadius: 3,

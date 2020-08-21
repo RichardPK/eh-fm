@@ -8,7 +8,7 @@ export default {
   altBlueHover: (customVal) =>
     `rgba(0, 224, 191, ${customVal ? customVal : 1})`,
   highlightYellow: (customVal) =>
-    `rgb(248, 250, 144), ${customVal ? customVal : 1})`,
+    `rgba(248, 250, 144, ${customVal ? customVal : 1})`,
   bgWhite: `rgb(247, 240, 240)`,
   bgWhiteCustom: (customVal) => `rgba(247, 240, 240, ${customVal})`,
   notQuiteBlack: (customVal) => `rgba(0, 20, 39, ${customVal ? customVal : 1})`,

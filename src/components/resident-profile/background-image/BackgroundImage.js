@@ -8,8 +8,7 @@ const BackgroundImage = ({ mixCloudWidget, showImage }) => {
 };
 
 const Wrapper = styled.div`
-  width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
-  margin-left: ${Sizes.sidePlayerWidthSmaller}px;
+  width: 100%;
   background-position: center center !important;
   background-size: cover !important;
   height: 100%;
@@ -25,6 +24,11 @@ const Wrapper = styled.div`
   img {
     max-width: 100%;
     margin: auto;
+  }
+
+  @media ${Devices.tablet} {
+    width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
+    margin-left: ${Sizes.sidePlayerWidthSmaller}px;
   }
 
   @media ${Devices.laptop} and ${Devices.laptopHeightS} {
