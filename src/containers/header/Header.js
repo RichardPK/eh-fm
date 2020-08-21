@@ -39,6 +39,7 @@ const HeaderContainer = ({
 
 const MobileWrapper = styled.div`
   display: block;
+  z-index: 5;
 
   @media ${Devices.tablet} {
     display: none;

@@ -8,12 +8,10 @@ import Sizes from "../../../consts/Sizes";
 
 const MobilePlayer = ({
   currentShow,
-  residents,
   playing,
   volume,
   handlePlayPauseClicked,
   handleVolumeClicked,
-  showsUpNext,
 }) => {
   return (
     <>
@@ -32,15 +30,10 @@ const MobilePlayer = ({
 
 const Wrapper = styled.div`
   z-index: 5;
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   background-color: ${Colors.ehfmPrimary()};
-  width: 100vw;
-  display: flex;
-
-  @media ${Devices.tablet} {
-    display: none;
-  }
 
   @media not all and (min-resolution: 0.001dpcm) {
     @media {

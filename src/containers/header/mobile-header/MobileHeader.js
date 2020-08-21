@@ -60,7 +60,7 @@ const Wrapper = styled.div`
 
 const LogoWrapper = styled.div`
   display: flex;
-  margin: 0.4rem auto 0;
+  margin: 0.75rem auto 0;
 `;
 
 export default MobileHeader;

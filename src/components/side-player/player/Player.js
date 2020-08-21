@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import NowPlaying from "./now-playing/NowPlaying";
 import Colors from "../../../consts/Colors";
 import Devices from "../../../consts/Devices";
-import { Body } from "../../text-elements/index";
+import { Heading4, Cta } from "../../text-elements/index";
 import PlayPauseButton from "./play-pause-button/PlayPauseButton";
 import VolumeButton from "./volume-button/VolumeButton";
 import { ReactComponent as Volume } from "../../../assets/svgs/volume.svg";
@@ -30,6 +30,10 @@ const Player = ({
           setHovered(false);
         }}
       >
+        {currentShow ? (
+          <CurrentShowText>{currentShow.name}</CurrentShowText>
+        ) : null}
+
         <PlayPauseWrapper playing={playing} hovered={hovered}>
           <PlayPauseButton playingTrueFalse={playing} />
         </PlayPauseWrapper>
@@ -50,6 +54,19 @@ const Wrapper = styled.div`
   align-items: center;
   background-color: ${Colors.ehfmPrimary()};
   border: 1px solid ${Colors.playerWhite};
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+
+  @media ${Devices.mobileL} {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media ${Devices.tablet} {
+    padding: 0;
+    width: auto;
+  }
 `;
 
 const Left = styled.div`
@@ -64,19 +81,31 @@ const Left = styled.div`
   transition: all 0.2s ease-out;
 `;
 
+const CurrentShowText = styled(Cta)`
+  color: ${Colors.playerWhite};
+  font-weight: normal;
+  display: block;
+
+  @media ${Devices.tablet} {
+    display: none;
+  }
+`;
+
 const PlayPauseWrapper = styled.div`
   padding: 0.5rem 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-out;
-  @media ${Devices.tablet} {
-    svg {
+  svg {
+    width: 0.75rem;
+    fill: ${(props) =>
+      props.hovered || props.playing
+        ? Colors.ehfmPrimary()
+        : Colors.playerWhite};
+
+    @media ${Devices.tablet} {
       width: 1rem;
-      fill: ${(props) =>
-        props.hovered || props.playing
-          ? Colors.ehfmPrimary()
-          : Colors.playerWhite};
     }
   }
 `;
