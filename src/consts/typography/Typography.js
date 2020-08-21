@@ -25,8 +25,8 @@ const modularScaleDesktop = {
     lineHeight: TypographyUtils.convertPixelToEm(54),
   },
   heading3: {
-    fontSize: TypographyUtils.convertPixelToEm(36),
-    lineHeight: TypographyUtils.convertPixelToEm(42),
+    fontSize: TypographyUtils.convertPixelToEm(26),
+    lineHeight: TypographyUtils.convertPixelToEm(30),
   },
   heading4: {
     fontSize: TypographyUtils.convertPixelToEm(20),
@@ -64,8 +64,8 @@ const modularScaleMobile = {
     lineHeight: TypographyUtils.convertPixelToEm(42),
   },
   heading3: {
-    fontSize: TypographyUtils.convertPixelToEm(24),
-    lineHeight: TypographyUtils.convertPixelToEm(30),
+    fontSize: TypographyUtils.convertPixelToEm(22),
+    lineHeight: TypographyUtils.convertPixelToEm(26),
   },
   heading4: {
     fontSize: TypographyUtils.convertPixelToEm(18),
@@ -122,7 +122,7 @@ export default {
   `,
 
   heading3: `
-  ${genericStyles.regular}
+  ${genericStyles.bold}
   
   ${TypographyUtils.fontSizeCalc(
     modularScaleDesktop.heading3.fontSize,

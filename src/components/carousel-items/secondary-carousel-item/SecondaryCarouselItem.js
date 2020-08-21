@@ -59,7 +59,9 @@ const CategoryBody = styled(Body)`
   padding-bottom: 2px;
 `;
 
-const HeadingBody = styled(Body)``;
+const HeadingBody = styled(Body)`
+  font-weight: normal;
+`;
 
 const ImageWrapper = styled.div`
   width: 100%;

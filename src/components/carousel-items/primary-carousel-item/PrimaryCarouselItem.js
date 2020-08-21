@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components/macro";
-import { Heading4, Body } from "../../text-elements/index";
+import { Heading4, Heading3, Body } from "../../text-elements/index";
 import Colors from "../../../consts/Colors";
 import Image from "../../image/Image";
 import CarouselButton from "../../carousel-button/CarouselButton";
@@ -31,7 +31,9 @@ const PrimaryCarouselItem = ({
     >
       <TextWrapper>
         <CategoryBody>{data.category}</CategoryBody>
-        <Heading4 className="carousel-item-headline">{data.headline}</Heading4>
+        <ItemTitle className="carousel-item-headline">
+          {data.headline}
+        </ItemTitle>
         <FlavourHeading>{data.flavour_text}</FlavourHeading>
       </TextWrapper>
       <ImageWrapper hovered={hovered}>
@@ -69,11 +71,17 @@ const TextWrapper = styled.div`
 
 const CategoryBody = styled(Body)`
   color: ${Colors.ehfmPrimary()};
-  padding-bottom: 4px;
+  padding-bottom: 0.25rem;
+`;
+
+const ItemTitle = styled(Heading3)`
+  padding-bottom: 0.15rem;
 `;
 
 const FlavourHeading = styled(Heading4)`
   color: ${Colors.notQuiteBlack(0.6)};
+  font-weight: normal;
+  padding-bottom: 0.25rem;
 `;
 
 const ImageWrapper = styled.div`

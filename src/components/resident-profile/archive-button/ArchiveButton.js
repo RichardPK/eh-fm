@@ -12,7 +12,7 @@ const ArchiveButton = ({ handleArchiveButtonClick, displayShows }) => {
       onClick={() => handleArchiveButtonClick()}
       displayShows={displayShows}
     >
-      <Title>Archive</Title>
+      <Title unsetColor>Archive</Title>
       <ReactSVG src={ArrowRight} />
     </Wrapper>
   );
@@ -20,7 +20,7 @@ const ArchiveButton = ({ handleArchiveButtonClick, displayShows }) => {
 
 const Wrapper = styled.div`
   background-color: ${(props) =>
-    props.displayShows ? Colors.playerWhite : Colors.ehfmPrimary};
+    props.displayShows ? Colors.playerWhite : Colors.ehfmPrimary()};
   color: ${(props) =>
     props.displayShows ? Colors.ehfmPrimary() : Colors.playerWhite};
   position: absolute;

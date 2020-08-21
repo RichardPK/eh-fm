@@ -25,7 +25,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 140px;
-  letter-spacing: 1px;
 
   p {
     margin: 0px;
