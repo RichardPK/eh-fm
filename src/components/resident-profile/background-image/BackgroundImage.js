@@ -8,10 +8,10 @@ const BackgroundImage = ({ mixCloudWidget, showImage }) => {
 };
 
 const Wrapper = styled.div`
-  margin-left: ${Sizes.sidePlayerWidth}px;
+  width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
+  margin-left: ${Sizes.sidePlayerWidthSmaller}px;
   background-position: center center !important;
   background-size: cover !important;
-  width: calc(100% - ${Sizes.sidePlayerWidth}px);
   height: 100%;
   display: flex;
   overflow: hidden;
@@ -25,6 +25,11 @@ const Wrapper = styled.div`
   img {
     max-width: 100%;
     margin: auto;
+  }
+
+  @media ${Devices.laptop} {
+    margin-left: ${Sizes.sidePlayerWidth}px;
+    width: calc(100% - ${Sizes.sidePlayerWidth}px);
   }
 `;
 

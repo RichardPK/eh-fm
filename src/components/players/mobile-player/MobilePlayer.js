@@ -44,7 +44,7 @@ const MobilePlayer = ({
 const FakeSidePlayer = styled.div`
   /* grid-column: 1 / 1; */
   grid-row: 1 / 2;
-  width: ${Sizes.sidePlayerWidth}px;
+  width: 100vw;
 
   display: block;
 
@@ -62,7 +62,7 @@ const SidePlayerOuter = styled.div`
   position: fixed;
   background-color: ${Colors.ehfmPrimary()};
   padding-top: 2rem;
-  width: ${Sizes.sidePlayerWidth}px;
+  width: 100vw;
   height: 100%;
   display: flex;
 

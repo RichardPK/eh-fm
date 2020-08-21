@@ -29,20 +29,26 @@ const DekstopNavBar = (props) => {
 
 const FakeNavBar = styled.div`
   height: ${Sizes.navHeight}px;
-  width: calc(100% - ${Sizes.sidePlayerWidth}px);
+  width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
   grid-column: 2 / 2;
   grid-row: 1 / 1;
   z-index: -1;
+
+  @media ${Devices.laptop} {
+    width: calc(100% - ${Sizes.sidePlayerWidth}px);
+  }
 `;
 
 const Wrapper = styled.nav`
   position: fixed;
   z-index: 2;
   top: 0;
-  left: ${Sizes.sidePlayerWidth}px;
-  width: calc(100% - ${Sizes.sidePlayerWidth}px);
+  left: ${Sizes.sidePlayerWidthSmaller}px;
+  width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
 
-  @media ${Devices.tablet} {
+  @media ${Devices.laptop} {
+    left: ${Sizes.sidePlayerWidth}px;
+    width: calc(100% - ${Sizes.sidePlayerWidth}px);
   }
 `;
 

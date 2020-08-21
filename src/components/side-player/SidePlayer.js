@@ -50,11 +50,15 @@ const SidePlayer = ({
 const FakeSidePlayer = styled.div`
   grid-column: 1 / 1;
   grid-row: 1 / 2;
-  width: ${Sizes.sidePlayerWidth}px;
+  width: ${Sizes.sidePlayerWidthSmaller}px;
   display: none;
 
   @media ${Devices.tablet} {
     display: block;
+  }
+
+  @media ${Devices.laptop} {
+    width: ${Sizes.sidePlayerWidth}px;
   }
 `;
 
@@ -67,12 +71,16 @@ const SidePlayerOuter = styled.div`
   position: fixed;
   background-color: ${Colors.ehfmPrimary()};
   padding-top: 2rem;
-  width: ${Sizes.sidePlayerWidth}px;
+  width: ${Sizes.sidePlayerWidthSmaller}px;
   height: 100%;
   display: none;
 
   @media ${Devices.tablet} {
     display: flex;
+  }
+
+  @media ${Devices.laptop} {
+    width: ${Sizes.sidePlayerWidth}px;
   }
 `;
 

@@ -37,9 +37,13 @@ const Wrapper = styled.div`
   z-index: 2;
   bottom: -3px;
   right: 0;
-  width: calc(100% - ${Sizes.sidePlayerWidth}px);
+  width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
   display: flex;
   flex-direction: column;
+
+  @media ${Devices.laptop} {
+    width: calc(100% - ${Sizes.sidePlayerWidth}px);
+  }
 `;
 
 const CloseButton = styled.div`
