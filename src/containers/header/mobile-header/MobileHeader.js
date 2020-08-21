@@ -49,7 +49,7 @@ const FakeMobileHeader = styled.div`
 
 const Wrapper = styled.div`
   width: 100vw;
-  background-color: ${Colors.bgWhiteCustom(1)};
+  background-color: ${Colors.playerWhite};
   position: relative;
   position: fixed;
   display: flex;

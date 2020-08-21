@@ -110,7 +110,7 @@ const CurrentShowText = styled(Cta)`
 `;
 
 const PlayPauseWrapper = styled.div`
-  padding: 0.5rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,11 +126,11 @@ const PlayPauseWrapper = styled.div`
       width: 1rem;
     }
   }
-
   border-left: 1px solid ${Colors.playerWhite};
 
   @media ${Devices.tablet} {
     border: none;
+    padding: 0.5rem 1.25rem;
   }
 `;
 

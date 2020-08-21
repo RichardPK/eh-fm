@@ -25,9 +25,8 @@ const Inner = styled.div`
   display: flex;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.4rem;
+  padding-top: 0.6rem;
   padding-bottom: 0.75rem;
-  background-color: ${Colors.bgWhiteCustom(0.95)};
 
   @media ${Devices.mobileL} {
     padding-left: 2rem;
