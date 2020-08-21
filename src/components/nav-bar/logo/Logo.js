@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../../assets/svgs/ehfm-logo.svg';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from "../../../assets/svgs/ehfm-logo.svg";
 
 const LogoHead = (props) => {
   return (
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledLogo = styled(Logo)`
-  height: 2.5rem;
+  height: 3rem;
   width: auto;
   path,
   polygon {

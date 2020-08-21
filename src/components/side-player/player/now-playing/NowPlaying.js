@@ -28,16 +28,16 @@ const Wrapper = styled.div`
 
   span {
     color: ${(props) =>
-      props.playing ? Colors.playerWhite : Colors.altBlueHover()};
+      props.playing ? Colors.playerWhite : Colors.ehfmPrimary()};
   }
 
   .play-button {
     border-color: transparent transparent transparent
-      ${(props) => (props.playing ? Colors.playerWhite : Colors.altBlueHover())};
+      ${(props) => (props.playing ? Colors.playerWhite : Colors.ehfmPrimary())};
   }
 
   .pause-button {
-    border-color: ${Colors.altBlueHover()};
+    border-color: ${Colors.ehfmPrimary()};
   }
 
   @media ${Devices.tablet} {

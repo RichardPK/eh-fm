@@ -4,7 +4,7 @@ import ListenNowButton from "../listen-now-button/ListenNowButton";
 import OnAir from "../side-player/player/on-air/OnAir";
 import styled from "styled-components/macro";
 import Devices from "../../consts/Devices";
-import { Heading3, Body } from "../text-elements/index";
+import { Heading2, Body } from "../text-elements/index";
 import {
   SHOW_NOT_FOUND,
   getShowInPrismic,
@@ -156,7 +156,7 @@ const InfoWrapper = styled.div`
   }
 `;
 
-const ShowName = styled(Heading3)`
+const ShowName = styled(Heading2)`
   color: ${Colors.playerWhite};
 `;
 

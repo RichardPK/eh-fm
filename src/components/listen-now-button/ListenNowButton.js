@@ -20,7 +20,7 @@ const ListenNowButton = ({ playing, playClicked }) => {
 const Wrapper = styled.div`
   cursor: pointer;
   padding: 4px;
-  background-color: ${Colors.altBlueHover()};
+  background-color: ${Colors.ehfmPrimary()};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,15 +44,15 @@ const Wrapper = styled.div`
 
     &:hover {
       background-color: ${Colors.playerWhite};
-      color: ${Colors.altBlueHover()};
+      color: ${Colors.ehfmPrimary()};
 
       .play-button {
         border-color: transparent transparent transparent
-          ${Colors.altBlueHover()};
+          ${Colors.ehfmPrimary()};
       }
 
       .pause-button {
-        border-color: ${Colors.altBlueHover()};
+        border-color: ${Colors.ehfmPrimary()};
       }
     }
   }
