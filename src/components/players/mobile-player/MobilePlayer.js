@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components/macro";
-import CurrentShow from "../current-show/CurrentShow";
-import Player from "./player/Player";
-import Logo from "../nav-bar/logo/Logo";
-import Schedule from "../schedule/Schedule";
-import Devices from "../../consts/Devices";
-import Colors from "../../consts/Colors";
-import Sizes from "../../consts/Sizes";
+import CurrentShow from "../../current-show/CurrentShow";
+import Player from "../../side-player/player/Player";
+import Devices from "../../../consts/Devices";
+import Colors from "../../../consts/Colors";
+import Sizes from "../../../consts/Sizes";
 
-const SidePlayer = ({
+const MobilePlayer = ({
   currentShow,
   residents,
   playing,
@@ -21,7 +19,6 @@ const SidePlayer = ({
     <>
       <FakeSidePlayer />
       <SidePlayerOuter>
-        <Logo />
         <CurrentShowAndPlayerWrapper>
           {currentShow ? (
             <CurrentShow
@@ -39,22 +36,20 @@ const SidePlayer = ({
             volume={volume}
           />
         </CurrentShowAndPlayerWrapper>
-        <ScheduleWrapper>
-          <Schedule residents={residents} showsUpNext={showsUpNext} />
-        </ScheduleWrapper>
       </SidePlayerOuter>
     </>
   );
 };
 
 const FakeSidePlayer = styled.div`
-  grid-column: 1 / 1;
+  /* grid-column: 1 / 1; */
   grid-row: 1 / 2;
   width: ${Sizes.sidePlayerWidth}px;
-  display: none;
+
+  display: block;
 
   @media ${Devices.tablet} {
-    display: block;
+    display: none;
   }
 `;
 
@@ -69,10 +64,10 @@ const SidePlayerOuter = styled.div`
   padding-top: 2rem;
   width: ${Sizes.sidePlayerWidth}px;
   height: 100%;
-  display: none;
+  display: flex;
 
   @media ${Devices.tablet} {
-    display: flex;
+    display: none;
   }
 `;
 
@@ -94,11 +89,4 @@ const CurrentShowAndPlayerWrapper = styled.div`
   }
 `;
 
-const ScheduleWrapper = styled.div`
-  height: 100%;
-  width: 100%;
-  border-top: ${Colors.bgWhite};
-  background-color: ${Colors.playerWhite};
-`;
-
-export default SidePlayer;
+export default MobilePlayer;
