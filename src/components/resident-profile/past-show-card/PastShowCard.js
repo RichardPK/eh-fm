@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Colors from '../../../consts/Colors';
-import Devices from '../../../consts/Devices';
-import { Body, Heading4 } from '../../text-elements/index';
-import ShowTag from '../show-tag/ShowTag';
+import React from "react";
+import styled from "styled-components/macro";
+import Colors from "../../../consts/Colors";
+import Devices from "../../../consts/Devices";
+import { Body, Heading4 } from "../../text-elements/index";
+import ShowTag from "../show-tag/ShowTag";
 
 const PastShowCard = (props) => {
   return (
@@ -22,7 +22,7 @@ const PastShowCard = (props) => {
 const Inner = styled.div`
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
-  border-bottom: 2px solid ${Colors.ehfmPrimary};
+  border-bottom: 2px solid ${Colors.ehfmPrimary()};
   cursor: pointer;
   padding: 5px;
   color: ${Colors.notQuiteBlack()};

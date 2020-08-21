@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   padding: 8px 8px 8px 8px;
   cursor: pointer;
   background-color: ${(props) =>
-    props.playing ? Colors.ehfmPrimary : Colors.playerWhite};
+    props.playing ? Colors.ehfmPrimary() : Colors.playerWhite};
 
   span {
     color: ${(props) =>

@@ -51,7 +51,7 @@ const InnerWrapper = styled.div`
   justify-content: center;
   border-radius: 2px;
   background-color: ${(props) =>
-    props.hovered ? Colors.ehfmPrimary10 : Colors.ehfmPrimary};
+    props.hovered ? Colors.ehfmPrimary(0.1) : Colors.ehfmPrimary()};
   transition: background-color, 0.2s ease-out;
 `;
 
@@ -60,7 +60,7 @@ const DonateText = styled(Cta)`
   margin-left: 0.5rem;
   margin-right: 0.25rem;
   color: ${(props) =>
-    props.hovered ? Colors.ehfmPrimary : Colors.playerWhite};
+    props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite};
   transition: color, 0.2s ease-out;
 `;
 
@@ -74,7 +74,7 @@ const IconWrapper = styled.div`
 
       #path3355-4 {
         fill: ${(props) =>
-          props.hovered ? Colors.ehfmPrimary : Colors.playerWhite} !important;
+          props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite} !important;
         transition: fill, 0.2s ease-out;
       }
 

@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Logo from './logo/Logo';
-import Devices from '../../consts/Devices';
-import Sizes from '../../consts/Sizes';
-import Socials from './socials/Socials';
-import Colors from '../../consts/Colors';
-import NavLinks from './nav-links/NavLinks';
-import PaypalButton from '../paypal-button/PaypalButton';
+import React from "react";
+import styled from "styled-components/macro";
+import Logo from "./logo/Logo";
+import Devices from "../../consts/Devices";
+import Sizes from "../../consts/Sizes";
+import Socials from "./socials/Socials";
+import Colors from "../../consts/Colors";
+import NavLinks from "./nav-links/NavLinks";
+import PaypalButton from "../paypal-button/PaypalButton";
 
 const NavBar = (props) => {
   return (
@@ -53,7 +53,7 @@ const Inner = styled.div`
   padding-top: 10px;
   padding-bottom: 5px;
   background-color: ${Colors.bgWhiteCustom(0.95)};
-  /* border-bottom: 1px solid ${Colors.ehfmPrimary}; */
+  /* border-bottom: 1px solid ${Colors.ehfmPrimary()}; */
 
   @media ${Devices.mobileL} {
     padding-left: 30px;

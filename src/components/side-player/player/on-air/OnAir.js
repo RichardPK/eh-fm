@@ -30,11 +30,11 @@ const OnAirWrapper = styled.div`
 const OnAirText = styled(Tiny)`
   font-weight: 200;
   letter-spacing: 1px;
-  color: ${Colors.altBlueText()};
+  color: ${Colors.ehfmPrimary()};
 `;
 
 const Circle = styled.div`
-  background: ${Colors.altBlueText()};
+  background: ${Colors.ehfmPrimary()};
   width: 8px;
   height: 8px;
   border-radius: 50%;

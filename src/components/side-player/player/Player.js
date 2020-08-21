@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: ${Colors.ehfmPrimary};
+  background-color: ${Colors.ehfmPrimary()};
   border: 1px solid ${Colors.playerWhite};
 `;
 
@@ -60,7 +60,7 @@ const Left = styled.div`
   justify-self: flex-start;
   cursor: pointer;
   background-color: ${(props) =>
-    props.hovered || props.playing ? Colors.playerWhite : Colors.ehfmPrimary};
+    props.hovered || props.playing ? Colors.playerWhite : Colors.ehfmPrimary()};
   transition: all 0.2s ease-out;
 `;
 

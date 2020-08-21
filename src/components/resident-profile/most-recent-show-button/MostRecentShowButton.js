@@ -1,16 +1,16 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Colors from '../../../consts/Colors';
-import { Cta } from '../../text-elements/index';
-import { ReactSVG } from 'react-svg';
-import MixCloud from '../../../assets/svgs/mixcloud.svg';
-import Devices from '../../../consts/Devices';
+import React from "react";
+import styled from "styled-components/macro";
+import Colors from "../../../consts/Colors";
+import { Cta } from "../../text-elements/index";
+import { ReactSVG } from "react-svg";
+import MixCloud from "../../../assets/svgs/mixcloud.svg";
+import Devices from "../../../consts/Devices";
 
 const MostRecentShowbutton = ({
   mostRecentShow,
   handleMostRecentShowButtonClick,
   date,
-  showName
+  showName,
 }) => {
   return (
     <Wrapper
@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   padding: 0.25rem 0.5rem;
   margin-left: 0px;
   width: fit-content;
-  background: ${Colors.ehfmPrimary};
+  background: ${Colors.ehfmPrimary()};
   color: ${Colors.playerWhite};
   cursor: pointer;
 
@@ -59,11 +59,11 @@ const Wrapper = styled.div`
   @media ${Devices.tablet} {
     &:hover {
       background-color: ${Colors.playerWhite};
-      color: ${Colors.ehfmPrimary};
+      color: ${Colors.ehfmPrimary()};
       transition: background-color 0.2s;
 
       path {
-        fill: ${Colors.ehfmPrimary};
+        fill: ${Colors.ehfmPrimary()};
       }
     }
   }

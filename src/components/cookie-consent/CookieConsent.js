@@ -88,9 +88,9 @@ const WhiteBox = styled.div`
 
 const CookiesText = styled(Body)`
   padding: 1rem 30px;
-  color: ${Colors.ehfmPrimary};
+  color: ${Colors.ehfmPrimary()};
   a {
-    color: ${Colors.ehfmPrimary};
+    color: ${Colors.ehfmPrimary()};
     text-decoration: underline;
   }
 `;
@@ -103,7 +103,7 @@ const CloseButton = styled.div`
   align-self: flex-end;
   font-size: 14px;
   padding: 1px 6px 4px 7px;
-  color: ${Colors.ehfmPrimary};
+  color: ${Colors.ehfmPrimary()};
   cursor: pointer;
 
   @media ${Devices.tablet} {

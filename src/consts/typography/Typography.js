@@ -2,19 +2,13 @@ import TypographyUtils from "./TypographyUtils";
 
 const genericStyles = {
   bold: `
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: 700;
-  display: block;
-  margin: 0;
-  `,
-  medium: `
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: 500;
+  font-family: 'Helvetica Neue LT Std', sans-serif;
+  font-weight: bold;
   display: block;
   margin: 0;
   `,
   regular: `
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Helvetica Neue Lt Std', sans-serif;
   font-weight: 400;
   display: block;
   margin: 0;
@@ -143,7 +137,7 @@ export default {
   `,
 
   heading4: `
-  ${genericStyles.medium}
+  ${genericStyles.bold}
   ${TypographyUtils.fontSizeCalc(
     modularScaleDesktop.heading4.fontSize,
     modularScaleMobile.heading4.fontSize

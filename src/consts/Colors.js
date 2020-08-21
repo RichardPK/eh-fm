@@ -3,13 +3,10 @@ export default {
   playerWhiteCustom: (customVal) => `rgba(255, 255, 255, ${customVal})`,
   softWhite: `rgba(255, 255, 255, 0.8)`,
   softestWhite: `rgba(255, 255, 255, 0.4)`,
-  ehfmPrimary: `rgb(0, 145, 138)`,
-  ehfmPrimaryCustom: (customVal) => `rgba(0, 145, 138, ${customVal})`,
-  ehfmPrimary80: `rgb(0, 145, 138, 0.8)`,
-  ehfmPrimary10: `rgb(0, 145, 138, 0.1)`,
+  ehfmPrimary: (customVal) => `rgba(0, 179, 152, ${customVal ? customVal : 1})`,
   altBlueText: (customVal) => `rgba(3, 181, 170, ${customVal ? customVal : 1})`,
   altBlueHover: (customVal) =>
-    `rgba(0, 204, 194, ${customVal ? customVal : 1})`,
+    `rgba(0, 224, 191, ${customVal ? customVal : 1})`,
   highlightYellow: (customVal) =>
     `rgb(248, 250, 144), ${customVal ? customVal : 1})`,
   bgWhite: `rgb(247, 240, 240)`,
