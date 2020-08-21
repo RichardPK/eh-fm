@@ -48,16 +48,16 @@ const Wrapper = styled.nav`
 
 const Inner = styled.div`
   display: flex;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 2rem;
+  padding-right: 2rem;
   padding-top: 10px;
   padding-bottom: 5px;
   background-color: ${Colors.bgWhiteCustom(0.95)};
   /* border-bottom: 1px solid ${Colors.ehfmPrimary()}; */
 
   @media ${Devices.mobileL} {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 `;
 
