@@ -194,8 +194,8 @@ const Wrapper = styled.div`
   }
 
   @media ${Devices.tablet} {
-    padding: 0 2rem;
-    max-width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px - 4rem);
+    padding: 0 3rem;
+    max-width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px - 6rem);
 
     margin: 2.5rem 0
       ${(props) =>

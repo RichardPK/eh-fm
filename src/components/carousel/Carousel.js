@@ -37,11 +37,11 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
   const params = {
     breakpoints: {
       1800: {
-        slidesPerView: hierarchy === "primary" ? 3.1 : 6,
+        slidesPerView: hierarchy === "primary" ? 3 : 6,
         spaceBetween: hierarchy === "primary" ? 75 : 32,
       },
       1024: {
-        slidesPerView: hierarchy === "primary" ? 2.15 : 5,
+        slidesPerView: hierarchy === "primary" ? 2 : 5,
         spaceBetween: hierarchy === "primary" ? 60 : 32,
       },
       768: {
@@ -132,7 +132,7 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
 
 const Wrapper = styled.div`
   cursor: grab;
-  margin: ${(props) => (props.hierarchy === "primary" ? "0 0 3rem" : "0rem")};
+  margin: ${(props) => (props.hierarchy === "primary" ? "0 0 3rem" : "0")};
 
   @media ${Devices.tablet} {
     margin: ${(props) =>
