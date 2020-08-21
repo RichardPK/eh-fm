@@ -316,7 +316,7 @@ const MainWrapper = styled.div`
   display: grid;
   position: relative;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto 1fr;
 
   @media ${Devices.tablet} {
     grid-template-columns: auto 1fr;
