@@ -1,8 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-import InstagramLogo from "../../../assets/images/instagram-teal.png";
-import FacebookLogo from "../../../assets/images/facebook-teal.png";
-import ChatangoLogo from "../../../assets/images/chat-teal.png";
 import Devices from "../../../consts/Devices";
 import { ReactComponent as Instagram } from "../../../assets/svgs/instagram.svg";
 import { ReactComponent as Facebook } from "../../../assets/svgs/facebook.svg";
