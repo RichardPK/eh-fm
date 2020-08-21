@@ -40,7 +40,15 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   padding: 2px 0 0;
   transition: all, 0.1s ease-out;
-  margin-right: 4rem;
+  margin-right: 2rem;
+
+  @media ${Devices.mobileL} {
+    margin-right: 3rem;
+  }
+
+  @media ${Devices.tablet} {
+    margin-right: 4rem;
+  }
 `;
 
 const NavText = styled(Cta)`

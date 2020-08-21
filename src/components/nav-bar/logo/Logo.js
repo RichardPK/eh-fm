@@ -2,13 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../../assets/svgs/ehfm-logo.svg";
+import Colors from "../../../consts/Colors";
 
-const LogoHead = (props) => {
+const LogoHead = ({ mobile, color }) => {
   return (
     <React.Fragment>
       <Wrapper>
         <Link to="/">
-          <StyledLogo />
+          <StyledLogo color={color} mobile={mobile} />
         </Link>
       </Wrapper>
     </React.Fragment>
@@ -20,11 +21,11 @@ const Wrapper = styled.div`
 `;
 
 const StyledLogo = styled(Logo)`
-  height: 2.5rem;
+  height: ${(props) => (props.mobile ? "1.75rem" : "2.5rem")};
   width: auto;
   path,
   polygon {
-    fill: white;
+    fill: ${(props) => (props.color ? props.color : Colors.playerWhite)};
   }
 `;
 

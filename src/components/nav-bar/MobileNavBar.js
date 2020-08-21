@@ -8,58 +8,38 @@ import Colors from "../../consts/Colors";
 import NavLinks from "./nav-links/NavLinks";
 import PaypalButton from "../paypal-button/PaypalButton";
 
-const DekstopNavBar = (props) => {
+const MobileNavBar = (props) => {
   return (
-    <>
-      <FakeNavBar />
-      <Wrapper>
-        <Inner>
-          <Left>
-            <NavLinks />
-          </Left>
-          <Right>
-            <PaypalButton />
-          </Right>
-        </Inner>
-      </Wrapper>
-    </>
+    <Inner>
+      <Left>
+        <NavLinks />
+      </Left>
+      <Right>
+        <PaypalButton />
+      </Right>
+    </Inner>
   );
 };
 
-const FakeNavBar = styled.div`
-  height: ${Sizes.navHeight}px;
-  width: 100vw;
-  grid-column: 1 / 1;
-  grid-row: 1 / 1;
-  z-index: -1;
-`;
-
-const Wrapper = styled.nav`
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  width: 100vw;
-`;
-
 const Inner = styled.div`
   display: flex;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 10px;
-  padding-bottom: 5px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.75rem;
   background-color: ${Colors.bgWhiteCustom(0.95)};
+
+  @media ${Devices.mobileL} {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 `;
 
 const Left = styled.div`
-  height: 31px;
   display: flex;
   flex-direction: row;
   align-items: center;
   letter-spacing: 1px;
-
-  @media ${Devices.tablet} {
-    height: 71px;
-  }
 `;
 
 const Right = styled.div`
@@ -70,4 +50,4 @@ const Right = styled.div`
   margin: auto 0px auto auto;
 `;
 
-export default DekstopNavBar;
+export default MobileNavBar;

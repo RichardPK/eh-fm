@@ -17,64 +17,30 @@ const MobilePlayer = ({
 }) => {
   return (
     <>
-      <FakeSidePlayer />
-      <SidePlayerOuter>
-        <CurrentShowAndPlayerWrapper>
-          {currentShow ? (
-            <CurrentShow
-              currentShow={currentShow}
-              residents={residents}
-              playing={playing}
-              handlePlayPauseClicked={handlePlayPauseClicked}
-            />
-          ) : null}
-          <Player
-            playing={playing}
-            handlePlayPauseClicked={handlePlayPauseClicked}
-            currentShow={currentShow}
-            handleVolumeClicked={handleVolumeClicked}
-            volume={volume}
-          />
-        </CurrentShowAndPlayerWrapper>
-      </SidePlayerOuter>
+      <Wrapper>
+        <Player
+          playing={playing}
+          handlePlayPauseClicked={handlePlayPauseClicked}
+          currentShow={currentShow}
+          handleVolumeClicked={handleVolumeClicked}
+          volume={volume}
+        />
+      </Wrapper>
     </>
   );
 };
 
-const FakeSidePlayer = styled.div`
-  /* grid-column: 1 / 1; */
-  grid-row: 1 / 2;
-  width: 100vw;
-
-  display: block;
-
-  @media ${Devices.tablet} {
-    display: none;
-  }
-`;
-
-const SidePlayerOuter = styled.div`
-  top: 0;
-  left: 0;
-  z-index: 1;
+const Wrapper = styled.div`
+  z-index: 5;
   flex-direction: column;
   align-items: center;
-  position: fixed;
   background-color: ${Colors.ehfmPrimary()};
-  padding-top: 2rem;
   width: 100vw;
-  height: 100%;
   display: flex;
 
   @media ${Devices.tablet} {
     display: none;
   }
-`;
-
-const CurrentShowAndPlayerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 0.5rem 1rem;
 
   @media not all and (min-resolution: 0.001dpcm) {
     @media {

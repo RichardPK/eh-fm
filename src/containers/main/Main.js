@@ -250,7 +250,15 @@ class Main extends Component {
 
         {this.props.residents.length ? (
           <MainWrapper>
-            <Header />
+            <Header
+              currentShow={this.state.currentShow}
+              residents={this.props.residents}
+              playing={this.props.playing}
+              volume={this.props.volume}
+              handlePlayPauseClicked={this.handlePlayPauseClicked}
+              handleVolumeClicked={this.handleVolumeClicked}
+              showsUpNext={this.state.showsUpNext}
+            />
             <SidePlayer
               currentShow={this.state.currentShow}
               residents={this.props.residents}
@@ -260,15 +268,6 @@ class Main extends Component {
               handleVolumeClicked={this.handleVolumeClicked}
               showsUpNext={this.state.showsUpNext}
             />
-            <MobilePlayer
-              currentShow={this.state.currentShow}
-              residents={this.props.residents}
-              playing={this.props.playing}
-              volume={this.props.volume}
-              handlePlayPauseClicked={this.handlePlayPauseClicked}
-              handleVolumeClicked={this.handleVolumeClicked}
-              showsUpNext={this.state.showsUpNext}
-            ></MobilePlayer>
             <MainInner>
               <Switch>
                 <Route
@@ -315,7 +314,7 @@ class Main extends Component {
 const MainWrapper = styled.div`
   display: grid;
   position: relative;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto;
   grid-template-rows: auto 1fr;
 
   @media ${Devices.tablet} {

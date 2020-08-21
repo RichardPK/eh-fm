@@ -8,10 +8,10 @@ import Colors from "../../consts/Colors";
 import NavLinks from "./nav-links/NavLinks";
 import PaypalButton from "../paypal-button/PaypalButton";
 
-const DekstopNavBar = (props) => {
+const DesktopNavBar = (props) => {
   return (
     <>
-      <FakeNavBar />
+      <FakeDesktopNavBar />
       <Wrapper>
         <Inner>
           <Left>
@@ -27,7 +27,7 @@ const DekstopNavBar = (props) => {
   );
 };
 
-const FakeNavBar = styled.div`
+const FakeDesktopNavBar = styled.div`
   height: ${Sizes.navHeight}px;
   width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
   grid-column: 2 / 2;
@@ -87,4 +87,4 @@ const Right = styled.div`
   margin: auto 0px auto auto;
 `;
 
-export default DekstopNavBar;
+export default DesktopNavBar;

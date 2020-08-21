@@ -1,18 +1,37 @@
 import React from "react";
 import styled from "styled-components/macro";
-import DekstopNavBar from "../../components/nav-bar/DesktopNavBar";
+import DesktopNavBar from "../../components/nav-bar/DesktopNavBar";
 import MobileNavBar from "../../components/nav-bar/MobileNavBar";
 import Devices from "../../consts/Devices";
+import Logo from "../../components/nav-bar/logo/Logo";
+import MobilePlayer from "../../components/players/mobile-player/MobilePlayer";
+import MobileHeader from "./mobile-header/MobileHeader";
+import Sizes from "../../consts/Sizes";
 
-const HeaderContainer = (props) => {
+const HeaderContainer = ({
+  currentShow,
+  residents,
+  playing,
+  volume,
+  handlePlayPauseClicked,
+  handleVolumeClicked,
+  showsUpNext,
+}) => {
   return (
     <React.Fragment>
       <MobileWrapper>
-        <LogoWrapper></LogoWrapper>
-        <MobileNavBar />
+        <MobileHeader
+          currentShow={currentShow}
+          residents={residents}
+          playing={playing}
+          volume={volume}
+          handlePlayPauseClicked={handlePlayPauseClicked}
+          handleVolumeClicked={handleVolumeClicked}
+          showsUpNext={showsUpNext}
+        />
       </MobileWrapper>
       <DesktopWrapper>
-        <DekstopNavBar />
+        <DesktopNavBar />
       </DesktopWrapper>
     </React.Fragment>
   );
@@ -25,8 +44,6 @@ const MobileWrapper = styled.div`
     display: none;
   }
 `;
-
-const LogoWrapper = styled.div``;
 
 const DesktopWrapper = styled.div`
   display: none;
