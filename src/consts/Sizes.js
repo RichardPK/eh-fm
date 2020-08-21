@@ -5,6 +5,7 @@ export default {
   tablet: "768px",
   laptop: "1024px",
   laptopL: "1440px",
+  laptopHeightS: "760px",
   desktop: "2560px",
   mobileHeightShort: "560px",
   mobileHeightMedium: "640px",

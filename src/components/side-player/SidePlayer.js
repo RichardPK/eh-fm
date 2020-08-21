@@ -57,7 +57,7 @@ const FakeSidePlayer = styled.div`
     display: block;
   }
 
-  @media ${Devices.laptop} {
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
     width: ${Sizes.sidePlayerWidth}px;
   }
 `;
@@ -79,7 +79,7 @@ const SidePlayerOuter = styled.div`
     display: flex;
   }
 
-  @media ${Devices.laptop} {
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
     width: ${Sizes.sidePlayerWidth}px;
   }
 `;

@@ -22,7 +22,7 @@ const VolumeButton = (props) => (
 const Wrapper = styled.div`
   display: none;
 
-  @media ${Devices.laptop} {
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
     display: flex;
     border-left: 2px solid ${Colors.ehfmPrimary()};
     padding: 2px 0 2px 20px;

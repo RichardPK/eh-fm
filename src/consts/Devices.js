@@ -9,7 +9,8 @@ export default {
   laptopL: `(min-width: ${sizes.laptopL})`,
   desktop: `(min-width: ${sizes.desktop})`,
   desktopL: `(min-width: ${sizes.desktop})`,
+  laptopHeightS: `(min-height: ${sizes.laptopHeightS})`,
   mobileHeightShort: `(min-height: ${sizes.mobileHeightShort})`,
   mobileHeightMedium: `(min-height: ${sizes.mobileHeightMedium})`,
-  mobileHeightTall: `(min-height: ${sizes.mobileHeightTall})`
+  mobileHeightTall: `(min-height: ${sizes.mobileHeightTall})`,
 };

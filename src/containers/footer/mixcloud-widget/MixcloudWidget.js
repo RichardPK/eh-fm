@@ -41,7 +41,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media ${Devices.laptop} {
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
     width: calc(100% - ${Sizes.sidePlayerWidth}px);
   }
 `;

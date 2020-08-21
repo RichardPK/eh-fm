@@ -198,7 +198,7 @@ const Wrapper = styled.div`
           : 0};
   }
 
-  @media ${Devices.laptop} {
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
     max-width: calc(100vw - ${Sizes.sidePlayerWidth}px - 6rem);
   }
 `;

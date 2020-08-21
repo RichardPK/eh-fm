@@ -34,7 +34,7 @@ const FakeNavBar = styled.div`
   grid-row: 1 / 1;
   z-index: -1;
 
-  @media ${Devices.laptop} {
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
     width: calc(100% - ${Sizes.sidePlayerWidth}px);
   }
 `;
@@ -46,7 +46,7 @@ const Wrapper = styled.nav`
   left: ${Sizes.sidePlayerWidthSmaller}px;
   width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
 
-  @media ${Devices.laptop} {
+  @media ${Devices.laptop} and ${Devices.laptopHeightS}  {
     left: ${Sizes.sidePlayerWidth}px;
     width: calc(100% - ${Sizes.sidePlayerWidth}px);
   }

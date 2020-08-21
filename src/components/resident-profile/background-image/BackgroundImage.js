@@ -27,7 +27,7 @@ const Wrapper = styled.div`
     margin: auto;
   }
 
-  @media ${Devices.laptop} {
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
     margin-left: ${Sizes.sidePlayerWidth}px;
     width: calc(100% - ${Sizes.sidePlayerWidth}px);
   }
