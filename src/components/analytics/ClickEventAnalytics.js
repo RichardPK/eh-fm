@@ -40,12 +40,15 @@ export const clickedUnmute = () =>
     timestamp: date,
   });
 
-export const clickedCarouselItem = (link, type, index, hierarchy) =>
+export const clickedCarouselItem = (link, type, index, hierarchy) => {
+  index = index ? index : 999;
+
   ReactGA.event({
     category: `Carousel - ${hierarchy}`,
     action: type,
     value: index,
-    label: link,
+    label: link.url,
     clientId: clientId(),
     timestamp: date,
   });
+};
