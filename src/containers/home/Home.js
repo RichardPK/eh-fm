@@ -182,13 +182,21 @@ const HomeContainer = (props) => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 3rem;
-  max-width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px - 6rem);
+  padding: 0 1rem;
+  max-width: calc(100vw - 2rem);
   margin: 2rem 0
     ${(props) =>
       props.cookiesBannerShowing ? "70px" : props.mixCloudWidget ? `123px` : 0};
+      
+  @media ${Devices.mobileL} {
+    padding: 0 2rem;
+    max-width: calc(100vw - 4rem);
+  }
 
   @media ${Devices.tablet} {
+    padding: 0 2rem;
+    max-width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px - 4rem);
+
     margin: 2.5rem 0
       ${(props) =>
         props.cookiesBannerShowing
