@@ -74,8 +74,8 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
         : false,
   };
 
-  const handleCarouselItemClick = (link, type, index) => {
-    clickedCarouselItem(link, type, index);
+  const handleCarouselItemClick = (link, type, index, hierarchy) => {
+    clickedCarouselItem(link, type, index, hierarchy);
 
     const url = link.url;
     if (type.toLowerCase() === "link") {

@@ -40,9 +40,9 @@ export const clickedUnmute = () =>
     timestamp: date,
   });
 
-export const clickedCarouselItem = (link, type, index) =>
+export const clickedCarouselItem = (link, type, index, hierarchy) =>
   ReactGA.event({
-    category: "Carousel",
+    category: `Carousel - ${hierarchy}`,
     action: type,
     value: index,
     label: link,

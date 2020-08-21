@@ -27,7 +27,7 @@ const PrimaryCarouselItem = ({
         carouselRef && carouselRef.autoplay.start();
       }}
       onClick={() => {
-        handleCarouselItemClick(data.link, data.type, index);
+        handleCarouselItemClick(data.link, data.type, index, hierarchy);
       }}
     >
       <TextWrapper>
