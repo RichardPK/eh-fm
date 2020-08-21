@@ -88,11 +88,11 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
     }
   };
 
-  console.log(
-    carouselRef
-      ? `Autoplay running: ${carouselRef.autoplay.running}`
-      : `No carouselRef`
-  );
+  // console.log(
+  //   carouselRef
+  //     ? `Autoplay running: ${carouselRef.autoplay.running}`
+  //     : `No carouselRef`
+  // );
 
   return (
     <Wrapper hierarchy={hierarchy}>
