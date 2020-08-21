@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledLogo = styled(Logo)`
-  height: 3rem;
+  height: 2.5rem;
   width: auto;
   path,
   polygon {
