@@ -8,7 +8,7 @@ import Colors from "../../consts/Colors";
 import NavLinks from "./nav-links/NavLinks";
 import PaypalButton from "../paypal-button/PaypalButton";
 
-const NavBar = (props) => {
+const DekstopNavBar = (props) => {
   return (
     <>
       <FakeNavBar />
@@ -81,4 +81,4 @@ const Right = styled.div`
   margin: auto 0px auto auto;
 `;
 
-export default NavBar;
+export default DekstopNavBar;

@@ -73,18 +73,18 @@ const IconWrapper = styled.div`
       height: 20px;
       width: 20px;
 
-      #path3355-4 {
+      #path3355-8 {
         fill: ${(props) =>
           props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite} !important;
         transition: fill, 0.2s ease-out;
       }
 
-      #path3351-2 {
+      #path3351-6 {
         fill: ${(props) =>
           props.hovered ? Colors.ehfmPrimary() : Colors.softWhite} !important;
         transition: fill, 0.2s ease-out;
       }
-      #path3353-3 {
+      #path3353-7 {
         fill: ${Colors.altBlueHover(0.8)} !important;
       }
     }
