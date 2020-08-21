@@ -5,6 +5,7 @@ import { Cta } from "../../text-elements/index";
 import { ReactSVG } from "react-svg";
 import MixCloud from "../../../assets/svgs/mixcloud.svg";
 import Devices from "../../../consts/Devices";
+import Sizes from "../../../consts/Sizes";
 
 const MostRecentShowbutton = ({
   mostRecentShow,
@@ -32,6 +33,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0.25rem 0.5rem;
+  border-radius: ${Sizes.buttonRadius}px;
   margin-left: 0px;
   width: fit-content;
   background: ${Colors.ehfmPrimary()};

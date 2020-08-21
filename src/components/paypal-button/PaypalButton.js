@@ -5,6 +5,7 @@ import { ReactSVG } from "react-svg";
 import PayPalIcon from "../../assets/svgs/paypal.svg";
 import { Cta } from "../text-elements/index";
 import Devices from "../../consts/Devices";
+import Sizes from "../../consts/Sizes";
 
 const PaypalButton = ({}) => {
   let [hovered, setHovered] = useState(false);
@@ -49,7 +50,7 @@ const InnerWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: ${Sizes.buttonRadius}px;
   background-color: ${(props) =>
     props.hovered ? Colors.ehfmPrimary(0.1) : Colors.ehfmPrimary()};
   transition: background-color, 0.2s ease-out;

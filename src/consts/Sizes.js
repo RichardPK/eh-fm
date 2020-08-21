@@ -12,4 +12,5 @@ export default {
   maxInnerWidth: `1240px`,
   navHeight: 86,
   sidePlayerWidth: 350,
+  buttonRadius: 3,
 };

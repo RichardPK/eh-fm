@@ -5,6 +5,7 @@ import Devices from "../../../consts/Devices";
 import { Heading4 } from "../../text-elements/index";
 import { ReactSVG } from "react-svg";
 import ArrowRight from "../../../assets/svgs/arrow-right.svg";
+import Sizes from "../../../consts/Sizes";
 
 const ArchiveButton = ({ handleArchiveButtonClick, displayShows }) => {
   return (
@@ -25,6 +26,7 @@ const Wrapper = styled.div`
     props.displayShows ? Colors.ehfmPrimary() : Colors.playerWhite};
   position: absolute;
   padding: 0.25rem 0.3rem 0.25rem 0.5rem;
+  border-radius: ${Sizes.buttonRadius}px;
   min-width: 0px;
   max-width: 90px;
   bottom: 10px;

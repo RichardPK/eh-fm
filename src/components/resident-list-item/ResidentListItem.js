@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
+import Sizes from "../../consts/Sizes";
 import { Cta } from "../text-elements/index";
 
 const ResidentListItem = (props) => {
@@ -25,6 +26,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   max-width: 265px;
   padding: 5px 5px 4px 5px;
+  border-radius: ${Sizes.buttonRadius}px;
   margin: 15px 5px;
   background: white;
   border-bottom: 2px solid ${Colors.altBlueHover()};
@@ -72,7 +74,6 @@ const ShowTitle = styled(Cta)`
   padding-top: 15px;
   color: ${Colors.notQuiteBlack()};
   font-weight: bold;
-  /* letter-spacing: 1px; */
 `;
 
 export default ResidentListItem;
