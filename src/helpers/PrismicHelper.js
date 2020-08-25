@@ -33,11 +33,8 @@ export const getShowInPrismic = ({ residents, currentShow }) => {
 export const parseShowName = (currentShow) => {
   let parsedShowName = null;
   if (currentShow !== null) {
-    let showData = currentShow;
-
     parsedShowName = currentShow.name;
-    let sanitisedString = sanitiseString(parsedShowName);
-    return sanitisedString;
+    parsedShowName = sanitiseString(parsedShowName);
   }
   return parsedShowName;
 };

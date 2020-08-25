@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import { Body } from "../../text-elements/index";
 import Colors from "../../../consts/Colors";
-import { SHOW_NOT_FOUND } from "../../../helpers/PrismicHelper";
+import { SHOW_NOT_FOUND, sanitiseString } from "../../../helpers/PrismicHelper";
 import HoverLine from "../../hoverLine/HoverLine";
 
 const ScheduleItem = ({ showName, starts, foundShow }) => {
@@ -16,7 +16,7 @@ const ScheduleItem = ({ showName, starts, foundShow }) => {
       {foundShow === SHOW_NOT_FOUND ? (
         <Wrapper>
           <Time>{parsedTime}</Time>
-          <Name>{showName}</Name>
+          <Name>{sanitiseString(showName)}</Name>
         </Wrapper>
       ) : (
         <Wrapper>
@@ -31,7 +31,8 @@ const ScheduleItem = ({ showName, starts, foundShow }) => {
             }}
           >
             <Name hovered={hovered}>
-              {showName} <HoverLine hovered={hovered} zIndex={-1} placeholder />
+              {sanitiseString(showName)}
+              <HoverLine hovered={hovered} zIndex={-1} placeholder />
             </Name>
           </Link>
         </Wrapper>
@@ -57,7 +58,10 @@ const Name = styled(Body)`
   display: inline-block;
   position: relative;
   z-index: 1;
-  /* color: ${(props) => (props.hovered ? Colors.playerWhite : "#00000")};
+  /* color: ${(props) =>
+    props.hovered
+      ? Colors.playerWhite
+      : "#00000"};
   transition: color 0.3s ease-out; */
 `;
 
