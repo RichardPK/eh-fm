@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components/macro";
-import { Link } from "react-router-dom";
-import Colors from "../../consts/Colors";
-import Devices from "../../consts/Devices";
-import Sizes from "../../consts/Sizes";
-import { Cta } from "../text-elements/index";
+import React from 'react';
+import styled from 'styled-components/macro';
+import { Link } from 'react-router-dom';
+import Colors from '../../consts/Colors';
+import Devices from '../../consts/Devices';
+import Sizes from '../../consts/Sizes';
+import { Cta } from '../text-elements/index';
 
 const ResidentListItem = (props) => {
   return (
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   border-radius: ${Sizes.buttonRadius}px;
   margin: 15px 5px;
   background: white;
-  border-bottom: 2px solid ${Colors.altBlueHover()};
+  border-bottom: 2px solid ${Colors.ehfmPrimary()};
   height: 190px;
   width: 70vw;
 

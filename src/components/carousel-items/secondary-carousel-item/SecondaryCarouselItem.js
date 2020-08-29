@@ -1,15 +1,15 @@
-import React, { useRef, useState } from "react";
-import styled from "styled-components/macro";
-import { Body, Tiny } from "../../text-elements/index";
-import Colors from "../../../consts/Colors";
-import Image from "../../image/Image";
+import React, { useRef, useState } from 'react';
+import styled from 'styled-components/macro';
+import { Body, Tiny } from '../../text-elements/index';
+import Colors from '../../../consts/Colors';
+import Image from '../../image/Image';
 
 const SecondaryCarouselItem = ({
   data,
   hierarchy,
   handleCarouselItemClick,
   carouselRef,
-  index,
+  index
 }) => {
   let [hovered, setHovered] = useState(false);
 
@@ -29,7 +29,7 @@ const SecondaryCarouselItem = ({
       }}
     >
       <ImageWrapper hovered={hovered}>
-        <Image baseUrl={data.image.url} width={350} height={150} fit="crop" />
+        <Image baseUrl={data.image.url} width={450} height={350} fit="clamp" />
       </ImageWrapper>
       <TextWrapper>
         <CategoryBody>{data.category}</CategoryBody>
