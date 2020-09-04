@@ -59,7 +59,7 @@ const Wrapper = styled.div`
   /* make height same as 2x parent container */
   display: grid;
   grid-template-rows: 1fr auto;
-  border-radius: 4px;
+  border-radius: 0.5rem;
   :hover {
     cursor: pointer;
   }
