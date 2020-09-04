@@ -40,7 +40,7 @@ const Wrapper = styled.div`
       ? props.placeholderWidth
       : '0px'};
   height: 4px;
-  background-color: ${Colors.altBlueHover()};
+  background-color: ${Colors.ehfmPrimary()};
 `;
 
 export default HoveredLine;

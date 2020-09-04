@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components/macro";
-import Colors from "../../../consts/Colors";
-import Devices from "../../../consts/Devices";
-import { Body, Heading4 } from "../../text-elements/index";
-import ShowTag from "../show-tag/ShowTag";
+import React from 'react';
+import styled from 'styled-components/macro';
+import Colors from '../../../consts/Colors';
+import Devices from '../../../consts/Devices';
+import { Body, Heading4 } from '../../text-elements/index';
+import ShowTag from '../show-tag/ShowTag';
 
 const PastShowCard = (props) => {
   return (
@@ -33,7 +33,7 @@ const Inner = styled.div`
   @media ${Devices.tablet} {
     transition: all 0.2s;
     &:hover {
-      background-color: ${Colors.altBlueHover(0.2)};
+      background-color: ${Colors.ehfmPrimary(0.2)};
     }
   }
 `;
