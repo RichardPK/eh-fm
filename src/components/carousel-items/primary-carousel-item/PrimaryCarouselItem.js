@@ -54,8 +54,9 @@ const PrimaryCarouselItem = ({
 
 const Wrapper = styled.div`
   position: relative;
-  width: 100%;
-  height: 450px;
+  /* width: 100%; */
+  height: inherit;
+  /* make height same as 2x parent container */
   display: grid;
   grid-template-rows: 1fr auto;
   border-radius: 4px;
@@ -89,8 +90,8 @@ const ImageWrapper = styled.div`
   grid-row: 2/2;
   /* width: 100%; */
 
-  height: 350px;
-  width: 350px;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

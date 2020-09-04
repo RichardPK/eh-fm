@@ -40,9 +40,7 @@ const SecondaryCarouselItem = ({
 };
 
 const Wrapper = styled.div`
-  /* margin: 0 3rem; */
   position: relative;
-  /* width: 20vw; */
   display: grid;
   grid-template-rows: 1fr auto;
   border-radius: 4px;
