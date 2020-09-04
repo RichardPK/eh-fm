@@ -38,7 +38,7 @@ const PrimaryCarouselItem = ({
         <FlavourHeading>{data.flavour_text}</FlavourHeading>
       </TextWrapper>
       <ImageWrapper hovered={hovered}>
-        <Image baseUrl={data.image.url} width={900} height={600} fit="crop" />
+        <Image baseUrl={data.image.url} width={750} height={750} fit="crop" />
         <ButtonWrapper>
           <CarouselButton
             type={data.type}
@@ -90,6 +90,7 @@ const ImageWrapper = styled.div`
   /* width: 100%; */
 
   height: 350px;
+  width: 350px;
   display: flex;
   align-items: center;
   justify-content: center;

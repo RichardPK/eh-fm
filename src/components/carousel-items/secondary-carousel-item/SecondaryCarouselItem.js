@@ -29,7 +29,7 @@ const SecondaryCarouselItem = ({
       }}
     >
       <ImageWrapper hovered={hovered}>
-        <Image baseUrl={data.image.url} width={350} height={150} fit="crop" />
+        <Image baseUrl={data.image.url} width={350} height={350} fit="crop" />
       </ImageWrapper>
       <TextWrapper>
         <CategoryBody>{data.category}</CategoryBody>
@@ -42,7 +42,7 @@ const SecondaryCarouselItem = ({
 const Wrapper = styled.div`
   /* margin: 0 3rem; */
   position: relative;
-  width: 100%;
+  /* width: 20vw; */
   display: grid;
   grid-template-rows: 1fr auto;
   border-radius: 4px;
@@ -66,7 +66,7 @@ const HeadingBody = styled(Body)`
 
 const ImageWrapper = styled.div`
   width: 100%;
-  height: 150px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

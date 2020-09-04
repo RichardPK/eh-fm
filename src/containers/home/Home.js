@@ -187,7 +187,7 @@ const Wrapper = styled.div`
   margin: 2rem 0
     ${(props) =>
       props.cookiesBannerShowing ? "70px" : props.mixCloudWidget ? `123px` : 0};
-      
+
   @media ${Devices.mobileL} {
     padding: 0 2rem;
     max-width: calc(100vw - 4rem);

@@ -62,7 +62,7 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
       hierarchy === "primary"
         ? "swiper-primary-duplicate-slide"
         : "swiper-slide-duplicate",
-    slidesPerGroup: 1,
+    // slidesPerGroup: 1,
     loop: hierarchy === "primary" ? true : false,
     speed: 400,
     autoplay:
