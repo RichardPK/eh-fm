@@ -38,15 +38,15 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
   const params = {
     breakpoints: {
       1800: {
-        slidesPerView: hierarchy === "primary" ? 3.6 : 6,
-        spaceBetween: hierarchy === "primary" ? 75 : 32,
+        slidesPerView: hierarchy === "primary" ? 4 : 7,
+        spaceBetween: hierarchy === "primary" ? 64 : 32,
       },
       1024: {
-        slidesPerView: hierarchy === "primary" ? 2.4 : 5,
+        slidesPerView: hierarchy === "primary" ? 3 : 5,
         spaceBetween: hierarchy === "primary" ? 60 : 28,
       },
       768: {
-        slidesPerView: hierarchy === "primary" ? 1.1 : 3,
+        slidesPerView: hierarchy === "primary" ? 2 : 3,
         spaceBetween: hierarchy === "primary" ? 40 : 25,
       },
       640: {
@@ -68,7 +68,7 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
     autoplay:
       hierarchy === "primary"
         ? {
-            delay: hierarchy === "primary" ? 900000 : 7000,
+            delay: hierarchy === "primary" ? 6000 : 7000,
             disableOnInteraction: false,
           }
         : false,
