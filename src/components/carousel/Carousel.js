@@ -143,6 +143,14 @@ const Wrapper = styled.div`
     margin: ${(props) =>
       props.hierarchy === "primary" ? "0 0 5rem" : "0 0 1rem"};
   }
+
+  .swiper-wrapper {
+    height: inherit;
+
+    .swiper-slide {
+      height: inherit;
+    }
+  }
 `;
 
 export default memo(Carousel);

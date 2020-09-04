@@ -38,7 +38,7 @@ const PrimaryCarouselItem = ({
         <FlavourHeading>{data.flavour_text}</FlavourHeading>
       </TextWrapper>
       <ImageWrapper hovered={hovered}>
-        <Image baseUrl={data.image.url} width={750} height={750} fit="crop" />
+        <Image baseUrl={data.image.url} width={900} height={900} fit="crop" />
         <ButtonWrapper>
           <CarouselButton
             type={data.type}
@@ -54,8 +54,8 @@ const PrimaryCarouselItem = ({
 
 const Wrapper = styled.div`
   position: relative;
-  /* width: 100%; */
-  height: inherit;
+  width: 100%;
+  height: 100%;
   /* make height same as 2x parent container */
   display: grid;
   grid-template-rows: 1fr auto;
@@ -89,9 +89,7 @@ const FlavourHeading = styled(Heading4)`
 const ImageWrapper = styled.div`
   grid-row: 2/2;
   /* width: 100%; */
-
-  width: 100%;
-  height: 100%;
+  /* height: 350px; */
   display: flex;
   align-items: center;
   justify-content: center;
