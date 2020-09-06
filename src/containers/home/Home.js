@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import CurrentShow from "../../components/current-show/CurrentShow";
-import Schedule from "../../components/schedule/Schedule";
-import { Helmet } from "react-helmet";
-import Prismic from "prismic-javascript";
-import styled from "styled-components/macro";
-import Colors from "../../consts/Colors";
-import Devices from "../../consts/Devices";
-import Sizes from "../../consts/Sizes";
-import { Heading4, Body } from "../../components/text-elements/index";
-import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
-import Carousel from "../../components/carousel/Carousel";
-import AdditionalCarouselHeading from "../../components/additional-carousel-heading/AdditionalCarouselHeading";
+import React, { useEffect, useState } from 'react';
+import CurrentShow from '../../components/current-show/CurrentShow';
+import Schedule from '../../components/schedule/Schedule';
+import { Helmet } from 'react-helmet';
+import Prismic from 'prismic-javascript';
+import styled from 'styled-components/macro';
+import Colors from '../../consts/Colors';
+import Devices from '../../consts/Devices';
+import Sizes from '../../consts/Sizes';
+import { Heading4, Body } from '../../components/text-elements/index';
+import PlaceholderShowImg from '../../assets/images/placeholder-showimg.jpg';
+import Carousel from '../../components/carousel/Carousel';
+import AdditionalCarouselHeading from '../../components/additional-carousel-heading/AdditionalCarouselHeading';
 
 const HomeContainer = (props) => {
-  const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
+  const apiEndpoint = 'https://ehfm.cdn.prismic.io/api/v2';
   const PrimaryCarousel = Carousel;
 
   const [allCarouselItems, setAllCarouselItems] = useState([]);
@@ -39,9 +39,9 @@ const HomeContainer = (props) => {
 
   const getPrimaryCarousel = async (api) => {
     api
-      .query(Prismic.Predicates.at("document.type", "home_feature"), {
+      .query(Prismic.Predicates.at('document.type', 'home_feature'), {
         pageSize: 100,
-        orderings: "[my.show.show_title]",
+        orderings: '[my.show.show_title]'
       })
       .then((response) => {
         if (response) {
@@ -53,22 +53,16 @@ const HomeContainer = (props) => {
 
   const getOtherCarousels = (api) => {
     api
-      .query(Prismic.Predicates.at("document.type", "home_carousel"), {
-        pageSize: 100,
+      .query(Prismic.Predicates.at('document.type', 'home_carousel'), {
+        pageSize: 100
       })
       .then((secondQueryResponse) => {
-        const parsedCarouselsData = secondQueryResponse.results.map(
-          (rawCarouselData) => {
-            rawCarouselData.data.carousel_items = completeCarouselData(
-              rawCarouselData
-            );
-            rawCarouselData.data.id = rawCarouselData.id;
-            return rawCarouselData.data;
-          }
-        );
-        const carouselsByPosition = sortCarouselsByPosition(
-          parsedCarouselsData
-        );
+        const parsedCarouselsData = secondQueryResponse.results.map((rawCarouselData) => {
+          rawCarouselData.data.carousel_items = completeCarouselData(rawCarouselData);
+          rawCarouselData.data.id = rawCarouselData.id;
+          return rawCarouselData.data;
+        });
+        const carouselsByPosition = sortCarouselsByPosition(parsedCarouselsData);
         setAdditionalCarousels(carouselsByPosition);
       });
   };
@@ -122,32 +116,20 @@ const HomeContainer = (props) => {
           data-react-helmet="true"
           content="EH-FM is an Edinburgh-based online radio station, providing a platform for the capital's local artists and broadcasting 24 hours a day."
         />
-        <meta
-          property="og:url"
-          data-react-helmet="true"
-          content="https://www.ehfm.live"
-        />
-        <meta
-          property="og:image"
-          data-react-helmet="true"
-          content={PlaceholderShowImg}
-        />
-        <meta
-          name="twitter:image"
-          data-react-helmet="true"
-          content={PlaceholderShowImg}
-        />
+        <meta property="og:url" data-react-helmet="true" content="https://www.ehfm.live" />
+        <meta property="og:image" data-react-helmet="true" content={'/placeholder-showimg.jpg'} />
+        <meta name="twitter:image" data-react-helmet="true" content={'/placeholder-showimg.jpg'} />
       </Helmet>
 
       <Wrapper
         mixCloudWidget={props.mixCloudWidget}
-        cookiesBannerShowing={props.cookies.get("ehfm") !== "1"}
+        cookiesBannerShowing={props.cookies.get('ehfm') !== '1'}
       >
         {highlightedCarouselItems.length > 0 ? (
           <>
             <PrimaryCarousel
               data={highlightedCarouselItems}
-              hierarchy={"primary"}
+              hierarchy={'primary'}
               autoplay={true}
               handleMixCloudClick={props.handleMixCloudClick}
             />
@@ -156,17 +138,13 @@ const HomeContainer = (props) => {
 
         {additionalCarousels.length > 0
           ? additionalCarousels.map((carousel) => {
-              const sortedData = reverseChronologicalSort(
-                carousel.carousel_items
-              );
+              const sortedData = reverseChronologicalSort(carousel.carousel_items);
               return (
                 <AdditionalCarouselWrapper key={carousel.id}>
-                  <AdditionalCarouselHeading
-                    carouselName={carousel.carousel_name}
-                  />
+                  <AdditionalCarouselHeading carouselName={carousel.carousel_name} />
                   <Carousel
                     data={sortedData}
-                    hierarchy={"secondary"}
+                    hierarchy={'secondary'}
                     autoplay={false}
                     handleMixCloudClick={props.handleMixCloudClick}
                   />
@@ -185,8 +163,7 @@ const Wrapper = styled.div`
   padding: 0 1rem;
   max-width: calc(100vw - 2rem);
   margin: 2rem 0
-    ${(props) =>
-      props.cookiesBannerShowing ? "70px" : props.mixCloudWidget ? `123px` : 0};
+    ${(props) => (props.cookiesBannerShowing ? '70px' : props.mixCloudWidget ? `123px` : 0)};
 
   @media ${Devices.mobileL} {
     padding: 0 2rem;
@@ -198,12 +175,7 @@ const Wrapper = styled.div`
     max-width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px - 6rem);
 
     margin: 2.5rem 0
-      ${(props) =>
-        props.cookiesBannerShowing
-          ? "95px"
-          : props.mixCloudWidget
-          ? `123px`
-          : 0};
+      ${(props) => (props.cookiesBannerShowing ? '95px' : props.mixCloudWidget ? `123px` : 0)};
   }
 
   @media ${Devices.laptop} and ${Devices.laptopHeightS} {
