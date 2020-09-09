@@ -27,7 +27,7 @@ const CurrentShow = ({
 
   useEffect(() => {
     setPrismicShow(getShowInPrismic({ residents, currentShow }));
-  }, [prismicShow]);
+  }, [currentShow, prismicShow]);
 
   const airTimeShowImgUrl = () => {
     return currentShow && currentShow.image_path;
