@@ -1,4 +1,4 @@
-React web app for EH-FM.
+React web app for EH-FM. - [ehfm.live](https://www.ehfm.live)
 
 Deployed with help from Netlify
 
