@@ -117,8 +117,8 @@ const HomeContainer = (props) => {
           content="EH-FM is an Edinburgh-based online radio station, providing a platform for the capital's local artists and broadcasting 24 hours a day."
         />
         <meta property="og:url" data-react-helmet="true" content="https://www.ehfm.live" />
-        <meta property="og:image" data-react-helmet="true" content={'/placeholder-showimg.jpg'} />
-        <meta name="twitter:image" data-react-helmet="true" content={'/placeholder-showimg.jpg'} />
+        <meta property="og:image" data-react-helmet="true" content={PlaceholderShowImg} />
+        <meta name="twitter:image" data-react-helmet="true" content={PlaceholderShowImg} />
       </Helmet>
 
       <Wrapper
