@@ -23,7 +23,7 @@ const CookieConsent = () => {
       <Inner>
         <WhiteBox>
           <CookiesText>
-            🍪 This website uses cookies to help us make eh-fm better. You can
+            🍪 This website uses cookies to help us make EHFM better. You can
             check out our policy{" "}
             {
               <a
