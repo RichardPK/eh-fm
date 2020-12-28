@@ -1,83 +1,112 @@
-import React, { Component } from 'react';
-import styled from 'styled-components/macro';
-import CurrentShow from '../current-show/CurrentShow';
-import Player from './player/Player';
-import Logo from '../nav-bar/logo/Logo';
-import Devices from '../../consts/Devices';
-import Colors from '../../consts/Colors';
+import React, { Component } from "react";
+import styled from "styled-components/macro";
+import CurrentShow from "../current-show/CurrentShow";
+import Player from "./player/Player";
+import Logo from "../nav-bar/logo/Logo";
+import Schedule from "../schedule/Schedule";
+import Devices from "../../consts/Devices";
+import Colors from "../../consts/Colors";
+import Sizes from "../../consts/Sizes";
 
-class SidePlayer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      volume: 1.0
-    };
-  }
-
-  componentDidUpdate() {}
-
-  render() {
-    return (
+const SidePlayer = ({
+  currentShow,
+  residents,
+  playing,
+  volume,
+  handlePlayPauseClicked,
+  handleVolumeClicked,
+  showsUpNext,
+}) => {
+  return (
+    <>
+      <FakeSidePlayer />
       <SidePlayerOuter>
-        <HeaderLogoWrapper>
-          <Logo />
-        </HeaderLogoWrapper>
-        <CurrentShowWrapper>
-          <CurrentShow
-            currentShow={this.props.currentShow}
-            residents={this.props.residents}
-            playing={this.props.playing}
-            handlePlayPauseClicked={this.props.handlePlayPauseClicked}
-          />
-        </CurrentShowWrapper>
-        <PlayerWrapper>
+        <Logo />
+        <CurrentShowAndPlayerWrapper>
+          {currentShow ? (
+            <CurrentShow
+              currentShow={currentShow}
+              residents={residents}
+              playing={playing}
+              handlePlayPauseClicked={handlePlayPauseClicked}
+            />
+          ) : null}
           <Player
-            playing={this.props.playing}
-            handlePlayPauseClicked={this.props.handlePlayPauseClicked}
-            currentShow={this.props.currentShow}
-            volumeClicked={this.props.handleVolumeClicked}
-            volume={this.props.volume}
+            playing={playing}
+            handlePlayPauseClicked={handlePlayPauseClicked}
+            currentShow={currentShow}
+            handleVolumeClicked={handleVolumeClicked}
+            volume={volume}
           />
-        </PlayerWrapper>
+        </CurrentShowAndPlayerWrapper>
+        <ScheduleWrapper>
+          <Schedule residents={residents} showsUpNext={showsUpNext} />
+        </ScheduleWrapper>
       </SidePlayerOuter>
-    );
+    </>
+  );
+};
+
+const FakeSidePlayer = styled.div`
+  grid-column: 1 / 1;
+  grid-row: 1 / 2;
+  width: ${Sizes.sidePlayerWidthSmaller}px;
+  display: none;
+
+  @media ${Devices.tablet} {
+    display: block;
   }
-}
+
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
+    width: ${Sizes.sidePlayerWidth}px;
+  }
+`;
 
 const SidePlayerOuter = styled.div`
   top: 0;
   left: 0;
-  z-index: 3;
-  display: flex;
+  z-index: 1;
   flex-direction: column;
   align-items: center;
   position: fixed;
-  background-color: ${Colors.playerWhite};
-`;
+  background-color: ${Colors.ehfmPrimary()};
+  padding-top: 2rem;
+  width: ${Sizes.sidePlayerWidthSmaller}px;
+  height: 100%;
+  display: none;
 
-const HeaderLogoWrapper = styled.div`
-  margin-top: 2rem;
   @media ${Devices.tablet} {
+    display: flex;
+  }
+
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
+    width: ${Sizes.sidePlayerWidth}px;
   }
 `;
 
-const CurrentShowWrapper = styled.div`
-  position: relative;
-  width: 375px;
-  padding: 5px 5px 0;
-`;
-
-const PlayerWrapper = styled.div`
-  background-color: ${Colors.ehfmPrimary};
-  padding: 2px 20px 2px 20px;
-  margin: 0 5px;
+const CurrentShowAndPlayerWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  @media ${Devices.mobileL} {
-    padding: 2px 30px 2px 30px;
+  flex-direction: column;
+  padding: 2rem 0.5rem 1rem;
+
+  @media not all and (min-resolution: 0.001dpcm) {
+    @media {
+      display: inline-block;
+    }
   }
+
+  @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
+    @media {
+      display: inline-block;
+    }
+  }
+`;
+
+const ScheduleWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  border-top: ${Colors.bgWhite};
+  background-color: ${Colors.playerWhite};
 `;
 
 export default SidePlayer;

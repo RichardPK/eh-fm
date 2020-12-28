@@ -1,28 +1,28 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import InstagramLogo from '../../../assets/images/instagram-teal.png';
-import FacebookLogo from '../../../assets/images/facebook-teal.png';
-import ChatangoLogo from '../../../assets/images/chat-teal.png';
 import Devices from '../../../consts/Devices';
+import { ReactComponent as Instagram } from '../../../assets/svgs/instagram.svg';
+import { ReactComponent as Facebook } from '../../../assets/svgs/facebook.svg';
+import Colors from '../../../consts/Colors';
 
 const Socials = () => {
   return (
     <Wrapper>
       <SocialInnerWrapper>
         <a href="https://www.instagram.com/ehfm_live/" target="blank">
-          <NavSocial src={InstagramLogo} alt="instagram" />
+          <Instagram alt="instagram" />
         </a>
       </SocialInnerWrapper>
       <SocialInnerWrapper>
         <a href="https://www.facebook.com/ehfm.live" target="blank">
-          <NavSocial src={FacebookLogo} alt="facebook" />
+          <Facebook alt="facebook" />
         </a>
       </SocialInnerWrapper>
-      <SocialInnerWrapper>
+      {/* <SocialInnerWrapper>
         <a href="http://eh-fm.chatango.com/" target="blank">
           <NavChat src={ChatangoLogo} alt="chatango" />
         </a>
-      </SocialInnerWrapper>
+      </SocialInnerWrapper> */}
     </Wrapper>
   );
 };
@@ -38,23 +38,17 @@ const Wrapper = styled.div`
 
 const SocialInnerWrapper = styled.div`
   margin-left: 10px;
-`;
 
-const NavSocial = styled.img`
-  width: auto;
-  height: 16px;
+  svg {
+    width: auto;
+    height: 16px;
+    path {
+      fill: ${Colors.ehfmPrimary()};
+    }
 
-  @media ${Devices.tablet} {
-    height: 18px;
-  }
-`;
-
-const NavChat = styled.img`
-  width: auto;
-  height: 16px;
-
-  @media ${Devices.tablet} {
-    height: 18px;
+    @media ${Devices.tablet} {
+      height: 18px;
+    }
   }
 `;
 

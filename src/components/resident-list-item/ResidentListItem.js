@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import Colors from '../../consts/Colors';
 import Devices from '../../consts/Devices';
+import Sizes from '../../consts/Sizes';
 import { Cta } from '../text-elements/index';
 
 const ResidentListItem = (props) => {
@@ -25,16 +26,17 @@ const Wrapper = styled.div`
   flex-direction: column;
   max-width: 265px;
   padding: 5px 5px 4px 5px;
+  border-radius: ${Sizes.buttonRadius}px;
   margin: 15px 5px;
   background: white;
-  border-bottom: 2px solid ${Colors.notQuiteBlack};
+  border-bottom: 2px solid ${Colors.ehfmPrimary()};
   height: 190px;
   width: 70vw;
 
   @media ${Devices.mobileL} {
     height: 140px;
     width: 30vw;
-    margin: 15px 10px 15px 15px;
+    margin: 1rem 0.75rem 1rem 1rem;
   }
 
   @media ${Devices.tablet} {
@@ -70,9 +72,8 @@ const ShowImage = styled.img`
 
 const ShowTitle = styled(Cta)`
   padding-top: 15px;
-  color: ${Colors.notQuiteBlack};
-  font-weight: normal;
-  letter-spacing: 1px;
+  color: ${Colors.notQuiteBlack()};
+  font-weight: bold;
 `;
 
 export default ResidentListItem;

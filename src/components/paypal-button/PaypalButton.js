@@ -5,6 +5,7 @@ import { ReactSVG } from 'react-svg';
 import PayPalIcon from '../../assets/svgs/paypal.svg';
 import { Cta } from '../text-elements/index';
 import Devices from '../../consts/Devices';
+import Sizes from '../../consts/Sizes';
 
 const PaypalButton = ({}) => {
   let [hovered, setHovered] = useState(false);
@@ -49,8 +50,8 @@ const InnerWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 2px;
-  background-color: ${(props) => (props.hovered ? Colors.ehfmPrimary10 : Colors.ehfmPrimary)};
+  border-radius: ${Sizes.buttonRadius}px;
+  background-color: ${(props) => (props.hovered ? Colors.ehfmPrimary(0.1) : Colors.ehfmPrimary())};
   transition: background-color, 0.2s ease-out;
 `;
 
@@ -58,7 +59,7 @@ const DonateText = styled(Cta)`
   font-weight: normal;
   margin-left: 0.5rem;
   margin-right: 0.25rem;
-  color: ${(props) => (props.hovered ? Colors.ehfmPrimary : Colors.playerWhite)};
+  color: ${(props) => (props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite)};
   transition: color, 0.2s ease-out;
 `;
 
@@ -70,17 +71,18 @@ const IconWrapper = styled.div`
       height: 20px;
       width: 20px;
 
-      #path3355-4 {
-        fill: ${(props) => (props.hovered ? Colors.ehfmPrimary : Colors.playerWhite)} !important;
+      path:nth-child(2) {
+        fill: ${(props) => (props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite)} !important;
         transition: fill, 0.2s ease-out;
       }
 
-      #path3351-2 {
-        fill: ${(props) => (props.hovered ? Colors.altBlue : Colors.softWhite)} !important;
+      path:nth-child(3) {
+        fill: ${(props) => (props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite)} !important;
         transition: fill, 0.2s ease-out;
       }
-      #path3353-3 {
-        fill: ${Colors.altBlue80Transparent} !important;
+
+      path:nth-child(4) {
+        fill: ${Colors.ehfmPrimary(0.8)} !important;
       }
     }
   }

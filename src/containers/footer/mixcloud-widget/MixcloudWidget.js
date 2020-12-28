@@ -5,11 +5,13 @@ import renderHTML from 'react-render-html';
 import IndexActions from '../../../actions/index';
 import Colors from '../../../consts/Colors';
 import Devices from '../../../consts/Devices';
+import LoadingPlaceholder from '../../../components/loading-placeholder/LoadingPlaceholder';
+import Sizes from '../../../consts/Sizes';
 
 class ResidentShowDisplay extends Component {
   render() {
     return (
-      <React.Fragment>
+      <>
         {this.props.mixCloudWidget && (
           <Wrapper>
             <CloseButton
@@ -20,26 +22,38 @@ class ResidentShowDisplay extends Component {
               <span>x</span>
             </CloseButton>
             <WidgetWrapper>{renderHTML(this.props.mixCloudWidget)}</WidgetWrapper>
+            <LoadingPlaceholder height={'calc(100% - 21px)'} zIndex={-1} />
           </Wrapper>
         )}
-      </React.Fragment>
+      </>
     );
   }
 }
 
 const Wrapper = styled.div`
   position: fixed;
+  z-index: 2;
   bottom: -3px;
-  width: 100%;
+  right: 0;
   display: flex;
   flex-direction: column;
+
+  width: 100%;
+
+  @media ${Devices.tablet} {
+    width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
+  }
+
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
+    width: calc(100% - ${Sizes.sidePlayerWidth}px);
+  }
 `;
 
 const CloseButton = styled.div`
   margin-right: 10px;
   text-align: center;
   align-self: flex-end;
-  background-color: ${Colors.altBlue60Transparent};
+  background-color: ${Colors.ehfmPrimary(0.6)};
   font-size: 14px;
   padding: 1px 6px 4px 7px;
   color: ${Colors.softWhite};
@@ -48,13 +62,15 @@ const CloseButton = styled.div`
   @media ${Devices.tablet} {
     &:hover {
       background-color: ${Colors.softWhite};
-      color: ${Colors.altBlue60Transparent};
+      color: ${Colors.ehfmPrimary(0.6)};
       transition: background-color 0.2s, color 0.2s;
     }
   }
 `;
 
-const WidgetWrapper = styled.div``;
+const WidgetWrapper = styled.div`
+  z-index: 1;
+`;
 
 const mapStateToProps = (state) => {
   return {

@@ -1,122 +1,78 @@
-import React, { Component } from 'react';
-import styled from 'styled-components/macro';
-import Devices from '../../consts/Devices';
-import { Heading4, Cta } from '../text-elements/index';
-import ScheduleDayHeading from './schedule-day-heading/ScheduleDayHeading';
-import DailyShowSchedule from './daily-show-schedule/DailyShowSchedule';
-import Colors from '../../consts/Colors';
+import React, { Component } from "react";
+import styled from "styled-components/macro";
+import Devices from "../../consts/Devices";
+import { Body, Tiny } from "../text-elements/index";
+import DailyShowSchedule from "./daily-show-schedule/DailyShowSchedule";
+import Colors from "../../consts/Colors";
+import ScheduleItem from "./schedule-item/ScheduleItem";
+import { getShowInPrismic } from "../../helpers/PrismicHelper";
 
-class Schedule extends Component {
-  constructor(props) {
-    super(props);
+const Schedule = ({ showsUpNext, residents }) => {
+  return (
+    <Wrapper>
+      <ComingUpText>Coming up...</ComingUpText>
+      <ScheduleItemsWrapper>
+        {showsUpNext &&
+          showsUpNext.map((scheduleItemData, i) => {
+            const foundShow = getShowInPrismic({
+              residents,
+              currentShow: scheduleItemData,
+            });
 
-    this.state = {
-      selectedDay: this.props.nextSevenDaysSchedule[0]
-    };
-    this.handleDayClick = this.handleDayClick.bind(this);
-    this.isDaySelected = this.isDaySelected.bind(this);
-  }
-
-  handleDayClick(day) {
-    let selectedDay = this.props.nextSevenDaysSchedule.filter((daySchedule) => {
-      return daySchedule[0] === day;
-    });
-    this.setState({ selectedDay: selectedDay[0] });
-  }
-
-  isDaySelected(day) {
-    return day === this.state.selectedDay;
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <Heading4Component>Schedule</Heading4Component>
-        <Inner>
-          <DaysHeaderWrapper>
-            {this.props.nextSevenDaysSchedule.map((scheduleDay) => {
-              return (
-                <ScheduleDayHeading
-                  onClick={this.handleDayClick}
-                  dayName={scheduleDay[0]}
-                  currentDay={this.props.currentDay}
-                  selected={this.isDaySelected(scheduleDay)}
-                />
-              );
-            })}
-          </DaysHeaderWrapper>
-          <Divider />
-          <DailyShowSchedule selectedDay={this.state.selectedDay} />
-        </Inner>
-      </Wrapper>
-    );
-  }
-}
+            return (
+              <ScheduleItem
+                key={i}
+                showName={scheduleItemData.name}
+                starts={scheduleItemData.starts}
+                foundShow={foundShow}
+              />
+            );
+          })}
+      </ScheduleItemsWrapper>
+      <GradientWrapper />
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 85vw;
-  margin: 0px 10px 0px 10px;
-  overflow: hidden;
-  border-radius: 5px;
+  height: 45%;
+  padding: 1rem 1.5rem 0;
+`;
 
-  @media ${Devices.tablet} {
-    width: 41vw;
-    margin: 0px 20px 0px 10px;
+const ComingUpText = styled(Tiny)`
+  color: ${Colors.notQuiteBlack()};
+  font-weight: normal;
+  margin-bottom: 0.75rem;
+`;
+
+const ScheduleItemsWrapper = styled.div`
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none;
   }
 `;
 
-const Heading4Component = styled(Heading4)`
-  color: ${Colors.notQuiteBlack};
-  margin: 10px 20px 10px 10px;
-`;
-
-const Inner = styled.div`
-  background-color: white;
+const GradientWrapper = styled.div`
+  position: absolute;
   display: flex;
-  padding: 20px;
-  flex-direction: column;
-  margin: 0px;
-  overflow: hidden;
-  box-shadow: 0px 1px 10px 0.1px rgba(0, 0, 0, 0.05);
-  border-radius: 5px;
-
-  @media ${Devices.tablet} {
-    margin: 0px 20px 0px 10px;
-  }
-`;
-
-const Divider = styled.div`
-  height: 4px;
+  align-self: center;
+  left: 0;
+  bottom: 0;
   width: 100%;
-  background-color: ${Colors.altBlue};
-`;
-
-const DaysHeaderWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  font-size: 14px;
-
-  .days-header-item {
-    cursor: pointer;
-    padding: 10px;
-    margin-top: 5px;
-
-    @media ${Devices.tablet} {
-      transition: all 0.2s;
-      &:hover {
-        background-color: ${Colors.altBlue};
-        color: white;
-      }
-    }
-  }
-
-  .days-header-0 {
-    background-color: ${Colors.altBlue};
-    color: white;
-  }
+  pointer-events: none;
+  height: 50%;
+  background-image: linear-gradient(
+    to bottom,
+    ${Colors.playerWhiteCustom(0)},
+    ${Colors.playerWhiteCustom(0.9)}
+  );
+  /* background-color: red; */
+  z-index: 1;
 `;
 
 export default Schedule;

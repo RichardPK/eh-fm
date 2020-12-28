@@ -1,21 +1,21 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Colors from '../../../consts/Colors';
-import ResidentProfileSocial from '../resident-profile-social/ResidentProfileSocial';
-import Devices from '../../../consts/Devices';
-import { Heading1, Body, BodyExtraSpacing } from '../../text-elements/index';
+import React from "react";
+import styled from "styled-components/macro";
+import Colors from "../../../consts/Colors";
+import ResidentProfileSocial from "../resident-profile-social/ResidentProfileSocial";
+import Devices from "../../../consts/Devices";
+import { Heading1, Body, BodyExtraSpacing } from "../../text-elements/index";
 
 const ProfileText = ({ props }) => {
   const hrefs = {
     instagram: props.instagram,
     facebook: props.facebook,
-    twitter: props.twitter
+    twitter: props.twitter,
   };
 
   const imgSrcs = {
-    instagram: '/instagram-white.png',
-    facebook: '/facebook-white.png',
-    twitter: '/twitter-white.png'
+    instagram: "/instagram-white.png",
+    facebook: "/facebook-white.png",
+    twitter: "/twitter-white.png",
   };
 
   return (
@@ -28,15 +28,27 @@ const ProfileText = ({ props }) => {
       {props.facebook || props.twitter || props.instagram ? (
         <SocialsWrapper>
           {props.facebook && (
-            <ResidentProfileSocial type={'facebook'} hrefs={hrefs} imgSrcs={imgSrcs} />
+            <ResidentProfileSocial
+              type={"facebook"}
+              hrefs={hrefs}
+              imgSrcs={imgSrcs}
+            />
           )}
 
           {props.twitter && (
-            <ResidentProfileSocial type={'twitter'} hrefs={hrefs} imgSrcs={imgSrcs} />
+            <ResidentProfileSocial
+              type={"twitter"}
+              hrefs={hrefs}
+              imgSrcs={imgSrcs}
+            />
           )}
 
           {props.instagram && (
-            <ResidentProfileSocial type={'instagram'} hrefs={hrefs} imgSrcs={imgSrcs} />
+            <ResidentProfileSocial
+              type={"instagram"}
+              hrefs={hrefs}
+              imgSrcs={imgSrcs}
+            />
           )}
         </SocialsWrapper>
       ) : null}
@@ -80,7 +92,7 @@ const TitleAndTimeWrapper = styled.div`
 const ShowTitle = styled(Heading1)`
   margin-top: 0px;
   color: ${Colors.playerWhite};
-  font-weight: normal;
+  /* font-weight: normal; */
   padding: 4px;
 `;
 

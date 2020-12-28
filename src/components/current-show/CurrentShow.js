@@ -1,115 +1,121 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ListenNowButton from '../listen-now-button/ListenNowButton';
+import OnAir from '../side-player/player/on-air/OnAir';
 import styled from 'styled-components/macro';
 import Devices from '../../consts/Devices';
-import { Heading4, Heading3, Body } from '../text-elements/index';
+import { Heading2, Body } from '../text-elements/index';
+import {
+  SHOW_NOT_FOUND,
+  getShowInPrismic,
+  parseShowName,
+  sanitiseString
+} from '../../helpers/PrismicHelper';
 import Colors from '../../consts/Colors';
+import Image from '../image/Image';
+import PlaceholderImage from '../../assets/images/placeholder-showimg.jpg';
+import HoveredLine from '../hoverLine/HoverLine';
 
-class CurrentShowDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.playClicked = this.playClicked.bind(this);
-    this.findShowUrlInPrismic = this.findShowUrlInPrismic.bind(this);
-  }
+const CurrentShow = ({ currentShow, residents, playing, handlePlayPauseClicked }) => {
+  const [prismicShow, setPrismicShow] = useState(null);
+  const [hovered, setHovered] = useState(false);
 
-  returnShowName() {
-    let currentShowName = null;
-    if (this.props.currentShow !== null) {
-      let showData = this.props.currentShow;
-      currentShowName = showData.currentShow[0].name;
-      let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, "'");
-      let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
-      return parsedForAmpersands;
-    }
-    return currentShowName;
-  }
+  useEffect(() => {
+    setPrismicShow(getShowInPrismic({ residents, currentShow }));
+  }, [currentShow, prismicShow]);
 
-  findShowUrlInPrismic() {
-    let result;
-    let toLowerCase;
-    const currentShowName = this.returnShowName();
-    if (currentShowName) {
-      toLowerCase = currentShowName.toLowerCase();
-    }
-    if (this.props.residents.length > 0 && toLowerCase) {
-      const filtered = this.props.residents.filter((resident) =>
-        toLowerCase.includes(resident.data.show_title.toLowerCase())
+  const airTimeShowImgUrl = () => {
+    return currentShow && currentShow.image_path;
+  };
+
+  const prismicShowImgUrl = () => {
+    return (
+      prismicShow && prismicShow !== SHOW_NOT_FOUND && prismicShow.data.show_image.url.split('&')[0]
+    );
+  };
+
+  const returnImage = () => {
+    if (prismicShowImgUrl()) {
+      return (
+        <Image
+          baseUrl={prismicShowImgUrl()}
+          width={500}
+          height={600}
+          alt="current live show"
+          fit={'crop'}
+        />
       );
-      if (filtered.length > 0) {
-        result = filtered[0].data.show_image.larger.url;
-      }
-    }
-
-    return result;
-  }
-
-  returnShowImgUrl() {
-    let linkedPrismicImg = this.findShowUrlInPrismic();
-
-    if (linkedPrismicImg) {
-      return linkedPrismicImg;
+    } else if (airTimeShowImgUrl()) {
+      return <Image baseUrl={airTimeShowImgUrl()} alt="current live show" />;
     } else {
-      let currentShowImgUrl = null;
-      if (this.props.currentShow !== null) {
-        let showData = this.props.currentShow;
-        currentShowImgUrl = showData.currentShow[0].image_path;
-      }
-      if (currentShowImgUrl === '') {
-        currentShowImgUrl = './placeholder-showimg.jpg';
-      }
-      return currentShowImgUrl;
+      return <Image baseUrl={PlaceholderImage} alt="ehfm placeholder" />;
     }
-  }
+  };
 
-  returnShowDescription() {
+  const returnShowDescription = () => {
     let currentShowDescription = null;
-    if (this.props.currentShow !== null) {
-      let showData = this.props.currentShow;
-      currentShowDescription = showData.currentShow[0].description;
+    if (prismicShow && prismicShow.data && prismicShow.data.show_description) {
+      return sanitiseString(prismicShow.data.show_description);
+    }
+    if (currentShow !== null) {
+      currentShowDescription = currentShow.description;
       if (currentShowDescription === '') {
-        currentShowDescription = 'Independent community radio for Edinburgh.';
+        currentShowDescription = 'Edinburgh Community Radio.';
         return currentShowDescription;
       } else {
-        let parsedForInvertedCommas = currentShowDescription.replace(/&#039;/g, "'");
-        let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
-        return parsedForAmpersands;
+        return sanitiseString(currentShowDescription);
       }
     }
-  }
+  };
 
-  playClicked() {
-    this.props.handlePlayPauseClicked();
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <Heading4Component>Live now</Heading4Component>
-        <WhiteWrapper>
-          <ImageWrapper>
-            <CurrentShowImage
-              className="currentshow-img"
-              src={this.returnShowImgUrl()}
-              alt="current live show"
-            />
-          </ImageWrapper>
+  return (
+    <Wrapper>
+      <OnAirWrapper>
+        <OnAir />
+      </OnAirWrapper>
+      {prismicShow ? (
+        <>
+          <CurrentShowImageWrapper>{returnImage()}</CurrentShowImageWrapper>
           <InfoWrapper>
-            <NameWrapper>
-              <ShowName>{this.returnShowName()}</ShowName>
-            </NameWrapper>
-            {/* <ListenNowButton playing={this.props.playing} playClicked={this.playClicked} /> */}
+            {prismicShow === SHOW_NOT_FOUND ? (
+              <NameWrapper>
+                <ShowName>{parseShowName(currentShow)}</ShowName>
+              </NameWrapper>
+            ) : (
+              <Link to={`/residents/${prismicShow.uid}`}>
+                <NameWrapper
+                  onMouseOver={() => {
+                    setHovered(true);
+                  }}
+                  onMouseOut={() => {
+                    setHovered(false);
+                  }}
+                >
+                  <ShowName>{parseShowName(currentShow)}</ShowName>
+                  <HoveredLine
+                    hovered={hovered}
+                    width={'100%'}
+                    placeholderWidth={'3rem'}
+                    placeholder
+                  />
+                </NameWrapper>
+              </Link>
+            )}
             <DescriptionWrapper>
-              <ShowDescription>{this.returnShowDescription()}</ShowDescription>
+              <ShowDescription>{returnShowDescription()}</ShowDescription>
             </DescriptionWrapper>
           </InfoWrapper>
-        </WhiteWrapper>
-      </Wrapper>
-    );
-  }
-}
+        </>
+      ) : null}
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 
   @media ${Devices.tablet} {
     display: flex;
@@ -117,66 +123,50 @@ const Wrapper = styled.div`
   }
 `;
 
-const Heading4Component = styled(Heading4)`
-  color: ${Colors.notQuiteBlack};
-  margin: 10px 20px 10px 10px;
+const OnAirWrapper = styled.div`
+  position: absolute;
+  top: -5;
+  left: 0;
 `;
 
-const WhiteWrapper = styled.div`
-  padding: 4px 4px 0;
-  border-radius: 5px;
-  position: relative;
-  color: white;
-  background-color: white;
-`;
-
-const ImageWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  width: inherit;
-  z-index: -1;
-`;
-
-const CurrentShowImage = styled.img`
-  height: auto;
-  margin: 0px 0px 0px 0px;
-  width: 100%;
+const CurrentShowImageWrapper = styled.div`
+  img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
 `;
 
 const InfoWrapper = styled.div`
   position: absolute;
-  bottom: 5px;
-  left: 15px;
-  bottom: 15px;
-  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  left: 1rem;
+  bottom: 1rem;
+  margin-right: 1rem;
 
   @media ${Devices.mobileL} {
     /* margin-right: 16px; */
   }
 `;
 
-const ShowName = styled(Heading3)``;
+const ShowName = styled(Heading2)`
+  color: ${Colors.playerWhite};
+`;
 
 const NameWrapper = styled.div`
-  display: inline-block;
-  background-color: ${Colors.notquiteBlack80Transparent};
+  position: relative;
+  background-color: ${Colors.notQuiteBlack(0.75)};
   padding: 4px;
 `;
 
 const DescriptionWrapper = styled.div`
-  display: inline-block;
-  background-color: ${Colors.notquiteBlack80Transparent};
+  background-color: ${Colors.notQuiteBlack(0.75)};
   padding: 4px;
-  margin-right: 10%;
-  margin-top: 2rem;
-
-  @media ${Devices.tablet} {
-    margin-right: 25%;
-  }
+  margin-top: 0.25rem;
 `;
 
-const ShowDescription = styled(Body)``;
+const ShowDescription = styled(Body)`
+  color: ${Colors.playerWhite};
+`;
 
-export default CurrentShowDetail;
+export default CurrentShow;

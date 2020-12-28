@@ -6,24 +6,11 @@ import Colors from '../../../../consts/Colors';
 import { Body } from '../../../text-elements/index';
 
 const NowPlaying = ({ handlePlayPauseClicked, playing, currentShow }) => {
-  const returnShowData = () => {
-    let currentShowName = null;
-    if (currentShow !== null) {
-      let showData = currentShow;
-      currentShowName = showData.currentShow[0].name;
-      let parsedForInvertedCommas = currentShowName.replace(/&#039;/g, "'");
-      let parsedForAmpersands = parsedForInvertedCommas.replace(/&amp;/g, '&');
-      return parsedForAmpersands;
-    }
-    return currentShowName;
-  };
-
   return (
     <Wrapper playing={playing} onClick={handlePlayPauseClicked}>
       <PlaybuttonContainer>
         <PlayPauseButton playingTrueFalse={playing} playClicked={handlePlayPauseClicked} />
       </PlaybuttonContainer>
-      <CurrentShowText>{returnShowData()}</CurrentShowText>
     </Wrapper>
   );
 };
@@ -33,19 +20,19 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 8px 8px 8px 8px;
   cursor: pointer;
-  background-color: ${(props) => (props.playing ? Colors.ehfmPrimary : Colors.playerWhite)};
+  background-color: ${(props) => (props.playing ? Colors.ehfmPrimary() : Colors.playerWhite)};
 
   span {
-    color: ${(props) => (props.playing ? Colors.playerWhite : Colors.altBlue)};
+    color: ${(props) => (props.playing ? Colors.playerWhite : Colors.ehfmPrimary())};
   }
 
   .play-button {
     border-color: transparent transparent transparent
-      ${(props) => (props.playing ? Colors.playerWhite : Colors.altBlue)};
+      ${(props) => (props.playing ? Colors.playerWhite : Colors.ehfmPrimary())};
   }
 
   .pause-button {
-    border-color: ${Colors.altBlue};
+    border-color: ${Colors.ehfmPrimary()};
   }
 
   @media ${Devices.tablet} {
@@ -54,15 +41,15 @@ const Wrapper = styled.div`
       cursor: pointer;
 
       span {
-        color: ${Colors.altBlue};
+        color: ${Colors.ehfmPrimary()};
       }
 
       .play-button {
-        border-color: transparent transparent transparent ${Colors.altBlue};
+        border-color: transparent transparent transparent ${Colors.ehfmPrimary()};
       }
 
       .pause-button {
-        border-color: ${Colors.altBlue};
+        border-color: ${Colors.ehfmPrimary()};
       }
     }
   }
@@ -72,25 +59,6 @@ const PlaybuttonContainer = styled.div`
   border-left: 2px solid ${Colors.playerWhite};
   width: 0.8em;
   padding-right: 20px;
-`;
-
-const CurrentShowText = styled(Body)`
-  color: ${Colors.playerWhite};
-  margin-top: 0px;
-  margin-bottom: 0px;
-  letter-spacing: 1px;
-  border-right: none;
-  margin-left: 10px;
-  padding-right: 5px;
-
-  @media ${Devices.laptop} {
-    border-right: 2px solid white;
-  }
-
-  @media ${Devices.mobileL} {
-    margin-left: 40px;
-    padding-right: 50px;
-  }
 `;
 
 export default NowPlaying;

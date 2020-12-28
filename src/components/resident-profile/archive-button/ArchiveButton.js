@@ -1,25 +1,32 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Colors from '../../../consts/Colors';
-import Devices from '../../../consts/Devices';
-import { Heading4 } from '../../text-elements/index';
-import { ReactSVG } from 'react-svg';
-import ArrowRight from '../../../assets/svgs/arrow-right.svg';
+import React from "react";
+import styled from "styled-components/macro";
+import Colors from "../../../consts/Colors";
+import Devices from "../../../consts/Devices";
+import { Heading4 } from "../../text-elements/index";
+import { ReactSVG } from "react-svg";
+import ArrowRight from "../../../assets/svgs/arrow-right.svg";
+import Sizes from "../../../consts/Sizes";
 
 const ArchiveButton = ({ handleArchiveButtonClick, displayShows }) => {
   return (
-    <Wrapper onClick={() => handleArchiveButtonClick()} displayShows={displayShows}>
-      <Title>Archive</Title>
+    <Wrapper
+      onClick={() => handleArchiveButtonClick()}
+      displayShows={displayShows}
+    >
+      <Title unsetColor>Archive</Title>
       <ReactSVG src={ArrowRight} />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  background-color: ${(props) => (props.displayShows ? Colors.playerWhite : Colors.ehfmPrimary)};
-  color: ${(props) => (props.displayShows ? Colors.ehfmPrimary : Colors.playerWhite)};
+  background-color: ${(props) =>
+    props.displayShows ? Colors.playerWhite : Colors.ehfmPrimary()};
+  color: ${(props) =>
+    props.displayShows ? Colors.ehfmPrimary() : Colors.playerWhite};
   position: absolute;
   padding: 0.25rem 0.3rem 0.25rem 0.5rem;
+  border-radius: ${Sizes.buttonRadius}px;
   min-width: 0px;
   max-width: 90px;
   bottom: 10px;
@@ -38,7 +45,8 @@ const Wrapper = styled.div`
     transition: 0.2s transform ease-out;
 
     path {
-      fill: ${(props) => (props.displayShows ? Colors.ehfmPrimary : Colors.playerWhite)};
+      fill: ${(props) =>
+        props.displayShows ? Colors.ehfmPrimary() : Colors.playerWhite};
     }
   }
 
@@ -53,10 +61,10 @@ const Wrapper = styled.div`
     transition: all 0.2s;
     &:hover {
       background-color: ${Colors.playerWhite};
-      color: ${Colors.ehfmPrimary};
+      color: ${Colors.ehfmPrimary()};
 
       path {
-        fill: ${Colors.ehfmPrimary};
+        fill: ${Colors.ehfmPrimary()};
       }
     }
   }

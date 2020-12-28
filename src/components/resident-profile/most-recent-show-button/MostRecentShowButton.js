@@ -1,21 +1,22 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Colors from '../../../consts/Colors';
-import { Cta } from '../../text-elements/index';
-import { ReactSVG } from 'react-svg';
-import MixCloud from '../../../assets/svgs/mixcloud.svg';
-import Devices from '../../../consts/Devices';
+import React from "react";
+import styled from "styled-components/macro";
+import Colors from "../../../consts/Colors";
+import { Cta } from "../../text-elements/index";
+import { ReactSVG } from "react-svg";
+import MixCloud from "../../../assets/svgs/mixcloud.svg";
+import Devices from "../../../consts/Devices";
+import Sizes from "../../../consts/Sizes";
 
 const MostRecentShowbutton = ({
   mostRecentShow,
   handleMostRecentShowButtonClick,
   date,
-  showName
+  showName,
 }) => {
   return (
     <Wrapper
       // className="resident-pastshow-card"
-      onClick={() => handleMostRecentShowButtonClick(mostRecentShow)}
+      onClick={() => handleMostRecentShowButtonClick(mostRecentShow.key)}
     >
       <ReactSVG src={MixCloud} />
       <Date>{date}</Date>
@@ -32,9 +33,10 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0.25rem 0.5rem;
+  border-radius: ${Sizes.buttonRadius}px;
   margin-left: 0px;
   width: fit-content;
-  background: ${Colors.ehfmPrimary};
+  background: ${Colors.ehfmPrimary()};
   color: ${Colors.playerWhite};
   cursor: pointer;
 
@@ -59,11 +61,11 @@ const Wrapper = styled.div`
   @media ${Devices.tablet} {
     &:hover {
       background-color: ${Colors.playerWhite};
-      color: ${Colors.ehfmPrimary};
+      color: ${Colors.ehfmPrimary()};
       transition: background-color 0.2s;
 
       path {
-        fill: ${Colors.ehfmPrimary};
+        fill: ${Colors.ehfmPrimary()};
       }
     }
   }

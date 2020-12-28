@@ -1,24 +1,32 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import Logo from '../../../assets/images/EHFM_Arched-Logo_Teal_1080.png';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from "../../../assets/svgs/ehfm-logo.svg";
+import Colors from "../../../consts/Colors";
 
-const LogoHead = (props) => {
+const LogoHead = ({ mobile, color }) => {
   return (
     <React.Fragment>
       <Wrapper>
         <Link to="/">
-          <LogoImg className="arched-logo" src={Logo} alt="ehfm arched logo" />
+          <StyledLogo color={color} mobile={mobile} />
         </Link>
       </Wrapper>
     </React.Fragment>
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  /* display: flex; */
+`;
 
-const LogoImg = styled.img`
-  height: 36px;
+const StyledLogo = styled(Logo)`
+  height: ${(props) => (props.mobile ? "1.75rem" : "2.5rem")};
+  width: auto;
+  path,
+  polygon {
+    fill: ${(props) => (props.color ? props.color : Colors.playerWhite)};
+  }
 `;
 
 export default LogoHead;

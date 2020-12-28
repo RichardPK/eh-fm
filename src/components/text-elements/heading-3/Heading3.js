@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Typography from "../../../consts/typography/Typography";
+import Colors from "../../../consts/Colors";
 
 const Header3 = ({ children, className }) => {
   return <Wrapper className={className}>{children}</Wrapper>;
@@ -8,7 +9,7 @@ const Header3 = ({ children, className }) => {
 
 const Wrapper = styled.h3`
   ${Typography.heading3}
-  letter-spacing: 1.5px;
+  color: ${Colors.notQuiteBlack()};
 `;
 
 export default Header3;

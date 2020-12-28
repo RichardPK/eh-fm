@@ -1,23 +1,24 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components/macro';
-import Devices from '../../../consts/Devices';
+import React, { useRef, useState } from "react";
+import styled from "styled-components/macro";
+import Devices from "../../../consts/Devices";
+import Sizes from "../../../consts/Sizes";
 
 const BackgroundImage = ({ mixCloudWidget, showImage }) => {
   return <Wrapper mixCloudWidget={mixCloudWidget} showImage={showImage} />;
 };
 
 const Wrapper = styled.div`
+  width: 100%;
   background-position: center center !important;
   background-size: cover !important;
-  width: calc(100vw - 385px);
-  height: 100vh;
+  height: 100%;
   display: flex;
   overflow: hidden;
   position: absolute;
   z-index: -100;
   top: 0;
   left: 0;
-  margin-bottom: ${(props) => (props.mixCloudWidget ? '123px' : 'auto')};
+  margin-bottom: ${(props) => (props.mixCloudWidget ? "123px" : "auto")};
   background-image: url(${(props) => props.showImage});
 
   img {
@@ -25,8 +26,14 @@ const Wrapper = styled.div`
     margin: auto;
   }
 
-  @media ${Devices.mobileL} {
-    height: calc(100vh - 100px);
+  @media ${Devices.tablet} {
+    width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
+    margin-left: ${Sizes.sidePlayerWidthSmaller}px;
+  }
+
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
+    margin-left: ${Sizes.sidePlayerWidth}px;
+    width: calc(100% - ${Sizes.sidePlayerWidth}px);
   }
 `;
 
