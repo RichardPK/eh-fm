@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components/macro";
-import DesktopNavBar from "../../components/nav-bar/DesktopNavBar";
-import MobileNavBar from "../../components/nav-bar/MobileNavBar";
-import Devices from "../../consts/Devices";
-import Logo from "../../components/nav-bar/logo/Logo";
-import MobilePlayer from "../../components/players/mobile-player/MobilePlayer";
-import MobileHeader from "./mobile-header/MobileHeader";
-import Sizes from "../../consts/Sizes";
+import React from 'react';
+import styled from 'styled-components/macro';
+import DesktopNavBar from '../../components/nav-bar/DesktopNavBar';
+import MobileNavBar from '../../components/nav-bar/MobileNavBar';
+import Devices from '../../consts/Devices';
+import Logo from '../../components/nav-bar/logo/Logo';
+import MobilePlayer from '../../components/players/mobile-player/MobilePlayer';
+import MobileHeader from './mobile-header/MobileHeader';
+import NyePlayer from '../../components/nye-player/NyePlayer';
 
 const HeaderContainer = ({
   currentShow,
@@ -15,10 +15,11 @@ const HeaderContainer = ({
   volume,
   handlePlayPauseClicked,
   handleVolumeClicked,
-  showsUpNext,
+  showsUpNext
 }) => {
   return (
     <React.Fragment>
+      <NyePlayer />
       <MobileWrapper>
         <MobileHeader
           currentShow={currentShow}
