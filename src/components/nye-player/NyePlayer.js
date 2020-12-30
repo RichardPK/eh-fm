@@ -25,9 +25,6 @@ const NyePlayer = ({}) => {
         <div className="confetti" />
         <div className="confetti" />
         <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
         <BannerText>NYE 2020</BannerText>
         <VideoWrapper>
           <iframe
@@ -124,11 +121,6 @@ const FixedWrapper = styled.div`
     left: 55%;
     animation-delay: -1.8s;
   }
-  .confetti:nth-child(12) {
-    background-color: ${Colors.ehfmPrimary()};
-    left: 60%;
-    animation-delay: -0.1s;
-  }
   .confetti:nth-child(13) {
     background-color: ${Colors.ehfmPrimary()};
     left: 65%;
@@ -140,26 +132,16 @@ const FixedWrapper = styled.div`
     animation-delay: -3.2s;
   }
   .confetti:nth-child(15) {
-    background-color: ${Colors.ehfmPrimary()};
-    left: 75%;
-    animation-delay: -4.7s;
-  }
-  .confetti:nth-child(16) {
     background-color: #f2d74e;
     left: 80%;
     animation-delay: -1.4s;
   }
-  .confetti:nth-child(17) {
+  .confetti:nth-child(16) {
     background-color: #f2d74e;
     left: 85%;
     animation-delay: -2.1s;
   }
-  .confetti:nth-child(18) {
-    background-color: #f2d74e;
-    left: 90%;
-    animation-delay: -0.8s;
-  }
-  .confetti:nth-child(19) {
+  .confetti:nth-child(17) {
     background-color: ${Colors.ehfmPrimary()};
     left: 95%;
     animation-delay: -3.2s;
