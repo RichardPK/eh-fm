@@ -41,7 +41,7 @@ const Wrapper = styled.div`
 const FixedWrapper = styled.div`
   width: 100%;
   position: fixed;
-  top: 0;
+  top: -100px;
   left: 50%;
 `;
 
@@ -58,7 +58,7 @@ const ConfettiWrapper = styled.div`
   }
   .confetti:nth-child(1) {
     background-color: #f2d74e;
-    left: -50%;
+    left: -40%;
     animation-delay: 0;
   }
   .confetti:nth-child(2) {
@@ -78,7 +78,7 @@ const ConfettiWrapper = styled.div`
   }
   .confetti:nth-child(5) {
     background-color: #95c3de;
-    left: 50%;
+    left: 40%;
     animation-delay: -4s;
   }
   .confetti:nth-child(6) {
@@ -109,32 +109,32 @@ const ConfettiWrapper = styled.div`
 
   .confetti:nth-child(11) {
     background-color: ${Colors.ehfmPrimary()};
-    left: 55%;
+    left: 15%;
     animation-delay: -1.8s;
   }
   .confetti:nth-child(13) {
     background-color: ${Colors.ehfmPrimary()};
-    left: 65%;
+    left: -5%;
     animation-delay: -4.2s;
   }
   .confetti:nth-child(14) {
     background-color: ${Colors.ehfmPrimary()};
-    left: 70%;
+    left: 7%;
     animation-delay: -3.2s;
   }
   .confetti:nth-child(15) {
     background-color: #f2d74e;
-    left: 80%;
+    left: 40%;
     animation-delay: -1.4s;
   }
   .confetti:nth-child(16) {
     background-color: #f2d74e;
-    left: 85%;
+    left: -15%;
     animation-delay: -2.1s;
   }
   .confetti:nth-child(17) {
     background-color: ${Colors.ehfmPrimary()};
-    left: 95%;
+    left: -25%;
     animation-delay: -3.2s;
   }
 
