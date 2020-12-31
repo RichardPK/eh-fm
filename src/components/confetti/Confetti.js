@@ -1,41 +1,30 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components/macro';
-import Colors from '../../consts/Colors';
-import Devices from '../../consts/Devices';
-import { Heading2 } from '../text-elements/index';
+import React from "react";
+import styled from "styled-components/macro";
+import Colors from "../../consts/Colors";
 
-const NyePlayer = ({}) => {
+const Confetti = () => {
   return (
     <Wrapper>
       <FixedWrapper>
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <div className="confetti" />
-        <BannerText>NYE 2020</BannerText>
-        <VideoWrapper>
-          <iframe
-            src="https://player.vimeo.com/video/99054693"
-            width="100%"
-            height="100%"
-            frameborder="0"
-            allow="autoplay; fullscreen"
-            allowfullscreen
-          ></iframe>
-        </VideoWrapper>
+        <ConfettiWrapper>
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+          <div className="confetti" />
+        </ConfettiWrapper>
       </FixedWrapper>
     </Wrapper>
   );
@@ -46,21 +35,22 @@ const Wrapper = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: ${Colors.notQuiteBlack(0.8)};
 `;
 
 const FixedWrapper = styled.div`
+  width: 100%;
   position: fixed;
-  top: 50%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+`;
 
+const ConfettiWrapper = styled.div`
   .confetti {
     width: 15px;
     height: 15px;
     background-color: #f2d74e;
     position: absolute;
-    top: -150%;
+    top: 0%;
     left: 0%;
     animation: confetti 5s ease-in-out -2s infinite;
     transform-origin: left top;
@@ -87,7 +77,7 @@ const FixedWrapper = styled.div`
   }
   .confetti:nth-child(5) {
     background-color: #95c3de;
-    left: 125%;
+    left: 50%;
     animation-delay: -4s;
   }
   .confetti:nth-child(6) {
@@ -102,7 +92,7 @@ const FixedWrapper = styled.div`
   }
   .confetti:nth-child(8) {
     background-color: #95c3de;
-    left: 140%;
+    left: 40%;
     animation-delay: -2s;
   }
   .confetti:nth-child(9) {
@@ -112,7 +102,7 @@ const FixedWrapper = styled.div`
   }
   .confetti:nth-child(10) {
     background-color: #f2d74e;
-    left: 140%;
+    left: 36%;
     animation-delay: -2.5s;
   }
 
@@ -166,24 +156,4 @@ const FixedWrapper = styled.div`
   }
 `;
 
-const BannerText = styled(Heading2)`
-  text-align: center;
-  color: ${Colors.playerWhite};
-  padding-bottom: 1rem;
-`;
-
-const VideoWrapper = styled.div`
-  position: relative;
-  width: 90vw;
-  height: auto;
-  iframe {
-    width: 100%;
-    height: auto;
-  }
-
-  @media ${Devices.tablet} {
-    width: 60vw;
-  }
-`;
-
-export default NyePlayer;
+export default Confetti;
