@@ -1,10 +1,17 @@
 import React from "react";
-import htmlFile from "./ChatangoHtml";
+import styled from "styled-components";
 import ChatangoWidget from "../../components/chatango/chatango-widget/ChatangoWidget";
 
+const FullHeightDiv = styled.div`
+  height: 100vh;
+`;
+
 const ChatangoHtml = () => {
-  // return <div dangerouslySetInnerHTML={{ __html: htmlFile }} />;
-  return <ChatangoWidget />;
+  return (
+    <FullHeightDiv id="chatango-div">
+      <ChatangoWidget />
+    </FullHeightDiv>
+  );
 };
 
 export default ChatangoHtml;
