@@ -15,7 +15,6 @@ import Footer from "../footer/Footer";
 import IndexActions from "../../actions/index";
 import ResidentsActions from "../../actions/ResidentsActions";
 import PageViewAnalytics from "../../components/analytics/PageViewAnalytics";
-import ChatangoWidget from "../../components/chatango/chatango-widget/ChatangoWidget";
 import MobilePlayer from "../../components/players/mobile-player/MobilePlayer";
 import {
   clickedPlay,
@@ -242,12 +241,9 @@ class Main extends Component {
         <audio ref={this.audioPlayer} id="audioPlayer" name="media">
           <source src="https://ehfm.out.airtime.pro/ehfm_a" type="audio/mpeg" />
         </audio>
-        <ChatangoWrapper id="chatango-div" />
-        <ChatangoWidget />
         <PageViewAnalytics
           url={window.location.pathname + window.location.search}
         />
-
         {this.props.residents.length ? (
           <MainWrapper>
             <Header

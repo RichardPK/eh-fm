@@ -28,7 +28,9 @@ render(
       <Provider store={store}>
         <div className="App" id="app">
           <Switch>
-            <Route path="/chat" render={() => <ChatangoHtmlRenderer />} />
+            <Route path="/chat" exact>
+              <ChatangoHtmlRenderer />
+            </Route>
             <Route render={() => <Main />} />
           </Switch>
         </div>
