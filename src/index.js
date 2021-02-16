@@ -12,7 +12,7 @@ import thunk from "redux-thunk";
 import Main from "./containers/main/Main";
 import "./index.scss";
 import "swiper/swiper.scss";
-import ChatangoHtmlRenderer from "./containers/chatango-html-renderer/ChatangoHtmlRenderer";
+import ChatangoPage from "./containers/chatango-page/ChatangoPage";
 import history from "./history";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -29,7 +29,7 @@ render(
         <div className="App" id="app">
           <Switch>
             <Route path="/chat" exact>
-              <ChatangoHtmlRenderer />
+              <ChatangoPage />
             </Route>
             <Route render={() => <Main />} />
           </Switch>

@@ -1,17 +1,23 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components/macro';
-import NowPlaying from './now-playing/NowPlaying';
-import Colors from '../../../consts/Colors';
-import Devices from '../../../consts/Devices';
-import { Heading4, Cta } from '../../text-elements/index';
-import PlayPauseButton from './play-pause-button/PlayPauseButton';
-import VolumeButton from './volume-button/VolumeButton';
-import { ReactComponent as Volume } from '../../../assets/svgs/volume.svg';
-import { ReactComponent as MuteVolume } from '../../../assets/svgs/volume-mute.svg';
-import OnAir from './on-air/OnAir';
-import { sanitiseString } from '../../../helpers/PrismicHelper';
+import React, { useRef, useState } from "react";
+import styled from "styled-components/macro";
+import NowPlaying from "./now-playing/NowPlaying";
+import Colors from "../../../consts/Colors";
+import Devices from "../../../consts/Devices";
+import { Heading4, Cta } from "../../text-elements/index";
+import PlayPauseButton from "./play-pause-button/PlayPauseButton";
+import VolumeButton from "./volume-button/VolumeButton";
+import { ReactComponent as Volume } from "../../../assets/svgs/volume.svg";
+import { ReactComponent as MuteVolume } from "../../../assets/svgs/volume-mute.svg";
+import OnAir from "./on-air/OnAir";
+import { sanitiseString } from "../../../helpers/PrismicHelper";
 
-const Player = ({ playing, handlePlayPauseClicked, currentShow, handleVolumeClicked, volume }) => {
+const Player = ({
+  playing,
+  handlePlayPauseClicked,
+  currentShow,
+  handleVolumeClicked,
+  volume,
+}) => {
   const [hovered, setHovered] = useState(false);
   return (
     <Wrapper>
@@ -94,7 +100,8 @@ const OnAirWrapper = styled.div`
 `;
 
 const CurrentShowText = styled(Cta)`
-  color: ${(props) => (props.hovered || props.playing ? Colors.ehfmPrimary() : Colors.playerWhite)};
+  color: ${(props) =>
+    props.hovered || props.playing ? Colors.ehfmPrimary() : Colors.playerWhite};
   font-weight: normal;
   display: block;
 
@@ -112,7 +119,9 @@ const PlayPauseWrapper = styled.div`
   svg {
     width: 0.75rem;
     fill: ${(props) =>
-      props.hovered || props.playing ? Colors.ehfmPrimary() : Colors.playerWhite};
+      props.hovered || props.playing
+        ? Colors.ehfmPrimary()
+        : Colors.playerWhite};
 
     @media ${Devices.tablet} {
       width: 1rem;
