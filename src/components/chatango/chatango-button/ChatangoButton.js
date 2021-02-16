@@ -19,7 +19,11 @@ const PaypalButton = ({ mobile }) => {
         setHovered(false);
       }}
       onClick={() =>
-        window.open("/chat", "EHFM - Chat", "resizable,height=480,width=400")
+        window.open(
+          mobile ? "http://eh-fm.chatango.com" : "/chat",
+          "EHFM - Chat",
+          "resizable,height=480,width=400"
+        )
       }
     >
       <InnerWrapper hovered={hovered}>
