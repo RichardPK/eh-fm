@@ -7,7 +7,7 @@ import { Cta } from "../../text-elements/index";
 import Devices from "../../../consts/Devices";
 import Sizes from "../../../consts/Sizes";
 
-const PaypalButton = ({}) => {
+const PaypalButton = ({ mobile }) => {
   let [hovered, setHovered] = useState(false);
   //
   return (
@@ -19,11 +19,7 @@ const PaypalButton = ({}) => {
         setHovered(false);
       }}
       onClick={() =>
-        window.open(
-          "http://localhost:3000/chat",
-          "EHFM - Chat",
-          "resizable,height=560,width=420"
-        )
+        window.open("/chat", "EHFM - Chat", "resizable,height=480,width=400")
       }
     >
       <InnerWrapper hovered={hovered}>
@@ -42,7 +38,7 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  padding: 0.6rem 1rem;
+  padding: 0.25rem 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,6 +46,10 @@ const InnerWrapper = styled.div`
   background-color: ${(props) =>
     props.hovered ? Colors.ehfmPrimary(0.1) : Colors.ehfmPrimary()};
   transition: background-color, 0.2s ease-out;
+
+  @media ${Devices.tablet} {
+    padding: 0.6rem 1rem;
+  }
 `;
 
 const Text = styled(Cta)`
@@ -65,8 +65,13 @@ const IconWrapper = styled.div`
     display: flex;
 
     svg {
-      height: auto;
-      width: 20px;
+      height: 14px;
+      width: auto;
+
+      @media ${Devices.tablet} {
+        height: 16px;
+        width: auto;
+      }
       g {
         fill: ${(props) =>
           props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite};
