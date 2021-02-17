@@ -23,6 +23,7 @@ import {
   clickedUnmute,
 } from "../../components/analytics/ClickEventAnalytics";
 import Devices from "../../consts/Devices";
+import About from "../about/About";
 
 class Main extends Component {
   constructor(props) {
@@ -288,6 +289,11 @@ class Main extends Component {
                 />
                 <Route
                   exact
+                  path="/about"
+                  render={() => <About pageData={this.props.aboutPageData} />}
+                />
+                <Route
+                  exact
                   path="/"
                   render={() => (
                     <Home
@@ -328,8 +334,6 @@ const MainInner = styled.div`
     grid-row: 2 / 2;
   }
 `;
-
-const ChatangoWrapper = styled.div``;
 
 const mapStateToProps = (state) => {
   return {

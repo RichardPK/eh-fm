@@ -9,7 +9,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./reducers/RootReducer";
 import thunk from "redux-thunk";
 
-import Main from "./containers/main/Main";
+import App from "./App";
 import "./index.scss";
 import "swiper/swiper.scss";
 import ChatangoPage from "./containers/chatango-page/ChatangoPage";
@@ -31,7 +31,7 @@ render(
             <Route path="/chat" exact>
               <ChatangoPage />
             </Route>
-            <Route render={() => <Main />} />
+            <Route render={() => <App />} />
           </Switch>
         </div>
       </Provider>
