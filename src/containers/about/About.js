@@ -107,11 +107,10 @@ const GetInvolvedLink = styled(Heading4)`
 `;
 
 const StyledImage = styled(Img)`
-  margin-top: 0.5rem;
   grid-column: 1 / 5;
 
   @media ${Devices.mobileL} {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
   }
 `;
 
@@ -150,7 +149,6 @@ const About = ({ pageData }) => {
       <Subheading>{subheader}</Subheading>
       <Linebreak />
       <AboutParagraphsWrapper>{AboutParagraphBlocks()}</AboutParagraphsWrapper>
-
       <Heading>{get_involved_headline}</Heading>
       <GetInvolvedOuterWrapper>
         {GetInvolvedParagraphBlocks()}
