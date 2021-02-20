@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components/macro';
-import Colors from '../../consts/Colors';
-import { ReactSVG } from 'react-svg';
-import PayPalIcon from '../../assets/svgs/paypal.svg';
-import { Cta } from '../text-elements/index';
-import Devices from '../../consts/Devices';
-import Sizes from '../../consts/Sizes';
+import React, { useRef, useState } from "react";
+import styled from "styled-components/macro";
+import Colors from "../../consts/Colors";
+import { ReactSVG } from "react-svg";
+import PayPalIcon from "../../assets/svgs/paypal.svg";
+import { Cta } from "../text-elements/index";
+import Devices from "../../consts/Devices";
+import Sizes from "../../consts/Sizes";
 
-const PaypalButton = ({}) => {
+const PaypalButton = () => {
   let [hovered, setHovered] = useState(false);
   //
   return (
@@ -51,7 +51,8 @@ const InnerWrapper = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: ${Sizes.buttonRadius}px;
-  background-color: ${(props) => (props.hovered ? Colors.ehfmPrimary(0.1) : Colors.ehfmPrimary())};
+  background-color: ${(props) =>
+    props.hovered ? Colors.ehfmPrimary(0.1) : Colors.ehfmPrimary()};
   transition: background-color, 0.2s ease-out;
 `;
 
@@ -59,7 +60,8 @@ const DonateText = styled(Cta)`
   font-weight: normal;
   margin-left: 0.5rem;
   margin-right: 0.25rem;
-  color: ${(props) => (props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite)};
+  color: ${(props) =>
+    props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite};
   transition: color, 0.2s ease-out;
 `;
 
@@ -72,12 +74,14 @@ const IconWrapper = styled.div`
       width: 20px;
 
       path:nth-child(2) {
-        fill: ${(props) => (props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite)} !important;
+        fill: ${(props) =>
+          props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite} !important;
         transition: fill, 0.2s ease-out;
       }
 
       path:nth-child(3) {
-        fill: ${(props) => (props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite)} !important;
+        fill: ${(props) =>
+          props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite} !important;
         transition: fill, 0.2s ease-out;
       }
 

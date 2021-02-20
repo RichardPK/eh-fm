@@ -6,7 +6,7 @@ import Sizes from "../../consts/Sizes";
 import Socials from "./socials/Socials";
 import Colors from "../../consts/Colors";
 import NavLinks from "./nav-links/NavLinks";
-import PaypalButton from "../paypal-button/PaypalButton";
+import ChatangoButton from "../chatango/chatango-button/ChatangoButton";
 
 const MobileNavBar = (props) => {
   return (
@@ -15,7 +15,7 @@ const MobileNavBar = (props) => {
         <NavLinks />
       </Left>
       <Right>
-        <PaypalButton />
+        <ChatangoButton mobile />
       </Right>
     </Inner>
   );

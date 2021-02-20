@@ -7,6 +7,7 @@ import Schedule from "../schedule/Schedule";
 import Devices from "../../consts/Devices";
 import Colors from "../../consts/Colors";
 import Sizes from "../../consts/Sizes";
+import ChatangoButton from "../chatango/chatango-button/ChatangoButton";
 
 const SidePlayer = ({
   currentShow,
@@ -42,6 +43,9 @@ const SidePlayer = ({
         <ScheduleWrapper>
           <Schedule residents={residents} showsUpNext={showsUpNext} />
         </ScheduleWrapper>
+        <ChatangoButtonWrapper>
+          <ChatangoButton />
+        </ChatangoButtonWrapper>
       </SidePlayerOuter>
     </>
   );
@@ -107,6 +111,12 @@ const ScheduleWrapper = styled.div`
   width: 100%;
   border-top: ${Colors.bgWhite};
   background-color: ${Colors.playerWhite};
+`;
+
+const ChatangoButtonWrapper = styled.div`
+  position: absolute;
+  bottom: 28px;
+  left: 0;
 `;
 
 export default SidePlayer;
