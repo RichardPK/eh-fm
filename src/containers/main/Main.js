@@ -15,7 +15,6 @@ import Footer from "../footer/Footer";
 import IndexActions from "../../actions/index";
 import ResidentsActions from "../../actions/ResidentsActions";
 import PageViewAnalytics from "../../components/analytics/PageViewAnalytics";
-import ChatangoWidget from "../../components/chatango/chatango-widget/ChatangoWidget";
 import MobilePlayer from "../../components/players/mobile-player/MobilePlayer";
 import {
   clickedPlay,
@@ -24,6 +23,7 @@ import {
   clickedUnmute,
 } from "../../components/analytics/ClickEventAnalytics";
 import Devices from "../../consts/Devices";
+import About from "../about/About";
 
 class Main extends Component {
   constructor(props) {
@@ -242,12 +242,9 @@ class Main extends Component {
         <audio ref={this.audioPlayer} id="audioPlayer" name="media">
           <source src="https://ehfm.out.airtime.pro/ehfm_a" type="audio/mpeg" />
         </audio>
-        <ChatangoWrapper id="chatango-div" />
-        <ChatangoWidget />
         <PageViewAnalytics
           url={window.location.pathname + window.location.search}
         />
-
         {this.props.residents.length ? (
           <MainWrapper>
             <Header
@@ -290,6 +287,11 @@ class Main extends Component {
                     />
                   )}
                 />
+                {/* <Route
+                  exact
+                  path="/about"
+                  render={() => <About pageData={this.props.aboutPageData} />}
+                /> */}
                 <Route
                   exact
                   path="/"
@@ -332,8 +334,6 @@ const MainInner = styled.div`
     grid-row: 2 / 2;
   }
 `;
-
-const ChatangoWrapper = styled.div``;
 
 const mapStateToProps = (state) => {
   return {
