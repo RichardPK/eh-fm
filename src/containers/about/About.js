@@ -10,7 +10,6 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto auto auto;
-
   padding: 0 1rem;
   margin: 2rem 0;
 
@@ -28,24 +27,44 @@ const Wrapper = styled.div`
 
 const Heading = styled(Heading3)`
   margin-bottom: 1rem;
-  grid-column: 1 / 3;
+  grid-column: 1 / 4;
+
+  @media ${Devices.mobileL} {
+    grid-column: 1 / 3;
+  }
 `;
 
 const Subheading = styled(Heading4)`
   font-weight: normal;
   color: ${Colors.notQuiteBlack(0.7)};
   margin-bottom: 1rem;
-  grid-column: 1 / 3;
+  grid-column: 1 / 4;
+
+  @media ${Devices.mobileL} {
+    grid-column: 1 / 3;
+  }
 `;
 
 const Linebreak = styled.div`
   border-bottom: 2px solid ${Colors.notQuiteBlack(0.2)};
   margin-bottom: 2rem;
-  grid-column: 1 / 3;
+  grid-column: 1 / 4;
+
+  @media ${Devices.mobileL} {
+    grid-column: 1 / 3;
+  }
+`;
+
+const AboutParagraphsWrapper = styled.div`
+  margin-bottom: 2.5rem;
+  grid-column: 1 / 5;
+
+  @media ${Devices.mobileL} {
+    grid-column: 1 / 4;
+  }
 `;
 
 const Paragraph = styled(Body)`
-  grid-column: 1 / 4;
   margin-bottom: 0.5rem;
   color: ${Colors.notQuiteBlack(0.8)};
 `;
@@ -53,17 +72,27 @@ const Paragraph = styled(Body)`
 const GetInvolvedOuterWrapper = styled.div`
   max-width: 540px;
   margin-bottom: 1.5rem;
-  grid-column: 1/4;
+  grid-column: 1 / 5;
+
+  @media ${Devices.mobileL} {
+    grid-column: 1 / 4;
+  }
 `;
 
 const GetInvolvedItemWrapper = styled.div`
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-template-columns: 1fr 2fr;
+
   grid-template-rows: auto auto auto;
   margin-bottom: 0.25rem;
   color: ${Colors.notQuiteBlack(0.8)};
+
+  grid-template-columns: 1.5fr 2fr;
+
+  @media ${Devices.mobileL} {
+    grid-template-columns: 1fr 2fr;
+  }
 `;
 
 const GetInvolvedText = styled(Heading4)`
@@ -79,7 +108,11 @@ const GetInvolvedLink = styled(Heading4)`
 
 const StyledImage = styled(Img)`
   margin-top: 0.5rem;
-  grid-column: 1 / 4;
+  grid-column: 1 / 5;
+
+  @media ${Devices.mobileL} {
+    grid-column: 1 / 4;
+  }
 `;
 
 const About = ({ pageData }) => {
@@ -116,9 +149,8 @@ const About = ({ pageData }) => {
       <Heading>{headline}</Heading>
       <Subheading>{subheader}</Subheading>
       <Linebreak />
-      <div style={{ marginBottom: "2.5rem", gridColumn: "1/4" }}>
-        {AboutParagraphBlocks()}
-      </div>
+      <AboutParagraphsWrapper>{AboutParagraphBlocks()}</AboutParagraphsWrapper>
+
       <Heading>{get_involved_headline}</Heading>
       <GetInvolvedOuterWrapper>
         {GetInvolvedParagraphBlocks()}
