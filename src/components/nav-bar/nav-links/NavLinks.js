@@ -1,14 +1,12 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Cta } from "../../text-elements/index";
-import Devices from "../../../consts/Devices";
-import Colors from "../../../consts/Colors";
 import NavLinkComponent from "./NavLink/NavLink";
 
 const NavLinks = () => {
   const linksArray = [
     { target: "/", text: "HOME" },
     { target: "/residents", text: "RESIDENTS" },
+    { target: "/about", text: "ABOUT" },
   ];
 
   return (

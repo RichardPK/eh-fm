@@ -41,7 +41,7 @@ const HeadingWrapper = styled.div`
 `;
 
 const AdditionalCarouselHeading = styled(Heading4)`
-  color: ${Colors.notQuiteBlack(0.5)};
+  color: ${Colors.notQuiteBlack(0.6)};
   white-space: nowrap;
   font-weight: normal;
 `;

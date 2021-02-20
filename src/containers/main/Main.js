@@ -287,11 +287,11 @@ class Main extends Component {
                     />
                   )}
                 />
-                {/* <Route
+                <Route
                   exact
                   path="/about"
                   render={() => <About pageData={this.props.aboutPageData} />}
-                /> */}
+                />
                 <Route
                   exact
                   path="/"
