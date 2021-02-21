@@ -57,10 +57,10 @@ const GetInvolvedItemWrapper = styled.div`
   grid-template-rows: auto auto auto;
   margin-bottom: 0.25rem;
   color: ${Colors.notQuiteBlack(0.8)};
-  grid-template-columns: 1.5fr 2fr;
+  grid-template-columns: 1.5fr auto;
 
   @media ${Devices.mobileL} {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr auto;
   }
 `;
 
