@@ -41,6 +41,9 @@ const TextContentWrapper = styled.div`
 const ImageContentWrapper = styled.div`
   grid-column: 4 / 7;
   grid-row: 1 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const AboutParagraphsWrapper = styled.div`

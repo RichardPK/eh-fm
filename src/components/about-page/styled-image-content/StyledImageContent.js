@@ -3,6 +3,12 @@ import Devices from "../../../consts/Devices";
 import Image from "../../image/Image";
 
 export const StyledImage = styled(Image)`
-  border-radius: 2px;
-  max-width: 560px;
+  border-radius: 4px;
+  max-height: 500px;
+  max-width: 500px;
+
+  @media ${Devices.laptopHeightS} {
+    max-height: 100%;
+    max-width: 100%;
+  }
 `;
