@@ -8,7 +8,7 @@ export const StyledImage = styled(Image)`
   max-width: 500px;
 
   @media ${Devices.laptopHeightS} {
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 680px;
+    max-width: 680px;
   }
 `;
