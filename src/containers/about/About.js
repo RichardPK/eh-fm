@@ -153,7 +153,7 @@ const About = ({ pageData }) => {
       <GetInvolvedOuterWrapper>
         {GetInvolvedParagraphBlocks()}
       </GetInvolvedOuterWrapper>
-      <StyledImage baseUrl={image.url} alt={image.alt} />
+      {/* <StyledImage baseUrl={image.url} alt={image.alt} /> */}
     </Wrapper>
   );
 };
