@@ -15,7 +15,7 @@ import { StyledImage } from "../../components/about-page/styled-image-content/St
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1.5rem 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 3rem 1fr 1fr 1fr;
   grid-template-rows: auto auto auto auto;
   column-gap: 1rem;
   padding: 0 1rem;

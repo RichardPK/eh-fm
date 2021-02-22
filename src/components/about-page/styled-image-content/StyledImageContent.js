@@ -7,8 +7,8 @@ export const StyledImage = styled(Image)`
   max-height: 500px;
   max-width: 500px;
 
-  @media ${Devices.laptopHeightS} {
-    max-height: 680px;
-    max-width: 680px;
-  }
+  /* @media ${Devices.laptopHeightS} {
+    max-height: 500px;
+    max-width: 500px;
+  } */
 `;
