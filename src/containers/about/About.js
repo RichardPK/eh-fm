@@ -12,9 +12,8 @@ const Wrapper = styled.div`
   margin: 143px auto ${(props) => (props.mixCloudWidget ? `123px` : 0)};
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto auto auto;
   padding: 0 1rem;
-  margin: 2rem 0;
 
   @media ${Devices.mobileL} {
     padding: 0 2rem;
@@ -28,29 +27,29 @@ const Wrapper = styled.div`
   }
 `;
 
-const Heading = styled(Heading3)`
-  margin-bottom: 1rem;
+const TopWrapper = styled.div`
+  background-color: ${Colors.spanBg};
+  padding: 4px;
+  margin-bottom: 2rem;
   grid-column: 1 / 4;
 
   @media ${Devices.mobileL} {
     grid-column: 1 / 3;
   }
+`;
+
+const Heading = styled(Heading3)`
+  margin-bottom: 1rem;
+  color: ${Colors.playerWhite};
 `;
 
 const Subheading = styled(Heading4)`
   font-weight: normal;
-  color: ${Colors.notQuiteBlack(0.7)};
-  margin-bottom: 1rem;
-  grid-column: 1 / 4;
-
-  @media ${Devices.mobileL} {
-    grid-column: 1 / 3;
-  }
+  color: ${Colors.playerWhite};
 `;
 
 const Linebreak = styled.div`
-  border-bottom: 2px solid ${Colors.notQuiteBlack(0.2)};
-  margin-bottom: 2rem;
+  border-bottom: 2px solid ${Colors.playerWhiteCustom(0.8)};
   grid-column: 1 / 4;
 
   @media ${Devices.mobileL} {
@@ -60,25 +59,28 @@ const Linebreak = styled.div`
 
 const AboutParagraphsWrapper = styled.div`
   margin-bottom: 2.5rem;
-  grid-column: 1 / 5;
+  padding: 4px;
+  background-color: ${Colors.spanBg};
+  grid-column: 1 / 4;
 
   @media ${Devices.mobileL} {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
   }
 `;
 
 const Paragraph = styled(Body)`
   margin-bottom: 0.5rem;
-  color: ${Colors.notQuiteBlack(0.8)};
+  color: ${Colors.playerWhite};
 `;
 
 const GetInvolvedOuterWrapper = styled.div`
-  max-width: 540px;
+  /* max-width: 540px; */
   margin-bottom: 1.5rem;
-  grid-column: 1 / 5;
+  background-color: ${Colors.spanBg};
+  grid-column: 1 / 4;
 
   @media ${Devices.mobileL} {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
   }
 `;
 
@@ -86,10 +88,8 @@ const GetInvolvedItemWrapper = styled.div`
   display: grid;
   justify-content: center;
   align-items: center;
-
   grid-template-rows: auto auto auto;
   margin-bottom: 0.25rem;
-  color: ${Colors.notQuiteBlack(0.8)};
 
   grid-template-columns: 1.5fr 2fr;
 
@@ -101,20 +101,15 @@ const GetInvolvedItemWrapper = styled.div`
 const GetInvolvedText = styled(Heading4)`
   margin-right: 0.5rem;
   font-weight: normal;
-  color: ${Colors.notQuiteBlack(0.7)};
+  color: ${Colors.playerWhite};
+  padding: 4px;
 `;
 
 const GetInvolvedLink = styled(Heading4)`
   font-weight: normal;
   text-decoration: underline;
-`;
-
-const StyledImage = styled(Img)`
-  grid-column: 1 / 5;
-
-  @media ${Devices.mobileL} {
-    grid-column: 1 / 3;
-  }
+  color: ${Colors.playerWhite};
+  padding: 4px;
 `;
 
 const About = ({ pageData, mixCloudWidget }) => {
@@ -150,14 +145,16 @@ const About = ({ pageData, mixCloudWidget }) => {
     <>
       <BackgroundImage mixCloudWidget={mixCloudWidget} imageSrc={image.url} />
       <Wrapper mixCloudWidget={mixCloudWidget}>
-        <Heading>{headline}</Heading>
-        <Subheading>{subheader}</Subheading>
-        <Linebreak />
+        <TopWrapper>
+          <Heading>{headline}</Heading>
+          <Subheading>{subheader}</Subheading>
+          <Linebreak />
+        </TopWrapper>
         <AboutParagraphsWrapper>
           {AboutParagraphBlocks()}
         </AboutParagraphsWrapper>
-        <Heading>{get_involved_headline}</Heading>
         <GetInvolvedOuterWrapper>
+          <Heading>{get_involved_headline}</Heading>
           {GetInvolvedParagraphBlocks()}
         </GetInvolvedOuterWrapper>
         {/* <StyledImage baseUrl={image.url} alt={image.alt} /> */}
