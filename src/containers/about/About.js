@@ -7,12 +7,14 @@ import Colors from "../../consts/Colors";
 import { Heading3, Heading4, Body } from "../../components/text-elements/index";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
 
+const StyledBackgroundImage = styled(BackgroundImage)`
+  top: 86px;
+`;
+
 const Wrapper = styled.div`
-  height: calc(100vh - 150px - 3.5rem);
+  height: calc(100vh - 196px - 3.5rem);
   margin: 143px auto ${(props) => (props.mixCloudWidget ? `123px` : 0)};
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto;
+
   padding: 0 1rem;
 
   @media ${Devices.mobileL} {
@@ -27,34 +29,38 @@ const Wrapper = styled.div`
   }
 `;
 
+const InnerWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+`;
+
 const TopWrapper = styled.div`
   background-color: ${Colors.spanBg};
-  padding: 4px;
+
   margin-bottom: 2rem;
   grid-column: 1 / 4;
 
   @media ${Devices.mobileL} {
-    grid-column: 1 / 3;
+    grid-column: 1 / 2;
   }
 `;
 
 const Heading = styled(Heading3)`
   margin-bottom: 1rem;
+  padding: 4px 4px 0 4px;
   color: ${Colors.playerWhite};
 `;
 
 const Subheading = styled(Heading4)`
   font-weight: normal;
+  padding: 0 4px;
+  margin-bottom: 1rem;
   color: ${Colors.playerWhite};
 `;
 
 const Linebreak = styled.div`
-  border-bottom: 2px solid ${Colors.playerWhiteCustom(0.8)};
-  grid-column: 1 / 4;
-
-  @media ${Devices.mobileL} {
-    grid-column: 1 / 3;
-  }
+  border-bottom: 4px solid ${Colors.playerWhiteCustom(0.8)};
 `;
 
 const AboutParagraphsWrapper = styled.div`
@@ -66,10 +72,13 @@ const AboutParagraphsWrapper = styled.div`
   @media ${Devices.mobileL} {
     grid-column: 1 / 3;
   }
+
+  span:first-of-type {
+    margin-bottom: 1rem;
+  }
 `;
 
 const Paragraph = styled(Body)`
-  margin-bottom: 0.5rem;
   color: ${Colors.playerWhite};
 `;
 
@@ -143,21 +152,25 @@ const About = ({ pageData, mixCloudWidget }) => {
 
   return (
     <>
-      <BackgroundImage mixCloudWidget={mixCloudWidget} imageSrc={image.url} />
+      <StyledBackgroundImage
+        mixCloudWidget={mixCloudWidget}
+        imageSrc={image.url}
+      />
       <Wrapper mixCloudWidget={mixCloudWidget}>
-        <TopWrapper>
-          <Heading>{headline}</Heading>
-          <Subheading>{subheader}</Subheading>
-          <Linebreak />
-        </TopWrapper>
-        <AboutParagraphsWrapper>
-          {AboutParagraphBlocks()}
-        </AboutParagraphsWrapper>
-        <GetInvolvedOuterWrapper>
-          <Heading>{get_involved_headline}</Heading>
-          {GetInvolvedParagraphBlocks()}
-        </GetInvolvedOuterWrapper>
-        {/* <StyledImage baseUrl={image.url} alt={image.alt} /> */}
+        <InnerWrapper>
+          <TopWrapper>
+            <Heading>{headline}</Heading>
+            <Subheading>{subheader}</Subheading>
+            <Linebreak />
+          </TopWrapper>
+          <AboutParagraphsWrapper>
+            {AboutParagraphBlocks()}
+          </AboutParagraphsWrapper>
+          <GetInvolvedOuterWrapper>
+            <Heading>{get_involved_headline}</Heading>
+            {GetInvolvedParagraphBlocks()}
+          </GetInvolvedOuterWrapper>
+        </InnerWrapper>
       </Wrapper>
     </>
   );

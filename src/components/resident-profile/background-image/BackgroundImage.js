@@ -3,8 +3,10 @@ import styled from "styled-components/macro";
 import Devices from "../../../consts/Devices";
 import Sizes from "../../../consts/Sizes";
 
-const BackgroundImage = ({ mixCloudWidget, imageSrc }) => {
-  return <Wrapper mixCloudWidget={mixCloudWidget} imageSrc={imageSrc} />;
+const BackgroundImage = ({ mixCloudWidget, imageSrc, ...props }) => {
+  return (
+    <Wrapper mixCloudWidget={mixCloudWidget} imageSrc={imageSrc} {...props} />
+  );
 };
 
 const Wrapper = styled.div`
