@@ -290,7 +290,12 @@ class Main extends Component {
                 <Route
                   exact
                   path="/about"
-                  render={() => <About pageData={this.props.aboutPageData} />}
+                  render={() => (
+                    <About
+                      pageData={this.props.aboutPageData}
+                      mixCloudWidget={this.props.mixCloudWidget}
+                    />
+                  )}
                 />
                 <Route
                   exact

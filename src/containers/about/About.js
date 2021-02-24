@@ -5,8 +5,11 @@ import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import Colors from "../../consts/Colors";
 import { Heading3, Heading4, Body } from "../../components/text-elements/index";
+import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
 
 const Wrapper = styled.div`
+  height: calc(100vh - 150px - 3.5rem);
+  margin: 143px auto ${(props) => (props.mixCloudWidget ? `123px` : 0)};
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto auto auto;
@@ -114,7 +117,7 @@ const StyledImage = styled(Img)`
   }
 `;
 
-const About = ({ pageData }) => {
+const About = ({ pageData, mixCloudWidget }) => {
   const {
     about,
     get_involved_details,
@@ -144,17 +147,22 @@ const About = ({ pageData }) => {
   };
 
   return (
-    <Wrapper>
-      <Heading>{headline}</Heading>
-      <Subheading>{subheader}</Subheading>
-      <Linebreak />
-      <AboutParagraphsWrapper>{AboutParagraphBlocks()}</AboutParagraphsWrapper>
-      <Heading>{get_involved_headline}</Heading>
-      <GetInvolvedOuterWrapper>
-        {GetInvolvedParagraphBlocks()}
-      </GetInvolvedOuterWrapper>
-      {/* <StyledImage baseUrl={image.url} alt={image.alt} /> */}
-    </Wrapper>
+    <>
+      <BackgroundImage mixCloudWidget={mixCloudWidget} imageSrc={image.url} />
+      <Wrapper mixCloudWidget={mixCloudWidget}>
+        <Heading>{headline}</Heading>
+        <Subheading>{subheader}</Subheading>
+        <Linebreak />
+        <AboutParagraphsWrapper>
+          {AboutParagraphBlocks()}
+        </AboutParagraphsWrapper>
+        <Heading>{get_involved_headline}</Heading>
+        <GetInvolvedOuterWrapper>
+          {GetInvolvedParagraphBlocks()}
+        </GetInvolvedOuterWrapper>
+        {/* <StyledImage baseUrl={image.url} alt={image.alt} /> */}
+      </Wrapper>
+    </>
   );
 };
 

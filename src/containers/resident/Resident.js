@@ -106,7 +106,7 @@ class ResidentShowContainer extends Component {
             </Helmet>
             <BackgroundImage
               mixCloudWidget={this.props.mixCloudWidget}
-              showImage={show.data.show_image.fullscreen.url}
+              imageSrc={show.data.show_image.fullscreen.url}
             />
             <Wrapper mixCloudWidget={this.props.mixCloudWidget}>
               <ResidentProfile
