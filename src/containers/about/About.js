@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import Img from "../../components/image/Image";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import Colors from "../../consts/Colors";
@@ -13,7 +12,7 @@ const StyledBackgroundImage = styled(BackgroundImage)`
 
 const Wrapper = styled.div`
   height: calc(100vh - 196px - 3.5rem);
-  margin: 143px auto ${(props) => (props.mixCloudWidget ? `123px` : 0)};
+  margin: 123px auto ${(props) => (props.mixCloudWidget ? `103px` : 0)};
 
   padding: 0 1rem;
 
@@ -31,30 +30,38 @@ const Wrapper = styled.div`
 
 const InnerWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto auto;
 `;
 
 const TopWrapper = styled.div`
   background-color: ${Colors.spanBg};
+  margin-bottom: 1rem;
 
-  margin-bottom: 2rem;
-  grid-column: 1 / 4;
+  grid-column: 1 / 7;
 
   @media ${Devices.mobileL} {
-    grid-column: 1 / 2;
+    grid-column: 1 / 6;
+  }
+
+  @media ${Devices.tablet} {
+    grid-column: 1 / 5;
+  }
+
+  @media ${Devices.laptop} {
+    grid-column: 1 / 3;
   }
 `;
 
 const Heading = styled(Heading3)`
   margin-bottom: 1rem;
-  padding: 4px 4px 0 4px;
+  padding: 8px 8px 0 8px;
   color: ${Colors.playerWhite};
 `;
 
 const Subheading = styled(Heading4)`
   font-weight: normal;
-  padding: 0 4px;
+  padding: 0 8px;
   margin-bottom: 1rem;
   color: ${Colors.playerWhite};
 `;
@@ -65,11 +72,19 @@ const Linebreak = styled.div`
 
 const AboutParagraphsWrapper = styled.div`
   margin-bottom: 2.5rem;
-  padding: 4px;
+  padding: 8px;
   background-color: ${Colors.spanBg};
-  grid-column: 1 / 4;
+  grid-column: 1 / 7;
 
   @media ${Devices.mobileL} {
+    grid-column: 1 / 6;
+  }
+
+  @media ${Devices.tablet} {
+    grid-column: 1 / 5;
+  }
+
+  @media ${Devices.laptop} {
     grid-column: 1 / 3;
   }
 
@@ -82,15 +97,35 @@ const Paragraph = styled(Body)`
   color: ${Colors.playerWhite};
 `;
 
+const BottomWrapper = styled.div`
+  position: relative;
+`;
+
 const GetInvolvedOuterWrapper = styled.div`
-  /* max-width: 540px; */
-  margin-bottom: 1.5rem;
-  background-color: ${Colors.spanBg};
-  grid-column: 1 / 4;
+  grid-column: 1 / 7;
 
   @media ${Devices.mobileL} {
+    grid-column: 1 / 6;
+  }
+
+  @media ${Devices.tablet} {
+    grid-column: 1 / 5;
+  }
+
+  @media ${Devices.laptop} {
     grid-column: 1 / 3;
   }
+`;
+
+const GetInvolvedHeading = styled(Heading3)`
+  padding: 0.5rem 0.5rem 1rem;
+  /* margin-bottom: 1rem; */
+  display: inline-block;
+  /* padding: 4px 4px 0 4px; */
+  background-color: ${Colors.spanBg};
+
+  /* border-bottom: 2px solid ${Colors.playerWhiteCustom(0.8)}; */
+  color: ${Colors.playerWhite};
 `;
 
 const GetInvolvedItemWrapper = styled.div`
@@ -98,12 +133,17 @@ const GetInvolvedItemWrapper = styled.div`
   justify-content: center;
   align-items: center;
   grid-template-rows: auto auto auto;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.75rem;
+  padding: 8px;
+  border-radius: 2px;
+  /* border-bottom: 3px solid ${Colors.playerWhiteCustom(0.8)}; */
 
-  grid-template-columns: 1.5fr 2fr;
+  background-color: ${Colors.ehfmPrimary()};
+
+  grid-template-columns: 1.5fr auto;
 
   @media ${Devices.mobileL} {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr auto;
   }
 `;
 
@@ -111,14 +151,14 @@ const GetInvolvedText = styled(Heading4)`
   margin-right: 0.5rem;
   font-weight: normal;
   color: ${Colors.playerWhite};
-  padding: 4px;
 `;
 
 const GetInvolvedLink = styled(Heading4)`
   font-weight: normal;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   color: ${Colors.playerWhite};
-  padding: 4px;
+
+  border-bottom: 3px solid ${Colors.playerWhiteCustom(0.8)};
 `;
 
 const About = ({ pageData, mixCloudWidget }) => {
@@ -166,8 +206,8 @@ const About = ({ pageData, mixCloudWidget }) => {
           <AboutParagraphsWrapper>
             {AboutParagraphBlocks()}
           </AboutParagraphsWrapper>
+
           <GetInvolvedOuterWrapper>
-            <Heading>{get_involved_headline}</Heading>
             {GetInvolvedParagraphBlocks()}
           </GetInvolvedOuterWrapper>
         </InnerWrapper>
