@@ -42,7 +42,7 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
