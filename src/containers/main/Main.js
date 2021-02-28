@@ -23,7 +23,7 @@ import {
   clickedUnmute,
 } from "../../components/analytics/ClickEventAnalytics";
 import Devices from "../../consts/Devices";
-import About from "../about/About";
+import About from "../about";
 
 class Main extends Component {
   constructor(props) {
