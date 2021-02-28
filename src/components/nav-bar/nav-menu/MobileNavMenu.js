@@ -7,7 +7,7 @@ import useOutsideAlerter from "../../../hooks/useOutsideAlerter";
 const NavLinks = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef, () => setMenuOpen(!menuOpen));
+  useOutsideAlerter(wrapperRef, () => setMenuOpen(false));
 
   return (
     <Wrapper ref={wrapperRef}>

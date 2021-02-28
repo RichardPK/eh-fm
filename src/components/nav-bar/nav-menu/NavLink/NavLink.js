@@ -52,6 +52,10 @@ const StyledNavLink = styled(NavLink)`
   }
 
   @media ${Devices.tablet} {
+    margin-right: 3rem;
+  }
+
+  @media ${Devices.laptop} {
     margin-right: 4rem;
   }
 `;
