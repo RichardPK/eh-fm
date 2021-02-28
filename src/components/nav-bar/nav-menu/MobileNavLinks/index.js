@@ -21,14 +21,14 @@ const StyledNavLink = styled(NavLink)`
   padding-top: 0.25rem;
 `;
 
-const MonileNavMenu = () => {
+const MobileNavMenu = () => {
   return (
     <Wrapper>
-      {linksData.map((linkData) => (
-        <StyledNavLink target={linkData.target} text={linkData.text} />
+      {linksData.map((linkData, i) => (
+        <StyledNavLink target={linkData.target} text={linkData.text} key={i} />
       ))}
     </Wrapper>
   );
 };
 
-export default MonileNavMenu;
+export default MobileNavMenu;

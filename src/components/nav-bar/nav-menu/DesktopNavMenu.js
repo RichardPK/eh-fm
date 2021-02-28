@@ -6,8 +6,12 @@ import linksData from "./linksData";
 const NavLinks = () => {
   return (
     <NavLinksWrapper>
-      {linksData.map((linkData) => (
-        <NavLinkComponent target={linkData.target} text={linkData.text} />
+      {linksData.map((linkData, i) => (
+        <NavLinkComponent
+          target={linkData.target}
+          text={linkData.text}
+          key={i}
+        />
       ))}
     </NavLinksWrapper>
   );

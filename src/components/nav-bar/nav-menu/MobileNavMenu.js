@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components/macro";
 import BurgerMenuButton from "./BurgerMenuButton";
 import MobileNavLinks from "./MobileNavLinks";
+import useOutsideAlerter from "../../../hooks/useOutsideAlerter";
 
 const NavLinks = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef, () => setMenuOpen(!menuOpen));
 
   return (
-    <NavLinksWrapper>
+    <Wrapper ref={wrapperRef}>
       <BurgerMenuButton
         menuOpen={menuOpen}
         onClick={() => setMenuOpen(!menuOpen)}
       />
       {menuOpen && <MobileNavLinks />}
-    </NavLinksWrapper>
+    </Wrapper>
   );
 };
 
-const NavLinksWrapper = styled.div`
+const Wrapper = styled.div`
   position: relative;
   display: flex;
   margin-bottom: 2px;
