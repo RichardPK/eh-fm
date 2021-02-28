@@ -1,17 +1,12 @@
 import React from "react";
 import styled from "styled-components/macro";
 import NavLinkComponent from "./NavLink/NavLink";
+import linksData from "./linksData";
 
 const NavLinks = () => {
-  const linksArray = [
-    { target: "/", text: "HOME" },
-    { target: "/residents", text: "RESIDENTS" },
-    { target: "/about", text: "ABOUT" },
-  ];
-
   return (
     <NavLinksWrapper>
-      {linksArray.map((linkData) => (
+      {linksData.map((linkData) => (
         <NavLinkComponent target={linkData.target} text={linkData.text} />
       ))}
     </NavLinksWrapper>

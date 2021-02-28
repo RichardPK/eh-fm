@@ -5,14 +5,14 @@ import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import Socials from "./socials/Socials";
 import Colors from "../../consts/Colors";
-import MobileNavLinks from "./nav-links/MobileNavLinks";
+import MobileNavMenu from "./nav-menu/MobileNavMenu";
 import ChatangoButton from "../chatango/chatango-button/ChatangoButton";
 
 const MobileNavBar = (props) => {
   return (
     <Inner>
       <Left>
-        <MobileNavLinks />
+        <MobileNavMenu />
       </Left>
       <Right>
         <ChatangoButton mobile />
