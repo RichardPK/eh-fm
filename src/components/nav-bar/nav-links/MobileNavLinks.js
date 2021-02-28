@@ -1,26 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
-import NavLinkComponent from "./NavLink/NavLink";
 import BurgerMenuButton from "./BurgerMenuButton";
+import MonileNavMenu from "./MobileNavMenu";
 
 const NavLinks = () => {
-  const linksArray = [
-    { target: "/", text: "HOME" },
-    { target: "/residents", text: "RESIDENTS" },
-    { target: "/about", text: "ABOUT" },
-  ];
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <NavLinksWrapper>
-      <BurgerMenuButton />
-      {/* {linksArray.map((linkData) => (
-        <NavLinkComponent target={linkData.target} text={linkData.text} />
-      ))} */}
+      <BurgerMenuButton onClick={() => setMenuOpen(!menuOpen)} />
+      {menuOpen && <MonileNavMenu />}
     </NavLinksWrapper>
   );
 };
 
 const NavLinksWrapper = styled.div`
+  position: relative;
   display: flex;
   margin-bottom: 2px;
 `;

@@ -22,9 +22,9 @@ const Wrapper = styled.div`
   }
 `;
 
-const BurgerMenuButton = () => {
+const BurgerMenuButton = ({ onClick, menuOpen }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={onClick}>
       <BurgerIcon />
     </Wrapper>
   );

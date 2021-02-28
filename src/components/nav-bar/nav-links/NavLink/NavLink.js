@@ -6,7 +6,7 @@ import Devices from "../../../../consts/Devices";
 import Colors from "../../../../consts/Colors";
 import HoverLine from "../../../hoverLine/HoverLine";
 
-const NavLinkComponent = ({ target, text }) => {
+const NavLinkComponent = ({ target, text, ...props }) => {
   const [hovered, setHovered] = useState(false);
   const isActive = () => {
     if (
@@ -20,6 +20,7 @@ const NavLinkComponent = ({ target, text }) => {
 
   return (
     <StyledNavLink
+      {...props}
       onMouseOver={() => {
         setHovered(true);
       }}
