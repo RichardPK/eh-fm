@@ -24,6 +24,7 @@ import {
 } from "../../components/analytics/ClickEventAnalytics";
 import Devices from "../../consts/Devices";
 import About from "../about";
+import LiveRadioSchema from "../../components/schema/live-radio-schema/LiveRadioSchema";
 
 class Main extends Component {
   constructor(props) {
@@ -248,6 +249,7 @@ class Main extends Component {
         <PageViewAnalytics
           url={window.location.pathname + window.location.search}
         />
+        <LiveRadioSchema />
         {this.props.residents.length ? (
           <MainWrapper>
             <Header
