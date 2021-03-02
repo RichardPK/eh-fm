@@ -6,6 +6,8 @@ import BackgroundImage from "../../components/resident-profile/background-image/
 import TopSection from "./TopSection";
 import GetInvolved from "./GetInvolved";
 import BodyParagraphs from "./BodyParagraphs";
+import MetaData from "../../components/metadata/MetaData";
+import GetImageUrl from "../../helpers/GetImageUrl";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
   top: 86px;
@@ -43,8 +45,24 @@ const About = ({ pageData }) => {
     headline,
   } = pageData.data;
 
+  const metaDataImageUrl = GetImageUrl({
+    baseUrl: image.url,
+    width: "800",
+    height: "800",
+  });
+
   return (
     <>
+      <MetaData
+        title={"About | EHFM"}
+        url={window.location.href}
+        imageSrc={metaDataImageUrl}
+        description={
+          "EHFM is an online community radio station broadcasting from Edinburgh’s Summerhall."
+        }
+        imageWidth={"800px"}
+        imageHeight={"800px"}
+      />
       <StyledBackgroundImage imageSrc={image.url} />
       <Wrapper>
         <InnerWrapper>

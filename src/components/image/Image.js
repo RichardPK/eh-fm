@@ -1,12 +1,9 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components/macro";
+import GetImageUrl from "../../helpers/GetImageUrl";
 
 const Image = ({ baseUrl, width, height, fit, alt, ...props }) => {
-  const widthToRender = `${width ? `&w=${width}` : ""}`;
-  const heightToRender = `${height ? `&h=${height}` : ""}`;
-  const fitToRender = `${fit ? `&fit=${fit}` : ""}`;
-
-  const url = `${baseUrl}${widthToRender}${heightToRender}${fitToRender}`;
+  const url = GetImageUrl({ baseUrl, width, height, fit });
   return <Img {...props} src={url} alt={alt} />;
 };
 
