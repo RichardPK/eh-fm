@@ -6,8 +6,10 @@ import Devices from "../../../../consts/Devices";
 import Colors from "../../../../consts/Colors";
 import HoverLine from "../../../hoverLine/HoverLine";
 
-const NavLinkComponent = ({ target, text, ...props }) => {
+const NavLinkComponent = ({ ...props }) => {
   const [hovered, setHovered] = useState(false);
+  const { target, text, icon } = props;
+
   const isActive = () => {
     if (
       window.location.pathname.includes("residents") &&
@@ -29,7 +31,8 @@ const NavLinkComponent = ({ target, text, ...props }) => {
       }}
       to={target}
     >
-      <NavText>{text}</NavText>
+      {text && <NavText>{text}</NavText>}
+      {icon && icon()}
       <HoverLine hovered={isActive() || hovered} width={"100%"} />
     </StyledNavLink>
   );
@@ -57,6 +60,14 @@ const StyledNavLink = styled(NavLink)`
 
   @media ${Devices.laptop} {
     margin-right: 4rem;
+  }
+
+  svg {
+    height: 20px;
+    width: auto;
+    g {
+      fill: black;
+    }
   }
 `;
 

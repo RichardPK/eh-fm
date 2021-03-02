@@ -7,11 +7,7 @@ const NavLinks = () => {
   return (
     <NavLinksWrapper>
       {linksData.map((linkData, i) => (
-        <NavLinkComponent
-          target={linkData.target}
-          text={linkData.text}
-          key={i}
-        />
+        <NavLinkComponent {...linkData} key={i} />
       ))}
     </NavLinksWrapper>
   );
