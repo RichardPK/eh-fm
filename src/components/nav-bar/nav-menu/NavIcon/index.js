@@ -18,7 +18,7 @@ const Wrapper = styled.a`
 
   svg {
     width: auto;
-    height: 18px;
+    height: 22px;
     path {
       transition: fill, 0.2s, ease-out;
       fill: ${Colors.ehfmPrimary()};

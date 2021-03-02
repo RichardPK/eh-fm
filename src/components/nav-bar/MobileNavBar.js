@@ -7,6 +7,7 @@ import Socials from "./socials/Socials";
 import Colors from "../../consts/Colors";
 import MobileNavMenu from "./nav-menu/MobileNavMenu";
 import ChatangoButton from "../chatango/chatango-button/ChatangoButton";
+import NavIcon from "./nav-menu/NavIcon";
 
 const MobileNavBar = (props) => {
   return (
@@ -15,6 +16,7 @@ const MobileNavBar = (props) => {
         <MobileNavMenu />
       </Left>
       <Right>
+        <NavIcon to={"https://ehfm.bigcartel.com/"} />
         <ChatangoButton mobile />
       </Right>
     </Inner>
