@@ -67,6 +67,9 @@ class Main extends Component {
     this.currentShowApiCall();
     this.handleHourCallTimer();
     this.props.getResidents();
+    if (this.state.currentShow) {
+      debugger;
+    }
   }
 
   callEveryHour() {
@@ -290,12 +293,7 @@ class Main extends Component {
                 <Route
                   exact
                   path="/about"
-                  render={() => (
-                    <About
-                      pageData={this.props.aboutPageData}
-                      mixCloudWidget={this.props.mixCloudWidget}
-                    />
-                  )}
+                  render={() => <About pageData={this.props.aboutPageData} />}
                 />
                 <Route
                   exact

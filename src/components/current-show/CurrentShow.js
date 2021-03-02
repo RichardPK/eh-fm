@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import ListenNowButton from '../listen-now-button/ListenNowButton';
-import OnAir from '../side-player/player/on-air/OnAir';
-import styled from 'styled-components/macro';
-import Devices from '../../consts/Devices';
-import { Heading2, Body } from '../text-elements/index';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import ListenNowButton from "../listen-now-button/ListenNowButton";
+import OnAir from "../side-player/player/on-air/OnAir";
+import styled from "styled-components/macro";
+import Devices from "../../consts/Devices";
+import { Heading2, Body } from "../text-elements/index";
 import {
   SHOW_NOT_FOUND,
   getShowInPrismic,
   parseShowName,
-  sanitiseString
-} from '../../helpers/PrismicHelper';
-import Colors from '../../consts/Colors';
-import Image from '../image/Image';
-import PlaceholderImage from '../../assets/images/placeholder-showimg.jpg';
-import HoveredLine from '../hoverLine/HoverLine';
+  sanitiseString,
+} from "../../helpers/PrismicHelper";
+import Colors from "../../consts/Colors";
+import Image from "../image/Image";
+import PlaceholderImage from "../../assets/images/placeholder-showimg.jpg";
+import HoveredLine from "../hoverLine/HoverLine";
 
-const CurrentShow = ({ currentShow, residents, playing, handlePlayPauseClicked }) => {
+const CurrentShow = ({
+  currentShow,
+  residents,
+  playing,
+  handlePlayPauseClicked,
+}) => {
   const [prismicShow, setPrismicShow] = useState(null);
   const [hovered, setHovered] = useState(false);
 
@@ -30,7 +35,9 @@ const CurrentShow = ({ currentShow, residents, playing, handlePlayPauseClicked }
 
   const prismicShowImgUrl = () => {
     return (
-      prismicShow && prismicShow !== SHOW_NOT_FOUND && prismicShow.data.show_image.url.split('&')[0]
+      prismicShow &&
+      prismicShow !== SHOW_NOT_FOUND &&
+      prismicShow.data.show_image.url.split("&")[0]
     );
   };
 
@@ -42,7 +49,7 @@ const CurrentShow = ({ currentShow, residents, playing, handlePlayPauseClicked }
           width={500}
           height={600}
           alt="current live show"
-          fit={'crop'}
+          fit={"crop"}
         />
       );
     } else if (airTimeShowImgUrl()) {
@@ -59,8 +66,8 @@ const CurrentShow = ({ currentShow, residents, playing, handlePlayPauseClicked }
     }
     if (currentShow !== null) {
       currentShowDescription = currentShow.description;
-      if (currentShowDescription === '') {
-        currentShowDescription = 'Edinburgh Community Radio.';
+      if (currentShowDescription === "") {
+        currentShowDescription = "Edinburgh Community Radio.";
         return currentShowDescription;
       } else {
         return sanitiseString(currentShowDescription);
@@ -94,8 +101,8 @@ const CurrentShow = ({ currentShow, residents, playing, handlePlayPauseClicked }
                   <ShowName>{parseShowName(currentShow)}</ShowName>
                   <HoveredLine
                     hovered={hovered}
-                    width={'100%'}
-                    placeholderWidth={'3rem'}
+                    width={"100%"}
+                    placeholderWidth={"3rem"}
                     placeholder
                   />
                 </NameWrapper>

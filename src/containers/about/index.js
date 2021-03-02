@@ -13,7 +13,7 @@ const StyledBackgroundImage = styled(BackgroundImage)`
 
 const Wrapper = styled.div`
   height: calc(100vh - 196px - 3.5rem);
-  margin: 123px auto ${(props) => (props.mixCloudWidget ? `103px` : 0)};
+  margin: 46px auto ${(props) => (props.mixCloudWidget ? `103px` : 0)};
 
   padding: 0 1rem;
 
@@ -34,7 +34,7 @@ const InnerWrapper = styled.div`
   grid-template-rows: auto auto auto;
 `;
 
-const About = ({ pageData, mixCloudWidget }) => {
+const About = ({ pageData }) => {
   const {
     about,
     get_involved_details,
@@ -45,11 +45,8 @@ const About = ({ pageData, mixCloudWidget }) => {
 
   return (
     <>
-      <StyledBackgroundImage
-        mixCloudWidget={mixCloudWidget}
-        imageSrc={image.url}
-      />
-      <Wrapper mixCloudWidget={mixCloudWidget}>
+      <StyledBackgroundImage imageSrc={image.url} />
+      <Wrapper>
         <InnerWrapper>
           <TopSection headline={headline} subheader={subheader} />
           <BodyParagraphs aboutText={about} />
