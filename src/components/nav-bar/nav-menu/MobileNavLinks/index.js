@@ -21,11 +21,16 @@ const StyledNavLink = styled(NavLink)`
   padding-top: 0.25rem;
 `;
 
-const MobileNavMenu = () => {
+const MobileNavMenu = ({ onClick }) => {
   return (
     <Wrapper>
       {linksData.map((linkData, i) => (
-        <StyledNavLink target={linkData.target} text={linkData.text} key={i} />
+        <StyledNavLink
+          target={linkData.target}
+          text={linkData.text}
+          key={i}
+          onClick={onClick}
+        />
       ))}
     </Wrapper>
   );

@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components/macro";
 import Devices from "../../consts/Devices";
 import Colors from "../../consts/Colors";
-import { Heading4 } from "../../components/text-elements/index";
+import { Cta, Heading4 } from "../../components/text-elements/index";
 import gridStyles from "./gridStyles";
+import { ReactComponent as ExternalLink } from "../../assets/svgs/external-link.svg";
 
 const GetInvolvedOuterWrapper = styled.div`
   ${gridStyles}
@@ -17,7 +18,6 @@ const GetInvolvedItemWrapper = styled.div`
   margin-bottom: 0.75rem;
   padding: 8px;
   border-radius: 2px;
-  /* border-bottom: 3px solid ${Colors.playerWhiteCustom(0.8)}; */
 
   background-color: ${Colors.ehfmPrimary()};
 
@@ -34,9 +34,25 @@ const GetInvolvedText = styled(Heading4)`
   color: ${Colors.playerWhite};
 `;
 
-const GetInvolvedLink = styled(Heading4)`
+const LinkWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin-left: 0.5rem;
+    margin-bottom: 0.6rem;
+    width: 14px;
+    height: 14px;
+    g {
+      fill: ${(props) =>
+        props.isEmail ? Colors.ehfmPrimary() : Colors.playerWhite};
+    }
+  }
+`;
+
+const GetInvolvedLinkText = styled(Cta)`
   font-weight: normal;
-  /* text-decoration: underline; */
   color: ${Colors.playerWhite};
 
   border-bottom: 3px solid ${Colors.playerWhiteCustom(0.8)};
@@ -45,12 +61,20 @@ const GetInvolvedLink = styled(Heading4)`
 const GetInvolved = ({ get_involved_details }) => {
   const GetInvolvedParagraphBlocks = () => {
     return get_involved_details.map((dataItem) => {
+      const isEmail = dataItem.get_involved_link_href.url.includes("@");
       return (
         <GetInvolvedItemWrapper>
           <GetInvolvedText>{dataItem.get_involved_text}</GetInvolvedText>
-          <GetInvolvedLink href={dataItem.get_involved_link_href.url} as="a">
-            {dataItem.get_involved_link_text}
-          </GetInvolvedLink>
+          <LinkWrapper
+            isEmail={isEmail}
+            href={dataItem.get_involved_link_href.url}
+            as="a"
+          >
+            <GetInvolvedLinkText>
+              {dataItem.get_involved_link_text}
+            </GetInvolvedLinkText>
+            <ExternalLink />
+          </LinkWrapper>
         </GetInvolvedItemWrapper>
       );
     });

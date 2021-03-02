@@ -15,7 +15,7 @@ const NavLinks = () => {
         menuOpen={menuOpen}
         onClick={() => setMenuOpen(!menuOpen)}
       />
-      {menuOpen && <MobileNavLinks />}
+      {menuOpen && <MobileNavLinks onClick={() => setMenuOpen(false)} />}
     </Wrapper>
   );
 };
@@ -24,7 +24,6 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   margin-bottom: 2px;
-  /* box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.1); */
 `;
 
 export default NavLinks;
