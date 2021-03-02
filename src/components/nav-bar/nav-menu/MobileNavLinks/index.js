@@ -25,7 +25,12 @@ const MobileNavMenu = ({ onClick }) => {
   return (
     <Wrapper>
       {linksData.map((linkData, i) => (
-        <StyledNavLink {...linkData} key={i} onClick={onClick} />
+        <StyledNavLink
+          target={linkData.target}
+          text={linkData.text}
+          key={i}
+          onClick={onClick}
+        />
       ))}
     </Wrapper>
   );

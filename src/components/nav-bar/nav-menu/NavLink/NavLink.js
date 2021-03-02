@@ -6,9 +6,8 @@ import Devices from "../../../../consts/Devices";
 import Colors from "../../../../consts/Colors";
 import HoverLine from "../../../hoverLine/HoverLine";
 
-const NavLinkComponent = ({ ...props }) => {
+const NavLinkComponent = ({ target, text, ...props }) => {
   const [hovered, setHovered] = useState(false);
-  const { target, text, icon } = props;
 
   const isActive = () => {
     if (
@@ -31,8 +30,7 @@ const NavLinkComponent = ({ ...props }) => {
       }}
       to={target}
     >
-      {text && <NavText>{text}</NavText>}
-      {icon && icon()}
+      <NavText>{text}</NavText>
       <HoverLine hovered={isActive() || hovered} width={"100%"} />
     </StyledNavLink>
   );
