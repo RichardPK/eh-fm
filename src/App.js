@@ -1,9 +1,9 @@
 import React from "react";
 import Main from "./containers/main/Main";
-import useAbout from "./hooks/useAbout";
+import usePrismic from "./hooks/usePrismic";
 
 export const App = () => {
-  const aboutPageData = useAbout();
+  const { aboutPageData } = usePrismic();
   const dataFetchingFinished = Boolean(aboutPageData);
 
   return dataFetchingFinished && <Main aboutPageData={aboutPageData} />;

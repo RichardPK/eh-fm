@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Prismic from "prismic-javascript";
 
-export const useAbout = () => {
-  const [aboutData, setAboutData] = useState(null);
+export const usePrismic = () => {
+  const [aboutPageData, setAboutData] = useState(null);
+  const [supportPageData, setSupportData] = useState(null);
 
   useEffect(() => {
     Prismic.api(process.env.REACT_APP_PRISMIC_API_URL).then((api) => {
@@ -16,7 +17,7 @@ export const useAbout = () => {
     });
   }, []);
 
-  return aboutData;
+  return { aboutPageData, supportPageData };
 };
 
-export default useAbout;
+export default usePrismic;
