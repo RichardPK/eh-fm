@@ -24,6 +24,7 @@ import {
 } from "../../components/analytics/ClickEventAnalytics";
 import Devices from "../../consts/Devices";
 import About from "../about";
+import Support from "../support";
 import LiveRadioSchema from "../../components/schema/live-radio-schema/LiveRadioSchema";
 
 class Main extends Component {
@@ -296,6 +297,13 @@ class Main extends Component {
                   exact
                   path="/about"
                   render={() => <About pageData={this.props.aboutPageData} />}
+                />
+                <Route
+                  exact
+                  path="/support"
+                  render={() => (
+                    <Support pageData={this.props.supportPageData} />
+                  )}
                 />
                 <Route
                   exact
