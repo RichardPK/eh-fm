@@ -4,8 +4,6 @@ import styled from "styled-components/macro";
 import axios from "axios";
 import { connect } from "react-redux";
 import { withCookies } from "react-cookie";
-import moment from "moment";
-import _ from "lodash";
 import Header from "../header/Header";
 import SidePlayer from "../../components/side-player/SidePlayer";
 import Home from "../home/Home";
@@ -31,10 +29,6 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showSchedule: [],
-      currentDate: null,
-      currentDay: null,
-      showsUpNext: null,
       playing: false,
       volume: 1,
     };
@@ -47,100 +41,13 @@ class Main extends Component {
     });
 
     this.audioPlayer = React.createRef();
-    this.scheduleApiCall = this.scheduleApiCall.bind(this);
-    this.fetchDate = this.fetchDate.bind(this);
-    this.populateSchedule = this.populateSchedule.bind(this);
-    this.convertShowScheduleToArray = this.convertShowScheduleToArray.bind(
-      this
-    );
-    this.getTodaysSchedule = this.getTodaysSchedule.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
-    this.getRemainingShowsToday = this.getRemainingShowsToday.bind(this);
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
   }
 
   componentDidMount() {
-    this.scheduleApiCall();
     this.props.getResidents();
-  }
-
-  scheduleApiCall() {
-    fetch("https://ehfm.airtime.pro/api/week-info")
-      .then((response) => response.json())
-      .then(this.fetchDate())
-      .then((data) =>
-        this.setState({ showSchedule: data }, function () {
-          this.populateSchedule();
-        })
-      );
-  }
-
-  fetchDate() {
-    let todayDate = new Date();
-    let dd = todayDate.getDate();
-    let mm = todayDate.getMonth() + 1; //January is 0!
-    let yyyy = todayDate.getFullYear();
-    if (dd < 10) {
-      dd = "0" + dd;
-    }
-    if (mm < 10) {
-      mm = "0" + mm;
-    }
-    let today = yyyy + "-" + mm + "-" + dd;
-    this.setState({ currentDate: today });
-  }
-
-  populateSchedule() {
-    const showArray = this.convertShowScheduleToArray();
-    const todaysSchedule = this.getTodaysSchedule(showArray);
-    const showsUpNext = this.getRemainingShowsToday(todaysSchedule);
-    showsUpNext && this.setState({ showsUpNext });
-  }
-
-  convertShowScheduleToArray() {
-    if (this.state.showSchedule) {
-      let showSchedule = this.state.showSchedule;
-      let showScheduleArray = [];
-      Object.keys(showSchedule).forEach(function (key) {
-        showScheduleArray.push(key, showSchedule[key]);
-      });
-      let newArray = _.chunk(showScheduleArray, 2);
-      let arrayLength = newArray.length;
-      let positionToRemove = arrayLength - 1;
-      newArray.splice(positionToRemove, 1);
-      return newArray;
-    }
-  }
-
-  getTodaysSchedule(scheduleData) {
-    let currentDate = this.state.currentDate;
-    if (scheduleData) {
-      for (let day of scheduleData) {
-        if (day[1].length !== 0) {
-          if (day[1][0].start_timestamp.includes(currentDate)) {
-            let currentDayInScheduleIndex = scheduleData.indexOf(day);
-            return scheduleData[currentDayInScheduleIndex];
-          }
-        }
-      }
-    }
-  }
-
-  getRemainingShowsToday(todaysSchedule) {
-    const shows = todaysSchedule[1];
-    const now = Date.now();
-    let remainingShows = [];
-    for (let show of shows) {
-      const startTimeInMs = moment(
-        show.start_timestamp,
-        "YYYY-MM-DD HH:mm:ss"
-      ).valueOf();
-      if (startTimeInMs > now) {
-        remainingShows.push(show);
-      }
-    }
-    return remainingShows;
   }
 
   handlePlayPauseClicked() {
