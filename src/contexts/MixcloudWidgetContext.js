@@ -5,22 +5,22 @@ export const MixcloudWidgetContext = createContext({
 });
 
 export const MixcloudWidgetContextProvider = ({ children }) => {
-  const [mixcloudWidget, setMixcloudWidget] = useState(null);
+  const [mixcloudWidgetHtml, setMixcloudWidgetHtml] = useState(null);
 
   const handleMixCloudClick = (showPath) => {
     let url = `https://api.mixcloud.com${showPath}embed-json/`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        debugger;
-        setMixcloudWidget(data.html);
+        setMixcloudWidgetHtml(data.html);
       });
   };
 
   return (
     <MixcloudWidgetContext.Provider
       value={{
-        mixcloudWidget: mixcloudWidget,
+        mixcloudWidgetHtml: mixcloudWidgetHtml,
+        setMixcloudWidgetHtml: setMixcloudWidgetHtml,
         handleMixCloudClick: handleMixCloudClick,
       }}
     >

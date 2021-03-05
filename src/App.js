@@ -5,6 +5,7 @@ import usePrismicData from "./hooks/usePrismicData";
 import useCurrentShowData from "./hooks/useCurrentShowData";
 import useScheduleData from "./hooks/useScheduleData";
 import { RadioPlayerContextProvider } from "./contexts/RadioPlayerContext";
+import { MixcloudWidgetContextProvider } from "./contexts/MixcloudWidgetContext";
 
 export const App = () => {
   const { aboutPageData, supportPageData, residentsData } = usePrismicData();
@@ -19,14 +20,16 @@ export const App = () => {
   return (
     essentialDataFetchingFinished && (
       <RadioPlayerContextProvider audioRef={audioRef}>
-        <Audio refProp={audioRef} />
-        <Main
-          aboutPageData={aboutPageData}
-          supportPageData={supportPageData}
-          currentShowData={currentShowData}
-          scheduleData={scheduleData}
-          residentsData={residentsData}
-        />
+        <MixcloudWidgetContextProvider>
+          <Audio refProp={audioRef} />
+          <Main
+            aboutPageData={aboutPageData}
+            supportPageData={supportPageData}
+            currentShowData={currentShowData}
+            scheduleData={scheduleData}
+            residentsData={residentsData}
+          />
+        </MixcloudWidgetContextProvider>
       </RadioPlayerContextProvider>
     )
   );

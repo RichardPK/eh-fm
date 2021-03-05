@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import MixcloudWidget from "./mixcloud-widget/MixcloudWidget";
+import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import CookieConsent from "../../components/cookie-consent/CookieConsent";
 
-const FooterContainer = (props) => {
+const FooterContainer = () => {
+  const { mixcloudWidgetHtml, setMixcloudWidgetHtml } = useContext(
+    MixcloudWidgetContext
+  );
+
   return (
     <React.Fragment>
       <CookieConsent />
-      <MixcloudWidget />
+      {mixcloudWidgetHtml && (
+        <MixcloudWidget
+          mixcloudWidgetHtml={mixcloudWidgetHtml}
+          setMixcloudWidgetHtml={setMixcloudWidgetHtml}
+        />
+      )}
     </React.Fragment>
   );
 };
