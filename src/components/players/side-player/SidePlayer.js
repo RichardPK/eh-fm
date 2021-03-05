@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components/macro";
 import CurrentShow from "../../current-show/CurrentShow";
-import Player from "./player/Player";
+import Player from "../player/Player";
 import Logo from "../../nav-bar/logo/Logo";
 import Schedule from "../../schedule/Schedule";
 import Devices from "../../../consts/Devices";

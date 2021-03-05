@@ -16,8 +16,6 @@ export const App = () => {
     currentShowData && scheduleData
   );
 
-  console.log("yyyyy");
-
   return (
     essentialDataFetchingFinished && (
       <RadioPlayerContext.Provider value={"hello from context"}>

@@ -21,6 +21,7 @@ export const usePrismic = () => {
         response && setSupportData(response.results[0]);
       });
     };
+
     fetchData();
   }, []);
 

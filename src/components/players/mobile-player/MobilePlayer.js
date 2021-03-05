@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components/macro";
-import Player from "../side-player/player/Player";
+import Player from "../player/Player";
 import Colors from "../../../consts/Colors";
 
 const MobilePlayer = ({

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import Colors from "../../../../consts/Colors";
-import Devices from "../../../../consts/Devices";
-import { Cta } from "../../../text-elements/index";
+import Colors from "../../../consts/Colors";
+import Devices from "../../../consts/Devices";
+import { Cta } from "../../text-elements/index";
 import PlayPauseButton from "./play-pause-button/PlayPauseButton";
-import { ReactComponent as Volume } from "../../../../assets/svgs/volume.svg";
-import { ReactComponent as MuteVolume } from "../../../../assets/svgs/volume-mute.svg";
+import { ReactComponent as Volume } from "../../../assets/svgs/volume.svg";
+import { ReactComponent as MuteVolume } from "../../../assets/svgs/volume-mute.svg";
 import OnAir from "./on-air/OnAir";
-import { sanitiseString } from "../../../../helpers/PrismicHelper";
+import { sanitiseString } from "../../../helpers/PrismicHelper";
 
 const Player = ({
   playing,
