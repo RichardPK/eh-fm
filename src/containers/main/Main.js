@@ -12,13 +12,10 @@ import Resident from "../resident/Resident";
 import Footer from "../footer/Footer";
 import IndexActions from "../../actions/index";
 import PageViewAnalytics from "../../components/analytics/PageViewAnalytics";
-
 import Devices from "../../consts/Devices";
 import About from "../about";
 import Support from "../support";
 import LiveRadioSchema from "../../components/schema/live-radio-schema/LiveRadioSchema";
-import Audio from "../../components/audio/index";
-
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -50,7 +47,6 @@ class Main extends Component {
   render() {
     return (
       <React.Fragment>
-        <Audio refTarget={this.audioPlayer} />
         <PageViewAnalytics
           url={window.location.pathname + window.location.search}
         />
