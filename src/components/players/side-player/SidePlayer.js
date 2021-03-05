@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components/macro";
-import CurrentShow from "../current-show/CurrentShow";
+import CurrentShow from "../../current-show/CurrentShow";
 import Player from "./player/Player";
-import Logo from "../nav-bar/logo/Logo";
-import Schedule from "../schedule/Schedule";
-import Devices from "../../consts/Devices";
-import Colors from "../../consts/Colors";
-import Sizes from "../../consts/Sizes";
-import ChatangoButton from "../chatango/chatango-button/ChatangoButton";
+import Logo from "../../nav-bar/logo/Logo";
+import Schedule from "../../schedule/Schedule";
+import Devices from "../../../consts/Devices";
+import Colors from "../../../consts/Colors";
+import Sizes from "../../../consts/Sizes";
+import ChatangoButton from "../../chatango/chatango-button/ChatangoButton";
 
 const SidePlayer = ({
   currentShow,

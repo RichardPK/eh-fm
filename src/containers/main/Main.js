@@ -5,7 +5,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { withCookies } from "react-cookie";
 import Header from "../header/Header";
-import SidePlayer from "../../components/side-player/SidePlayer";
+import SidePlayer from "../../components/players/side-player/SidePlayer";
 import Home from "../home/Home";
 import ResidentsContainer from "../residents/Residents";
 import Resident from "../resident/Resident";
@@ -13,7 +13,6 @@ import Footer from "../footer/Footer";
 import IndexActions from "../../actions/index";
 import ResidentsActions from "../../actions/ResidentsActions";
 import PageViewAnalytics from "../../components/analytics/PageViewAnalytics";
-import MobilePlayer from "../../components/players/mobile-player/MobilePlayer";
 import {
   clickedPlay,
   clickedStop,
@@ -24,6 +23,7 @@ import Devices from "../../consts/Devices";
 import About from "../about";
 import Support from "../support";
 import LiveRadioSchema from "../../components/schema/live-radio-schema/LiveRadioSchema";
+import Audio from "../../components/audio/index";
 
 class Main extends Component {
   constructor(props) {
@@ -88,9 +88,7 @@ class Main extends Component {
   render() {
     return (
       <React.Fragment>
-        <audio ref={this.audioPlayer} id="audioPlayer" name="media">
-          <source src="https://ehfm.out.airtime.pro/ehfm_a" type="audio/mpeg" />
-        </audio>
+        <Audio refTarget={this.audioPlayer} />
         <PageViewAnalytics
           url={window.location.pathname + window.location.search}
         />

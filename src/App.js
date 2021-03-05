@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import Main from "./containers/main/Main";
+import Audio from "./components/audio/";
 import usePrismicData from "./hooks/usePrismicData";
 import useCurrentShowData from "./hooks/useCurrentShowData";
 import useScheduleData from "./hooks/useScheduleData";
-import { PlayContext } from "./contexts/PlayContext";
+import { RadioPlayerContext } from "./contexts/RadioPlayerContext";
 
 export const App = () => {
   const { aboutPageData, supportPageData } = usePrismicData();
   const currentShowData = useCurrentShowData();
   const scheduleData = useScheduleData();
+  const audioRef = useRef(null);
 
   const essentialDataFetchingFinished = Boolean(
     currentShowData && scheduleData
@@ -16,14 +18,15 @@ export const App = () => {
 
   return (
     essentialDataFetchingFinished && (
-      <PlayContext.Provider value={"hello from context"}>
+      <RadioPlayerContext.Provider value={"hello from context"}>
+        {/* <Audio refTarget={audioRef} /> */}
         <Main
           aboutPageData={aboutPageData}
           supportPageData={supportPageData}
           currentShowData={currentShowData}
           scheduleData={scheduleData}
         />
-      </PlayContext.Provider>
+      </RadioPlayerContext.Provider>
     )
   );
 };

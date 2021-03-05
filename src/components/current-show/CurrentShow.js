@@ -16,12 +16,7 @@ import Image from "../image/Image";
 import PlaceholderImage from "../../assets/images/placeholder-showimg.jpg";
 import HoveredLine from "../hoverLine/HoverLine";
 
-const CurrentShow = ({
-  currentShow,
-  residents,
-  playing,
-  handlePlayPauseClicked,
-}) => {
+const CurrentShow = ({ currentShow, residents }) => {
   const [prismicShow, setPrismicShow] = useState(null);
   const [hovered, setHovered] = useState(false);
 

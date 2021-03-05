@@ -13,6 +13,7 @@ const MobilePlayer = ({
   handlePlayPauseClicked,
   handleVolumeClicked,
 }) => {
+  console.log("xxxx");
   return (
     <>
       <Wrapper>
