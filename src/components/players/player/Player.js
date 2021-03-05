@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components/macro";
+import { RadioPlayerContext } from "../../../contexts/RadioPlayerContext";
 import Colors from "../../../consts/Colors";
 import Devices from "../../../consts/Devices";
 import { Cta } from "../../text-elements/index";
@@ -9,14 +10,15 @@ import { ReactComponent as MuteVolume } from "../../../assets/svgs/volume-mute.s
 import OnAir from "./on-air/OnAir";
 import { sanitiseString } from "../../../helpers/PrismicHelper";
 
-const Player = ({
-  playing,
-  handlePlayPauseClicked,
-  currentShow,
-  handleVolumeClicked,
-  volume,
-}) => {
+const Player = ({ currentShow }) => {
   const [hovered, setHovered] = useState(false);
+  const {
+    playing,
+    handlePlayPauseClicked,
+    volume,
+    handleVolumeClicked,
+  } = useContext(RadioPlayerContext);
+
   return (
     <Wrapper>
       <OnAirWrapper>

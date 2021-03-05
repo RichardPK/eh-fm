@@ -4,7 +4,7 @@ import Audio from "./components/audio/";
 import usePrismicData from "./hooks/usePrismicData";
 import useCurrentShowData from "./hooks/useCurrentShowData";
 import useScheduleData from "./hooks/useScheduleData";
-import { RadioPlayerContext } from "./contexts/RadioPlayerContext";
+import { RadioPlayerContextProvider } from "./contexts/RadioPlayerContext";
 
 export const App = () => {
   const { aboutPageData, supportPageData } = usePrismicData();
@@ -18,7 +18,7 @@ export const App = () => {
 
   return (
     essentialDataFetchingFinished && (
-      <RadioPlayerContext.Provider value={"hello from context"}>
+      <RadioPlayerContextProvider>
         {/* <Audio refTarget={audioRef} /> */}
         <Main
           aboutPageData={aboutPageData}
@@ -26,7 +26,7 @@ export const App = () => {
           currentShowData={currentShowData}
           scheduleData={scheduleData}
         />
-      </RadioPlayerContext.Provider>
+      </RadioPlayerContextProvider>
     )
   );
 };

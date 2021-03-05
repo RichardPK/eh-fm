@@ -86,7 +86,6 @@ class Main extends Component {
   }
 
   render() {
-    console.log("xxx");
     return (
       <React.Fragment>
         <Audio refTarget={this.audioPlayer} />
