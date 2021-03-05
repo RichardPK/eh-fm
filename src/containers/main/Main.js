@@ -102,13 +102,7 @@ class Main extends Component {
                 <Route
                   exact
                   path="/"
-                  render={() => (
-                    <Home
-                      cookies={this.props.cookies}
-                      mixCloudWidget={this.props.mixCloudWidget}
-                      handleMixCloudClick={this.handleMixCloudClick}
-                    />
-                  )}
+                  render={() => <Home cookies={this.props.cookies} />}
                 />
               </Switch>
             </MainInner>

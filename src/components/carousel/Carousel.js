@@ -1,17 +1,14 @@
-import React, { useContext, useState, memo, useEffect } from "react";
+import React, { useState, memo, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
 import Swiper from "react-id-swiper";
 import PrimaryCarouselItem from "../carousel-items/primary-carousel-item/PrimaryCarouselItem";
 import SecondaryCarouselItem from "../carousel-items/secondary-carousel-item/SecondaryCarouselItem";
-import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
 import { isInternal, splitUrl } from "../../helpers/CarouselLinkHelper";
 import { clickedCarouselItem } from "../analytics/ClickEventAnalytics";
-import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
-const Carousel = ({ data, hierarchy }) => {
-  const { handleMixCloudClick } = useContext(MixcloudWidgetContext);
+const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
   const [carouselRef, setCarouselRef] = useState(null);
   const history = useHistory();
 

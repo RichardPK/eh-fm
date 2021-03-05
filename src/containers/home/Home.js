@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
-import CurrentShow from "../../components/current-show/CurrentShow";
-import Schedule from "../../components/schedule/Schedule";
+import React, { useEffect, useState, useContext } from "react";
 import { Helmet } from "react-helmet";
 import Prismic from "prismic-javascript";
 import styled from "styled-components/macro";
-import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
-import { Heading4, Body } from "../../components/text-elements/index";
 import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
 import Carousel from "../../components/carousel/Carousel";
 import AdditionalCarouselHeading from "../../components/additional-carousel-heading/AdditionalCarouselHeading";
+import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
 const HomeContainer = (props) => {
   const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
@@ -20,6 +17,10 @@ const HomeContainer = (props) => {
   const [highlightedCarouselItems, setHighlightedCarouselItems] = useState([]);
 
   const [additionalCarousels, setAdditionalCarousels] = useState([]);
+
+  const { mixcloudWidgetHtml, handleMixCloudClick } = useContext(
+    MixcloudWidgetContext
+  );
 
   useEffect(() => {
     // Find out why this component is re-rendering when play is changing.
@@ -140,7 +141,7 @@ const HomeContainer = (props) => {
       </Helmet>
 
       <Wrapper
-        mixCloudWidget={props.mixCloudWidget}
+        mixcloudWidgetHtml={mixcloudWidgetHtml}
         cookiesBannerShowing={props.cookies.get("ehfm") !== "1"}
       >
         {highlightedCarouselItems.length > 0 ? (
@@ -148,8 +149,7 @@ const HomeContainer = (props) => {
             <PrimaryCarousel
               data={highlightedCarouselItems}
               hierarchy={"primary"}
-              autoplay={true}
-              handleMixCloudClick={props.handleMixCloudClick}
+              handleMixCloudClick={handleMixCloudClick}
             />
           </>
         ) : null}
@@ -167,8 +167,7 @@ const HomeContainer = (props) => {
                   <Carousel
                     data={sortedData}
                     hierarchy={"secondary"}
-                    autoplay={false}
-                    handleMixCloudClick={props.handleMixCloudClick}
+                    handleMixCloudClick={handleMixCloudClick}
                   />
                 </AdditionalCarouselWrapper>
               );
@@ -186,7 +185,11 @@ const Wrapper = styled.div`
   max-width: calc(100vw - 2rem);
   margin: 2rem 0
     ${(props) =>
-      props.cookiesBannerShowing ? "70px" : props.mixCloudWidget ? `123px` : 0};
+      props.cookiesBannerShowing
+        ? "70px"
+        : props.mixcloudWidgetHtml
+        ? `123px`
+        : 0};
 
   @media ${Devices.mobileL} {
     padding: 0 2rem;
@@ -201,7 +204,7 @@ const Wrapper = styled.div`
       ${(props) =>
         props.cookiesBannerShowing
           ? "95px"
-          : props.mixCloudWidget
+          : props.mixcloudWidgetHtml
           ? `123px`
           : 0};
   }
