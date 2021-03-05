@@ -50,8 +50,8 @@ class ResidentsContainer extends Component {
           mixCloudWidget={this.props.mixCloudWidget}
           cookiesBannerShowing={this.props.cookies.get("ehfm") !== "1"}
         >
-          {this.props.residents.length ? (
-            this.props.residents.map((show, index) => {
+          {this.props.residentsData.length ? (
+            this.props.residentsData.map((show, index) => {
               return (
                 <ResidentListItem
                   show={show}
@@ -95,7 +95,6 @@ const Wrapper = styled.div`
 
 const mapStateToProps = (state) => {
   return {
-    residents: state.residents,
     mixCloudWidget: state.index.mixCloudWidget,
   };
 };

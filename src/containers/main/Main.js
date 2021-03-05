@@ -76,6 +76,7 @@ class Main extends Component {
                       cookies={this.props.cookies}
                       key={window.location.pathname}
                       handleMixCloudClick={this.handleMixCloudClick}
+                      residentsData={this.props.residentsData}
                     />
                   )}
                 />
@@ -86,6 +87,7 @@ class Main extends Component {
                     <ResidentsContainer
                       cookies={this.props.cookies}
                       handleMixCloudClick={this.handleMixCloudClick}
+                      residentsData={this.props.residentsData}
                     />
                   )}
                 />

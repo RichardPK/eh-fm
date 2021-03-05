@@ -25,7 +25,7 @@ class ResidentShowContainer extends Component {
   }
 
   findSelectedShow() {
-    for (let show of this.props.residents) {
+    for (let show of this.props.residentsData) {
       if (show.uid === this.state.showId) {
         this.setState({ selectedShow: show }, this.mixCloudAPICall);
       }
@@ -139,7 +139,6 @@ const Wrapper = styled.div`
 
 const mapStateToProps = (state) => {
   return {
-    residents: state.residents,
     mixCloudWidget: state.index.mixCloudWidget,
   };
 };
