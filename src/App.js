@@ -10,7 +10,7 @@ export const App = () => {
   const { aboutPageData, supportPageData } = usePrismicData();
   const currentShowData = useCurrentShowData();
   const scheduleData = useScheduleData();
-  // const audioRef = useRef(null);
+  const audioRef = useRef(null);
 
   const essentialDataFetchingFinished = Boolean(
     currentShowData && scheduleData
@@ -18,8 +18,8 @@ export const App = () => {
 
   return (
     essentialDataFetchingFinished && (
-      <RadioPlayerContextProvider>
-        {/* <Audio refTarget={audioRef} /> */}
+      <RadioPlayerContextProvider audioRef={audioRef}>
+        <Audio refProp={audioRef} />
         <Main
           aboutPageData={aboutPageData}
           supportPageData={supportPageData}
