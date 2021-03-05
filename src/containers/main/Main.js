@@ -34,7 +34,6 @@ class Main extends Component {
       showSchedule: [],
       currentDate: null,
       currentDay: null,
-      currentShow: null,
       showsUpNext: null,
       playing: false,
       volume: 1,
@@ -48,9 +47,6 @@ class Main extends Component {
     });
 
     this.audioPlayer = React.createRef();
-    this.callEveryHour = this.callEveryHour.bind(this);
-    this.handleHourCallTimer = this.handleHourCallTimer.bind(this);
-    this.currentShowApiCall = this.currentShowApiCall.bind(this);
     this.scheduleApiCall = this.scheduleApiCall.bind(this);
     this.fetchDate = this.fetchDate.bind(this);
     this.populateSchedule = this.populateSchedule.bind(this);
@@ -66,48 +62,8 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    this.currentShowApiCall();
-    this.handleHourCallTimer();
+    this.scheduleApiCall();
     this.props.getResidents();
-  }
-
-  callEveryHour() {
-    this.currentShowApiCall();
-
-    setInterval(
-      function () {
-        this.currentShowApiCall();
-      }.bind(this),
-      1000 * 60 * 60
-    );
-  }
-
-  handleHourCallTimer() {
-    let nextDate = new Date();
-    if (nextDate.getMinutes() === 0) {
-      this.callEveryHour();
-    } else {
-      nextDate.setHours(nextDate.getHours() + 1);
-      nextDate.setMinutes(1);
-      nextDate.setSeconds(0);
-      let difference = nextDate - new Date();
-      setTimeout(
-        function () {
-          this.callEveryHour();
-        }.bind(this),
-        difference
-      );
-    }
-  }
-
-  currentShowApiCall() {
-    fetch("https://ehfm.airtime.pro/api/live-info")
-      .then((response) => response.json())
-      .then((data) =>
-        this.setState({ currentShow: data.currentShow[0] }, () => {
-          this.scheduleApiCall();
-        })
-      );
   }
 
   scheduleApiCall() {
@@ -251,7 +207,7 @@ class Main extends Component {
         {this.props.residents.length ? (
           <MainWrapper>
             <Header
-              currentShow={this.state.currentShow}
+              currentShow={this.props.currentShowData}
               residents={this.props.residents}
               playing={this.props.playing}
               volume={this.props.volume}
@@ -260,7 +216,7 @@ class Main extends Component {
               showsUpNext={this.state.showsUpNext}
             />
             <SidePlayer
-              currentShow={this.state.currentShow}
+              currentShow={this.props.currentShowData}
               residents={this.props.residents}
               playing={this.props.playing}
               volume={this.props.volume}

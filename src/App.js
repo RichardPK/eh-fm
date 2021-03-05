@@ -8,7 +8,9 @@ export const App = () => {
   const { aboutPageData, supportPageData } = usePrismic();
   const { currentShowData, scheduleData } = useAirtime();
 
-  const dataFetchingFinished = Boolean(aboutPageData && supportPageData);
+  const dataFetchingFinished = Boolean(
+    aboutPageData && supportPageData && currentShowData
+  );
 
   return (
     dataFetchingFinished && (
