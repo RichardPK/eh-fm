@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components/macro";
-import CurrentShow from "../../current-show/CurrentShow";
-import Player from "../../side-player/player/Player";
-import Devices from "../../../consts/Devices";
+import Player from "../side-player/player/Player";
 import Colors from "../../../consts/Colors";
-import Sizes from "../../../consts/Sizes";
 
 const MobilePlayer = ({
   currentShow,
@@ -13,7 +10,6 @@ const MobilePlayer = ({
   handlePlayPauseClicked,
   handleVolumeClicked,
 }) => {
-  console.log("xxxx");
   return (
     <>
       <Wrapper>

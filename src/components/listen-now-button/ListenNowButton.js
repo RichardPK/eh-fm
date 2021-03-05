@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import PlayPauseButton from "../side-player/player/play-pause-button/PlayPauseButton";
+import PlayPauseButton from "../players/side-player/player/play-pause-button/PlayPauseButton";
 import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
 import { Cta } from "../text-elements/index";

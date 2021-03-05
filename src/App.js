@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, use } from "react";
 import Main from "./containers/main/Main";
 import Audio from "./components/audio/";
 import usePrismicData from "./hooks/usePrismicData";
@@ -10,11 +10,13 @@ export const App = () => {
   const { aboutPageData, supportPageData } = usePrismicData();
   const currentShowData = useCurrentShowData();
   const scheduleData = useScheduleData();
-  const audioRef = useRef(null);
+  // const audioRef = useRef(null);
 
   const essentialDataFetchingFinished = Boolean(
     currentShowData && scheduleData
   );
+
+  console.log("yyyyy");
 
   return (
     essentialDataFetchingFinished && (

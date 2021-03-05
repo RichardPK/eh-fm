@@ -5,9 +5,9 @@ export const usePrismic = () => {
   const [aboutPageData, setAboutData] = useState(null);
   const [supportPageData, setSupportData] = useState(null);
 
-  const Client = Prismic.client(process.env.REACT_APP_PRISMIC_API_URL);
-
   useEffect(() => {
+    const Client = Prismic.client(process.env.REACT_APP_PRISMIC_API_URL);
+
     const fetchData = async () => {
       Client.query(Prismic.Predicates.at("document.type", "about"), {
         pageSize: 1,
@@ -22,7 +22,7 @@ export const usePrismic = () => {
       });
     };
     fetchData();
-  }, [Client]);
+  }, []);
 
   return { aboutPageData, supportPageData };
 };
