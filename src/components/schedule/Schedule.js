@@ -7,7 +7,7 @@ import Colors from "../../consts/Colors";
 import ScheduleItem from "./schedule-item/ScheduleItem";
 import { getShowInPrismic } from "../../helpers/PrismicHelper";
 
-const Schedule = ({ showsUpNext, residents }) => {
+const Schedule = ({ showsUpNext, residentsData }) => {
   return (
     <Wrapper>
       <ComingUpText>Coming up...</ComingUpText>
@@ -15,7 +15,7 @@ const Schedule = ({ showsUpNext, residents }) => {
         {showsUpNext &&
           showsUpNext.map((scheduleItemData, i) => {
             const foundShow = getShowInPrismic({
-              residents,
+              residentsData,
               currentShow: scheduleItemData,
             });
 

@@ -11,7 +11,6 @@ import ResidentsContainer from "../residents/Residents";
 import Resident from "../resident/Resident";
 import Footer from "../footer/Footer";
 import IndexActions from "../../actions/index";
-import ResidentsActions from "../../actions/ResidentsActions";
 import PageViewAnalytics from "../../components/analytics/PageViewAnalytics";
 
 import Devices from "../../consts/Devices";
@@ -37,10 +36,6 @@ class Main extends Component {
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getResidents();
-  }
-
   handleMixCloudClick(showPath) {
     let url = `https://api.mixcloud.com${showPath}embed-json/`;
     axios.get(url).then((res) => {
@@ -60,16 +55,16 @@ class Main extends Component {
           url={window.location.pathname + window.location.search}
         />
         <LiveRadioSchema />
-        {this.props.residents.length ? (
+        {this.props.residentsData.length ? (
           <MainWrapper>
             <Header
               currentShow={this.props.currentShowData}
-              residents={this.props.residents}
+              residentsData={this.props.residentsData}
               showsUpNext={this.props.scheduleData}
             />
             <SidePlayer
               currentShow={this.props.currentShowData}
-              residents={this.props.residents}
+              residentsData={this.props.residentsData}
               showsUpNext={this.props.scheduleData}
             />
             <MainInner>
@@ -151,18 +146,12 @@ const MainInner = styled.div`
 
 const mapStateToProps = (state) => {
   return {
-    playing: state.index.playing,
-    volume: state.index.volume,
     mixCloudWidget: state.index.mixCloudWidget,
-    residents: state.residents,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getResidents: () => {
-      dispatch(ResidentsActions.getResidents());
-    },
     setMixcloudWidget: (value) => {
       dispatch(IndexActions.setMixcloudWidget(value));
     },

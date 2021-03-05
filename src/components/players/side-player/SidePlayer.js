@@ -9,7 +9,7 @@ import Colors from "../../../consts/Colors";
 import Sizes from "../../../consts/Sizes";
 import ChatangoButton from "../../chatango/chatango-button/ChatangoButton";
 
-const SidePlayer = ({ currentShow, residents, showsUpNext }) => {
+const SidePlayer = ({ currentShow, residentsData, showsUpNext }) => {
   return (
     <>
       <FakeSidePlayer />
@@ -17,12 +17,15 @@ const SidePlayer = ({ currentShow, residents, showsUpNext }) => {
         <Logo />
         <CurrentShowAndPlayerWrapper>
           {currentShow ? (
-            <CurrentShow currentShow={currentShow} residents={residents} />
+            <CurrentShow
+              currentShow={currentShow}
+              residentsData={residentsData}
+            />
           ) : null}
           <Player currentShow={currentShow} />
         </CurrentShowAndPlayerWrapper>
         <ScheduleWrapper>
-          <Schedule residents={residents} showsUpNext={showsUpNext} />
+          <Schedule residentsData={residentsData} showsUpNext={showsUpNext} />
         </ScheduleWrapper>
         <ChatangoButtonWrapper>
           <ChatangoButton />

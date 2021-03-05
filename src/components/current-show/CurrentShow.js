@@ -16,12 +16,12 @@ import Image from "../image/Image";
 import PlaceholderImage from "../../assets/images/placeholder-showimg.jpg";
 import HoveredLine from "../hoverLine/HoverLine";
 
-const CurrentShow = ({ currentShow, residents }) => {
+const CurrentShow = ({ currentShow, residentsData }) => {
   const [prismicShow, setPrismicShow] = useState(null);
   const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
-    setPrismicShow(getShowInPrismic({ residents, currentShow }));
+    setPrismicShow(getShowInPrismic({ residentsData, currentShow }));
   }, [currentShow, prismicShow]);
 
   const airTimeShowImgUrl = () => {

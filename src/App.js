@@ -7,13 +7,13 @@ import useScheduleData from "./hooks/useScheduleData";
 import { RadioPlayerContextProvider } from "./contexts/RadioPlayerContext";
 
 export const App = () => {
-  const { aboutPageData, supportPageData } = usePrismicData();
+  const { aboutPageData, supportPageData, residentsData } = usePrismicData();
   const currentShowData = useCurrentShowData();
   const scheduleData = useScheduleData();
   const audioRef = useRef(null);
 
   const essentialDataFetchingFinished = Boolean(
-    currentShowData && scheduleData
+    currentShowData && scheduleData && residentsData
   );
 
   return (
@@ -25,6 +25,7 @@ export const App = () => {
           supportPageData={supportPageData}
           currentShowData={currentShowData}
           scheduleData={scheduleData}
+          residentsData={residentsData}
         />
       </RadioPlayerContextProvider>
     )

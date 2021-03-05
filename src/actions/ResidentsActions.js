@@ -9,18 +9,18 @@ const Actions = {
       api
         .query(Prismic.Predicates.at("document.type", "show"), {
           pageSize: 100,
-          orderings: "[my.show.show_title]"
+          orderings: "[my.show.show_title]",
         })
         .then((response) => {
           if (response) {
             dispatch({
               type: GET_RESIDENTS,
-              payload: response.results
+              payload: response.results,
             });
           }
         });
     });
-  }
+  },
 };
 
 export default Actions;
