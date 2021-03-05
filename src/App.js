@@ -10,12 +10,12 @@ export const App = () => {
   const currentShowData = useCurrentShowData();
   const scheduleData = useScheduleData();
 
-  const dataFetchingFinished = Boolean(
-    aboutPageData && supportPageData && currentShowData
+  const essentialDataFetchingFinished = Boolean(
+    currentShowData && scheduleData
   );
 
   return (
-    dataFetchingFinished && (
+    essentialDataFetchingFinished && (
       <PlayContext.Provider value={"hello from context"}>
         <Main
           aboutPageData={aboutPageData}

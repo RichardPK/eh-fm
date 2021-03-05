@@ -54,7 +54,6 @@ class Main extends Component {
       this
     );
     this.getTodaysSchedule = this.getTodaysSchedule.bind(this);
-    this.fetchDay = this.fetchDay.bind(this);
     this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
     this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
     this.getRemainingShowsToday = this.getRemainingShowsToday.bind(this);
@@ -89,22 +88,7 @@ class Main extends Component {
       mm = "0" + mm;
     }
     let today = yyyy + "-" + mm + "-" + dd;
-    this.setState({ currentDate: today }, () => {
-      this.fetchDay(todayDate.getDay());
-    });
-  }
-
-  fetchDay(dayNum) {
-    let weekdays = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    this.setState({ currentDay: weekdays[dayNum] });
+    this.setState({ currentDate: today });
   }
 
   populateSchedule() {
@@ -213,7 +197,7 @@ class Main extends Component {
               volume={this.props.volume}
               handlePlayPauseClicked={this.handlePlayPauseClicked}
               handleVolumeClicked={this.handleVolumeClicked}
-              showsUpNext={this.state.showsUpNext}
+              showsUpNext={this.props.scheduleData}
             />
             <SidePlayer
               currentShow={this.props.currentShowData}
@@ -222,7 +206,7 @@ class Main extends Component {
               volume={this.props.volume}
               handlePlayPauseClicked={this.handlePlayPauseClicked}
               handleVolumeClicked={this.handleVolumeClicked}
-              showsUpNext={this.state.showsUpNext}
+              showsUpNext={this.props.scheduleData}
             />
             <MainInner>
               <Switch>
