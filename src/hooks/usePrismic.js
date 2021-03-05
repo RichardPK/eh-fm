@@ -22,7 +22,7 @@ export const usePrismic = () => {
       });
     };
     fetchData();
-  }, []);
+  }, [Client]);
 
   return { aboutPageData, supportPageData };
 };

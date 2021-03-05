@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import styled from "styled-components/macro";
 import axios from "axios";
@@ -69,9 +69,6 @@ class Main extends Component {
     this.currentShowApiCall();
     this.handleHourCallTimer();
     this.props.getResidents();
-    if (this.state.currentShow) {
-      debugger;
-    }
   }
 
   callEveryHour() {
