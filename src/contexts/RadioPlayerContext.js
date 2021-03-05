@@ -1,4 +1,10 @@
 import React, { createContext, useState } from "react";
+import {
+  clickedPlay,
+  clickedStop,
+  clickedMute,
+  clickedUnmute,
+} from "../components/analytics/ClickEventAnalytics";
 
 export const RadioPlayerContext = createContext({
   playing: false,
@@ -10,12 +16,12 @@ export const RadioPlayerContextProvider = ({ children, audioRef }) => {
   const [volume, setVolume] = useState(1);
 
   const handlePlayPauseClicked = () => {
-    //    this.audioPlayer.current.play();
-
     if (playing) {
+      clickedStop();
       setPlaying(false);
       audioRef.current.pause();
     } else {
+      clickedPlay();
       setPlaying(true);
       audioRef.current.play();
     }
@@ -23,9 +29,11 @@ export const RadioPlayerContextProvider = ({ children, audioRef }) => {
 
   const handleVolumeClicked = () => {
     if (volume === 0) {
+      clickedUnmute();
       setVolume(1);
       audioRef.current.volume = 1;
     } else {
+      clickedMute();
       setVolume(0);
       audioRef.current.volume = 0;
     }

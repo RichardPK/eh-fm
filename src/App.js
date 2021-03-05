@@ -1,4 +1,4 @@
-import React, { useRef, use } from "react";
+import React, { useRef } from "react";
 import Main from "./containers/main/Main";
 import Audio from "./components/audio/";
 import usePrismicData from "./hooks/usePrismicData";

@@ -13,12 +13,7 @@ import Footer from "../footer/Footer";
 import IndexActions from "../../actions/index";
 import ResidentsActions from "../../actions/ResidentsActions";
 import PageViewAnalytics from "../../components/analytics/PageViewAnalytics";
-import {
-  clickedPlay,
-  clickedStop,
-  clickedMute,
-  clickedUnmute,
-} from "../../components/analytics/ClickEventAnalytics";
+
 import Devices from "../../consts/Devices";
 import About from "../about";
 import Support from "../support";
@@ -39,39 +34,11 @@ class Main extends Component {
         cookies.set("ehfm", 1, { path: "/" });
       }
     });
-
-    this.audioPlayer = React.createRef();
-    this.handlePlayPauseClicked = this.handlePlayPauseClicked.bind(this);
-    this.handleVolumeClicked = this.handleVolumeClicked.bind(this);
     this.handleMixCloudClick = this.handleMixCloudClick.bind(this);
   }
 
   componentDidMount() {
     this.props.getResidents();
-  }
-
-  handlePlayPauseClicked() {
-    if (this.props.playing === false) {
-      this.audioPlayer.current.play();
-      this.props.togglePlaying(true);
-      clickedPlay();
-    } else {
-      this.audioPlayer.current.pause();
-      this.props.togglePlaying(false);
-      clickedStop();
-    }
-  }
-
-  handleVolumeClicked() {
-    if (this.props.volume !== 0) {
-      this.audioPlayer.current.volume = 0;
-      this.props.changeVolume(0);
-      clickedMute();
-    } else {
-      this.audioPlayer.current.volume = 1;
-      this.props.changeVolume(1);
-      clickedUnmute();
-    }
   }
 
   handleMixCloudClick(showPath) {
