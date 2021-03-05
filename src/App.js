@@ -1,12 +1,14 @@
 import React from "react";
 import Main from "./containers/main/Main";
-import usePrismic from "./hooks/usePrismic";
-import useAirtime from "./hooks/useAirtime";
+import usePrismicData from "./hooks/usePrismicData";
+import useCurrentShowData from "./hooks/useCurrentShowData";
+import useScheduleData from "./hooks/useScheduleData";
 import { PlayContext } from "./contexts/PlayContext";
 
 export const App = () => {
-  const { aboutPageData, supportPageData } = usePrismic();
-  const { currentShowData, scheduleData } = useAirtime();
+  const { aboutPageData, supportPageData } = usePrismicData();
+  const currentShowData = useCurrentShowData();
+  const scheduleData = useScheduleData();
 
   const dataFetchingFinished = Boolean(
     aboutPageData && supportPageData && currentShowData
