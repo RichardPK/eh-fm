@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ListenNowButton from "../listen-now-button/ListenNowButton";
 import OnAir from "../players/player/on-air/OnAir";
 import styled from "styled-components/macro";
 import Devices from "../../consts/Devices";
