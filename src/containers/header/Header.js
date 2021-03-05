@@ -4,25 +4,13 @@ import DesktopNavBar from "../../components/nav-bar/DesktopNavBar";
 import Devices from "../../consts/Devices";
 import MobileHeader from "./mobile-header/MobileHeader";
 
-const HeaderContainer = ({
-  currentShow,
-  residents,
-  playing,
-  volume,
-  handlePlayPauseClicked,
-  handleVolumeClicked,
-  showsUpNext,
-}) => {
+const HeaderContainer = ({ currentShow, residents, showsUpNext }) => {
   return (
     <React.Fragment>
       <MobileWrapper>
         <MobileHeader
           currentShow={currentShow}
           residents={residents}
-          playing={playing}
-          volume={volume}
-          handlePlayPauseClicked={handlePlayPauseClicked}
-          handleVolumeClicked={handleVolumeClicked}
           showsUpNext={showsUpNext}
         />
       </MobileWrapper>

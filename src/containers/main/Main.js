@@ -65,19 +65,11 @@ class Main extends Component {
             <Header
               currentShow={this.props.currentShowData}
               residents={this.props.residents}
-              playing={this.props.playing}
-              volume={this.props.volume}
-              handlePlayPauseClicked={this.handlePlayPauseClicked}
-              handleVolumeClicked={this.handleVolumeClicked}
               showsUpNext={this.props.scheduleData}
             />
             <SidePlayer
               currentShow={this.props.currentShowData}
               residents={this.props.residents}
-              playing={this.props.playing}
-              volume={this.props.volume}
-              handlePlayPauseClicked={this.handlePlayPauseClicked}
-              handleVolumeClicked={this.handleVolumeClicked}
               showsUpNext={this.props.scheduleData}
             />
             <MainInner>
@@ -168,12 +160,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    togglePlaying: (toggle) => {
-      dispatch(IndexActions.switchPlaying(toggle));
-    },
-    changeVolume: (value) => {
-      dispatch(IndexActions.switchVolume(value));
-    },
     getResidents: () => {
       dispatch(ResidentsActions.getResidents());
     },

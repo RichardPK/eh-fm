@@ -36,7 +36,7 @@ const Player = ({ currentShow }) => {
         }}
       >
         <PlayPauseWrapper playing={playing} hovered={hovered}>
-          <PlayPauseButton playingTrueFalse={playing} />
+          <PlayPauseButton playing={playing} />
         </PlayPauseWrapper>
 
         {currentShow ? (

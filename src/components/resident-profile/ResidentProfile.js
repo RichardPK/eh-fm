@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import axios from 'axios';
-import Devices from '../../consts/Devices';
-import styled from 'styled-components/macro';
-import { Events, animateScroll as scroll } from 'react-scroll';
-import { withCookies } from 'react-cookie';
-import IndexActions from '../../actions/index';
-import ProfileText from './profile-text/ProfileText';
-import MostRecentShowbutton from './most-recent-show-button/MostRecentShowButton';
-import ArchiveButton from './archive-button/ArchiveButton';
-import PastShows from './past-shows/PastShows';
-import Sizes from '../../consts/Sizes';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
+import Devices from "../../consts/Devices";
+import styled from "styled-components/macro";
+import { Events, animateScroll as scroll } from "react-scroll";
+import { withCookies } from "react-cookie";
+import IndexActions from "../../actions/index";
+import ProfileText from "./profile-text/ProfileText";
+import MostRecentShowbutton from "./most-recent-show-button/MostRecentShowButton";
+import ArchiveButton from "./archive-button/ArchiveButton";
+import PastShows from "./past-shows/PastShows";
+import Sizes from "../../consts/Sizes";
 
 class ResidentProfile extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class ResidentProfile extends Component {
       mixCloudWidget: null,
       displayShows: false,
       orderedShows: null,
-      mostRecentShow: null
+      mostRecentShow: null,
     };
     this.handleArchiveButtonClick = this.handleArchiveButtonClick.bind(this);
     this.renderCardContainerMargin = this.renderCardContainerMargin.bind(this);
@@ -40,25 +40,27 @@ class ResidentProfile extends Component {
       return show;
     });
 
-    let orderedByTimestamp = arrayWithModifiedTimestamps.sort((showA, showB) => {
-      return showB.created_timestamp - showA.created_timestamp;
-    });
+    let orderedByTimestamp = arrayWithModifiedTimestamps.sort(
+      (showA, showB) => {
+        return showB.created_timestamp - showA.created_timestamp;
+      }
+    );
 
     if (orderedByTimestamp.length > 0) {
       this.setState({
         orderedShows: orderedByTimestamp,
-        mostRecentShow: orderedByTimestamp[0]
+        mostRecentShow: orderedByTimestamp[0],
       });
     } else {
       this.setState({
-        mostRecentShow: 'none'
+        mostRecentShow: "none",
       });
     }
   }
 
   renderShowName = (showName) => {
-    if (showName.includes('-')) {
-      let name = showName.split(' - ')[0].trim();
+    if (showName.includes("-")) {
+      let name = showName.split(" - ")[0].trim();
       return name;
     } else {
       return showName;
@@ -66,9 +68,9 @@ class ResidentProfile extends Component {
   };
 
   renderDate = (showName) => {
-    let dateToReturn = '';
-    if (showName.includes('-')) {
-      let date = showName.split(' - ')[1];
+    let dateToReturn = "";
+    if (showName.includes("-")) {
+      let date = showName.split(" - ")[1];
       if (date) {
         dateToReturn = date.trim();
       }
@@ -82,13 +84,13 @@ class ResidentProfile extends Component {
     if (this.state.displayShows === true) {
       scroll.scrollTo(0);
       Events.scrollEvent.register(
-        'end',
-        function() {
+        "end",
+        function () {
           this.setState({ displayShows: false });
         }.bind(this)
       );
     } else {
-      Events.scrollEvent.remove('end');
+      Events.scrollEvent.remove("end");
       this.setState({ displayShows: true }, scroll.scrollTo(200));
     }
   }
@@ -96,7 +98,7 @@ class ResidentProfile extends Component {
   renderCardContainerMargin() {
     if (this.props.mixCloudWidget) {
       return {
-        marginBottom: '123px'
+        marginBottom: "123px",
       };
     } else {
       return null;
@@ -162,27 +164,18 @@ const mapStateToProps = (state) => {
   return {
     playing: state.index.playing,
     volume: state.index.volume,
-    mixCloudWidget: state.index.mixCloudWidget
+    mixCloudWidget: state.index.mixCloudWidget,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    togglePlaying: (toggle) => {
-      dispatch(IndexActions.switchPlaying(toggle));
-    },
-    changeVolume: (value) => {
-      dispatch(IndexActions.switchVolume(value));
-    },
     setMixcloudWidget: (value) => {
       dispatch(IndexActions.setMixcloudWidget(value));
-    }
+    },
   };
 };
 
-const Index = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ResidentProfile);
+const Index = connect(mapStateToProps, mapDispatchToProps)(ResidentProfile);
 
 export default withCookies(Index);

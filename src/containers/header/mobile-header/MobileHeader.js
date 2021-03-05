@@ -1,22 +1,12 @@
 import React from "react";
 import styled from "styled-components/macro";
-import DesktopNavBar from "../../../components/nav-bar/DesktopNavBar";
 import MobileNavBar from "../../../components/nav-bar/MobileNavBar";
-import Devices from "../../../consts/Devices";
 import Colors from "../../../consts/Colors";
 import Logo from "../../../components/nav-bar/logo/Logo";
 import MobilePlayer from "../../../components/players/mobile-player/MobilePlayer";
 import Sizes from "../../../consts/Sizes";
 
-const MobileHeader = ({
-  currentShow,
-  residents,
-  playing,
-  volume,
-  handlePlayPauseClicked,
-  handleVolumeClicked,
-  showsUpNext,
-}) => {
+const MobileHeader = ({ currentShow }) => {
   return (
     <>
       <FakeMobileHeader />
@@ -25,15 +15,7 @@ const MobileHeader = ({
           <Logo color={Colors.ehfmPrimary()} mobile />
         </LogoWrapper>
         <MobileNavBar />
-        <MobilePlayer
-          currentShow={currentShow}
-          residents={residents}
-          playing={playing}
-          volume={volume}
-          handlePlayPauseClicked={handlePlayPauseClicked}
-          handleVolumeClicked={handleVolumeClicked}
-          showsUpNext={showsUpNext}
-        />
+        <MobilePlayer currentShow={currentShow} />
       </Wrapper>
     </>
   );
