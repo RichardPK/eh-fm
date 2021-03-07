@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import { Body } from "../text-elements/index";
 import Colors from "../../consts/Colors";
@@ -47,7 +47,7 @@ const CookieConsent = () => {
           </CookiesText>
           <CloseButton
             onClick={() => {
-              setCookie("ehfm", 1);
+              setCookie("ehfm", 1, { path: "/" });
               setShowConsentBanner(false);
             }}
           >

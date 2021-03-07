@@ -21,7 +21,7 @@ const CurrentShow = ({ currentShow, residentsData }) => {
 
   useEffect(() => {
     setPrismicShow(getShowInPrismic({ residentsData, currentShow }));
-  }, [currentShow, prismicShow]);
+  }, [currentShow, residentsData]);
 
   const airTimeShowImgUrl = () => {
     return currentShow && currentShow.image_path;
@@ -74,7 +74,7 @@ const CurrentShow = ({ currentShow, residentsData }) => {
       <OnAirWrapper>
         <OnAir />
       </OnAirWrapper>
-      {prismicShow ? (
+      {prismicShow && (
         <>
           <CurrentShowImageWrapper>{returnImage()}</CurrentShowImageWrapper>
           <InfoWrapper>
@@ -107,7 +107,7 @@ const CurrentShow = ({ currentShow, residentsData }) => {
             </DescriptionWrapper>
           </InfoWrapper>
         </>
-      ) : null}
+      )}
     </Wrapper>
   );
 };

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-import Devices from "../../consts/Devices";
 import Colors from "../../consts/Colors";
 import { Body } from "../../components/text-elements/index";
 import gridStyles from "./gridStyles";

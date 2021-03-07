@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-import Logo from "./logo/Logo";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import Socials from "./socials/Socials";

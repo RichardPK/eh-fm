@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { render } from "react-dom";
 import { CookiesProvider } from "react-cookie";
 import * as serviceWorker from "./registerServiceWorker";
-
 import App from "./App";
 import "./index.scss";
 import "swiper/swiper.scss";
