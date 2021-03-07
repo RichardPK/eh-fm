@@ -44,15 +44,11 @@ const Main = ({
       />
       <LiveRadioSchema />
       <MainWrapper>
-        <Header
-          currentShow={currentShowData}
-          residentsData={residentsData}
-          showsUpNext={scheduleData}
-        />
+        <Header currentShow={currentShowData} />
         <SidePlayer
           currentShow={currentShowData}
           residentsData={residentsData}
-          showsUpNext={scheduleData}
+          scheduleData={scheduleData}
         />
         <MainInner>
           <Switch>
