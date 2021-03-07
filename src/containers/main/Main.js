@@ -20,6 +20,7 @@ const Main = ({
   currentShowData,
   scheduleData,
   residentsData,
+  carouselData,
 }) => {
   const [cookies] = useCookies(["ehfm"]);
 
@@ -54,7 +55,7 @@ const Main = ({
               <Support pageData={supportPageData} />
             </Route>
             <Route exact path="/">
-              <Home cookies={cookies} />
+              <Home cookies={cookies} carouselData={carouselData} />
             </Route>
           </Switch>
         </MainInner>

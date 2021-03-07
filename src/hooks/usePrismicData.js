@@ -5,6 +5,10 @@ export const usePrismic = () => {
   const [aboutPageData, setAboutData] = useState(null);
   const [supportPageData, setSupportData] = useState(null);
   const [residentsData, setResidentsData] = useState(null);
+  const [carouselData, setCarouselData] = useState({
+    allCarouselItems: null,
+    additionalCarousels: null,
+  });
 
   useEffect(() => {
     const Client = Prismic.client(process.env.REACT_APP_PRISMIC_API_URL);
@@ -28,12 +32,25 @@ export const usePrismic = () => {
       }).then((response) => {
         response && setResidentsData(response.results);
       });
+
+      Client.query(Prismic.Predicates.at("document.type", "home_feature"), {
+        pageSize: 100,
+        orderings: "[my.show.show_title]",
+      }).then((response) => {
+        response && setCarouselData({ allCarouselItems: response.results });
+      });
+
+      Client.query(Prismic.Predicates.at("document.type", "home_carousel"), {
+        pageSize: 100,
+      }).then((response) => {
+        response && setCarouselData({ additionalCarousels: response.results });
+      });
     };
 
     fetchData();
   }, []);
 
-  return { aboutPageData, supportPageData, residentsData };
+  return { aboutPageData, supportPageData, residentsData, carouselData };
 };
 
 export default usePrismic;

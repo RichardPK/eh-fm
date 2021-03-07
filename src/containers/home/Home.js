@@ -9,7 +9,7 @@ import Carousel from "../../components/carousel/Carousel";
 import AdditionalCarouselHeading from "../../components/additional-carousel-heading/AdditionalCarouselHeading";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
-const HomeContainer = (props) => {
+const HomeContainer = ({ ...props }) => {
   const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
   const PrimaryCarousel = Carousel;
 
@@ -23,8 +23,6 @@ const HomeContainer = (props) => {
   );
 
   useEffect(() => {
-    // Find out why this component is re-rendering when play is changing.
-    // Debug issue with carousel hover.
     Prismic.api(apiEndpoint).then((api) => {
       getPrimaryCarousel(api);
     });

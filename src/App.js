@@ -9,13 +9,21 @@ import { RadioPlayerContextProvider } from "./contexts/RadioPlayerContext";
 import { MixcloudWidgetContextProvider } from "./contexts/MixcloudWidgetContext";
 
 export const App = () => {
-  const { aboutPageData, supportPageData, residentsData } = usePrismicData();
+  const {
+    aboutPageData,
+    supportPageData,
+    residentsData,
+    carouselData,
+  } = usePrismicData();
   const currentShowData = useCurrentShowData();
   const scheduleData = useScheduleData();
   const audioRef = useRef(null);
 
   const essentialDataFetchingFinished = Boolean(
-    currentShowData && scheduleData && residentsData
+    currentShowData &&
+      scheduleData &&
+      residentsData &&
+      carouselData.allCarouselItems
   );
 
   return (
@@ -30,6 +38,7 @@ export const App = () => {
               currentShowData={currentShowData}
               scheduleData={scheduleData}
               residentsData={residentsData}
+              carouselData={carouselData}
             />
           </MixcloudWidgetContextProvider>
         </RadioPlayerContextProvider>
