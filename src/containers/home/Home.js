@@ -9,7 +9,7 @@ import Carousel from "../../components/carousel/Carousel";
 import AdditionalCarouselHeading from "../../components/additional-carousel-heading/AdditionalCarouselHeading";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
-const HomeContainer = ({ ...props }) => {
+const HomeContainer = ({ carouselData, ...props }) => {
   const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
   const PrimaryCarousel = Carousel;
 
@@ -23,9 +23,9 @@ const HomeContainer = ({ ...props }) => {
   );
 
   useEffect(() => {
-    Prismic.api(apiEndpoint).then((api) => {
-      getPrimaryCarousel(api);
-    });
+    debugger;
+    setAllCarouselItems(carouselData.allCarouselItems);
+    setHighlightedItems(carouselData.additionalCarousels);
   }, []);
 
   useEffect(() => {
@@ -35,20 +35,6 @@ const HomeContainer = ({ ...props }) => {
       });
     }
   }, [allCarouselItems]);
-
-  const getPrimaryCarousel = async (api) => {
-    api
-      .query(Prismic.Predicates.at("document.type", "home_feature"), {
-        pageSize: 100,
-        orderings: "[my.show.show_title]",
-      })
-      .then((response) => {
-        if (response) {
-          setAllCarouselItems(response.results);
-          setHighlightedItems(response.results);
-        }
-      });
-  };
 
   const getOtherCarousels = (api) => {
     api
