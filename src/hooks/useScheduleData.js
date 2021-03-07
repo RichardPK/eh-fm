@@ -1,6 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import _ from "lodash";
-import moment from "moment";
 
 export const useScheduleData = () => {
   const [airTimeSchedule, setAirtimeSchedule] = useState(null);
@@ -27,17 +25,17 @@ export const useScheduleData = () => {
 
   useEffect(() => {
     const days = [
+      "sunday",
       "monday",
       "tuesday",
       "wednesday",
       "thursday",
       "friday",
       "saturday",
-      "sunday",
     ];
 
     const populateSchedule = () => {
-      const daysIndex = new Date().getUTCDay() - 1;
+      const daysIndex = new Date().getUTCDay();
       const daysString = days[daysIndex];
       const showsUpNext = getRemainingShowsToday(airTimeSchedule[daysString]);
       showsUpNext && setScheduleData(showsUpNext);

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
 import Devices from "../../consts/Devices";
 import styled from "styled-components/macro";
 import { Events, animateScroll as scroll } from "react-scroll";
@@ -10,7 +9,6 @@ import ProfileText from "./profile-text/ProfileText";
 import MostRecentShowbutton from "./most-recent-show-button/MostRecentShowButton";
 import ArchiveButton from "./archive-button/ArchiveButton";
 import PastShows from "./past-shows/PastShows";
-import Sizes from "../../consts/Sizes";
 
 class ResidentProfile extends Component {
   constructor(props) {
