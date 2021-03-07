@@ -16,8 +16,20 @@ const ResidentShowContainer = ({
   const [pastShows, setPastShows] = useState(null);
   const [selectedShow, setSelectedShow] = useState(null);
 
-  const mixCloudAPICall = () => {
-    if (selectedShow.data.mixcloud_playlist_url) {
+  useEffect(() => {
+    const findSelectedShow = () => {
+      const foundShow = residentsData.filter(
+        (showData) => showData.uid === id
+      )[0];
+      setSelectedShow(foundShow);
+    };
+
+    findSelectedShow();
+  }, [id, residentsData]);
+
+  useEffect(() => {
+    const mixCloudAPICall = () => {
+      debugger;
       let playlist_url = selectedShow.data.mixcloud_playlist_url;
       // https://www.mixcloud.com/ehfm/playlists/lunch/
 
@@ -31,39 +43,22 @@ const ResidentShowContainer = ({
           let shows = res.data.data.reverse();
           setPastShows(shows);
         });
-    }
-  };
-
-  useEffect(() => {
-    const findSelectedShow = () => {
-      for (let show of residentsData) {
-        if (show.uid === id) {
-          setSelectedShow(show);
-          mixCloudAPICall();
-        }
-      }
     };
 
-    findSelectedShow();
-  }, []);
-
-  let titleString;
-
-  if (selectedShow) {
-    titleString = `${selectedShow.data.show_title} | EHFM`;
-  }
+    selectedShow && mixCloudAPICall();
+  }, [selectedShow]);
 
   return (
-    <React.Fragment>
+    <>
       {selectedShow ? (
-        <React.Fragment>
+        <>
           <Helmet>
-            <title>{titleString}</title>
+            <title>{`${selectedShow.data.show_title} | EHFM`}</title>
             <meta name="fragment" content="!" />
             <meta
               property="og:title"
               data-react-helmet="true"
-              content={titleString}
+              content={`${selectedShow.data.show_title} | EHFM`}
             />
             <meta
               name="description"
@@ -103,7 +98,7 @@ const ResidentShowContainer = ({
             mixCloudWidget={mixcloudWidgetHtml}
             imageSrc={selectedShow.data.show_image.fullscreen.url}
           />
-          <Wrapper mixCloudWidget={mixcloudWidgetHtml}>
+          <Wrapper>
             <ResidentProfile
               cookies={cookies}
               showTitle={selectedShow.data.show_title}
@@ -119,11 +114,11 @@ const ResidentShowContainer = ({
               handleMixCloudClick={handleMixCloudClick}
             />
           </Wrapper>
-        </React.Fragment>
+        </>
       ) : (
         <p>Loading</p>
       )}
-    </React.Fragment>
+    </>
   );
 };
 
