@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { useCookies } from "react-cookie";
 
 export const MixcloudWidgetContext = createContext({
   mixcloudWidget: null,
@@ -6,6 +7,7 @@ export const MixcloudWidgetContext = createContext({
 
 export const MixcloudWidgetContextProvider = ({ children }) => {
   const [mixcloudWidgetHtml, setMixcloudWidgetHtml] = useState(null);
+  const [cookies, setCookie] = useCookies(["ehfm"]);
 
   const handleMixCloudClick = (showPath) => {
     let url = `https://api.mixcloud.com${showPath}embed-json/`;
@@ -14,6 +16,10 @@ export const MixcloudWidgetContextProvider = ({ children }) => {
       .then((data) => {
         setMixcloudWidgetHtml(data.html);
       });
+
+    if (!cookies["ehfm"]) {
+      setCookie("ehfm", 1, { path: "/" });
+    }
   };
 
   return (
