@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components/macro";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
+import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import ResidentProfile from "../../components/resident-profile/ResidentProfile";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
 
-const ResidentShowContainer = ({
-  cookies,
-  handleMixcloudClick,
-  mixcloudWidgetHtml,
-  residentsData,
-}) => {
+const ResidentShowContainer = ({ cookies, residentsData }) => {
   const { id } = useParams();
+  const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
+    MixcloudWidgetContext
+  );
+
   const [pastMixcloudShows, setPastMixcloudShows] = useState(null);
   const [selectedShow, setSelectedShow] = useState(null);
 
@@ -20,7 +20,7 @@ const ResidentShowContainer = ({
       const foundShow = residentsData.filter(
         (showData) => showData.uid === id
       )[0];
-      setSelectedShow(foundShow);
+      setSelectedShow(foundShow.data);
     };
 
     findSelectedShow();
@@ -28,7 +28,7 @@ const ResidentShowContainer = ({
 
   useEffect(() => {
     const mixCloudAPICall = async () => {
-      let playlistUrl = selectedShow.data.mixcloud_playlist_url;
+      let playlistUrl = selectedShow.mixcloud_playlist_url;
       // https://www.mixcloud.com/ehfm/playlists/lunch/
 
       let wwwCutPoint = playlistUrl.indexOf(".") + 1;
@@ -50,22 +50,22 @@ const ResidentShowContainer = ({
       {selectedShow ? (
         <>
           <Helmet>
-            <title>{`${selectedShow.data.show_title} | EHFM`}</title>
+            <title>{`${selectedShow.show_title} | EHFM`}</title>
             <meta name="fragment" content="!" />
             <meta
               property="og:title"
               data-react-helmet="true"
-              content={`${selectedShow.data.show_title} | EHFM`}
+              content={`${selectedShow.show_title} | EHFM`}
             />
             <meta
               name="description"
               data-react-helmet="true"
-              content={selectedShow.data.show_description}
+              content={selectedShow.show_description}
             />
             <meta
               property="og:description"
               data-react-helmet="true"
-              content={selectedShow.data.show_description}
+              content={selectedShow.show_description}
             />
             <meta
               property="og:url"
@@ -75,37 +75,30 @@ const ResidentShowContainer = ({
             <meta
               name="twitter:image"
               data-react-helmet="true"
-              content={selectedShow.data.show_image.larger.url}
+              content={selectedShow.show_image.larger.url}
             />
             <meta
               property="og:image"
               data-react-helmet="true"
-              content={selectedShow.data.show_image.larger.url}
+              content={selectedShow.show_image.larger.url}
             />
             <meta
               property="og:image:width"
-              content={selectedShow.data.show_image.dimensions.width}
+              content={selectedShow.show_image.dimensions.width}
             />
             <meta
               property="og:image:height"
-              content={selectedShow.data.show_image.dimensions.height}
+              content={selectedShow.show_image.dimensions.height}
             />
           </Helmet>
           <BackgroundImage
             mixCloudWidget={mixcloudWidgetHtml}
-            imageSrc={selectedShow.data.show_image.fullscreen.url}
+            imageSrc={selectedShow.show_image.fullscreen.url}
           />
           <Wrapper>
             <ResidentProfile
               cookies={cookies}
-              showTitle={selectedShow.data.show_title}
-              showDescription={selectedShow.data.show_description}
-              showImage={selectedShow.data.show_image.fullscreen.url}
-              showId={selectedShow.uid}
-              facebook={selectedShow.data.socials[0].facebook}
-              twitter={selectedShow.data.socials[0].twitter}
-              instagram={selectedShow.data.socials[0].instagram}
-              showTime={selectedShow.data.show_time}
+              selectedShow={selectedShow}
               pastMixcloudShows={pastMixcloudShows}
               mixcloudWidgetHtml={mixcloudWidgetHtml}
               handleMixcloudClick={handleMixcloudClick}

@@ -7,14 +7,20 @@ import MostRecentShowbutton from "./most-recent-show-button/MostRecentShowButton
 import ArchiveButton from "./archive-button/ArchiveButton";
 import PastShows from "./past-shows/PastShows";
 
-const ResidentProfile = (props) => {
+const ResidentProfile = ({
+  handleMixcloudClick,
+  mixcloudWidgetHtml,
+  pastMixcloudShows,
+  selectedShow,
+  cookies,
+}) => {
   const [displayShows, setDisplayShows] = useState(false);
   const [orderedShows, setOrderedShows] = useState(null);
   const [mostRecentShow, setMostRecentShow] = useState(null);
 
   useEffect(() => {
     const getMostRecentShow = () => {
-      let arrayWithModifiedTimestamps = props.pastMixcloudShows.map((show) => {
+      let arrayWithModifiedTimestamps = pastMixcloudShows.map((show) => {
         show.created_timestamp = Date.parse(show.created_time);
         return show;
       });
@@ -33,13 +39,13 @@ const ResidentProfile = (props) => {
       }
     };
 
-    props.pastMixcloudShows && getMostRecentShow();
-  }, [props.pastMixcloudShows]);
+    pastMixcloudShows && getMostRecentShow();
+  }, [pastMixcloudShows]);
 
   const renderShowName = (showName) => {
     if (showName.includes("-")) {
-      let name = showName.split(" - ")[0].trim();
-      return name;
+      let splitName = showName.split(" - ")[0].trim();
+      return splitName;
     } else {
       return showName;
     }
@@ -73,17 +79,17 @@ const ResidentProfile = (props) => {
 
   return (
     <React.Fragment>
-      <Wrapper mixcloudWidgetHtml={props.mixcloudWidgetHtml}>
-        <ProfileText props={props} />
-        {props.pastMixcloudShows && orderedShows && (
+      <Wrapper mixcloudWidgetHtml={mixcloudWidgetHtml}>
+        <ProfileText selectedShow={selectedShow} />
+        {pastMixcloudShows && orderedShows && (
           <React.Fragment>
             <MostRecentShowbutton
               mostRecentShow={mostRecentShow}
-              handleMostRecentShowButtonClick={props.handleMixcloudClick}
+              handleMostRecentShowButtonClick={handleMixcloudClick}
               date={renderDate(mostRecentShow.name)}
               showName={renderShowName(mostRecentShow.name)}
             />
-            {props.pastMixcloudShows.length > 1 ? (
+            {pastMixcloudShows.length > 1 ? (
               <>
                 <ArchiveButton
                   handleArchiveButtonClick={handleArchiveButtonClick}
@@ -92,10 +98,10 @@ const ResidentProfile = (props) => {
                 <PastShows
                   displayShows={displayShows}
                   allPastShows={orderedShows}
-                  handleMixcloudClick={props.handleMixcloudClick}
+                  handleMixcloudClick={handleMixcloudClick}
                   renderDate={renderDate}
                   renderShowName={renderShowName}
-                  mixcloudWidgetHtml={props.mixcloudWidgetHtml}
+                  mixcloudWidgetHtml={mixcloudWidgetHtml}
                 />
               </>
             ) : null}

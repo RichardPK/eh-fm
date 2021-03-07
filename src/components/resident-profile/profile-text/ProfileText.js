@@ -5,11 +5,14 @@ import ResidentProfileSocial from "../resident-profile-social/ResidentProfileSoc
 import Devices from "../../../consts/Devices";
 import { Heading1, Body, BodyExtraSpacing } from "../../text-elements/index";
 
-const ProfileText = ({ props }) => {
+const ProfileText = ({ selectedShow }) => {
+  const { show_title, show_description, show_time } = selectedShow;
+  const { instagram, twitter, facebook } = selectedShow.socials[0];
+
   const hrefs = {
-    instagram: props.instagram,
-    facebook: props.facebook,
-    twitter: props.twitter,
+    instagram: instagram,
+    facebook: facebook,
+    twitter: twitter,
   };
 
   const imgSrcs = {
@@ -21,13 +24,13 @@ const ProfileText = ({ props }) => {
   return (
     <Wrapper>
       <TitleAndTimeWrapper>
-        <ShowTitle>{props.showTitle}</ShowTitle>
+        <ShowTitle>{show_title}</ShowTitle>
 
-        {props.showTime && <ShowTime>{props.showTime}</ShowTime>}
+        {show_time && <ShowTime>{show_time}</ShowTime>}
       </TitleAndTimeWrapper>
-      {props.facebook || props.twitter || props.instagram ? (
+      {facebook || twitter || instagram ? (
         <SocialsWrapper>
-          {props.facebook && (
+          {facebook && (
             <ResidentProfileSocial
               type={"facebook"}
               hrefs={hrefs}
@@ -35,7 +38,7 @@ const ProfileText = ({ props }) => {
             />
           )}
 
-          {props.twitter && (
+          {twitter && (
             <ResidentProfileSocial
               type={"twitter"}
               hrefs={hrefs}
@@ -43,7 +46,7 @@ const ProfileText = ({ props }) => {
             />
           )}
 
-          {props.instagram && (
+          {instagram && (
             <ResidentProfileSocial
               type={"instagram"}
               hrefs={hrefs}
@@ -53,9 +56,9 @@ const ProfileText = ({ props }) => {
         </SocialsWrapper>
       ) : null}
 
-      {props.showDescription && (
+      {show_description && (
         <DescriptionWrapper>
-          <DescriptionText>{props.showDescription}</DescriptionText>
+          <DescriptionText>{show_description}</DescriptionText>
         </DescriptionWrapper>
       )}
     </Wrapper>

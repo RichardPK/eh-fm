@@ -13,7 +13,6 @@ import Devices from "../../consts/Devices";
 import About from "../about";
 import Support from "../support";
 import LiveRadioSchema from "../../components/schema/live-radio-schema/LiveRadioSchema";
-import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
 const Main = ({
   aboutPageData,
@@ -23,9 +22,6 @@ const Main = ({
   residentsData,
 }) => {
   const [cookies] = useCookies(["ehfm"]);
-  const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
-    MixcloudWidgetContext
-  );
 
   return (
     <React.Fragment>
@@ -45,12 +41,7 @@ const Main = ({
             <Route
               path="/residents/:id"
               render={() => (
-                <Resident
-                  cookies={cookies}
-                  handleMixcloudClick={handleMixcloudClick}
-                  mixcloudWidgetHtml={mixcloudWidgetHtml}
-                  residentsData={residentsData}
-                />
+                <Resident cookies={cookies} residentsData={residentsData} />
               )}
             />
             <Route
