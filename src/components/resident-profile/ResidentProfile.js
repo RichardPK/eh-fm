@@ -15,7 +15,7 @@ const ResidentProfile = ({
   cookies,
 }) => {
   const [displayShows, setDisplayShows] = useState(false);
-  const [orderedShows, setOrderedShows] = useState(null);
+  const [orderedPastShows, setOrderedPastShows] = useState(null);
   const [mostRecentShow, setMostRecentShow] = useState(null);
 
   useEffect(() => {
@@ -32,10 +32,8 @@ const ResidentProfile = ({
       );
 
       if (orderedByTimestamp.length > 0) {
-        setOrderedShows(orderedByTimestamp);
+        setOrderedPastShows(orderedByTimestamp);
         setMostRecentShow(orderedByTimestamp[0]);
-      } else {
-        setMostRecentShow("none");
       }
     };
 
@@ -78,37 +76,35 @@ const ResidentProfile = ({
   };
 
   return (
-    <React.Fragment>
-      <Wrapper mixcloudWidgetHtml={mixcloudWidgetHtml}>
-        <ProfileText selectedShow={selectedShow} />
-        {pastMixcloudShows && orderedShows && (
-          <React.Fragment>
-            <MostRecentShowbutton
-              mostRecentShow={mostRecentShow}
-              handleMostRecentShowButtonClick={handleMixcloudClick}
-              date={renderDate(mostRecentShow.name)}
-              showName={renderShowName(mostRecentShow.name)}
-            />
-            {pastMixcloudShows.length > 1 ? (
-              <>
-                <ArchiveButton
-                  handleArchiveButtonClick={handleArchiveButtonClick}
-                  displayShows={displayShows}
-                />
-                <PastShows
-                  displayShows={displayShows}
-                  allPastShows={orderedShows}
-                  handleMixcloudClick={handleMixcloudClick}
-                  renderDate={renderDate}
-                  renderShowName={renderShowName}
-                  mixcloudWidgetHtml={mixcloudWidgetHtml}
-                />
-              </>
-            ) : null}
-          </React.Fragment>
-        )}
-      </Wrapper>
-    </React.Fragment>
+    <Wrapper mixcloudWidgetHtml={mixcloudWidgetHtml}>
+      <ProfileText selectedShow={selectedShow} />
+      {pastMixcloudShows && orderedPastShows && (
+        <>
+          <MostRecentShowbutton
+            mostRecentShow={mostRecentShow}
+            handleMostRecentShowButtonClick={handleMixcloudClick}
+            date={renderDate(mostRecentShow.name)}
+            showName={renderShowName(mostRecentShow.name)}
+          />
+          {pastMixcloudShows.length > 1 && (
+            <>
+              <ArchiveButton
+                handleArchiveButtonClick={handleArchiveButtonClick}
+                displayShows={displayShows}
+              />
+              <PastShows
+                displayShows={displayShows}
+                allPastShows={orderedPastShows}
+                handleMixcloudClick={handleMixcloudClick}
+                renderDate={renderDate}
+                renderShowName={renderShowName}
+                mixcloudWidgetHtml={mixcloudWidgetHtml}
+              />
+            </>
+          )}
+        </>
+      )}
+    </Wrapper>
   );
 };
 

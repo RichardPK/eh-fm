@@ -15,7 +15,6 @@ const MostRecentShowbutton = ({
 }) => {
   return (
     <Wrapper
-      // className="resident-pastshow-card"
       onClick={() => handleMostRecentShowButtonClick(mostRecentShow.key)}
     >
       <ReactSVG src={MixCloud} />

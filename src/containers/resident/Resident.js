@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useCookies } from "react-cookie";
 import styled from "styled-components/macro";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
@@ -6,12 +7,12 @@ import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import ResidentProfile from "../../components/resident-profile/ResidentProfile";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
 
-const ResidentShowContainer = ({ cookies, residentsData }) => {
+const ResidentShowContainer = ({ residentsData }) => {
   const { id } = useParams();
+  const [cookies] = useCookies(["ehfm"]);
   const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
     MixcloudWidgetContext
   );
-
   const [pastMixcloudShows, setPastMixcloudShows] = useState(null);
   const [selectedShow, setSelectedShow] = useState(null);
 

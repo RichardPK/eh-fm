@@ -1,8 +1,6 @@
-import React, { Component, useContext } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import styled from "styled-components/macro";
 import renderHTML from "react-render-html";
-import IndexActions from "../../../actions/index";
 import Colors from "../../../consts/Colors";
 import Devices from "../../../consts/Devices";
 import LoadingPlaceholder from "../../../components/loading-placeholder/LoadingPlaceholder";

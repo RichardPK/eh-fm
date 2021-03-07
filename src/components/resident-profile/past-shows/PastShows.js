@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
 import PastShowCard from "../past-show-card/PastShowCard";
-import Colors from "../../../consts/Colors";
 import Devices from "../../../consts/Devices";
 
 const PastShows = ({
@@ -25,11 +24,13 @@ const PastShows = ({
   });
   showsToDisplay.splice(0, 1);
 
-  return displayShows ? (
-    <PastShowsWrapper mixCloudWidget={mixCloudWidget}>
-      {showsToDisplay}
-    </PastShowsWrapper>
-  ) : null;
+  return (
+    displayShows && (
+      <PastShowsWrapper mixCloudWidget={mixCloudWidget}>
+        {showsToDisplay}
+      </PastShowsWrapper>
+    )
+  );
 };
 
 const PastShowsWrapper = styled.div`
