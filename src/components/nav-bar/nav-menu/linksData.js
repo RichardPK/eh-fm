@@ -1,6 +1,3 @@
-import React from "react";
-import { ReactComponent as ToteLogo } from "../../../assets/svgs/tote.svg";
-
 const linksData = [
   { target: "/", text: "HOME" },
   { target: "/residents", text: "RESIDENTS" },

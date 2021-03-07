@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
-import { Body, Tiny } from "../../text-elements/index";
+import { Body } from "../../text-elements/index";
 import Colors from "../../../consts/Colors";
 import Image from "../../image/Image";
 
@@ -8,7 +8,6 @@ const SecondaryCarouselItem = ({
   data,
   hierarchy,
   handleCarouselItemClick,
-  carouselRef,
   index,
 }) => {
   let [hovered, setHovered] = useState(false);

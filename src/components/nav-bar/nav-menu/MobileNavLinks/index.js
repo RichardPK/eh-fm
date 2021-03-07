@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import NavLink from "../NavLink/NavLink";
-import Devices from "../../../../consts/Devices";
 import linksData from "../linksData";
 
 const Wrapper = styled.div`

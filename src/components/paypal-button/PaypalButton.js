@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import Colors from "../../consts/Colors";
 import { ReactSVG } from "react-svg";

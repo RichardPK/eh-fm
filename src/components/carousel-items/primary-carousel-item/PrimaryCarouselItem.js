@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { Heading4, Heading3, Body } from "../../text-elements/index";
 import Colors from "../../../consts/Colors";

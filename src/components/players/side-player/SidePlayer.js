@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import CurrentShow from "../../current-show/CurrentShow";
 import Player from "../player/Player";

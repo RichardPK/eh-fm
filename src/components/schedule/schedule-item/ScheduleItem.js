@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -58,10 +58,7 @@ const Name = styled(Body)`
   display: inline-block;
   position: relative;
   z-index: 1;
-  /* color: ${(props) =>
-    props.hovered
-      ? Colors.playerWhite
-      : "#00000"};
+  /* color: ${(props) => (props.hovered ? Colors.playerWhite : "#00000")};
   transition: color 0.3s ease-out; */
 `;
 

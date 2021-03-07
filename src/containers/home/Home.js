@@ -10,19 +10,22 @@ import AdditionalCarouselHeading from "../../components/additional-carousel-head
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
 const HomeContainer = ({ carouselData }) => {
-  const PrimaryCarousel = Carousel;
-  const [highlightedCarouselItems, setHighlightedCarouselItems] = useState([]);
-  const [additionalCarousels, setAdditionalCarousels] = useState([]);
-
   const [cookies] = useCookies(["ehfm"]);
   const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
     MixcloudWidgetContext
   );
+  const [highlightedCarouselItems, setHighlightedCarouselItems] = useState([]);
+  const [
+    additionalCarouselsWithItems,
+    setAdditionalCarouselsWithItems,
+  ] = useState([]);
+  const PrimaryCarousel = Carousel;
+  const { allCarouselItems, additionalCarousels } = carouselData;
 
   useEffect(() => {
     const filterHighlightedCarouselItems = () => {
       return reverseChronologicalSort(
-        carouselData.allCarouselItems.filter((featuredItem) => {
+        allCarouselItems.filter((featuredItem) => {
           return featuredItem.data.highlighted;
         })
       );
@@ -30,12 +33,12 @@ const HomeContainer = ({ carouselData }) => {
 
     const filteredHighlightedCarouselItems = filterHighlightedCarouselItems();
     setHighlightedCarouselItems(filteredHighlightedCarouselItems);
-  }, []);
+  }, [allCarouselItems]);
 
   useEffect(() => {
     const completeCarouselData = (rawData) => {
       return rawData.data.carousel_items.map((originalCarouselItem) => {
-        const completedItemData = carouselData.allCarouselItems.find((item) => {
+        const completedItemData = allCarouselItems.find((item) => {
           return item.id === originalCarouselItem.carousel_item.id;
         });
         return completedItemData;
@@ -49,21 +52,19 @@ const HomeContainer = ({ carouselData }) => {
     };
 
     const getAdditionalCarousels = () => {
-      const parsedCarouselsData = carouselData.additionalCarousels.map(
-        (rawCarouselData) => {
-          rawCarouselData.data.carousel_items = completeCarouselData(
-            rawCarouselData
-          );
-          rawCarouselData.data.id = rawCarouselData.id;
-          return rawCarouselData.data;
-        }
-      );
+      const parsedCarouselsData = additionalCarousels.map((rawCarouselData) => {
+        rawCarouselData.data.carousel_items = completeCarouselData(
+          rawCarouselData
+        );
+        rawCarouselData.data.id = rawCarouselData.id;
+        return rawCarouselData.data;
+      });
       const carouselsByPosition = sortCarouselsByPosition(parsedCarouselsData);
-      setAdditionalCarousels(carouselsByPosition);
+      setAdditionalCarouselsWithItems(carouselsByPosition);
     };
 
     getAdditionalCarousels();
-  }, []);
+  }, [additionalCarousels, allCarouselItems]);
 
   const reverseChronologicalSort = (array) => {
     return array.sort((item1, item2) => {
@@ -120,8 +121,8 @@ const HomeContainer = ({ carouselData }) => {
           </>
         ) : null}
 
-        {additionalCarousels.length > 0
-          ? additionalCarousels.map((carousel) => {
+        {additionalCarouselsWithItems.length > 0
+          ? additionalCarouselsWithItems.map((carousel) => {
               const sortedData = reverseChronologicalSort(
                 carousel.carousel_items
               );

@@ -1,8 +1,11 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components/macro';
-import Colors from '../../consts/Colors';
+import React from "react";
+import styled from "styled-components/macro";
 
-const LoadingPlaceholder = ({ height = '100%', width = '100%', zIndex = 'auto' }) => {
+const LoadingPlaceholder = ({
+  height = "100%",
+  width = "100%",
+  zIndex = "auto",
+}) => {
   return <Wrapper zIndex={zIndex} width={width} height={height} />;
 };
 

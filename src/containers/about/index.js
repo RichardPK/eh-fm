@@ -39,6 +39,7 @@ const InnerWrapper = styled.div`
 
 const About = ({ pageData }) => {
   const [cookies] = useCookies(["ehfm"]);
+
   const {
     about,
     get_involved_details,
