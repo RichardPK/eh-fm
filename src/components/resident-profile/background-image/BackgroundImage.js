@@ -4,6 +4,7 @@ import Devices from "../../../consts/Devices";
 import Sizes from "../../../consts/Sizes";
 
 const BackgroundImage = ({ mixCloudWidget, imageSrc, ...props }) => {
+  console.log("rerender image");
   return (
     <Wrapper mixCloudWidget={mixCloudWidget} imageSrc={imageSrc} {...props} />
   );

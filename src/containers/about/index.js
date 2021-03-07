@@ -58,7 +58,6 @@ const About = ({ pageData }) => {
     <>
       <MetaData
         title={"About | EHFM"}
-        url={window.location.href}
         imageSrc={metaDataImageUrl}
         description={
           "EHFM is an online community radio station broadcasting from Edinburgh’s Summerhall."
