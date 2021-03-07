@@ -11,7 +11,6 @@ class ResidentProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mixcloudWidgetHtml: null,
       displayShows: false,
       orderedShows: null,
       mostRecentShow: null,
@@ -24,16 +23,18 @@ class ResidentProfile extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.pastShows && !this.state.mostRecentShow) {
+    if (this.props.pastMixcloudShows && !this.state.mostRecentShow) {
       this.getMostRecentShow();
     }
   }
 
   getMostRecentShow() {
-    let arrayWithModifiedTimestamps = this.props.pastShows.map((show) => {
-      show.created_timestamp = Date.parse(show.created_time);
-      return show;
-    });
+    let arrayWithModifiedTimestamps = this.props.pastMixcloudShows.map(
+      (show) => {
+        show.created_timestamp = Date.parse(show.created_time);
+        return show;
+      }
+    );
 
     let orderedByTimestamp = arrayWithModifiedTimestamps.sort(
       (showA, showB) => {
@@ -105,7 +106,7 @@ class ResidentProfile extends Component {
       <React.Fragment>
         <Wrapper mixcloudWidgetHtml={this.props.mixcloudWidgetHtml}>
           <ProfileText props={this.props} />
-          {this.props.pastShows && this.state.orderedShows && (
+          {this.props.pastMixcloudShows && this.state.orderedShows && (
             <React.Fragment>
               <MostRecentShowbutton
                 mostRecentShow={this.state.mostRecentShow}
@@ -113,7 +114,7 @@ class ResidentProfile extends Component {
                 date={this.renderDate(this.state.mostRecentShow.name)}
                 showName={this.renderShowName(this.state.mostRecentShow.name)}
               />
-              {this.props.pastShows.length > 1 ? (
+              {this.props.pastMixcloudShows.length > 1 ? (
                 <>
                   <ArchiveButton
                     handleArchiveButtonClick={this.handleArchiveButtonClick}

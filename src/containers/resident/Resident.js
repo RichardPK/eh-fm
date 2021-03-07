@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
-import axios from "axios";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import ResidentProfile from "../../components/resident-profile/ResidentProfile";
@@ -13,7 +12,7 @@ const ResidentShowContainer = ({
   residentsData,
 }) => {
   const { id } = useParams();
-  const [pastShows, setPastShows] = useState(null);
+  const [pastMixcloudShows, setPastMixcloudShows] = useState(null);
   const [selectedShow, setSelectedShow] = useState(null);
 
   useEffect(() => {
@@ -28,20 +27,18 @@ const ResidentShowContainer = ({
   }, [id, residentsData]);
 
   useEffect(() => {
-    const mixCloudAPICall = () => {
-      debugger;
-      let playlist_url = selectedShow.data.mixcloud_playlist_url;
+    const mixCloudAPICall = async () => {
+      let playlistUrl = selectedShow.data.mixcloud_playlist_url;
       // https://www.mixcloud.com/ehfm/playlists/lunch/
 
-      let wwwCutPoint = playlist_url.indexOf(".") + 1;
-      let modifiedUrl = playlist_url.slice(wwwCutPoint);
+      let wwwCutPoint = playlistUrl.indexOf(".") + 1;
+      let modifiedUrl = playlistUrl.slice(wwwCutPoint);
       const showsToReturn = `100`;
 
-      axios
-        .get(`https://api.${modifiedUrl}cloudcasts/?limit=${showsToReturn}`)
-        .then((res) => {
-          let shows = res.data.data.reverse();
-          setPastShows(shows);
+      fetch(`https://api.${modifiedUrl}cloudcasts/?limit=${showsToReturn}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setPastMixcloudShows(data.data.reverse());
         });
     };
 
@@ -109,7 +106,7 @@ const ResidentShowContainer = ({
               twitter={selectedShow.data.socials[0].twitter}
               instagram={selectedShow.data.socials[0].instagram}
               showTime={selectedShow.data.show_time}
-              pastShows={pastShows}
+              pastMixcloudShows={pastMixcloudShows}
               mixcloudWidgetHtml={mixcloudWidgetHtml}
               handleMixcloudClick={handleMixcloudClick}
             />
