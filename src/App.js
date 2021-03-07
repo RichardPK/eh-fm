@@ -26,8 +26,6 @@ export const App = () => {
       carouselData.allCarouselItems
   );
 
-  debugger;
-
   return (
     essentialDataFetchingFinished && (
       <CookiesProvider>

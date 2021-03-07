@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Helmet } from "react-helmet";
-import Prismic from "prismic-javascript";
 import styled from "styled-components/macro";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
@@ -10,12 +9,8 @@ import AdditionalCarouselHeading from "../../components/additional-carousel-head
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
 const HomeContainer = ({ carouselData, ...props }) => {
-  const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
   const PrimaryCarousel = Carousel;
-
-  const [allCarouselItems, setAllCarouselItems] = useState([]);
   const [highlightedCarouselItems, setHighlightedCarouselItems] = useState([]);
-
   const [additionalCarousels, setAdditionalCarousels] = useState([]);
 
   const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
@@ -23,65 +18,50 @@ const HomeContainer = ({ carouselData, ...props }) => {
   );
 
   useEffect(() => {
-    debugger;
-    setAllCarouselItems(carouselData.allCarouselItems);
-    setHighlightedItems(carouselData.additionalCarousels);
+    const filterHighlightedCarouselItems = () => {
+      return reverseChronologicalSort(
+        carouselData.allCarouselItems.filter((featuredItem) => {
+          return featuredItem.data.highlighted;
+        })
+      );
+    };
+
+    const filteredHighlightedCarouselItems = filterHighlightedCarouselItems();
+    setHighlightedCarouselItems(filteredHighlightedCarouselItems);
   }, []);
 
   useEffect(() => {
-    if (allCarouselItems.length > 0) {
-      Prismic.api(apiEndpoint).then((api) => {
-        getOtherCarousels(api);
+    const completeCarouselData = (rawData) => {
+      return rawData.data.carousel_items.map((originalCarouselItem) => {
+        const completedItemData = carouselData.allCarouselItems.find((item) => {
+          return item.id === originalCarouselItem.carousel_item.id;
+        });
+        return completedItemData;
       });
-    }
-  }, [allCarouselItems]);
+    };
 
-  const getOtherCarousels = (api) => {
-    api
-      .query(Prismic.Predicates.at("document.type", "home_carousel"), {
-        pageSize: 100,
-      })
-      .then((secondQueryResponse) => {
-        const parsedCarouselsData = secondQueryResponse.results.map(
-          (rawCarouselData) => {
-            rawCarouselData.data.carousel_items = completeCarouselData(
-              rawCarouselData
-            );
-            rawCarouselData.data.id = rawCarouselData.id;
-            return rawCarouselData.data;
-          }
-        );
-        const carouselsByPosition = sortCarouselsByPosition(
-          parsedCarouselsData
-        );
-        setAdditionalCarousels(carouselsByPosition);
+    const sortCarouselsByPosition = (array) => {
+      return array.sort((item1, item2) => {
+        return item1.position - item2.position;
       });
-  };
+    };
 
-  const completeCarouselData = (rawData) => {
-    return rawData.data.carousel_items.map((originalCarouselItem) => {
-      const completedItemData = allCarouselItems.find((item) => {
-        return item.id === originalCarouselItem.carousel_item.id;
-      });
-      return completedItemData;
-    });
-  };
+    const getAdditionalCarousels = () => {
+      const parsedCarouselsData = carouselData.additionalCarousels.map(
+        (rawCarouselData) => {
+          rawCarouselData.data.carousel_items = completeCarouselData(
+            rawCarouselData
+          );
+          rawCarouselData.data.id = rawCarouselData.id;
+          return rawCarouselData.data;
+        }
+      );
+      const carouselsByPosition = sortCarouselsByPosition(parsedCarouselsData);
+      setAdditionalCarousels(carouselsByPosition);
+    };
 
-  const setHighlightedItems = (results) => {
-    setHighlightedCarouselItems(
-      reverseChronologicalSort(
-        results.filter((featuredItem) => {
-          return featuredItem.data.highlighted;
-        })
-      )
-    );
-  };
-
-  const sortCarouselsByPosition = (array) => {
-    return array.sort((item1, item2) => {
-      return item1.position - item2.position;
-    });
-  };
+    getAdditionalCarousels();
+  }, []);
 
   const reverseChronologicalSort = (array) => {
     return array.sort((item1, item2) => {
