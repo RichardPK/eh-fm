@@ -38,33 +38,24 @@ const Main = ({
         />
         <MainInner>
           <Switch>
-            <Route
-              path="/residents/:id"
-              render={() => (
-                <Resident cookies={cookies} residentsData={residentsData} />
-              )}
-            />
-            <Route
-              exact
-              path="/residents"
-              render={() => (
-                <ResidentsContainer
-                  cookies={cookies}
-                  residentsData={residentsData}
-                />
-              )}
-            />
-            <Route
-              exact
-              path="/about"
-              render={() => <About pageData={aboutPageData} />}
-            />
-            <Route
-              exact
-              path="/support"
-              render={() => <Support pageData={supportPageData} />}
-            />
-            <Route exact path="/" render={() => <Home cookies={cookies} />} />
+            <Route path="/residents/:id">
+              <Resident cookies={cookies} residentsData={residentsData} />
+            </Route>
+            <Route exact path="/residents">
+              <ResidentsContainer
+                cookies={cookies}
+                residentsData={residentsData}
+              />
+            </Route>
+            <Route exact path="/about">
+              <About pageData={aboutPageData} />
+            </Route>
+            <Route exact path="/support">
+              <Support pageData={supportPageData} />
+            </Route>
+            <Route exact path="/">
+              <Home cookies={cookies} />
+            </Route>
           </Switch>
         </MainInner>
         <Footer />

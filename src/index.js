@@ -16,7 +16,9 @@ render(
           <Route path="/chat" exact>
             <ChatangoPage />
           </Route>
-          <Route render={() => <App />} />
+          <Route>
+            <App />
+          </Route>
         </Switch>
       </div>
     </Router>
