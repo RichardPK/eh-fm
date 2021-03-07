@@ -1,40 +1,24 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { withCookies } from "react-cookie";
+import { useParams } from "react-router-dom";
 import ResidentProfile from "../../components/resident-profile/ResidentProfile";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
 
-class ResidentShowContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showId: this.props.match.params.id,
-      pastShows: null,
-      selectedShow: null,
-    };
-    this.findSelectedShow = this.findSelectedShow.bind(this);
-    this.mixCloudAPICall = this.mixCloudAPICall.bind(this);
-  }
+const ResidentShowContainer = ({
+  cookies,
+  handleMixCloudClick,
+  mixcloudWidgetHtml,
+  residentsData,
+}) => {
+  const { id } = useParams();
+  const [pastShows, setPastShows] = useState(null);
+  const [selectedShow, setSelectedShow] = useState(null);
 
-  componentDidMount() {
-    this.findSelectedShow();
-  }
-
-  findSelectedShow() {
-    for (let show of this.props.residentsData) {
-      if (show.uid === this.state.showId) {
-        this.setState({ selectedShow: show }, this.mixCloudAPICall);
-      }
-    }
-  }
-
-  mixCloudAPICall() {
-    if (this.state.selectedShow.data.mixcloud_playlist_url) {
-      let playlist_url = this.state.selectedShow.data.mixcloud_playlist_url;
+  const mixCloudAPICall = () => {
+    if (selectedShow.data.mixcloud_playlist_url) {
+      let playlist_url = selectedShow.data.mixcloud_playlist_url;
       // https://www.mixcloud.com/ehfm/playlists/lunch/
 
       let wwwCutPoint = playlist_url.indexOf(".") + 1;
@@ -45,110 +29,106 @@ class ResidentShowContainer extends Component {
         .get(`https://api.${modifiedUrl}cloudcasts/?limit=${showsToReturn}`)
         .then((res) => {
           let shows = res.data.data.reverse();
-          this.setState({ pastShows: shows });
+          setPastShows(shows);
         });
     }
+  };
+
+  useEffect(() => {
+    const findSelectedShow = () => {
+      for (let show of residentsData) {
+        if (show.uid === id) {
+          setSelectedShow(show);
+          mixCloudAPICall();
+        }
+      }
+    };
+
+    findSelectedShow();
+  }, []);
+
+  let titleString;
+
+  if (selectedShow) {
+    titleString = `${selectedShow.data.show_title} | EHFM`;
   }
 
-  render() {
-    let titleString;
-    let show = this.state.selectedShow;
-
-    if (show) {
-      titleString = `${this.state.selectedShow.data.show_title} | EHFM`;
-    }
-
-    return (
-      <React.Fragment>
-        {show ? (
-          <React.Fragment>
-            <Helmet>
-              <title>{titleString}</title>
-              <meta name="fragment" content="!" />
-              <meta
-                property="og:title"
-                data-react-helmet="true"
-                content={titleString}
-              />
-              <meta
-                name="description"
-                data-react-helmet="true"
-                content={show.data.show_description}
-              />
-              <meta
-                property="og:description"
-                data-react-helmet="true"
-                content={show.data.show_description}
-              />
-              <meta
-                property="og:url"
-                data-react-helmet="true"
-                content={window.location.href}
-              />
-              <meta
-                name="twitter:image"
-                data-react-helmet="true"
-                content={show.data.show_image.larger.url}
-              />
-              <meta
-                property="og:image"
-                data-react-helmet="true"
-                content={show.data.show_image.larger.url}
-              />
-              <meta
-                property="og:image:width"
-                content={show.data.show_image.dimensions.width}
-              />
-              <meta
-                property="og:image:height"
-                content={show.data.show_image.dimensions.height}
-              />
-            </Helmet>
-            <BackgroundImage
-              mixCloudWidget={this.props.mixCloudWidget}
-              imageSrc={show.data.show_image.fullscreen.url}
+  return (
+    <React.Fragment>
+      {selectedShow ? (
+        <React.Fragment>
+          <Helmet>
+            <title>{titleString}</title>
+            <meta name="fragment" content="!" />
+            <meta
+              property="og:title"
+              data-react-helmet="true"
+              content={titleString}
             />
-            <Wrapper mixCloudWidget={this.props.mixCloudWidget}>
-              <ResidentProfile
-                cookies={this.props.cookies}
-                showTitle={show.data.show_title}
-                showDescription={show.data.show_description}
-                showImage={show.data.show_image.fullscreen.url}
-                showId={show.uid}
-                facebook={show.data.socials[0].facebook}
-                twitter={show.data.socials[0].twitter}
-                instagram={show.data.socials[0].instagram}
-                showTime={show.data.show_time}
-                pastShows={this.state.pastShows}
-                mixCloudWidget={this.props.mixCloudWidget}
-                handleMixCloudClick={this.props.handleMixCloudClick}
-              />
-            </Wrapper>
-          </React.Fragment>
-        ) : (
-          <p>Loading</p>
-        )}
-      </React.Fragment>
-    );
-  }
-}
+            <meta
+              name="description"
+              data-react-helmet="true"
+              content={selectedShow.data.show_description}
+            />
+            <meta
+              property="og:description"
+              data-react-helmet="true"
+              content={selectedShow.data.show_description}
+            />
+            <meta
+              property="og:url"
+              data-react-helmet="true"
+              content={window.location.href}
+            />
+            <meta
+              name="twitter:image"
+              data-react-helmet="true"
+              content={selectedShow.data.show_image.larger.url}
+            />
+            <meta
+              property="og:image"
+              data-react-helmet="true"
+              content={selectedShow.data.show_image.larger.url}
+            />
+            <meta
+              property="og:image:width"
+              content={selectedShow.data.show_image.dimensions.width}
+            />
+            <meta
+              property="og:image:height"
+              content={selectedShow.data.show_image.dimensions.height}
+            />
+          </Helmet>
+          <BackgroundImage
+            mixCloudWidget={mixcloudWidgetHtml}
+            imageSrc={selectedShow.data.show_image.fullscreen.url}
+          />
+          <Wrapper mixCloudWidget={mixcloudWidgetHtml}>
+            <ResidentProfile
+              cookies={cookies}
+              showTitle={selectedShow.data.show_title}
+              showDescription={selectedShow.data.show_description}
+              showImage={selectedShow.data.show_image.fullscreen.url}
+              showId={selectedShow.uid}
+              facebook={selectedShow.data.socials[0].facebook}
+              twitter={selectedShow.data.socials[0].twitter}
+              instagram={selectedShow.data.socials[0].instagram}
+              showTime={selectedShow.data.show_time}
+              pastShows={pastShows}
+              mixCloudWidget={mixcloudWidgetHtml}
+              handleMixCloudClick={handleMixCloudClick}
+            />
+          </Wrapper>
+        </React.Fragment>
+      ) : (
+        <p>Loading</p>
+      )}
+    </React.Fragment>
+  );
+};
 
 const Wrapper = styled.div`
   position: relative;
 `;
 
-const mapStateToProps = (state) => {
-  return {
-    mixCloudWidget: state.index.mixCloudWidget,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-const connectedResidentShowContainer = withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ResidentShowContainer)
-);
-
-export default withCookies(connectedResidentShowContainer);
+export default ResidentShowContainer;

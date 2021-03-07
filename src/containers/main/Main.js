@@ -48,7 +48,6 @@ const Main = ({
               render={() => (
                 <Resident
                   cookies={cookies}
-                  key={window.location.pathname}
                   handleMixCloudClick={handleMixCloudClick}
                   mixcloudWidgetHtml={mixcloudWidgetHtml}
                   residentsData={residentsData}
