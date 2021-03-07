@@ -9,7 +9,7 @@ export const MixcloudWidgetContextProvider = ({ children }) => {
   const [mixcloudWidgetHtml, setMixcloudWidgetHtml] = useState(null);
   const [cookies, setCookie] = useCookies(["ehfm"]);
 
-  const handleMixCloudClick = (showPath) => {
+  const handleMixcloudClick = (showPath) => {
     let url = `https://api.mixcloud.com${showPath}embed-json/`;
     fetch(url)
       .then((response) => response.json())
@@ -27,7 +27,7 @@ export const MixcloudWidgetContextProvider = ({ children }) => {
       value={{
         mixcloudWidgetHtml: mixcloudWidgetHtml,
         setMixcloudWidgetHtml: setMixcloudWidgetHtml,
-        handleMixCloudClick: handleMixCloudClick,
+        handleMixcloudClick: handleMixcloudClick,
       }}
     >
       {children}

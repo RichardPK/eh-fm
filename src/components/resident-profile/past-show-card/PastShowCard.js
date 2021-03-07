@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Colors from '../../../consts/Colors';
-import Devices from '../../../consts/Devices';
-import { Body, Heading4 } from '../../text-elements/index';
-import ShowTag from '../show-tag/ShowTag';
+import React from "react";
+import styled from "styled-components/macro";
+import Colors from "../../../consts/Colors";
+import Devices from "../../../consts/Devices";
+import { Body, Heading4 } from "../../text-elements/index";
+import ShowTag from "../show-tag/ShowTag";
 
 const PastShowCard = (props) => {
   return (
-    <Inner onClick={props.handleMixCloudClick} key={props.key}>
+    <Inner onClick={props.handleMixcloudClick} key={props.key}>
       <Date>{props.date}</Date>
       <ShowName>{props.showName}</ShowName>
       <TagWrapper>

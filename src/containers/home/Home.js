@@ -18,7 +18,7 @@ const HomeContainer = (props) => {
 
   const [additionalCarousels, setAdditionalCarousels] = useState([]);
 
-  const { mixcloudWidgetHtml, handleMixCloudClick } = useContext(
+  const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
     MixcloudWidgetContext
   );
 
@@ -149,7 +149,7 @@ const HomeContainer = (props) => {
             <PrimaryCarousel
               data={highlightedCarouselItems}
               hierarchy={"primary"}
-              handleMixCloudClick={handleMixCloudClick}
+              handleMixcloudClick={handleMixcloudClick}
             />
           </>
         ) : null}
@@ -167,7 +167,7 @@ const HomeContainer = (props) => {
                   <Carousel
                     data={sortedData}
                     hierarchy={"secondary"}
-                    handleMixCloudClick={handleMixCloudClick}
+                    handleMixcloudClick={handleMixcloudClick}
                   />
                 </AdditionalCarouselWrapper>
               );

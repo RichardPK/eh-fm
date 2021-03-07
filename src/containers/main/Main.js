@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import styled from "styled-components/macro";
-import axios from "axios";
 import Header from "../header/Header";
 import SidePlayer from "../../components/players/side-player/SidePlayer";
 import Home from "../home/Home";
@@ -24,7 +23,7 @@ const Main = ({
   residentsData,
 }) => {
   const [cookies] = useCookies(["ehfm"]);
-  const { mixcloudWidgetHtml, handleMixCloudClick } = useContext(
+  const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
     MixcloudWidgetContext
   );
 
@@ -48,7 +47,7 @@ const Main = ({
               render={() => (
                 <Resident
                   cookies={cookies}
-                  handleMixCloudClick={handleMixCloudClick}
+                  handleMixcloudClick={handleMixcloudClick}
                   mixcloudWidgetHtml={mixcloudWidgetHtml}
                   residentsData={residentsData}
                 />

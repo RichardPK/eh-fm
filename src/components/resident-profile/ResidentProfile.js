@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import Devices from "../../consts/Devices";
 import styled from "styled-components/macro";
 import { Events, animateScroll as scroll } from "react-scroll";
-import { withCookies } from "react-cookie";
-import IndexActions from "../../actions/index";
 import ProfileText from "./profile-text/ProfileText";
 import MostRecentShowbutton from "./most-recent-show-button/MostRecentShowButton";
 import ArchiveButton from "./archive-button/ArchiveButton";
@@ -14,7 +11,7 @@ class ResidentProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mixCloudWidget: null,
+      mixcloudWidgetHtml: null,
       displayShows: false,
       orderedShows: null,
       mostRecentShow: null,
@@ -94,7 +91,7 @@ class ResidentProfile extends Component {
   }
 
   renderCardContainerMargin() {
-    if (this.props.mixCloudWidget) {
+    if (this.props.mixcloudWidgetHtml) {
       return {
         marginBottom: "123px",
       };
@@ -106,13 +103,13 @@ class ResidentProfile extends Component {
   render() {
     return (
       <React.Fragment>
-        <Wrapper mixCloudWidget={this.props.mixCloudWidget}>
+        <Wrapper mixcloudWidgetHtml={this.props.mixcloudWidgetHtml}>
           <ProfileText props={this.props} />
           {this.props.pastShows && this.state.orderedShows && (
             <React.Fragment>
               <MostRecentShowbutton
                 mostRecentShow={this.state.mostRecentShow}
-                handleMostRecentShowButtonClick={this.props.handleMixCloudClick}
+                handleMostRecentShowButtonClick={this.props.handleMixcloudClick}
                 date={this.renderDate(this.state.mostRecentShow.name)}
                 showName={this.renderShowName(this.state.mostRecentShow.name)}
               />
@@ -125,10 +122,10 @@ class ResidentProfile extends Component {
                   <PastShows
                     displayShows={this.state.displayShows}
                     allPastShows={this.state.orderedShows}
-                    handleMixCloudClick={this.props.handleMixCloudClick}
+                    handleMixcloudClick={this.props.handleMixcloudClick}
                     renderDate={this.renderDate}
                     renderShowName={this.renderShowName}
-                    mixCloudWidget={this.props.mixCloudWidget}
+                    mixcloudWidgetHtml={this.props.mixcloudWidgetHtml}
                   />
                 </>
               ) : null}
@@ -144,7 +141,7 @@ const Wrapper = styled.div`
   position: relative;
   /* minus nav bar, padding & top margin. Took off slightly more to create bar at bottom */
   height: calc(100vh - 150px - 3.5rem);
-  margin: 143px auto ${(props) => (props.mixCloudWidget ? `123px` : 0)};
+  margin: 143px auto ${(props) => (props.mixcloudWidgetHtml ? `123px` : 0)};
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -158,22 +155,4 @@ const Wrapper = styled.div`
   }
 `;
 
-const mapStateToProps = (state) => {
-  return {
-    playing: state.index.playing,
-    volume: state.index.volume,
-    mixCloudWidget: state.index.mixCloudWidget,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setMixcloudWidget: (value) => {
-      dispatch(IndexActions.setMixcloudWidget(value));
-    },
-  };
-};
-
-const Index = connect(mapStateToProps, mapDispatchToProps)(ResidentProfile);
-
-export default withCookies(Index);
+export default ResidentProfile;

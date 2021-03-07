@@ -8,7 +8,7 @@ import BackgroundImage from "../../components/resident-profile/background-image/
 
 const ResidentShowContainer = ({
   cookies,
-  handleMixCloudClick,
+  handleMixcloudClick,
   mixcloudWidgetHtml,
   residentsData,
 }) => {
@@ -110,8 +110,8 @@ const ResidentShowContainer = ({
               instagram={selectedShow.data.socials[0].instagram}
               showTime={selectedShow.data.show_time}
               pastShows={pastShows}
-              mixCloudWidget={mixcloudWidgetHtml}
-              handleMixCloudClick={handleMixCloudClick}
+              mixcloudWidgetHtml={mixcloudWidgetHtml}
+              handleMixcloudClick={handleMixcloudClick}
             />
           </Wrapper>
         </>

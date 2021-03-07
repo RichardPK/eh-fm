@@ -1,21 +1,21 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import PastShowCard from '../past-show-card/PastShowCard';
-import Colors from '../../../consts/Colors';
-import Devices from '../../../consts/Devices';
+import React from "react";
+import styled from "styled-components/macro";
+import PastShowCard from "../past-show-card/PastShowCard";
+import Colors from "../../../consts/Colors";
+import Devices from "../../../consts/Devices";
 
 const PastShows = ({
   displayShows,
   allPastShows,
   renderDate,
   renderShowName,
-  handleMixCloudClick,
-  mixCloudWidget
+  handleMixcloudClick,
+  mixCloudWidget,
 }) => {
   const showsToDisplay = allPastShows.map((show, i) => {
     return (
       <PastShowCard
-        handleMixCloudClick={() => handleMixCloudClick(show.key)}
+        handleMixcloudClick={() => handleMixcloudClick(show.key)}
         key={i}
         date={renderDate(show.name)}
         showName={renderShowName(show.name)}
@@ -26,7 +26,9 @@ const PastShows = ({
   showsToDisplay.splice(0, 1);
 
   return displayShows ? (
-    <PastShowsWrapper mixCloudWidget={mixCloudWidget}>{showsToDisplay}</PastShowsWrapper>
+    <PastShowsWrapper mixCloudWidget={mixCloudWidget}>
+      {showsToDisplay}
+    </PastShowsWrapper>
   ) : null;
 };
 
@@ -37,7 +39,7 @@ const PastShowsWrapper = styled.div`
   top: calc(100vh - 130px);
   display: flex;
   flex-direction: column;
-  margin-bottom: ${(props) => (props.mixCloudWidget ? '123px' : 'auto')};
+  margin-bottom: ${(props) => (props.mixCloudWidget ? "123px" : "auto")};
 
   @media ${Devices.mobileL} {
     left: 20px;

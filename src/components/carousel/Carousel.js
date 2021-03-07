@@ -8,7 +8,7 @@ import Devices from "../../consts/Devices";
 import { isInternal, splitUrl } from "../../helpers/CarouselLinkHelper";
 import { clickedCarouselItem } from "../analytics/ClickEventAnalytics";
 
-const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
+const Carousel = ({ data, hierarchy, handleMixcloudClick }) => {
   const [carouselRef, setCarouselRef] = useState(null);
   const history = useHistory();
 
@@ -86,7 +86,7 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
     }
     if (type.toLowerCase() === "past show") {
       const deconstructedUrl = new URL(link.url, "https://www.mixcloud.com/");
-      handleMixCloudClick(deconstructedUrl.pathname);
+      handleMixcloudClick(deconstructedUrl.pathname);
     }
   };
 
