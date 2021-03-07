@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { useCookies } from "react-cookie";
 import { Helmet } from "react-helmet";
 import styled from "styled-components/macro";
 import Devices from "../../consts/Devices";
@@ -8,11 +9,12 @@ import Carousel from "../../components/carousel/Carousel";
 import AdditionalCarouselHeading from "../../components/additional-carousel-heading/AdditionalCarouselHeading";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
-const HomeContainer = ({ carouselData, ...props }) => {
+const HomeContainer = ({ carouselData }) => {
   const PrimaryCarousel = Carousel;
   const [highlightedCarouselItems, setHighlightedCarouselItems] = useState([]);
   const [additionalCarousels, setAdditionalCarousels] = useState([]);
 
+  const [cookies] = useCookies(["ehfm"]);
   const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
     MixcloudWidgetContext
   );
@@ -106,7 +108,7 @@ const HomeContainer = ({ carouselData, ...props }) => {
 
       <Wrapper
         mixcloudWidgetHtml={mixcloudWidgetHtml}
-        cookiesBannerShowing={props.cookies["ehfm"] !== "1"}
+        cookiesBannerShowing={cookies.ehfm !== "1"}
       >
         {highlightedCarouselItems.length > 0 ? (
           <>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import styled from "styled-components/macro";
 import Header from "../header/Header";
 import SidePlayer from "../../components/players/side-player/SidePlayer";
@@ -22,8 +21,6 @@ const Main = ({
   residentsData,
   carouselData,
 }) => {
-  const [cookies] = useCookies(["ehfm"]);
-
   return (
     <React.Fragment>
       <PageViewAnalytics
@@ -40,13 +37,10 @@ const Main = ({
         <MainInner>
           <Switch>
             <Route path="/residents/:id">
-              <Resident cookies={cookies} residentsData={residentsData} />
+              <Resident residentsData={residentsData} />
             </Route>
             <Route exact path="/residents">
-              <ResidentsContainer
-                cookies={cookies}
-                residentsData={residentsData}
-              />
+              <ResidentsContainer residentsData={residentsData} />
             </Route>
             <Route exact path="/about">
               <About pageData={aboutPageData} />
@@ -55,7 +49,7 @@ const Main = ({
               <Support pageData={supportPageData} />
             </Route>
             <Route exact path="/">
-              <Home cookies={cookies} carouselData={carouselData} />
+              <Home carouselData={carouselData} />
             </Route>
           </Switch>
         </MainInner>

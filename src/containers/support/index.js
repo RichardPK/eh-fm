@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { useCookies } from "react-cookie";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
@@ -34,6 +35,7 @@ const InnerWrapper = styled.div`
 `;
 
 const About = ({ pageData }) => {
+  const [cookies] = useCookies(["ehfm"]);
   const {
     banner_image,
     buttons,

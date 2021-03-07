@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import styled from "styled-components/macro";
-import ResidentListItem from "../../components/resident-list-item/ResidentListItem";
+import { useCookies } from "react-cookie";
 import { Helmet } from "react-helmet";
+import ResidentListItem from "../../components/resident-list-item/ResidentListItem";
 import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
 import Devices from "../../consts/Devices";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
-const ResidentsContainer = ({ residentsData, cookies }) => {
+const ResidentsContainer = ({ residentsData }) => {
   const { mixCloudWidget } = useContext(MixcloudWidgetContext);
+  const [cookies] = useCookies(["ehfm"]);
 
   return (
     <React.Fragment>
@@ -47,7 +49,7 @@ const ResidentsContainer = ({ residentsData, cookies }) => {
       </Helmet>
       <Wrapper
         mixCloudWidget={mixCloudWidget}
-        cookiesBannerShowing={cookies["ehfm"] !== "1"}
+        cookiesBannerShowing={cookies.ehfm !== "1"}
       >
         {residentsData.map((show, index) => {
           return (
