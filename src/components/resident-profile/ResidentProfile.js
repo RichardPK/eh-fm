@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Devices from "../../consts/Devices";
 import styled from "styled-components/macro";
 import { Events, animateScroll as scroll } from "react-scroll";
@@ -7,54 +7,36 @@ import MostRecentShowbutton from "./most-recent-show-button/MostRecentShowButton
 import ArchiveButton from "./archive-button/ArchiveButton";
 import PastShows from "./past-shows/PastShows";
 
-class ResidentProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      displayShows: false,
-      orderedShows: null,
-      mostRecentShow: null,
-    };
-    this.handleArchiveButtonClick = this.handleArchiveButtonClick.bind(this);
-    this.renderCardContainerMargin = this.renderCardContainerMargin.bind(this);
-    this.getMostRecentShow = this.getMostRecentShow.bind(this);
-    this.renderShowName = this.renderShowName.bind(this);
-    this.renderDate = this.renderDate.bind(this);
-  }
+const ResidentProfile = (props) => {
+  const [displayShows, setDisplayShows] = useState(false);
+  const [orderedShows, setOrderedShows] = useState(null);
+  const [mostRecentShow, setMostRecentShow] = useState(null);
 
-  componentDidUpdate() {
-    if (this.props.pastMixcloudShows && !this.state.mostRecentShow) {
-      this.getMostRecentShow();
-    }
-  }
-
-  getMostRecentShow() {
-    let arrayWithModifiedTimestamps = this.props.pastMixcloudShows.map(
-      (show) => {
+  useEffect(() => {
+    const getMostRecentShow = () => {
+      let arrayWithModifiedTimestamps = props.pastMixcloudShows.map((show) => {
         show.created_timestamp = Date.parse(show.created_time);
         return show;
-      }
-    );
-
-    let orderedByTimestamp = arrayWithModifiedTimestamps.sort(
-      (showA, showB) => {
-        return showB.created_timestamp - showA.created_timestamp;
-      }
-    );
-
-    if (orderedByTimestamp.length > 0) {
-      this.setState({
-        orderedShows: orderedByTimestamp,
-        mostRecentShow: orderedByTimestamp[0],
       });
-    } else {
-      this.setState({
-        mostRecentShow: "none",
-      });
-    }
-  }
 
-  renderShowName = (showName) => {
+      let orderedByTimestamp = arrayWithModifiedTimestamps.sort(
+        (showA, showB) => {
+          return showB.created_timestamp - showA.created_timestamp;
+        }
+      );
+
+      if (orderedByTimestamp.length > 0) {
+        setOrderedShows(orderedByTimestamp);
+        setMostRecentShow(orderedByTimestamp[0]);
+      } else {
+        setMostRecentShow("none");
+      }
+    };
+
+    props.pastMixcloudShows && getMostRecentShow();
+  }, [props.pastMixcloudShows]);
+
+  const renderShowName = (showName) => {
     if (showName.includes("-")) {
       let name = showName.split(" - ")[0].trim();
       return name;
@@ -63,7 +45,7 @@ class ResidentProfile extends Component {
     }
   };
 
-  renderDate = (showName) => {
+  const renderDate = (showName) => {
     let dateToReturn = "";
     if (showName.includes("-")) {
       let date = showName.split(" - ")[1];
@@ -76,67 +58,53 @@ class ResidentProfile extends Component {
     }
   };
 
-  handleArchiveButtonClick() {
-    if (this.state.displayShows === true) {
+  const handleArchiveButtonClick = () => {
+    if (displayShows === true) {
       scroll.scrollTo(0);
-      Events.scrollEvent.register(
-        "end",
-        function () {
-          this.setState({ displayShows: false });
-        }.bind(this)
-      );
+      Events.scrollEvent.register("end", () => {
+        setDisplayShows(false);
+      });
     } else {
       Events.scrollEvent.remove("end");
-      this.setState({ displayShows: true }, scroll.scrollTo(200));
+      setDisplayShows(true);
+      scroll.scrollTo(200);
     }
-  }
+  };
 
-  renderCardContainerMargin() {
-    if (this.props.mixcloudWidgetHtml) {
-      return {
-        marginBottom: "123px",
-      };
-    } else {
-      return null;
-    }
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        <Wrapper mixcloudWidgetHtml={this.props.mixcloudWidgetHtml}>
-          <ProfileText props={this.props} />
-          {this.props.pastMixcloudShows && this.state.orderedShows && (
-            <React.Fragment>
-              <MostRecentShowbutton
-                mostRecentShow={this.state.mostRecentShow}
-                handleMostRecentShowButtonClick={this.props.handleMixcloudClick}
-                date={this.renderDate(this.state.mostRecentShow.name)}
-                showName={this.renderShowName(this.state.mostRecentShow.name)}
-              />
-              {this.props.pastMixcloudShows.length > 1 ? (
-                <>
-                  <ArchiveButton
-                    handleArchiveButtonClick={this.handleArchiveButtonClick}
-                    displayShows={this.state.displayShows}
-                  />
-                  <PastShows
-                    displayShows={this.state.displayShows}
-                    allPastShows={this.state.orderedShows}
-                    handleMixcloudClick={this.props.handleMixcloudClick}
-                    renderDate={this.renderDate}
-                    renderShowName={this.renderShowName}
-                    mixcloudWidgetHtml={this.props.mixcloudWidgetHtml}
-                  />
-                </>
-              ) : null}
-            </React.Fragment>
-          )}
-        </Wrapper>
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <Wrapper mixcloudWidgetHtml={props.mixcloudWidgetHtml}>
+        <ProfileText props={props} />
+        {props.pastMixcloudShows && orderedShows && (
+          <React.Fragment>
+            <MostRecentShowbutton
+              mostRecentShow={mostRecentShow}
+              handleMostRecentShowButtonClick={props.handleMixcloudClick}
+              date={renderDate(mostRecentShow.name)}
+              showName={renderShowName(mostRecentShow.name)}
+            />
+            {props.pastMixcloudShows.length > 1 ? (
+              <>
+                <ArchiveButton
+                  handleArchiveButtonClick={handleArchiveButtonClick}
+                  displayShows={displayShows}
+                />
+                <PastShows
+                  displayShows={displayShows}
+                  allPastShows={orderedShows}
+                  handleMixcloudClick={props.handleMixcloudClick}
+                  renderDate={renderDate}
+                  renderShowName={renderShowName}
+                  mixcloudWidgetHtml={props.mixcloudWidgetHtml}
+                />
+              </>
+            ) : null}
+          </React.Fragment>
+        )}
+      </Wrapper>
+    </React.Fragment>
+  );
+};
 
 const Wrapper = styled.div`
   position: relative;
