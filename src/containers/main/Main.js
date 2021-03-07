@@ -51,64 +51,59 @@ class Main extends Component {
           url={window.location.pathname + window.location.search}
         />
         <LiveRadioSchema />
-        {this.props.residentsData.length ? (
-          <MainWrapper>
-            <Header
-              currentShow={this.props.currentShowData}
-              residentsData={this.props.residentsData}
-              showsUpNext={this.props.scheduleData}
-            />
-            <SidePlayer
-              currentShow={this.props.currentShowData}
-              residentsData={this.props.residentsData}
-              showsUpNext={this.props.scheduleData}
-            />
-            <MainInner>
-              <Switch>
-                <Route
-                  path="/residents/:id"
-                  render={() => (
-                    <Resident
-                      cookies={this.props.cookies}
-                      key={window.location.pathname}
-                      handleMixCloudClick={this.handleMixCloudClick}
-                      residentsData={this.props.residentsData}
-                    />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/residents"
-                  render={() => (
-                    <ResidentsContainer
-                      cookies={this.props.cookies}
-                      handleMixCloudClick={this.handleMixCloudClick}
-                      residentsData={this.props.residentsData}
-                    />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/about"
-                  render={() => <About pageData={this.props.aboutPageData} />}
-                />
-                <Route
-                  exact
-                  path="/support"
-                  render={() => (
-                    <Support pageData={this.props.supportPageData} />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/"
-                  render={() => <Home cookies={this.props.cookies} />}
-                />
-              </Switch>
-            </MainInner>
-            <Footer />
-          </MainWrapper>
-        ) : null}
+        <MainWrapper>
+          <Header
+            currentShow={this.props.currentShowData}
+            residentsData={this.props.residentsData}
+            showsUpNext={this.props.scheduleData}
+          />
+          <SidePlayer
+            currentShow={this.props.currentShowData}
+            residentsData={this.props.residentsData}
+            showsUpNext={this.props.scheduleData}
+          />
+          <MainInner>
+            <Switch>
+              <Route
+                path="/residents/:id"
+                render={() => (
+                  <Resident
+                    cookies={this.props.cookies}
+                    key={window.location.pathname}
+                    handleMixCloudClick={this.handleMixCloudClick}
+                    residentsData={this.props.residentsData}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/residents"
+                render={() => (
+                  <ResidentsContainer
+                    cookies={this.props.cookies}
+                    residentsData={this.props.residentsData}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/about"
+                render={() => <About pageData={this.props.aboutPageData} />}
+              />
+              <Route
+                exact
+                path="/support"
+                render={() => <Support pageData={this.props.supportPageData} />}
+              />
+              <Route
+                exact
+                path="/"
+                render={() => <Home cookies={this.props.cookies} />}
+              />
+            </Switch>
+          </MainInner>
+          <Footer />
+        </MainWrapper>
       </React.Fragment>
     );
   }
