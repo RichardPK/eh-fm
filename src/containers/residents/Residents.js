@@ -47,7 +47,7 @@ const ResidentsContainer = ({ residentsData, cookies }) => {
       </Helmet>
       <Wrapper
         mixCloudWidget={mixCloudWidget}
-        cookiesBannerShowing={cookies.get("ehfm") !== "1"}
+        cookiesBannerShowing={cookies["ehfm"] !== "1"}
       >
         {residentsData.map((show, index) => {
           return (

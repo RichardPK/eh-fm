@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { CookiesProvider } from "react-cookie";
 import Main from "./containers/main/Main";
 import Audio from "./components/audio/";
 import usePrismicData from "./hooks/usePrismicData";
@@ -19,18 +20,20 @@ export const App = () => {
 
   return (
     essentialDataFetchingFinished && (
-      <RadioPlayerContextProvider audioRef={audioRef}>
-        <MixcloudWidgetContextProvider>
-          <Audio refProp={audioRef} />
-          <Main
-            aboutPageData={aboutPageData}
-            supportPageData={supportPageData}
-            currentShowData={currentShowData}
-            scheduleData={scheduleData}
-            residentsData={residentsData}
-          />
-        </MixcloudWidgetContextProvider>
-      </RadioPlayerContextProvider>
+      <CookiesProvider>
+        <RadioPlayerContextProvider audioRef={audioRef}>
+          <MixcloudWidgetContextProvider>
+            <Audio refProp={audioRef} />
+            <Main
+              aboutPageData={aboutPageData}
+              supportPageData={supportPageData}
+              currentShowData={currentShowData}
+              scheduleData={scheduleData}
+              residentsData={residentsData}
+            />
+          </MixcloudWidgetContextProvider>
+        </RadioPlayerContextProvider>
+      </CookiesProvider>
     )
   );
 };

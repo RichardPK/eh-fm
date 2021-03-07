@@ -142,7 +142,7 @@ const HomeContainer = (props) => {
 
       <Wrapper
         mixcloudWidgetHtml={mixcloudWidgetHtml}
-        cookiesBannerShowing={props.cookies.get("ehfm") !== "1"}
+        cookiesBannerShowing={props.cookies["ehfm"] !== "1"}
       >
         {highlightedCarouselItems.length > 0 ? (
           <>
