@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useCookies } from "react-cookie";
 import styled from "styled-components/macro";
-import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
+import MetaData from "../../components/metadata/MetaData";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import ResidentProfile from "../../components/resident-profile/ResidentProfile";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
@@ -50,48 +50,13 @@ const ResidentShowContainer = ({ residentsData }) => {
     <>
       {selectedShow ? (
         <>
-          <Helmet>
-            <title>{`${selectedShow.show_title} | EHFM`}</title>
-            <meta name="fragment" content="!" />
-            <meta
-              property="og:title"
-              data-react-helmet="true"
-              content={`${selectedShow.show_title} | EHFM`}
-            />
-            <meta
-              name="description"
-              data-react-helmet="true"
-              content={selectedShow.show_description}
-            />
-            <meta
-              property="og:description"
-              data-react-helmet="true"
-              content={selectedShow.show_description}
-            />
-            <meta
-              property="og:url"
-              data-react-helmet="true"
-              content={window.location.href}
-            />
-            <meta
-              name="twitter:image"
-              data-react-helmet="true"
-              content={selectedShow.show_image.larger.url}
-            />
-            <meta
-              property="og:image"
-              data-react-helmet="true"
-              content={selectedShow.show_image.larger.url}
-            />
-            <meta
-              property="og:image:width"
-              content={selectedShow.show_image.dimensions.width}
-            />
-            <meta
-              property="og:image:height"
-              content={selectedShow.show_image.dimensions.height}
-            />
-          </Helmet>
+          <MetaData
+            title={`${selectedShow.show_title} | EHFM`}
+            description={selectedShow.show_description}
+            imageSrc={selectedShow.show_image.larger.url}
+            imageWidth={selectedShow.show_image.dimensions.width}
+            imageHeight={selectedShow.show_image.dimensions.height}
+          />
           <BackgroundImage
             mixCloudWidget={mixcloudWidgetHtml}
             imageSrc={selectedShow.show_image.fullscreen.url}

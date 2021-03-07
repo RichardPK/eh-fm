@@ -55,11 +55,11 @@ const About = ({ pageData }) => {
     <>
       <MetaData
         title={"Support | EHFM"}
-        url={window.location.href}
+        url="https://www.ehfm.live/support"
         imageSrc={metaDataImageUrl}
-        description={"Help support your local community radio station"}
-        imageWidth={"800px"}
-        imageHeight={"800px"}
+        description="Help support your local community radio station"
+        imageWidth="800px"
+        imageHeight="800px"
       />
       <StyledBackgroundImage imageSrc={banner_image.url} />
       <Wrapper>

@@ -13,6 +13,7 @@ const ChatangoHtml = () => {
       <MetaData
         title="Chat | EHFM"
         description="EHFM Chat - Through the wonders of the internet connect directly to other listeners, and the hosts!"
+        url="https://www.ehfm.live/chat"
       />
       <FullHeightDiv id="chatango-div">
         <ChatangoWidget />

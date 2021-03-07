@@ -62,8 +62,9 @@ const About = ({ pageData }) => {
         description={
           "EHFM is an online community radio station broadcasting from Edinburgh’s Summerhall."
         }
-        imageWidth={"800px"}
-        imageHeight={"800px"}
+        url="https://www.ehfm.live/about"
+        imageWidth="800px"
+        imageHeight="800px"
       />
       <StyledBackgroundImage imageSrc={image.url} />
       <Wrapper>
