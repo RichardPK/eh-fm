@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import { useCookies } from "react-cookie";
 import Devices from "../../consts/Devices";
@@ -6,6 +6,7 @@ import Sizes from "../../consts/Sizes";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
 import MetaData from "../../components/metadata/MetaData";
 import GetImageUrl from "../../helpers/GetImageUrl";
+import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
   top: 86px;
@@ -36,6 +37,8 @@ const InnerWrapper = styled.div`
 
 const About = ({ pageData }) => {
   const [cookies] = useCookies(["ehfm"]);
+  const { viewportWidth } = useContext(DeviceInfoContext);
+
   const {
     banner_image,
     buttons,
@@ -51,6 +54,14 @@ const About = ({ pageData }) => {
     height: "800",
   });
 
+  const bgImageSize = 2 * viewportWidth;
+
+  const bgImageUrl = GetImageUrl({
+    baseUrl: banner_image,
+    width: bgImageSize,
+    height: bgImageSize,
+  });
+
   return (
     <>
       <MetaData
@@ -61,7 +72,7 @@ const About = ({ pageData }) => {
         imageWidth="800px"
         imageHeight="800px"
       />
-      <StyledBackgroundImage imageSrc={banner_image.url} />
+      <StyledBackgroundImage imageSrc={bgImageUrl} />
       <Wrapper>
         <InnerWrapper></InnerWrapper>
       </Wrapper>

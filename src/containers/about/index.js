@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import { useCookies } from "react-cookie";
 import Devices from "../../consts/Devices";
@@ -9,6 +9,7 @@ import GetInvolved from "./GetInvolved";
 import BodyParagraphs from "./BodyParagraphs";
 import MetaData from "../../components/metadata/MetaData";
 import GetImageUrl from "../../helpers/GetImageUrl";
+import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
   top: 86px;
@@ -39,6 +40,7 @@ const InnerWrapper = styled.div`
 
 const About = ({ pageData }) => {
   const [cookies] = useCookies(["ehfm"]);
+  const { viewportWidth } = useContext(DeviceInfoContext);
 
   const {
     about,
@@ -54,6 +56,14 @@ const About = ({ pageData }) => {
     height: "800",
   });
 
+  const bgImageSize = 2 * viewportWidth;
+
+  const bgImageUrl = GetImageUrl({
+    baseUrl: image.url,
+    width: bgImageSize,
+    height: bgImageSize,
+  });
+
   return (
     <>
       <MetaData
@@ -66,7 +76,7 @@ const About = ({ pageData }) => {
         imageWidth="800px"
         imageHeight="800px"
       />
-      <StyledBackgroundImage imageSrc={image.url} />
+      <StyledBackgroundImage imageSrc={bgImageUrl} />
       <Wrapper>
         <InnerWrapper>
           <TopSection headline={headline} subheader={subheader} />

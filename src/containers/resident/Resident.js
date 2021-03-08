@@ -4,6 +4,8 @@ import styled from "styled-components/macro";
 import { useParams } from "react-router-dom";
 import MetaData from "../../components/metadata/MetaData";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
+import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
+import GetImageUrl from "../../helpers/GetImageUrl";
 import ResidentProfile from "../../components/resident-profile/ResidentProfile";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
 
@@ -13,6 +15,8 @@ const ResidentShowContainer = ({ residentsData }) => {
   const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
     MixcloudWidgetContext
   );
+  const { viewportWidth } = useContext(DeviceInfoContext);
+
   const [pastMixcloudShows, setPastMixcloudShows] = useState(null);
   const [selectedShow, setSelectedShow] = useState(null);
 
@@ -46,6 +50,14 @@ const ResidentShowContainer = ({ residentsData }) => {
     selectedShow && mixCloudAPICall();
   }, [selectedShow]);
 
+  const bgImageSize = 2 * viewportWidth;
+
+  const bgImageUrl = GetImageUrl({
+    baseUrl: selectedShow && selectedShow.show_image.fullscreen.url,
+    width: bgImageSize,
+    height: bgImageSize,
+  });
+
   return (
     <>
       {selectedShow ? (
@@ -59,7 +71,7 @@ const ResidentShowContainer = ({ residentsData }) => {
           />
           <BackgroundImage
             mixCloudWidget={mixcloudWidgetHtml}
-            imageSrc={selectedShow.show_image.fullscreen.url}
+            imageSrc={bgImageUrl}
           />
           <Wrapper>
             <ResidentProfile
