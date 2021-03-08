@@ -3,11 +3,9 @@ import styled from "styled-components/macro";
 import Devices from "../../../consts/Devices";
 import Sizes from "../../../consts/Sizes";
 
-const BackgroundImage = ({ mixCloudWidget, imageSrc, ...props }) => {
+const BackgroundImage = ({ imageSrc, ...props }) => {
   console.log("rerender image");
-  return (
-    <Wrapper mixCloudWidget={mixCloudWidget} imageSrc={imageSrc} {...props} />
-  );
+  return <Wrapper imageSrc={imageSrc} {...props} />;
 };
 
 const Wrapper = styled.div`
@@ -21,7 +19,6 @@ const Wrapper = styled.div`
   z-index: -100;
   top: 0;
   left: 0;
-  margin-bottom: ${(props) => (props.mixCloudWidget ? "123px" : "auto")};
   background-image: url(${(props) => props.imageSrc});
 
   img {

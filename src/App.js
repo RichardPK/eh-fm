@@ -7,6 +7,7 @@ import useCurrentShowData from "./hooks/useCurrentShowData";
 import useScheduleData from "./hooks/useScheduleData";
 import { RadioPlayerContextProvider } from "./contexts/RadioPlayerContext";
 import { MixcloudWidgetContextProvider } from "./contexts/MixcloudWidgetContext";
+import { DeviceInfoContextProvider } from "./contexts/DeviceInfoContext";
 
 export const App = () => {
   const {
@@ -23,7 +24,8 @@ export const App = () => {
     currentShowData &&
       scheduleData &&
       residentsData &&
-      carouselData.allCarouselItems
+      carouselData.allCarouselItems &&
+      carouselData.additionalCarousels
   );
 
   return (
@@ -31,15 +33,17 @@ export const App = () => {
       <CookiesProvider>
         <RadioPlayerContextProvider audioRef={audioRef}>
           <MixcloudWidgetContextProvider>
-            <Audio refProp={audioRef} />
-            <Main
-              aboutPageData={aboutPageData}
-              supportPageData={supportPageData}
-              currentShowData={currentShowData}
-              scheduleData={scheduleData}
-              residentsData={residentsData}
-              carouselData={carouselData}
-            />
+            <DeviceInfoContextProvider>
+              <Audio refProp={audioRef} />
+              <Main
+                aboutPageData={aboutPageData}
+                supportPageData={supportPageData}
+                currentShowData={currentShowData}
+                scheduleData={scheduleData}
+                residentsData={residentsData}
+                carouselData={carouselData}
+              />
+            </DeviceInfoContextProvider>
           </MixcloudWidgetContextProvider>
         </RadioPlayerContextProvider>
       </CookiesProvider>
