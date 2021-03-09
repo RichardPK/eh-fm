@@ -62,19 +62,35 @@ const HomeContainer = ({ carouselData }) => {
       });
     };
 
-    const getAdditionalCarousels = () => {
-      const parsedCarouselsData = additionalCarousels.map((rawCarouselData) => {
-        rawCarouselData.data.carousel_items = completeCarouselData(
-          rawCarouselData
-        );
-        rawCarouselData.data.id = rawCarouselData.id;
-        return rawCarouselData.data;
-      });
-      const carouselsByPosition = sortCarouselsByPosition(parsedCarouselsData);
-      setAdditionalCarouselsWithItems(carouselsByPosition);
+    const getCarouselItems = (carouselData) => {
+      const carouselItemsWithoutLinkedData = carouselData.data.carousel_items;
+      const carouselItemsWithLinkedData = carouselItemsWithoutLinkedData.map(
+        (carouselItem) => {
+          const carouselItemWithData = allCarouselItems.find((item) => {
+            const idToCompare = carouselItem.carousel_item
+              ? carouselItem.carousel_item.id
+              : carouselItem.id;
+            return item.id === idToCompare;
+          });
+          return carouselItemWithData;
+        }
+      );
+      return carouselItemsWithLinkedData;
     };
 
-    getAdditionalCarousels();
+    const parsedCarouselsData = additionalCarousels.map((carouselData) => {
+      const carouselItems = getCarouselItems(carouselData);
+      // const carouselItems2 = completeCarouselData(carouselData);
+
+      carouselData.data.carousel_items = carouselItems;
+      carouselData.data.id = carouselData.id;
+      return carouselData.data;
+    });
+
+    const carouselsSortedByPosition = sortCarouselsByPosition(
+      parsedCarouselsData
+    );
+    setAdditionalCarouselsWithItems(carouselsSortedByPosition);
   }, [additionalCarousels, allCarouselItems]);
 
   return (
