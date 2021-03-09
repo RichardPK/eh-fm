@@ -8,7 +8,6 @@ import Sizes from "../../consts/Sizes";
 
 const ShopButton = () => {
   let [hovered, setHovered] = useState(false);
-  //
   return (
     <Wrapper
       onMouseOver={() => {
@@ -26,7 +25,7 @@ const ShopButton = () => {
           <IconWrapper hovered={hovered}>
             <Tote />
           </IconWrapper>
-          <DonateText hovered={hovered}>Shop</DonateText>
+          <Text hovered={hovered}>Shop</Text>
         </InnerWrapper>
       </Link>
     </Wrapper>
@@ -35,9 +34,9 @@ const ShopButton = () => {
 
 const Wrapper = styled.div`
   position: relative;
-  margin-right: 0rem;
+  margin-right: 0.5rem;
 
-  @media ${Devices.tablet} {
+  @media ${Devices.mobileL} {
     margin-right: 1rem;
   }
 `;
@@ -45,7 +44,6 @@ const Wrapper = styled.div`
 const Link = styled.a``;
 
 const InnerWrapper = styled.div`
-  padding: 0.25rem 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,12 +51,12 @@ const InnerWrapper = styled.div`
   background-color: ${(props) =>
     props.hovered ? Colors.ehfmPrimary(0.1) : Colors.ehfmPrimary()};
   transition: background-color, 0.2s ease-out;
+  padding: 0.5rem 0.75rem;
 `;
 
-const DonateText = styled(Cta)`
+const Text = styled(Cta)`
   font-weight: normal;
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
+  margin-left: 0.5rem;
   color: ${(props) =>
     props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite};
   transition: color, 0.2s ease-out;
@@ -71,8 +69,13 @@ const IconWrapper = styled.div`
   margin-bottom: 2px;
 
   svg {
-    height: 18px;
-    /* width: 16px; */
+    height: 16px;
+    width: auto;
+
+    @media ${Devices.tablet} {
+      height: 18px;
+      width: auto;
+    }
 
     path {
       transition: fill, 0.2s, ease-out;

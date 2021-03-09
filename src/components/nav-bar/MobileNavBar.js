@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components/macro";
 import Devices from "../../consts/Devices";
 import MobileNavMenu from "./nav-menu/MobileNavMenu";
+import ShopButton from "../shop-button";
 import ChatangoButton from "../chatango/chatango-button/ChatangoButton";
-import NavIcon from "./nav-menu/NavIcon";
 
 const MobileNavBar = (props) => {
   return (
@@ -12,7 +12,7 @@ const MobileNavBar = (props) => {
         <MobileNavMenu />
       </Left>
       <Right>
-        <NavIcon to={"https://ehfm.bigcartel.com/"} />
+        <ShopButton mobile />
         <ChatangoButton mobile />
       </Right>
     </Inner>
