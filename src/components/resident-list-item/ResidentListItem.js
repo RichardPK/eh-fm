@@ -1,10 +1,11 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
-import Colors from '../../consts/Colors';
-import Devices from '../../consts/Devices';
-import Sizes from '../../consts/Sizes';
-import { Cta } from '../text-elements/index';
+import React from "react";
+import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
+import Colors from "../../consts/Colors";
+import Devices from "../../consts/Devices";
+import Sizes from "../../consts/Sizes";
+import { Cta } from "../text-elements/index";
+import Anims from "../../consts/Anims";
 
 const ResidentListItem = (props) => {
   return (
@@ -22,6 +23,7 @@ const ResidentListItem = (props) => {
 };
 
 const Wrapper = styled.div`
+  ${Anims.fadeIn}
   display: flex;
   flex-direction: column;
   max-width: 265px;

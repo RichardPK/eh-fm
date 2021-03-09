@@ -47,15 +47,6 @@ const HomeContainer = ({ carouselData }) => {
 
   // Get 'additional' carousels
   useEffect(() => {
-    const completeCarouselData = (rawData) => {
-      return rawData.data.carousel_items.map((originalCarouselItem) => {
-        const completedItemData = allCarouselItems.find((item) => {
-          return item.id === originalCarouselItem.carousel_item.id;
-        });
-        return completedItemData;
-      });
-    };
-
     const sortCarouselsByPosition = (array) => {
       return array.sort((item1, item2) => {
         return item1.position - item2.position;
@@ -66,29 +57,28 @@ const HomeContainer = ({ carouselData }) => {
       const carouselItemsWithoutLinkedData = carouselData.data.carousel_items;
       const carouselItemsWithLinkedData = carouselItemsWithoutLinkedData.map(
         (carouselItem) => {
-          const carouselItemWithData = allCarouselItems.find((item) => {
+          return allCarouselItems.find((item) => {
             const idToCompare = carouselItem.carousel_item
               ? carouselItem.carousel_item.id
               : carouselItem.id;
             return item.id === idToCompare;
           });
-          return carouselItemWithData;
         }
       );
       return carouselItemsWithLinkedData;
     };
 
-    const parsedCarouselsData = additionalCarousels.map((carouselData) => {
-      const carouselItems = getCarouselItems(carouselData);
-      // const carouselItems2 = completeCarouselData(carouselData);
+    const getCarousels = () =>
+      additionalCarousels.map((carouselData) => {
+        const carouselItems = getCarouselItems(carouselData);
+        carouselData.data.carousel_items = carouselItems;
+        carouselData.data.id = carouselData.id;
+        return carouselData.data;
+      });
 
-      carouselData.data.carousel_items = carouselItems;
-      carouselData.data.id = carouselData.id;
-      return carouselData.data;
-    });
-
+    const carouselsWithParsedData = getCarousels();
     const carouselsSortedByPosition = sortCarouselsByPosition(
-      parsedCarouselsData
+      carouselsWithParsedData
     );
     setAdditionalCarouselsWithItems(carouselsSortedByPosition);
   }, [additionalCarousels, allCarouselItems]);
@@ -100,15 +90,13 @@ const HomeContainer = ({ carouselData }) => {
         mixcloudWidgetHtml={mixcloudWidgetHtml}
         cookiesBannerShowing={cookies.ehfm !== "1"}
       >
-        {highlightedCarouselItems.length > 0 ? (
-          <>
-            <PrimaryCarousel
-              data={highlightedCarouselItems}
-              hierarchy={"primary"}
-              handleMixcloudClick={handleMixcloudClick}
-            />
-          </>
-        ) : null}
+        {highlightedCarouselItems.length > 0 && (
+          <PrimaryCarousel
+            data={highlightedCarouselItems}
+            hierarchy={"primary"}
+            handleMixcloudClick={handleMixcloudClick}
+          />
+        )}
 
         {additionalCarouselsWithItems.length > 0
           ? additionalCarouselsWithItems.map((carousel) => {

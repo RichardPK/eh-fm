@@ -4,6 +4,7 @@ import { Heading4, Heading3, Body } from "../../text-elements/index";
 import Colors from "../../../consts/Colors";
 import Image from "../../image/Image";
 import CarouselButton from "../../carousel-button/CarouselButton";
+import Anims from "../../../consts/Anims";
 
 const PrimaryCarouselItem = ({
   data,
@@ -53,6 +54,7 @@ const PrimaryCarouselItem = ({
 };
 
 const Wrapper = styled.div`
+  ${Anims.fadeInWithDelay}
   position: relative;
   width: 100%;
   height: 100%;
@@ -60,6 +62,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
   border-radius: 0.5rem;
+
   :hover {
     cursor: pointer;
   }

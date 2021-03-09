@@ -8,7 +8,7 @@ import Devices from "../../consts/Devices";
 import { isInternal, splitUrl } from "../../helpers/CarouselLinkHelper";
 import { clickedCarouselItem } from "../analytics/ClickEventAnalytics";
 
-const Carousel = ({ data, hierarchy, handleMixcloudClick }) => {
+const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
   const [carouselRef, setCarouselRef] = useState(null);
   const history = useHistory();
 
@@ -86,7 +86,7 @@ const Carousel = ({ data, hierarchy, handleMixcloudClick }) => {
     }
     if (type.toLowerCase() === "past show") {
       const deconstructedUrl = new URL(link.url, "https://www.mixcloud.com/");
-      handleMixcloudClick(deconstructedUrl.pathname);
+      handleMixCloudClick(deconstructedUrl.pathname);
     }
   };
 
@@ -98,14 +98,14 @@ const Carousel = ({ data, hierarchy, handleMixcloudClick }) => {
 
   return (
     <Wrapper hierarchy={hierarchy}>
-      {data.length > 0 ? (
-        <Swiper
-          {...params}
-          getSwiper={(swiperEl) => {
-            setCarouselRef(swiperEl);
-          }}
-        >
-          {data.map((carouselItemData, i) => {
+      <Swiper
+        {...params}
+        getSwiper={(swiperEl) => {
+          setCarouselRef(swiperEl);
+        }}
+      >
+        {data.length &&
+          data.map((carouselItemData, i) => {
             return (
               <div key={carouselItemData.id}>
                 {hierarchy === "primary" ? (
@@ -128,8 +128,7 @@ const Carousel = ({ data, hierarchy, handleMixcloudClick }) => {
               </div>
             );
           })}
-        </Swiper>
-      ) : null}
+      </Swiper>
     </Wrapper>
   );
 };

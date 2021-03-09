@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { Body } from "../../text-elements/index";
 import Colors from "../../../consts/Colors";
 import Image from "../../image/Image";
+import Anims from "../../../consts/Anims";
 
 const SecondaryCarouselItem = ({
   data,
@@ -39,6 +40,7 @@ const SecondaryCarouselItem = ({
 };
 
 const Wrapper = styled.div`
+  ${Anims.fadeInWithDelay}
   position: relative;
   display: grid;
   grid-template-rows: 1fr auto;
