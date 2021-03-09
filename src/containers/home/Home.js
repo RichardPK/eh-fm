@@ -21,19 +21,31 @@ const HomeContainer = ({ carouselData }) => {
   const PrimaryCarousel = Carousel;
   const { allCarouselItems, additionalCarousels } = carouselData;
 
+  const reverseChronologicalSort = (array) => {
+    return array.sort((item1, item2) => {
+      const firstDate = new Date(item1.first_publication_date);
+      const secondDate = new Date(item2.first_publication_date);
+      return secondDate - firstDate;
+    });
+  };
+
+  // Get 'highlighted' carousel items
   useEffect(() => {
     const filterHighlightedCarouselItems = () => {
-      return reverseChronologicalSort(
-        allCarouselItems.filter((featuredItem) => {
-          return featuredItem.data.highlighted;
-        })
-      );
+      return allCarouselItems.filter((featuredItem) => {
+        return featuredItem.data.highlighted;
+      });
     };
 
     const filteredHighlightedCarouselItems = filterHighlightedCarouselItems();
-    setHighlightedCarouselItems(filteredHighlightedCarouselItems);
+    const sortedByMostRecent = reverseChronologicalSort(
+      filteredHighlightedCarouselItems
+    );
+
+    setHighlightedCarouselItems(sortedByMostRecent);
   }, [allCarouselItems]);
 
+  // Get 'additional' carousels
   useEffect(() => {
     const completeCarouselData = (rawData) => {
       return rawData.data.carousel_items.map((originalCarouselItem) => {
@@ -64,14 +76,6 @@ const HomeContainer = ({ carouselData }) => {
 
     getAdditionalCarousels();
   }, [additionalCarousels, allCarouselItems]);
-
-  const reverseChronologicalSort = (array) => {
-    return array.sort((item1, item2) => {
-      const firstDate = new Date(item1.first_publication_date);
-      const secondDate = new Date(item2.first_publication_date);
-      return secondDate - firstDate;
-    });
-  };
 
   return (
     <React.Fragment>
