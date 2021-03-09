@@ -5,8 +5,7 @@ import Sizes from "../../consts/Sizes";
 import Socials from "./socials/Socials";
 import Colors from "../../consts/Colors";
 import DesktopNavMenu from "./nav-menu/DesktopNavMenu";
-import PaypalButton from "../paypal-button/PaypalButton";
-import NavIcon from "./nav-menu/NavIcon";
+import ShopButton from "../shop-button";
 
 const DesktopNavBar = (props) => {
   return (
@@ -18,8 +17,7 @@ const DesktopNavBar = (props) => {
             <DesktopNavMenu />
           </Left>
           <Right>
-            <NavIcon to={"https://ehfm.bigcartel.com/"} />
-            <PaypalButton />
+            <ShopButton />
             <Socials />
           </Right>
         </Inner>
