@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import Devices from "../../../consts/Devices";
 import Sizes from "../../../consts/Sizes";
+import Anims from "../../../consts/Anims";
 
 const BackgroundImage = ({ imageSrc, ...props }) => {
   console.log("rerender image");
@@ -9,6 +10,7 @@ const BackgroundImage = ({ imageSrc, ...props }) => {
 };
 
 const Wrapper = styled.div`
+  ${Anims.fadeInWithDelay(0.5)}
   width: 100%;
   background-position: center center !important;
   background-size: cover !important;

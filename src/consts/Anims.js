@@ -1,6 +1,6 @@
 export default {
-  fadeInWithDelay: `
-      animation: fadeinwithdelay 0.3s ease-in 0.01s;
+  fadeInWithDelay: (delay) => `
+      animation: fadeinwithdelay 0.3s ease-in ${delay ? delay : 0.01}s;
       animation-fill-mode: both;
       @keyframes fadeinwithdelay {
         from {

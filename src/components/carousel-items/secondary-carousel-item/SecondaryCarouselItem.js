@@ -40,7 +40,7 @@ const SecondaryCarouselItem = ({
 };
 
 const Wrapper = styled.div`
-  ${Anims.fadeInWithDelay}
+  ${Anims.fadeInWithDelay(0.01)}
   position: relative;
   display: grid;
   grid-template-rows: 1fr auto;

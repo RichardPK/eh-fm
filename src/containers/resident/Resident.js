@@ -6,13 +6,8 @@ import MetaData from "../../components/metadata/MetaData";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
 import GetImageUrl from "../../helpers/GetImageUrl";
-import { WidgetMarginStyles } from "../../consts/Styles";
 import ResidentProfile from "../../components/resident-profile/ResidentProfile";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
-
-const Wrapper = styled.div`
-  ${(props) => WidgetMarginStyles(props)}
-`;
 
 const ResidentShowContainer = ({ residentsData }) => {
   const { id } = useParams();
