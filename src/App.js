@@ -25,7 +25,9 @@ export const App = () => {
       scheduleData &&
       residentsData &&
       carouselData.allCarouselItems &&
-      carouselData.additionalCarousels
+      carouselData.additionalCarousels &&
+      supportPageData &&
+      aboutPageData
   );
 
   return (

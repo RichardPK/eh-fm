@@ -21,7 +21,7 @@ const BackgroundImage = ({ imageSrc, ...props }) => {
 
 const Wrapper = styled.div`
   opacity: 0;
-  ${(props) => (props.loaded ? `${Anims.fadeInWithDelay(0.05)}` : ``)}
+  ${(props) => (props.loaded ? `${Anims.fadeInWithDelay(0)}` : ``)}
 
   width: 100%;
   background-position: center center !important;

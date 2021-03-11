@@ -30,7 +30,7 @@ const InnerWrapper = styled.div`
   grid-template-rows: auto auto auto;
 `;
 
-const About = ({ pageData }) => {
+const Support = ({ pageData }) => {
   const [cookies] = useCookies(["ehfm"]);
   const { viewportWidth } = useContext(DeviceInfoContext);
 
@@ -52,7 +52,7 @@ const About = ({ pageData }) => {
   const bgImageSize = 1.5 * viewportWidth;
 
   const bgImageUrl = GetImageUrl({
-    baseUrl: banner_image,
+    baseUrl: banner_image.url,
     width: bgImageSize,
     height: bgImageSize,
   });
@@ -75,4 +75,4 @@ const About = ({ pageData }) => {
   );
 };
 
-export default About;
+export default Support;
