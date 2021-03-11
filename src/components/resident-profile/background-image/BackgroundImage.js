@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import Devices from "../../../consts/Devices";
 import Sizes from "../../../consts/Sizes";
 import Anims from "../../../consts/Anims";
 
 const BackgroundImage = ({ imageSrc, ...props }) => {
-  console.log("rerender image");
-  return <Wrapper imageSrc={imageSrc} {...props} />;
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const imageLoader = new Image();
+    imageLoader.src = imageSrc;
+
+    imageLoader.onload = () => {
+      setLoaded(true);
+    };
+  }, [imageSrc, loaded]);
+
+  return <Wrapper imageSrc={imageSrc} {...props} loaded={loaded} />;
 };
 
 const Wrapper = styled.div`
-  ${Anims.fadeInWithDelay(0.5)}
+  opacity: 0;
+  ${(props) => (props.loaded ? `${Anims.fadeInWithDelay(0.05)}` : ``)}
+
   width: 100%;
   background-position: center center !important;
   background-size: cover !important;
