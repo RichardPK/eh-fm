@@ -40,6 +40,7 @@ const PastShows = ({
 
 const PastShowsWrapper = styled.div`
   ${PagePaddingStyles}
+  left: 0;
   position: absolute;
   top: calc(100vh - 9rem);
   display: flex;

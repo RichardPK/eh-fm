@@ -10,6 +10,8 @@ import {
   WidgetMarginStyles,
   PagePaddingStyles,
   FullHeightPageStyles,
+  mobileMargin,
+  desktopMargin,
 } from "../../consts/Styles";
 
 const ResidentProfile = ({
@@ -119,8 +121,12 @@ const ResidentProfile = ({
 
 const Wrapper = styled.div`
   ${FullHeightPageStyles}
-  ${(props) => WidgetMarginStyles(props)};
   ${PagePaddingStyles}
+  margin: ${mobileMargin} auto 0;
+
+  @media ${Devices.tablet} {
+    margin: ${desktopMargin} auto 0;
+  }
   position: relative;
   display: flex;
   flex-direction: column;
