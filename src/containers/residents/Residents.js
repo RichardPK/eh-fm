@@ -3,11 +3,11 @@ import styled from "styled-components/macro";
 import { useCookies } from "react-cookie";
 import MetaData from "../../components/metadata/MetaData";
 import ResidentListItem from "../../components/resident-list-item/ResidentListItem";
-import Devices from "../../consts/Devices";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
+import WidgetMarginStyles from "../../consts/WidgetMarginStyles";
 
 const ResidentsContainer = ({ residentsData }) => {
-  const { mixCloudWidget } = useContext(MixcloudWidgetContext);
+  const { mixcloudWidgetHtml } = useContext(MixcloudWidgetContext);
   const [cookies] = useCookies(["ehfm"]);
 
   return (
@@ -18,8 +18,8 @@ const ResidentsContainer = ({ residentsData }) => {
         ult="http://www.ehfm.live/residents"
       />
       <Wrapper
-        mixCloudWidget={mixCloudWidget}
-        cookiesBannerShowing={cookies.ehfm !== "1"}
+        mixcloudWidgetHtml={mixcloudWidgetHtml}
+        cookiesBannerShowing={!cookies.ehfm}
       >
         {residentsData.map((show, index) => {
           return (
@@ -43,19 +43,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 2rem auto
-    ${(props) =>
-      props.cookiesBannerShowing ? "70px" : props.mixCloudWidget ? `123px` : 0};
-
-  @media ${Devices.tablet} {
-    margin: 2.5rem auto
-      ${(props) =>
-        props.cookiesBannerShowing
-          ? "95px"
-          : props.mixCloudWidget
-          ? `123px`
-          : 0};
-  }
+  ${(props) => WidgetMarginStyles(props)}
 `;
 
 export default ResidentsContainer;

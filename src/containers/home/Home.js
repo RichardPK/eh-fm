@@ -5,6 +5,7 @@ import MetaData from "../../components/metadata/MetaData";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import Carousel from "../../components/carousel/Carousel";
+import WidgetMarginStyles from "../../consts/WidgetMarginStyles";
 import AdditionalCarouselHeading from "../../components/additional-carousel-heading/AdditionalCarouselHeading";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
@@ -82,13 +83,14 @@ const HomeContainer = ({ carouselData }) => {
     );
     setAdditionalCarouselsWithItems(carouselsSortedByPosition);
   }, [additionalCarousels, allCarouselItems]);
+  console.log(cookies);
 
   return (
     <React.Fragment>
       <MetaData url="https://www.ehfm.live" />
       <Wrapper
         mixcloudWidgetHtml={mixcloudWidgetHtml}
-        cookiesBannerShowing={cookies.ehfm !== "1"}
+        cookiesBannerShowing={!cookies.ehfm}
       >
         {highlightedCarouselItems.length > 0 && (
           <PrimaryCarousel
@@ -127,13 +129,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 0 1rem;
   max-width: calc(100vw - 2rem);
-  margin: 2rem 0
-    ${(props) =>
-      props.cookiesBannerShowing
-        ? "70px"
-        : props.mixcloudWidgetHtml
-        ? `123px`
-        : 0};
+  ${(props) => WidgetMarginStyles(props)};
 
   @media ${Devices.mobileL} {
     padding: 0 2rem;
@@ -143,14 +139,6 @@ const Wrapper = styled.div`
   @media ${Devices.tablet} {
     padding: 0 3rem;
     max-width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px - 6rem);
-
-    margin: 2.5rem 0
-      ${(props) =>
-        props.cookiesBannerShowing
-          ? "95px"
-          : props.mixcloudWidgetHtml
-          ? `123px`
-          : 0};
   }
 
   @media ${Devices.laptop} and ${Devices.laptopHeightS} {
