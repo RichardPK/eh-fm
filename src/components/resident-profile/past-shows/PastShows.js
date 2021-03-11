@@ -49,6 +49,10 @@ const PastShowsWrapper = styled.div`
   @media ${Devices.tablet} {
     top: calc(100vh - 7rem);
   }
+
+  :last-child {
+    ${(props) => (props.mixcloudWidgetHtml ? `padding-bottom: 123px` : "")};
+  }
 `;
 
 export default PastShows;

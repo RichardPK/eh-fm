@@ -86,6 +86,7 @@ const ResidentProfile = ({
     <Wrapper
       mixcloudWidgetHtml={mixcloudWidgetHtml}
       cookiesBannerShowing={!cookies.ehfm}
+      displayShows={displayShows}
     >
       <ProfileText selectedShow={selectedShow} />
       {pastMixcloudShows && orderedPastShows && (
@@ -122,10 +123,13 @@ const ResidentProfile = ({
 const Wrapper = styled.div`
   ${FullHeightPageStyles}
   ${PagePaddingStyles}
-  margin: ${mobileMargin} auto 0;
+  margin: ${mobileMargin} auto ${(props) =>
+    props.displayShows ? 0 : props.mixcloudWidgetHtml ? `123px` : 0};
 
   @media ${Devices.tablet} {
-    margin: ${desktopMargin} auto 0;
+    margin: ${desktopMargin} auto
+      ${(props) =>
+        props.displayShows ? 0 : props.mixcloudWidgetHtml ? `123px` : 0};
   }
   position: relative;
   display: flex;
