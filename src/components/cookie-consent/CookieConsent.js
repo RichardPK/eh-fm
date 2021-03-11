@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import { Body } from "../text-elements/index";
 import Colors from "../../consts/Colors";
@@ -14,12 +14,16 @@ const CookieConsent = () => {
       <Inner>
         <WhiteBox>
           <CookiesText>
-            🍪 This website uses cookies to help us make EHFM better. You can
-            check out our policy{" "}
+            <span role="img" aria-label="cookie emoji">
+              🍪
+            </span>{" "}
+            This website uses cookies to help us make EHFM better. You can check
+            out our policy{" "}
             {
               <a
                 href="https://www.iubenda.com/privacy-policy/61514814"
                 target="_blank"
+                rel="noopener noreferrer"
                 alt="privacy policy"
               >
                 here
@@ -29,6 +33,7 @@ const CookieConsent = () => {
             accept the use of cookies as detailed in{" "}
             <a
               href="https://www.iubenda.com/privacy-policy/61514814"
+              rel="noopener noreferrer"
               target="_blank"
               alt="privacy policy"
             >
@@ -68,7 +73,6 @@ const WhiteBox = styled.div`
   margin: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  /* background-color: ${Colors.playerWhiteCustom(0.95)}; */
 
   @media ${Devices.tablet} {
     margin: 0 40px;

@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Switch, useLocation, useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
 import Header from "../header/Header";
 import SidePlayer from "../../components/players/side-player/SidePlayer";
@@ -12,6 +12,7 @@ import Devices from "../../consts/Devices";
 import About from "../about";
 import Support from "../support";
 import LiveRadioSchema from "../../components/schema/live-radio-schema/LiveRadioSchema";
+import { useCookies } from "react-cookie";
 
 const Main = ({
   aboutPageData,
@@ -21,8 +22,18 @@ const Main = ({
   residentsData,
   carouselData,
 }) => {
+  const history = useHistory();
+  const location = useLocation();
+  const [cookie, setCookie] = useCookies(["ehfm"]);
+
+  useEffect(() => {
+    if (history.action === "PUSH" && !cookie.ehfm) {
+      setCookie("ehfm", 1, { path: "/" });
+    }
+  }, [history, location, cookie, setCookie]);
+
   return (
-    <React.Fragment>
+    <>
       <PageViewAnalytics
         url={window.location.pathname + window.location.search}
       />
@@ -55,7 +66,7 @@ const Main = ({
         </MainInner>
         <Footer />
       </MainWrapper>
-    </React.Fragment>
+    </>
   );
 };
 
