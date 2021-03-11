@@ -11,12 +11,25 @@ padding: 0 1rem;
   padding: 0 3rem;
 `;
 
+const mobileMargin = "2rem";
+const desktopMargin = "2.5rem";
+const navBarMobileHeight = "8.66rem";
+const navBarDesktopHeight = "5.375rem";
+
+export const FullHeightPageStyles = `
+height: calc(100vh - ${mobileMargin} - ${navBarMobileHeight});
+
+@media ${Devices.tablet} {
+  height: calc(100vh - ${desktopMargin} - ${navBarDesktopHeight});
+}
+`;
+
 export const WidgetMarginStyles = (props) => `
-margin: 2rem auto 
+margin: ${mobileMargin} auto 
 ${props.cookiesBannerShowing ? "70px" : props.mixcloudWidgetHtml ? `123px` : 0};
 
     @media ${Devices.tablet} {    
-      margin: 2.5rem auto
+      margin: ${desktopMargin} auto
       ${
         props.cookiesBannerShowing
           ? "95px"

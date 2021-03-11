@@ -6,7 +6,11 @@ import ProfileText from "./profile-text/ProfileText";
 import MostRecentShowbutton from "./most-recent-show-button/MostRecentShowButton";
 import ArchiveButton from "./archive-button/ArchiveButton";
 import PastShows from "./past-shows/PastShows";
-import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
+import {
+  WidgetMarginStyles,
+  PagePaddingStyles,
+  FullHeightPageStyles,
+} from "../../consts/Styles";
 
 const ResidentProfile = ({
   handleMixcloudClick,
@@ -113,18 +117,13 @@ const ResidentProfile = ({
 };
 
 const Wrapper = styled.div`
+  ${FullHeightPageStyles}
   ${(props) => WidgetMarginStyles(props)};
   ${PagePaddingStyles}
   position: relative;
-  /* minus nav bar, padding & top margin. Took off slightly more to create bar at bottom */
-  height: calc(100vh - 150px - 3.5rem);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-
-  @media ${Devices.tablet} {
-    height: calc(100vh - 126px - 3.5rem);
-  }
 `;
 
 export default ResidentProfile;

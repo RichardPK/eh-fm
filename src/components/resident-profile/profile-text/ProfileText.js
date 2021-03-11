@@ -70,8 +70,8 @@ const Wrapper = styled.div`
   padding-left: 5px;
   padding-right: 5px;
   position: absolute;
-  right: 20px;
-  left: 20px;
+  right: 1rem;
+  left: 1rem;
   bottom: 102px;
 
   @media ${Devices.mobileL} {
