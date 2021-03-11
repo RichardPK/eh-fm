@@ -6,13 +6,14 @@ import ProfileText from "./profile-text/ProfileText";
 import MostRecentShowbutton from "./most-recent-show-button/MostRecentShowButton";
 import ArchiveButton from "./archive-button/ArchiveButton";
 import PastShows from "./past-shows/PastShows";
+import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
 
 const ResidentProfile = ({
   handleMixcloudClick,
   mixcloudWidgetHtml,
+  cookies,
   pastMixcloudShows,
   selectedShow,
-  cookies,
 }) => {
   const [displayShows, setDisplayShows] = useState(false);
   const [orderedPastShows, setOrderedPastShows] = useState(null);
@@ -76,7 +77,10 @@ const ResidentProfile = ({
   };
 
   return (
-    <Wrapper mixcloudWidgetHtml={mixcloudWidgetHtml}>
+    <Wrapper
+      mixcloudWidgetHtml={mixcloudWidgetHtml}
+      cookiesBannerShowing={!cookies.ehfm}
+    >
       <ProfileText selectedShow={selectedShow} />
       {pastMixcloudShows && orderedPastShows && (
         <>
@@ -109,19 +113,16 @@ const ResidentProfile = ({
 };
 
 const Wrapper = styled.div`
+  ${(props) => WidgetMarginStyles(props)};
+  ${PagePaddingStyles}
   position: relative;
   /* minus nav bar, padding & top margin. Took off slightly more to create bar at bottom */
   height: calc(100vh - 150px - 3.5rem);
-  margin: 143px auto ${(props) => (props.mixcloudWidgetHtml ? `123px` : 0)};
-  padding: 20px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 
-  margin: 2rem auto 0;
-
   @media ${Devices.tablet} {
-    margin: 2.5rem auto 0;
     height: calc(100vh - 126px - 3.5rem);
   }
 `;

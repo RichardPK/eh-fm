@@ -10,6 +10,7 @@ import BodyParagraphs from "./BodyParagraphs";
 import MetaData from "../../components/metadata/MetaData";
 import GetImageUrl from "../../helpers/GetImageUrl";
 import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
+import { PagePaddingStyles } from "../../consts/Styles";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
   top: 86px;
@@ -18,15 +19,9 @@ const StyledBackgroundImage = styled(BackgroundImage)`
 const Wrapper = styled.div`
   height: calc(100vh - 196px - 3.5rem);
   margin: 46px auto ${(props) => (props.mixCloudWidget ? `103px` : 0)};
-
-  padding: 0 1rem;
-
-  @media ${Devices.mobileL} {
-    padding: 0 2rem;
-  }
+  ${PagePaddingStyles}
 
   @media ${Devices.tablet} {
-    padding: 0 3rem;
     max-width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px - 6rem);
     margin: 2.5rem 0;
   }
@@ -56,7 +51,7 @@ const About = ({ pageData }) => {
     height: "800",
   });
 
-  const bgImageSize = 2 * viewportWidth;
+  const bgImageSize = 1.5 * viewportWidth;
 
   const bgImageUrl = GetImageUrl({
     baseUrl: image.url,

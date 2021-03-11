@@ -5,7 +5,7 @@ import MetaData from "../../components/metadata/MetaData";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import Carousel from "../../components/carousel/Carousel";
-import WidgetMarginStyles from "../../consts/WidgetMarginStyles";
+import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
 import AdditionalCarouselHeading from "../../components/additional-carousel-heading/AdditionalCarouselHeading";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
@@ -127,17 +127,15 @@ const HomeContainer = ({ carouselData }) => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 1rem;
   max-width: calc(100vw - 2rem);
   ${(props) => WidgetMarginStyles(props)};
+  ${PagePaddingStyles}
 
   @media ${Devices.mobileL} {
-    padding: 0 2rem;
     max-width: calc(100vw - 4rem);
   }
 
   @media ${Devices.tablet} {
-    padding: 0 3rem;
     max-width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px - 6rem);
   }
 

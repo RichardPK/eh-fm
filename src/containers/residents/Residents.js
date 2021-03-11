@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import MetaData from "../../components/metadata/MetaData";
 import ResidentListItem from "../../components/resident-list-item/ResidentListItem";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
-import WidgetMarginStyles from "../../consts/WidgetMarginStyles";
+import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
 
 const ResidentsContainer = ({ residentsData }) => {
   const { mixcloudWidgetHtml } = useContext(MixcloudWidgetContext);
@@ -39,11 +39,11 @@ const ResidentsContainer = ({ residentsData }) => {
 };
 
 const Wrapper = styled.div`
-  padding: 0 20px 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   ${(props) => WidgetMarginStyles(props)}
+  ${PagePaddingStyles}
 `;
 
 export default ResidentsContainer;

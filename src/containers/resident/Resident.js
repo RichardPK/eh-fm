@@ -8,6 +8,7 @@ import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
 import GetImageUrl from "../../helpers/GetImageUrl";
 import ResidentProfile from "../../components/resident-profile/ResidentProfile";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
+import { WidgetMarginStyles } from "../../consts/Styles";
 
 const ResidentShowContainer = ({ residentsData }) => {
   const { id } = useParams();
@@ -50,7 +51,7 @@ const ResidentShowContainer = ({ residentsData }) => {
     selectedShow && mixCloudAPICall();
   }, [selectedShow]);
 
-  const bgImageSize = 2 * viewportWidth;
+  const bgImageSize = 1.5 * viewportWidth;
 
   const bgImageUrl = GetImageUrl({
     baseUrl: selectedShow && selectedShow.show_image.fullscreen.url,
@@ -73,15 +74,13 @@ const ResidentShowContainer = ({ residentsData }) => {
             mixCloudWidget={mixcloudWidgetHtml}
             imageSrc={bgImageUrl}
           />
-          <Wrapper>
-            <ResidentProfile
-              cookies={cookies}
-              selectedShow={selectedShow}
-              pastMixcloudShows={pastMixcloudShows}
-              mixcloudWidgetHtml={mixcloudWidgetHtml}
-              handleMixcloudClick={handleMixcloudClick}
-            />
-          </Wrapper>
+          <ResidentProfile
+            cookies={cookies}
+            selectedShow={selectedShow}
+            pastMixcloudShows={pastMixcloudShows}
+            mixcloudWidgetHtml={mixcloudWidgetHtml}
+            handleMixcloudClick={handleMixcloudClick}
+          />
         </>
       ) : (
         <p>Loading</p>
@@ -89,9 +88,4 @@ const ResidentShowContainer = ({ residentsData }) => {
     </>
   );
 };
-
-const Wrapper = styled.div`
-  position: relative;
-`;
-
 export default ResidentShowContainer;
