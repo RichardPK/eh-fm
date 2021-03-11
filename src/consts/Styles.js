@@ -9,12 +9,13 @@ padding: 0 1rem;
 
 @media ${Devices.tablet} {
   padding: 0 3rem;
+}
 `;
 
-const mobileMargin = "2rem";
-const desktopMargin = "2.5rem";
-const navBarMobileHeight = "8.66rem";
-const navBarDesktopHeight = "5.375rem";
+export const mobileMargin = "2rem";
+export const desktopMargin = "2.5rem";
+export const navBarMobileHeight = "8.66rem";
+export const navBarDesktopHeight = "5.375rem";
 
 export const FullHeightPageStyles = `
 height: calc(100vh - ${mobileMargin} - ${navBarMobileHeight});

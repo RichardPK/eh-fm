@@ -107,6 +107,7 @@ const ResidentProfile = ({
                 renderDate={renderDate}
                 renderShowName={renderShowName}
                 mixcloudWidgetHtml={mixcloudWidgetHtml}
+                cookiesBannerShowing={!cookies.ehfm}
               />
             </>
           )}

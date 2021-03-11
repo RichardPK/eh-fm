@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import PastShowCard from "../past-show-card/PastShowCard";
 import Devices from "../../../consts/Devices";
+import { PagePaddingStyles, WidgetMarginStyles } from "../../../consts/Styles";
 
 const PastShows = ({
   displayShows,
@@ -9,13 +10,14 @@ const PastShows = ({
   renderDate,
   renderShowName,
   handleMixcloudClick,
-  mixCloudWidget,
+  mixcloudWidgetHtml,
+  cookiesBannerShowing,
 }) => {
   const showsToDisplay = allPastShows.map((show, i) => {
     return (
       <PastShowCard
-        handleMixcloudClick={() => handleMixcloudClick(show.key)}
         key={i}
+        handleMixcloudClick={() => handleMixcloudClick(show.key)}
         date={renderDate(show.name)}
         showName={renderShowName(show.name)}
         tags={show.tags}
@@ -26,7 +28,10 @@ const PastShows = ({
 
   return (
     displayShows && (
-      <PastShowsWrapper mixCloudWidget={mixCloudWidget}>
+      <PastShowsWrapper
+        mixcloudWidgetHtml={mixcloudWidgetHtml}
+        cookiesBannerShowing={cookiesBannerShowing}
+      >
         {showsToDisplay}
       </PastShowsWrapper>
     )
@@ -34,17 +39,14 @@ const PastShows = ({
 };
 
 const PastShowsWrapper = styled.div`
-  left: 5px;
-  right: 5px;
+  ${PagePaddingStyles}
   position: absolute;
-  top: calc(100vh - 130px);
+  top: calc(100vh - 9rem);
   display: flex;
   flex-direction: column;
-  margin-bottom: ${(props) => (props.mixCloudWidget ? "123px" : "auto")};
 
-  @media ${Devices.mobileL} {
-    left: 20px;
-    right: 20px;
+  @media ${Devices.tablet} {
+    top: calc(100vh - 7rem);
   }
 `;
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useCookies } from "react-cookie";
-import styled from "styled-components/macro";
 import { useParams } from "react-router-dom";
 import MetaData from "../../components/metadata/MetaData";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
@@ -8,7 +7,6 @@ import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
 import GetImageUrl from "../../helpers/GetImageUrl";
 import ResidentProfile from "../../components/resident-profile/ResidentProfile";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
-import { WidgetMarginStyles } from "../../consts/Styles";
 
 const ResidentShowContainer = ({ residentsData }) => {
   const { id } = useParams();
@@ -70,10 +68,8 @@ const ResidentShowContainer = ({ residentsData }) => {
             imageWidth={selectedShow.show_image.dimensions.width}
             imageHeight={selectedShow.show_image.dimensions.height}
           />
-          <BackgroundImage
-            mixCloudWidget={mixcloudWidgetHtml}
-            imageSrc={bgImageUrl}
-          />
+          <BackgroundImage imageSrc={bgImageUrl} />
+
           <ResidentProfile
             cookies={cookies}
             selectedShow={selectedShow}
