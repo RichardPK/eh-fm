@@ -7,19 +7,10 @@ import Sizes from "../../consts/Sizes";
 import { useCookies } from "react-cookie";
 
 const CookieConsent = () => {
-  const [showConsentBanner, setShowConsentBanner] = useState(true);
-  const [cookie, setCookie] = useCookies(["ehfm"]);
-
-  useEffect(() => {
-    if (showConsentBanner === true) {
-      if (cookie.ehfm) {
-        setShowConsentBanner(false);
-      }
-    }
-  }, [showConsentBanner, cookie]);
+  const [setCookie] = useCookies(["ehfm"]);
 
   return (
-    <Wrapper showConsentBanner={showConsentBanner}>
+    <Wrapper>
       <Inner>
         <WhiteBox>
           <CookiesText>
@@ -48,7 +39,6 @@ const CookieConsent = () => {
           <CloseButton
             onClick={() => {
               setCookie("ehfm", 1, { path: "/" });
-              setShowConsentBanner(false);
             }}
           >
             <span>x</span>
@@ -60,7 +50,6 @@ const CookieConsent = () => {
 };
 
 const Wrapper = styled.div`
-  display: ${(props) => (props.showConsentBanner ? "block" : "none")};
   background-color: ${Colors.playerWhiteCustom(0.95)};
   position: fixed;
   bottom: 0;
@@ -79,7 +68,7 @@ const WhiteBox = styled.div`
   margin: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  background-color: ${Colors.playerWhiteCustom(0.95)};
+  /* background-color: ${Colors.playerWhiteCustom(0.95)}; */
 
   @media ${Devices.tablet} {
     margin: 0 40px;
