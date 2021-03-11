@@ -9,6 +9,10 @@ import GetImageUrl from "../../helpers/GetImageUrl";
 import ResidentProfile from "../../components/resident-profile/ResidentProfile";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
 
+const StyledBackgroundImage = styled(BackgroundImage)`
+  height: 100vh;
+`;
+
 const ResidentShowContainer = ({ residentsData }) => {
   const { id } = useParams();
   const [cookies] = useCookies(["ehfm"]);
@@ -69,7 +73,7 @@ const ResidentShowContainer = ({ residentsData }) => {
             imageWidth={selectedShow.show_image.dimensions.width}
             imageHeight={selectedShow.show_image.dimensions.height}
           />
-          <BackgroundImage imageSrc={bgImageUrl} />
+          <StyledBackgroundImage imageSrc={bgImageUrl} />
           <ResidentProfile
             cookies={cookies}
             selectedShow={selectedShow}
