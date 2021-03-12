@@ -128,6 +128,7 @@ const OnAirWrapper = styled.div`
   position: absolute;
   top: -5;
   left: 0;
+  z-index: 2;
 `;
 
 const CurrentShowImageWrapper = styled.div`
