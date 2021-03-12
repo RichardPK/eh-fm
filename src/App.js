@@ -23,21 +23,26 @@ export const App = () => {
   const path = window.location.pathname;
 
   const essentialDataFetchingFinished = () => {
-    switch (path) {
-      case "/":
-        return Boolean(
-          currentShowData &&
-            carouselData.allCarouselItems &&
-            carouselData.additionalCarousels
-        );
-      case "/residents":
-        return Boolean(currentShowData && residentsData);
-      case "/about":
-        return Boolean(currentShowData && aboutPageData);
-      case "/support":
-        return Boolean(currentShowData && supportPageData);
-      default:
-        break;
+    const essentialForAllPaths = currentShowData && residentsData;
+
+    if (path === "/") {
+      return Boolean(
+        essentialForAllPaths &&
+          carouselData.allCarouselItems &&
+          carouselData.additionalCarousels
+      );
+    }
+
+    if (path.includes("/residents")) {
+      return Boolean(essentialForAllPaths);
+    }
+
+    if (path === "/about") {
+      return Boolean(essentialForAllPaths && aboutPageData);
+    }
+
+    if (path === "/support") {
+      return Boolean(essentialForAllPaths && supportPageData);
     }
   };
 
