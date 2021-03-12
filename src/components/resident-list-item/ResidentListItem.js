@@ -5,7 +5,7 @@ import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import { Cta } from "../text-elements/index";
-import Anims from "../../consts/Anims";
+import Image from "../image/Image";
 
 const ResidentListItem = (props) => {
   return (
@@ -13,7 +13,7 @@ const ResidentListItem = (props) => {
       <Link to={`/residents/${props.showId}`}>
         <Wrapper>
           <ImageWrapper>
-            <ShowImage src={props.thumbnailImage} alt="show presenters" />
+            <ShowImage baseUrl={props.thumbnailImage} alt="show presenters" />
           </ImageWrapper>
           <ShowTitle>{props.showTitle}</ShowTitle>
         </Wrapper>
@@ -23,7 +23,6 @@ const ResidentListItem = (props) => {
 };
 
 const Wrapper = styled.div`
-  ${Anims.fadeIn}
   display: flex;
   flex-direction: column;
   max-width: 265px;
@@ -64,12 +63,10 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const ShowImage = styled.img`
+const ShowImage = styled(Image)`
   width: auto;
   height: 265px;
   margin: 0px 0px 0px 0px;
-  opacity: 1;
-  transition: opacity, 0.2s ease-out;
 `;
 
 const ShowTitle = styled(Cta)`

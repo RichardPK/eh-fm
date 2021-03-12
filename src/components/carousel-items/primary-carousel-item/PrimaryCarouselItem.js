@@ -54,7 +54,7 @@ const PrimaryCarouselItem = ({
 };
 
 const Wrapper = styled.div`
-  ${Anims.fadeInWithDelay(0.01)}
+  ${Anims.fadeInWithDelay(0.1)}
   position: relative;
   width: 100%;
   height: 100%;
