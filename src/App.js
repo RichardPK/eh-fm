@@ -20,18 +20,29 @@ export const App = () => {
   const scheduleData = useScheduleData();
   const audioRef = useRef(null);
 
-  const essentialDataFetchingFinished = Boolean(
-    currentShowData &&
-      scheduleData &&
-      residentsData &&
-      carouselData.allCarouselItems &&
-      carouselData.additionalCarousels &&
-      supportPageData &&
-      aboutPageData
-  );
+  const path = window.location.pathname;
+
+  const essentialDataFetchingFinished = () => {
+    switch (path) {
+      case "/":
+        return Boolean(
+          currentShowData &&
+            carouselData.allCarouselItems &&
+            carouselData.additionalCarousels
+        );
+      case "/residents":
+        return Boolean(currentShowData && residentsData);
+      case "/about":
+        return Boolean(currentShowData && aboutPageData);
+      case "/support":
+        return Boolean(currentShowData && supportPageData);
+      default:
+        break;
+    }
+  };
 
   return (
-    essentialDataFetchingFinished && (
+    essentialDataFetchingFinished() && (
       <CookiesProvider>
         <RadioPlayerContextProvider audioRef={audioRef}>
           <MixcloudWidgetContextProvider>
