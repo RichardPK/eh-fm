@@ -6,6 +6,7 @@ import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import { Cta } from "../text-elements/index";
 import Image from "../image/Image";
+import HoverLine from "../hoverLine/HoverLine";
 
 const ResidentListItem = (props) => {
   return (
@@ -16,6 +17,7 @@ const ResidentListItem = (props) => {
             <ShowImage baseUrl={props.thumbnailImage} alt="show presenters" />
           </ImageWrapper>
           <ShowTitle>{props.showTitle}</ShowTitle>
+          <HoverLine zIndex={10} placeholderWidth={"50px"} />
         </Wrapper>
       </Link>
     </React.Fragment>
@@ -23,6 +25,7 @@ const ResidentListItem = (props) => {
 };
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   max-width: 265px;
@@ -30,7 +33,7 @@ const Wrapper = styled.div`
   border-radius: ${Sizes.buttonRadius}px;
   margin: 15px 5px;
   background: white;
-  border-bottom: 2px solid ${Colors.ehfmPrimary()};
+  /* border-bottom: 2px solid ${Colors.ehfmPrimary()}; */
   height: 190px;
   width: 70vw;
 
