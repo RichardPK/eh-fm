@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import GetImageUrl from "../../helpers/GetImageUrl";
 import Anims from "../../consts/Anims";
 
-const Image = ({ baseUrl, width, height, fit, alt, ...props }) => {
+const Image = ({ baseUrl, width, height, fit, alt, noFadeIn, ...props }) => {
   const [loaded, setLoaded] = useState(false);
   const url = GetImageUrl({ baseUrl, width, height, fit });
   return (
@@ -13,13 +13,15 @@ const Image = ({ baseUrl, width, height, fit, alt, ...props }) => {
       alt={alt}
       onLoad={() => setLoaded(true)}
       loaded={loaded}
+      noFadeIn={noFadeIn}
     />
   );
 };
 
 const Img = styled.img`
-  opacity: 0;
-  ${(props) => (props.loaded ? `${Anims.fadeInWithDelay(0)}` : ``)}
+  opacity: ${(props) => (props.noFadeIn ? 1 : 0)};
+  ${(props) =>
+    !props.noFadeIn && props.loaded ? `${Anims.fadeInWithDelay(0)}` : ``}
   max-width: 100%;
   height: 100%;
   width: 100%;

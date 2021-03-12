@@ -39,7 +39,13 @@ const PrimaryCarouselItem = ({
         <FlavourHeading>{data.flavour_text}</FlavourHeading>
       </TextWrapper>
       <ImageWrapper hovered={hovered}>
-        <Image baseUrl={data.image.url} width={900} height={900} fit="crop" />
+        <Image
+          baseUrl={data.image.url}
+          width={900}
+          height={900}
+          fit="crop"
+          noFadeIn
+        />
         <ButtonWrapper>
           <CarouselButton
             type={data.type}
