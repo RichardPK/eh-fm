@@ -8,6 +8,8 @@ import MetaData from "../../components/metadata/MetaData";
 import GetImageUrl from "../../helpers/GetImageUrl";
 import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
 import { PagePaddingStyles } from "../../consts/Styles";
+import TopSection from "../about/TopSection";
+import BodyParagraphs from "../about/BodyParagraphs";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
   top: 86px;
@@ -41,6 +43,7 @@ const Support = ({ pageData }) => {
     heading,
     subheading,
     support_urls,
+    description,
   } = pageData.data;
 
   const metaDataImageUrl = GetImageUrl({
@@ -69,7 +72,10 @@ const Support = ({ pageData }) => {
       />
       <StyledBackgroundImage imageSrc={bgImageUrl} />
       <Wrapper>
-        <InnerWrapper></InnerWrapper>
+        <InnerWrapper>
+          <TopSection headline={heading} subheader={subheading} />
+          <BodyParagraphs aboutText={description} />
+        </InnerWrapper>
       </Wrapper>
     </>
   );

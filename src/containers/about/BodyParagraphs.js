@@ -10,8 +10,12 @@ const BodyParagraphsWrapper = styled.div`
   background-color: ${Colors.spanBg};
   ${gridStyles}
 
-  span:first-of-type {
+  span {
     margin-bottom: 1rem;
+
+    &:last-of-type {
+      margin-bottom: 0rem;
+    }
   }
 `;
 

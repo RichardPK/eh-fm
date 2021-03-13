@@ -42,8 +42,8 @@ const LinkWrapper = styled.div`
   svg {
     margin-left: 0.5rem;
     margin-bottom: 0.6rem;
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     g {
       fill: ${(props) =>
         props.isEmail ? Colors.ehfmPrimary() : Colors.playerWhite};
