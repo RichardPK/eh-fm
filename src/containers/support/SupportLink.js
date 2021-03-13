@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import Colors from "../../consts/Colors";
 import { Cta, Heading4 } from "../../components/text-elements/index";
-import { ReactComponent as ExternalLink } from "../../assets/svgs/external-link.svg";
 import { ReactComponent as Paypal } from "../../assets/svgs/paypal.svg";
 import { ReactComponent as Patreon } from "../../assets/svgs/patreon.svg";
 
 const Text = styled(Cta)`
   font-weight: normal;
-  color: ${Colors.playerWhite};
+  color: ${(props) =>
+    props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite};
+  color: fill, 0.2s ease-out;
 `;
 
 const LinkText = styled(Heading4)`
@@ -18,7 +19,9 @@ const LinkText = styled(Heading4)`
   justify-content: center;
   align-items: center;
   font-weight: normal;
-  color: ${Colors.playerWhite};
+  color: ${(props) =>
+    props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite};
+  color: fill, 0.2s ease-out;
 
   svg {
     margin-right: 0.5rem;
@@ -51,7 +54,9 @@ const LinkText = styled(Heading4)`
 
 const LinkWrapper = styled.div`
   border-radius: ${Sizes.buttonRadius}px;
-  background-color: ${Colors.ehfmPrimary()};
+  background-color: ${(props) =>
+    props.hovered ? Colors.playerWhite : Colors.ehfmPrimary()};
+  transition: background-color 0.2s ease-out;
   padding: 8px;
   display: flex;
   justify-content: space-between;
@@ -64,6 +69,7 @@ const LinkWrapper = styled.div`
 `;
 
 const SupportLink = ({ text, linkText, href }) => {
+  let [hovered, setHovered] = useState(false);
   const getIcon = () => {
     const lowerCaseLink = linkText.toLowerCase();
     if (lowerCaseLink.includes("paypal")) {
@@ -78,9 +84,19 @@ const SupportLink = ({ text, linkText, href }) => {
   };
 
   return (
-    <LinkWrapper href={href} as="a">
-      <Text>{text}</Text>
-      <LinkText>
+    <LinkWrapper
+      href={href}
+      as="a"
+      onMouseOver={() => {
+        setHovered(true);
+      }}
+      onMouseOut={() => {
+        setHovered(false);
+      }}
+      hovered={hovered}
+    >
+      <Text hovered={hovered}>{text}</Text>
+      <LinkText hovered={hovered}>
         {getIcon()} {linkText}
       </LinkText>
     </LinkWrapper>
