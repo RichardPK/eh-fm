@@ -23,14 +23,18 @@ const Paragraph = styled(Body)`
   color: ${Colors.playerWhite};
 `;
 
-const BodyParagraphs = ({ aboutText }) => {
+const BodyParagraphs = ({ aboutText, className }) => {
   const BodyParagraphBlocks = () => {
     return aboutText.map((dataItem) => {
       return <Paragraph>{dataItem.text}</Paragraph>;
     });
   };
 
-  return <BodyParagraphsWrapper>{BodyParagraphBlocks()}</BodyParagraphsWrapper>;
+  return (
+    <BodyParagraphsWrapper className={className}>
+      {BodyParagraphBlocks()}
+    </BodyParagraphsWrapper>
+  );
 };
 
 export default BodyParagraphs;

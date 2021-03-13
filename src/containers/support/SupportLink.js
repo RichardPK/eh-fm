@@ -64,6 +64,10 @@ const LinkWrapper = styled.div`
   width: 100%;
 
   @media ${Devices.tablet} {
+    width: 66%;
+  }
+
+  @media ${Devices.laptop} {
     width: 75%;
   }
 `;

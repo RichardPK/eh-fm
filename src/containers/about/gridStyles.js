@@ -44,6 +44,7 @@ grid-column: 1 / 7;
 }
 
 @media ${Devices.laptopL} {
+  grid-row: 2 / 3;
   grid-column: 3 / 5;
 }
 `;
