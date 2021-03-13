@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import Colors from "../../consts/Colors";
 import { Body } from "../../components/text-elements/index";
-import gridStyles from "./gridStyles";
+import { gridStyles } from "./gridStyles";
 
 const BodyParagraphsWrapper = styled.div`
   margin-bottom: 2.5rem;

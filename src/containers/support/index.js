@@ -10,6 +10,7 @@ import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
 import { PagePaddingStyles } from "../../consts/Styles";
 import TopSection from "../about/TopSection";
 import BodyParagraphs from "../about/BodyParagraphs";
+import SupportLinkContainer from "./SupportLinkContainer";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
   top: 86px;
@@ -29,6 +30,7 @@ const Wrapper = styled.div`
 const InnerWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 1rem;
   grid-template-rows: auto auto auto;
 `;
 
@@ -75,6 +77,7 @@ const Support = ({ pageData }) => {
         <InnerWrapper>
           <TopSection headline={heading} subheader={subheading} />
           <BodyParagraphs aboutText={description} />
+          <SupportLinkContainer support_urls={support_urls} />
         </InnerWrapper>
       </Wrapper>
     </>

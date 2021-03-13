@@ -5,7 +5,7 @@ import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
 import TopSection from "./TopSection";
-import GetInvolved from "./GetInvolved";
+import GetInvolvedContainer from "./GetInvolvedContainer";
 import BodyParagraphs from "./BodyParagraphs";
 import MetaData from "../../components/metadata/MetaData";
 import GetImageUrl from "../../helpers/GetImageUrl";
@@ -76,7 +76,7 @@ const About = ({ pageData }) => {
         <InnerWrapper>
           <TopSection headline={headline} subheader={subheader} />
           <BodyParagraphs aboutText={about} />
-          <GetInvolved get_involved_details={get_involved_details} />
+          <GetInvolvedContainer get_involved_details={get_involved_details} />
         </InnerWrapper>
       </Wrapper>
     </>
