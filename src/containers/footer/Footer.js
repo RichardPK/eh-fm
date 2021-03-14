@@ -8,11 +8,11 @@ const FooterContainer = () => {
   const { mixcloudWidgetHtml, setMixcloudWidgetHtml } = useContext(
     MixcloudWidgetContext
   );
-  const [cookie] = useCookies(["ehfm"]);
+  const [cookies] = useCookies(["ehfm"]);
 
   return (
     <React.Fragment>
-      {!cookie.ehfm && <CookieConsent />}
+      {!cookies.ehfm && <CookieConsent />}
       {mixcloudWidgetHtml && (
         <MixcloudWidget
           mixcloudWidgetHtml={mixcloudWidgetHtml}

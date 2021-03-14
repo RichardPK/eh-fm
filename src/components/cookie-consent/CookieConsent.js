@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { useCookies } from "react-cookie";
 import { Body } from "../text-elements/index";
 import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
-import { useCookies } from "react-cookie";
 
 const CookieConsent = () => {
-  const [setCookie] = useCookies(["ehfm"]);
+  const [cookies, setCookie] = useCookies(["ehfm"]);
 
   return (
     <Wrapper>

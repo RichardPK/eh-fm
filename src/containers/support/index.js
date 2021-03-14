@@ -31,7 +31,6 @@ const Wrapper = styled.div`
 const InnerWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-column-gap: 1rem;
   grid-template-rows: auto auto auto;
 `;
 

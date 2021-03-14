@@ -24,13 +24,13 @@ const Main = ({
 }) => {
   const history = useHistory();
   const location = useLocation();
-  const [cookie, setCookie] = useCookies(["ehfm"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["ehfm"]);
 
   useEffect(() => {
-    if (history.action === "PUSH" && !cookie.ehfm) {
+    if (history.action === "PUSH" && !cookies.ehfm) {
       setCookie("ehfm", 1, { path: "/" });
     }
-  }, [history, location, cookie, setCookie]);
+  }, [history, location, cookies, setCookie]);
 
   return (
     <>
