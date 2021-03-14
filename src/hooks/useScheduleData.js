@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import moment from "moment";
 
 export const useScheduleData = () => {
   const [airTimeSchedule, setAirtimeSchedule] = useState(null);
@@ -7,7 +8,9 @@ export const useScheduleData = () => {
   const scheduleApiCall = useCallback(() => {
     fetch("https://ehfm.airtime.pro/api/week-info")
       .then((response) => response.json())
-      .then((data) => setAirtimeSchedule(data));
+      .then((data) => {
+        setAirtimeSchedule(data);
+      });
   }, []);
 
   useEffect(() => {
@@ -17,7 +20,11 @@ export const useScheduleData = () => {
   const getRemainingShowsToday = (todaysSchedule) => {
     const now = Date.now();
     return todaysSchedule.filter((show) => {
-      const startTimeInMs = new Date(show.start_timestamp).getTime();
+      const browserAgnosticShowTimestamp = show.start_timestamp.replace(
+        / /g,
+        "T"
+      );
+      const startTimeInMs = new Date(browserAgnosticShowTimestamp).getTime();
       return startTimeInMs > now;
     });
   };
@@ -37,6 +44,8 @@ export const useScheduleData = () => {
       const daysIndex = new Date().getUTCDay();
       const daysString = days[daysIndex];
       const showsUpNext = getRemainingShowsToday(airTimeSchedule[daysString]);
+      // console.log(airTimeSchedule);
+      // debugger;
       showsUpNext && setScheduleData(showsUpNext);
     };
 

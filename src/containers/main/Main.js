@@ -24,7 +24,7 @@ const Main = ({
 }) => {
   const history = useHistory();
   const location = useLocation();
-  const [cookies, setCookie, removeCookie] = useCookies(["ehfm"]);
+  const [cookies, setCookie] = useCookies(["ehfm"]);
 
   useEffect(() => {
     if (history.action === "PUSH" && !cookies.ehfm) {
