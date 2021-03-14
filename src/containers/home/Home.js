@@ -1,102 +1,26 @@
-import React, { useEffect, useState } from "react";
-import CurrentShow from "../../components/current-show/CurrentShow";
-import Schedule from "../../components/schedule/Schedule";
-import { Helmet } from "react-helmet";
-import Prismic from "prismic-javascript";
+import React, { useEffect, useState, useContext } from "react";
+import { useCookies } from "react-cookie";
 import styled from "styled-components/macro";
-import Colors from "../../consts/Colors";
+import MetaData from "../../components/metadata/MetaData";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
-import { Heading4, Body } from "../../components/text-elements/index";
-import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
 import Carousel from "../../components/carousel/Carousel";
+import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
 import AdditionalCarouselHeading from "../../components/additional-carousel-heading/AdditionalCarouselHeading";
+import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
-const HomeContainer = (props) => {
-  const apiEndpoint = "https://ehfm.cdn.prismic.io/api/v2";
-  const PrimaryCarousel = Carousel;
-
-  const [allCarouselItems, setAllCarouselItems] = useState([]);
+const HomeContainer = ({ carouselData }) => {
+  const [cookies] = useCookies(["ehfm"]);
+  const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
+    MixcloudWidgetContext
+  );
   const [highlightedCarouselItems, setHighlightedCarouselItems] = useState([]);
-
-  const [additionalCarousels, setAdditionalCarousels] = useState([]);
-
-  useEffect(() => {
-    // Find out why this component is re-rendering when play is changing.
-    // Debug issue with carousel hover.
-    Prismic.api(apiEndpoint).then((api) => {
-      getPrimaryCarousel(api);
-    });
-  }, []);
-
-  useEffect(() => {
-    if (allCarouselItems.length > 0) {
-      Prismic.api(apiEndpoint).then((api) => {
-        getOtherCarousels(api);
-      });
-    }
-  }, [allCarouselItems]);
-
-  const getPrimaryCarousel = async (api) => {
-    api
-      .query(Prismic.Predicates.at("document.type", "home_feature"), {
-        pageSize: 100,
-        orderings: "[my.show.show_title]",
-      })
-      .then((response) => {
-        if (response) {
-          setAllCarouselItems(response.results);
-          setHighlightedItems(response.results);
-        }
-      });
-  };
-
-  const getOtherCarousels = (api) => {
-    api
-      .query(Prismic.Predicates.at("document.type", "home_carousel"), {
-        pageSize: 100,
-      })
-      .then((secondQueryResponse) => {
-        const parsedCarouselsData = secondQueryResponse.results.map(
-          (rawCarouselData) => {
-            rawCarouselData.data.carousel_items = completeCarouselData(
-              rawCarouselData
-            );
-            rawCarouselData.data.id = rawCarouselData.id;
-            return rawCarouselData.data;
-          }
-        );
-        const carouselsByPosition = sortCarouselsByPosition(
-          parsedCarouselsData
-        );
-        setAdditionalCarousels(carouselsByPosition);
-      });
-  };
-
-  const completeCarouselData = (rawData) => {
-    return rawData.data.carousel_items.map((originalCarouselItem) => {
-      const completedItemData = allCarouselItems.find((item) => {
-        return item.id === originalCarouselItem.carousel_item.id;
-      });
-      return completedItemData;
-    });
-  };
-
-  const setHighlightedItems = (results) => {
-    setHighlightedCarouselItems(
-      reverseChronologicalSort(
-        results.filter((featuredItem) => {
-          return featuredItem.data.highlighted;
-        })
-      )
-    );
-  };
-
-  const sortCarouselsByPosition = (array) => {
-    return array.sort((item1, item2) => {
-      return item1.position - item2.position;
-    });
-  };
+  const [
+    additionalCarouselsWithItems,
+    setAdditionalCarouselsWithItems,
+  ] = useState([]);
+  const PrimaryCarousel = Carousel;
+  const { allCarouselItems, additionalCarousels } = carouselData;
 
   const reverseChronologicalSort = (array) => {
     return array.sort((item1, item2) => {
@@ -106,56 +30,77 @@ const HomeContainer = (props) => {
     });
   };
 
+  // Get 'highlighted' carousel items
+  useEffect(() => {
+    const filterHighlightedCarouselItems = () => {
+      return allCarouselItems.filter((featuredItem) => {
+        return featuredItem.data.highlighted;
+      });
+    };
+
+    const filteredHighlightedCarouselItems = filterHighlightedCarouselItems();
+    const sortedByMostRecent = reverseChronologicalSort(
+      filteredHighlightedCarouselItems
+    );
+
+    setHighlightedCarouselItems(sortedByMostRecent);
+  }, [allCarouselItems]);
+
+  // Get 'additional' carousels
+  useEffect(() => {
+    const sortCarouselsByPosition = (array) => {
+      return array.sort((item1, item2) => {
+        return item1.position - item2.position;
+      });
+    };
+
+    const getCarouselItems = (carouselData) => {
+      const carouselItemsWithoutLinkedData = carouselData.data.carousel_items;
+      const carouselItemsWithLinkedData = carouselItemsWithoutLinkedData.map(
+        (carouselItem) => {
+          return allCarouselItems.find((item) => {
+            const idToCompare = carouselItem.carousel_item
+              ? carouselItem.carousel_item.id
+              : carouselItem.id;
+            return item.id === idToCompare;
+          });
+        }
+      );
+      return carouselItemsWithLinkedData;
+    };
+
+    const getCarousels = () =>
+      additionalCarousels.map((carouselData) => {
+        const carouselItems = getCarouselItems(carouselData);
+        carouselData.data.carousel_items = carouselItems;
+        carouselData.data.id = carouselData.id;
+        return carouselData.data;
+      });
+
+    const carouselsWithParsedData = getCarousels();
+    const carouselsSortedByPosition = sortCarouselsByPosition(
+      carouselsWithParsedData
+    );
+    setAdditionalCarouselsWithItems(carouselsSortedByPosition);
+  }, [additionalCarousels, allCarouselItems]);
+
   return (
     <React.Fragment>
-      <Helmet>
-        <title>EHFM</title>
-        <meta name="fragment" content="!" />
-        <meta property="og:title" data-react-helmet="true" content="EHFM" />
-        <meta
-          name="description"
-          data-react-helmet="true"
-          content="EHFM is an Edinburgh-based online radio station, providing a platform for the capital's local artists and broadcasting 24 hours a day."
-        />
-        <meta
-          property="og:description"
-          data-react-helmet="true"
-          content="EHFM is an Edinburgh-based online radio station, providing a platform for the capital's local artists and broadcasting 24 hours a day."
-        />
-        <meta
-          property="og:url"
-          data-react-helmet="true"
-          content="https://www.ehfm.live"
-        />
-        <meta
-          property="og:image"
-          data-react-helmet="true"
-          content={PlaceholderShowImg}
-        />
-        <meta
-          name="twitter:image"
-          data-react-helmet="true"
-          content={PlaceholderShowImg}
-        />
-      </Helmet>
-
+      <MetaData url="https://www.ehfm.live" />
       <Wrapper
-        mixCloudWidget={props.mixCloudWidget}
-        cookiesBannerShowing={props.cookies.get("ehfm") !== "1"}
+        mixcloudWidgetHtml={mixcloudWidgetHtml}
+        cookiesBannerShowing={!cookies.ehfm}
       >
-        {highlightedCarouselItems.length > 0 ? (
-          <>
-            <PrimaryCarousel
-              data={highlightedCarouselItems}
-              hierarchy={"primary"}
-              autoplay={true}
-              handleMixCloudClick={props.handleMixCloudClick}
-            />
-          </>
-        ) : null}
+        {highlightedCarouselItems.length > 0 && (
+          <PrimaryCarousel
+            data={highlightedCarouselItems}
+            hierarchy={"primary"}
+            handleMixcloudClick={handleMixcloudClick}
+          />
+        )}
 
-        {additionalCarousels.length > 0
-          ? additionalCarousels.map((carousel) => {
+        {additionalCarouselsWithItems.length > 0
+          ? additionalCarouselsWithItems.map((carousel) => {
               const sortedData = reverseChronologicalSort(
                 carousel.carousel_items
               );
@@ -167,8 +112,7 @@ const HomeContainer = (props) => {
                   <Carousel
                     data={sortedData}
                     hierarchy={"secondary"}
-                    autoplay={false}
-                    handleMixCloudClick={props.handleMixCloudClick}
+                    handleMixcloudClick={handleMixcloudClick}
                   />
                 </AdditionalCarouselWrapper>
               );
@@ -182,28 +126,16 @@ const HomeContainer = (props) => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 1rem;
   max-width: calc(100vw - 2rem);
-  margin: 2rem 0
-    ${(props) =>
-      props.cookiesBannerShowing ? "70px" : props.mixCloudWidget ? `123px` : 0};
+  ${(props) => WidgetMarginStyles(props)};
+  ${PagePaddingStyles}
 
   @media ${Devices.mobileL} {
-    padding: 0 2rem;
     max-width: calc(100vw - 4rem);
   }
 
   @media ${Devices.tablet} {
-    padding: 0 3rem;
     max-width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px - 6rem);
-
-    margin: 2.5rem 0
-      ${(props) =>
-        props.cookiesBannerShowing
-          ? "95px"
-          : props.mixCloudWidget
-          ? `123px`
-          : 0};
   }
 
   @media ${Devices.laptop} and ${Devices.laptopHeightS} {

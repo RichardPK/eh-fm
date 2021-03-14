@@ -1,28 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components/macro";
-import CurrentShow from "../../current-show/CurrentShow";
-import Player from "../../side-player/player/Player";
-import Devices from "../../../consts/Devices";
+import Player from "../player/Player";
 import Colors from "../../../consts/Colors";
-import Sizes from "../../../consts/Sizes";
 
-const MobilePlayer = ({
-  currentShow,
-  playing,
-  volume,
-  handlePlayPauseClicked,
-  handleVolumeClicked,
-}) => {
+const MobilePlayer = ({ currentShow }) => {
   return (
     <>
       <Wrapper>
-        <Player
-          playing={playing}
-          handlePlayPauseClicked={handlePlayPauseClicked}
-          currentShow={currentShow}
-          handleVolumeClicked={handleVolumeClicked}
-          volume={volume}
-        />
+        <Player currentShow={currentShow} />
       </Wrapper>
     </>
   );

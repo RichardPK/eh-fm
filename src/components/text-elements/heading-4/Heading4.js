@@ -3,9 +3,9 @@ import styled from "styled-components";
 import Typography from "../../../consts/typography/Typography";
 import Colors from "../../../consts/Colors";
 
-const Header4 = ({ children, className, unsetColor }) => {
+const Header4 = ({ children, className, unsetColor, ...props }) => {
   return (
-    <Wrapper className={className} unsetColor={unsetColor}>
+    <Wrapper className={className} unsetColor={unsetColor} {...props}>
       {children}
     </Wrapper>
   );

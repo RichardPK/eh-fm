@@ -1,22 +1,23 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import PastShowCard from '../past-show-card/PastShowCard';
-import Colors from '../../../consts/Colors';
-import Devices from '../../../consts/Devices';
+import React from "react";
+import styled from "styled-components/macro";
+import PastShowCard from "../past-show-card/PastShowCard";
+import Devices from "../../../consts/Devices";
+import { PagePaddingStyles, WidgetMarginStyles } from "../../../consts/Styles";
 
 const PastShows = ({
   displayShows,
   allPastShows,
   renderDate,
   renderShowName,
-  handleMixCloudClick,
-  mixCloudWidget
+  handleMixcloudClick,
+  mixcloudWidgetHtml,
+  cookiesBannerShowing,
 }) => {
   const showsToDisplay = allPastShows.map((show, i) => {
     return (
       <PastShowCard
-        handleMixCloudClick={() => handleMixCloudClick(show.key)}
         key={i}
+        handleMixcloudClick={() => handleMixcloudClick(show.key)}
         date={renderDate(show.name)}
         showName={renderShowName(show.name)}
         tags={show.tags}
@@ -25,23 +26,32 @@ const PastShows = ({
   });
   showsToDisplay.splice(0, 1);
 
-  return displayShows ? (
-    <PastShowsWrapper mixCloudWidget={mixCloudWidget}>{showsToDisplay}</PastShowsWrapper>
-  ) : null;
+  return (
+    displayShows && (
+      <PastShowsWrapper
+        mixcloudWidgetHtml={mixcloudWidgetHtml}
+        cookiesBannerShowing={cookiesBannerShowing}
+      >
+        {showsToDisplay}
+      </PastShowsWrapper>
+    )
+  );
 };
 
 const PastShowsWrapper = styled.div`
-  left: 5px;
-  right: 5px;
+  ${PagePaddingStyles}
+  left: 0;
   position: absolute;
-  top: calc(100vh - 130px);
+  top: calc(100vh - 9rem);
   display: flex;
   flex-direction: column;
-  margin-bottom: ${(props) => (props.mixCloudWidget ? '123px' : 'auto')};
 
-  @media ${Devices.mobileL} {
-    left: 20px;
-    right: 20px;
+  @media ${Devices.tablet} {
+    top: calc(100vh - 7rem);
+  }
+
+  :last-child {
+    ${(props) => (props.mixcloudWidgetHtml ? `padding-bottom: 123px` : "")};
   }
 `;
 

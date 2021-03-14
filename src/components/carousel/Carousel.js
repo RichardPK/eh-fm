@@ -1,15 +1,14 @@
-import React, { useRef, useState, memo, useEffect } from "react";
+import React, { useState, memo, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
 import Swiper from "react-id-swiper";
 import PrimaryCarouselItem from "../carousel-items/primary-carousel-item/PrimaryCarouselItem";
 import SecondaryCarouselItem from "../carousel-items/secondary-carousel-item/SecondaryCarouselItem";
-import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
 import { isInternal, splitUrl } from "../../helpers/CarouselLinkHelper";
 import { clickedCarouselItem } from "../analytics/ClickEventAnalytics";
 
-const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
+const Carousel = ({ data, hierarchy, handleMixcloudClick }) => {
   const [carouselRef, setCarouselRef] = useState(null);
   const history = useHistory();
 
@@ -87,7 +86,8 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
     }
     if (type.toLowerCase() === "past show") {
       const deconstructedUrl = new URL(link.url, "https://www.mixcloud.com/");
-      handleMixCloudClick(deconstructedUrl.pathname);
+
+      handleMixcloudClick(deconstructedUrl.pathname);
     }
   };
 
@@ -99,14 +99,14 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
 
   return (
     <Wrapper hierarchy={hierarchy}>
-      {data.length > 0 ? (
-        <Swiper
-          {...params}
-          getSwiper={(swiperEl) => {
-            setCarouselRef(swiperEl);
-          }}
-        >
-          {data.map((carouselItemData, i) => {
+      <Swiper
+        {...params}
+        getSwiper={(swiperEl) => {
+          setCarouselRef(swiperEl);
+        }}
+      >
+        {data.length &&
+          data.map((carouselItemData, i) => {
             return (
               <div key={carouselItemData.id}>
                 {hierarchy === "primary" ? (
@@ -129,8 +129,7 @@ const Carousel = ({ data, hierarchy, handleMixCloudClick }) => {
               </div>
             );
           })}
-        </Swiper>
-      ) : null}
+      </Swiper>
     </Wrapper>
   );
 };

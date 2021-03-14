@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
-const ChatangoWidget = ({}) => {
+const ChatangoWidget = () => {
   useEffect(() => {
     //or other condition you like
     const script = document.createElement("script");

@@ -1,14 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
-import { Body, Tiny } from "../../text-elements/index";
+import { Body } from "../../text-elements/index";
 import Colors from "../../../consts/Colors";
 import Image from "../../image/Image";
+import Anims from "../../../consts/Anims";
 
 const SecondaryCarouselItem = ({
   data,
   hierarchy,
   handleCarouselItemClick,
-  carouselRef,
   index,
 }) => {
   let [hovered, setHovered] = useState(false);
@@ -40,6 +40,7 @@ const SecondaryCarouselItem = ({
 };
 
 const Wrapper = styled.div`
+  ${Anims.fadeInWithDelay(0.01)}
   position: relative;
   display: grid;
   grid-template-rows: 1fr auto;

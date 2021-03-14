@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
-import Logo from "./logo/Logo";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import Socials from "./socials/Socials";
 import Colors from "../../consts/Colors";
-import NavLinks from "./nav-links/NavLinks";
-import PaypalButton from "../paypal-button/PaypalButton";
+import DesktopNavMenu from "./nav-menu/DesktopNavMenu";
+import ShopButton from "../shop-button";
 
 const DesktopNavBar = (props) => {
   return (
@@ -15,10 +14,10 @@ const DesktopNavBar = (props) => {
       <Wrapper>
         <Inner>
           <Left>
-            <NavLinks />
+            <DesktopNavMenu />
           </Left>
           <Right>
-            <PaypalButton />
+            <ShopButton />
             <Socials />
           </Right>
         </Inner>
@@ -46,7 +45,7 @@ const Wrapper = styled.nav`
   left: ${Sizes.sidePlayerWidthSmaller}px;
   width: calc(100% - ${Sizes.sidePlayerWidthSmaller}px);
 
-  @media ${Devices.laptop} and ${Devices.laptopHeightS}  {
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
     left: ${Sizes.sidePlayerWidth}px;
     width: calc(100% - ${Sizes.sidePlayerWidth}px);
   }

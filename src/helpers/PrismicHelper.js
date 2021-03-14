@@ -9,14 +9,14 @@ export const sanitiseString = (string) => {
   return andNoCommas;
 };
 
-export const getShowInPrismic = ({ residents, currentShow }) => {
+export const getShowInPrismic = ({ residentsData, currentShow }) => {
   let toLowerCase;
   const currentShowName = parseShowName(currentShow);
   if (currentShowName) {
     toLowerCase = currentShowName.toLowerCase();
   }
-  if (residents.length > 0 && toLowerCase) {
-    const filtered = residents.filter((resident) => {
+  if (residentsData.length > 0 && toLowerCase) {
+    const filtered = residentsData.filter((resident) => {
       if (toLowerCase.includes("lunch")) {
         return toLowerCase === resident.data.show_title.toLowerCase();
       }

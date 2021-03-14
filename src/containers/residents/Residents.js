@@ -1,111 +1,49 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
+import { useCookies } from "react-cookie";
+import MetaData from "../../components/metadata/MetaData";
 import ResidentListItem from "../../components/resident-list-item/ResidentListItem";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import PlaceholderShowImg from "../../assets/images/placeholder-showimg.jpg";
-import Devices from "../../consts/Devices";
-import Sizes from "../../consts/Sizes";
+import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
+import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
 
-class ResidentsContainer extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Helmet>
-          <title>Residents | EHFM</title>
-          <meta name="fragment" content="!" />
-          <meta
-            property="og:title"
-            data-react-helmet="true"
-            content="Residents | EHFM"
-          />
-          <meta
-            name="description"
-            data-react-helmet="true"
-            content="Get to know our presenters and listen back to the archive of previous shows."
-          />
-          <meta
-            property="og:description"
-            data-react-helmet="true"
-            content="Get to know our presenters and listen back to the archive of previous shows."
-          />
-          <meta
-            property="og:url"
-            data-react-helmet="true"
-            content="http://www.ehfm.live/residents"
-          />
-          <meta
-            name="twitter:image"
-            data-react-helmet="true"
-            content={PlaceholderShowImg}
-          />
-          <meta
-            name="og:image"
-            data-react-helmet="true"
-            content={PlaceholderShowImg}
-          />
-        </Helmet>
-        <Wrapper
-          mixCloudWidget={this.props.mixCloudWidget}
-          cookiesBannerShowing={this.props.cookies.get("ehfm") !== "1"}
-        >
-          {this.props.residents.length ? (
-            this.props.residents.map((show, index) => {
-              return (
-                <ResidentListItem
-                  show={show}
-                  index={index}
-                  key={index}
-                  showTitle={show.data.show_title}
-                  thumbnailImage={show.data.show_image.url}
-                  showId={show.uid}
-                />
-              );
-            })
-          ) : (
-            <p>Loading...</p>
-          )}
-        </Wrapper>
-      </React.Fragment>
-    );
-  }
-}
+const ResidentsContainer = ({ residentsData }) => {
+  const { mixcloudWidgetHtml } = useContext(MixcloudWidgetContext);
+  const [cookies] = useCookies(["ehfm"]);
+
+  return (
+    <React.Fragment>
+      <MetaData
+        title="Residents | EHFM"
+        description="Get to know our presenters and listen back to the archive of previous shows."
+        ult="http://www.ehfm.live/residents"
+      />
+      <Wrapper
+        mixcloudWidgetHtml={mixcloudWidgetHtml}
+        cookiesBannerShowing={!cookies.ehfm}
+      >
+        {residentsData.map((show, index) => {
+          return (
+            <ResidentListItem
+              show={show}
+              index={index}
+              key={index}
+              showTitle={show.data.show_title}
+              thumbnailImage={show.data.show_image.url}
+              showId={show.uid}
+            />
+          );
+        })}
+      </Wrapper>
+    </React.Fragment>
+  );
+};
 
 const Wrapper = styled.div`
-  /* max-width: ${Sizes.maxInnerWidth}; */
-  padding: 0 20px 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 2rem auto
-    ${(props) =>
-      props.cookiesBannerShowing ? "70px" : props.mixCloudWidget ? `123px` : 0};
-
-  @media ${Devices.tablet} {
-    margin: 2.5rem auto
-      ${(props) =>
-        props.cookiesBannerShowing
-          ? "95px"
-          : props.mixCloudWidget
-          ? `123px`
-          : 0};
-  }
+  ${(props) => WidgetMarginStyles(props)}
+  ${PagePaddingStyles}
 `;
 
-const mapStateToProps = (state) => {
-  return {
-    residents: state.residents,
-    mixCloudWidget: state.index.mixCloudWidget,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-const connectedResidentsContainer = withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ResidentsContainer)
-);
-
-export default connectedResidentsContainer;
+export default ResidentsContainer;

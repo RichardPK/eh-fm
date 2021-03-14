@@ -1,20 +1,18 @@
 import React from "react";
 import styled from "styled-components/macro";
-import Logo from "./logo/Logo";
 import Devices from "../../consts/Devices";
-import Sizes from "../../consts/Sizes";
-import Socials from "./socials/Socials";
-import Colors from "../../consts/Colors";
-import NavLinks from "./nav-links/NavLinks";
+import MobileNavMenu from "./nav-menu/MobileNavMenu";
+import ShopButton from "../shop-button";
 import ChatangoButton from "../chatango/chatango-button/ChatangoButton";
 
 const MobileNavBar = (props) => {
   return (
     <Inner>
       <Left>
-        <NavLinks />
+        <MobileNavMenu />
       </Left>
       <Right>
+        <ShopButton mobile />
         <ChatangoButton mobile />
       </Right>
     </Inner>

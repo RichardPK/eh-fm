@@ -42,14 +42,14 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  padding: 0.25rem 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${Sizes.buttonRadius}px;
   background-color: ${(props) =>
     props.hovered ? Colors.ehfmPrimary(0.1) : Colors.ehfmPrimary()};
   transition: background-color, 0.2s ease-out;
+  border-radius: ${Sizes.buttonRadius}px;
+  padding: 0.5rem 0.75rem;
 
   @media ${Devices.tablet} {
     padding: 0.6rem 1rem;

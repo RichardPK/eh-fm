@@ -1,20 +1,39 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
-import Colors from '../../consts/Colors';
-import Devices from '../../consts/Devices';
-import Sizes from '../../consts/Sizes';
-import { Cta } from '../text-elements/index';
+import React, { useState } from "react";
+import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
+import Colors from "../../consts/Colors";
+import Devices from "../../consts/Devices";
+import Sizes from "../../consts/Sizes";
+import { Cta } from "../text-elements/index";
+import Image from "../image/Image";
+import HoverLine from "../hoverLine/HoverLine";
 
 const ResidentListItem = (props) => {
+  const [hovered, setHovered] = useState(false);
+
   return (
     <React.Fragment>
-      <Link to={`/residents/${props.showId}`}>
+      <Link
+        to={`/residents/${props.showId}`}
+        onMouseOver={() => {
+          setHovered(true);
+        }}
+        onMouseOut={() => {
+          setHovered(false);
+        }}
+      >
         <Wrapper>
           <ImageWrapper>
-            <ShowImage src={props.thumbnailImage} alt="show presenters" />
+            <ShowImage baseUrl={props.thumbnailImage} alt="show presenters" />
           </ImageWrapper>
           <ShowTitle>{props.showTitle}</ShowTitle>
+          <HoverLine
+            zIndex={10}
+            hovered={hovered}
+            placeholderWidth="2rem"
+            width="100%"
+            placeholder
+          />
         </Wrapper>
       </Link>
     </React.Fragment>
@@ -22,6 +41,7 @@ const ResidentListItem = (props) => {
 };
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   max-width: 265px;
@@ -29,7 +49,7 @@ const Wrapper = styled.div`
   border-radius: ${Sizes.buttonRadius}px;
   margin: 15px 5px;
   background: white;
-  border-bottom: 2px solid ${Colors.ehfmPrimary()};
+  /* border-bottom: 2px solid ${Colors.ehfmPrimary()}; */
   height: 190px;
   width: 70vw;
 
@@ -62,12 +82,10 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const ShowImage = styled.img`
+const ShowImage = styled(Image)`
   width: auto;
   height: 265px;
   margin: 0px 0px 0px 0px;
-  opacity: 1;
-  transition: opacity, 0.2s ease-out;
 `;
 
 const ShowTitle = styled(Cta)`

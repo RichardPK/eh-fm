@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Devices from '../../../consts/Devices';
-import { ReactComponent as Instagram } from '../../../assets/svgs/instagram.svg';
-import { ReactComponent as Facebook } from '../../../assets/svgs/facebook.svg';
-import Colors from '../../../consts/Colors';
+import React from "react";
+import styled from "styled-components/macro";
+import Devices from "../../../consts/Devices";
+import { ReactComponent as Instagram } from "../../../assets/svgs/instagram.svg";
+import { ReactComponent as Facebook } from "../../../assets/svgs/facebook.svg";
+import Colors from "../../../consts/Colors";
 
 const Socials = () => {
   return (

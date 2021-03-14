@@ -1,13 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import Devices from "../../../consts/Devices";
 import Sizes from "../../../consts/Sizes";
+import Anims from "../../../consts/Anims";
 
-const BackgroundImage = ({ mixCloudWidget, showImage }) => {
-  return <Wrapper mixCloudWidget={mixCloudWidget} showImage={showImage} />;
+const BackgroundImage = ({ imageSrc, ...props }) => {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const imageLoader = new Image();
+    imageLoader.src = imageSrc;
+
+    imageLoader.onload = () => {
+      setLoaded(true);
+    };
+  }, [imageSrc, loaded]);
+
+  return <Wrapper imageSrc={imageSrc} {...props} loaded={loaded} />;
 };
 
 const Wrapper = styled.div`
+  opacity: 0;
+  ${(props) => (props.loaded ? `${Anims.fadeInWithDelay(0)}` : ``)}
+
   width: 100%;
   background-position: center center !important;
   background-size: cover !important;
@@ -18,8 +33,7 @@ const Wrapper = styled.div`
   z-index: -100;
   top: 0;
   left: 0;
-  margin-bottom: ${(props) => (props.mixCloudWidget ? "123px" : "auto")};
-  background-image: url(${(props) => props.showImage});
+  background-image: url(${(props) => props.imageSrc});
 
   img {
     max-width: 100%;

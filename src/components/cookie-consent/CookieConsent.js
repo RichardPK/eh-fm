@@ -1,34 +1,29 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components/macro";
+import { useCookies } from "react-cookie";
 import { Body } from "../text-elements/index";
 import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
-import { useCookies } from "react-cookie";
 
 const CookieConsent = () => {
-  const [showConsentBanner, setShowConsentBanner] = useState(true);
-  const [cookie, setCookie] = useCookies(["ehfm"]);
-
-  useEffect(() => {
-    if (showConsentBanner === true) {
-      if (cookie.ehfm) {
-        setShowConsentBanner(false);
-      }
-    }
-  }, [showConsentBanner, cookie]);
+  const [cookies, setCookie] = useCookies(["ehfm"]);
 
   return (
-    <Wrapper showConsentBanner={showConsentBanner}>
+    <Wrapper>
       <Inner>
         <WhiteBox>
           <CookiesText>
-            🍪 This website uses cookies to help us make EHFM better. You can
-            check out our policy{" "}
+            <span role="img" aria-label="cookie emoji">
+              🍪
+            </span>{" "}
+            This website uses cookies to help us make EHFM better. You can check
+            out our policy{" "}
             {
               <a
                 href="https://www.iubenda.com/privacy-policy/61514814"
                 target="_blank"
+                rel="noopener noreferrer"
                 alt="privacy policy"
               >
                 here
@@ -38,6 +33,7 @@ const CookieConsent = () => {
             accept the use of cookies as detailed in{" "}
             <a
               href="https://www.iubenda.com/privacy-policy/61514814"
+              rel="noopener noreferrer"
               target="_blank"
               alt="privacy policy"
             >
@@ -47,8 +43,7 @@ const CookieConsent = () => {
           </CookiesText>
           <CloseButton
             onClick={() => {
-              setCookie("ehfm", 1);
-              setShowConsentBanner(false);
+              setCookie("ehfm", 1, { path: "/" });
             }}
           >
             <span>x</span>
@@ -60,7 +55,6 @@ const CookieConsent = () => {
 };
 
 const Wrapper = styled.div`
-  display: ${(props) => (props.showConsentBanner ? "block" : "none")};
   background-color: ${Colors.playerWhiteCustom(0.95)};
   position: fixed;
   bottom: 0;
@@ -79,7 +73,6 @@ const WhiteBox = styled.div`
   margin: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  background-color: ${Colors.playerWhiteCustom(0.95)};
 
   @media ${Devices.tablet} {
     margin: 0 40px;

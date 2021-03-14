@@ -1,16 +1,27 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components/macro';
+import React, { useState } from "react";
+import styled from "styled-components/macro";
+import GetImageUrl from "../../helpers/GetImageUrl";
+import Anims from "../../consts/Anims";
 
-const Image = ({ baseUrl, width, height, fit, alt }) => {
-  const widthToRender = `${width ? `&w=${width}` : ''}`;
-  const heightToRender = `${height ? `&h=${height}` : ''}`;
-  const fitToRender = `${fit ? `&fit=${fit}` : ''}`;
-
-  const url = `${baseUrl}${widthToRender}${heightToRender}${fitToRender}`;
-  return <Img src={url} alt={alt} />;
+const Image = ({ baseUrl, width, height, fit, alt, noFadeIn, ...props }) => {
+  const [loaded, setLoaded] = useState(false);
+  const url = GetImageUrl({ baseUrl, width, height, fit });
+  return (
+    <Img
+      {...props}
+      src={url}
+      alt={alt}
+      onLoad={() => setLoaded(true)}
+      loaded={loaded}
+      noFadeIn={noFadeIn}
+    />
+  );
 };
 
 const Img = styled.img`
+  opacity: ${(props) => (props.noFadeIn ? 1 : 0)};
+  ${(props) =>
+    !props.noFadeIn && props.loaded ? `${Anims.fadeInWithDelay(0)}` : ``}
   max-width: 100%;
   height: 100%;
   width: 100%;

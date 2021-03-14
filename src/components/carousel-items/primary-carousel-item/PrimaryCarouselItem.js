@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { Heading4, Heading3, Body } from "../../text-elements/index";
 import Colors from "../../../consts/Colors";
 import Image from "../../image/Image";
 import CarouselButton from "../../carousel-button/CarouselButton";
+import Anims from "../../../consts/Anims";
 
 const PrimaryCarouselItem = ({
   data,
@@ -38,7 +39,13 @@ const PrimaryCarouselItem = ({
         <FlavourHeading>{data.flavour_text}</FlavourHeading>
       </TextWrapper>
       <ImageWrapper hovered={hovered}>
-        <Image baseUrl={data.image.url} width={900} height={900} fit="crop" />
+        <Image
+          baseUrl={data.image.url}
+          width={900}
+          height={900}
+          fit="crop"
+          noFadeIn
+        />
         <ButtonWrapper>
           <CarouselButton
             type={data.type}
@@ -53,6 +60,7 @@ const PrimaryCarouselItem = ({
 };
 
 const Wrapper = styled.div`
+  ${Anims.fadeInWithDelay(0.1)}
   position: relative;
   width: 100%;
   height: 100%;
@@ -60,6 +68,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
   border-radius: 0.5rem;
+
   :hover {
     cursor: pointer;
   }
