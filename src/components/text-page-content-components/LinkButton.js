@@ -6,6 +6,7 @@ import Colors from "../../consts/Colors";
 import { Cta, Heading4 } from "../text-elements/index";
 import { ReactComponent as Paypal } from "../../assets/svgs/paypal.svg";
 import { ReactComponent as Patreon } from "../../assets/svgs/patreon.svg";
+import { ReactComponent as ExternalLink } from "../../assets/svgs/external-link.svg";
 
 const Text = styled(Cta)`
   font-weight: normal;
@@ -82,6 +83,10 @@ const LinkButton = ({ text, linkText, href }) => {
 
     if (lowerCaseLink.includes("patreon")) {
       return <Patreon />;
+    }
+
+    if (lowerCaseLink.includes("form")) {
+      return <ExternalLink />;
     }
 
     return null;

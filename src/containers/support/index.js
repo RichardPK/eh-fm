@@ -16,19 +16,15 @@ import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import { WidgetMarginStyles } from "../../consts/Styles";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
-  /* top: 86px; */
   height: 100vh;
 `;
 
 const Wrapper = styled.div`
-  /* height: calc(100vh - 196px - 3.5rem); */
-  /* margin: 46px auto ${(props) => (props.mixCloudWidget ? `103px` : 0)}; */
   ${PagePaddingStyles}
   ${(props) => WidgetMarginStyles(props)};
 
   @media ${Devices.tablet} {
     max-width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px - 6rem);
-    /* margin: 2.5rem 0; */
   }
 `;
 
