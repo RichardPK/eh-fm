@@ -27,7 +27,7 @@ height: calc(100vh - ${mobileMargin} - ${navBarMobileHeight});
 
 export const WidgetMarginStyles = (props) => `
 margin: ${mobileMargin} auto 
-${props.cookiesBannerShowing ? "70px" : props.mixcloudWidgetHtml ? `123px` : 0};
+${props.cookiesBannerShowing ? "70px" : props.mixcloudWidgetHtml ? `126px` : 0};
 
     @media ${Devices.tablet} {    
       margin: ${desktopMargin} auto
@@ -35,7 +35,7 @@ ${props.cookiesBannerShowing ? "70px" : props.mixcloudWidgetHtml ? `123px` : 0};
         props.cookiesBannerShowing
           ? "95px"
           : props.mixcloudWidgetHtml
-          ? `123px`
+          ? `126px`
           : 0
       };
     }

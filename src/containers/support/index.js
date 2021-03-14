@@ -10,21 +10,25 @@ import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
 import { PagePaddingStyles } from "../../consts/Styles";
 import TopTextContainer from "../../components/text-page-content-components/TopTextContainer";
 import BodyParagraphs from "../../components/text-page-content-components/BodyParagraphs";
-import LinkButtonContainer from "../../components/text-page-content-components/LinkButtonContainer";
+import LinkButtonContainer from "../../components/text-page-content-components/SupportLinkButtonContainer";
 import { gridStyles } from "../../consts/gridStyles";
+import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
+import { WidgetMarginStyles } from "../../consts/Styles";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
-  top: 86px;
+  /* top: 86px; */
+  height: 100vh;
 `;
 
 const Wrapper = styled.div`
-  height: calc(100vh - 196px - 3.5rem);
-  margin: 46px auto ${(props) => (props.mixCloudWidget ? `103px` : 0)};
+  /* height: calc(100vh - 196px - 3.5rem); */
+  /* margin: 46px auto ${(props) => (props.mixCloudWidget ? `103px` : 0)}; */
   ${PagePaddingStyles}
+  ${(props) => WidgetMarginStyles(props)};
 
   @media ${Devices.tablet} {
     max-width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px - 6rem);
-    margin: 2.5rem 0;
+    /* margin: 2.5rem 0; */
   }
 `;
 
@@ -41,12 +45,11 @@ const StyledBodyParagraphs = styled(BodyParagraphs)`
 
 const Support = ({ pageData }) => {
   const [cookies] = useCookies(["ehfm"]);
+  const { mixcloudWidgetHtml } = useContext(MixcloudWidgetContext);
   const { viewportWidth } = useContext(DeviceInfoContext);
 
   const {
     banner_image,
-    buttons,
-    buttons_description,
     heading,
     subheading,
     support_urls,
@@ -78,7 +81,10 @@ const Support = ({ pageData }) => {
         imageHeight="800px"
       />
       <StyledBackgroundImage imageSrc={bgImageUrl} />
-      <Wrapper>
+      <Wrapper
+        mixcloudWidgetHtml={mixcloudWidgetHtml}
+        cookiesBannerShowing={!cookies.ehfm}
+      >
         <InnerWrapper>
           <TopTextContainer headline={heading} subheader={subheading} />
           <StyledBodyParagraphs aboutText={description} />

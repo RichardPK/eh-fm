@@ -61,14 +61,14 @@ const LinkWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: auto;
 
   @media ${Devices.tablet} {
     width: 66%;
   }
 
   @media ${Devices.laptop} {
-    width: 75%;
+    width: 80%;
   }
 `;
 
