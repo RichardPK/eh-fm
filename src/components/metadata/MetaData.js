@@ -16,7 +16,7 @@ const MetaData = ({
 
   return (
     <Helmet>
-      <title>{title}</title>
+      <title>{title ? title : defaultTitle}</title>
       <link rel="canonical" href={url ? url : window.location.href} />
       <meta name="fragment" content="!" />
       <meta
@@ -32,7 +32,7 @@ const MetaData = ({
       <meta
         property="og:description"
         data-react-helmet="true"
-        content={description}
+        content={description ? description : defaultDescription}
       />
       <meta
         property="og:url"
