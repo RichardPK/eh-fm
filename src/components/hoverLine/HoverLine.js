@@ -32,12 +32,13 @@ const Wrapper = styled.div`
   transition: width 0.3s;
   width: ${(props) =>
     props.hovered && props.width
-      ? // if custom width is passed
+      ? // if hovered and custom width is passed
         props.width
-      : // if no custom width is passed
+      : // if hovered but no custom width is passed
       props.hovered
       ? "120%"
       : // when not hovered
+      // placeholder === true
       props.placeholder
       ? props.placeholderWidth
       : "0px"};

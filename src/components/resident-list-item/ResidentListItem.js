@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import Colors from "../../consts/Colors";
@@ -9,15 +9,31 @@ import Image from "../image/Image";
 import HoverLine from "../hoverLine/HoverLine";
 
 const ResidentListItem = (props) => {
+  const [hovered, setHovered] = useState(false);
+
   return (
     <React.Fragment>
-      <Link to={`/residents/${props.showId}`}>
+      <Link
+        to={`/residents/${props.showId}`}
+        onMouseOver={() => {
+          setHovered(true);
+        }}
+        onMouseOut={() => {
+          setHovered(false);
+        }}
+      >
         <Wrapper>
           <ImageWrapper>
             <ShowImage baseUrl={props.thumbnailImage} alt="show presenters" />
           </ImageWrapper>
           <ShowTitle>{props.showTitle}</ShowTitle>
-          <HoverLine zIndex={10} placeholderWidth={"50px"} />
+          <HoverLine
+            zIndex={10}
+            hovered={hovered}
+            placeholderWidth="2rem"
+            width="100%"
+            placeholder
+          />
         </Wrapper>
       </Link>
     </React.Fragment>
