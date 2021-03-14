@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import Colors from "../../consts/Colors";
-import { Cta, Heading4 } from "../../components/text-elements/index";
+import { Cta, Heading4 } from "../text-elements/index";
 import { ReactComponent as Paypal } from "../../assets/svgs/paypal.svg";
 import { ReactComponent as Patreon } from "../../assets/svgs/patreon.svg";
 
@@ -72,7 +72,7 @@ const LinkWrapper = styled.div`
   }
 `;
 
-const SupportLink = ({ text, linkText, href }) => {
+const LinkButton = ({ text, linkText, href }) => {
   let [hovered, setHovered] = useState(false);
   const getIcon = () => {
     const lowerCaseLink = linkText.toLowerCase();
@@ -90,6 +90,7 @@ const SupportLink = ({ text, linkText, href }) => {
   return (
     <LinkWrapper
       href={href}
+      target="_blank"
       as="a"
       onMouseOver={() => {
         setHovered(true);
@@ -107,4 +108,4 @@ const SupportLink = ({ text, linkText, href }) => {
   );
 };
 
-export default SupportLink;
+export default LinkButton;

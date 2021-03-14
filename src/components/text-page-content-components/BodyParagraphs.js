@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components/macro";
 import Colors from "../../consts/Colors";
 import { Body } from "../../components/text-elements/index";
-import { gridStyles } from "./gridStyles";
+import { gridStyles } from "../../consts/gridStyles";
 
 const BodyParagraphsWrapper = styled.div`
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   padding: 8px;
   background-color: ${Colors.spanBg};
   ${gridStyles}
@@ -25,8 +25,8 @@ const Paragraph = styled(Body)`
 
 const BodyParagraphs = ({ aboutText, className }) => {
   const BodyParagraphBlocks = () => {
-    return aboutText.map((dataItem) => {
-      return <Paragraph>{dataItem.text}</Paragraph>;
+    return aboutText.map((dataItem, i) => {
+      return <Paragraph key={i}>{dataItem.text}</Paragraph>;
     });
   };
 

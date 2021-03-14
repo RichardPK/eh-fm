@@ -8,10 +8,10 @@ import MetaData from "../../components/metadata/MetaData";
 import GetImageUrl from "../../helpers/GetImageUrl";
 import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
 import { PagePaddingStyles } from "../../consts/Styles";
-import TopSection from "../about/TopSection";
-import BodyParagraphs from "../about/BodyParagraphs";
-import SupportLinkContainer from "./SupportLinkContainer";
-import { gridStyles } from "../about/gridStyles";
+import TopTextContainer from "../../components/text-page-content-components/TopTextContainer";
+import BodyParagraphs from "../../components/text-page-content-components/BodyParagraphs";
+import LinkButtonContainer from "../../components/text-page-content-components/LinkButtonContainer";
+import { gridStyles } from "../../consts/gridStyles";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
   top: 86px;
@@ -80,9 +80,9 @@ const Support = ({ pageData }) => {
       <StyledBackgroundImage imageSrc={bgImageUrl} />
       <Wrapper>
         <InnerWrapper>
-          <TopSection headline={heading} subheader={subheading} />
+          <TopTextContainer headline={heading} subheader={subheading} />
           <StyledBodyParagraphs aboutText={description} />
-          <SupportLinkContainer support_urls={support_urls} />
+          <LinkButtonContainer support_urls={support_urls} />
         </InnerWrapper>
       </Wrapper>
     </>

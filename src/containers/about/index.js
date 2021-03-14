@@ -4,9 +4,9 @@ import { useCookies } from "react-cookie";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
 import BackgroundImage from "../../components/resident-profile/background-image/BackgroundImage";
-import TopSection from "./TopSection";
+import TopTextContainer from "../../components/text-page-content-components/TopTextContainer";
 import GetInvolvedContainer from "./GetInvolvedContainer";
-import BodyParagraphs from "./BodyParagraphs";
+import BodyParagraphs from "../../components/text-page-content-components/BodyParagraphs";
 import MetaData from "../../components/metadata/MetaData";
 import GetImageUrl from "../../helpers/GetImageUrl";
 import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
@@ -74,7 +74,7 @@ const About = ({ pageData }) => {
       <StyledBackgroundImage imageSrc={bgImageUrl} />
       <Wrapper>
         <InnerWrapper>
-          <TopSection headline={headline} subheader={subheader} />
+          <TopTextContainer headline={headline} subheader={subheader} />
           <BodyParagraphs aboutText={about} />
           <GetInvolvedContainer get_involved_details={get_involved_details} />
         </InnerWrapper>

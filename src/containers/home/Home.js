@@ -83,7 +83,6 @@ const HomeContainer = ({ carouselData }) => {
     );
     setAdditionalCarouselsWithItems(carouselsSortedByPosition);
   }, [additionalCarousels, allCarouselItems]);
-  console.log(cookies);
 
   return (
     <React.Fragment>

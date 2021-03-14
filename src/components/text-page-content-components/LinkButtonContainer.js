@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { secondColumnsStyles } from "../about/gridStyles";
-import SupportLink from "./SupportLink";
+import { gridStyles } from "../../consts/gridStyles";
+import LinkButton from "./LinkButton";
 
 const Wrapper = styled.div`
-  ${secondColumnsStyles}
+  ${gridStyles}
 
   a {
     margin-bottom: 1rem;
@@ -15,12 +15,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const SupportLinkContainer = ({ support_urls }) => {
+const LinkButtonContainer = ({ support_urls }) => {
   return (
     <Wrapper>
-      {support_urls.map((data) => {
+      {support_urls.map((data, i) => {
         return (
-          <SupportLink
+          <LinkButton
+            key={i}
             href={data.support_link_href.url}
             text={data.support_text}
             linkText={data.support_link_text}
@@ -31,4 +32,4 @@ const SupportLinkContainer = ({ support_urls }) => {
   );
 };
 
-export default SupportLinkContainer;
+export default LinkButtonContainer;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import gridStyles from "./gridStyles";
+import gridStyles from "../../consts/gridStyles";
 import GetInvoledItem from "./GetInvolvedItem";
 
 const GetInvolvedOuterWrapper = styled.div`

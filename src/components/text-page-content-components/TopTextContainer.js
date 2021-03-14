@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 import Colors from "../../consts/Colors";
-import { Heading3, Heading4 } from "../../components/text-elements/index";
-import gridStyles from "./gridStyles";
+import { Heading3, Heading4 } from "../text-elements/index";
+import gridStyles from "../../consts/gridStyles";
 
 const TopWrapper = styled.div`
   background-color: ${Colors.spanBg};
@@ -28,7 +28,7 @@ const Linebreak = styled.div`
   border-bottom: 4px solid ${Colors.playerWhiteCustom(0.8)};
 `;
 
-const About = ({ headline, subheader }) => {
+const TopTextContainer = ({ headline, subheader }) => {
   return (
     <TopWrapper>
       <Heading>{headline}</Heading>
@@ -38,4 +38,4 @@ const About = ({ headline, subheader }) => {
   );
 };
 
-export default About;
+export default TopTextContainer;

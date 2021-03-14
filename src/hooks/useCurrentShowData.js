@@ -6,7 +6,6 @@ export const useCurrentShowData = () => {
   const hourTick = useHourTick();
 
   const currentShowApiCall = useCallback(() => {
-    console.log("current show API call firing");
     fetch("https://ehfm.airtime.pro/api/live-info")
       .then((response) => response.json())
       .then((data) => setCurrentShowData(data.currentShow[0]));
@@ -14,7 +13,6 @@ export const useCurrentShowData = () => {
 
   useEffect(() => {
     currentShowApiCall();
-    console.log(hourTick);
   }, [currentShowApiCall, hourTick]);
 
   return currentShowData;

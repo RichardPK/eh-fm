@@ -17,10 +17,7 @@ const ShopButton = () => {
         setHovered(false);
       }}
     >
-      <Link
-        href="https://ehfm.bigcartel.com/"
-        // target="_blank"
-      >
+      <Link href="https://ehfm.bigcartel.com/" target="_blank">
         <InnerWrapper hovered={hovered}>
           <IconWrapper hovered={hovered}>
             <Tote />

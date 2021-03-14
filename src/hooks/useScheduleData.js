@@ -5,7 +5,6 @@ export const useScheduleData = () => {
   const [scheduleData, setScheduleData] = useState(null);
 
   const scheduleApiCall = useCallback(() => {
-    console.log("schedule API call firing");
     fetch("https://ehfm.airtime.pro/api/week-info")
       .then((response) => response.json())
       .then((data) => setAirtimeSchedule(data));

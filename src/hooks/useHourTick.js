@@ -24,7 +24,6 @@ const useHourTick = () => {
       }
     };
     const interval = getInterval();
-    console.log(`interval - `, interval);
 
     const timer = setInterval(() => setHourTick(hourTick + 1), interval);
     return () => clearInterval(timer);
