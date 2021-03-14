@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import moment from "moment";
 
 export const useScheduleData = () => {
   const [airTimeSchedule, setAirtimeSchedule] = useState(null);

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import PastShowCard from "../past-show-card/PastShowCard";
 import Devices from "../../../consts/Devices";
-import { PagePaddingStyles, WidgetMarginStyles } from "../../../consts/Styles";
+import { PagePaddingStyles } from "../../../consts/Styles";
 
 const PastShows = ({
   displayShows,
