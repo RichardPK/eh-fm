@@ -23,6 +23,7 @@ export const RadioPlayerContextProvider = ({ children, audioRef }) => {
     } else {
       clickedPlay();
       setPlaying(true);
+      audioRef.current.load();
       audioRef.current.play();
     }
   };
