@@ -20,8 +20,7 @@ const CurrentShow = ({ currentShow, residentsData }) => {
   const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
-    if (currentShow && residentsData)
-      setPrismicShow(getShowInPrismic({ residentsData, currentShow }));
+    setPrismicShow(getShowInPrismic({ residentsData, currentShow }));
   }, [currentShow, residentsData]);
 
   const airTimeShowImgUrl = () => {
