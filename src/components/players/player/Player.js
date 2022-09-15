@@ -12,17 +12,13 @@ import { sanitiseString } from "../../../helpers/PrismicHelper";
 
 const Player = ({ currentShow }) => {
   const [hovered, setHovered] = useState(false);
-  const {
-    playing,
-    handlePlayPauseClicked,
-    volume,
-    handleVolumeClicked,
-  } = useContext(RadioPlayerContext);
+  const { playing, handlePlayPauseClicked, volume, handleVolumeClicked } =
+    useContext(RadioPlayerContext);
 
   return (
     <Wrapper>
       <OnAirWrapper>
-        <OnAir />
+        <OnAir on={Boolean(currentShow)} />
       </OnAirWrapper>
       <Left
         onClick={handlePlayPauseClicked}
@@ -38,12 +34,15 @@ const Player = ({ currentShow }) => {
         <PlayPauseWrapper playing={playing} hovered={hovered}>
           <PlayPauseButton playing={playing} />
         </PlayPauseWrapper>
-
-        {currentShow ? (
+        {currentShow && currentShow.name ? (
           <CurrentShowText playing={playing} hovered={hovered}>
             {sanitiseString(currentShow.name)}
           </CurrentShowText>
-        ) : null}
+        ) : (
+          <CurrentShowText playing={playing} hovered={hovered}>
+            We are currently offline.
+          </CurrentShowText>
+        )}
         <PlayBorder />
       </Left>
       <Right>

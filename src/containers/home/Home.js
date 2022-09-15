@@ -111,7 +111,6 @@ const HomeContainer = ({ carouselData }) => {
               const sortedData = reverseChronologicalSort(
                 carousel.carousel_items
               );
-              console.log("sortedData", sortedData);
               return (
                 <AdditionalCarouselWrapper key={carousel.id}>
                   <AdditionalCarouselHeading

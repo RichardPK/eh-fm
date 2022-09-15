@@ -12,7 +12,7 @@ const MobileNavBar = (props) => {
         <MobileNavMenu />
       </Left>
       <Right>
-        <ShopButton mobile />
+        <ShopButton />
         <ChatangoButton mobile />
       </Right>
     </Inner>

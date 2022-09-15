@@ -16,4 +16,5 @@ export default {
   spanBgSolid: `rgba(47, 62, 70, 0.97)`,
   softGrey: `rgb(223, 223, 223)`,
   softerGrey: `rgb(239, 239, 239)`,
+  offRed: `#ff0000b5`,
 };

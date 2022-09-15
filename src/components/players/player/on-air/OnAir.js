@@ -4,11 +4,11 @@ import Colors from "../../../../consts/Colors";
 import { Tiny } from "../../../text-elements/index";
 import Devices from "../../../../consts/Devices";
 
-const OnAir = () => {
+const OnAir = ({ on }) => {
   return (
     <OnAirWrapper>
-      <OnAirText>on air</OnAirText>
-      <Circle />
+      <OnAirText>{on ? "on air" : "off air"}</OnAirText>
+      {on ? <PulsingCircle /> : <RedCircle />}
     </OnAirWrapper>
   );
 };
@@ -38,7 +38,15 @@ const OnAirText = styled(Tiny)`
   }
 `;
 
-const Circle = styled.div`
+const RedCircle = styled.div`
+  background: ${Colors.offRed};
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: 7px;
+`;
+
+const PulsingCircle = styled.div`
   background: ${Colors.highlightYellow()};
   width: 8px;
   height: 8px;

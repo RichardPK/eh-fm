@@ -10,6 +10,7 @@ export const sanitiseString = (string) => {
 };
 
 export const getShowInPrismic = ({ residentsData, currentShow }) => {
+  if (!currentShow || !residentsData) return SHOW_NOT_FOUND;
   let toLowerCase;
   const currentShowName = parseShowName(currentShow);
   if (currentShowName) {

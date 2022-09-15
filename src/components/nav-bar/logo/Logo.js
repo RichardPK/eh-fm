@@ -9,7 +9,7 @@ const LogoHead = ({ mobile, color }) => {
     <React.Fragment>
       <Wrapper>
         <Link to="/">
-          <StyledLogo color={color} mobile={mobile} />
+          <StyledLogo color={color} mobile={mobile ? "mobile" : "desktop"} />
         </Link>
       </Wrapper>
     </React.Fragment>
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledLogo = styled(Logo)`
-  height: ${(props) => (props.mobile ? "1.75rem" : "2.5rem")};
+  height: ${(props) => (props.mobile === "mobile" ? "1.75rem" : "2.5rem")};
   width: auto;
   path,
   polygon {
