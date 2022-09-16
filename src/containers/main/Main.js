@@ -67,7 +67,7 @@ const Main = ({
               <Support pageData={supportPageData} />
             </Route>
             <Route exact path="/schedule">
-              <Schedule scheduleData={scheduleData} />
+              <Schedule />
             </Route>
             <Route exact path="/">
               <Home carouselData={carouselData} />

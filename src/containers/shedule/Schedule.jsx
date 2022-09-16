@@ -4,8 +4,12 @@ import { useCookies } from "react-cookie";
 import MetaData from "../../components/metadata/MetaData";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
+import useScheduleData from "../../hooks/useScheduleData";
 
-const Schedule = ({ scheduleData }) => {
+const Schedule = () => {
+  const { airTimeSchedule } = useScheduleData();
+
+    console.log('scheduleData in Schedule', airTimeSchedule);
   const { mixcloudWidgetHtml } = useContext(MixcloudWidgetContext);
   console.log('mixcloudWidgetHtml', mixcloudWidgetHtml);
   const [cookies] = useCookies(["ehfm"]);
@@ -22,11 +26,12 @@ const Schedule = ({ scheduleData }) => {
         cookiesBannerShowing={!cookies.ehfm}
       >
         <ScheduleData>
-            {scheduleData.map((show, index) => {
+            {airTimeSchedule ? Object.keys(airTimeSchedule).map((key, index) => {
+
             return (
-                <li>{JSON.stringify(show)}</li>
+                <li key={`${index}-${key}`}>{JSON.stringify(airTimeSchedule[key])}</li>
             );
-            })}
+            }) : null}
         </ScheduleData>
       </Wrapper>
     </>

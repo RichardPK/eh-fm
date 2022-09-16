@@ -8,6 +8,7 @@ export const useScheduleData = () => {
     fetch("https://ehfm.airtime.pro/api/week-info")
       .then((response) => response.json())
       .then((data) => {
+        console.log("data", data);
         setAirtimeSchedule(data);
       });
   }, []);
@@ -51,7 +52,13 @@ export const useScheduleData = () => {
     airTimeSchedule && populateSchedule();
   }, [airTimeSchedule]);
 
-  return scheduleData;
+  console.log("airTimeSchedule", airTimeSchedule);
+  console.log("scheduleData", scheduleData);
+
+  return {
+    scheduleData,
+    airTimeSchedule,
+  };
 };
 
 export default useScheduleData;
