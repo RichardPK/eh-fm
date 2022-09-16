@@ -2,39 +2,34 @@ import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import { useCookies } from "react-cookie";
 import MetaData from "../../components/metadata/MetaData";
-import ResidentListItem from "../../components/resident-list-item/ResidentListItem";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
 
-const ResidentsContainer = ({ residentsData }) => {
+const Schedule = ({ scheduleData }) => {
   const { mixcloudWidgetHtml } = useContext(MixcloudWidgetContext);
+  console.log('mixcloudWidgetHtml', mixcloudWidgetHtml);
   const [cookies] = useCookies(["ehfm"]);
 
   return (
-    <React.Fragment>
+    <>
       <MetaData
-        title="Residents | EHFM"
-        description="Get to know our presenters and listen back to the archive of previous shows."
-        url="https://www.ehfm.live/residents"
+        title="Schedule | EHFM"
+        description="See what we are about to play next."
+        url="https://www.ehfm.live/schedule"
       />
       <Wrapper
         mixcloudWidgetHtml={mixcloudWidgetHtml}
         cookiesBannerShowing={!cookies.ehfm}
       >
-        {residentsData.map((show, index) => {
-          return (
-            <ResidentListItem
-              show={show}
-              index={index}
-              key={index}
-              showTitle={show.data.show_title}
-              thumbnailImage={show.data.show_image.url}
-              showId={show.uid}
-            />
-          );
-        })}
+        <ScheduleData>
+            {scheduleData.map((show, index) => {
+            return (
+                <li>{JSON.stringify(show)}</li>
+            );
+            })}
+        </ScheduleData>
       </Wrapper>
-    </React.Fragment>
+    </>
   );
 };
 
@@ -46,4 +41,9 @@ const Wrapper = styled.div`
   ${PagePaddingStyles}
 `;
 
-export default ResidentsContainer;
+const ScheduleData = styled.ul`
+  display: block;
+  width: 100%;
+`;
+
+export default Schedule;
