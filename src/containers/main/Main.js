@@ -59,7 +59,7 @@ const Main = ({
             <Route exact path="/support">
               <Support pageData={supportPageData} />
             </Route>
-            <Route exact path="/">
+            <Route path="/*">
               <Home carouselData={carouselData} />
             </Route>
           </Switch>

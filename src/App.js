@@ -21,14 +21,6 @@ export const App = () => {
   const essentialDataFetchingFinished = () => {
     const essentialForAllPaths = residentsData;
 
-    if (path === "/") {
-      return Boolean(
-        essentialForAllPaths &&
-          carouselData.allCarouselItems &&
-          carouselData.additionalCarousels
-      );
-    }
-
     if (path.includes("/residents")) {
       return Boolean(essentialForAllPaths);
     }
@@ -40,6 +32,12 @@ export const App = () => {
     if (path === "/support") {
       return Boolean(essentialForAllPaths && supportPageData);
     }
+
+    return Boolean(
+      essentialForAllPaths &&
+        carouselData.allCarouselItems &&
+        carouselData.additionalCarousels
+    );
   };
 
   return (

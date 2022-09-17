@@ -68,7 +68,7 @@ const CurrentShow = ({ currentShow, residentsData }) => {
   return (
     <Wrapper>
       <OnAirWrapper>
-        <OnAir isOnAir={Boolean(currentShow)} />
+        <OnAir isOnAir={!!currentShow} />
       </OnAirWrapper>
       <CurrentShowImageWrapper>{returnImage()}</CurrentShowImageWrapper>
       <InfoWrapper>
