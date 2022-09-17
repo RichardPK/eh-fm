@@ -4,11 +4,11 @@ import Colors from "../../../../consts/Colors";
 import { Tiny } from "../../../text-elements/index";
 import Devices from "../../../../consts/Devices";
 
-const OnAir = ({ on }) => {
+const OnAir = ({ isOnAir }) => {
   return (
     <OnAirWrapper>
-      <OnAirText>{on ? "on air" : "off air"}</OnAirText>
-      {on ? <PulsingCircle /> : <RedCircle />}
+      <OnAirText>{isOnAir ? "on air" : "off air"}</OnAirText>
+      {isOnAir ? <PulsingCircle /> : <RedCircle />}
     </OnAirWrapper>
   );
 };

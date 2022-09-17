@@ -8,7 +8,7 @@ import { getShowInPrismic } from "../../helpers/PrismicHelper";
 const Schedule = ({ scheduleData, residentsData }) => {
   return (
     <Wrapper>
-      {scheduleData && scheduleData.length ? (
+      {scheduleData && scheduleData.length > 0 ? (
         <>
           <ComingUpText>Coming up...</ComingUpText>
           <ScheduleItemsWrapper>

@@ -18,7 +18,7 @@ const Player = ({ currentShow }) => {
   return (
     <Wrapper>
       <OnAirWrapper>
-        <OnAir on={Boolean(currentShow)} />
+        <OnAir isOnAir={Boolean(currentShow)} />
       </OnAirWrapper>
       <Left
         onClick={handlePlayPauseClicked}

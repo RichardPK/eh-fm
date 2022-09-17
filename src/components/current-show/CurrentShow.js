@@ -68,7 +68,7 @@ const CurrentShow = ({ currentShow, residentsData }) => {
   return (
     <Wrapper>
       <OnAirWrapper>
-        <OnAir on={Boolean(currentShow)} />
+        <OnAir isOnAir={Boolean(currentShow)} />
       </OnAirWrapper>
       <CurrentShowImageWrapper>{returnImage()}</CurrentShowImageWrapper>
       <InfoWrapper>
@@ -78,7 +78,7 @@ const CurrentShow = ({ currentShow, residentsData }) => {
           </NameWrapper>
         ) : null}
         {currentShow && prismicShow && prismicShow.uid ? (
-          <Link to={`/residents/${(prismicShow && prismicShow.uid) || ""}`}>
+          <Link to={`/residents/${prismicShow.uid || ""}`}>
             <NameWrapper
               onMouseOver={() => {
                 setHovered(true);
