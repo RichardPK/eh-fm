@@ -10,16 +10,18 @@ import AdditionalCarouselHeading from "../../components/additional-carousel-head
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 
 const filterIncompleteItems = (items) =>
-  items.filter(
-    ({ data }) =>
-      data.headline &&
-      data.link &&
-      data.type &&
-      data.category &&
-      data.headline &&
-      data.image &&
-      data.image.url
-  );
+  items
+    ? items.filter(
+        ({ data }) =>
+          data.headline &&
+          data.link &&
+          data.type &&
+          data.category &&
+          data.headline &&
+          data.image &&
+          data.image.url
+      )
+    : [];
 
 const HomeContainer = ({ carouselData }) => {
   const [cookies] = useCookies(["ehfm"]);
@@ -77,12 +79,15 @@ const HomeContainer = ({ carouselData }) => {
     };
 
     const getCarousels = () =>
-      additionalCarousels.map((carouselData) => {
-        const carouselItems = getCarouselItems(carouselData);
-        carouselData.data.carousel_items = filterIncompleteItems(carouselItems);
-        carouselData.data.id = carouselData.id;
-        return carouselData.data;
-      });
+      additionalCarousels
+        ? additionalCarousels.map((carouselData) => {
+            const carouselItems = getCarouselItems(carouselData);
+            carouselData.data.carousel_items =
+              filterIncompleteItems(carouselItems);
+            carouselData.data.id = carouselData.id;
+            return carouselData.data;
+          })
+        : [];
 
     const carouselsWithParsedData = getCarousels();
     const carouselsSortedByPosition = sortCarouselsByPosition(

@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { Route, Switch, useLocation, useHistory } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  useLocation,
+  useHistory,
+  Redirect,
+} from "react-router-dom";
 import styled from "styled-components/macro";
 import Header from "../header/Header";
 import SidePlayer from "../../components/players/side-player/SidePlayer";
@@ -59,8 +65,11 @@ const Main = ({
             <Route exact path="/support">
               <Support pageData={supportPageData} />
             </Route>
-            <Route path="/*">
+            <Route exact path="/">
               <Home carouselData={carouselData} />
+            </Route>
+            <Route path="/*">
+              <Redirect to="/" />
             </Route>
           </Switch>
         </MainInner>
