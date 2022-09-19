@@ -54,60 +54,58 @@ const CurrentShow = ({ currentShow, residentsData }) => {
   };
 
   const returnShowDescription = () => {
-    let currentShowDescription = null;
     if (prismicShow && prismicShow.data && prismicShow.data.show_description) {
       return sanitiseString(prismicShow.data.show_description);
     }
-    if (currentShow !== null) {
-      currentShowDescription = currentShow.description;
-      if (currentShowDescription === "") {
-        currentShowDescription = "Edinburgh Community Radio.";
-        return currentShowDescription;
-      } else {
-        return sanitiseString(currentShowDescription);
-      }
+
+    if (currentShow && currentShow.description) {
+      return sanitiseString(currentShow.description);
     }
+
+    return "Edinburgh Community Radio.";
   };
 
   return (
     <Wrapper>
       <OnAirWrapper>
-        <OnAir />
+        <OnAir isOnAir={!!currentShow} />
       </OnAirWrapper>
-      {prismicShow && (
-        <>
-          <CurrentShowImageWrapper>{returnImage()}</CurrentShowImageWrapper>
-          <InfoWrapper>
-            {prismicShow === SHOW_NOT_FOUND ? (
-              <NameWrapper>
-                <ShowName>{parseShowName(currentShow)}</ShowName>
-              </NameWrapper>
-            ) : (
-              <Link to={`/residents/${prismicShow.uid}`}>
-                <NameWrapper
-                  onMouseOver={() => {
-                    setHovered(true);
-                  }}
-                  onMouseOut={() => {
-                    setHovered(false);
-                  }}
-                >
-                  <ShowName>{parseShowName(currentShow)}</ShowName>
-                  <HoveredLine
-                    hovered={hovered}
-                    width={"100%"}
-                    placeholderWidth={"3rem"}
-                    placeholder
-                  />
-                </NameWrapper>
-              </Link>
-            )}
-            <DescriptionWrapper>
-              <ShowDescription>{returnShowDescription()}</ShowDescription>
-            </DescriptionWrapper>
-          </InfoWrapper>
-        </>
-      )}
+      <CurrentShowImageWrapper>{returnImage()}</CurrentShowImageWrapper>
+      <InfoWrapper>
+        {currentShow && prismicShow === SHOW_NOT_FOUND ? (
+          <NameWrapper>
+            <ShowName>{parseShowName(currentShow)}</ShowName>
+          </NameWrapper>
+        ) : null}
+        {currentShow && prismicShow && prismicShow.uid ? (
+          <Link to={`/residents/${prismicShow.uid || ""}`}>
+            <NameWrapper
+              onMouseOver={() => {
+                setHovered(true);
+              }}
+              onMouseOut={() => {
+                setHovered(false);
+              }}
+            >
+              <ShowName>{parseShowName(currentShow)}</ShowName>
+              <HoveredLine
+                hovered={hovered}
+                width={"100%"}
+                placeholderWidth={"3rem"}
+                placeholder
+              />
+            </NameWrapper>
+          </Link>
+        ) : null}
+        {!currentShow ? (
+          <NameWrapper>
+            <ShowName>We are currently offline.</ShowName>
+          </NameWrapper>
+        ) : null}
+        <DescriptionWrapper>
+          <ShowDescription>{returnShowDescription()}</ShowDescription>
+        </DescriptionWrapper>
+      </InfoWrapper>
     </Wrapper>
   );
 };

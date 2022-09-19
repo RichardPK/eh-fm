@@ -8,7 +8,13 @@ export const useCurrentShowData = () => {
   const currentShowApiCall = useCallback(() => {
     fetch("https://ehfm.airtime.pro/api/live-info")
       .then((response) => response.json())
-      .then((data) => setCurrentShowData(data.currentShow[0]));
+      .then((data) => {
+        if (data && data.currentShow && data.currentShow[0])
+          setCurrentShowData(data.currentShow[0]);
+      })
+      .catch((err) => {
+        setCurrentShowData(null);
+      });
   }, []);
 
   useEffect(() => {

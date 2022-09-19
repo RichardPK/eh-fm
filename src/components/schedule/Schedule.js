@@ -8,26 +8,29 @@ import { getShowInPrismic } from "../../helpers/PrismicHelper";
 const Schedule = ({ scheduleData, residentsData }) => {
   return (
     <Wrapper>
-      <ComingUpText>Coming up...</ComingUpText>
-      <ScheduleItemsWrapper>
-        {scheduleData &&
-          scheduleData.map((scheduleItemData, i) => {
-            const foundShow = getShowInPrismic({
-              residentsData,
-              currentShow: scheduleItemData,
-            });
+      {scheduleData && scheduleData.length > 0 ? (
+        <>
+          <ComingUpText>Coming up...</ComingUpText>
+          <ScheduleItemsWrapper>
+            {scheduleData.map((scheduleItemData, i) => {
+              const foundShow = getShowInPrismic({
+                residentsData,
+                currentShow: scheduleItemData,
+              });
 
-            return (
-              <ScheduleItem
-                key={i}
-                showName={scheduleItemData.name}
-                starts={scheduleItemData.starts}
-                foundShow={foundShow}
-              />
-            );
-          })}
-      </ScheduleItemsWrapper>
-      <GradientWrapper />
+              return (
+                <ScheduleItem
+                  key={i}
+                  showName={scheduleItemData.name}
+                  starts={scheduleItemData.starts}
+                  foundShow={foundShow}
+                />
+              );
+            })}
+          </ScheduleItemsWrapper>
+          <GradientWrapper />
+        </>
+      ) : null}
     </Wrapper>
   );
 };

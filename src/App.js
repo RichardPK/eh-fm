@@ -10,12 +10,8 @@ import { MixcloudWidgetContextProvider } from "./contexts/MixcloudWidgetContext"
 import { DeviceInfoContextProvider } from "./contexts/DeviceInfoContext";
 
 export const App = () => {
-  const {
-    aboutPageData,
-    supportPageData,
-    residentsData,
-    carouselData,
-  } = usePrismicData();
+  const { aboutPageData, supportPageData, residentsData, carouselData } =
+    usePrismicData();
   const currentShowData = useCurrentShowData();
   const scheduleData = useScheduleData();
   const audioRef = useRef(null);
@@ -23,15 +19,7 @@ export const App = () => {
   const path = window.location.pathname;
 
   const essentialDataFetchingFinished = () => {
-    const essentialForAllPaths = currentShowData && residentsData;
-
-    if (path === "/") {
-      return Boolean(
-        essentialForAllPaths &&
-          carouselData.allCarouselItems &&
-          carouselData.additionalCarousels
-      );
-    }
+    const essentialForAllPaths = residentsData;
 
     if (path.includes("/residents")) {
       return Boolean(essentialForAllPaths);
@@ -44,6 +32,12 @@ export const App = () => {
     if (path === "/support") {
       return Boolean(essentialForAllPaths && supportPageData);
     }
+
+    return Boolean(
+      essentialForAllPaths &&
+        carouselData.allCarouselItems &&
+        carouselData.additionalCarousels
+    );
   };
 
   return (
@@ -52,7 +46,7 @@ export const App = () => {
         <RadioPlayerContextProvider audioRef={audioRef}>
           <MixcloudWidgetContextProvider>
             <DeviceInfoContextProvider>
-              <Audio refProp={audioRef} />
+              <Audio audioRef={audioRef} />
               <Main
                 aboutPageData={aboutPageData}
                 supportPageData={supportPageData}

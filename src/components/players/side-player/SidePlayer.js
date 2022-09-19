@@ -16,12 +16,10 @@ const SidePlayer = ({ currentShow, residentsData, scheduleData }) => {
       <SidePlayerOuter>
         <Logo />
         <CurrentShowAndPlayerWrapper>
-          {currentShow ? (
-            <CurrentShow
-              currentShow={currentShow}
-              residentsData={residentsData}
-            />
-          ) : null}
+          <CurrentShow
+            currentShow={currentShow}
+            residentsData={residentsData}
+          />
           <Player currentShow={currentShow} />
         </CurrentShowAndPlayerWrapper>
         <ScheduleWrapper>
