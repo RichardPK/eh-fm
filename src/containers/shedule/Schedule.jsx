@@ -5,13 +5,12 @@ import MetaData from "../../components/metadata/MetaData";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
 import useScheduleData from "../../hooks/useScheduleData";
+import ScheduleItem from "../../components/schedule/schedule-item/ScheduleItem";
+import { getShowInPrismic } from "../../helpers/PrismicHelper";
 
-const Schedule = () => {
+const Schedule = ({ residentsData }) => {
   const { airTimeSchedule } = useScheduleData();
-
-    console.log('scheduleData in Schedule', airTimeSchedule);
   const { mixcloudWidgetHtml } = useContext(MixcloudWidgetContext);
-  console.log('mixcloudWidgetHtml', mixcloudWidgetHtml);
   const [cookies] = useCookies(["ehfm"]);
 
   return (
@@ -26,12 +25,32 @@ const Schedule = () => {
         cookiesBannerShowing={!cookies.ehfm}
       >
         <ScheduleData>
-            {airTimeSchedule ? Object.keys(airTimeSchedule).map((key, index) => {
+          {airTimeSchedule && residentsData
+            ? Object.keys(airTimeSchedule)
+                .filter((key) => key !== "AIRTIME_API_VERSION")
+                .map((day, index) => {
+                  return (
+                    <>
+                      <p key={`day-${day}-${index}`}>{day}</p>
+                      {airTimeSchedule[day].map((scheduleItemData, jindex) => {
+                        const foundShow = getShowInPrismic({
+                          residentsData,
+                          currentShow: scheduleItemData,
+                        });
 
-            return (
-                <li key={`${index}-${key}`}>{JSON.stringify(airTimeSchedule[key])}</li>
-            );
-            }) : null}
+                        return (
+                          <ScheduleItem
+                            key={`shedule-item-${jindex}`}
+                            showName={scheduleItemData.name}
+                            starts={scheduleItemData.starts}
+                            foundShow={foundShow}
+                          />
+                        );
+                      })}
+                    </>
+                  );
+                })
+            : null}
         </ScheduleData>
       </Wrapper>
     </>

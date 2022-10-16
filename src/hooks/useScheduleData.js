@@ -2,12 +2,15 @@ import { useState, useEffect, useCallback } from "react";
 
 export const useScheduleData = () => {
   const [airTimeSchedule, setAirtimeSchedule] = useState(null);
+  const [currentAirTimeSchedule, setCurrentAirtimeSchedule] = useState(null);
   const [scheduleData, setScheduleData] = useState(null);
 
   const scheduleApiCall = useCallback(() => {
     fetch("https://ehfm.airtime.pro/api/week-info")
       .then((response) => response.json())
       .then((data) => {
+        console.log("data", data);
+        delete data.AIRTIME_API_VERSION;
         console.log("data", data);
         setAirtimeSchedule(data);
       });
@@ -51,9 +54,6 @@ export const useScheduleData = () => {
 
     airTimeSchedule && populateSchedule();
   }, [airTimeSchedule]);
-
-  console.log("airTimeSchedule", airTimeSchedule);
-  console.log("scheduleData", scheduleData);
 
   return {
     scheduleData,
