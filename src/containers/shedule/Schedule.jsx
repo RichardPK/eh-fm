@@ -7,9 +7,11 @@ import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
 import useScheduleData from "../../hooks/useScheduleData";
 import ScheduleItem from "../../components/schedule/schedule-item/ScheduleItem";
 import { getShowInPrismic } from "../../helpers/PrismicHelper";
+import Colors from "../../consts/Colors";
+import moment from "moment";
 
-const Schedule = ({ residentsData }) => {
-  const { airTimeSchedule } = useScheduleData();
+const Schedule = ({ residentsData, currentShow }) => {
+  const { fiveDayAirTimeSchedule } = useScheduleData();
   const { mixcloudWidgetHtml } = useContext(MixcloudWidgetContext);
   const [cookies] = useCookies(["ehfm"]);
 
@@ -25,14 +27,15 @@ const Schedule = ({ residentsData }) => {
         cookiesBannerShowing={!cookies.ehfm}
       >
         <ScheduleData>
-          {airTimeSchedule && residentsData
-            ? Object.keys(airTimeSchedule)
-                .filter((key) => key !== "AIRTIME_API_VERSION")
-                .map((day, index) => {
-                  return (
-                    <>
-                      <p key={`day-${day}-${index}`}>{day}</p>
-                      {airTimeSchedule[day].map((scheduleItemData, jindex) => {
+          {fiveDayAirTimeSchedule && residentsData
+            ? Object.keys(fiveDayAirTimeSchedule).map((day, i) => {
+                return (
+                  <>
+                    <Name key={`day-${day}-${i}`}>
+                      {fiveDayAirTimeSchedule[day].date}
+                    </Name>
+                    {fiveDayAirTimeSchedule[day].shows.map(
+                      (scheduleItemData, j) => {
                         const foundShow = getShowInPrismic({
                           residentsData,
                           currentShow: scheduleItemData,
@@ -40,16 +43,23 @@ const Schedule = ({ residentsData }) => {
 
                         return (
                           <ScheduleItem
-                            key={`shedule-item-${jindex}`}
+                            key={`shedule-item-${j}`}
                             showName={scheduleItemData.name}
                             starts={scheduleItemData.starts}
                             foundShow={foundShow}
+                            playing={
+                              moment().isSame(
+                                new Date(scheduleItemData.starts),
+                                "date"
+                              ) && scheduleItemData.name === currentShow.name
+                            }
                           />
                         );
-                      })}
-                    </>
-                  );
-                })
+                      }
+                    )}
+                  </>
+                );
+              })
             : null}
         </ScheduleData>
       </Wrapper>
@@ -68,6 +78,11 @@ const Wrapper = styled.div`
 const ScheduleData = styled.ul`
   display: block;
   width: 100%;
+`;
+
+const Name = styled.p`
+  color: ${() => Colors.ehfmPrimary()};
+  font-weight: 500;
 `;
 
 export default Schedule;

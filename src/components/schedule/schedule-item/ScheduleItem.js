@@ -4,40 +4,42 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import { Body } from "../../text-elements/index";
 import Colors from "../../../consts/Colors";
+import Devices from "../../../consts/Devices";
 import { SHOW_NOT_FOUND, sanitiseString } from "../../../helpers/PrismicHelper";
 import HoverLine from "../../hoverLine/HoverLine";
+import { PulsingRedCircle } from "../../players/player/on-air/OnAir";
 
-const ScheduleItem = ({ showName, starts, foundShow }) => {
+const ScheduleItem = ({ showName, starts, foundShow, playing }) => {
   const [hovered, setHovered] = useState(false);
   const parsedTime = moment(starts, "YYYY-MM-DD HH:mm:ss").format("HH:mm");
 
   return (
-    <>
+    <Wrapper>
+      <Time>{parsedTime}</Time>
+      {playing ? (
+        <Playing>
+          <PulsingRedCircle />
+        </Playing>
+      ) : null}
       {foundShow === SHOW_NOT_FOUND ? (
-        <Wrapper>
-          <Time>{parsedTime}</Time>
-          <Name>{sanitiseString(showName)}</Name>
-        </Wrapper>
+        <Name>{sanitiseString(showName)}</Name>
       ) : (
-        <Wrapper>
-          <Time>{parsedTime}</Time>
-          <Link
-            to={`/residents/${foundShow.uid}`}
-            onMouseOver={() => {
-              setHovered(true);
-            }}
-            onMouseOut={() => {
-              setHovered(false);
-            }}
-          >
-            <Name hovered={hovered}>
-              {sanitiseString(showName)}
-              <HoverLine hovered={hovered} zIndex={-1} placeholder />
-            </Name>
-          </Link>
-        </Wrapper>
+        <Link
+          to={`/residents/${foundShow.uid}`}
+          onMouseOver={() => {
+            setHovered(true);
+          }}
+          onMouseOut={() => {
+            setHovered(false);
+          }}
+        >
+          <Name hovered={hovered}>
+            {sanitiseString(showName)}
+            <HoverLine hovered={hovered} zIndex={-1} placeholder />
+          </Name>
+        </Link>
       )}
-    </>
+    </Wrapper>
   );
 };
 
@@ -52,6 +54,25 @@ const Wrapper = styled.div`
   /* a {
     position: relative;
   } */
+`;
+
+const Playing = styled.div`
+  position: absolute;
+  top: 0.3rem;
+  left: 1.8rem;
+
+  @media ${Devices.mobileL} {
+    top: 0.35rem;
+    left: 2rem;
+  }
+
+  @media ${Devices.tablet} {
+    left: 2.25rem;
+  }
+
+  @media ${Devices.laptop} {
+    left: 2.5rem;
+  }
 `;
 
 const Name = styled(Body)`
