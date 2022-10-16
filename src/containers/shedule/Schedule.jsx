@@ -48,9 +48,9 @@ const Schedule = ({ residentsData, currentShow }) => {
                             starts={scheduleItemData.starts}
                             foundShow={foundShow}
                             playing={
-                              moment().isSame(
+                              moment().isBetween(
                                 new Date(scheduleItemData.starts),
-                                "date"
+                                new Date(scheduleItemData.ends)
                               ) && scheduleItemData.name === currentShow.name
                             }
                           />
