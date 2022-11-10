@@ -32,7 +32,7 @@ const Schedule = ({ residentsData, currentShow }) => {
                 return (
                   <>
                     <Name key={`day-${day}-${i}`}>
-                      {fiveDayAirTimeSchedule[day].date}
+                      {fiveDayAirTimeSchedule[day].date.split("NEXT").pop()}
                     </Name>
                     {fiveDayAirTimeSchedule[day].shows.map(
                       (scheduleItemData, j) => {
