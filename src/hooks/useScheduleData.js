@@ -84,7 +84,6 @@ export const useScheduleData = () => {
           shows: airTimeSchedule[day],
         };
       });
-      // fiveDayAirTimeSchedule[daysString].shows = todaysShows;
       todaysShows && setFiveDayAirtimeSchedule(fiveDayAirTimeSchedule);
     };
 

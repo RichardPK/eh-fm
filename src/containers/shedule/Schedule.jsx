@@ -29,34 +29,33 @@ const Schedule = ({ residentsData, currentShow }) => {
         <ScheduleData>
           {fiveDayAirTimeSchedule && residentsData
             ? Object.keys(fiveDayAirTimeSchedule).map((day, i) => {
+                const dayData = fiveDayAirTimeSchedule[day];
                 return (
                   <>
                     <Name key={`day-${day}-${i}`}>
-                      {fiveDayAirTimeSchedule[day].date.split("NEXT").pop()}
+                      {dayData.date.split("NEXT").pop()}
                     </Name>
-                    {fiveDayAirTimeSchedule[day].shows.map(
-                      (scheduleItemData, j) => {
-                        const foundShow = getShowInPrismic({
-                          residentsData,
-                          currentShow: scheduleItemData,
-                        });
+                    {dayData.shows.map((scheduleItemData, j) => {
+                      const foundShow = getShowInPrismic({
+                        residentsData,
+                        currentShow: scheduleItemData,
+                      });
 
-                        return (
-                          <ScheduleItem
-                            key={`shedule-item-${j}`}
-                            showName={scheduleItemData.name}
-                            starts={scheduleItemData.starts}
-                            foundShow={foundShow}
-                            playing={
-                              moment().isBetween(
-                                new Date(scheduleItemData.starts),
-                                new Date(scheduleItemData.ends)
-                              ) && scheduleItemData.name === currentShow.name
-                            }
-                          />
-                        );
-                      }
-                    )}
+                      return (
+                        <ScheduleItem
+                          key={`shedule-item-${j}`}
+                          showName={scheduleItemData.name}
+                          starts={scheduleItemData.starts}
+                          foundShow={foundShow}
+                          playing={
+                            moment().isBetween(
+                              new Date(scheduleItemData.starts),
+                              new Date(scheduleItemData.ends)
+                            ) && scheduleItemData.name === currentShow.name
+                          }
+                        />
+                      );
+                    })}
                   </>
                 );
               })

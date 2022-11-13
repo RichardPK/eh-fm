@@ -18,11 +18,6 @@ const Socials = () => {
           <Facebook alt="facebook" />
         </a>
       </SocialInnerWrapper>
-      {/* <SocialInnerWrapper>
-        <a href="https://eh-fm.chatango.com/" target="blank">
-          <NavChat src={ChatangoLogo} alt="chatango" />
-        </a>
-      </SocialInnerWrapper> */}
     </Wrapper>
   );
 };
