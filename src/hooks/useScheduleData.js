@@ -70,7 +70,6 @@ export const useScheduleData = () => {
 
     const populateFiveDaysSchedule = () => {
       const daysIndex = new Date().getUTCDay();
-      const date = new Date();
       const daysString = twoWeeks[daysIndex];
       const fiveDays = twoWeeks.splice(daysIndex, 5);
       const todaysShows = getRemainingShowsToday(airTimeSchedule[daysString]);
