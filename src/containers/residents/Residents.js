@@ -15,7 +15,7 @@ const ResidentsContainer = ({ residentsData }) => {
       <MetaData
         title="Residents | EHFM"
         description="Get to know our presenters and listen back to the archive of previous shows."
-        ult="http://www.ehfm.live/residents"
+        url="https://www.ehfm.live/residents"
       />
       <Wrapper
         mixcloudWidgetHtml={mixcloudWidgetHtml}

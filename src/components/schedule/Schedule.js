@@ -5,35 +5,33 @@ import Colors from "../../consts/Colors";
 import ScheduleItem from "./schedule-item/ScheduleItem";
 import { getShowInPrismic } from "../../helpers/PrismicHelper";
 
-const Schedule = ({ scheduleData, residentsData }) => {
-  return (
-    <Wrapper>
-      {scheduleData && scheduleData.length > 0 ? (
-        <>
-          <ComingUpText>Coming up...</ComingUpText>
-          <ScheduleItemsWrapper>
-            {scheduleData.map((scheduleItemData, i) => {
-              const foundShow = getShowInPrismic({
-                residentsData,
-                currentShow: scheduleItemData,
-              });
+const Schedule = ({ scheduleData, residentsData }) => (
+  <Wrapper>
+    {scheduleData && scheduleData.length > 0 ? (
+      <>
+        <ComingUpText>Coming up...</ComingUpText>
+        <ScheduleItemsWrapper>
+          {scheduleData.map((scheduleItemData, i) => {
+            const foundShow = getShowInPrismic({
+              residentsData,
+              currentShow: scheduleItemData,
+            });
 
-              return (
-                <ScheduleItem
-                  key={i}
-                  showName={scheduleItemData.name}
-                  starts={scheduleItemData.starts}
-                  foundShow={foundShow}
-                />
-              );
-            })}
-          </ScheduleItemsWrapper>
-          <GradientWrapper />
-        </>
-      ) : null}
-    </Wrapper>
-  );
-};
+            return (
+              <ScheduleItem
+                key={`player-schedule-item-${i}`}
+                showName={scheduleItemData.name}
+                starts={scheduleItemData.starts}
+                foundShow={foundShow}
+              />
+            );
+          })}
+        </ScheduleItemsWrapper>
+        <GradientWrapper />
+      </>
+    ) : null}
+  </Wrapper>
+);
 
 const Wrapper = styled.div`
   position: relative;

@@ -20,7 +20,7 @@ const PaypalButton = ({ mobile }) => {
       }}
       onClick={() =>
         window.open(
-          mobile ? "http://eh-fm.chatango.com" : "/chat",
+          mobile ? "https://eh-fm.chatango.com" : "/chat",
           "EHFM - Chat",
           "resizable,height=480,width=400"
         )

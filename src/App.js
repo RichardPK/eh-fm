@@ -13,7 +13,7 @@ export const App = () => {
   const { aboutPageData, supportPageData, residentsData, carouselData } =
     usePrismicData();
   const currentShowData = useCurrentShowData();
-  const scheduleData = useScheduleData();
+  const { scheduleData } = useScheduleData();
   const audioRef = useRef(null);
 
   const path = window.location.pathname;
@@ -31,6 +31,10 @@ export const App = () => {
 
     if (path === "/support") {
       return Boolean(essentialForAllPaths && supportPageData);
+    }
+
+    if (path === "/schedule") {
+      return true;
     }
 
     return Boolean(

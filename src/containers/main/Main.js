@@ -19,6 +19,7 @@ import About from "../about";
 import Support from "../support";
 import LiveRadioSchema from "../../components/schema/live-radio-schema/LiveRadioSchema";
 import { useCookies } from "react-cookie";
+import Schedule from "../shedule/Schedule";
 
 const Main = ({
   aboutPageData,
@@ -64,6 +65,12 @@ const Main = ({
             </Route>
             <Route exact path="/support">
               <Support pageData={supportPageData} />
+            </Route>
+            <Route exact path="/schedule">
+              <Schedule
+                residentsData={residentsData}
+                currentShow={currentShowData}
+              />
             </Route>
             <Route exact path="/">
               <Home carouselData={carouselData} />
