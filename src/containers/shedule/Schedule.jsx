@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import styled from "styled-components/macro";
 import { useCookies } from "react-cookie";
 import MetaData from "../../components/metadata/MetaData";
@@ -31,7 +31,7 @@ const Schedule = ({ residentsData, currentShow }) => {
             ? Object.keys(fiveDayAirTimeSchedule).map((day, i) => {
                 const dayData = fiveDayAirTimeSchedule[day];
                 return (
-                  <>
+                  <Fragment key={`schedule-${i}`}>
                     <Name key={`day-${day}-${i}`}>
                       {dayData.date.split("NEXT").pop()}
                     </Name>
@@ -56,7 +56,7 @@ const Schedule = ({ residentsData, currentShow }) => {
                         />
                       );
                     })}
-                  </>
+                  </Fragment>
                 );
               })
             : null}
