@@ -31,10 +31,8 @@ const Schedule = ({ residentsData, currentShow }) => {
             ? Object.keys(fiveDayAirTimeSchedule).map((day, i) => {
                 const dayData = fiveDayAirTimeSchedule[day];
                 return (
-                  <Fragment key={`schedule-${i}`}>
-                    <Name key={`day-${day}-${i}`}>
-                      {dayData.date.split("NEXT").pop()}
-                    </Name>
+                  <Fragment key={`day-${day}-${i}`}>
+                    <Name>{dayData.date.split("NEXT").pop()}</Name>
                     {dayData.shows.map((scheduleItemData, j) => {
                       const foundShow = getShowInPrismic({
                         residentsData,
