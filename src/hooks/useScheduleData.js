@@ -32,7 +32,7 @@ export const useScheduleData = () => {
   };
 
   useEffect(() => {
-    const days = [
+    const jsDays = [
       "sunday",
       "monday",
       "tuesday",
@@ -43,25 +43,25 @@ export const useScheduleData = () => {
     ];
 
     const twoWeeks = [
-      "sunday",
       "monday",
       "tuesday",
       "wednesday",
       "thursday",
       "friday",
       "saturday",
-      "nextsunday",
+      "sunday",
       "nextmonday",
       "nexttuesday",
       "nextwednesday",
       "nextthursday",
       "nextfriday",
       "nextsaturday",
+      "nextsunday",
     ];
 
     const populateTodaysSchedule = () => {
       const daysIndex = new Date().getUTCDay();
-      const daysString = days[daysIndex];
+      const daysString = jsDays[daysIndex];
       const showsUpNext = getRemainingShowsToday(airTimeSchedule[daysString]);
       // console.log(airTimeSchedule);
       // debugger;
@@ -70,8 +70,11 @@ export const useScheduleData = () => {
 
     const populateFiveDaysSchedule = () => {
       const daysIndex = new Date().getUTCDay();
-      const daysString = twoWeeks[daysIndex];
-      const fiveDays = twoWeeks.splice(daysIndex, 5);
+      const daysString = jsDays[daysIndex];
+      const scheduledDaysIndex = twoWeeks.findIndex(
+        (day) => day === daysString
+      );
+      const fiveDays = twoWeeks.splice(scheduledDaysIndex, 5);
       const todaysShows = getRemainingShowsToday(airTimeSchedule[daysString]);
       const fiveDayAirTimeSchedule = {};
       fiveDays.forEach((day, index) => {
