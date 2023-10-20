@@ -20,6 +20,7 @@ import Support from "../support";
 import LiveRadioSchema from "../../components/schema/live-radio-schema/LiveRadioSchema";
 import { useCookies } from "react-cookie";
 import Schedule from "../shedule/Schedule";
+import LatestShows from "../latest-shows/LatestShows";
 
 const Main = ({
   aboutPageData,
@@ -28,6 +29,7 @@ const Main = ({
   scheduleData,
   residentsData,
   carouselData,
+  mixcloudFeed,
 }) => {
   const history = useHistory();
   const location = useLocation();
@@ -71,6 +73,9 @@ const Main = ({
                 residentsData={residentsData}
                 currentShow={currentShowData}
               />
+            </Route>
+            <Route exact path="/latest-shows">
+              <LatestShows mixcloudFeed={mixcloudFeed} />
             </Route>
             <Route exact path="/">
               <Home carouselData={carouselData} />

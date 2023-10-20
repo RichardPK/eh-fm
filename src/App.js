@@ -5,6 +5,7 @@ import Audio from "./components/audio/";
 import usePrismicData from "./hooks/usePrismicData";
 import useCurrentShowData from "./hooks/useCurrentShowData";
 import useScheduleData from "./hooks/useScheduleData";
+import useMixcloudData from "./hooks/useMixcloudData";
 import { RadioPlayerContextProvider } from "./contexts/RadioPlayerContext";
 import { MixcloudWidgetContextProvider } from "./contexts/MixcloudWidgetContext";
 import { DeviceInfoContextProvider } from "./contexts/DeviceInfoContext";
@@ -14,6 +15,7 @@ export const App = () => {
     usePrismicData();
   const currentShowData = useCurrentShowData();
   const { scheduleData } = useScheduleData();
+  const { mixcloudFeed } = useMixcloudData();
   const audioRef = useRef(null);
 
   const path = window.location.pathname;
@@ -58,6 +60,7 @@ export const App = () => {
                 scheduleData={scheduleData}
                 residentsData={residentsData}
                 carouselData={carouselData}
+                mixcloudFeed={mixcloudFeed}
               />
             </DeviceInfoContextProvider>
           </MixcloudWidgetContextProvider>
