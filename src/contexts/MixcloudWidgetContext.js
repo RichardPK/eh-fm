@@ -10,6 +10,7 @@ export const MixcloudWidgetContextProvider = ({ children }) => {
   const [cookies, setCookie] = useCookies(["ehfm"]);
 
   const handleMixcloudClick = (showPath) => {
+    console.log("showPath", showPath);
     let url = `https://api.mixcloud.com${showPath}embed-json/`;
     fetch(url)
       .then((response) => response.json())

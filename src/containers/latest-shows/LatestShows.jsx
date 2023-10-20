@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import { useCookies } from "react-cookie";
 import MetaData from "../../components/metadata/MetaData";
@@ -11,13 +11,12 @@ const LatestShows = ({ mixcloudFeed }) => {
   const [cookies] = useCookies(["ehfm"]);
   console.log("mixcloudFeed", mixcloudFeed);
 
-  // const latest10 = mixcloudFeed
-  //   .sort(
-  //     (showA, showB) =>
-  //       new Date(showB.last_publication_date) -
-  //       new Date(showA.last_publication_date)
-  //   )
-  //   .slice(0, 10);
+  const latest10 = mixcloudFeed
+    .sort(
+      (showA, showB) =>
+        new Date(showB.created_time) - new Date(showA.created_time)
+    )
+    .slice(0, 10);
 
   // console.log("latest10", latest10);
   // console.log("latestUploads", latestUploads);
@@ -32,18 +31,21 @@ const LatestShows = ({ mixcloudFeed }) => {
         mixcloudWidgetHtml={mixcloudWidgetHtml}
         cookiesBannerShowing={!cookies.ehfm}
       >
-        {/* {latest10.map((show, index) => {
+        {latest10.map(({ cloudcasts }, index) => {
+          const { name, slug, pictures } = cloudcasts[0];
+          const slugArray = slug.split("-");
+          slugArray.pop();
+
           return (
             <ResidentListItem
-              show={show}
               index={index}
               key={index}
-              showTitle={show.data.show_title}
-              thumbnailImage={show.data.show_image.url}
-              showId={show.uid}
+              showTitle={name}
+              thumbnailImage={pictures["640wx640h"]}
+              showId={slugArray.join("-")}
             />
           );
-        })} */}
+        })}
       </Wrapper>
     </React.Fragment>
   );

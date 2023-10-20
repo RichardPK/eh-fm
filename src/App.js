@@ -46,6 +46,12 @@ export const App = () => {
     );
   };
 
+  console.log("carouselData", carouselData);
+  console.log(
+    "carouselData.additionalCarousels",
+    carouselData.additionalCarousels
+  );
+
   return (
     essentialDataFetchingFinished() && (
       <CookiesProvider>

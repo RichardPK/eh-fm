@@ -78,7 +78,7 @@ const Main = ({
               <LatestShows mixcloudFeed={mixcloudFeed} />
             </Route>
             <Route exact path="/">
-              <Home carouselData={carouselData} />
+              <Home carouselData={carouselData} mixcloudFeed={mixcloudFeed} />
             </Route>
             <Route path="/*">
               <Redirect to="/" />

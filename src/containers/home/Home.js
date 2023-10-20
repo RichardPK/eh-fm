@@ -23,7 +23,32 @@ const filterIncompleteItems = (items) =>
       )
     : [];
 
-const HomeContainer = ({ carouselData }) => {
+const mixcloudFeedToCarousel = (feed) =>
+  feed.map(({ cloudcasts }) => {
+    const { name, pictures, key } = cloudcasts[0];
+
+    return {
+      data: {
+        headline: name,
+        link: {
+          link_type: "Web",
+          url: key,
+        },
+        type: "past show",
+        category: "",
+        image: {
+          dimensions: { width: 640, height: 640 },
+          url: pictures["640wx640h"],
+        },
+      },
+    };
+  });
+
+const HomeContainer = ({ carouselData, mixcloudFeed }) => {
+  console.log(
+    "mixcloudFeedToCarousel(mixcloudFeed)",
+    mixcloudFeedToCarousel(mixcloudFeed)
+  );
   const [cookies] = useCookies(["ehfm"]);
   const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
     MixcloudWidgetContext
@@ -130,6 +155,16 @@ const HomeContainer = ({ carouselData }) => {
               );
             })
           : null}
+        {mixcloudFeed.length > 0 ? (
+          <AdditionalCarouselWrapper key={"mixcloud-feed-carousel"}>
+            <AdditionalCarouselHeading carouselName={"Latest shows"} />
+            <Carousel
+              data={mixcloudFeedToCarousel(mixcloudFeed)}
+              hierarchy={"secondary"}
+              handleMixcloudClick={handleMixcloudClick}
+            />
+          </AdditionalCarouselWrapper>
+        ) : null}
       </Wrapper>
     </React.Fragment>
   );
