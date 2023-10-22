@@ -32,18 +32,24 @@ const LatestShows = ({ mixcloudFeed }) => {
         cookiesBannerShowing={!cookies.ehfm}
       >
         {latest10.map(({ cloudcasts }, index) => {
-          const { name, key, pictures } = cloudcasts[0];
+          const { name, key, pictures, tags, created_time } = cloudcasts[0];
           const slug = key.split("/ehfm/")[1].split("-");
           slug.pop();
+
+          console.log("created_time", created_time);
 
           return (
             <LatestShowItem
               index={index}
               key={index}
-              showTitle={name}
+              showTitle={name.split(" - ")[0]}
               thumbnailImage={pictures["640wx640h"]}
               handleMixcloudClick={handleMixcloudClick}
               showKey={key}
+              tags={tags
+                .filter((tag) => tag.key !== "/discover/ehfm/")
+                .map((tag) => tag.name)}
+              publishDate={created_time}
             />
           );
         })}
