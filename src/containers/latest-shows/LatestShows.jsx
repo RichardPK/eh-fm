@@ -2,12 +2,14 @@ import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import { useCookies } from "react-cookie";
 import MetaData from "../../components/metadata/MetaData";
-import ResidentListItem from "../../components/resident-list-item/ResidentListItem";
+import LatestShowItem from "../../components/latest-shows/LatestShowItem";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
 
 const LatestShows = ({ mixcloudFeed }) => {
-  const { mixcloudWidgetHtml } = useContext(MixcloudWidgetContext);
+  const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
+    MixcloudWidgetContext
+  );
   const [cookies] = useCookies(["ehfm"]);
   console.log("mixcloudFeed", mixcloudFeed);
 
@@ -18,8 +20,6 @@ const LatestShows = ({ mixcloudFeed }) => {
     )
     .slice(0, 10);
 
-  // console.log("latest10", latest10);
-  // console.log("latestUploads", latestUploads);
   return (
     <React.Fragment>
       <MetaData
@@ -32,17 +32,18 @@ const LatestShows = ({ mixcloudFeed }) => {
         cookiesBannerShowing={!cookies.ehfm}
       >
         {latest10.map(({ cloudcasts }, index) => {
-          const { name, slug, pictures } = cloudcasts[0];
-          const slugArray = slug.split("-");
-          slugArray.pop();
+          const { name, key, pictures } = cloudcasts[0];
+          const slug = key.split("/ehfm/")[1].split("-");
+          slug.pop();
 
           return (
-            <ResidentListItem
+            <LatestShowItem
               index={index}
               key={index}
               showTitle={name}
               thumbnailImage={pictures["640wx640h"]}
-              showId={slugArray.join("-")}
+              handleMixcloudClick={handleMixcloudClick}
+              showKey={key}
             />
           );
         })}

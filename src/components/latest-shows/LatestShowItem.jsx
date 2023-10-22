@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import { Link } from "react-router-dom";
 import Colors from "../../consts/Colors";
 import Devices from "../../consts/Devices";
 import Sizes from "../../consts/Sizes";
@@ -8,35 +7,36 @@ import { Cta } from "../text-elements/index";
 import Image from "../image/Image";
 import HoverLine from "../hoverLine/HoverLine";
 
-const ResidentListItem = (props) => {
+const LatestShowItem = ({
+  thumbnailImage,
+  showTitle,
+  handleMixcloudClick,
+  showKey,
+}) => {
   const [hovered, setHovered] = useState(false);
-  console.log("props", props);
+
   return (
-    <React.Fragment>
-      <Link
-        to={`/residents/${props.showId}`}
-        onMouseOver={() => {
-          setHovered(true);
-        }}
-        onMouseOut={() => {
-          setHovered(false);
-        }}
-      >
-        <Wrapper>
-          <ImageWrapper>
-            <ShowImage baseUrl={props.thumbnailImage} alt="show presenters" />
-          </ImageWrapper>
-          <ShowTitle>{props.showTitle}</ShowTitle>
-          <HoverLine
-            zIndex={10}
-            hovered={hovered}
-            placeholderWidth="2rem"
-            width="100%"
-            placeholder
-          />
-        </Wrapper>
-      </Link>
-    </React.Fragment>
+    <Wrapper
+      onClick={() => handleMixcloudClick(showKey)}
+      onMouseOver={() => {
+        setHovered(true);
+      }}
+      onMouseOut={() => {
+        setHovered(false);
+      }}
+    >
+      <ImageWrapper>
+        <ShowImage baseUrl={thumbnailImage} alt="show presenters" />
+      </ImageWrapper>
+      <ShowTitle>{showTitle}</ShowTitle>
+      <HoverLine
+        zIndex={10}
+        hovered={hovered}
+        placeholderWidth="2rem"
+        width="100%"
+        placeholder
+      />
+    </Wrapper>
   );
 };
 
@@ -52,6 +52,7 @@ const Wrapper = styled.div`
   /* border-bottom: 2px solid ${Colors.ehfmPrimary()}; */
   height: 190px;
   width: 70vw;
+  cursor: pointer;
 
   @media ${Devices.mobileL} {
     height: 140px;
@@ -94,4 +95,4 @@ const ShowTitle = styled(Cta)`
   font-weight: bold;
 `;
 
-export default ResidentListItem;
+export default LatestShowItem;

@@ -157,7 +157,10 @@ const HomeContainer = ({ carouselData, mixcloudFeed }) => {
           : null}
         {mixcloudFeed.length > 0 ? (
           <AdditionalCarouselWrapper key={"mixcloud-feed-carousel"}>
-            <AdditionalCarouselHeading carouselName={"Latest shows"} />
+            <AdditionalCarouselHeading
+              carouselName={"Latest shows"}
+              link={"/latest-shows"}
+            />
             <Carousel
               data={mixcloudFeedToCarousel(mixcloudFeed)}
               hierarchy={"secondary"}

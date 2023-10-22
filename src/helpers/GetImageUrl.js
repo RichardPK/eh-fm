@@ -4,7 +4,7 @@ const GetImageUrl = ({ baseUrl, width, height, fit }) => {
   const fitToRender = `${fit ? `&fit=${fit}` : ""}`;
 
   const url = `${baseUrl}${
-    baseUrl.includes("?") ? "" : "?"
+    baseUrl && baseUrl.includes("?") ? "" : "?"
   }${widthToRender}${heightToRender}${fitToRender}`;
   return url;
 };

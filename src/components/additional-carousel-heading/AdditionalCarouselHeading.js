@@ -3,10 +3,17 @@ import styled from "styled-components/macro";
 import Colors from "../../consts/Colors";
 import { Heading4 } from "../../components/text-elements/index";
 
-const HomeContainer = ({ carouselName }) => {
+const HomeContainer = ({ carouselName, link = "" }) => {
   return (
     <HeadingWrapper>
-      <AdditionalCarouselHeading>{carouselName}</AdditionalCarouselHeading>
+      {link ? (
+        <a href={link}>
+          <AdditionalCarouselHeading>{carouselName}</AdditionalCarouselHeading>
+        </a>
+      ) : (
+        <AdditionalCarouselHeading>{carouselName}</AdditionalCarouselHeading>
+      )}
+
       <DividerWrapper>
         <Divider />
       </DividerWrapper>

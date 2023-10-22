@@ -4,7 +4,7 @@ export const useMixcloudData = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [mixcloudFeed, setMixcloudFeed] = useState([]);
-
+  console.log("mixcloudFeed", mixcloudFeed);
   useEffect(() => {
     (async () => {
       try {
