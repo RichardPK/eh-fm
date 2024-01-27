@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import NavLinkComponent from "./NavLink/NavLink";
+import RadioLinks from "./RadioLinks";
 import linksData from "./linksData";
 
 const NavLinks = () => {
@@ -13,6 +14,7 @@ const NavLinks = () => {
           key={i}
         />
       ))}
+      <RadioLinks />
     </NavLinksWrapper>
   );
 };

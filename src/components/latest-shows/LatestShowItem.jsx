@@ -58,19 +58,15 @@ const Wrapper = styled.div`
   border-radius: ${Sizes.buttonRadius}px;
   margin: 15px 5px;
   background: white;
-  /* border-bottom: 2px solid ${Colors.ehfmPrimary()}; */
-  // height: 190px;
   width: 70vw;
   cursor: pointer;
 
   @media ${Devices.mobileL} {
-    // height: 140px;
-    width: 30vw;
+    width: 90vw;
     margin: 1rem 0.75rem 1rem 1rem;
   }
 
   @media ${Devices.tablet} {
-    // height: 190px;
     width: 20vw;
   }
 `;
