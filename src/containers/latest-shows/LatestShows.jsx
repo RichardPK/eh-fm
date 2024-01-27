@@ -11,14 +11,13 @@ const LatestShows = ({ mixcloudFeed }) => {
     MixcloudWidgetContext
   );
   const [cookies] = useCookies(["ehfm"]);
-  console.log("mixcloudFeed", mixcloudFeed);
 
-  const latest10 = mixcloudFeed
+  const latest12 = mixcloudFeed
     .sort(
       (showA, showB) =>
         new Date(showB.created_time) - new Date(showA.created_time)
     )
-    .slice(0, 10);
+    .slice(0, 12);
 
   return (
     <React.Fragment>
@@ -31,7 +30,7 @@ const LatestShows = ({ mixcloudFeed }) => {
         mixcloudWidgetHtml={mixcloudWidgetHtml}
         cookiesBannerShowing={!cookies.ehfm}
       >
-        {latest10.map(({ cloudcasts }, index) => {
+        {latest12.map(({ cloudcasts }, index) => {
           const { name, key, pictures, tags, created_time } = cloudcasts[0];
           const slug = key.split("/ehfm/")[1].split("-");
           slug.pop();

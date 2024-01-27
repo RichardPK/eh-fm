@@ -45,10 +45,6 @@ const mixcloudFeedToCarousel = (feed) =>
   });
 
 const HomeContainer = ({ carouselData, mixcloudFeed }) => {
-  console.log(
-    "mixcloudFeedToCarousel(mixcloudFeed)",
-    mixcloudFeedToCarousel(mixcloudFeed)
-  );
   const [cookies] = useCookies(["ehfm"]);
   const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
     MixcloudWidgetContext
@@ -135,7 +131,19 @@ const HomeContainer = ({ carouselData, mixcloudFeed }) => {
             handleMixcloudClick={handleMixcloudClick}
           />
         )}
-
+        {mixcloudFeed.length > 0 ? (
+          <AdditionalCarouselWrapper key={"mixcloud-feed-carousel"}>
+            <AdditionalCarouselHeading
+              carouselName={"Latest shows"}
+              link={"/latest-shows"}
+            />
+            <Carousel
+              data={mixcloudFeedToCarousel(mixcloudFeed)}
+              hierarchy={"secondary"}
+              handleMixcloudClick={handleMixcloudClick}
+            />
+          </AdditionalCarouselWrapper>
+        ) : null}
         {additionalCarouselsWithItems.length > 0
           ? additionalCarouselsWithItems.map((carousel) => {
               const sortedData = reverseChronologicalSort(
@@ -155,19 +163,6 @@ const HomeContainer = ({ carouselData, mixcloudFeed }) => {
               );
             })
           : null}
-        {mixcloudFeed.length > 0 ? (
-          <AdditionalCarouselWrapper key={"mixcloud-feed-carousel"}>
-            <AdditionalCarouselHeading
-              carouselName={"Latest shows"}
-              link={"/latest-shows"}
-            />
-            <Carousel
-              data={mixcloudFeedToCarousel(mixcloudFeed)}
-              hierarchy={"secondary"}
-              handleMixcloudClick={handleMixcloudClick}
-            />
-          </AdditionalCarouselWrapper>
-        ) : null}
       </Wrapper>
     </React.Fragment>
   );
