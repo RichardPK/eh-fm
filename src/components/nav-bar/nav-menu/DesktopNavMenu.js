@@ -4,17 +4,21 @@ import NavLinkComponent from "./NavLink/NavLink";
 import RadioLinks from "./RadioLinks";
 import linksData from "./linksData";
 
+const GROUPED_LINKS = ["SCHEDULE", "RESIDENTS", "LATEST SHOWS"];
+
 const NavLinks = () => {
   return (
     <NavLinksWrapper>
-      {linksData.map((linkData, i) => (
-        <NavLinkComponent
-          target={linkData.target}
-          text={linkData.text}
-          key={i}
-        />
-      ))}
-      <RadioLinks />
+      {linksData
+        .filter(({ text }) => !GROUPED_LINKS.includes(text))
+        .map((linkData, i) => {
+          return (
+            <React.Fragment key={i}>
+              <NavLinkComponent target={linkData.target} text={linkData.text} />
+              {i === 0 ? <RadioLinks /> : null}
+            </React.Fragment>
+          );
+        })}
     </NavLinksWrapper>
   );
 };

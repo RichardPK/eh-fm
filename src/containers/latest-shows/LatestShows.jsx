@@ -35,12 +35,10 @@ const LatestShows = ({ mixcloudFeed }) => {
           const slug = key.split("/ehfm/")[1].split("-");
           slug.pop();
 
-          console.log("created_time", created_time);
-
           return (
             <LatestShowItem
               index={index}
-              key={index}
+              key={`${key}-${index}`}
               showTitle={name.split(" - ")[0]}
               thumbnailImage={pictures["640wx640h"]}
               handleMixcloudClick={handleMixcloudClick}

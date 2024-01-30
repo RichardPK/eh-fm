@@ -34,8 +34,8 @@ const LatestShowItem = ({
       <DateHeader>{moment(publishDate).format("DD.MM.YY")}</DateHeader>
       <ShowTitle>{showTitle}</ShowTitle>
       <TagUl>
-        {tags.map((tag) => (
-          <TagLi>{tag}</TagLi>
+        {tags.map((tag, index) => (
+          <TagLi key={`${index}-${tag}`}>{tag}</TagLi>
         ))}
       </TagUl>
       <HoverLine

@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   padding: 0.5rem;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
+  width: 137px;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -23,16 +24,14 @@ const StyledNavLink = styled(NavLink)`
 const MobileNavMenu = ({ onClick, links }) => {
   return (
     <Wrapper>
-      {links
-        ? JSON.stringify(links)
-        : linksData.map((linkData, i) => (
-            <StyledNavLink
-              target={linkData.target}
-              text={linkData.text}
-              key={i}
-              onClick={onClick}
-            />
-          ))}
+      {(links ? links : linksData).map((linkData, i) => (
+        <StyledNavLink
+          target={linkData.target}
+          text={linkData.text}
+          key={i}
+          onClick={onClick}
+        />
+      ))}
     </Wrapper>
   );
 };
