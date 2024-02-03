@@ -12,7 +12,6 @@ const SecondaryCarouselItem = ({
   index,
 }) => {
   let [hovered, setHovered] = useState(false);
-  // console.log("data", data);
   return (
     <Wrapper
       hierarchy={hierarchy}

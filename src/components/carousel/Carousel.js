@@ -74,7 +74,6 @@ const Carousel = ({ data, hierarchy, handleMixcloudClick }) => {
   };
 
   const handleCarouselItemClick = (link, type, index, hierarchy) => {
-    console.log("link", link);
     clickedCarouselItem(link, type, index, hierarchy);
 
     const url = link.url;
@@ -91,12 +90,6 @@ const Carousel = ({ data, hierarchy, handleMixcloudClick }) => {
       handleMixcloudClick(deconstructedUrl.pathname);
     }
   };
-
-  // console.log(
-  //   carouselRef
-  //     ? `Autoplay running: ${carouselRef.autoplay.running}`
-  //     : `No carouselRef`
-  // );
 
   return (
     <Wrapper hierarchy={hierarchy}>

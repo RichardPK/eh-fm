@@ -57,7 +57,6 @@ const Button = ({ action }) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    console.log("window", window);
     if (
       window &&
       (window.location.pathname.includes("residents") ||

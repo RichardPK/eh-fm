@@ -10,7 +10,6 @@ import HoverLine from "../hoverLine/HoverLine";
 
 const ResidentListItem = (props) => {
   const [hovered, setHovered] = useState(false);
-  console.log("props", props);
   return (
     <React.Fragment>
       <Link

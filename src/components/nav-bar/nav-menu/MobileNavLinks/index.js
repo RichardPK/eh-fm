@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   padding: 0.5rem;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
-  width: 137px;
+  width: 140px;
 `;
 
 const StyledNavLink = styled(NavLink)`
