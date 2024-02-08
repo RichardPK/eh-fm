@@ -38,6 +38,15 @@ const LatestShowItem = ({
           <TagLi key={`${index}-${tag}`}>{tag}</TagLi>
         ))}
       </TagUl>
+
+      <ButtonHolder>
+        <ViewMoreButton
+          href={`https://www.mixcloud.com${showKey}`}
+          target="blank"
+        >
+          View more
+        </ViewMoreButton>
+      </ButtonHolder>
       <HoverLine
         zIndex={10}
         hovered={hovered}
@@ -119,6 +128,24 @@ const TagLi = styled.li`
   border-radius: 3px;
   margin-right: 2px;
   margin-bottom: 2px;
+`;
+
+const ButtonHolder = styled.div`
+  height: 32px;
+`;
+
+const ViewMoreButton = styled.a`
+  padding: 6px 0;
+  position: absolute;
+  bottom: 0px;
+  height: 24px;
+  width: 100%;
+  font-weight: 300;
+  text-transform: uppercase;
+  &:hover {
+    cursor: pointer;
+    color: ${Colors.ehfmPrimary()};
+  }
 `;
 
 export default LatestShowItem;
