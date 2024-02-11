@@ -82,7 +82,7 @@ const ViewMoreButton = styled.a`
   margin-left: auto;
   margin-right: auto;
   margin-top: 6px;
-  margin-bottom: 6px;
+  margin-bottom: 36px;
   font-weight: 300;
   text-transform: uppercase;
   &:hover {
