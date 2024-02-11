@@ -5,6 +5,7 @@ import MetaData from "../../components/metadata/MetaData";
 import LatestShowItem from "../../components/latest-shows/LatestShowItem";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import { WidgetMarginStyles, PagePaddingStyles } from "../../consts/Styles";
+import Colors from "../../consts/Colors";
 
 const LatestShows = ({ mixcloudFeed }) => {
   const { mixcloudWidgetHtml, handleMixcloudClick } = useContext(
@@ -50,6 +51,9 @@ const LatestShows = ({ mixcloudFeed }) => {
             />
           );
         })}
+        <ButtonHolder>
+          <ViewMoreButton href={`/residents`}>View more</ViewMoreButton>
+        </ButtonHolder>
       </Wrapper>
     </React.Fragment>
   );
@@ -61,6 +65,32 @@ const Wrapper = styled.div`
   justify-content: space-evenly;
   ${(props) => WidgetMarginStyles(props)}
   ${PagePaddingStyles}
+`;
+
+const ViewMoreButton = styled.a`
+  background: #02b398;
+  color: white;
+  display: block;
+  width: 100px;
+  padding: 6px 6px;
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  font-weight: 300;
+  text-transform: uppercase;
+  &:hover {
+    cursor: pointer;
+    color: ${Colors.ehfmPrimary()};
+    background: #f7f0f0;
+  }
+`;
+
+const ButtonHolder = styled.div`
+  display: block;
+  text-align: center;
+  width: 100%;
 `;
 
 export default LatestShows;
