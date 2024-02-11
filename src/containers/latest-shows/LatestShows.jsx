@@ -52,7 +52,12 @@ const LatestShows = ({ mixcloudFeed }) => {
           );
         })}
         <ButtonHolder>
-          <ViewMoreButton href={`/residents`}>View more</ViewMoreButton>
+          <ViewMoreButton
+            href={`https://www.mixcloud.com/ehfm/`}
+            target="_blank"
+          >
+            View more
+          </ViewMoreButton>
         </ButtonHolder>
       </Wrapper>
     </React.Fragment>
