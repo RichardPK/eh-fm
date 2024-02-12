@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   padding: 0.5rem;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
+  width: 145px;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -20,10 +21,10 @@ const StyledNavLink = styled(NavLink)`
   padding-top: 0.25rem;
 `;
 
-const MobileNavMenu = ({ onClick }) => {
+const MobileNavMenu = ({ onClick, links }) => {
   return (
     <Wrapper>
-      {linksData.map((linkData, i) => (
+      {(links ? links : linksData).map((linkData, i) => (
         <StyledNavLink
           target={linkData.target}
           text={linkData.text}

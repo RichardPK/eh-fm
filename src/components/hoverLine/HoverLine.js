@@ -16,7 +16,7 @@ const HoveredLine = ({
       zIndex={zIndex}
       bottomOffset={bottomOffset}
       width={width}
-      placeholder={placeholder}
+      placeholder={placeholder ? "true" : ""}
       placeholderWidth={placeholderWidth}
     />
   );
@@ -38,8 +38,7 @@ const Wrapper = styled.div`
       props.hovered
       ? "120%"
       : // when not hovered
-      // placeholder === true
-      props.placeholder
+      props.placeholder === "true"
       ? props.placeholderWidth
       : "0px"};
   height: 4px;

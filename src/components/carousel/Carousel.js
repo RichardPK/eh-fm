@@ -91,12 +91,6 @@ const Carousel = ({ data, hierarchy, handleMixcloudClick }) => {
     }
   };
 
-  // console.log(
-  //   carouselRef
-  //     ? `Autoplay running: ${carouselRef.autoplay.running}`
-  //     : `No carouselRef`
-  // );
-
   return (
     <Wrapper hierarchy={hierarchy}>
       <Swiper
@@ -106,29 +100,27 @@ const Carousel = ({ data, hierarchy, handleMixcloudClick }) => {
         }}
       >
         {data.length &&
-          data.map((carouselItemData, i) => {
-            return (
-              <div key={carouselItemData.id}>
-                {hierarchy === "primary" ? (
-                  <PrimaryCarouselItem
-                    data={carouselItemData.data}
-                    hierarchy={hierarchy}
-                    handleCarouselItemClick={handleCarouselItemClick}
-                    carouselRef={carouselRef}
-                    index={i}
-                  />
-                ) : (
-                  <SecondaryCarouselItem
-                    data={carouselItemData.data}
-                    hierarchy={hierarchy}
-                    handleCarouselItemClick={handleCarouselItemClick}
-                    carouselRef={carouselRef}
-                    index={i}
-                  />
-                )}
-              </div>
-            );
-          })}
+          data.map((carouselItemData, i) => (
+            <div key={`carouselItemData-${i}`}>
+              {hierarchy === "primary" ? (
+                <PrimaryCarouselItem
+                  data={carouselItemData.data}
+                  hierarchy={hierarchy}
+                  handleCarouselItemClick={handleCarouselItemClick}
+                  carouselRef={carouselRef}
+                  index={i}
+                />
+              ) : (
+                <SecondaryCarouselItem
+                  data={carouselItemData.data}
+                  hierarchy={hierarchy}
+                  handleCarouselItemClick={handleCarouselItemClick}
+                  carouselRef={carouselRef}
+                  index={i}
+                />
+              )}
+            </div>
+          ))}
       </Swiper>
     </Wrapper>
   );

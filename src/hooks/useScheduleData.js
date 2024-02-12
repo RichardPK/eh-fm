@@ -63,8 +63,6 @@ export const useScheduleData = () => {
       const daysIndex = new Date().getUTCDay();
       const daysString = jsDays[daysIndex];
       const showsUpNext = getRemainingShowsToday(airTimeSchedule[daysString]);
-      // console.log(airTimeSchedule);
-      // debugger;
       showsUpNext && setScheduleData(showsUpNext);
     };
 

@@ -4,6 +4,7 @@ const linksData = [
   { target: "/residents", text: "RESIDENTS" },
   { target: "/about", text: "ABOUT" },
   { target: "/support", text: "SUPPORT" },
+  { target: "/latest-shows", text: "LATEST SHOWS" },
   // { target: "https://ehfm.bigcartel.com/", icon: () => <ToteLogo /> },
 ];
 
