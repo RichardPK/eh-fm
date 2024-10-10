@@ -13,6 +13,7 @@ import { PagePaddingStyles } from "../../consts/Styles";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
   top: 86px;
+  position: fixed;
 `;
 
 const Wrapper = styled.div`
@@ -30,6 +31,7 @@ const InnerWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto auto;
+  padding-bottom: 2.75rem;
 `;
 
 const About = ({ pageData }) => {
