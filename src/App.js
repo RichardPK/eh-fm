@@ -11,7 +11,7 @@ import { MixcloudWidgetContextProvider } from "./contexts/MixcloudWidgetContext"
 import { DeviceInfoContextProvider } from "./contexts/DeviceInfoContext";
 
 export const App = () => {
-  const { aboutPageData, supportPageData, residentsData, carouselData } =
+  const { aboutPageData, supportPageData, residentsData, carouselData, groundfloorPageData } =
     usePrismicData();
   const currentShowData = useCurrentShowData();
   const { scheduleData } = useScheduleData();
@@ -35,6 +35,10 @@ export const App = () => {
       return Boolean(essentialForAllPaths && supportPageData);
     }
 
+    if (path === "/groundfloor") {
+      return Boolean(essentialForAllPaths && groundfloorPageData);
+    }
+
     if (path === "/schedule") {
       return true;
     }
@@ -56,6 +60,7 @@ export const App = () => {
               <Main
                 aboutPageData={aboutPageData}
                 supportPageData={supportPageData}
+                groundfloorPageData={groundfloorPageData}
                 currentShowData={currentShowData}
                 scheduleData={scheduleData}
                 residentsData={residentsData}

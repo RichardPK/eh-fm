@@ -6,6 +6,7 @@ import Colors from "../../consts/Colors";
 import { Cta, Heading4 } from "../text-elements/index";
 import { ReactComponent as Paypal } from "../../assets/svgs/paypal.svg";
 import { ReactComponent as Patreon } from "../../assets/svgs/patreon.svg";
+import { ReactComponent as Instagram } from "../../assets/svgs/instagram.svg";
 import { ReactComponent as ExternalLink } from "../../assets/svgs/external-link.svg";
 
 const Text = styled(Cta)`
@@ -89,6 +90,10 @@ const LinkButton = ({ text, linkText, href }) => {
       return <ExternalLink />;
     }
 
+    if (lowerCaseLink.includes("instagram")) {
+      return <Instagram />;
+    }
+
     return null;
   };
 
@@ -105,7 +110,7 @@ const LinkButton = ({ text, linkText, href }) => {
       }}
       hovered={hovered}
     >
-      <Text hovered={hovered}>{text}</Text>
+      {text && <Text hovered={hovered}>{text}</Text>}
       <LinkText hovered={hovered}>
         {getIcon()} {linkText}
       </LinkText>
