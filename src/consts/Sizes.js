@@ -15,5 +15,5 @@ export default {
   mobileNavHeight: 120,
   sidePlayerWidth: 350,
   sidePlayerWidthSmaller: 300,
-  buttonRadius: 3,
+  buttonRadius: 6,
 };

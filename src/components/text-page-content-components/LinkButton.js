@@ -59,19 +59,13 @@ const LinkWrapper = styled.div`
   background-color: ${(props) =>
     props.hovered ? Colors.playerWhite : Colors.ehfmPrimary()};
   transition: background-color 0.2s ease-out;
-  padding: 8px;
+  padding: 1rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.25rem;
+  justify-content: start;
+  align-items: start;
   width: auto;
-
-  @media ${Devices.tablet} {
-    width: 66%;
-  }
-
-  @media ${Devices.laptop} {
-    width: 80%;
-  }
 `;
 
 const LinkButton = ({ text, linkText, href }) => {
