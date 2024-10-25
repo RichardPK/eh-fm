@@ -26,6 +26,9 @@ const NavLinks = () => {
 const NavLinksWrapper = styled.div`
   display: flex;
   margin-bottom: 2px;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
 `;
 
 export default NavLinks;

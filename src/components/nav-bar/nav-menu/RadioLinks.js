@@ -32,24 +32,7 @@ const RadioLinks = () => {
 const Wrapper = styled.div`
   position: relative;
   display: flex;
-  margin-right: 0.5rem;
   padding: 1px 0 0;
-
-  @media ${Devices.mobileS} {
-    margin-right: 1rem;
-  }
-
-  @media ${Devices.mobileL} {
-    margin-right: 2rem;
-  }
-
-  @media ${Devices.tablet} {
-    margin-right: 3rem;
-  }
-
-  @media ${Devices.laptop} {
-    margin-right: 4rem;
-  }
 `;
 
 const Button = ({ action }) => {

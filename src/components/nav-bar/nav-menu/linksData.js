@@ -3,8 +3,8 @@ const linksData = [
   { target: "/schedule", text: "SCHEDULE" },
   { target: "/residents", text: "RESIDENTS" },
   { target: "/about", text: "ABOUT" },
+  { target: "/groundfloor", text: "CAFE" },
   { target: "/support", text: "SUPPORT" },
-  { target: "/groundfloor", text: "OUR CAFE" },
   { target: "/latest-shows", text: "LATEST SHOWS" },
   // { target: "https://ehfm.bigcartel.com/", icon: () => <ToteLogo /> },
 ];
