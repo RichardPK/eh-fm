@@ -16,7 +16,7 @@ const Text = styled(Cta)`
   color: fill, 0.2s ease-out;
 `;
 
-const LinkText = styled(Heading4)`
+const LinkText = styled(Cta)`
   display: flex;
   justify-content: center;
   align-items: center;
