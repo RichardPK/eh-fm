@@ -45,8 +45,8 @@ export const App = () => {
 
     return Boolean(
       essentialForAllPaths &&
-        carouselData.allCarouselItems &&
-        carouselData.additionalCarousels
+      carouselData.allCarouselItems &&
+      carouselData.additionalCarousels
     );
   };
 

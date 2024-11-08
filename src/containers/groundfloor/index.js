@@ -14,6 +14,7 @@ import LinkButtonContainer from "../../components/text-page-content-components/G
 import { gridStyles } from "../../consts/gridStyles";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import { WidgetMarginStyles } from "../../consts/Styles";
+import Colors from "../../consts/Colors";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
   height: 100vh;
@@ -34,6 +35,18 @@ const InnerWrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto auto;
   padding-bottom: 2.5rem;
+`;
+
+const GFLogoContainer = styled.div`
+  background-color: ${Colors.spanBg};
+  margin-bottom: 1rem;
+
+  ${gridStyles}
+`;
+
+const Menu = styled.div`
+  margin-bottom: 2rem;
+  ${gridStyles}
 `;
 
 const StyledBodyParagraphs = styled(BodyParagraphs)`
@@ -67,6 +80,8 @@ const Support = ({ pageData }) => {
     height: bgImageSize,
   });
 
+
+
   return (
     <>
       <MetaData
@@ -83,10 +98,16 @@ const Support = ({ pageData }) => {
         cookiesBannerShowing={!cookies.ehfm}
       >
         <InnerWrapper>
-          <TopTextContainer headline={heading} subheader={subheading} />
+          <GFLogoContainer>
+            <img src='/gf-logo.png' alt="Groundfloor" style={{ width: '100%', height: 'auto' }} />
+          </GFLogoContainer>
           <StyledBodyParagraphs aboutText={description} />
+          <Menu>
+            <img src="/groundfloor-menu-nov-2024.png" alt="Groundfloor Menu" style={{ width: '100%', height: 'auto', opacity: 0.95 }} />
+          </Menu>
           <LinkButtonContainer support_urls={links} />
         </InnerWrapper>
+
       </Wrapper>
     </>
   );

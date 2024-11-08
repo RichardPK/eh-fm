@@ -32,19 +32,19 @@ const LinkText = styled(Cta)`
 
     path {
       fill: ${(props) =>
-        props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite} !important;
+    props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite} !important;
       transition: fill, 0.2s ease-out;
     }
 
     path:nth-child(2) {
       fill: ${(props) =>
-        props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite} !important;
+    props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite} !important;
       transition: fill, 0.2s ease-out;
     }
 
     path:nth-child(3) {
       fill: ${(props) =>
-        props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite} !important;
+    props.hovered ? Colors.ehfmPrimary() : Colors.playerWhite} !important;
       transition: fill, 0.2s ease-out;
     }
 
@@ -71,6 +71,8 @@ const LinkWrapper = styled.div`
 const LinkButton = ({ text, linkText, href }) => {
   let [hovered, setHovered] = useState(false);
   const getIcon = () => {
+    const currentDomain = window.location.origin.toLowerCase();
+
     const lowerCaseLink = linkText.toLowerCase();
     if (lowerCaseLink.includes("paypal")) {
       return <Paypal />;
@@ -80,12 +82,12 @@ const LinkButton = ({ text, linkText, href }) => {
       return <Patreon />;
     }
 
-    if (lowerCaseLink.includes("form")) {
-      return <ExternalLink />;
-    }
-
     if (lowerCaseLink.includes("instagram")) {
       return <Instagram />;
+    }
+
+    if (!lowerCaseLink.startsWith(currentDomain)) {
+      return <ExternalLink />;
     }
 
     return null;
