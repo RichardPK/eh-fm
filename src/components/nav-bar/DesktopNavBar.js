@@ -53,6 +53,8 @@ const Wrapper = styled.nav`
 
 const Inner = styled.div`
   display: flex;
+  gap: 2rem;
+  justify-content: space-between;
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 10px;
@@ -72,7 +74,8 @@ const Left = styled.div`
   flex-direction: row;
   align-items: center;
   letter-spacing: 1px;
-
+  flex-grow: 1;
+  max-width: 400px;
   @media ${Devices.tablet} {
     height: 71px;
   }

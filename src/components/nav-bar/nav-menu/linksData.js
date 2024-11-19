@@ -2,6 +2,7 @@ const linksData = [
   { target: "/", text: "HOME" },
   { target: "/schedule", text: "SCHEDULE" },
   { target: "/residents", text: "RESIDENTS" },
+  { target: "/groundfloor", text: "CAFE" },
   { target: "/about", text: "ABOUT" },
   { target: "/support", text: "SUPPORT" },
   { target: "/latest-shows", text: "LATEST SHOWS" },

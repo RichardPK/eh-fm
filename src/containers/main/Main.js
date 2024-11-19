@@ -17,6 +17,7 @@ import PageViewAnalytics from "../../components/analytics/PageViewAnalytics";
 import Devices from "../../consts/Devices";
 import About from "../about";
 import Support from "../support";
+import Groundfloor from "../groundfloor";
 import LiveRadioSchema from "../../components/schema/live-radio-schema/LiveRadioSchema";
 import { useCookies } from "react-cookie";
 import Schedule from "../shedule/Schedule";
@@ -25,6 +26,7 @@ import LatestShows from "../latest-shows/LatestShows";
 const Main = ({
   aboutPageData,
   supportPageData,
+  groundfloorPageData,
   currentShowData,
   scheduleData,
   residentsData,
@@ -67,6 +69,9 @@ const Main = ({
             </Route>
             <Route exact path="/support">
               <Support pageData={supportPageData} />
+            </Route>
+            <Route exact path="/groundfloor">
+              <Groundfloor pageData={groundfloorPageData} />
             </Route>
             <Route exact path="/schedule">
               <Schedule

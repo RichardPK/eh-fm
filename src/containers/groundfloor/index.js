@@ -10,10 +10,11 @@ import { DeviceInfoContext } from "../../contexts/DeviceInfoContext";
 import { PagePaddingStyles } from "../../consts/Styles";
 import TopTextContainer from "../../components/text-page-content-components/TopTextContainer";
 import BodyParagraphs from "../../components/text-page-content-components/BodyParagraphs";
-import LinkButtonContainer from "../../components/text-page-content-components/SupportLinkButtonContainer";
+import LinkButtonContainer from "../../components/text-page-content-components/GroundfloorLinkButtonContainer";
 import { gridStyles } from "../../consts/gridStyles";
 import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 import { WidgetMarginStyles } from "../../consts/Styles";
+import Colors from "../../consts/Colors";
 
 const StyledBackgroundImage = styled(BackgroundImage)`
   height: 100vh;
@@ -36,6 +37,18 @@ const InnerWrapper = styled.div`
   padding-bottom: 2.5rem;
 `;
 
+const GFLogoContainer = styled.div`
+  background-color: ${Colors.spanBg};
+  margin-bottom: 1rem;
+
+  ${gridStyles}
+`;
+
+const Menu = styled.div`
+  margin-bottom: 2rem;
+  ${gridStyles}
+`;
+
 const StyledBodyParagraphs = styled(BodyParagraphs)`
   ${gridStyles}
 `;
@@ -49,7 +62,7 @@ const Support = ({ pageData }) => {
     banner_image,
     heading,
     subheading,
-    support_urls,
+    links,
     description,
   } = pageData.data;
 
@@ -67,13 +80,15 @@ const Support = ({ pageData }) => {
     height: bgImageSize,
   });
 
+
+
   return (
     <>
       <MetaData
         title={"Support | EHFM"}
-        url="https://www.ehfm.live/support"
+        url="https://www.ehfm.live/groundfloor"
         imageSrc={metaDataImageUrl}
-        description="Help support your local community radio station"
+        description="Ground Floor is a cafe based on Great Junction Street in Leith, operated by EHFM and home to our radio studio"
         imageWidth="800px"
         imageHeight="800px"
       />
@@ -83,10 +98,16 @@ const Support = ({ pageData }) => {
         cookiesBannerShowing={!cookies.ehfm}
       >
         <InnerWrapper>
-          <TopTextContainer headline={heading} subheader={subheading} />
+          <GFLogoContainer>
+            <img src='/gf-logo.png' alt="Groundfloor" style={{ width: '100%', height: 'auto' }} />
+          </GFLogoContainer>
           <StyledBodyParagraphs aboutText={description} />
-          <LinkButtonContainer support_urls={support_urls} />
+          <Menu>
+            <img src="/groundfloor-menu-nov-2024.png" alt="Groundfloor Menu" style={{ width: '100%', height: 'auto', opacity: 0.95 }} />
+          </Menu>
+          <LinkButtonContainer support_urls={links} />
         </InnerWrapper>
+
       </Wrapper>
     </>
   );

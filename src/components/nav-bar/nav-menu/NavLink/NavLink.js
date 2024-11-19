@@ -42,23 +42,6 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   padding: 2px 0 0;
   transition: all, 0.1s ease-out;
-  margin-right: 0.5rem;
-
-  @media ${Devices.mobileS} {
-    margin-right: 1rem;
-  }
-
-  @media ${Devices.mobileL} {
-    margin-right: 2rem;
-  }
-
-  @media ${Devices.tablet} {
-    margin-right: 3rem;
-  }
-
-  @media ${Devices.laptop} {
-    margin-right: 4rem;
-  }
 
   svg {
     height: 20px;

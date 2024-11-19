@@ -5,6 +5,7 @@ export const usePrismic = () => {
   const [aboutPageData, setAboutData] = useState(null);
   const [supportPageData, setSupportData] = useState(null);
   const [residentsData, setResidentsData] = useState(null);
+  const [groundfloorPageData, setGroundfloorData] = useState(null);
   const [allCarouselItems, setAllCarouselItems] = useState(null);
   const [additionalCarousels, setAdditionalCarousels] = useState(null);
 
@@ -23,6 +24,12 @@ export const usePrismic = () => {
           pageSize: 1,
         }).then((response) => {
           response && setSupportData(response.results[0]);
+        });
+
+        Client.query(Prismic.Predicates.at("document.type", "groundfloor"), {
+          pageSize: 1,
+        }).then((response) => {
+          response && setGroundfloorData(response.results[0]);
         });
 
         Client.query(Prismic.Predicates.at("document.type", "show"), {
@@ -61,8 +68,7 @@ export const usePrismic = () => {
   }, []);
 
   const carouselData = { allCarouselItems, additionalCarousels };
-
-  return { aboutPageData, supportPageData, residentsData, carouselData };
+  return { aboutPageData, supportPageData, residentsData, carouselData, groundfloorPageData };
 };
 
 export default usePrismic;
