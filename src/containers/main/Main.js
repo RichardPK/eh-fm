@@ -22,6 +22,7 @@ import LiveRadioSchema from "../../components/schema/live-radio-schema/LiveRadio
 import { useCookies } from "react-cookie";
 import Schedule from "../shedule/Schedule";
 import LatestShows from "../latest-shows/LatestShows";
+import PrivacyPolicy from "../privacy-policy"
 
 const Main = ({
   aboutPageData,
@@ -81,6 +82,9 @@ const Main = ({
             </Route>
             <Route exact path="/latest-shows">
               <LatestShows mixcloudFeed={mixcloudFeed} />
+            </Route>
+            <Route exact path="/privacy-policy">
+              <PrivacyPolicy mixcloudFeed={mixcloudFeed} />
             </Route>
             <Route exact path="/">
               <Home carouselData={carouselData} mixcloudFeed={mixcloudFeed} />
