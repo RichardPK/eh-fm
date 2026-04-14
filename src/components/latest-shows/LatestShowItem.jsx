@@ -51,6 +51,7 @@ const LatestShowItem = ({
 
 const Wrapper = styled.div`
   position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   max-width: 265px;

@@ -19,6 +19,7 @@ const HeaderContainer = ({ currentShow }) => {
 
 const MobileWrapper = styled.div`
   display: block;
+  position: relative;
   z-index: 5;
 
   @media ${Devices.tablet} {
