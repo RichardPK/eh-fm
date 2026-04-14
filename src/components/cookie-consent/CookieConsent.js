@@ -58,8 +58,19 @@ const Wrapper = styled.div`
   background-color: ${Colors.playerWhiteCustom(0.95)};
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100vw;
   z-index: 2;
+
+  @media ${Devices.tablet} {
+    left: ${Sizes.sidePlayerWidthSmaller}px;
+    width: calc(100vw - ${Sizes.sidePlayerWidthSmaller}px);
+  }
+
+  @media ${Devices.laptop} and ${Devices.laptopHeightS} {
+    left: ${Sizes.sidePlayerWidth}px;
+    width: calc(100vw - ${Sizes.sidePlayerWidth}px);
+  }
 `;
 
 const Inner = styled.div`
