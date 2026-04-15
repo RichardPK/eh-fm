@@ -22,6 +22,7 @@ const ResidentShowContainer = ({ residentsData }) => {
   const { viewportWidth } = useContext(DeviceInfoContext);
 
   const [pastMixcloudShows, setPastMixcloudShows] = useState(null);
+  const [loadingShows, setLoadingShows] = useState(false);
   const [selectedShow, setSelectedShow] = useState(null);
 
   useEffect(() => {
@@ -37,18 +38,30 @@ const ResidentShowContainer = ({ residentsData }) => {
 
   useEffect(() => {
     const mixCloudAPICall = async () => {
+      setLoadingShows(true);
+      setPastMixcloudShows(null);
       let playlistUrl = selectedShow.mixcloud_playlist_url;
       // https://www.mixcloud.com/ehfm/playlists/lunch/
 
       let wwwCutPoint = playlistUrl.indexOf(".") + 1;
       let modifiedUrl = playlistUrl.slice(wwwCutPoint);
-      const showsToReturn = `100`;
 
-      fetch(`https://api.${modifiedUrl}cloudcasts/?limit=${showsToReturn}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setPastMixcloudShows(data.data.reverse());
-        });
+      let allShows = [];
+      let nextUrl = `https://api.${modifiedUrl}cloudcasts/?limit=100`;
+
+      try {
+        while (nextUrl) {
+          const response = await fetch(nextUrl);
+          const data = await response.json();
+          allShows = allShows.concat(data.data);
+          nextUrl = data.paging && data.paging.next ? data.paging.next : null;
+        }
+        setPastMixcloudShows(allShows.reverse());
+      } catch (err) {
+        setPastMixcloudShows([]);
+      } finally {
+        setLoadingShows(false);
+      }
     };
 
     selectedShow && mixCloudAPICall();
@@ -78,6 +91,7 @@ const ResidentShowContainer = ({ residentsData }) => {
             cookies={cookies}
             selectedShow={selectedShow}
             pastMixcloudShows={pastMixcloudShows}
+            loadingShows={loadingShows}
             mixcloudWidgetHtml={mixcloudWidgetHtml}
             handleMixcloudClick={handleMixcloudClick}
           />

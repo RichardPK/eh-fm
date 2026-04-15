@@ -21,7 +21,13 @@ const ResidentsContainer = ({ residentsData }) => {
         mixcloudWidgetHtml={mixcloudWidgetHtml}
         cookiesBannerShowing={!cookies.ehfm}
       >
-        {residentsData.map((show, index) => {
+        {[...residentsData]
+          .sort((a, b) =>
+            a.data.show_title
+              .toLowerCase()
+              .localeCompare(b.data.show_title.toLowerCase())
+          )
+          .map((show, index) => {
           return (
             <ResidentListItem
               show={show}

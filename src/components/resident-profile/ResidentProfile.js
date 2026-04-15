@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Devices from "../../consts/Devices";
-import styled from "styled-components/macro";
+import styled, { keyframes } from "styled-components/macro";
 import { Events, animateScroll as scroll } from "react-scroll";
 import ProfileText from "./profile-text/ProfileText";
 import MostRecentShowbutton from "./most-recent-show-button/MostRecentShowButton";
 import ArchiveButton from "./archive-button/ArchiveButton";
 import PastShows from "./past-shows/PastShows";
+import Colors from "../../consts/Colors";
+import Sizes from "../../consts/Sizes";
+import { Heading4 } from "../text-elements/index";
 import {
   PagePaddingStyles,
   FullHeightPageStyles,
@@ -18,6 +21,7 @@ const ResidentProfile = ({
   mixcloudWidgetHtml,
   cookies,
   pastMixcloudShows,
+  loadingShows,
   selectedShow,
 }) => {
   const [displayShows, setDisplayShows] = useState(false);
@@ -88,6 +92,12 @@ const ResidentProfile = ({
       displayShows={displayShows}
     >
       <ProfileText selectedShow={selectedShow} />
+      {loadingShows && (
+        <LoadingWrapper>
+          <LoadingTitle>Loading archive</LoadingTitle>
+          <Spinner />
+        </LoadingWrapper>
+      )}
       {pastMixcloudShows && orderedPastShows && (
         <>
           <MostRecentShowbutton
@@ -134,6 +144,43 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+`;
+
+const spin = keyframes`
+  to { transform: rotate(360deg); }
+`;
+
+const LoadingWrapper = styled.div`
+  background-color: ${Colors.ehfmPrimary()};
+  color: ${Colors.playerWhite};
+  position: absolute;
+  padding: 0.25rem 0.3rem 0.25rem 0.5rem;
+  border-radius: ${Sizes.buttonRadius}px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  @media ${Devices.mobileL} {
+    bottom: 20px;
+    padding: 0.5rem 0.75rem 0.5rem 1rem;
+  }
+`;
+
+const LoadingTitle = styled(Heading4)`
+  font-weight: normal;
+  color: ${Colors.playerWhite};
+`;
+
+const Spinner = styled.div`
+  width: 14px;
+  height: 14px;
+  border: 2px solid ${Colors.playerWhiteCustom(0.35)};
+  border-top-color: ${Colors.playerWhite};
+  border-radius: 50%;
+  animation: ${spin} 0.8s linear infinite;
+  flex-shrink: 0;
 `;
 
 export default ResidentProfile;
