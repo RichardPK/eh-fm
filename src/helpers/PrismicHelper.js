@@ -18,10 +18,12 @@ export const getShowInPrismic = ({ residentsData, currentShow }) => {
   }
   if (residentsData.length > 0 && toLowerCase) {
     const filtered = residentsData.filter((resident) => {
+      const showTitle = resident.data.show_title;
+      if (!showTitle) return false;
       if (toLowerCase.includes("lunch")) {
-        return toLowerCase === resident.data.show_title.toLowerCase();
+        return toLowerCase === showTitle.toLowerCase();
       }
-      return toLowerCase.includes(resident.data.show_title.toLowerCase());
+      return toLowerCase.includes(showTitle.toLowerCase());
     });
     if (filtered.length > 0) {
       return filtered[0];

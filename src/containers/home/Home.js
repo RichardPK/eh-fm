@@ -12,14 +12,16 @@ import { MixcloudWidgetContext } from "../../contexts/MixcloudWidgetContext";
 const filterIncompleteItems = (items) =>
   items
     ? items.filter(
-        ({ data }) =>
-          data.headline &&
-          data.link &&
-          data.type &&
-          data.category &&
-          data.headline &&
-          data.image &&
-          data.image.url
+        (item) =>
+          item &&
+          item.data &&
+          item.data.headline &&
+          item.data.link &&
+          item.data.type &&
+          item.data.category &&
+          item.data.headline &&
+          item.data.image &&
+          item.data.image.url
       )
     : [];
 
