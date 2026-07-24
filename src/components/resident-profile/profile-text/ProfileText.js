@@ -7,7 +7,7 @@ import { Heading1, Body, BodyExtraSpacing } from "../../text-elements/index";
 
 const ProfileText = ({ selectedShow }) => {
   const { show_title, show_description, show_time } = selectedShow;
-  const { instagram, twitter, facebook } = selectedShow.socials[0];
+  const { instagram, twitter, facebook } = selectedShow.socials?.[0] || {};
 
   const hrefs = {
     instagram: instagram,

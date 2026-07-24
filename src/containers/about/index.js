@@ -46,7 +46,7 @@ const About = ({ pageData }) => {
   } = pageData.data;
 
   const metaDataImageUrl = GetImageUrl({
-    baseUrl: image.url,
+    baseUrl: image?.url,
     width: "800",
     height: "800",
   });
@@ -54,7 +54,7 @@ const About = ({ pageData }) => {
   const bgImageSize = 1.5 * viewportWidth;
 
   const bgImageUrl = GetImageUrl({
-    baseUrl: image.url,
+    baseUrl: image?.url,
     width: bgImageSize,
     height: bgImageSize,
   });

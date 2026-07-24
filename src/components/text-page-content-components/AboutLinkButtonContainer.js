@@ -18,11 +18,11 @@ const Wrapper = styled.div`
 const GetInvolved = ({ get_involved_details }) => {
   return (
     <Wrapper>
-      {get_involved_details.map((data, i) => {
+      {(get_involved_details || []).map((data, i) => {
         return (
           <LinkButton
             key={i}
-            href={data.get_involved_link_href.url}
+            href={data.get_involved_link_href?.url}
             text={data.get_involved_text}
             linkText={data.get_involved_link_text}
           />

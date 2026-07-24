@@ -22,6 +22,7 @@ const ResidentsContainer = ({ residentsData }) => {
         cookiesBannerShowing={!cookies.ehfm}
       >
         {[...residentsData]
+          .filter((show) => show.data.show_title && show.data.show_image && show.data.show_image.url)
           .sort((a, b) =>
             a.data.show_title
               .toLowerCase()

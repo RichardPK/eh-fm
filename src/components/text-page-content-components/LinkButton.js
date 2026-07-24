@@ -71,6 +71,8 @@ const LinkWrapper = styled.div`
 const LinkButton = ({ text, linkText, href }) => {
   let [hovered, setHovered] = useState(false);
   const getIcon = () => {
+    if (!linkText) return null;
+
     const currentDomain = window.location.origin.toLowerCase();
 
     const lowerCaseLink = linkText.toLowerCase();

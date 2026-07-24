@@ -67,7 +67,7 @@ const Support = ({ pageData }) => {
   } = pageData.data;
 
   const metaDataImageUrl = GetImageUrl({
-    baseUrl: banner_image.url,
+    baseUrl: banner_image?.url,
     width: "800",
     height: "800",
   });
@@ -75,7 +75,7 @@ const Support = ({ pageData }) => {
   const bgImageSize = 1.5 * viewportWidth;
 
   const bgImageUrl = GetImageUrl({
-    baseUrl: banner_image.url,
+    baseUrl: banner_image?.url,
     width: bgImageSize,
     height: bgImageSize,
   });

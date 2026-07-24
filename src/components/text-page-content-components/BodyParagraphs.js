@@ -33,7 +33,7 @@ const BoldParagraph = styled(Body)`
 const BodyParagraphs = ({ aboutText, className }) => {
   console.log(aboutText)
   const BodyParagraphBlocks = () => {
-    return aboutText.map((dataItem, i) => {
+    return (aboutText || []).map((dataItem, i) => {
       console.log(dataItem)
       if (dataItem.spans[0]?.type === "strong") {
         return <BoldParagraph key={i}>{dataItem.text}</BoldParagraph>;

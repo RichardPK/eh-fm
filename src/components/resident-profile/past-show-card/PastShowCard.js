@@ -11,7 +11,7 @@ const PastShowCard = (props) => {
       <Date>{props.date}</Date>
       <ShowName>{props.showName}</ShowName>
       <TagWrapper>
-        {props.tags.map((tag, i) => {
+        {(props.tags || []).map((tag, i) => {
           return <ShowTag key={i} index={i} name={tag.name} url={tag.url} />;
         })}
       </TagWrapper>

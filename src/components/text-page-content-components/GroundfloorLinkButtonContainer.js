@@ -18,11 +18,11 @@ const Wrapper = styled.div`
 const LinkButtonContainer = ({ support_urls }) => {
   return (
     <Wrapper>
-      {support_urls.map((data, i) => {
+      {(support_urls || []).map((data, i) => {
         return (
           <LinkButton
             key={i}
-            href={data.link_href.url}
+            href={data.link_href?.url}
             linkText={data.link_text}
           />
         );

@@ -30,7 +30,9 @@ const ResidentShowContainer = ({ residentsData }) => {
       const foundShow = residentsData.filter(
         (showData) => showData.uid === id
       )[0];
-      setSelectedShow(foundShow.data);
+      if (foundShow) {
+        setSelectedShow(foundShow.data);
+      }
     };
 
     findSelectedShow();
@@ -70,7 +72,7 @@ const ResidentShowContainer = ({ residentsData }) => {
   const bgImageSize = 1.5 * viewportWidth;
 
   const bgImageUrl = GetImageUrl({
-    baseUrl: selectedShow && selectedShow.show_image.fullscreen.url,
+    baseUrl: selectedShow && selectedShow.show_image?.fullscreen?.url,
     width: bgImageSize,
     height: bgImageSize,
   });
@@ -82,9 +84,9 @@ const ResidentShowContainer = ({ residentsData }) => {
           <MetaData
             title={`${selectedShow.show_title} | EHFM`}
             description={selectedShow.show_description}
-            imageSrc={selectedShow.show_image.larger.url}
-            imageWidth={selectedShow.show_image.dimensions.width}
-            imageHeight={selectedShow.show_image.dimensions.height}
+            imageSrc={selectedShow.show_image?.larger?.url}
+            imageWidth={selectedShow.show_image?.dimensions?.width}
+            imageHeight={selectedShow.show_image?.dimensions?.height}
           />
           <StyledBackgroundImage imageSrc={bgImageUrl} />
           <ResidentProfile
