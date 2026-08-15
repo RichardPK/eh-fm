@@ -31,7 +31,7 @@ const CurrentShow = ({ currentShow, residentsData }) => {
     return (
       prismicShow &&
       prismicShow !== SHOW_NOT_FOUND &&
-      prismicShow.data.show_image.url.split("&")[0]
+      prismicShow.data.show_image?.url?.split("&")[0]
     );
   };
 

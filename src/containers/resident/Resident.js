@@ -40,9 +40,14 @@ const ResidentShowContainer = ({ residentsData }) => {
 
   useEffect(() => {
     const mixCloudAPICall = async () => {
+      const playlistUrl = selectedShow.mixcloud_playlist_url;
+      if (!playlistUrl) {
+        setPastMixcloudShows([]);
+        return;
+      }
+
       setLoadingShows(true);
       setPastMixcloudShows(null);
-      let playlistUrl = selectedShow.mixcloud_playlist_url;
       // https://www.mixcloud.com/ehfm/playlists/lunch/
 
       let wwwCutPoint = playlistUrl.indexOf(".") + 1;
