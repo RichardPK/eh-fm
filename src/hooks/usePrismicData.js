@@ -81,7 +81,7 @@ const fetchAllPages = (url, results) => {
         .then((res) => {
           results = [...results, ...res.results];
           if (res.next_page) {
-            return fetchAllPages(url, results);
+            return fetchAllPages(res.next_page, results);
           } else {
             return results;
           }
